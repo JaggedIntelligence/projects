@@ -1,7 +1,10 @@
 # Notes about /kb Kowlege Base project
 
 ### Big Picture 
--  The following web app is cloned from the repo https://github.com/davepoon/buildwithclaude/tree/main/web-ui ...
+- see the working Open Soure app first to get idea of Web app we are trying to modify
+- url is https://buildwithclaude.com/plugins
+- .
+-  The following web app repository is cloned from the repo https://github.com/davepoon/buildwithclaude/tree/main/web-ui ...
 -  and only /web-ui folder is copied and created our own web app in this /kb/web-ui folder
 - .
 
