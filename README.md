@@ -1,6 +1,8 @@
 # projects
 
 ## Multiple Project are here
+- this is a barnd NEW Separate REPO named projects. https://github.com/JaggedIntelligence/projects 
+- . 
 - each Project on its own folder ...
 
 ### 1. KB : Knowledge Base
