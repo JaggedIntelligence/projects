@@ -9,9 +9,13 @@ https://www.openui.com/playground
 https://www.fumadocs.dev/
 
 
-**Roll your OWN STACK**
+**1/ Better T Stack: Roll your OWN STACK**
 
 Modern CLI for scaffolding end-to-end TypeScript projects
 https://www.better-t-stack.dev/ 
 
 https://www.better-t-stack.dev/new?fe-w=none&api=none&pm=pnpm&db=none&orm=none&au=none&add=none&file=packages/config/tsconfig.base.json
+
+Wonderful video walk thru of Better T Stack
+https://www.youtube.com/watch?v=2Yej4syAzs8
+
