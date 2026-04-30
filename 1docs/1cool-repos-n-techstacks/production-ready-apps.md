@@ -11,6 +11,7 @@ SR note1:
 **1/ mikeoss.com : The Open Source alternative to Harvey and Legora.**
 https://app.mikeoss.com/
 
+app Vieo here: https://x.com/willchen500/status/2049607015551410361
 
 ### mikeoss.com : The Open Source alternative to Harvey and Legora.
 --======================---------------------------------------------
