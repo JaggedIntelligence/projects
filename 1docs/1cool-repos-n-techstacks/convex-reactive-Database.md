@@ -10,7 +10,7 @@ Convex is the open source, reactive database where queries are TypeScript code r
 
 Convex **provides a database, a place to write your server functions, and client libraries. It makes it easy to build and scale dynamic live-updating apps.**
 
-### Features
+### 1/ Features
 **1/ Always in sync**
 - Convex libraries guarantee that your app always reflects changes to your frontend code, backend code, and database state in real time. No need for state managers, cache invalidation policies, or websockets.
 
@@ -20,3 +20,16 @@ Convex **provides a database, a place to write your server functions, and client
 
 **3/ Backend built-ins**
  - Create cron jobs, kick off backend AI workflows, leverage built-in auth, and tap into a growing ecosystem of components that solve common backend needs with just an npm i.
+
+
+### Takeaways : Site Up. Costs Down: Optimizing OpenClaw’s 1M Weekly Active Users
+https://stack.convex.dev/optimizing-openclaw 
+
+- Scaling a read-heavy Convex app comes down to three things:
+
+- Match subscriptions to access patterns. Reactive queries for collaborative features. One-shot fetches for public catalogs.
+
+- Minimize what you read. Digest tables, compound indexes, no unnecessary joins. Your browse query should read the smallest document that serves the UI.
+- Don’t write when nothing changed. Change detection in triggers allow you to denormalize and minimize cache invalidation. Delaying between batch can consolidate multiple invalidations reducing thundering herds. Every unnecessary write is subscribers x docs wasted reads.
+- .
+- Convex stays up while you figure this out. Your app absorbed real traffic from real users on patterns that were burning 1,000x more bandwidth than necessary — and nobody noticed. That breathing room is the point. Ship fast, find users, then come back and match your patterns to your actual traffic.
