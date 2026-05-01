@@ -10,6 +10,10 @@ Convex is the open source, reactive database where queries are TypeScript code r
 
 Convex **provides a database, a place to write your server functions, and client libraries. It makes it easy to build and scale dynamic live-updating apps.**
 
+Beginner’s QuickStart Guide to React & Convex
+- https://www.youtube.com/watch?v=4MgsvjMb59Q&t=63s
+- webpage https://docs.convex.dev/quickstart/react
+
 ### 1/ Features
 **1/ Always in sync**
 - Convex libraries guarantee that your app always reflects changes to your frontend code, backend code, and database state in real time. No need for state managers, cache invalidation policies, or websockets.
