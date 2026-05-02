@@ -37,3 +37,39 @@ https://stack.convex.dev/optimizing-openclaw
 - Don’t write when nothing changed. Change detection in triggers allow you to denormalize and minimize cache invalidation. Delaying between batch can consolidate multiple invalidations reducing thundering herds. Every unnecessary write is subscribers x docs wasted reads.
 - .
 - Convex stays up while you figure this out. Your app absorbed real traffic from real users on patterns that were burning 1,000x more bandwidth than necessary — and nobody noticed. That breathing room is the point. Ship fast, find users, then come back and match your patterns to your actual traffic.
+
+### Convex real-time DB Pros and Cons Debate on Reddit
+
+
+https://www.reddit.com/r/nextjs/comments/1oe46s3/psyops_or_is_convex_really_that_good/
+
+a Post Perspective ...
+
+I personally tried to use Convex for my project but ultimately decided against it. That said, it’s an awesome piece of tech, and it might be perfect for your needs, but it didn't fit mine.
+
+**What’s great:**
+Real-time updates are amazing, and I I'm going to bet this paradigm will spread to other DB providers. Seriously it's so cool.
+TypeScript-native schemas and DB design feel great to work with.
+AI-powered docs are amazing. I can't speak highly enough about the AI for their Docs. It answered so many questions as I tried to learn how to interact with the DB. (Sorry to the convex team for any major costs I incurred you guys😅)
+
+**What’s not so great:**
+Caching for authenticated queries (ctx.auth) only lasts as long as the token.
+No great built-in auth solution (unless you use a paid service).
+You can't run ctx.db.query() inside of actions (The main way to query documents). Not a dealbreaker, but annoying.
+Convex can't perform complex SQL queries without incurring high bandwidth (for me)
+
+
+Ultimately it's the last point that killed me. But still... using Convex helped me understand indexing and query design better, so even though I moved away from it, I’m grateful for what I learned.
+
+You have to understand **that when you perform queries, convex incurs bandwidth costs for every document it scans. As such Convex recommends that you use indexes .withIndex() and .withSearchIndex() to reduce the amount of potentially touched documents. You can't just use .filter(), because that will scan every document in a table.**
+
+That sounds fine and dandy, until you see how limited you can filter with .withIndex(): Equal to, Greater than (or equal to), less than (or equal to). You can't do the following:
+**There is no Or.**
+There is no comparison between arrays (GIN indexes).
+You also can't implement .withIndex() and .withSearchIndex() simultaneously.
+
+Also on a related note (And I'm sure this will be ironed out in the future), it's currently difficult to implement filters with pagination. You have to use the filters() helper function from convex-helpers to perform advanced filters, but... It doesn't work with pagination. Seriously, go ask their ai "Are there any known issues of using the convex/helpers filter() function with pagination?". (I think the issues is that it applies filters after paginating a page, thus creating small/0 result pages?)
+
+Like I mentioned at the beginning, I seriously love convex, and I hope they succeed. If nothing else, using their platform and their imposed querying limitations helped me understand how to build proper indexes in SQL, and better ways to query my db. If you're using typescript you don't have complex querying, and/or can reduce the number of results with indexes, then I would absolutely recommend that you look into them. But for me, I have such needs and thus can't stomach the costs.
+
+And who knows, maybe I'm understanding something wrong and the Convex team will respond about how I can do something different/better.
