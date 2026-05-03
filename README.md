@@ -10,3 +10,5 @@
 
 ### 2. FireCrawl 
     - web scraping for Trading DATA.. example finviz NEWS for AMD , Broadcom , SOXX , NVDA , INTC stocks ..
+
+## added for test on Saturday 8:49 pm 
