@@ -1,7 +1,7 @@
 # Apps that are produciton Ready
 
 
-### Big picture
+### Big picture -------
 
 SR note1:
  - develop Second Brain project based on  'Project Mike' template 
