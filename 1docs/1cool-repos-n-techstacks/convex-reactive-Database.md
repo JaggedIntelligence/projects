@@ -40,7 +40,12 @@ https://stack.convex.dev/optimizing-openclaw
 
 ### Convex real-time DB Pros and Cons Debate on Reddit
 
+--------
+Top 5 Real-Time Databases Compared
+https://stack.convex.dev/best-real-time-databases-compared
 
+SR note: good one read this also ...
+----------
 https://www.reddit.com/r/nextjs/comments/1oe46s3/psyops_or_is_convex_really_that_good/
 
 a Post Perspective ...
