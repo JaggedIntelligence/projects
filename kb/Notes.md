@@ -3,6 +3,7 @@
 ### Neon Postgres Connection String & API key
 got from this url 
 https://console.neon.tech/app/settings
+SR note: logged in using  github Credentails ...
 
 Connection string
 postgresql://neondb_owner:npg_QPJjpisy4Vz8@ep-cool-firefly-amti3iop-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
