@@ -1,5 +1,20 @@
 # Notes about /kb Kowlege Base project
 
+### Neon Postgres Connection String & API key
+got from this url 
+https://console.neon.tech/app/settings
+
+Connection string
+postgresql://neondb_owner:npg_QPJjpisy4Vz8@ep-cool-firefly-amti3iop-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+
+password for the owner 
+npg_QPJjpisy4Vz8
+
+API key
+napi_zsw2p46a257i9jypoj6npqvmfy3hidb7z42csajqd1f4f55p7wqquo2rzzd5i0oc
+
+
 ### Big Picture 
 - see the working Open Soure app first to get idea of Web app we are trying to modify
 - url is https://buildwithclaude.com/plugins
