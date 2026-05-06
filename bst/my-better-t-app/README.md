@@ -14,9 +14,9 @@ pnpm create better-t-stack@latest my-better-t-app --frontend next --backend hono
 - **Next.js** - Full-stack React framework
 - **TailwindCSS** - Utility-first CSS for rapid UI development
 - **Shared UI package** - shadcn/ui primitives live in `packages/ui`
-- **Hono** - Lightweight, performant server framework
+- **Hono** - Lightweight, performant server framework. ( SR note: Hono instead of Experss framework)
 - **tRPC** - End-to-end type-safe APIs
-- **Node.js** - Runtime environment
+- **Node.js** - Runtime environment. ( SR : still it is Node.js , not BUN ... , go with old Standard ..)
 - **Drizzle** - TypeScript-first ORM
 - **PostgreSQL** - Database engine
 - **Authentication** - Clerk
