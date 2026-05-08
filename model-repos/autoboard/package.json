@@ -1,0 +1,19 @@
+{
+  "name": "autoboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter @autoboard/api --filter @autoboard/web run dev",
+    "build": "pnpm -r run build",
+    "db:generate": "pnpm --filter @autoboard/db db:generate",
+    "db:migrate": "pnpm --filter @autoboard/db db:migrate",
+    "db:push": "pnpm --filter @autoboard/db db:push",
+    "db:studio": "pnpm --filter @autoboard/db db:studio"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["better-sqlite3"]
+  }
+}
