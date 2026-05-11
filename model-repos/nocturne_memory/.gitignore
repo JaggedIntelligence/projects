@@ -1,0 +1,23 @@
+.env
+.claude
+.agents
+.vscode
+backend/README.md
+nocturne_memory.db
+migration_log.json
+scripts/backup_memory.ps1
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+frontend/node_modules
+snapshots/
+assets/
+frontend/dist/
+backups/
+
+# Sisyphus tooling artifacts
+.sisyphus/
