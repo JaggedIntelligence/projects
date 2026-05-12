@@ -1,6 +1,6 @@
 # Training Small models
 
-### section 1
+## section 1
 
 https://x.com/cjzafir/status/2053975471218659695 
 
@@ -36,7 +36,7 @@ B200 > Frontier-scale workloads
 
 I found no information on X about this when I started, so thought I should share it with you if you're getting in on it. Enjoy
 
-### Section 2
+## Section 2
 
 https://x.com/cjzafir/status/2053847506124206095
 
@@ -71,4 +71,30 @@ So fine-tuning is an important skill that anyone can acquire today.
 Tune models, test them, use them. Then fine-tune for companies and make a career out of it. (Companies pay $50k+ to fine-tune models on their data so they can get personalized AI models.)
 
 Shoot your questions below. I'll be sharing in-depth raw findings about this topic in the coming days.
+
+
+-- following is collection of useful Q & A on this x thread
+#### @ryanhanks : Question : Can you give a brief description of the applied use of any models you've fine tuned for a company?
+#### @cjzafir : answer
+Edge-Device / Embedded SLM (IoT / Hardware)
+
+In simple words custom AI models for:
+- Internal communication (inside slack, teams etc)
+- Internal analysis (data analysis is a mess)
+- OCR (Image to text, fillable forms)
+- Private web research (competitor research etc)
+- Data extraction (from pdfs, csv, CRM, ERP etc)
+- Chatbots (Local model integrated, NO external API)
+
+These are just few of many use cases. Each company have their own workflow and have custom use cases of AI models.
+
+
+#### @drawais_ai : comment 
+https://huggingface.co/drawais
+
+This is solid advice. The "start small" part especially — too many people jump straight to 70B and wonder why nothing works.
+
+I've been quantizing models for a while now (drawais on Hugging Face), and the 1B to 9B range is where most of the real action is. They fit on normal GPUs, you can actually iterate fast, and honestly? A well-tuned 7B or 9B beats a sloppy 70B most days.
+
+If anyone  needs quantized versions of models to practice with — Qwen, Gemma, Mistral, Phi, etc. — I've got a bunch up already in INT4 and NVFP4. All sized for 8GB cards. Free on Hugging Face.
 
