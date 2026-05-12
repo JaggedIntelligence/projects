@@ -75,7 +75,7 @@ Shoot your questions below. I'll be sharing in-depth raw findings about this top
 
 -- following is collection of useful Q & A on this x thread
 #### @ryanhanks : Question : Can you give a brief description of the applied use of any models you've fine tuned for a company?
-#### @cjzafir : answer
+#### @cjzafir : answer :
 Edge-Device / Embedded SLM (IoT / Hardware)
 
 In simple words custom AI models for:
@@ -88,6 +88,13 @@ In simple words custom AI models for:
 
 These are just few of many use cases. Each company have their own workflow and have custom use cases of AI models.
 
+
+#### @LoadingAGI : Q : Which models have you found under 27B perform well to specific use cases for fine tuning?
+#### @cjzafir : A :
+Try these:
+Qwen 3.5 4B, 9B.
+Gemma4 E4B
+Gemma 3 12B
 
 #### @drawais_ai : comment 
 https://huggingface.co/drawais
