@@ -105,3 +105,27 @@ I've been quantizing models for a while now (drawais on Hugging Face), and the 1
 
 If anyone  needs quantized versions of models to practice with — Qwen, Gemma, Mistral, Phi, etc. — I've got a bunch up already in INT4 and NVFP4. All sized for 8GB cards. Free on Hugging Face.
 
+## Before going to bed last night I asked Codex to autonomously fine-tune Qwen 3.5 4B model.
+
+Codex 5.5 is AGI for me.
+https://x.com/cjzafir/status/2054268350910578911
+
+> Created fresh Google Colab notebook
+> Uploaded 145M JSONL dataset to Google Drive
+> Pasted Colab notebook link in Codex Desktop App
+> Asked it to train Qwen 3.5 4B using Unsloth
+> It opened Colab using its Chrome Extension
+> Connected to my Google Drive
+> Downloaded Dataset from Drive
+> Installed Unsloth
+> Started running commands in sequence.
+> Fixed all errors brilliantly.
+> Completed all steps properly
+> I woke up to this.
+
+Interesting: Codex put itself to sleep for 30-minute interval via automation. (0 limit loss during 4-hour training cycle).
+
+Codex's chrome extension for computer use is amazing. It doesn't eat context like other MCPs and it clicks fast.
+
+I'm in love with this model. Worth $200.
+
