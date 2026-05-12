@@ -89,8 +89,8 @@ In simple words custom AI models for:
 These are just few of many use cases. Each company have their own workflow and have custom use cases of AI models.
 
 
-#### @LoadingAGI : Q : Which models have you found under 27B perform well to specific use cases for fine tuning?
-#### @cjzafir : A :
+##### @LoadingAGI : Q : Which models have you found under 27B perform well to specific use cases for fine tuning?
+##### @cjzafir : A :
 Try these:
 Qwen 3.5 4B, 9B.
 Gemma4 E4B
