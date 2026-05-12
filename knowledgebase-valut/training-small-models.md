@@ -110,6 +110,7 @@ If anyone  needs quantized versions of models to practice with — Qwen, Gemma, 
 Codex 5.5 is AGI for me.
 https://x.com/cjzafir/status/2054268350910578911
 
+```
 > Created fresh Google Colab notebook
 > Uploaded 145M JSONL dataset to Google Drive
 > Pasted Colab notebook link in Codex Desktop App
@@ -122,6 +123,7 @@ https://x.com/cjzafir/status/2054268350910578911
 > Fixed all errors brilliantly.
 > Completed all steps properly
 > I woke up to this.
+```
 
 Interesting: Codex put itself to sleep for 30-minute interval via automation. (0 limit loss during 4-hour training cycle).
 
