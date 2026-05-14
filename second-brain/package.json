@@ -2,18 +2,31 @@
   "name": "second-brain-task-manager",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.12.1",
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["current", "darwin", "linux"],
+      "cpu": ["current", "arm64"],
+      "libc": ["current", "glibc", "musl"]
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "clean": "rm -rf .next",
+    "db:init": "bash scripts/db-init.sh init",
+    "db:start": "bash scripts/db-init.sh start",
+    "db:stop": "bash scripts/db-init.sh stop",
+    "db:reset": "bash scripts/db-init.sh reset",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "test": "vitest"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.12.0",
+    "@clerk/nextjs": "6.12.0",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-label": "^2.1.1",

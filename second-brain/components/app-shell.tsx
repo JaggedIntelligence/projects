@@ -13,7 +13,7 @@ import { useTaskStore } from "@/store/task-store";
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/tasks", label: "Tasks" }
-];
+] as const;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
