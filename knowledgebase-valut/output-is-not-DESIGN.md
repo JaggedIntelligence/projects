@@ -7,7 +7,12 @@ https://linear.app/now/output-isn-t-design
 ### Design keeps being misunderstood in our industry.
 Design keeps being misunderstood in our industry. New tools keep promising to generate interfaces faster, move words to product instantly, or collapse design directly into code. The assumption behind them is clear: that design is the act of producing.
 
-That is the misunderstanding. **The hard part of design is rarely generating the form. It is understanding the problem well enough to know what and how something should exist at all**. There is use and place for these tools, but tools are not the design process. Christopher Alexander came closer than anyone to naming this clearly. In Notes on the Synthesis of Form, he describes design as the search for a good fit between a form and its context. Context, in his sense, is not a background condition. It is the full set of forces that make a problem what it is: human needs, technical constraints, conflicting requirements, habits, edge cases, and relationships that are easy to miss until you spend time with them. Bad design appears where those forces remain unresolved. Good design appears where those misfits have been worked through carefully.
+That is the misunderstanding. **The hard part of design is rarely generating the form. It is understanding the problem well enough to know what and how something should exist at all**. There is use and place for these tools, but tools are not the design process. Christopher Alexander came closer than anyone to naming this clearly. 
+
+In Notes on the Synthesis of Form, **he describes design as the search for a good fit between a form and its context**. Context, in his sense, **is not a background condition**. It is the **full set of forces that make a problem what it is: human needs, technical constraints, conflicting requirements, habits, edge cases, and relationships** that are easy to miss until you spend time with them. 
+
+Bad design appears **where those forces remain unresolved.** 
+Good design appears where **those misfits have been worked through carefully**.
 
 
 ### That distinction matters even more now because of how AI encourages you to work
