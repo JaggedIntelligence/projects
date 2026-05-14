@@ -1,8 +1,28 @@
 # Installation steps
 
+### How to run 
+ - on Mac terminal  
+ - pnpm install
+ - pnpm run dev
+ - pnpm run db:studio   // to see Drizzle DBAdmin Stuio which connect to Postgres DB 
+ -
+ - if any issues , remove old stuff and start new
+ - rm -rf node_modules .next 
+ - .
 
+### 1/ installation Trouble shooting
+- with Orb Stack ubuntu, this web app gave many errors  with 'pnpm run dev' to bring up the application
+- so the recommendation is use STANDARD MAC Terminal, so I did
+- I installed  npm & pnpm on MAC terminal Shell  ( detailed steps below)
 
-## --------- How to install npm & pnpm  on MAC ------------------------------
+### 2/ How to make Drizzle DB Studio make it work
+- Drizzle DB strudio is DB admin app for CRUD operaions to view Table structire .. and may more .. this is like PhyMyAdmin
+- we got make it worknig, see details in commit# 22e8bba
+- a) dotenv package added to package.json b) few changes in  drizzle.config.ts
+
+ 
+
+## 5/ --------- How to install npm & pnpm  on MAC ------------------------------
 
 ### the below is Gemini anaser and it worked ...
 
