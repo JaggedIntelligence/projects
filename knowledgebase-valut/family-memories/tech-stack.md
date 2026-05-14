@@ -15,12 +15,13 @@ TOC
 -----------------------------------------------------------------
 ### 1/ Use cases
 - kids trophies , achievements
--1. kids memorable school work :  k - 5,  middle school , high school
--2.  yours and spouse memorable things :  Notes, drawings, writings ... 
+- 1. kids memorable school work :  k - 5,  middle school , high school
+  
+- 2.  yours and spouse memorable things :  Notes, drawings, writings ... 
 - kids school grades 
 
 RECORDs part:
--3.  Health records of:
+- 3.  Health records of:
         Kids, you& spouse, parents
         medical prescriptions
  - 4. big ticket items records:
@@ -30,9 +31,14 @@ RECORDs part:
 -----------------------------------------------------------------
 
 ### 2. background -----------
-- online tool url https://www.modelscope.cn/studios/OpenDataLab/MinerU
-- above medical image file got from internet ( saved in  Downloads/lipid-profile file)
-- MinrU online tool converted it into Markdown text
+
+**SR note: MinerU uses PaddleOCR as backbone for OCR** extraction ...
+
+get the image of 😃 Awesome Projects Leveraging PaddleOCR
+  
+PaddleOCR wouldn't be where it is today without its incredible community! 💗 A massive thank you to all our longtime partners, new collaborators, and everyone who's poured their passion into PaddleOCR — whether we've named you or not. Your support fuels our fire!
+
+https://github.com/PaddlePaddle/PaddleOCR
 
 -----------------------------------------------------------------
 
