@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useTaskStore } from "@/store/task-store";
+
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
@@ -18,7 +18,7 @@ const navItems = [
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const openCreate = useTaskStore((state) => state.openCreate);
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -26,7 +26,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="container flex h-16 items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-4">
             <Link href="/dashboard" className="truncate text-base font-semibold">
-              Second Brain
+              Task Management
             </Link>
             <nav className="hidden items-center gap-1 sm:flex">
               {navItems.map((item) => (
@@ -37,10 +37,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </nav>
           </div>
           <div className="flex items-center gap-2">
-            <Button size="sm" onClick={openCreate}>
-              <Plus className="h-4 w-4" />
-              <span className="hidden sm:inline">New Task</span>
-            </Button>
+      
             <Button
               type="button"
               variant="outline"
