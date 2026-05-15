@@ -15,6 +15,9 @@
 - so the recommendation is use STANDARD MAC Terminal, so I did
 - I installed  npm & pnpm on MAC terminal Shell  ( detailed steps below)
 
+### 1.2 first Strt Postgres DB with Docker
+- details are in the foler /server/docker/READme.md 
+
 ### 2/ How to make Drizzle DB Studio make it work
 - Drizzle DB strudio is DB admin app for CRUD operaions to view Table structire .. and may more .. this is like PhyMyAdmin
 - we got make it worknig, see details in commit# 22e8bba
