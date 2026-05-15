@@ -2,6 +2,10 @@
 
 A full-stack task management app built with Next.js 14 App Router, Tailwind CSS, shadcn/ui-style components, Zustand, Clerk, tRPC, Drizzle ORM, Zod, and Postgres.
 
+### SREDDY :How to Run the App 
+- this section is written by SR, everyting else in the Doc is written by 'CodeX'
+- **for detailed steps HOw to run the 'Task management' web app see the file ./DInstall-steps.md**
+
 ## Getting Started
 
 1. Install dependencies:
