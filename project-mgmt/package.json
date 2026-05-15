@@ -5,9 +5,20 @@
   "packageManager": "pnpm@10.12.1",
   "pnpm": {
     "supportedArchitectures": {
-      "os": ["current", "darwin", "linux"],
-      "cpu": ["current", "arm64"],
-      "libc": ["current", "glibc", "musl"]
+      "os": [
+        "current",
+        "darwin",
+        "linux"
+      ],
+      "cpu": [
+        "current",
+        "arm64"
+      ],
+      "libc": [
+        "current",
+        "glibc",
+        "musl"
+      ]
     }
   },
   "scripts": {
@@ -62,6 +73,7 @@
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "dotenv": "^17.4.2",
     "drizzle-kit": "^0.30.4",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.23",
