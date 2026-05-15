@@ -10,13 +10,21 @@
  - rm -rf node_modules .next 
  - .
 
+### 1.2 first Strt Postgres DB with Docker
+- **SEE detailed instructions are in the foler /server/docker/README.md** 
+- in order to run Drizzle based command, you need to run 'pnpm install' so packages are available for 'pnpm' command
+
+Start DB         pnpm db:start  <-- pnpm [run] is optional -->
+
+Stop DB          pnpm db:stop
+
+
 ### 1/ installation Trouble shooting
 - with Orb Stack ubuntu, this web app gave many errors  with 'pnpm run dev' to bring up the application
 - so the recommendation is use STANDARD MAC Terminal, so I did
 - I installed  npm & pnpm on MAC terminal Shell  ( detailed steps below)
 
-### 1.2 first Strt Postgres DB with Docker
-- details are in the foler /server/docker/READme.md 
+
 
 ### 2/ How to make Drizzle DB Studio make it work
 - Drizzle DB strudio is DB admin app for CRUD operaions to view Table structire .. and may more .. this is like PhyMyAdmin
