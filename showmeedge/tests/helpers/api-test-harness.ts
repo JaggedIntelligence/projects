@@ -44,7 +44,7 @@ export async function createApiTestHarness() {
   return {
     db,
     tasks,
-    createCaller: (userId: string | null) => createCaller({ userId }),
+    createCaller: (userId: string | null) => createCaller({ userId, organizationId: null }),
     clearTasks,
     assertDatabaseIsTestDatabase
   };

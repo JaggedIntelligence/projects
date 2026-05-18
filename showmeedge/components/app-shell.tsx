@@ -12,7 +12,8 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/tasks", label: "Tasks" }
+  { href: "/tasks", label: "Tasks" },
+  { href: "/trading", label: "Trading" }
 ] as const;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -51,7 +52,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <UserButton afterSignOutUrl="/sign-in" />
           </div>
         </div>
-        <nav className="container grid grid-cols-2 gap-2 pb-3 sm:hidden">
+        <nav className="container grid grid-cols-3 gap-2 pb-3 sm:hidden">
           {navItems.map((item) => (
             <Link
               key={item.href}

@@ -6,7 +6,8 @@ export async function createTRPCContext() {
   const session = await auth();
 
   return {
-    userId: session.userId
+    userId: session.userId,
+    organizationId: session.orgId ?? null
   };
 }
 
