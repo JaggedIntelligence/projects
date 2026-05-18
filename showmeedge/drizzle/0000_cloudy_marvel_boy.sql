@@ -1,5 +1,17 @@
-CREATE TYPE "public"."task_priority" AS ENUM('low', 'medium', 'high');--> statement-breakpoint
-CREATE TYPE "public"."task_status" AS ENUM('todo', 'in_progress', 'done');--> statement-breakpoint
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'task_priority') THEN
+    CREATE TYPE "public"."task_priority" AS ENUM('low', 'medium', 'high');
+  END IF;
+END
+$$;--> statement-breakpoint
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'task_status') THEN
+    CREATE TYPE "public"."task_status" AS ENUM('todo', 'in_progress', 'done');
+  END IF;
+END
+$$;--> statement-breakpoint
 CREATE TYPE "public"."account_status" AS ENUM('active', 'paused', 'archived');--> statement-breakpoint
 CREATE TYPE "public"."alert_condition_type" AS ENUM('above', 'below', 'crosses_above', 'crosses_below');--> statement-breakpoint
 CREATE TYPE "public"."alert_status" AS ENUM('active', 'triggered', 'paused', 'archived');--> statement-breakpoint
@@ -18,7 +30,7 @@ CREATE TYPE "public"."portfolio_visibility" AS ENUM('private', 'org');--> statem
 CREATE TYPE "public"."strategy_status" AS ENUM('draft', 'active', 'archived');--> statement-breakpoint
 CREATE TYPE "public"."strategy_type" AS ENUM('manual', 'rules_based', 'imported', 'python_later');--> statement-breakpoint
 CREATE TYPE "public"."trade_side" AS ENUM('buy', 'sell', 'short', 'cover');--> statement-breakpoint
-CREATE TABLE "tasks" (
+CREATE TABLE IF NOT EXISTS "tasks" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" text NOT NULL,
 	"title" text NOT NULL,
@@ -343,9 +355,9 @@ ALTER TABLE "trade_journal_entries" ADD CONSTRAINT "trade_journal_entries_symbol
 ALTER TABLE "trade_journal_entries" ADD CONSTRAINT "trade_journal_entries_strategy_id_strategies_id_fk" FOREIGN KEY ("strategy_id") REFERENCES "public"."strategies"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "watchlist_symbols" ADD CONSTRAINT "watchlist_symbols_watchlist_id_watchlists_id_fk" FOREIGN KEY ("watchlist_id") REFERENCES "public"."watchlists"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "watchlist_symbols" ADD CONSTRAINT "watchlist_symbols_symbol_id_symbols_id_fk" FOREIGN KEY ("symbol_id") REFERENCES "public"."symbols"("id") ON DELETE restrict ON UPDATE no action;--> statement-breakpoint
-CREATE INDEX "tasks_user_id_idx" ON "tasks" USING btree ("user_id");--> statement-breakpoint
-CREATE INDEX "tasks_user_status_idx" ON "tasks" USING btree ("user_id","status");--> statement-breakpoint
-CREATE INDEX "tasks_user_priority_idx" ON "tasks" USING btree ("user_id","priority");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "tasks_user_id_idx" ON "tasks" USING btree ("user_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "tasks_user_status_idx" ON "tasks" USING btree ("user_id","status");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "tasks_user_priority_idx" ON "tasks" USING btree ("user_id","priority");--> statement-breakpoint
 CREATE INDEX "alerts_organization_id_idx" ON "alerts" USING btree ("organization_id");--> statement-breakpoint
 CREATE INDEX "alerts_user_id_idx" ON "alerts" USING btree ("user_id");--> statement-breakpoint
 CREATE INDEX "alerts_symbol_id_idx" ON "alerts" USING btree ("symbol_id");--> statement-breakpoint
