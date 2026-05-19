@@ -15,7 +15,7 @@
 - when you click "Server" menu option, it is  #server but it is loaded from   /server.md file at Load time, see JS script below
 - the downloaded .md file is parsed using "marked" JS lib using this scirpt tag
 -  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-- 
+-  the lib github repo is https://github.com/markedjs/marked
 
 ```
 // Load server documentation dynamically
