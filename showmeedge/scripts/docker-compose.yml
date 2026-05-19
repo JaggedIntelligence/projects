@@ -18,5 +18,34 @@ services:
       timeout: 5s
       retries: 12
 
+  questdb:
+    image: questdb/questdb:9.3.5
+    container_name: showmeedge-questdb
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "8812:8812"
+      - "9009:9009"
+    volumes:
+      - showmeedge_questdb_data:/var/lib/questdb
+
+  market-api:
+    build:
+      context: ../services/market-api
+    container_name: showmeedge-market-api
+    restart: unless-stopped
+    environment:
+      ALLOWED_ORIGINS: "http://localhost:3000,http://localhost:3001"
+      QUESTDB_HOST: questdb
+      QUESTDB_PG_PORT: 8812
+      QUESTDB_USER: admin
+      QUESTDB_PASSWORD: quest
+      QUESTDB_DATABASE: qdb
+    ports:
+      - "8000:8000"
+    depends_on:
+      - questdb
+
 volumes:
   second_brain_postgres_data:
+  showmeedge_questdb_data:

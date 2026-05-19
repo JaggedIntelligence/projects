@@ -1,10 +1,11 @@
 "use client";
 
-import { Activity } from "lucide-react";
+import { Activity, Database, Play } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { LightweightCandlestickChart } from "@/components/trading/lightweight-candlestick-chart";
@@ -39,6 +40,11 @@ export function MarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
   }, [chartSymbols, ticker]);
 
   const barsQuery = api.marketData.bars.useQuery({ ticker, timeframe: "1d" });
+  const utils = api.useUtils();
+  const ingestMock = api.marketData.ingestMock.useMutation({
+    onSuccess: () => utils.marketData.bars.invalidate()
+  });
+  const runBacktest = api.marketData.runBacktest.useMutation();
   const bars = barsQuery.data?.bars ?? [];
   const latestBar = bars.at(-1);
   const previousBar = bars.at(-2);
@@ -84,11 +90,41 @@ export function MarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
             </>
           ) : null}
         </div>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => ingestMock.mutate({ tickers: chartSymbols.map((symbol) => symbol.ticker), timeframe: "1d" })}
+            disabled={ingestMock.isPending}
+          >
+            <Database className="h-4 w-4" />
+            {ingestMock.isPending ? "Ingesting..." : "Ingest mock bars"}
+          </Button>
+          <Button type="button" variant="outline" onClick={() => runBacktest.mutate({ ticker, timeframe: "1d" })} disabled={runBacktest.isPending}>
+            <Play className="h-4 w-4" />
+            {runBacktest.isPending ? "Running..." : "Run SMA backtest"}
+          </Button>
+        </div>
+        {ingestMock.data ? (
+          <p className="text-sm text-muted-foreground">
+            Ingested {ingestMock.data.inserted_bars} bars into QuestDB for {ingestMock.data.symbols.join(", ")}.
+          </p>
+        ) : null}
+        {ingestMock.error ? <p className="text-sm text-destructive">{ingestMock.error.message}</p> : null}
         {barsQuery.isLoading ? (
           <div className="h-80 animate-pulse rounded-md border bg-muted" />
         ) : (
           <LightweightCandlestickChart bars={bars} ticker={ticker} />
         )}
+        {runBacktest.data ? (
+          <div className="grid gap-3 rounded-md border p-3 md:grid-cols-4">
+            <Metric label="Strategy" value={runBacktest.data.strategy} />
+            <Metric label="Final equity" value={`$${money(runBacktest.data.final_equity)}`} />
+            <Metric label="Return" value={`${(runBacktest.data.total_return * 100).toFixed(2)}%`} />
+            <Metric label="Trades" value={String(runBacktest.data.trade_count)} />
+          </div>
+        ) : null}
+        {runBacktest.error ? <p className="text-sm text-destructive">{runBacktest.error.message}</p> : null}
         <p className="text-xs text-muted-foreground">
           Charts by{" "}
           <a className="underline underline-offset-2" href="https://www.tradingview.com" target="_blank" rel="noreferrer">
@@ -101,3 +137,11 @@ export function MarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
   );
 }
 
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="truncate text-sm font-medium">{value}</p>
+    </div>
+  );
+}

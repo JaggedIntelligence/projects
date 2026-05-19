@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 COMPOSE_FILE="$SCRIPT_DIR/docker-compose.yml"
 INIT_SQL="$REPO_ROOT/db/init.sql"
-CONTAINER_NAME="second-brain-postgres"
+POSTGRES_CONTAINER_NAME="second-brain-postgres"
 
 compose() {
   if docker compose version >/dev/null 2>&1; then
@@ -28,27 +28,23 @@ compose() {
 }
 
 postgres_container_id() {
-  docker ps -aq --filter "name=^/${CONTAINER_NAME}$"
+  docker ps -aq --filter "name=^/${POSTGRES_CONTAINER_NAME}$"
 }
 
-start_postgres() {
-  local container_id
-  container_id="$(postgres_container_id)"
+start_infra() {
+  echo "Starting Postgres and QuestDB..."
+  compose up -d postgres questdb
+}
 
-  if [[ -n "$container_id" ]]; then
-    echo "Starting existing Postgres container..."
-    docker start "$CONTAINER_NAME" >/dev/null
-    return
-  fi
-
-  echo "Starting Postgres..."
-  compose up -d postgres
+start_market_api() {
+  echo "Starting QuestDB and Market API..."
+  compose up -d questdb market-api
 }
 
 wait_for_postgres() {
   echo "Waiting for Postgres to accept connections..."
   for _ in {1..30}; do
-    if docker exec "$CONTAINER_NAME" pg_isready -U postgres -d second_brain >/dev/null 2>&1; then
+    if docker exec "$POSTGRES_CONTAINER_NAME" pg_isready -U postgres -d second_brain >/dev/null 2>&1; then
       return 0
     fi
     sleep 1
@@ -60,42 +56,43 @@ wait_for_postgres() {
 
 apply_schema() {
   echo "Applying initial schema from db/init.sql..."
-  docker exec -i "$CONTAINER_NAME" psql -U postgres -d second_brain < "$INIT_SQL"
+  docker exec -i "$POSTGRES_CONTAINER_NAME" psql -U postgres -d second_brain < "$INIT_SQL"
 }
 
 command="${1:-init}"
 
 case "$command" in
   init)
-    start_postgres
+    start_infra
     wait_for_postgres
     apply_schema
     echo "Database is ready at postgres://postgres:postgres@localhost:5432/second_brain"
+    echo "QuestDB is available at http://localhost:9000 and PGWire localhost:8812"
     ;;
   start)
-    start_postgres
+    start_infra
+    ;;
+  market)
+    start_market_api
     ;;
   stop)
-    echo "Stopping Postgres..."
-    if [[ -n "$(postgres_container_id)" ]]; then
-      docker stop "$CONTAINER_NAME" >/dev/null
-    else
-      echo "Postgres container is not present."
-    fi
+    echo "Stopping local Compose services..."
+    compose stop
     ;;
   reset)
-    echo "Resetting Postgres data..."
+    echo "Resetting Postgres and QuestDB data..."
     compose down -v
     if [[ -n "$(postgres_container_id)" ]]; then
-      docker rm -f "$CONTAINER_NAME" >/dev/null
+      docker rm -f "$POSTGRES_CONTAINER_NAME" >/dev/null
     fi
-    start_postgres
+    start_infra
     wait_for_postgres
     apply_schema
     echo "Database has been reset at postgres://postgres:postgres@localhost:5432/second_brain"
+    echo "QuestDB has been reset at http://localhost:9000"
     ;;
   *)
-    echo "Usage: $0 [init|start|stop|reset]" >&2
+    echo "Usage: $0 [init|start|market|stop|reset]" >&2
     exit 1
     ;;
 esac

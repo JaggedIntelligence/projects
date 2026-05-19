@@ -34,6 +34,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
+    "market-api:start": "bash scripts/db-init.sh market",
     "test": "vitest",
     "test:api": "vitest run tests/api",
     "test:components": "vitest run tests/components",

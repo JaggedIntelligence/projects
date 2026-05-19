@@ -41,6 +41,31 @@ pnpm run db:stop
 pnpm run db:reset
 ```
 
+The local Compose stack also includes QuestDB for market data:
+
+```bash
+pnpm run db:start
+```
+
+QuestDB is exposed at:
+
+```text
+http://localhost:9000
+postgresql://admin:quest@localhost:8812/qdb
+```
+
+The separate FastAPI market-data service can be started with:
+
+```bash
+pnpm run market-api:start
+```
+
+It exposes API docs at:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
 If you prefer Drizzle migrations for later schema changes:
 
 ```bash
