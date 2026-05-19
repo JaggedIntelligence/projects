@@ -4,6 +4,7 @@ import { Building2, Pencil, Plus, Trash2, UserRound } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
+import { MarketChartPanel } from "@/components/trading/market-chart-panel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -308,6 +309,8 @@ export function TradingPage() {
           </CardContent>
         </Card>
       </div>
+
+      <MarketChartPanel symbols={symbols.map((symbol) => ({ id: symbol.id, ticker: symbol.ticker, name: symbol.name }))} />
 
       <CrudSection title="Symbols" count={symbols.length}>
         <form className="grid gap-3 lg:grid-cols-[1fr_2fr_130px_130px_110px_auto]" onSubmit={submitSymbol}>
