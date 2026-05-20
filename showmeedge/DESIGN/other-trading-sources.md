@@ -1,7 +1,31 @@
 # Other trading soruce that can be levaraged for ShowMeEdge
 
+## Summary of topics in this page
 
-### //HKUDS/Vibe-trading/ project
+#### SR Decision
+ - do not use these repo directly as they have too much
+ - use only required PARTS if  Codex did not return Code
+ - these have Hardcoded DB Schemas in .py file
+ - SR wants all DB schema in Drizzle modularized, FastAPI is only Backtest executing sending Results back to frontendReact which stores resuls in Drizzle ORM based PostGres DB
+
+#### Project 1: /HKUDS/Vibe-trading/
+- https://vibetrading.wiki/home/ 
+- /HKUDS/Vibe-trading/ project is mainly for BACK Testing of Stocks/crypto/forex etcc..
+- backtesting with vaious strageies in english
+- examples as shown here https://vibetrading.wiki/home/
+```
+$vibe-trading run -p "Backtest BTC-USDT 20/50 MA for 2024"
+
+route: crypto data -> strategy -> backtest -> run card
+
+return +18.6% max drawdown -7.4%
+
+```
+
+#### Project 2: /HKUDS/AI-Trader
+- AI-Trader is an Agent-Native Trading Platform: Exchange ideas and sharpen trading skills through AI agents!
+
+### 1/ /HKUDS/Vibe-trading/ project
 
 - **1/ /HKUDS is a Hongkong university projets repo**
 - https://vibetrading.wiki/home/ 
@@ -18,7 +42,7 @@ https://github.com/HKUDS/Vibe-Trading/blob/main/agent/backtest/models.py
 - tests https://github.com/HKUDS/Vibe-Trading/blob/main/agent/tests/test_run_card.py
 
 
-## Ai4Trade project
+## 2/ Ai4Trade project
 
 ### big ides of the project
 - https://github.com/HKUDS/AI-Trader
