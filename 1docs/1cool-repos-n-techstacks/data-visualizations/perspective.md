@@ -1,9 +1,9 @@
 # Perspective : Data visualization components
 
 ### What is it
-- https://perspective-dev.github.io/guide/perspective.html
 
 - Perspective is an interactive analytics and data visualization component for large and streaming datasets. Build user-configurable reports, dashboards, notebooks, and applications with a high-performance query engine compiled to WebAssembly, Python, and Rust.
+- https://perspective-dev.github.io/guide/perspective.html
 
 - **Features**
   - A framework-agnostic user interface packaged as a Custom Element, which connects to a Data Model in-browser (via WebAssembly) or remotely (via WebSocket, with integration in Python, Node.js and Rust).
