@@ -4,6 +4,15 @@
 
 - Perspective is an interactive analytics and data visualization component for large and streaming datasets. Build user-configurable reports, dashboards, notebooks, and applications with a high-performance query engine compiled to WebAssembly, Python, and Rust.
 - https://perspective-dev.github.io/guide/perspective.html
+- examples : https://perspective-dev.github.io/examples.html
+- 
+- **Youtube walkthrough:**
+  - (2024,PyData) : High Performance Data Visualization for the Web [PyCon DE & PyData Berlin 2024] https://www.youtube.com/watch?v=v5Y5ftlGNhU
+  - (2024, Databricks) : Streaming Cross-Sectional Data Visualization with Perspective + Spark https://www.youtube.com/watch?v=lDpIu4dnp78
+  - (2020, JP Morgan): Junyuan Tan - Streaming, cross-sectional data visualization in Jupyterlab | JupyterCon 2020 https://www.youtube.com/watch?v=IO-HJsGdleE
+  - 2 more on Github repo main page ..
+
+
 
 - **Features**
   - A framework-agnostic user interface packaged as a Custom Element, which connects to a Data Model in-browser (via WebAssembly) or remotely (via WebSocket, with integration in Python, Node.js and Rust).
