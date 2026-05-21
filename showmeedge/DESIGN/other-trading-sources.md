@@ -66,3 +66,8 @@ https://github.com/HKUDS/Vibe-Trading/blob/main/agent/backtest/models.py
         CREATE TABLE IF NOT EXISTS subscriptions (
 
 ```
+
+### Fastgraphs.com 
+ - good fundamental charts : esp.  Stock price  vs. P/E  great charts ..
+ 
+5/15/26 add: fundamental charts platform   Fastgraphs.com has a good Historical Earning vs . stock price charts. it show lines for different P/E value bands .. we should reproduce it in ShowMeEdge.com
