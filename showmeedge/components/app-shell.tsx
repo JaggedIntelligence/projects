@@ -13,7 +13,8 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/tasks", label: "Tasks" },
-  { href: "/trading", label: "Trading" }
+  { href: "/trading", label: "Trading" },
+  { href: "/youtube", label: "Youtube" }
 ] as const;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
