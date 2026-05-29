@@ -63,6 +63,10 @@ export default defineConfig({
               label: "Project structure",
               link: "/guides/project-structure",
             },
+            {
+              label: "Html page",
+              link: "/aib2b/test2.html",
+            },
 
           ],
         },
