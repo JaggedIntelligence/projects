@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+
 export default defineConfig({
   integrations: [
     starlight({
@@ -19,7 +20,7 @@ export default defineConfig({
       
       sidebar: [
         {
-          label: 'Guides',
+          label: 'Intro',
           items: [
             { label: 'Introduction', slug: 'intro' },
             { label: 'Intro2', slug: 'intro2' },
@@ -29,6 +30,7 @@ export default defineConfig({
         {
           label: 'Resources',
           items: [
+            // Each item here is one entry in the navigation menu.
             {
               label: "Community content",
               link: "/resources/community-content",
@@ -44,6 +46,27 @@ export default defineConfig({
 
           ],
         },
+
+        {
+          label: 'Guides',
+          items: [
+            // Each item here is one entry in the navigation menu.
+            {
+              label: "Authoring content",
+              link: "/guides/authoring-content",
+            },
+            {
+              label: "Pages",
+              link: "/guides/pages",
+            },
+            {
+              label: "Project structure",
+              link: "/guides/project-structure",
+            },
+
+          ],
+        },
+
       ],
     }),
   ],
