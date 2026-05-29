@@ -26,6 +26,24 @@ export default defineConfig({
 
           ],
         },
+        {
+          label: 'Resources',
+          items: [
+            {
+              label: "Community content",
+              link: "/resources/community-content",
+            },
+            {
+              label: "Plugins",
+              link: "/resources/plugins",
+            },
+            {
+              label: "Themes",
+              link: "/resources/themes",
+            },
+
+          ],
+        },
       ],
     }),
   ],
