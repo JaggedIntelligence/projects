@@ -64,6 +64,11 @@ export default defineConfig({
               link: "/guides/project-structure",
             },
             {
+              label: "Oss Coding Agents",
+              link: "/aib2b/oss-codingagents",
+            },
+             
+            {
               label: "Html file as .astro file",
               link: "/aib2b/myfile",
             },

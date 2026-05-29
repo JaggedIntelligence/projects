@@ -1,0 +1,924 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+---
+
+<StarlightPage frontmatter={{ title: 'The Open-Source Coding Agent Landscape' , tableOfContents: false }}>
+
+  <div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Field Report · May 2026</div>
+  <h1>The Open-Source Coding Agent Landscape</h1>
+  <p class="lede">
+    Twelve months ago "AI coding tool" meant an editor with autocomplete. Today
+    it means an autonomous agent that reads your repo, edits files, runs tests,
+    drives a browser, and opens PRs. This is a snapshot of the open-source field
+    as it stands today — who leads, who's interesting, and how to choose.
+  </p>
+  <div class="meta">
+    <span>Compiled <b>2026-05-26</b></span>
+    <span>Agents covered <b>11</b></span>
+    <span>Scope <b>OSI-licensed projects, actively maintained</b></span>
+    <span>Sources <b>15+ vendor docs, leaderboards, reviews</b></span>
+  </div>
+</header>
+
+<section>
+  <div class="h2-kicker">TL;DR</div>
+  <h2>If you want to stop reading right now</h2>
+  <p class="h2-sub">Three picks that cover the majority of use cases.</p>
+  <div class="tldr-grid">
+    <div class="tldr best" data-cf-change="ch-best-pick-green">
+      <span class="best-flag">Top pick</span>
+      <h3>Default pick</h3>
+      <div class="pick">opencode</div>
+      <p>Terminal-native, 75+ providers, LSP-aware, persistent sessions, MIT-licensed. The de-facto "Claude Code, but open" — and now the most-starred OSS coding agent on GitHub.</p>
+    </div>
+    <div class="tldr">
+      <h3>If you live in VS Code</h3>
+      <div class="pick">Cline (or Roo&nbsp;Code)</div>
+      <p>Cline is the safer mainline with Plan/Act, MCP, computer use. Roo Code forks it for richer multi-mode (Architect/Code/Debug/Ask) workflows.</p>
+    </div>
+    <div class="tldr">
+      <h3>If you want full autonomy</h3>
+      <div class="pick">OpenHands</div>
+      <p>Sandboxed multi-agent runtime, ~72% on SWE-bench Verified with Claude 4. Closest open analogue to Devin; deploys locally or on its own cloud.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="h2-kicker">At a glance</div>
+  <h2>Comparison matrix</h2>
+  <p class="h2-sub">
+    Numbers are best-effort as of late May 2026. Star counts move fast;
+    treat them as orders of magnitude.
+  </p>
+  <div class="table-scroll">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th style="min-width:170px;">Agent</th>
+          <th>Interface</th>
+          <th>Models</th>
+          <th>MCP</th>
+          <th>License</th>
+          <th>Stars*</th>
+          <th>Best for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="agent">opencode<small>Anomaly / SST</small></td>
+          <td>TUI · desktop · IDE</td>
+          <td>75+ providers</td>
+          <td><span class="pill good">yes</span></td>
+          <td>MIT</td>
+          <td>~161k</td>
+          <td>Provider-agnostic terminal agent</td>
+        </tr>
+        <tr>
+          <td class="agent">Cline<small>cline.bot</small></td>
+          <td>VS Code · JetBrains · Zed · Neovim · CLI</td>
+          <td>30+ providers</td>
+          <td><span class="pill good">yes</span></td>
+          <td>Apache 2.0</td>
+          <td>~61k</td>
+          <td>IDE-native agentic editing with guardrails</td>
+        </tr>
+        <tr>
+          <td class="agent">Roo Code<small>Roo Veterinary Inc.</small></td>
+          <td>VS Code (+ optional cloud)</td>
+          <td>Any via OpenRouter, etc.</td>
+          <td><span class="pill good">yes</span></td>
+          <td>Apache 2.0</td>
+          <td>~25k</td>
+          <td>Multi-mode "AI dev team" in your editor</td>
+        </tr>
+        <tr>
+          <td class="agent">Kilo Code<small>Kilo-Org</small></td>
+          <td>VS Code · JetBrains · CLI</td>
+          <td>500+ via Kilo router</td>
+          <td><span class="pill good">marketplace</span></td>
+          <td>Apache 2.0</td>
+          <td>~20k</td>
+          <td>All-in-one agentic platform, transparent pricing</td>
+        </tr>
+        <tr>
+          <td class="agent">Aider<small>Aider-AI</small></td>
+          <td>Terminal</td>
+          <td>Any (any LiteLLM provider)</td>
+          <td><span class="pill warn">partial</span></td>
+          <td>Apache 2.0</td>
+          <td>~39k</td>
+          <td>Git-native pair programming, atomic commits</td>
+        </tr>
+        <tr>
+          <td class="agent">OpenHands<small>All-Hands-AI</small></td>
+          <td>Web UI · headless · cloud</td>
+          <td>Anthropic, OpenAI, Ollama, …</td>
+          <td><span class="pill good">yes</span></td>
+          <td>MIT</td>
+          <td>~75k</td>
+          <td>Sandboxed autonomous agent, SWE-bench king</td>
+        </tr>
+        <tr>
+          <td class="agent">Goose<small>Block → AAIF (Linux Found.)</small></td>
+          <td>Desktop · CLI · API</td>
+          <td>15+ providers</td>
+          <td><span class="pill good">70+ ext.</span></td>
+          <td>Apache 2.0</td>
+          <td>~20k</td>
+          <td>Local-first desktop agent with governance</td>
+        </tr>
+        <tr>
+          <td class="agent">Continue.dev<small>continuedev</small></td>
+          <td>VS Code · JetBrains · CI</td>
+          <td>Any (local + cloud)</td>
+          <td><span class="pill good">yes</span></td>
+          <td>Apache 2.0</td>
+          <td>~30k</td>
+          <td>IDE assistant that also runs in CI/PRs</td>
+        </tr>
+        <tr>
+          <td class="agent">SWE-agent<small>Princeton/Stanford</small></td>
+          <td>CLI / script</td>
+          <td>Any via LiteLLM</td>
+          <td><span class="pill dim">n/a</span></td>
+          <td>MIT</td>
+          <td>~19k</td>
+          <td>Research, benchmarking, CTF/security</td>
+        </tr>
+        <tr>
+          <td class="agent">Plandex<small>plandex-ai</small></td>
+          <td>Terminal</td>
+          <td>Anthropic · OpenAI · Google · OSS</td>
+          <td><span class="pill warn">limited</span></td>
+          <td>MIT</td>
+          <td>~15k</td>
+          <td>Large, multi-file plans with sandboxed diffs</td>
+        </tr>
+        <tr>
+          <td class="agent">Codex CLI<small>OpenAI</small></td>
+          <td>Terminal (Rust)</td>
+          <td>OpenAI models</td>
+          <td><span class="pill good">yes</span></td>
+          <td>Apache 2.0</td>
+          <td>~76k</td>
+          <td>OpenAI-first terminal agent w/ subagents</td>
+        </tr>
+        <tr data-cf-change="ch-add-claude-code" style="background: rgba(196, 164, 255, 0.04);">
+          <td class="agent">Claude Code<small>Anthropic · <span class="pill warn" style="padding:1px 6px;font-size:10.5px;">proprietary</span></small></td>
+          <td>Terminal · IDE ext. · web · desktop</td>
+          <td>Claude only (Opus / Sonnet / Haiku)</td>
+          <td><span class="pill good">yes</span></td>
+          <td>Closed-source</td>
+          <td>n/a</td>
+          <td>Reference: what the OSS field is chasing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--dim);margin-top:10px;font-family:var(--mono);">
+    *Star counts rounded as of May 2026. "MCP" = first-class Model Context Protocol support.
+    Claude Code is included as a proprietary reference point — it set the pattern most
+    of these agents are iterating on — but it is <b>not</b> open source and is not part
+    of the OSS recommendations above.
+  </p>
+</section>
+
+<section>
+  <div class="h2-kicker">Deep dives</div>
+  <h2>One paragraph per agent</h2>
+  <p class="h2-sub">Skim the cards; the verdict line is the punchline.</p>
+
+  <div class="agents">
+
+    <div class="agent-card">
+      <h3>opencode</h3>
+      <div class="by">by Anomaly (SST team) · MIT · Go</div>
+      <div class="stat-row">
+        <span class="pill acc">~161k ★</span>
+        <span class="pill">TUI · desktop · IDE</span>
+        <span class="pill">75+ providers</span>
+      </div>
+      <p>
+        Launched June 2025, opencode broke out by being everything Claude Code is
+        — agentic, terminal-native, polished — without being tied to a single
+        model vendor. A persistent background server keeps sessions alive across
+        SSH drops; it auto-loads the right Language Server so it understands
+        types and symbols, not just text.
+      </p>
+      <ul>
+        <li><b>Built-in agents:</b> <code>build</code> (full access) and <code>plan</code> (read-only).</li>
+        <li><b>LSP-aware</b> code understanding out of the box.</li>
+        <li>Active daily development; ~6.5M MAUs by Q2 2026.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> the default pick unless you have a strong reason otherwise.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Cline</h3>
+      <div class="by">by cline.bot · Apache 2.0 · TypeScript</div>
+      <div class="stat-row">
+        <span class="pill acc">~61k ★</span>
+        <span class="pill">VS Code · JetBrains · Zed · Neovim</span>
+        <span class="pill">v3.83</span>
+      </div>
+      <p>
+        Originally "Claude Dev" — still the safest IDE-native agent. Plan/Act
+        mode forces structured review before destructive changes; computer use
+        lets it verify UI work in a real browser; <code>.clinerules/</code>
+        turns coding standards into versioned, file-scoped governance. The MCP
+        marketplace plus 30+ providers means real flexibility.
+      </p>
+      <ul>
+        <li><b>Spend limits</b>, YOLO and Lazy Teammate modes to tune autonomy.</li>
+        <li><b>Puppeteer-driven browser</b> for UI verification.</li>
+        <li>Now also ships an SDK and preview CLI.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> the default if VS Code is your home.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>OpenHands</h3>
+      <div class="by">by All-Hands-AI · MIT · Python</div>
+      <div class="stat-row">
+        <span class="pill acc">~75k ★</span>
+        <span class="pill">Web · headless · cloud</span>
+        <span class="pill good">~72% SWE-bench Verified</span>
+      </div>
+      <p>
+        The "open Devin." Runs an autonomous loop inside a sandboxed runtime
+        (Docker by default) that plans, edits, runs commands, and iterates on
+        long tasks. Model-flexible by design — Claude Opus for quality, GPT-5 for
+        speed, Ollama for privacy. The first-party OpenHands Index benchmark is
+        becoming a real reference point alongside SWE-bench.
+      </p>
+      <ul>
+        <li><b>Best-in-class agentic loop</b> for end-to-end issue resolution.</li>
+        <li>Headless mode for CI / batch automation.</li>
+        <li>Enterprise dir is non-MIT; core is fully open.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> what to pick when "fix this whole issue" is the prompt.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Aider</h3>
+      <div class="by">by Aider-AI (Paul Gauthier) · Apache 2.0 · Python</div>
+      <div class="stat-row">
+        <span class="pill acc">~39k ★</span>
+        <span class="pill">Terminal</span>
+        <span class="pill">100+ languages</span>
+      </div>
+      <p>
+        The original. Git-native to its core: every change becomes an atomic
+        commit with a sensible message, so <code>git</code> is your undo button.
+        Architect mode pairs a reasoning model (e.g. Opus) with a faster
+        executor; watch mode lets you scatter <code># AI: …</code> markers
+        across files and have them implemented in place. Voice in, images
+        in, lints + tests run automatically.
+      </p>
+      <ul>
+        <li><b>Repo map</b> using tree-sitter for large codebases.</li>
+        <li><b>Architect/editor split</b> for cheap, controllable iteration.</li>
+        <li>Best workflow for changes that are small, frequent, reviewable.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> still the cleanest terminal pair-programmer if git discipline matters.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Roo Code</h3>
+      <div class="by">by Roo Veterinary Inc. · Apache 2.0 · TypeScript</div>
+      <div class="stat-row">
+        <span class="pill acc">~25k ★</span>
+        <span class="pill">VS Code (+ Cloud)</span>
+        <span class="pill">Cline fork</span>
+      </div>
+      <p>
+        Forked from Cline and built around explicit "modes" — Code, Architect,
+        Ask, Debug, plus user-defined personas with scoped tool permissions
+        (security auditor, TS migration assistant, docs writer, …). Context is
+        opt-in via <code>@file</code>/<code>@dir</code>, which keeps the agent
+        from sprawling.
+      </p>
+      <ul>
+        <li><b>Custom modes + mode gallery</b> as the central abstraction.</li>
+        <li>Optional Roo Code Cloud for GitHub/Slack-triggered runs.</li>
+        <li>More configurable than Cline; slightly steeper learning curve.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> pick over Cline if you want specialized personas, not one agent.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Kilo Code</h3>
+      <div class="by">by Kilo-Org · Apache 2.0 · TypeScript</div>
+      <div class="stat-row">
+        <span class="pill acc">~20k ★</span>
+        <span class="pill">VS Code · JetBrains · CLI</span>
+        <span class="pill">500+ models</span>
+      </div>
+      <p>
+        Also descended from the Cline/Roo lineage but pushed toward an
+        "all-in-one platform": Architect/Coder/Debugger modes, an MCP server
+        marketplace, and a hosted router that exposes 500+ models at
+        pass-through pricing (no markup). #1 on OpenRouter by traffic.
+      </p>
+      <ul>
+        <li><b>JetBrains support</b> since Sept 2025 (IntelliJ, PyCharm, …).</li>
+        <li>Polished onboarding, good for teams that want one tool everywhere.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> the "buy one tool, get every model" option.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Goose</h3>
+      <div class="by">originally Block, now AAIF / Linux Foundation · Apache 2.0 · Rust</div>
+      <div class="stat-row">
+        <span class="pill acc">~20k ★</span>
+        <span class="pill">Desktop · CLI · API</span>
+        <span class="pill">70+ MCP extensions</span>
+      </div>
+      <p>
+        Born inside Block, donated to the new Agentic AI Foundation. Goose is
+        deliberately local-first: the agent runs on your machine and only your
+        chosen LLM provider sees prompts. Recent releases added
+        <code>goose serve</code> (background daemon), Gemini OAuth, Copilot ACP
+        provider, and an egress-logging inspector for governance.
+      </p>
+      <ul>
+        <li><b>Foundation-governed</b> — useful for enterprises wary of vendor capture.</li>
+        <li><b>Strong MCP extension ecosystem</b> across DBs, APIs, browsers.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> the "boring, well-governed" choice for serious infra teams.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Continue.dev</h3>
+      <div class="by">by continuedev · Apache 2.0 · TypeScript</div>
+      <div class="stat-row">
+        <span class="pill acc">~30k ★</span>
+        <span class="pill">VS Code · JetBrains · CI</span>
+        <span class="pill">Continue Hub</span>
+      </div>
+      <p>
+        The longest-running OSS IDE assistant. In 2026 the pitch shifted toward
+        "quality control for your software factory" — Continue now runs review
+        agents inside CI on every PR, in addition to the chat/edit/autocomplete
+        in the IDE. Every layer can point at a local endpoint (Ollama, vLLM,
+        on-prem); telemetry is one flag.
+      </p>
+      <ul>
+        <li><b>CI/PR review agent</b> is the unique 2026 capability.</li>
+        <li>Continue Hub for shared prompts and configs across a team.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> best when "AI also reviews PRs" is part of the requirement.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>SWE-agent</h3>
+      <div class="by">by Princeton + Stanford · MIT · Python</div>
+      <div class="stat-row">
+        <span class="pill acc">~19k ★</span>
+        <span class="pill">CLI / script</span>
+        <span class="pill">NeurIPS 2024</span>
+      </div>
+      <p>
+        Less product, more research scaffold. SWE-agent's contribution is the
+        Agent-Computer Interface — an abstraction of "what tools an LLM should
+        see." The 1.0 release plus Claude 3.7 hit SOTA on SWE-bench at the time;
+        also widely used for CTFs and offensive security exercises.
+        <code>mini-swe-agent</code> is a 100-line variant that still scores
+        &gt;74% on SWE-bench Verified.
+      </p>
+      <ul>
+        <li>The right starting point if you want to <b>build</b> an agent, not use one.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> for benchmarking, research, and security work — not daily coding.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Plandex</h3>
+      <div class="by">by plandex-ai · MIT · Go</div>
+      <div class="stat-row">
+        <span class="pill acc">~15k ★</span>
+        <span class="pill">Terminal</span>
+        <span class="pill">2M token context</span>
+      </div>
+      <p>
+        Built for the case where the task spans dozens of files and dies on
+        any normal agent. Plandex maintains a cumulative diff sandbox so AI
+        changes stay separate from your tree until you accept them; tree-sitter
+        project maps let it index ~20M tokens of repo. Mixes Anthropic, OpenAI,
+        Google and OSS models per role.
+      </p>
+      <ul>
+        <li><b>Sandboxed diffs</b> make multi-step changes much safer to review.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> reach for it on "rewrite the auth subsystem"-size tasks.</div>
+    </div>
+
+    <div class="agent-card">
+      <h3>Codex CLI</h3>
+      <div class="by">by OpenAI · Apache 2.0 · Rust</div>
+      <div class="stat-row">
+        <span class="pill acc">~76k ★</span>
+        <span class="pill">Terminal</span>
+        <span class="pill warn">OpenAI models only</span>
+      </div>
+      <p>
+        OpenAI's answer to Claude Code: a Rust-built terminal agent with both
+        an interactive TUI and an <code>exec</code> mode for scripting. Ships
+        a dedicated review subcommand, MCP support, subagents for parallel
+        work, image generation, and resumable transcripts. Open source — but
+        only useful if you're paying OpenAI.
+      </p>
+      <ul>
+        <li>Worth knowing even if you don't use it — many ideas leak across agents.</li>
+      </ul>
+      <div class="verdict"><b>Verdict:</b> first pick if your stack is GPT-5/Codex; otherwise opencode wins on flexibility.</div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="h2-kicker">Choosing</div>
+  <h2>By scenario</h2>
+  <p class="h2-sub">Match the situation to the agent, instead of the other way around.</p>
+
+  <div class="picker">
+    <div class="row">
+      <div class="q">Solo dev, terminal-first, want one tool</div>
+      <div class="a">opencode</div>
+      <div class="why">Provider-agnostic, sessions survive everything, LSP-aware. No reason to pick anything else as a starting point.</div>
+    </div>
+    <div class="row">
+      <div class="q">You live inside VS Code</div>
+      <div class="a">Cline → graduate to Roo Code</div>
+      <div class="why">Start with Cline for the broadest doc/community footprint; move to Roo Code if you want specialized "modes" per task.</div>
+    </div>
+    <div class="row">
+      <div class="q">You want an agent to fix issues end-to-end</div>
+      <div class="a">OpenHands</div>
+      <div class="why">Sandboxed runtime + best public SWE-bench numbers among OSS agents. Pair it with Claude or local Ollama.</div>
+    </div>
+    <div class="row">
+      <div class="q">Git discipline is non-negotiable</div>
+      <div class="a">Aider</div>
+      <div class="why">Atomic commits per change, architect/editor split, lints + tests run automatically. <code>git</code> is your safety net.</div>
+    </div>
+    <div class="row">
+      <div class="q">Privacy-sensitive enterprise, local models only</div>
+      <div class="a">Goose or Continue.dev</div>
+      <div class="why">Both run end-to-end against local endpoints. Goose has stronger governance hooks; Continue has CI integration.</div>
+    </div>
+    <div class="row">
+      <div class="q">Massive multi-file refactor</div>
+      <div class="a">Plandex</div>
+      <div class="why">2M-token plans + cumulative diff sandbox are designed exactly for "rewrite this subsystem" tasks.</div>
+    </div>
+    <div class="row">
+      <div class="q">You're building your own agent or doing research</div>
+      <div class="a">SWE-agent (or mini-swe-agent)</div>
+      <div class="why">Smallest, cleanest scaffold; ACI abstraction is genuinely useful to study.</div>
+    </div>
+    <div class="row">
+      <div class="q">All-OpenAI shop</div>
+      <div class="a">Codex CLI</div>
+      <div class="why">Tightest integration with OpenAI models; review subcommand and subagents are polished.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="h2-kicker">What changed</div>
+  <h2>Notes on the field in 2026</h2>
+  <div class="notes-grid">
+    <div class="note" data-cf-change="ch-research-pick" style="border-left-color: var(--accent); background: linear-gradient(180deg, rgba(124,242,196,0.08), transparent);">
+      <b>Best for research: SWE-agent.</b> If your goal is benchmarking,
+      studying agent architectures, or building your own — start with
+      <a href="https://github.com/SWE-agent/SWE-agent">SWE-agent</a> (Princeton/Stanford,
+      NeurIPS 2024). It's the cleanest scaffold, its Agent-Computer Interface
+      abstraction is genuinely instructive, and
+      <a href="https://github.com/SWE-agent/mini-swe-agent">mini-swe-agent</a> is
+      ~100 lines of Python that still scores &gt;74% on SWE-bench Verified — an
+      ideal base to hack on. OpenHands is a close second for reproducibility
+      work (well-documented, sandboxed runtime, its own OpenHands Index
+      benchmark), and Aider is worth studying for repo-map / tree-sitter
+      context techniques.
+    </div>
+    <div class="note">
+      <b>Terminal agents won 2025.</b> Cursor-style IDE forks are still
+      popular, but the breakout growth this past year was all terminal-native
+      (opencode, Codex CLI, Claude Code). The reason is simple: terminals
+      compose with everything else developers already do.
+    </div>
+    <div class="note">
+      <b>MCP became table stakes.</b> Every serious agent listed here either
+      supports MCP today or shipped it within the last six months. If a tool
+      doesn't, it's at a structural disadvantage for integrations.
+    </div>
+    <div class="note">
+      <b>"Modes" are the new abstraction.</b> Roo Code, Kilo, opencode and
+      Cline all converged on a plan/build/debug split. Specialized personas
+      with scoped tools beat one general-purpose agent for most real tasks.
+    </div>
+    <div class="note">
+      <b>SWE-bench got saturated.</b> Verified is now &gt;90% on the frontier;
+      OpenHands launched its own broader Index (issue resolution + frontend +
+      greenfield + testing + info gathering) as a replacement reference.
+    </div>
+    <div class="note">
+      <b>Google withdrew Gemini CLI's free tier.</b> The open-source repo lives
+      on, but as of June 18 2026 free use ends; Google is steering users to
+      Antigravity CLI. Excluded from the main table because of the disruption,
+      worth mentioning.
+    </div>
+    <div class="note">
+      <b>Foundations are starting to matter.</b> Goose moved from Block to the
+      Linux Foundation's Agentic AI Foundation. Expect more "neutral home"
+      moves as enterprises ask harder questions about vendor capture.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="h2-kicker">References</div>
+  <h2>Sources</h2>
+  <div class="sources">
+    <p><a href="https://github.com/sst/opencode">github.com/sst/opencode</a> — repo and license</p>
+    <p><a href="https://opencode.ai/docs/github/">opencode docs</a></p>
+    <p><a href="https://github.com/cline/cline">github.com/cline/cline</a></p>
+    <p><a href="https://docs.cline.bot/home">Cline docs</a></p>
+    <p><a href="https://aider.chat/">aider.chat</a> · <a href="https://github.com/Aider-AI/aider">repo</a></p>
+    <p><a href="https://github.com/All-Hands-AI/OpenHands">github.com/All-Hands-AI/OpenHands</a></p>
+    <p><a href="https://www.openhands.dev/">openhands.dev</a></p>
+    <p><a href="https://www.openhands.dev/blog/openhands-index">OpenHands Index benchmark</a></p>
+    <p><a href="https://docs.roocode.com/">Roo Code docs</a></p>
+    <p><a href="https://github.com/Kilo-Org/kilocode">github.com/Kilo-Org/kilocode</a></p>
+    <p><a href="https://kilo.ai/">kilo.ai</a></p>
+    <p><a href="https://block.xyz/inside/block-open-source-introduces-codename-goose">Goose launch post (Block)</a></p>
+    <p><a href="https://github.com/block/goose">github.com/block/goose</a></p>
+    <p><a href="https://www.continue.dev/">continue.dev</a> · <a href="https://github.com/continuedev/continue">repo</a></p>
+    <p><a href="https://github.com/SWE-agent/SWE-agent">github.com/SWE-agent/SWE-agent</a></p>
+    <p><a href="https://github.com/SWE-agent/mini-swe-agent">mini-swe-agent</a></p>
+    <p><a href="https://github.com/plandex-ai/plandex">github.com/plandex-ai/plandex</a></p>
+    <p><a href="https://github.com/openai/codex">github.com/openai/codex</a></p>
+    <p><a href="https://developers.openai.com/codex/cli">Codex CLI docs</a></p>
+    <p><a href="https://github.com/google-gemini/gemini-cli">github.com/google-gemini/gemini-cli</a></p>
+    <p><a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google's Antigravity transition notice</a></p>
+    <p><a href="https://www.swebench.com/viewer.html">SWE-bench leaderboard</a></p>
+    <p><a href="https://thenewstack.io/open-source-coding-agents-like-opencode-cline-and-aider-are-solving-a-huge-headache-for-developers/">The New Stack — OSS coding agents overview</a></p>
+    <p><a href="https://www.opensourceaireview.com/blog/best-open-source-coding-agents-in-2026-reviewed-ranked">Open Source AI Review — 2026 ranking</a></p>
+  </div>
+</section>
+
+<footer>
+  <span>report.html · static, single file</span>
+  <span>Compiled 2026-05-26 · Open it in any browser</span>
+</footer>
+
+</div>
+
+</StarlightPage>
+
+<!-- ✅ Page-scoped CSS goes here — won't affect rest of project -->
+
+<style>
+  /*
+    This controls Starlight's main content width
+    for this page.
+  */
+  :global(.sl-container) {
+    max-width: 100%;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem;
+  }
+ 
+
+  :root {
+    --bg: #0b0d10;
+    --bg-elev: #11151a;
+    --bg-elev-2: #161b22;
+    --border: #232a33;
+    --border-strong: #313b48;
+    --text: #e7eaee;
+    --muted: #9aa4b2;
+    --dim: #6b7480;
+    --accent: #7cf2c4;
+    --accent-2: #c4a4ff;
+    --warn: #ffb86b;
+    --bad: #ff7a7a;
+    --good: #7cf2c4;
+    --link: #93c5fd;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #fbfbf8;
+      --bg-elev: #ffffff;
+      --bg-elev-2: #f4f4ef;
+      --border: #e4e4dc;
+      --border-strong: #cfcfc4;
+      --text: #15181c;
+      --muted: #57606a;
+      --dim: #8a93a0;
+      --accent: #0a8a5f;
+      --accent-2: #6a3fbf;
+      --link: #2563eb;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    font-size: 15.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap {
+    max-width: 100%;
+    width: 100%;
+    
+  }
+  /* Hero */
+  header.hero {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 36px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 760px;
+    margin: 0;
+  }
+  .meta {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--dim);
+  }
+  .meta span b { color: var(--text); font-weight: 500; }
+
+  /* Section */
+  section { margin-top: 56px; }
+  h2 {
+    font-size: 24px;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    font-weight: 650;
+  }
+  .h2-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .h2-sub {
+    color: var(--muted);
+    margin: 0 0 22px;
+    max-width: 780px;
+  }
+
+  /* TL;DR cards */
+  .tldr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 820px) { .tldr-grid { grid-template-columns: 1fr; } }
+  .tldr {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px 16px;
+  }
+  .tldr h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+  .tldr .pick {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .tldr p { margin: 0; color: var(--muted); font-size: 14px; }
+  .tldr.best {
+    background: linear-gradient(180deg, rgba(124,242,196,0.10), rgba(124,242,196,0.03));
+    border-color: rgba(124, 242, 196, 0.55);
+    box-shadow: 0 0 0 1px rgba(124, 242, 196, 0.15), 0 6px 24px -12px rgba(124, 242, 196, 0.35);
+    position: relative;
+  }
+  .tldr.best h3 { color: var(--accent); }
+  .tldr.best .pick { color: var(--accent); }
+  .tldr.best .best-flag {
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    background: var(--accent);
+    color: #06231a;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  @media (prefers-color-scheme: light) {
+    .tldr.best {
+      background: linear-gradient(180deg, rgba(10,138,95,0.08), rgba(10,138,95,0.02));
+      border-color: rgba(10, 138, 95, 0.45);
+    }
+    .tldr.best .best-flag { background: var(--accent); color: #ffffff; }
+  }
+
+  /* Table */
+  .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 980px;
+  }
+  table.compare th, table.compare td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.compare thead th {
+    background: var(--bg-elev-2);
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  table.compare tbody tr:last-child td { border-bottom: none; }
+  table.compare tbody tr:hover { background: var(--bg-elev); }
+  td.agent { font-weight: 600; color: var(--text); }
+  td.agent small { display: block; font-weight: 400; color: var(--dim); font-size: 12px; margin-top: 2px; }
+
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-family: var(--mono);
+    border: 1px solid var(--border-strong);
+    color: var(--muted);
+  }
+  .pill.good { color: var(--accent); border-color: rgba(124, 242, 196, 0.35); }
+  .pill.warn { color: var(--warn); border-color: rgba(255, 184, 107, 0.35); }
+  .pill.acc { color: var(--accent-2); border-color: rgba(196, 164, 255, 0.4); }
+  .pill.dim { color: var(--dim); }
+
+  /* Agent cards */
+  .agents {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 880px) { .agents { grid-template-columns: 1fr; } }
+  .agent-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .agent-card h3 {
+    margin: 0 0 4px;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+  .agent-card .by {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 14px;
+  }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .agent-card p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+  .agent-card ul {
+    margin: 0 0 14px;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .agent-card ul li { margin-bottom: 4px; }
+  .agent-card ul li b { color: var(--text); font-weight: 600; }
+  .verdict {
+    margin-top: auto;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .verdict b { color: var(--accent); }
+
+  /* Picker grid */
+  .picker {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 820px) { .picker { grid-template-columns: 1fr; } }
+  .picker .row {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .picker .q {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .picker .a { font-weight: 600; margin-bottom: 4px; }
+  .picker .why { color: var(--muted); font-size: 13.5px; }
+
+  /* Notes */
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 800px) { .notes-grid { grid-template-columns: 1fr; } }
+  .note {
+    background: var(--bg-elev-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-2);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .note b { color: var(--text); }
+
+  /* Sources */
+  .sources {
+    columns: 2;
+    column-gap: 32px;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  @media (max-width: 720px) { .sources { columns: 1; } }
+  .sources p { margin: 0 0 10px; break-inside: avoid; }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    font-family: var(--mono);
+    color: var(--dim);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
