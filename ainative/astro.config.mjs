@@ -64,9 +64,15 @@ export default defineConfig({
               link: "/guides/project-structure",
             },
             {
+              label: "Html file as .astro file",
+              link: "/aib2b/myfile",
+            },
+            {
               label: "Html page",
               link: "/aib2b/test2.html",
             },
+
+            // https://claude.ai/share/3626ffed-e458-4b4c-8008-c51c3800bb52
 
           ],
         },

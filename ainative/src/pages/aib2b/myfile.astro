@@ -1,0 +1,33 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+sidebar:
+  order: 2
+---
+
+<StarlightPage frontmatter={{ title: 'My HTML Page' , tableOfContents: false }}>
+
+  <div class="my-card">
+    <h1 class="my-title">Hello</h1>
+    <p class="my-text">Custom HTML content</p>
+  </div>
+
+</StarlightPage>
+
+<!-- ✅ Page-scoped CSS goes here — won't affect rest of project -->
+<style>
+  .my-card {
+    background: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .my-title {
+    color: hotpink;
+    font-size: 2rem;
+  }
+
+  .my-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+</style>
