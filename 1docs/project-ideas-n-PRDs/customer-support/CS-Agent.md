@@ -10,9 +10,25 @@ https://giga.ai/
 Giga Raises $61M Series A to Reinvent Customer Support with Human-Quality AI Agents
 https://www.youtube.com/watch?v=4q9bU90XZcg&t=13s
 
-**SR note:** this Giga Customer support approach is different from many others, Here are 3 points, see Front.ai PIC2 to see their Support products ...
+-- **Founding story of Giga AI**
+Giga: Finding A Billion Dollar Market After Three Pivots
+https://www.youtube.com/watch?v=2Ap1dnv-GXA
+  - 2 IIT Khargpur CS grads
+  - did Kaggle competations and won $50k while in collage
+  - that lead to $500K/year JOb with US Quant firms
+  - rejected and did the YC Interview for a Ed Tech Startup
+  - YC selected and told , work on some thing else Ed tech no good ( YC made founders talk with CourseEra and other Ed Tech companies  CEOs)
+  - 2nd idea they worked on 'LLM Model fine tuning', in that process they found one of the customer is interested in solving 'customer support' LLM fine tuning
+  - then as 3rd startup they fixed on 'customer support' that is Giga.ai
+  
+
+**SR note:** 
+this Giga Customer support approach is different from many others, Here are 3 points, see Front.ai PIC2 to see their Support products ...
+
     Stage 1:  They have 'Agent Canvas' , the initial prompt design canvas for a Given Customer case.
+   
    Stage 2: then they have 'Voice' agent that take customer voice calls , understand 100 langs, accents and records
+   
     Stage 3: then 'AI agents' Login into systems ( browser and non-browser based) and Do the work like a HUMAN does login into systems 
     
 -----------
