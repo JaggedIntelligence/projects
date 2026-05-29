@@ -1,0 +1,101 @@
+---
+title: Starlight 🌟 Build documentation sites with Astro
+head:
+  - tag: title
+    content: Starlight 🌟 Build documentation sites with Astro
+description: Starlight helps you build beautiful, high-performance documentation websites with Astro.
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  title: Make your docs shine with Starlight
+  tagline: Everything you need to build a stellar documentation website. Fast, accessible, and easy-to-use.
+  image:
+    file: ~/assets/hero-star.webp
+  actions:
+    - text: Get started
+      icon: right-arrow
+      link: /getting-started/
+    - text: View on GitHub
+      icon: external
+      variant: minimal
+      link: https://github.com/withastro/starlight
+---
+
+import { CardGrid, Card } from '@astrojs/starlight/components';
+import AboutAstro from '~/components/about-astro.astro';
+import TestimonialGrid from '~/components/testimonial-grid.astro';
+import Testimonial from '~/components/testimonial.astro';
+
+<CardGrid stagger>
+	<Card title="Documentation that delights" icon="open-book">
+		Includes: Site navigation, search, internationalization, SEO, easy-to-read
+		typography, code highlighting, dark mode and more.
+	</Card>
+	<Card title="Powered by Astro" icon="rocket">
+		Leverage the full power and performance of Astro. Extend Starlight with your
+		favorite Astro integrations and libraries.
+	</Card>
+	<Card title="Markdown, Markdoc, and MDX" icon="document">
+		Bring your favorite markup language. Starlight gives you built-in
+		frontmatter validation with TypeScript type-safety.
+	</Card>
+	<Card title="Bring your own UI components" icon="puzzle">
+		Starlight ships as a framework-agnostic, complete docs solution. Extend with
+		React, Vue, Svelte, Solid, and more.
+	</Card>
+</CardGrid>
+
+<TestimonialGrid title="What people are saying">
+  <Testimonial
+    name="Rachel"
+    handle="rachelnabors"
+    cite="https://twitter.com/astrodotbuild/status/1724934718745915558"
+  >
+    The Astro team have EVOLVED how docs can be done and you can get it all out of the box with their Starlight project.
+  </Testimonial>
+  
+  <Testimonial
+    name="Tomek"
+    handle="sulco"
+    cite="https://twitter.com/sulco/status/1735610348730802342"
+  >
+    Starlight is our go-to example of a great DX: the speed, convenience, and
+    attention to details is inspiring. It takes care of the tech and the looks,
+    so you can focus on your content 👏
+
+    StackBlitz team absolutely loves it!
+
+  </Testimonial>
+  
+  
+  <Testimonial
+    name="Sylwia"
+    handle="SylwiaVargas"
+    cite="https://x.com/SylwiaVargas/status/1726556825741578286"
+  >
+    I used Starlight in my last job and loved it. Great components, intuitive
+    design, and super-responsive community (whenever anyone needed something,
+    they’d ship it soonish or tell you a workaround). Very pleasant experience.
+  </Testimonial>
+
+  <Testimonial
+    name="Sylwia"
+    handle="SylwiaVargas"
+    cite="https://x.com/SylwiaVargas/status/1726556825741578286"
+  >
+    I used Starlight in my last job and loved it. Great components, intuitive
+    design, and super-responsive community (whenever anyone needed something,
+    they’d ship it soonish or tell you a workaround). Very pleasant experience.
+  </Testimonial>
+  
+  
+</TestimonialGrid>
+
+<AboutAstro title="Brought to you by">
+Astro is the all-in-one web framework designed for speed.
+Pull your content from anywhere and deploy everywhere, all powered by your favorite UI components and libraries.
+
+[Learn about Astro](https://astro.build/)
+
+</AboutAstro>
