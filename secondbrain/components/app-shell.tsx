@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
+  { href: "/images", label: "Images" },
   { href: "/youtube", label: "youtube" },
   { href: "/tasks", label: "Tasks" }
 ] as const;

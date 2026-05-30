@@ -69,11 +69,14 @@ Environment variables:
 
 ```env
 R2_ACCOUNT_ID=
+R2_ENDPOINT_URL=
 R2_ACCESS_KEY_ID=
 R2_SECRET_ACCESS_KEY=
 R2_BUCKET_NAME=
 R2_PUBLIC_BASE_URL=
 ```
+
+`R2_ENDPOINT_URL` should point to the actual Cloudflare R2 S3 API endpoint for the bucket. `R2_PUBLIC_BASE_URL` is optional and should only be used for a real public/custom domain URL, not the private R2 S3 API endpoint. If `R2_PUBLIC_BASE_URL` is empty, the app should create signed read URLs for previews and open/view actions.
 
 Add metadata helpers:
 
@@ -87,6 +90,32 @@ Responsibilities:
 - Return `[]` if it does not exist yet
 - Write updated metadata JSON back to R2
 - Keep all metadata user-scoped
+- Treat a missing metadata JSON file as an empty image library
+
+Add shared image filename/key helpers:
+
+```text
+server/images/image-utils.ts
+```
+
+Responsibilities:
+
+- Sanitize uploaded and renamed file names
+- Build stable R2 keys like `images/{userId}/{imageId}-{safe-file-name}`
+
+Add a server upload route:
+
+```text
+app/api/images/upload/route.ts
+```
+
+Responsibilities:
+
+- Require Clerk auth
+- Accept multipart form uploads under the `files` field
+- Validate MIME type, file size, and batch count
+- Upload image bytes from the Next.js server to R2
+- Append uploaded image details to `metadata/{userId}/images.json`
 
 Add a tRPC router:
 
@@ -94,28 +123,34 @@ Add a tRPC router:
 server/api/routers/images.ts
 ```
 
-Procedures:
+Current primary procedures:
 
 ```text
+images.health
 images.list
-images.createUploadUrls
-images.confirmUploads
 images.rename
 images.delete
 images.getViewUrl
 ```
 
-Recommended flow:
+The codebase may keep `images.createUploadUrls` and `images.confirmUploads` as optional/legacy support for a future presigned direct-upload path, but the active UI should use `/api/images/upload`.
+
+Current recommended upload flow:
+
+```text
+browser -> /api/images/upload -> Next.js server -> Cloudflare R2
+```
 
 1. Client selects multiple images.
-2. Client calls `images.createUploadUrls`.
-3. Server validates file names, MIME types, sizes, and creates R2 object keys.
-4. Server returns presigned PUT URLs.
-5. Client uploads files directly to R2.
-6. Client calls `images.confirmUploads`.
-7. Server writes image metadata to `metadata/{userId}/images.json`.
+2. Client posts a `FormData` payload to `/api/images/upload`.
+3. Server validates file names, MIME types, sizes, and batch count.
+4. Server uploads the image bytes to R2.
+5. Server writes image metadata to `metadata/{userId}/images.json`.
+6. Client invalidates `images.list` and refreshes the image grid.
 
-This avoids sending large files through tRPC.
+This avoids sending large files through tRPC and avoids requiring R2 CORS for local development because the browser only talks to the Next.js app.
+
+The earlier presigned browser `PUT` design can still be used later for very large files or high-throughput uploads, but it requires correct R2 CORS. The current implementation favors a simpler, more reliable CRUD flow.
 
 **Rename Behavior**
 
@@ -146,9 +181,7 @@ Add components:
 components/images/image-page.tsx
 components/images/image-uploader.tsx
 components/images/image-grid.tsx
-components/images/image-card.tsx
 components/images/image-rename-dialog.tsx
-components/images/image-delete-dialog.tsx
 ```
 
 Add navigation item in:
@@ -165,6 +198,7 @@ Page layout:
 
 - Top toolbar: title, upload button
 - Dropzone/multi-file picker
+- R2 health status message showing connected bucket or backend error
 - Upload queue with progress states
 - Image grid with thumbnail, filename, size, created date
 - Actions per image: rename, delete, open/view
@@ -217,9 +251,10 @@ Test cases:
 
 - Lists empty state
 - Rejects invalid file types
-- Creates upload URLs for multiple images
-- Confirms uploaded images into JSON metadata
-- Renames image metadata/R2 key
+- Uploads multiple images through `/api/images/upload`
+- Writes uploaded images into JSON metadata
+- Treats missing `metadata/{userId}/images.json` as an empty list
+- Renames image metadata only
 - Deletes image object and metadata
 - User A cannot access User B image metadata
 
@@ -228,10 +263,12 @@ Test cases:
 1. Add R2 dependency and env docs.
 2. Build `server/storage/r2.ts`.
 3. Build JSON metadata read/write helpers.
-4. Add `imagesRouter` and connect it in `server/api/root.ts`.
-5. Add `/images` route and shell nav item.
-6. Build upload UI and image grid.
-7. Add rename/delete flows.
-8. Add tests.
+4. Build shared image key/name helpers.
+5. Add `imagesRouter` and connect it in `server/api/root.ts`.
+6. Add `/api/images/upload` for server-mediated uploads.
+7. Add `/images` route and shell nav item.
+8. Build upload UI and image grid.
+9. Add metadata-only rename/delete flows.
+10. Add tests.
 
-The only design choice I’d decide before coding is whether renamed files should physically rename the R2 object key. My recommendation: yes, since that matches your wording, but keep the image `id` stable in JSON so the UI does not care when the key changes.
+Final design note: renamed files should update metadata only. The R2 object key remains stable for the life of the image record, while the user-facing `fileName` can change.
