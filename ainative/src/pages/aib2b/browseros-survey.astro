@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Survey: BrowserOS Alternatives</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+            --accent-color: #0d6efd;
+            --heading-color: #1a1d20;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #e0e0e0;
+                --card-bg: #1e1e1e;
+                --border-color: #333333;
+                --accent-color: #3b82f6;
+                --heading-color: #ffffff;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--heading-color);
+            font-weight: 700;
+        }
+
+        h1 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            margin-top: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.25rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            th {
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+        }
+
+        .follow-up {
+            background-color: rgba(13, 110, 253, 0.05);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem 1.5rem;
+            margin-top: 2.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Field Survey: BrowserOS & Agentic Alternatives</h1>
+    
+    <p><a href="https://github.com" target="_blank">BrowserOS</a> occupies a unique niche as a <strong>locally-installed, open-source Chromium fork</strong> tailored for privacy-first, on-device AI browser automation using your existing active sessions and cookies.</p>
+    
+    <p>Alternatives range from lightweight developer frameworks to fully-managed cloud infrastructure and consumer AI browsers. The market divides into three distinct categories: <strong>Developer Frameworks & SDKs</strong>, <strong>Cloud Browser Infrastructure</strong>, and <strong>All-in-One Consumer AI Browsers</strong>.</p>
+
+    <h2>1. Developer Frameworks & SDKs (Code-First Alternatives)</h2>
+    <p>These tools are ideal if you want to build custom agents using code rather than a dedicated end-user browser app.</p>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://github.com" target="_blank">Browser Use</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> <strong>Free & Open Source</strong> for the library. You pay for your own LLM API usage or run models locally via Ollama. Paid cloud hosting options are available.</li>
+            <li><span class="label">Strengths:</span> Highly elegant abstraction layer; heavily adopted by developers for production workflows. Built-in vision capabilities allow it to "see" and interact with pages via Chrome DevTools Protocol (CDP).</li>
+            <li><span class="label">Weaknesses:</span> Requires separate Python setup and coding knowledge; lacks a unified, out-of-the-box user interface for non-developers compared to BrowserOS.</li>
+        </ul>
+    </div>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://github.com" target="_blank">Stagehand (by Browserbase)</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> <strong>Free & Open Source</strong> SDK.</li>
+            <li><span class="label">Strengths:</span> Designed specifically for Playwright and TypeScript developers. Uses AI to make standard browser automation "self-healing," meaning scripts won't break when a website shifts its HTML structure.</li>
+            <li><span class="label">Weaknesses:</span> Strictly developer-focused. It is an orchestration library, not an application or an integrated local browser environment.</li>
+        </ul>
+    </div>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://github.com" target="_blank">Vercel Agent Browser</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> <strong>Free & Open Source</strong>.</li>
+            <li><span class="label">Strengths:</span> CLI-first, lightweight, and heavily integrated into the modern web ecosystem. Great for running fast scripts via a terminal or text commands.</li>
+            <li><span class="label">Weaknesses:</span> Highly programmatic. It does not give you a persistent graphical user interface where you can watch and manually take over sessions easily.</li>
+        </ul>
+    </div>
+
+    <h2>2. Managed Cloud Browser Infrastructure (Scalable Enterprise Web Scrapers)</h2>
+    <p>These platforms provide remote browsers to host agents, bypassing complex bot detection and scaling limitations.</p>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://brightdata.com" target="_blank">Bright Data Agent Browser</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> <strong>Usage-based paid pricing</strong> (Enterprise tiers vary).</li>
+            <li><span class="label">Strengths:</span> Best-in-class success rates (~95%) for bypassing heavy bot detection, CAPTCHAs, and geoblocks. Built-in proxy infrastructure allows web agents to scrape at a massive concurrent scale.</li>
+            <li><span class="label">Weaknesses:</span> Expensive and built heavily for enterprise data harvesting. Completely lacks the personal, local "co-pilot" context that makes BrowserOS great for daily workflows.</li>
+        </ul>
+    </div>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://aimultiple.com" target="_blank">Browserbase</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> <strong>Paid usage tiers</strong> based on session minutes.</li>
+            <li><span class="label">Strengths:</span> Runs headless browsers entirely in the cloud, handling session recording, proxying, and stealth out-of-the-box. Perfect for deploying headless agents to production.</li>
+            <li><span class="label">Weaknesses:</span> Lower raw automation success rates out-of-the-box compared to premium proxy-centric competitors. It requires developer integration to use effectively.</li>
+        </ul>
+    </div>
+
+    <h2>3. All-in-One Consumer AI Browsers (Productivity Apps)</h2>
+    <p>These tools are built for end-users seeking AI-native consumer productivity apps.</p>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://youtube.com" target="_blank">OpenAI Atlas / ChatGPT Atlas</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> Included with <strong>ChatGPT Plus ($20/month)</strong> for full agentic mode access.</li>
+            <li><span class="label">Strengths:</span> Powered directly by OpenAI's advanced reasoning models. Excellent at handling complex multi-step instructions, cross-referencing account data, and executing deep knowledge workflows natively.</li>
+            <li><span class="label">Weaknesses:</span> Closed-source and entirely cloud-dependent. Your data and web activity pass through OpenAI's servers, conflicting with the privacy-first local philosophy of BrowserOS.</li>
+        </ul>
+    </div>
+
+    <div class="product-card">
+        <h3 class="product-title"><a href="https://youtube.com" target="_blank">Perplexity Comet</a></h3>
+        <ul>
+            <li><span class="label">Costs:</span> Core search features are free; advanced agentic and partner integrations require <strong>Comet Plus / Perplexity Pro</strong>.</li>
+            <li><span class="label">Strengths:</span> Unmatched at synthesized multi-tab deep research, source citing, and real-time knowledge tracking. Includes strong, clean user-interface elements for managing research workspaces.</li>
