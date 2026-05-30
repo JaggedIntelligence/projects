@@ -27,7 +27,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="container flex h-16 items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-4">
             <Link href="/dashboard" className="truncate text-base font-semibold">
-              Task Management
+              Second Brain
             </Link>
             <nav className="hidden items-center gap-1 sm:flex">
               {navItems.map((item) => (
