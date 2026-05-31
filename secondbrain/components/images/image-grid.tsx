@@ -29,6 +29,24 @@ export function ImageGrid() {
     onSuccess: () => utils.images.list.invalidate()
   });
 
+  const images = query.data ?? [];
+  const previewIndex = previewImage ? images.findIndex((image) => image.id === previewImage.id) : -1;
+  const canNavigatePreview = images.length > 1 && previewIndex !== -1;
+
+  function showPreviousImage() {
+    if (!canNavigatePreview) return;
+
+    const previousIndex = (previewIndex - 1 + images.length) % images.length;
+    setPreviewImage(images[previousIndex]);
+  }
+
+  function showNextImage() {
+    if (!canNavigatePreview) return;
+
+    const nextIndex = (previewIndex + 1) % images.length;
+    setPreviewImage(images[nextIndex]);
+  }
+
   if (query.isLoading) {
     return (
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -68,7 +86,7 @@ export function ImageGrid() {
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {query.data.map((image) => (
+        {images.map((image) => (
           <Card key={image.id} className="overflow-hidden">
             <button
               type="button"
@@ -116,7 +134,13 @@ export function ImageGrid() {
           </Card>
         ))}
       </div>
-      <ImagePreviewDialog image={previewImage} onOpenChange={(open) => !open && setPreviewImage(null)} />
+      <ImagePreviewDialog
+        image={previewImage}
+        canNavigate={canNavigatePreview}
+        onNext={showNextImage}
+        onOpenChange={(open) => !open && setPreviewImage(null)}
+        onPrevious={showPreviousImage}
+      />
       <ImageRenameDialog image={renamingImage} onOpenChange={(open) => !open && setRenamingImage(null)} />
     </>
   );
