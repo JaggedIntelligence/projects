@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import type { inferRouterOutputs } from "@trpc/server";
 
+import { ImagePreviewDialog } from "@/components/images/image-preview-dialog";
 import { ImageRenameDialog } from "@/components/images/image-rename-dialog";
 import { api } from "@/components/providers/trpc-provider";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ function formatBytes(bytes: number) {
 export function ImageGrid() {
   const utils = api.useUtils();
   const [renamingImage, setRenamingImage] = useState<ImageItem | null>(null);
+  const [previewImage, setPreviewImage] = useState<ImageItem | null>(null);
   const query = api.images.list.useQuery();
   const deleteImage = api.images.delete.useMutation({
     onSuccess: () => utils.images.list.invalidate()
@@ -68,7 +70,12 @@ export function ImageGrid() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {query.data.map((image) => (
           <Card key={image.id} className="overflow-hidden">
-            <div className="relative aspect-[4/3] bg-muted">
+            <button
+              type="button"
+              className="relative block aspect-[4/3] w-full bg-muted text-left"
+              aria-label={`Preview ${image.fileName}`}
+              onClick={() => setPreviewImage(image)}
+            >
               <Image
                 src={image.url}
                 alt={image.fileName}
@@ -77,7 +84,7 @@ export function ImageGrid() {
                 unoptimized
                 className="object-cover"
               />
-            </div>
+            </button>
             <CardContent className="grid gap-3 p-4">
               <div className="min-w-0">
                 <h2 className="truncate font-medium">{image.fileName}</h2>
@@ -109,6 +116,7 @@ export function ImageGrid() {
           </Card>
         ))}
       </div>
+      <ImagePreviewDialog image={previewImage} onOpenChange={(open) => !open && setPreviewImage(null)} />
       <ImageRenameDialog image={renamingImage} onOpenChange={(open) => !open && setRenamingImage(null)} />
     </>
   );
