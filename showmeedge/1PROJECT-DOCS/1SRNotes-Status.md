@@ -32,6 +32,21 @@
  - Thank god...  this is great achivement of getting 3.2 million rows ..
  - thanks to Codex $20 subscription it does all ..
  - thanks we selected QuestDB,  3 million row is breeze for  QuestDB ...
+
+ - all details of design is in file : **3feature-add-BACKFILL-sp500.md**
+
  - thanks to SR , he went to step by step to understand the process instead of VIBE coding ( no /goal thing ..)
  - .
  -SR Note: when you want run the DATA fill , do not execute from  command line, instead login to 'Codex' be in codebase and Ask to Ingest Data, it will do it.
+
+**message from CodeX**
+```
+ Beautiful. Glad QuestDB looks right.
+
+We now have a much cleaner market-data foundation: 
+ full historical load, bounded backfill control, 
+ restart-safe logs, and no-data separated from real failures.
+ 
+  Next natural step when you’re ready is the EOD update job using the same scripts/LOG/.../<run-id>/ pattern.
+
+```
