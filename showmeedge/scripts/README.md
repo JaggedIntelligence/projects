@@ -88,3 +88,37 @@ failed-symbols.json
 no-data-symbols.json
 run-summary.json
 ```
+
+### 5/ Safe S&P 500 end-of-day refresh
+
+Use this wrapper after market close to refresh the recent daily window without rerunning the full historical backfill:
+
+```bash
+bash scripts/update-sp500-eod-safe.sh
+```
+
+The script writes timestamped logs under `scripts/LOG/showmeedge-sp500-eod` and calls:
+
+```bash
+python -m app.jobs.update_daily_recent \
+  --universe sp500_current \
+  --lookback-days 10 \
+  --batch-size 10 \
+  --retry-attempts 3
+```
+
+For a small smoke test:
+
+```bash
+bash scripts/update-sp500-eod-safe.sh --max-symbols 5 --lookback-days 2
+```
+
+Each EOD run writes:
+
+```text
+update.log
+verification.log
+failed-symbols.json
+no-data-symbols.json
+run-summary.json
+```
