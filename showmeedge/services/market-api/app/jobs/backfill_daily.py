@@ -22,7 +22,8 @@ DEFAULT_COVERAGE_STALE_DAYS = 7
 class BackfillAttemptResult:
     fetched_bars: int
     inserted_bars: int
-    missing_symbols: list[str]
+    no_data_symbols: list[str]
+    failed_symbols: list[str]
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -43,39 +44,38 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     total_fetched = 0
     total_inserted = 0
+    no_data_symbols: list[str] = []
     failed_symbols: list[str] = []
 
     for batch_index, batch in enumerate(batches(symbols_to_process, args.batch_size), start=1):
         result = backfill_batch(provider, batch, args, batch_index=batch_index)
         total_fetched += result.fetched_bars
         total_inserted += result.inserted_bars
-        failed_symbols.extend(result.missing_symbols)
+        no_data_symbols.extend(result.no_data_symbols)
+        failed_symbols.extend(result.failed_symbols)
 
         if args.sleep_seconds > 0:
             sleep(args.sleep_seconds)
 
+    no_data_symbols = list(dict.fromkeys(no_data_symbols))
     failed_symbols = list(dict.fromkeys(failed_symbols))
     coverage = wait_for_coverage(symbols, args.provider)
     write_failed_symbols_file(args.failed_symbols_file, failed_symbols, args)
-    print(
-        json.dumps(
-            {
-                "event": "backfill_complete",
-                "provider": args.provider,
-                "symbols": symbols,
-                "processed_symbols": symbols_to_process,
-                "skipped_symbols": skipped_symbols,
-                "start": args.start.isoformat(),
-                "end": args.end.isoformat() if args.end else None,
-                "fetched_bars": total_fetched,
-                "inserted_bars": total_inserted,
-                "failed_symbols": failed_symbols,
-                "failed_symbols_file": args.failed_symbols_file,
-                "coverage": coverage,
-            },
-            indent=2,
-        )
+    write_no_data_symbols_file(args.no_data_symbols_file, no_data_symbols, args)
+
+    summary = build_run_summary(
+        args=args,
+        symbols=symbols,
+        symbols_to_process=symbols_to_process,
+        skipped_symbols=skipped_symbols,
+        fetched_bars=total_fetched,
+        inserted_bars=total_inserted,
+        no_data_symbols=no_data_symbols,
+        failed_symbols=failed_symbols,
+        coverage=coverage,
     )
+    write_run_summary_file(args.run_summary_file, summary)
+    print(json.dumps(summary, indent=2))
 
     return 1 if failed_symbols else 0
 
@@ -89,7 +89,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--provider", choices=["yfinance"], default="yfinance")
     parser.add_argument("--batch-size", type=positive_int, default=3)
     parser.add_argument("--max-symbols", type=positive_int, help="Limit the resolved symbol list for smoke tests.")
-    parser.add_argument("--skip-existing", action="store_true", help="Skip symbols that already have recent coverage in QuestDB.")
+    parser.add_argument("--skip-existing", action="store_true", help="Skip symbols that already satisfy the requested range or freshness policy in QuestDB.")
     parser.add_argument("--coverage-stale-days", type=non_negative_int, default=DEFAULT_COVERAGE_STALE_DAYS)
     parser.add_argument("--retry-attempts", type=positive_int, default=1)
     parser.add_argument("--retry-sleep-seconds", type=non_negative_float, default=5.0)
@@ -98,7 +98,18 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "--failed-symbols-file",
         help="Optional JSON file path for failed symbols inside the running environment. The safe shell wrapper copies this into scripts/LOG.",
     )
-    return parser.parse_args(argv)
+    parser.add_argument(
+        "--no-data-symbols-file",
+        help="Optional JSON file path for symbols with no bars in the requested range.",
+    )
+    parser.add_argument(
+        "--run-summary-file",
+        help="Optional JSON file path for a machine-readable run summary.",
+    )
+    args = parser.parse_args(argv)
+    if args.end is not None and args.start > args.end:
+        parser.error("--start must be less than or equal to --end")
+    return args
 
 
 def resolve_symbols(symbols: list[str] | None, universe: str | None = None) -> list[str]:
@@ -145,7 +156,7 @@ def coverage_is_complete(coverage_start: date | None, coverage_end: date | None,
         return False
 
     if args.end is not None:
-        return coverage_end >= args.end
+        return coverage_start is not None and coverage_start <= args.start and coverage_end >= args.end
 
     recent_enough_date = date.today() - timedelta(days=args.coverage_stale_days)
     return coverage_end >= recent_enough_date
@@ -179,24 +190,26 @@ def backfill_batch(provider: YFinanceProvider, symbols: list[str], args: argpars
                     "symbols": symbols,
                     "fetched_bars": result.fetched_bars,
                     "inserted_bars": result.inserted_bars,
-                    "missing_symbols": result.missing_symbols,
+                    "no_data_symbols": result.no_data_symbols,
+                    "failed_symbols": result.failed_symbols,
                 }
             )
         )
 
-        if not result.missing_symbols:
+        if not result.no_data_symbols and not result.failed_symbols:
             return result
 
-        individual_result = retry_individual_symbols(provider, result.missing_symbols, args)
+        individual_result = retry_individual_symbols(provider, result.no_data_symbols + result.failed_symbols, args)
         return BackfillAttemptResult(
             fetched_bars=result.fetched_bars + individual_result.fetched_bars,
             inserted_bars=result.inserted_bars + individual_result.inserted_bars,
-            missing_symbols=individual_result.missing_symbols,
+            no_data_symbols=individual_result.no_data_symbols,
+            failed_symbols=individual_result.failed_symbols,
         )
 
     print(json.dumps({"event": "batch_retry_exhausted", "batch_index": batch_index, "symbols": symbols}))
     if len(symbols) == 1:
-        return BackfillAttemptResult(fetched_bars=0, inserted_bars=0, missing_symbols=symbols)
+        return BackfillAttemptResult(fetched_bars=0, inserted_bars=0, no_data_symbols=[], failed_symbols=symbols)
 
     return retry_individual_symbols(provider, symbols, args)
 
@@ -204,15 +217,22 @@ def backfill_batch(provider: YFinanceProvider, symbols: list[str], args: argpars
 def retry_individual_symbols(provider: YFinanceProvider, symbols: list[str], args: argparse.Namespace) -> BackfillAttemptResult:
     total_fetched = 0
     total_inserted = 0
+    no_data_symbols: list[str] = []
     failed_symbols: list[str] = []
 
     for symbol in symbols:
         symbol_result = backfill_single_symbol(provider, symbol, args)
         total_fetched += symbol_result.fetched_bars
         total_inserted += symbol_result.inserted_bars
-        failed_symbols.extend(symbol_result.missing_symbols)
+        no_data_symbols.extend(symbol_result.no_data_symbols)
+        failed_symbols.extend(symbol_result.failed_symbols)
 
-    return BackfillAttemptResult(fetched_bars=total_fetched, inserted_bars=total_inserted, missing_symbols=failed_symbols)
+    return BackfillAttemptResult(
+        fetched_bars=total_fetched,
+        inserted_bars=total_inserted,
+        no_data_symbols=no_data_symbols,
+        failed_symbols=failed_symbols,
+    )
 
 
 def backfill_single_symbol(provider: YFinanceProvider, symbol: str, args: argparse.Namespace) -> BackfillAttemptResult:
@@ -232,20 +252,21 @@ def backfill_single_symbol(provider: YFinanceProvider, symbol: str, args: argpar
                     "attempt": attempt,
                     "fetched_bars": result.fetched_bars,
                     "inserted_bars": result.inserted_bars,
-                    "missing_symbols": result.missing_symbols,
+                    "no_data_symbols": result.no_data_symbols,
+                    "failed_symbols": result.failed_symbols,
                 }
             )
         )
         return result
 
-    return BackfillAttemptResult(fetched_bars=0, inserted_bars=0, missing_symbols=[symbol])
+    return BackfillAttemptResult(fetched_bars=0, inserted_bars=0, no_data_symbols=[], failed_symbols=[symbol])
 
 
 def fetch_and_insert(provider: YFinanceProvider, symbols: list[str], args: argparse.Namespace) -> BackfillAttemptResult:
     bars = provider.fetch_daily_bars(symbols, start=args.start, end=args.end)
     inserted = insert_daily_bars(bars)
-    missing_symbols = symbols_without_bars(symbols, bars)
-    return BackfillAttemptResult(fetched_bars=len(bars), inserted_bars=inserted, missing_symbols=missing_symbols)
+    no_data_symbols = symbols_without_bars(symbols, bars)
+    return BackfillAttemptResult(fetched_bars=len(bars), inserted_bars=inserted, no_data_symbols=no_data_symbols, failed_symbols=[])
 
 
 def symbols_without_bars(symbols: list[str], bars: list[DailyOhlcvBar]) -> list[str]:
@@ -269,6 +290,38 @@ def wait_for_coverage(symbols: list[str], provider: str, attempts: int = 10, del
     return [item.model_dump(mode="json") for item in coverage]
 
 
+def build_run_summary(
+    *,
+    args: argparse.Namespace,
+    symbols: list[str],
+    symbols_to_process: list[str],
+    skipped_symbols: list[str],
+    fetched_bars: int,
+    inserted_bars: int,
+    no_data_symbols: list[str],
+    failed_symbols: list[str],
+    coverage: list[dict[str, object]],
+) -> dict[str, object]:
+    return {
+        "event": "backfill_complete",
+        "provider": args.provider,
+        "universe": args.universe,
+        "symbols": symbols,
+        "processed_symbols": symbols_to_process,
+        "skipped_symbols": skipped_symbols,
+        "start": args.start.isoformat(),
+        "end": args.end.isoformat() if args.end else None,
+        "fetched_bars": fetched_bars,
+        "inserted_bars": inserted_bars,
+        "no_data_symbols": no_data_symbols,
+        "failed_symbols": failed_symbols,
+        "failed_symbols_file": args.failed_symbols_file,
+        "no_data_symbols_file": args.no_data_symbols_file,
+        "run_summary_file": args.run_summary_file,
+        "coverage": coverage,
+    }
+
+
 def write_failed_symbols_file(path: str | None, failed_symbols: list[str], args: argparse.Namespace) -> None:
     if not path:
         return
@@ -284,6 +337,33 @@ def write_failed_symbols_file(path: str | None, failed_symbols: list[str], args:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"event": "failed_symbols_file_written", "path": str(output_path), "failed_symbols": failed_symbols}))
+
+
+def write_no_data_symbols_file(path: str | None, no_data_symbols: list[str], args: argparse.Namespace) -> None:
+    if not path:
+        return
+
+    payload = {
+        "provider": args.provider,
+        "universe": args.universe,
+        "start": args.start.isoformat(),
+        "end": args.end.isoformat() if args.end else None,
+        "no_data_symbols": no_data_symbols,
+    }
+    output_path = Path(path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"event": "no_data_symbols_file_written", "path": str(output_path), "no_data_symbols": no_data_symbols}))
+
+
+def write_run_summary_file(path: str | None, summary: dict[str, object]) -> None:
+    if not path:
+        return
+
+    output_path = Path(path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"event": "run_summary_file_written", "path": str(output_path)}))
 
 
 def positive_int(value: str) -> int:

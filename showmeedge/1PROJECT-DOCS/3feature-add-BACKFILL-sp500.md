@@ -39,7 +39,7 @@ scripts/backfill-sp500-safe.sh
   -> validates universe size
   -> creates timestamped logs
   -> invokes Python backfill CLI
-  -> copies failed-symbol report
+  -> copies JSON reports
   -> verifies QuestDB row counts
 
 services/market-api/app/jobs/backfill_daily.py
@@ -50,6 +50,8 @@ services/market-api/app/jobs/backfill_daily.py
   -> retries missing symbols one by one
   -> writes bars to QuestDB
   -> writes failed-symbol JSON
+  -> writes no-data-symbol JSON
+  -> writes run-summary JSON
 
 services/market-api/app/providers/yfinance_provider.py
   -> normalizes yfinance DataFrame shapes
@@ -100,7 +102,7 @@ Responsibilities:
 - Refuse full-run mode when the universe is too small.
 - Create a timestamped host log directory.
 - Run `python -m app.jobs.backfill_daily` inside `market-api`.
-- Copy the failed-symbol file from the container to host logs.
+- Copy failed-symbol, no-data-symbol, and run-summary files from the container to host logs.
 - Run post-backfill QuestDB verification.
 - Exit nonzero if Python backfill exits nonzero.
 
@@ -121,6 +123,8 @@ Added flags:
 --retry-sleep-seconds
 --sleep-seconds
 --failed-symbols-file
+--no-data-symbols-file
+--run-summary-file
 --max-symbols
 ```
 
@@ -128,10 +132,12 @@ Important behavior:
 
 - `--skip-existing` checks QuestDB coverage before fetching a symbol.
 - Completed symbols are skipped and logged as `symbol_skipped_existing`.
+- When `--end` is provided, `--skip-existing` requires stored coverage to include the requested start/end window.
 - Failed batches retry.
 - If a batch still fails, each symbol is retried individually.
-- Symbols that return no bars are reported as missing.
-- Failed symbols are written to JSON.
+- Symbols that return no bars are reported separately as `no_data_symbols`.
+- Symbols that fail because of exceptions after retries are reported as `failed_symbols`.
+- Failed symbols, no-data symbols, and the final run summary are written to JSON.
 - Final coverage is printed in the `backfill_complete` event.
 
 ### Documentation
@@ -205,10 +211,33 @@ python -m app.jobs.backfill_daily \
   --retry-attempts 3 \
   --retry-sleep-seconds 5 \
   --sleep-seconds 1 \
-  --failed-symbols-file /tmp/showmeedge-sp500-backfill-<run-id>-failed.json
+  --failed-symbols-file /tmp/showmeedge-sp500-backfill-<run-id>-failed.json \
+  --no-data-symbols-file /tmp/showmeedge-sp500-backfill-<run-id>-no-data.json \
+  --run-summary-file /tmp/showmeedge-sp500-backfill-<run-id>-summary.json
 ```
 
-The failed-symbol file path above is container-local. The safe wrapper copies it into the host run folder under `scripts/LOG/showmeedge-sp500-backfill/<run-id>/failed-symbols.json`.
+The JSON report paths above are container-local. The safe wrapper copies them into the host run folder under `scripts/LOG/showmeedge-sp500-backfill/<run-id>/`.
+
+### Bounded Historical Run
+
+The safe wrapper also supports an inclusive end date:
+
+```bash
+bash scripts/backfill-sp500-safe.sh \
+  --start 2015-01-01 \
+  --end 2020-12-31
+```
+
+Equivalent Python behavior:
+
+```bash
+python -m app.jobs.backfill_daily \
+  --universe sp500_current \
+  --start 2015-01-01 \
+  --end 2020-12-31
+```
+
+The user-facing `--end` date is inclusive. The yfinance provider receives an exclusive end internally by adding one day.
 
 ## Script Options
 
@@ -217,6 +246,7 @@ The failed-symbol file path above is container-local. The safe wrapper copies it
 ```text
 --universe NAME
 --start YYYY-MM-DD
+--end YYYY-MM-DD
 --batch-size N
 --max-symbols N
 --min-symbols N
@@ -234,6 +264,7 @@ Defaults:
 ```text
 universe: sp500_current
 start: 2010-01-01
+end: latest available from provider
 batch-size: 10
 retry-attempts: 3
 retry-sleep-seconds: 5
@@ -279,13 +310,14 @@ The wrapper invokes Python with `--skip-existing`.
 
 That means:
 
-- Symbols with recent coverage are skipped.
+- For open-ended runs, symbols with recent coverage are skipped.
+- For bounded runs with `--end`, symbols are skipped only when stored coverage includes the requested date range.
 - Incomplete or missing symbols are processed.
 - Reinserted rows are protected by QuestDB dedup/upsert keys.
 
 ### If Some Symbols Fail
 
-The script writes:
+The script writes true retry/provider/job failures to:
 
 ```text
 <log-dir>/failed-symbols.json
@@ -314,26 +346,47 @@ docker compose -f scripts/docker-compose.yml exec -T market-api \
   --retry-attempts 3
 ```
 
+If `failed_symbols` is empty, the Python job exits successfully.
+
 ### If A Batch Fails
 
 Python behavior:
 
 1. Retry the whole batch up to `--retry-attempts`.
 2. If the batch remains failed, retry each symbol individually.
-3. If a symbol still fails, include it in `failed_symbols`.
+3. If a symbol still fails because of exceptions, include it in `failed_symbols`.
 
 ### If A Symbol Returns No Bars
 
-The Python job treats it as missing for that attempt.
+The Python job treats this as `no_data_symbols`, not a hard failure, after individual retry confirms no bars were returned.
 
 This can happen for:
 
 - Bad provider symbol mapping.
 - Recent S&P additions with short history.
+- Bounded historical windows before a company traded publicly.
 - Tickers yfinance does not support.
 - Temporary provider issues.
 
-The symbol appears in final `failed_symbols` if individual retries also fail.
+The symbol appears in:
+
+```text
+<log-dir>/no-data-symbols.json
+```
+
+Example shape:
+
+```json
+{
+  "provider": "yfinance",
+  "universe": "sp500_current",
+  "start": "1997-01-01",
+  "end": "2009-12-31",
+  "no_data_symbols": ["ABBV", "ABNB"]
+}
+```
+
+This distinction matters for bounded historical runs. A current S&P 500 symbol that IPO'd after the requested range is not a failed ingest; it simply has no bars for that range.
 
 ### If The Terminal Is Closed Or Machine Sleeps
 
@@ -359,20 +412,28 @@ Files:
 backfill.log
 verification.log
 failed-symbols.json
+no-data-symbols.json
+run-summary.json
 ```
 
 `backfill.log` contains JSON progress events such as:
 
 ```json
 {"event": "symbol_skipped_existing", "symbol": "AAPL"}
-{"event": "batch_inserted", "symbols": ["AAPL", "MSFT"], "fetched_bars": 8256}
+{"event": "batch_inserted", "symbols": ["AAPL", "MSFT"], "fetched_bars": 8256, "no_data_symbols": []}
 {"event": "batch_failed_attempt", "attempt": 1, "symbols": ["XYZ"]}
-{"event": "backfill_complete", "failed_symbols": []}
+{"event": "backfill_complete", "failed_symbols": [], "no_data_symbols": []}
 ```
 
 `verification.log` includes total yfinance rows and distinct yfinance symbol count.
 
-The Python job writes its failed-symbol JSON inside the `market-api` container first. The shell wrapper then copies that file into the host-side `scripts/LOG/...` run directory so the result is kept for future reference.
+`failed-symbols.json` includes only symbols that still failed after retries.
+
+`no-data-symbols.json` includes symbols that returned no bars for the requested date window.
+
+`run-summary.json` is the machine-readable final summary with requested symbols, processed symbols, skipped symbols, counts, failed symbols, no-data symbols, and coverage.
+
+The Python job writes its report JSON files inside the `market-api` container first. The shell wrapper then copies those files into the host-side `scripts/LOG/...` run directory so the result is kept for future reference.
 
 ## Verification Queries
 

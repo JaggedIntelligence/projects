@@ -1,0 +1,7 @@
+{
+  "provider": "yfinance",
+  "universe": "sp500_current",
+  "start": "1997-01-01",
+  "end": "1997-01-10",
+  "no_data_symbols": []
+}

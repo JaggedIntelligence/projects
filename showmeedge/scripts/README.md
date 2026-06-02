@@ -72,3 +72,19 @@ For a small smoke test:
 ```bash
 bash scripts/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
 ```
+
+For a bounded historical window, pass both dates. The end date is inclusive:
+
+```bash
+bash scripts/backfill-sp500-safe.sh --start 2015-01-01 --end 2020-12-31
+```
+
+Each run writes:
+
+```text
+backfill.log
+verification.log
+failed-symbols.json
+no-data-symbols.json
+run-summary.json
+```
