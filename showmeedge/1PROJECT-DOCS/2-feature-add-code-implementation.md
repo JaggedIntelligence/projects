@@ -316,7 +316,7 @@ Behavior:
 - Defaults to `AAPL MSFT SPY` when neither `--symbols` nor `--universe` is provided.
 - Supports `--symbols`.
 - Supports `--universe`, loading from `services/market-api/app/data/<universe>.csv`.
-- Supports `--start`, `--end`, `--provider`, and `--batch-size`.
+- Supports `--start`, `--end`, `--provider`, `--batch-size`, and `--max-symbols`.
 - Fetches bars through `YFinanceProvider`.
 - Inserts bars into `equity_ohlcv_daily`.
 - Prints JSON progress events.

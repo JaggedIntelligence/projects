@@ -17,6 +17,9 @@ DEFAULT_SYMBOLS = ["AAPL", "MSFT", "SPY"]
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     symbols = resolve_symbols(args.symbols, args.universe)
+    if args.max_symbols is not None:
+        symbols = symbols[: args.max_symbols]
+
     if not symbols:
         raise SystemExit("No symbols requested")
 
@@ -72,6 +75,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--end", type=date.fromisoformat)
     parser.add_argument("--provider", choices=["yfinance"], default="yfinance")
     parser.add_argument("--batch-size", type=positive_int, default=3)
+    parser.add_argument("--max-symbols", type=positive_int, help="Limit the resolved symbol list for smoke tests.")
     return parser.parse_args(argv)
 
 
