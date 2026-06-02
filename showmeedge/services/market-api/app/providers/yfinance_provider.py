@@ -8,6 +8,8 @@ from typing import Any
 from app.models import DailyOhlcvBar
 from app.providers.symbols import SymbolMetadata, normalize_symbol, to_provider_symbol
 
+OHLC_RELATIVE_TOLERANCE = 1e-6
+
 
 class YFinanceProvider:
     provider_name = "yfinance"
@@ -91,21 +93,32 @@ def _frame_for_symbol(data: Any, provider_symbol: str, requested_symbol_count: i
     if columns is None:
         return None
 
-    if requested_symbol_count == 1:
-        return data
-
     if getattr(columns, "nlevels", 1) <= 1:
         return data
 
-    level_zero_values = {str(value) for value in columns.get_level_values(0)}
-    if provider_symbol in level_zero_values:
-        return data[provider_symbol]
+    for level in range(columns.nlevels):
+        level_values = {str(value) for value in columns.get_level_values(level)}
+        if provider_symbol in level_values:
+            return data.xs(provider_symbol, axis=1, level=level)
 
-    level_one_values = {str(value) for value in columns.get_level_values(1)}
-    if provider_symbol in level_one_values:
-        return data.xs(provider_symbol, axis=1, level=1)
+    if requested_symbol_count == 1:
+        return _single_symbol_frame(data)
 
     return None
+
+
+def _single_symbol_frame(data: Any) -> Any | None:
+    columns = getattr(data, "columns", None)
+    if columns is None or getattr(columns, "nlevels", 1) <= 1:
+        return data
+
+    frame = data
+    for level in reversed(range(columns.nlevels)):
+        level_values = list(dict.fromkeys(str(value) for value in frame.columns.get_level_values(level)))
+        if len(level_values) == 1:
+            frame = frame.droplevel(level, axis=1)
+
+    return frame
 
 
 def _bars_from_frame(symbol: str, provider_symbol: str, currency: str, frame: Any) -> list[DailyOhlcvBar]:
@@ -121,6 +134,11 @@ def _bars_from_frame(symbol: str, provider_symbol: str, currency: str, frame: An
         if None in (open_price, high_price, low_price, close_price, volume):
             continue
 
+        normalized_ohlc = _normalize_ohlc(open_price, high_price, low_price, close_price)
+        if normalized_ohlc is None:
+            continue
+
+        open_price, high_price, low_price, close_price = normalized_ohlc
         adj_close = _row_float(row, "Adj Close")
         bars.append(
             DailyOhlcvBar(
@@ -139,6 +157,24 @@ def _bars_from_frame(symbol: str, provider_symbol: str, currency: str, frame: An
         )
 
     return bars
+
+
+def _normalize_ohlc(
+    open_price: float,
+    high_price: float,
+    low_price: float,
+    close_price: float,
+) -> tuple[float, float, float, float] | None:
+    observed_high = max(open_price, high_price, low_price, close_price)
+    observed_low = min(open_price, high_price, low_price, close_price)
+    tolerance = max(abs(observed_high), abs(observed_low), 1.0) * OHLC_RELATIVE_TOLERANCE
+
+    if high_price + tolerance < observed_high:
+        return None
+    if low_price - tolerance > observed_low:
+        return None
+
+    return open_price, max(high_price, observed_high), min(low_price, observed_low), close_price
 
 
 def _row_float(row: Any, key: str) -> float | None:

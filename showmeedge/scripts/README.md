@@ -47,3 +47,28 @@ SR Notes:
  - pnpm db:studio
  - this will start a new web app, here to the web page url to see FULL Database ...
  - https://local.drizzle.studio
+
+### 4/ Safe S&P 500 yfinance backfill
+
+Use this wrapper for restartable QuestDB daily stock data backfills:
+
+```bash
+bash scripts/backfill-sp500-safe.sh
+```
+
+The script starts `questdb` and `market-api`, checks service health, refuses to run a full backfill if the selected universe is unexpectedly small, writes timestamped logs under `scripts/LOG/showmeedge-sp500-backfill`, and calls:
+
+```bash
+python -m app.jobs.backfill_daily \
+  --universe sp500_current \
+  --start 2010-01-01 \
+  --batch-size 10 \
+  --skip-existing \
+  --retry-attempts 3
+```
+
+For a small smoke test:
+
+```bash
+bash scripts/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
+```

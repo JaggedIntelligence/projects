@@ -1,0 +1,40 @@
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 1, "attempt": 1, "symbols": ["MMM"], "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["MMM"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "MMM", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["MMM"]}
+{"event": "failed_symbols_file_written", "path": "/tmp/showmeedge-sp500-backfill-20260602-122314-failed.json", "failed_symbols": ["MMM"]}
+{
+  "event": "backfill_complete",
+  "provider": "yfinance",
+  "symbols": [
+    "MMM"
+  ],
+  "processed_symbols": [
+    "MMM"
+  ],
+  "skipped_symbols": [],
+  "start": "2010-01-01",
+  "end": null,
+  "fetched_bars": 0,
+  "inserted_bars": 0,
+  "failed_symbols": [
+    "MMM"
+  ],
+  "failed_symbols_file": "/tmp/showmeedge-sp500-backfill-20260602-122314-failed.json",
+  "coverage": [
+    {
+      "symbol": "MMM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": null,
+      "end": null,
+      "row_count": 0
+    }
+  ]
+}

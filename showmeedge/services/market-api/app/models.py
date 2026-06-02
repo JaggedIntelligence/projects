@@ -6,6 +6,7 @@ from typing import Literal
 from pydantic import BaseModel, Field, model_validator
 
 Timeframe = Literal["1d"]
+OHLC_RANGE_TOLERANCE = 1e-6
 
 
 class OhlcvBar(BaseModel):
@@ -32,9 +33,10 @@ class DailyOhlcvBar(BaseModel):
 
     @model_validator(mode="after")
     def validate_ohlc_range(self) -> DailyOhlcvBar:
-        if self.high < max(self.open, self.low, self.close):
+        tolerance = max(abs(self.high), abs(self.low), abs(self.open), abs(self.close), 1.0) * OHLC_RANGE_TOLERANCE
+        if self.high + tolerance < max(self.open, self.low, self.close):
             raise ValueError("high must be greater than or equal to open, low, and close")
-        if self.low > min(self.open, self.high, self.close):
+        if self.low - tolerance > min(self.open, self.high, self.close):
             raise ValueError("low must be less than or equal to open, high, and close")
         return self
 

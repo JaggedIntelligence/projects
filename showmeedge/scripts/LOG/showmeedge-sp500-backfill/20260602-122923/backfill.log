@@ -1,0 +1,680 @@
+{"event": "symbol_skipped_existing", "symbol": "GOOGL", "coverage": {"symbol": "GOOGL", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "GOOG", "coverage": {"symbol": "GOOG", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "AMZN", "coverage": {"symbol": "AMZN", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "AAPL", "coverage": {"symbol": "AAPL", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "BRK.B", "coverage": {"symbol": "BRK.B", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "AVGO", "coverage": {"symbol": "AVGO", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "BF.B", "coverage": {"symbol": "BF.B", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "XOM", "coverage": {"symbol": "XOM", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "JPM", "coverage": {"symbol": "JPM", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "LLY", "coverage": {"symbol": "LLY", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "META", "coverage": {"symbol": "META", "provider": "yfinance", "timeframe": "1d", "start": "2012-05-18", "end": "2026-06-02", "row_count": 3529}}
+{"event": "symbol_skipped_existing", "symbol": "MSFT", "coverage": {"symbol": "MSFT", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "NVDA", "coverage": {"symbol": "NVDA", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "UNH", "coverage": {"symbol": "UNH", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+{"event": "symbol_skipped_existing", "symbol": "V", "coverage": {"symbol": "V", "provider": "yfinance", "timeframe": "1d", "start": "2010-01-04", "end": "2026-06-02", "row_count": 4128}}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 1, "attempt": 1, "symbols": ["MMM", "AOS", "ABT", "ABBV", "ACN", "ADBE", "AMD", "AES", "AFL", "A"], "fetched_bars": 40526, "inserted_bars": 40526, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 2, "attempt": 1, "symbols": ["APD", "ABNB", "AKAM", "ALB", "ARE", "ALGN", "ALLE", "LNT", "ALL", "MO"], "fetched_bars": 37550, "inserted_bars": 37550, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 3, "attempt": 1, "symbols": ["AMCR", "AEE", "AEP", "AXP", "AIG", "AMT", "AWK", "AMP", "AME", "AMGN"], "fetched_bars": 40684, "inserted_bars": 40684, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 4, "attempt": 1, "symbols": ["APH", "ADI", "AON", "APA", "APO", "AMAT", "APP", "APTV", "ACGL", "ADM"], "fetched_bars": 37655, "inserted_bars": 37655, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 5, "attempt": 1, "symbols": ["ARES", "ANET", "AJG", "AIZ", "T", "ATO", "ADSK", "ADP", "AZO", "AVB"], "fetched_bars": 39078, "inserted_bars": 39078, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 6, "attempt": 1, "symbols": ["AVY", "AXON", "BKR", "BALL", "BAC", "BAX", "BDX", "BBY", "TECH", "BIIB"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'BAC', 'provid...2645, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 6, "attempt": 2, "symbols": ["AVY", "AXON", "BKR", "BALL", "BAC", "BAX", "BDX", "BBY", "TECH", "BIIB"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'BAC', 'provid...4547, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 6, "attempt": 3, "symbols": ["AVY", "AXON", "BKR", "BALL", "BAC", "BAX", "BDX", "BBY", "TECH", "BIIB"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'BAC', 'provid...2080, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 6, "symbols": ["AVY", "AXON", "BKR", "BALL", "BAC", "BAX", "BDX", "BBY", "TECH", "BIIB"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "AVY", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["AVY"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "AXON", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["AXON"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BKR", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BKR"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BALL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BALL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BAC", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BAC"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BAX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BAX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BDX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BDX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BBY", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BBY"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "TECH", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["TECH"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BIIB", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BIIB"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 7, "attempt": 1, "symbols": ["BLK", "BX", "XYZ", "BNY", "BA", "BKNG", "BSX", "BMY", "BR", "BRO"], "fetched_bars": 39799, "inserted_bars": 39799, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 8, "attempt": 1, "symbols": ["BLDR", "BG", "BXP", "CHRW", "CDNS", "CPT", "CPB", "COF", "CAH", "CCL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'CAH', 'provid...3690, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 8, "attempt": 2, "symbols": ["BLDR", "BG", "BXP", "CHRW", "CDNS", "CPT", "CPB", "COF", "CAH", "CCL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'CAH', 'provid...4050, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 8, "attempt": 3, "symbols": ["BLDR", "BG", "BXP", "CHRW", "CDNS", "CPT", "CPB", "COF", "CAH", "CCL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'CAH', 'provid...5025, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 8, "symbols": ["BLDR", "BG", "BXP", "CHRW", "CDNS", "CPT", "CPB", "COF", "CAH", "CCL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BLDR", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BLDR"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "BXP", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["BXP"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CHRW", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CHRW"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CDNS", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CDNS"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CPT", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CPT"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CPB", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CPB"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "COF", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["COF"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CAH", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CAH"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CCL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CCL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 9, "attempt": 1, "symbols": ["CARR", "CVNA", "CASY", "CAT", "CBOE", "CBRE", "CDW", "COR", "CNC", "CNP"], "fetched_bars": 35881, "inserted_bars": 35881, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 10, "attempt": 1, "symbols": ["CF", "CRL", "SCHW", "CHTR", "CVX", "CMG", "CB", "CHD", "CIEN", "CI"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'CVX', 'provid...7372, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 10, "attempt": 2, "symbols": ["CF", "CRL", "SCHW", "CHTR", "CVX", "CMG", "CB", "CHD", "CIEN", "CI"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'CVX', 'provid...8521, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 10, "attempt": 3, "symbols": ["CF", "CRL", "SCHW", "CHTR", "CVX", "CMG", "CB", "CHD", "CIEN", "CI"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'CVX', 'provid...8893, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 10, "symbols": ["CF", "CRL", "SCHW", "CHTR", "CVX", "CMG", "CB", "CHD", "CIEN", "CI"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CF", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CF"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CRL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CRL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "SCHW", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["SCHW"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CHTR", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CHTR"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CVX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CVX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CMG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CMG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CB", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CB"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CHD", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CHD"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CIEN", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CIEN"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CI", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CI"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 11, "attempt": 1, "symbols": ["CINF", "CTAS", "CSCO", "C", "CFG", "CLX", "CME", "CMS", "KO", "CTSH"], "fetched_bars": 40091, "inserted_bars": 40091, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 12, "attempt": 1, "symbols": ["COHR", "COIN", "CL", "CMCSA", "FIX", "CAG", "COP", "ED", "STZ", "CEG"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'FIX', 'provid...0147, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 12, "attempt": 2, "symbols": ["COHR", "COIN", "CL", "CMCSA", "FIX", "CAG", "COP", "ED", "STZ", "CEG"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'FIX', 'provid...0160, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 12, "attempt": 3, "symbols": ["COHR", "COIN", "CL", "CMCSA", "FIX", "CAG", "COP", "ED", "STZ", "CEG"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'FIX', 'provid...0161, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 12, "symbols": ["COHR", "COIN", "CL", "CMCSA", "FIX", "CAG", "COP", "ED", "STZ", "CEG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "COHR", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["COHR"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "COIN", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["COIN"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CMCSA", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CMCSA"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "FIX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["FIX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CAG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CAG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "COP", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["COP"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "ED", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["ED"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "STZ", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["STZ"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CEG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CEG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 13, "attempt": 1, "symbols": ["COO", "CPRT", "GLW", "CPAY", "CTVA", "CSGP", "COST", "CRH", "CRWD", "CCI"], "fetched_bars": 36302, "inserted_bars": 36302, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 14, "attempt": 1, "symbols": ["CSX", "CMI", "CVS", "DHR", "DRI", "DDOG", "DVA", "DECK", "DE", "DELL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'DRI', 'provid...5144, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 14, "attempt": 2, "symbols": ["CSX", "CMI", "CVS", "DHR", "DRI", "DDOG", "DVA", "DECK", "DE", "DELL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'DRI', 'provid...5178, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 14, "attempt": 3, "symbols": ["CSX", "CMI", "CVS", "DHR", "DRI", "DDOG", "DVA", "DECK", "DE", "DELL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'DRI', 'provid...5328, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 14, "symbols": ["CSX", "CMI", "CVS", "DHR", "DRI", "DDOG", "DVA", "DECK", "DE", "DELL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CSX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CSX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CMI", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CMI"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "CVS", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["CVS"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DHR", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DHR"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DRI", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DRI"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DDOG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DDOG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DVA", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DVA"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DECK", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DECK"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DE", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DE"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DELL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DELL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 15, "attempt": 1, "symbols": ["DAL", "DVN", "DXCM", "FANG", "DLR", "DG", "DLTR", "D", "DPZ", "DASH"], "fetched_bars": 37826, "inserted_bars": 37826, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 16, "attempt": 1, "symbols": ["DOV", "DOW", "DHI", "DTE", "DUK", "DD", "ETN", "EBAY", "SATS", "ECL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'DOV', 'provid...2683, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 16, "attempt": 2, "symbols": ["DOV", "DOW", "DHI", "DTE", "DUK", "DD", "ETN", "EBAY", "SATS", "ECL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'DOV', 'provid...2729, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 16, "attempt": 3, "symbols": ["DOV", "DOW", "DHI", "DTE", "DUK", "DD", "ETN", "EBAY", "SATS", "ECL"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'DOV', 'provid...2882, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 16, "symbols": ["DOV", "DOW", "DHI", "DTE", "DUK", "DD", "ETN", "EBAY", "SATS", "ECL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DOV", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DOV"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DOW", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DOW"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DHI", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DHI"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DTE", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DTE"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DUK", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DUK"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "DD", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["DD"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "ETN", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["ETN"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EBAY", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EBAY"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "SATS", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["SATS"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "ECL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["ECL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 17, "attempt": 1, "symbols": ["EIX", "EW", "EA", "ELV", "EME", "EMR", "ETR", "EOG", "EPAM", "EQT"], "fetched_bars": 40751, "inserted_bars": 40751, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 18, "attempt": 1, "symbols": ["EFX", "EQIX", "EQR", "ERIE", "ESS", "EL", "EG", "EVRG", "ES", "EXC"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'ESS', 'provid...7692, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 18, "attempt": 2, "symbols": ["EFX", "EQIX", "EQR", "ERIE", "ESS", "EL", "EG", "EVRG", "ES", "EXC"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'ESS', 'provid...7692, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 18, "attempt": 3, "symbols": ["EFX", "EQIX", "EQR", "ERIE", "ESS", "EL", "EG", "EVRG", "ES", "EXC"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'ESS', 'provid...7692, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 18, "symbols": ["EFX", "EQIX", "EQR", "ERIE", "ESS", "EL", "EG", "EVRG", "ES", "EXC"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EFX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EFX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EQIX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EQIX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EQR", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EQR"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "ERIE", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["ERIE"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "ESS", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["ESS"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EL"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EVRG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EVRG"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "ES", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["ES"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "EXC", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["EXC"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 19, "attempt": 1, "symbols": ["EXE", "EXPE", "EXPD", "EXR", "FFIV", "FDS", "FICO", "FAST", "FRT", "FDX"], "fetched_bars": 38485, "inserted_bars": 38485, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 20, "attempt": 1, "symbols": ["FIS", "FITB", "FSLR", "FE", "FISV", "F", "FTNT", "FTV", "FOXA", "FOX"], "fetched_bars": 35020, "inserted_bars": 35020, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 21, "attempt": 1, "symbols": ["BEN", "FCX", "GRMN", "IT", "GE", "GEHC", "GEV", "GEN", "GNRC", "GD"], "fetched_bars": 34411, "inserted_bars": 34411, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 22, "attempt": 1, "symbols": ["GIS", "GM", "GPC", "GILD", "GPN", "GL", "GDDY", "GS", "HAL", "HIG"], "fetched_bars": 39740, "inserted_bars": 39740, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 23, "attempt": 1, "symbols": ["HAS", "HCA", "DOC", "HSIC", "HSY", "HPE", "HLT", "HD", "HON", "HRL"], "fetched_bars": 38531, "inserted_bars": 38531, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 24, "attempt": 1, "symbols": ["HST", "HWM", "HPQ", "HUBB", "HUM", "HBAN", "HII", "IBM", "IEX", "IDXX"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'HUBB', 'provi...7234, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 24, "attempt": 2, "symbols": ["HST", "HWM", "HPQ", "HUBB", "HUM", "HBAN", "HII", "IBM", "IEX", "IDXX"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'HUBB', 'provi...7234, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 24, "attempt": 3, "symbols": ["HST", "HWM", "HPQ", "HUBB", "HUM", "HBAN", "HII", "IBM", "IEX", "IDXX"], "error": "1 validation error for DailyOhlcvBar\n  Value error, low must be less than or equal to open, high, and close [type=value_error, input_value={'symbol': 'HUBB', 'provi...7234, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 24, "symbols": ["HST", "HWM", "HPQ", "HUBB", "HUM", "HBAN", "HII", "IBM", "IEX", "IDXX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HST", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HST"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HWM", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HWM"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HPQ", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HPQ"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HUBB", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HUBB"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HUM", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HUM"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HBAN", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HBAN"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "HII", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["HII"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "IBM", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["IBM"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "IEX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["IEX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "IDXX", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["IDXX"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 25, "attempt": 1, "symbols": ["ITW", "INCY", "IR", "PODD", "INTC", "IBKR", "ICE", "IFF", "IP", "INTU"], "fetched_bars": 39428, "inserted_bars": 39428, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 26, "attempt": 1, "symbols": ["ISRG", "IVZ", "INVH", "IQV", "IRM", "JBHT", "JBL", "JKHY", "J", "JNJ"], "fetched_bars": 38656, "inserted_bars": 38656, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 27, "attempt": 1, "symbols": ["JCI", "KVUE", "KDP", "KEY", "KEYS", "KMB", "KIM", "KMI", "KKR", "KLAC"], "fetched_bars": 36304, "inserted_bars": 36304, "missing_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 28, "attempt": 1, "symbols": ["KHC", "KR", "LHX", "LH", "LRCX", "LVS", "LDOS", "LEN", "LII", "LIN"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'LII', 'provid...6419, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 28, "attempt": 2, "symbols": ["KHC", "KR", "LHX", "LH", "LRCX", "LVS", "LDOS", "LEN", "LII", "LIN"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'LII', 'provid...6431, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_failed_attempt", "batch_index": 28, "attempt": 3, "symbols": ["KHC", "KR", "LHX", "LH", "LRCX", "LVS", "LDOS", "LEN", "LII", "LIN"], "error": "1 validation error for DailyOhlcvBar\n  Value error, high must be greater than or equal to open, low, and close [type=value_error, input_value={'symbol': 'LII', 'provid...6469, 'currency': 'USD'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"}
+{"event": "batch_retry_exhausted", "batch_index": 28, "symbols": ["KHC", "KR", "LHX", "LH", "LRCX", "LVS", "LDOS", "LEN", "LII", "LIN"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "symbol_inserted", "symbol": "KHC", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "missing_symbols": ["KHC"]}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:147: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  end_dt = pd.Timestamp.utcnow().tz_convert(tz)
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+

@@ -1,0 +1,9 @@
+{
+  "provider": "yfinance",
+  "universe": "sp500_current",
+  "start": "2010-01-01",
+  "end": null,
+  "failed_symbols": [
+    "MMM"
+  ]
+}
