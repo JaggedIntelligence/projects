@@ -11,6 +11,7 @@ type MarketBarsResponse = {
   symbol: string;
   timeframe: "1d";
   source: string;
+  provider?: string | null;
   bars: OhlcvBar[];
 };
 
@@ -69,7 +70,7 @@ export const marketDataRouter = router({
   bars: protectedProcedure.input(marketBarsInputSchema).query(async ({ input }) => {
     try {
       return await fetchFromMarketApi<MarketBarsResponse>(
-        `/market-data/bars?symbol=${encodeURIComponent(input.ticker)}&timeframe=${input.timeframe}&seed_if_empty=true`
+        `/market-data/bars?symbol=${encodeURIComponent(input.ticker)}&timeframe=${input.timeframe}&provider=yfinance&seed_if_empty=true`
       );
     } catch {
       return {
@@ -77,6 +78,7 @@ export const marketDataRouter = router({
         symbol: input.ticker,
         timeframe: input.timeframe,
         source: "next_mock_fallback",
+        provider: null,
         bars: getMockOhlcvBars(input.ticker, input.timeframe)
       };
     }

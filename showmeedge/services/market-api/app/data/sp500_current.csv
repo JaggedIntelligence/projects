@@ -1,0 +1,16 @@
+symbol,provider_symbol,name,exchange,currency,sector,industry
+AAPL,AAPL,Apple Inc.,NASDAQ,USD,Information Technology,"Technology Hardware, Storage & Peripherals"
+MSFT,MSFT,Microsoft,NASDAQ,USD,Information Technology,Systems Software
+NVDA,NVDA,Nvidia,NASDAQ,USD,Information Technology,Semiconductors
+AMZN,AMZN,Amazon,NASDAQ,USD,Consumer Discretionary,Broadline Retail
+GOOGL,GOOGL,Alphabet Inc. (Class A),NASDAQ,USD,Communication Services,Interactive Media & Services
+GOOG,GOOG,Alphabet Inc. (Class C),NASDAQ,USD,Communication Services,Interactive Media & Services
+META,META,Meta Platforms,NASDAQ,USD,Communication Services,Interactive Media & Services
+BRK.B,BRK-B,Berkshire Hathaway,NYSE,USD,Financials,Multi-Sector Holdings
+BF.B,BF-B,Brown-Forman,NYSE,USD,Consumer Staples,Distillers & Vintners
+JPM,JPM,JPMorgan Chase,NYSE,USD,Financials,Diversified Banks
+LLY,LLY,Eli Lilly and Company,NYSE,USD,Health Care,Pharmaceuticals
+AVGO,AVGO,Broadcom,NASDAQ,USD,Information Technology,Semiconductors
+XOM,XOM,Exxon Mobil,NYSE,USD,Energy,Integrated Oil & Gas
+UNH,UNH,UnitedHealth Group,NYSE,USD,Health Care,Managed Health Care
+V,V,Visa Inc.,NYSE,USD,Financials,Transaction & Payment Processing Services

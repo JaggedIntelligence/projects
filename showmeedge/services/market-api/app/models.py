@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from datetime import date, datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 Timeframe = Literal["1d"]
 
@@ -15,10 +17,42 @@ class OhlcvBar(BaseModel):
     volume: int
 
 
+class DailyOhlcvBar(BaseModel):
+    symbol: str = Field(min_length=1, max_length=24)
+    provider: str = Field(default="yfinance", min_length=1, max_length=64)
+    provider_symbol: str | None = Field(default=None, max_length=64)
+    time: date
+    open: float = Field(gt=0)
+    high: float = Field(gt=0)
+    low: float = Field(gt=0)
+    close: float = Field(gt=0)
+    adj_close: float | None = Field(default=None, gt=0)
+    volume: int = Field(ge=0)
+    currency: str = Field(default="USD", min_length=1, max_length=8)
+
+    @model_validator(mode="after")
+    def validate_ohlc_range(self) -> DailyOhlcvBar:
+        if self.high < max(self.open, self.low, self.close):
+            raise ValueError("high must be greater than or equal to open, low, and close")
+        if self.low > min(self.open, self.high, self.close):
+            raise ValueError("low must be less than or equal to open, high, and close")
+        return self
+
+
+class MarketDataCoverage(BaseModel):
+    symbol: str
+    provider: str
+    timeframe: Timeframe = "1d"
+    start: date | None
+    end: date | None
+    row_count: int = Field(ge=0)
+
+
 class BarsResponse(BaseModel):
     symbol: str
     timeframe: Timeframe
     source: str
+    provider: str | None = None
     bars: list[OhlcvBar]
 
 
@@ -72,4 +106,3 @@ class BacktestResponse(BaseModel):
     completed_at: datetime
     trades: list[BacktestTrade]
     equity_curve: list[EquityPoint]
-

@@ -29,6 +29,22 @@ function money(value: number) {
   });
 }
 
+function sourceLabel(source?: string, provider?: string | null) {
+  if (source === "questdb_yfinance_daily") {
+    return "QuestDB / yfinance";
+  }
+  if (source === "questdb_seeded_from_mock") {
+    return "QuestDB / mock";
+  }
+  if (source === "next_mock_fallback") {
+    return "Next.js mock fallback";
+  }
+  if (source === "questdb" && provider) {
+    return `QuestDB / ${provider}`;
+  }
+  return source ?? "mock_static";
+}
+
 export function MarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
   const chartSymbols = useMemo(() => (symbols.length ? symbols : fallbackSymbols), [symbols]);
   const [ticker, setTicker] = useState(chartSymbols[0]?.ticker ?? "AAPL");
@@ -59,7 +75,7 @@ export function MarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
             <Activity className="h-5 w-5" />
             Market chart
           </CardTitle>
-          <p className="mt-1 text-sm text-muted-foreground">Static OHLCV data now; FastAPI and QuestDB can replace this source later.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Daily OHLCV from QuestDB when backfilled, with local mock fallback for empty symbols.</p>
         </div>
         <div className="flex flex-col gap-2 sm:w-64">
           <Select value={ticker} onValueChange={setTicker}>
@@ -78,7 +94,7 @@ export function MarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="secondary">{barsQuery.data?.source ?? "mock_static"}</Badge>
+          <Badge variant="secondary">{sourceLabel(barsQuery.data?.source, barsQuery.data?.provider)}</Badge>
           <Badge variant="outline">1d</Badge>
           {latestBar ? (
             <>

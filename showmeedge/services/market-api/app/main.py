@@ -8,11 +8,14 @@ from app.models import (
     BacktestRequest,
     BacktestResponse,
     BarsResponse,
+    DailyOhlcvBar,
     MockIngestRequest,
     MockIngestResponse,
+    OhlcvBar,
     Timeframe,
 )
 from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_questdb
+from app.repositories.questdb_daily_bars import ensure_equity_ohlcv_daily_table, fetch_daily_bars
 
 settings = get_settings()
 
@@ -30,6 +33,7 @@ app.add_middleware(
 @app.on_event("startup")
 def startup() -> None:
     ensure_market_bars_table()
+    ensure_equity_ohlcv_daily_table()
 
 
 @app.get("/health")
@@ -68,11 +72,22 @@ def ingest_mock_data(request: MockIngestRequest) -> MockIngestResponse:
 def get_market_bars(
     symbol: str = Query(..., min_length=1, max_length=24),
     timeframe: Timeframe = "1d",
+    provider: str = Query("yfinance", min_length=1, max_length=64),
     seed_if_empty: bool = True,
 ) -> BarsResponse:
     normalized_symbol = symbol.upper()
 
     try:
+        daily_bars = fetch_daily_bars(normalized_symbol, provider=provider)
+        if daily_bars:
+            return BarsResponse(
+                symbol=normalized_symbol,
+                timeframe=timeframe,
+                source=f"questdb_{provider.lower()}_daily",
+                provider=provider.lower(),
+                bars=[daily_bar_to_ohlcv_bar(bar) for bar in daily_bars],
+            )
+
         bars = fetch_bars(normalized_symbol, timeframe)
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"QuestDB query failed: {exc}") from exc
@@ -84,7 +99,18 @@ def get_market_bars(
         bars = fetch_bars(normalized_symbol, timeframe)
         source = "questdb_seeded_from_mock"
 
-    return BarsResponse(symbol=normalized_symbol, timeframe=timeframe, source=source, bars=bars)
+    return BarsResponse(symbol=normalized_symbol, timeframe=timeframe, source=source, provider=None, bars=bars)
+
+
+def daily_bar_to_ohlcv_bar(bar: DailyOhlcvBar) -> OhlcvBar:
+    return OhlcvBar(
+        time=bar.time,
+        open=bar.open,
+        high=bar.high,
+        low=bar.low,
+        close=bar.close,
+        volume=bar.volume,
+    )
 
 
 @app.post("/backtests/run", response_model=BacktestResponse)
@@ -109,4 +135,3 @@ def run_backtest(request: BacktestRequest) -> BacktestResponse:
         slow_sma=request.slow_sma,
         source=bars_response.source,
     )
-

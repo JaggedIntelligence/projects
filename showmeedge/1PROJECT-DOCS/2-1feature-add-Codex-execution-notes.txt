@@ -1,0 +1,88 @@
+I like your plan,  I agree  with your suggestion "run ingestion as a separate worker/CLI process using the same services/market-api codebase"
+I also agree with suggested MVP plan .
+ please write the above plan to  file  1PRODUCT-DOCS/2feature-add-QuestDB-detailed-plan.md
+2:54 AM
+
+
+Worked for 1m 38s
+Done. I created the new docs directory and wrote the detailed plan here:
+
+2feature-add-QuestDB-detailed-plan.md
+
+It captures the agreed MVP direction: separate ingestion worker/CLI inside services/market-api, yfinance as MVP-only provider, QuestDB daily OHLCV schema, FastAPI read endpoints, Postgres metadata, UI changes, risks, and phased implementation checklist. No tests needed since this was documentation-only.
+
+
+2feature-add-QuestDB-detailed-plan.md
+Document · MD
+Open
+
+Edited 2feature-add-QuestDB-detailed-plan.md
++634
+-0
+Undo
+Review
+Details
+
+
+
+
+2:56 AM
+it is my bad, I mean 1PROJECT-DOCS folder, so pls move the above file into this folder and THEN remove the folder 1PRODUCT-DOCS
+3:10 AM
+
+
+Worked for 18s
+Done. Moved the plan to:
+
+2feature-add-QuestDB-detailed-plan.md
+
+And removed the mistaken 1PRODUCT-DOCS folder.
+
+
+2feature-add-QuestDB-detailed-plan.md
+Document · MD
+Open
+
+
+
+
+3:10 AM
+I like the  ## MVP Implementation Checklist , let us start the coding for phase 1 and phase 2
+3:15 AM
+
+
+
+Worked for 5m 50s
+Phase 1 and Phase 2 are coded.
+
+What changed:
+
+Added daily OHLCV models and coverage model in models.py (line 20).
+Added QuestDB equity_ohlcv_daily repository with table creation, insert, fetch, and coverage methods in questdb_daily_bars.py (line 8).
+Wired the new QuestDB daily table into FastAPI startup in main.py (line 31).
+Added provider abstraction and yfinance adapter in base.py (line 1) and yfinance_provider.py (line 12).
+Added symbol universe loading and Yahoo ticker mapping in symbols.py (line 1).
+Added a starter sp500_current.csv seed in sp500_current.csv (line 1). It is intentionally small for the first coding slice, not the full S&P 500 yet.
+Added yfinance to requirements.txt (line 5).
+Added symbol-loader tests in test_symbols.py (line 1).
+Verification:
+
+python3 -m compileall services/market-api/app services/market-api/tests passed.
+python3 -m unittest discover tests passed from services/market-api.
+I did not run the FastAPI app against live QuestDB because the local Python environment does not have the service dependencies installed. I checked QuestDB DEDUP UPSERT KEYS syntax against the official QuestDB CREATE TABLE docs, and yfinance remains MVP-only per its PyPI project notes.
+
+
+sp500_current.csv
+Spreadsheet · CSV
+Open
+
+Edited 11 files
++516
+-4
+Undo
+Review
+services/market-api/app/models.py
+services/market-api/app/repositories/__init__.py
+services/market-api/app/repositories/questdb_daily_bars.py
+
+Show 8 more files
