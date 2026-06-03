@@ -1,6 +1,24 @@
 # Companies Historical Earning calender and data extraction 
 
 
+### SR own research , old memory of yahoo earnings
+ - url below shows Year 2000, Jan 04,  from and two are formed for range. SUnday to Saturday 
+    2000
+    https://finance.yahoo.com/calendar/earnings?from=2000-01-02&to=2000-01-08&day=2000-01-04
+    
+    2016
+    https://finance.yahoo.com/calendar/earnings?from=2016-05-29&to=2016-06-04&day=2016-05-31
+
+    2026 with size=100 , so you get all results in one page, so no need for Paginaiton etc..
+    https://finance.yahoo.com/calendar/earnings?from=2026-05-24&to=2026-05-30&day=2026-05-28&offset=0&size=100
+
+    2026 offset=100 , offset=200 , offset=300  ; use this way for multipage so NO JS script trigger etcc.
+    https://finance.yahoo.com/calendar/earnings?from=2026-05-03&to=2026-05-09&day=2026-05-06&offset=100&size=100
+
+ - with other /test/ folder program we are getting lots of  null values
+ - so should we try this web page scraping first ?
+
+
 ## following is Google Gemini AI answer on web
 
 To extract historical earnings calendar and dates from Yahoo Finance, several unofficial Python libraries are available. Because Yahoo discontinued its official API in 2017, these libraries extract and parse public web data directly. [1, 2]  
