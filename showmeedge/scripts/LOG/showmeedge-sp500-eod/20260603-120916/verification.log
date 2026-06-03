@@ -1,0 +1,7 @@
+total_yfinance_rows=3183598
+distinct_yfinance_symbols=504
+requested_symbols=503
+latest_requested_ts=2026-06-03 00:00:00
+requested_symbols_with_latest_ts=485
+requested_symbols_missing_latest_ts=18
+missing_latest_symbols=ALL,AIZ,CBOE,CHD,ESS,ES,EXR,FDS,FICO,FRT,FCX,HUM,MLM,MTD,MSCI,OKE,PKG,STE

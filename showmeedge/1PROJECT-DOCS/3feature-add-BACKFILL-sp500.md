@@ -34,7 +34,7 @@ Therefore, the backfill must be restartable by design.
 Use a two-layer design:
 
 ```text
-scripts/backfill-sp500-safe.sh
+scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
   -> starts/checks Docker Compose services
   -> validates universe size
   -> creates timestamped logs
@@ -87,7 +87,7 @@ If a symbol is already complete, the Python job can skip it. If it is incomplete
 File:
 
 ```text
-scripts/backfill-sp500-safe.sh
+scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
 Responsibilities:
@@ -183,13 +183,13 @@ The repo now has the full current S&P 500 ticker universe in `sp500_current.csv`
 Use this for smoke testing:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh --max-symbols 20
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --max-symbols 20
 ```
 
 If you changed Python dependencies or code inside `services/market-api`, rebuild too:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh --rebuild --max-symbols 20
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild --max-symbols 20
 ```
 
 ### Full S&P 500 Run
@@ -197,7 +197,7 @@ bash scripts/backfill-sp500-safe.sh --rebuild --max-symbols 20
 For the full current S&P 500 universe:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh --rebuild
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
 ```
 
 Equivalent Python job called inside the wrapper:
@@ -223,7 +223,7 @@ The JSON report paths above are container-local. The safe wrapper copies them in
 The safe wrapper also supports an inclusive end date:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh \
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh \
   --start 2015-01-01 \
   --end 2020-12-31
 ```
@@ -241,7 +241,7 @@ The user-facing `--end` date is inclusive. The yfinance provider receives an exc
 
 ## Script Options
 
-`scripts/backfill-sp500-safe.sh` supports:
+`scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh` supports:
 
 ```text
 --universe NAME
@@ -287,13 +287,13 @@ Running the "full" script against only a few symbols could create a false sense 
 To intentionally run against a small seed universe:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh --allow-small-universe
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe
 ```
 
 For smoke tests:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
 ```
 
 ## Failure And Restart Plan
@@ -303,7 +303,7 @@ bash scripts/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
 Rerun the same command:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh --rebuild
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
 ```
 
 The wrapper invokes Python with `--skip-existing`.
@@ -393,7 +393,7 @@ This distinction matters for bounded historical runs. A current S&P 500 symbol t
 Rerun:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
 Already-complete symbols should be skipped.
@@ -506,7 +506,7 @@ QuestDB verification passed
 After changing host logs from `/tmp` to `scripts/LOG`, this command was run:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh \
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh \
   --rebuild \
   --max-symbols 1 \
   --batch-size 1 \
@@ -551,7 +551,7 @@ The failed-symbol file contained:
 After the provider hardening changes, the full safe wrapper was run successfully:
 
 ```bash
-bash scripts/backfill-sp500-safe.sh
+bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
 Run directory:

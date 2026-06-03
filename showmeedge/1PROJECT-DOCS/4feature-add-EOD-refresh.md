@@ -24,7 +24,7 @@ Therefore the EOD job refreshes a recent window and relies on QuestDB upsert/ded
 Use a two-layer design:
 
 ```text
-scripts/update-sp500-eod-safe.sh
+scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh
   -> starts/checks Docker Compose services
   -> validates universe size
   -> creates timestamped logs
@@ -91,7 +91,7 @@ Important behavior:
 File:
 
 ```text
-scripts/update-sp500-eod-safe.sh
+scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh
 ```
 
 Responsibilities:
@@ -117,7 +117,7 @@ Responsibilities:
 Use this for a small, fast run:
 
 ```bash
-bash scripts/update-sp500-eod-safe.sh \
+bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
   --max-symbols 5 \
   --lookback-days 2 \
   --batch-size 1 \
@@ -127,7 +127,7 @@ bash scripts/update-sp500-eod-safe.sh \
 If Python code changed and the container image needs a rebuild:
 
 ```bash
-bash scripts/update-sp500-eod-safe.sh \
+bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
   --rebuild \
   --max-symbols 5 \
   --lookback-days 2
@@ -138,7 +138,7 @@ bash scripts/update-sp500-eod-safe.sh \
 Run after the market has had time to settle:
 
 ```bash
-bash scripts/update-sp500-eod-safe.sh
+bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh
 ```
 
 Equivalent Python job called inside the wrapper:
@@ -162,14 +162,14 @@ python -m app.jobs.update_daily_recent \
 For a controlled recent repair:
 
 ```bash
-bash scripts/update-sp500-eod-safe.sh \
+bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
   --start 2026-05-20 \
   --end 2026-06-02
 ```
 
 ## Script Options
 
-`scripts/update-sp500-eod-safe.sh` supports:
+`scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh` supports:
 
 ```text
 --universe NAME

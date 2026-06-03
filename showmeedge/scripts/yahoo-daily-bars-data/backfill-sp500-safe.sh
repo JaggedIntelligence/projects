@@ -2,14 +2,12 @@
 set -Eeuo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-COMPOSE_FILE="$SCRIPT_DIR/docker-compose.yml"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+COMPOSE_FILE="$REPO_ROOT/scripts/docker-compose.yml"
 
 UNIVERSE="sp500_current"
-LOOKBACK_DAYS="10"
-START_DATE=""
+START_DATE="2010-01-01"
 END_DATE=""
-TIMEZONE="America/New_York"
 BATCH_SIZE="10"
 RETRY_ATTEMPTS="3"
 RETRY_SLEEP_SECONDS="5"
@@ -18,19 +16,17 @@ MIN_SYMBOLS="450"
 ALLOW_SMALL_UNIVERSE="false"
 REBUILD="false"
 MAX_SYMBOLS=""
-LOG_ROOT="$REPO_ROOT/scripts/LOG/showmeedge-sp500-eod"
+LOG_ROOT="$REPO_ROOT/scripts/LOG/showmeedge-sp500-backfill"
 
 usage() {
   cat <<'USAGE'
 Usage:
-  bash scripts/update-sp500-eod-safe.sh [options]
+  bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh [options]
 
 Options:
   --universe NAME              CSV universe name in market-api app/data. Default: sp500_current
-  --lookback-days N            Calendar days to refresh when --start is omitted. Default: 10
-  --start YYYY-MM-DD           Optional inclusive refresh start date. Overrides --lookback-days.
-  --end YYYY-MM-DD             Optional inclusive refresh end date. Default: today in --timezone
-  --timezone NAME              Timezone used to compute default --end. Default: America/New_York
+  --start YYYY-MM-DD           Backfill start date. Default: 2010-01-01
+  --end YYYY-MM-DD             Inclusive backfill end date. Default: latest available from provider
   --batch-size N               Symbols per yfinance batch. Default: 10
   --max-symbols N              Limit resolved universe for smoke tests.
   --min-symbols N              Minimum universe size required. Default: 450
@@ -38,14 +34,16 @@ Options:
   --retry-attempts N           Retry attempts for each batch/symbol. Default: 3
   --retry-sleep-seconds N      Sleep between retries. Default: 5
   --sleep-seconds N            Sleep between batches. Default: 1
-  --log-root PATH              Host log root. Default: scripts/LOG/showmeedge-sp500-eod
+  --log-root PATH              Host log root. Default: scripts/LOG/showmeedge-sp500-backfill
   --rebuild                    Rebuild market-api image before running.
   -h, --help                   Show this help.
 
 Examples:
-  bash scripts/update-sp500-eod-safe.sh --max-symbols 5 --lookback-days 2
+  bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
 
-  bash scripts/update-sp500-eod-safe.sh
+  bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
+
+  bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --start 2015-01-01 --end 2020-12-31
 USAGE
 }
 
@@ -89,11 +87,6 @@ while [[ $# -gt 0 ]]; do
       UNIVERSE="${2:-}"
       shift 2
       ;;
-    --lookback-days)
-      LOOKBACK_DAYS="${2:-}"
-      positive_int_arg "--lookback-days" "$LOOKBACK_DAYS"
-      shift 2
-      ;;
     --start)
       START_DATE="${2:-}"
       date_arg "--start" "$START_DATE"
@@ -102,10 +95,6 @@ while [[ $# -gt 0 ]]; do
     --end)
       END_DATE="${2:-}"
       date_arg "--end" "$END_DATE"
-      shift 2
-      ;;
-    --timezone)
-      TIMEZONE="${2:-}"
       shift 2
       ;;
     --batch-size)
@@ -161,9 +150,8 @@ while [[ $# -gt 0 ]]; do
 done
 
 [[ -n "$UNIVERSE" ]] || die "--universe cannot be empty."
-[[ -n "$LOOKBACK_DAYS" ]] || die "--lookback-days cannot be empty."
-[[ -n "$TIMEZONE" ]] || die "--timezone cannot be empty."
-if [[ -n "$START_DATE" && -n "$END_DATE" ]]; then
+[[ -n "$START_DATE" ]] || die "--start cannot be empty."
+if [[ -n "$END_DATE" ]]; then
   [[ "$START_DATE" < "$END_DATE" || "$START_DATE" == "$END_DATE" ]] || die "--start must be less than or equal to --end."
 fi
 [[ -f "$COMPOSE_FILE" ]] || die "Compose file not found: $COMPOSE_FILE"
@@ -209,22 +197,22 @@ RUN_ID="$(date +%Y%m%d-%H%M%S)"
 LOG_DIR="$LOG_ROOT/$RUN_ID"
 mkdir -p "$LOG_DIR"
 
-CONTAINER_REPORT_PREFIX="/tmp/showmeedge-sp500-eod-${RUN_ID}"
+CONTAINER_REPORT_PREFIX="/tmp/showmeedge-sp500-backfill-${RUN_ID}"
 CONTAINER_FAILED_FILE="${CONTAINER_REPORT_PREFIX}-failed.json"
 CONTAINER_NO_DATA_FILE="${CONTAINER_REPORT_PREFIX}-no-data.json"
 CONTAINER_RUN_SUMMARY_FILE="${CONTAINER_REPORT_PREFIX}-summary.json"
 HOST_FAILED_FILE="$LOG_DIR/failed-symbols.json"
 HOST_NO_DATA_FILE="$LOG_DIR/no-data-symbols.json"
 HOST_RUN_SUMMARY_FILE="$LOG_DIR/run-summary.json"
-UPDATE_LOG="$LOG_DIR/update.log"
+BACKFILL_LOG="$LOG_DIR/backfill.log"
 VERIFY_LOG="$LOG_DIR/verification.log"
 
-UPDATE_CMD=(
-  python -m app.jobs.update_daily_recent
+BACKFILL_CMD=(
+  python -m app.jobs.backfill_daily
   --universe "$UNIVERSE"
-  --lookback-days "$LOOKBACK_DAYS"
-  --timezone "$TIMEZONE"
+  --start "$START_DATE"
   --batch-size "$BATCH_SIZE"
+  --skip-existing
   --retry-attempts "$RETRY_ATTEMPTS"
   --retry-sleep-seconds "$RETRY_SLEEP_SECONDS"
   --sleep-seconds "$SLEEP_SECONDS"
@@ -233,26 +221,22 @@ UPDATE_CMD=(
   --run-summary-file "$CONTAINER_RUN_SUMMARY_FILE"
 )
 
-if [[ -n "$START_DATE" ]]; then
-  UPDATE_CMD+=(--start "$START_DATE")
+if [[ -n "$MAX_SYMBOLS" ]]; then
+  BACKFILL_CMD+=(--max-symbols "$MAX_SYMBOLS")
 fi
 
 if [[ -n "$END_DATE" ]]; then
-  UPDATE_CMD+=(--end "$END_DATE")
-fi
-
-if [[ -n "$MAX_SYMBOLS" ]]; then
-  UPDATE_CMD+=(--max-symbols "$MAX_SYMBOLS")
+  BACKFILL_CMD+=(--end "$END_DATE")
 fi
 
 echo "Logs: $LOG_DIR"
 printf 'Running: docker compose -f %q exec -T market-api' "$COMPOSE_FILE"
-printf ' %q' "${UPDATE_CMD[@]}"
+printf ' %q' "${BACKFILL_CMD[@]}"
 printf '\n'
 
 set +e
-compose exec -T market-api "${UPDATE_CMD[@]}" 2>&1 | tee "$UPDATE_LOG"
-UPDATE_STATUS="${PIPESTATUS[0]}"
+compose exec -T market-api "${BACKFILL_CMD[@]}" 2>&1 | tee "$BACKFILL_LOG"
+BACKFILL_STATUS="${PIPESTATUS[0]}"
 set -e
 
 copy_container_report() {
@@ -270,18 +254,9 @@ copy_container_report "$CONTAINER_FAILED_FILE" "$HOST_FAILED_FILE" "Failed-symbo
 copy_container_report "$CONTAINER_NO_DATA_FILE" "$HOST_NO_DATA_FILE" "No-data symbol report"
 copy_container_report "$CONTAINER_RUN_SUMMARY_FILE" "$HOST_RUN_SUMMARY_FILE" "Run summary"
 
-echo "Verifying recent QuestDB coverage..."
-compose exec -T -e UNIVERSE="$UNIVERSE" -e MAX_SYMBOLS="$MAX_SYMBOLS" market-api python - <<'PY' | tee "$VERIFY_LOG"
-import os
-from datetime import datetime
-
-from app.providers.symbols import load_symbol_universe
+echo "Verifying QuestDB counts..."
+compose exec -T market-api python - <<'PY' | tee "$VERIFY_LOG"
 from app.questdb import questdb_connection
-
-provider = "yfinance"
-symbols = [entry.symbol for entry in load_symbol_universe(os.environ["UNIVERSE"])]
-if os.environ.get("MAX_SYMBOLS"):
-    symbols = symbols[: int(os.environ["MAX_SYMBOLS"])]
 
 with questdb_connection() as connection:
     with connection.cursor() as cursor:
@@ -292,42 +267,30 @@ with questdb_connection() as connection:
 
         cursor.execute(
             """
-            SELECT symbol, max(ts), count()
+            SELECT symbol, count()
             FROM equity_ohlcv_daily
             WHERE provider = 'yfinance'
-            GROUP BY symbol
+            ORDER BY symbol
+            LIMIT 20
             """
         )
-        coverage = {str(symbol): (last_ts, int(row_count or 0)) for symbol, last_ts, row_count in cursor.fetchall()}
-
-latest_ts = max((coverage[symbol][0] for symbol in symbols if symbol in coverage and coverage[symbol][0] is not None), default=None)
-missing_latest = [
-    symbol
-    for symbol in symbols
-    if symbol not in coverage or coverage[symbol][0] != latest_ts
-]
-
-print(f"requested_symbols={len(symbols)}")
-print(f"latest_requested_ts={latest_ts}")
-print(f"requested_symbols_with_latest_ts={len(symbols) - len(missing_latest)}")
-print(f"requested_symbols_missing_latest_ts={len(missing_latest)}")
-if missing_latest:
-    print("missing_latest_symbols=" + ",".join(missing_latest[:100]))
+        for symbol, row_count in cursor.fetchall():
+            print(f"{symbol}={row_count}")
 PY
 
-if [[ "$UPDATE_STATUS" -ne 0 ]]; then
-  echo "EOD update finished with failures. See: $UPDATE_LOG" >&2
+if [[ "$BACKFILL_STATUS" -ne 0 ]]; then
+  echo "Backfill finished with failures. See: $BACKFILL_LOG" >&2
   if [[ -f "$HOST_FAILED_FILE" ]]; then
     echo "Rerun failed symbols after reviewing: $HOST_FAILED_FILE" >&2
   fi
   if [[ -f "$HOST_RUN_SUMMARY_FILE" ]]; then
     echo "Run summary: $HOST_RUN_SUMMARY_FILE" >&2
   fi
-  exit "$UPDATE_STATUS"
+  exit "$BACKFILL_STATUS"
 fi
 
-echo "EOD update finished successfully."
-echo "Update log: $UPDATE_LOG"
+echo "Backfill finished successfully."
+echo "Backfill log: $BACKFILL_LOG"
 echo "Verification log: $VERIFY_LOG"
 if [[ -f "$HOST_RUN_SUMMARY_FILE" ]]; then
   echo "Run summary: $HOST_RUN_SUMMARY_FILE"

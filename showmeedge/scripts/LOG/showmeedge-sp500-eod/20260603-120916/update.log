@@ -1,0 +1,5209 @@
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 1, "attempt": 1, "symbols": ["MMM", "AOS", "ABT", "ABBV", "ACN", "ADBE", "AMD", "AES", "AFL", "A"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 2, "attempt": 1, "symbols": ["APD", "ABNB", "AKAM", "ALB", "ARE", "ALGN", "ALLE", "LNT", "ALL", "GOOGL"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 3, "attempt": 1, "symbols": ["GOOG", "MO", "AMZN", "AMCR", "AEE", "AEP", "AXP", "AIG", "AMT", "AWK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 4, "attempt": 1, "symbols": ["AMP", "AME", "AMGN", "APH", "ADI", "AON", "APA", "APO", "AAPL", "AMAT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 5, "attempt": 1, "symbols": ["APP", "APTV", "ACGL", "ADM", "ARES", "ANET", "AJG", "AIZ", "T", "ATO"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 6, "attempt": 1, "symbols": ["ADSK", "ADP", "AZO", "AVB", "AVY", "AXON", "BKR", "BALL", "BAC", "BAX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 7, "attempt": 1, "symbols": ["BDX", "BRK.B", "BBY", "TECH", "BIIB", "BLK", "BX", "XYZ", "BNY", "BA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 8, "attempt": 1, "symbols": ["BKNG", "BSX", "BMY", "AVGO", "BR", "BRO", "BF.B", "BLDR", "BG", "BXP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 9, "attempt": 1, "symbols": ["CHRW", "CDNS", "CPT", "CPB", "COF", "CAH", "CCL", "CARR", "CVNA", "CASY"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 10, "attempt": 1, "symbols": ["CAT", "CBOE", "CBRE", "CDW", "COR", "CNC", "CNP", "CF", "CRL", "SCHW"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 11, "attempt": 1, "symbols": ["CHTR", "CVX", "CMG", "CB", "CHD", "CIEN", "CI", "CINF", "CTAS", "CSCO"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 12, "attempt": 1, "symbols": ["C", "CFG", "CLX", "CME", "CMS", "KO", "CTSH", "COHR", "COIN", "CL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 13, "attempt": 1, "symbols": ["CMCSA", "FIX", "CAG", "COP", "ED", "STZ", "CEG", "COO", "CPRT", "GLW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 14, "attempt": 1, "symbols": ["CPAY", "CTVA", "CSGP", "COST", "CRH", "CRWD", "CCI", "CSX", "CMI", "CVS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 15, "attempt": 1, "symbols": ["DHR", "DRI", "DDOG", "DVA", "DECK", "DE", "DELL", "DAL", "DVN", "DXCM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 16, "attempt": 1, "symbols": ["FANG", "DLR", "DG", "DLTR", "D", "DPZ", "DASH", "DOV", "DOW", "DHI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 17, "attempt": 1, "symbols": ["DTE", "DUK", "DD", "ETN", "EBAY", "SATS", "ECL", "EIX", "EW", "EA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 18, "attempt": 1, "symbols": ["ELV", "EME", "EMR", "ETR", "EOG", "EPAM", "EQT", "EFX", "EQIX", "EQR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 19, "attempt": 1, "symbols": ["ERIE", "ESS", "EL", "EG", "EVRG", "ES", "EXC", "EXE", "EXPE", "EXPD"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 20, "attempt": 1, "symbols": ["EXR", "XOM", "FFIV", "FDS", "FICO", "FAST", "FRT", "FDX", "FIS", "FITB"], "fetched_bars": 66, "inserted_bars": 66, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 21, "attempt": 1, "symbols": ["FSLR", "FE", "FISV", "F", "FTNT", "FTV", "FOXA", "FOX", "BEN", "FCX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 22, "attempt": 1, "symbols": ["GRMN", "IT", "GE", "GEHC", "GEV", "GEN", "GNRC", "GD", "GIS", "GM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 23, "attempt": 1, "symbols": ["GPC", "GILD", "GPN", "GL", "GDDY", "GS", "HAL", "HIG", "HAS", "HCA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 24, "attempt": 1, "symbols": ["DOC", "HSIC", "HSY", "HPE", "HLT", "HD", "HON", "HRL", "HST", "HWM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 25, "attempt": 1, "symbols": ["HPQ", "HUBB", "HUM", "HBAN", "HII", "IBM", "IEX", "IDXX", "ITW", "INCY"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 26, "attempt": 1, "symbols": ["IR", "PODD", "INTC", "IBKR", "ICE", "IFF", "IP", "INTU", "ISRG", "IVZ"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 27, "attempt": 1, "symbols": ["INVH", "IQV", "IRM", "JBHT", "JBL", "JKHY", "J", "JNJ", "JCI", "JPM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 28, "attempt": 1, "symbols": ["KVUE", "KDP", "KEY", "KEYS", "KMB", "KIM", "KMI", "KKR", "KLAC", "KHC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 29, "attempt": 1, "symbols": ["KR", "LHX", "LH", "LRCX", "LVS", "LDOS", "LEN", "LII", "LLY", "LIN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 30, "attempt": 1, "symbols": ["LYV", "LMT", "L", "LOW", "LULU", "LITE", "LYB", "MTB", "MPC", "MAR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 31, "attempt": 1, "symbols": ["MRSH", "MLM", "MAS", "MA", "MKC", "MCD", "MCK", "MDT", "MRK", "META"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 32, "attempt": 1, "symbols": ["MET", "MTD", "MGM", "MCHP", "MU", "MSFT", "MAA", "MRNA", "TAP", "MDLZ"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 33, "attempt": 1, "symbols": ["MPWR", "MNST", "MCO", "MS", "MOS", "MSI", "MSCI", "NDAQ", "NTAP", "NFLX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 34, "attempt": 1, "symbols": ["NEM", "NWSA", "NWS", "NEE", "NKE", "NI", "NDSN", "NSC", "NTRS", "NOC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 35, "attempt": 1, "symbols": ["NCLH", "NRG", "NUE", "NVDA", "NVR", "NXPI", "ORLY", "OXY", "ODFL", "OMC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 36, "attempt": 1, "symbols": ["ON", "OKE", "ORCL", "OTIS", "PCAR", "PKG", "PLTR", "PANW", "PSKY", "PH"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 37, "attempt": 1, "symbols": ["PAYX", "PYPL", "PNR", "PEP", "PFE", "PCG", "PM", "PSX", "PNW", "PNC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 38, "attempt": 1, "symbols": ["POOL", "PPG", "PPL", "PFG", "PG", "PGR", "PLD", "PRU", "PEG", "PTC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 39, "attempt": 1, "symbols": ["PSA", "PHM", "PWR", "QCOM", "DGX", "Q", "RL", "RJF", "RTX", "O"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 40, "attempt": 1, "symbols": ["REG", "REGN", "RF", "RSG", "RMD", "RVTY", "HOOD", "ROK", "ROL", "ROP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 41, "attempt": 1, "symbols": ["ROST", "RCL", "SPGI", "CRM", "SNDK", "SBAC", "SLB", "STX", "SRE", "NOW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 42, "attempt": 1, "symbols": ["SHW", "SPG", "SWKS", "SJM", "SW", "SNA", "SOLV", "SO", "LUV", "SWK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 43, "attempt": 1, "symbols": ["SBUX", "STT", "STLD", "STE", "SYK", "SMCI", "SYF", "SNPS", "SYY", "TMUS"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 44, "attempt": 1, "symbols": ["TROW", "TTWO", "TPR", "TRGP", "TGT", "TEL", "TDY", "TER", "TSLA", "TXN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 45, "attempt": 1, "symbols": ["TPL", "TXT", "TMO", "TJX", "TKO", "TTD", "TSCO", "TT", "TDG", "TRV"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 46, "attempt": 1, "symbols": ["TRMB", "TFC", "TYL", "TSN", "USB", "UBER", "UDR", "ULTA", "UNP", "UAL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 47, "attempt": 1, "symbols": ["UPS", "URI", "UNH", "UHS", "VLO", "VEEV", "VTR", "VLTO", "VRSN", "VRSK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 48, "attempt": 1, "symbols": ["VZ", "VRTX", "VRT", "VTRS", "VICI", "V", "VST", "VMC", "WRB", "GWW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 49, "attempt": 1, "symbols": ["WAB", "WMT", "DIS", "WBD", "WM", "WAT", "WEC", "WFC", "WELL", "WST"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 50, "attempt": 1, "symbols": ["WDC", "WY", "WSM", "WMB", "WTW", "WDAY", "WYNN", "XEL", "XYL", "YUM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+/usr/local/lib/python3.12/site-packages/yfinance/scrapers/history.py:204: Pandas4Warning: Timestamp.utcnow is deprecated and will be removed in a future version. Use Timestamp.now('UTC') instead.
+  dt_now = pd.Timestamp.utcnow()
+{"event": "batch_inserted", "batch_index": 51, "attempt": 1, "symbols": ["ZBRA", "ZBH", "ZTS"], "fetched_bars": 21, "inserted_bars": 21, "no_data_symbols": [], "failed_symbols": []}
+{"event": "failed_symbols_file_written", "path": "/tmp/showmeedge-sp500-eod-20260603-120916-failed.json", "failed_symbols": []}
+{"event": "no_data_symbols_file_written", "path": "/tmp/showmeedge-sp500-eod-20260603-120916-no-data.json", "no_data_symbols": []}
+{"event": "run_summary_file_written", "path": "/tmp/showmeedge-sp500-eod-20260603-120916-summary.json"}
+{
+  "event": "daily_recent_update_complete",
+  "provider": "yfinance",
+  "universe": "sp500_current",
+  "symbols": [
+    "MMM",
+    "AOS",
+    "ABT",
+    "ABBV",
+    "ACN",
+    "ADBE",
+    "AMD",
+    "AES",
+    "AFL",
+    "A",
+    "APD",
+    "ABNB",
+    "AKAM",
+    "ALB",
+    "ARE",
+    "ALGN",
+    "ALLE",
+    "LNT",
+    "ALL",
+    "GOOGL",
+    "GOOG",
+    "MO",
+    "AMZN",
+    "AMCR",
+    "AEE",
+    "AEP",
+    "AXP",
+    "AIG",
+    "AMT",
+    "AWK",
+    "AMP",
+    "AME",
+    "AMGN",
+    "APH",
+    "ADI",
+    "AON",
+    "APA",
+    "APO",
+    "AAPL",
+    "AMAT",
+    "APP",
+    "APTV",
+    "ACGL",
+    "ADM",
+    "ARES",
+    "ANET",
+    "AJG",
+    "AIZ",
+    "T",
+    "ATO",
+    "ADSK",
+    "ADP",
+    "AZO",
+    "AVB",
+    "AVY",
+    "AXON",
+    "BKR",
+    "BALL",
+    "BAC",
+    "BAX",
+    "BDX",
+    "BRK.B",
+    "BBY",
+    "TECH",
+    "BIIB",
+    "BLK",
+    "BX",
+    "XYZ",
+    "BNY",
+    "BA",
+    "BKNG",
+    "BSX",
+    "BMY",
+    "AVGO",
+    "BR",
+    "BRO",
+    "BF.B",
+    "BLDR",
+    "BG",
+    "BXP",
+    "CHRW",
+    "CDNS",
+    "CPT",
+    "CPB",
+    "COF",
+    "CAH",
+    "CCL",
+    "CARR",
+    "CVNA",
+    "CASY",
+    "CAT",
+    "CBOE",
+    "CBRE",
+    "CDW",
+    "COR",
+    "CNC",
+    "CNP",
+    "CF",
+    "CRL",
+    "SCHW",
+    "CHTR",
+    "CVX",
+    "CMG",
+    "CB",
+    "CHD",
+    "CIEN",
+    "CI",
+    "CINF",
+    "CTAS",
+    "CSCO",
+    "C",
+    "CFG",
+    "CLX",
+    "CME",
+    "CMS",
+    "KO",
+    "CTSH",
+    "COHR",
+    "COIN",
+    "CL",
+    "CMCSA",
+    "FIX",
+    "CAG",
+    "COP",
+    "ED",
+    "STZ",
+    "CEG",
+    "COO",
+    "CPRT",
+    "GLW",
+    "CPAY",
+    "CTVA",
+    "CSGP",
+    "COST",
+    "CRH",
+    "CRWD",
+    "CCI",
+    "CSX",
+    "CMI",
+    "CVS",
+    "DHR",
+    "DRI",
+    "DDOG",
+    "DVA",
+    "DECK",
+    "DE",
+    "DELL",
+    "DAL",
+    "DVN",
+    "DXCM",
+    "FANG",
+    "DLR",
+    "DG",
+    "DLTR",
+    "D",
+    "DPZ",
+    "DASH",
+    "DOV",
+    "DOW",
+    "DHI",
+    "DTE",
+    "DUK",
+    "DD",
+    "ETN",
+    "EBAY",
+    "SATS",
+    "ECL",
+    "EIX",
+    "EW",
+    "EA",
+    "ELV",
+    "EME",
+    "EMR",
+    "ETR",
+    "EOG",
+    "EPAM",
+    "EQT",
+    "EFX",
+    "EQIX",
+    "EQR",
+    "ERIE",
+    "ESS",
+    "EL",
+    "EG",
+    "EVRG",
+    "ES",
+    "EXC",
+    "EXE",
+    "EXPE",
+    "EXPD",
+    "EXR",
+    "XOM",
+    "FFIV",
+    "FDS",
+    "FICO",
+    "FAST",
+    "FRT",
+    "FDX",
+    "FIS",
+    "FITB",
+    "FSLR",
+    "FE",
+    "FISV",
+    "F",
+    "FTNT",
+    "FTV",
+    "FOXA",
+    "FOX",
+    "BEN",
+    "FCX",
+    "GRMN",
+    "IT",
+    "GE",
+    "GEHC",
+    "GEV",
+    "GEN",
+    "GNRC",
+    "GD",
+    "GIS",
+    "GM",
+    "GPC",
+    "GILD",
+    "GPN",
+    "GL",
+    "GDDY",
+    "GS",
+    "HAL",
+    "HIG",
+    "HAS",
+    "HCA",
+    "DOC",
+    "HSIC",
+    "HSY",
+    "HPE",
+    "HLT",
+    "HD",
+    "HON",
+    "HRL",
+    "HST",
+    "HWM",
+    "HPQ",
+    "HUBB",
+    "HUM",
+    "HBAN",
+    "HII",
+    "IBM",
+    "IEX",
+    "IDXX",
+    "ITW",
+    "INCY",
+    "IR",
+    "PODD",
+    "INTC",
+    "IBKR",
+    "ICE",
+    "IFF",
+    "IP",
+    "INTU",
+    "ISRG",
+    "IVZ",
+    "INVH",
+    "IQV",
+    "IRM",
+    "JBHT",
+    "JBL",
+    "JKHY",
+    "J",
+    "JNJ",
+    "JCI",
+    "JPM",
+    "KVUE",
+    "KDP",
+    "KEY",
+    "KEYS",
+    "KMB",
+    "KIM",
+    "KMI",
+    "KKR",
+    "KLAC",
+    "KHC",
+    "KR",
+    "LHX",
+    "LH",
+    "LRCX",
+    "LVS",
+    "LDOS",
+    "LEN",
+    "LII",
+    "LLY",
+    "LIN",
+    "LYV",
+    "LMT",
+    "L",
+    "LOW",
+    "LULU",
+    "LITE",
+    "LYB",
+    "MTB",
+    "MPC",
+    "MAR",
+    "MRSH",
+    "MLM",
+    "MAS",
+    "MA",
+    "MKC",
+    "MCD",
+    "MCK",
+    "MDT",
+    "MRK",
+    "META",
+    "MET",
+    "MTD",
+    "MGM",
+    "MCHP",
+    "MU",
+    "MSFT",
+    "MAA",
+    "MRNA",
+    "TAP",
+    "MDLZ",
+    "MPWR",
+    "MNST",
+    "MCO",
+    "MS",
+    "MOS",
+    "MSI",
+    "MSCI",
+    "NDAQ",
+    "NTAP",
+    "NFLX",
+    "NEM",
+    "NWSA",
+    "NWS",
+    "NEE",
+    "NKE",
+    "NI",
+    "NDSN",
+    "NSC",
+    "NTRS",
+    "NOC",
+    "NCLH",
+    "NRG",
+    "NUE",
+    "NVDA",
+    "NVR",
+    "NXPI",
+    "ORLY",
+    "OXY",
+    "ODFL",
+    "OMC",
+    "ON",
+    "OKE",
+    "ORCL",
+    "OTIS",
+    "PCAR",
+    "PKG",
+    "PLTR",
+    "PANW",
+    "PSKY",
+    "PH",
+    "PAYX",
+    "PYPL",
+    "PNR",
+    "PEP",
+    "PFE",
+    "PCG",
+    "PM",
+    "PSX",
+    "PNW",
+    "PNC",
+    "POOL",
+    "PPG",
+    "PPL",
+    "PFG",
+    "PG",
+    "PGR",
+    "PLD",
+    "PRU",
+    "PEG",
+    "PTC",
+    "PSA",
+    "PHM",
+    "PWR",
+    "QCOM",
+    "DGX",
+    "Q",
+    "RL",
+    "RJF",
+    "RTX",
+    "O",
+    "REG",
+    "REGN",
+    "RF",
+    "RSG",
+    "RMD",
+    "RVTY",
+    "HOOD",
+    "ROK",
+    "ROL",
+    "ROP",
+    "ROST",
+    "RCL",
+    "SPGI",
+    "CRM",
+    "SNDK",
+    "SBAC",
+    "SLB",
+    "STX",
+    "SRE",
+    "NOW",
+    "SHW",
+    "SPG",
+    "SWKS",
+    "SJM",
+    "SW",
+    "SNA",
+    "SOLV",
+    "SO",
+    "LUV",
+    "SWK",
+    "SBUX",
+    "STT",
+    "STLD",
+    "STE",
+    "SYK",
+    "SMCI",
+    "SYF",
+    "SNPS",
+    "SYY",
+    "TMUS",
+    "TROW",
+    "TTWO",
+    "TPR",
+    "TRGP",
+    "TGT",
+    "TEL",
+    "TDY",
+    "TER",
+    "TSLA",
+    "TXN",
+    "TPL",
+    "TXT",
+    "TMO",
+    "TJX",
+    "TKO",
+    "TTD",
+    "TSCO",
+    "TT",
+    "TDG",
+    "TRV",
+    "TRMB",
+    "TFC",
+    "TYL",
+    "TSN",
+    "USB",
+    "UBER",
+    "UDR",
+    "ULTA",
+    "UNP",
+    "UAL",
+    "UPS",
+    "URI",
+    "UNH",
+    "UHS",
+    "VLO",
+    "VEEV",
+    "VTR",
+    "VLTO",
+    "VRSN",
+    "VRSK",
+    "VZ",
+    "VRTX",
+    "VRT",
+    "VTRS",
+    "VICI",
+    "V",
+    "VST",
+    "VMC",
+    "WRB",
+    "GWW",
+    "WAB",
+    "WMT",
+    "DIS",
+    "WBD",
+    "WM",
+    "WAT",
+    "WEC",
+    "WFC",
+    "WELL",
+    "WST",
+    "WDC",
+    "WY",
+    "WSM",
+    "WMB",
+    "WTW",
+    "WDAY",
+    "WYNN",
+    "XEL",
+    "XYL",
+    "YUM",
+    "ZBRA",
+    "ZBH",
+    "ZTS"
+  ],
+  "processed_symbols": [
+    "MMM",
+    "AOS",
+    "ABT",
+    "ABBV",
+    "ACN",
+    "ADBE",
+    "AMD",
+    "AES",
+    "AFL",
+    "A",
+    "APD",
+    "ABNB",
+    "AKAM",
+    "ALB",
+    "ARE",
+    "ALGN",
+    "ALLE",
+    "LNT",
+    "ALL",
+    "GOOGL",
+    "GOOG",
+    "MO",
+    "AMZN",
+    "AMCR",
+    "AEE",
+    "AEP",
+    "AXP",
+    "AIG",
+    "AMT",
+    "AWK",
+    "AMP",
+    "AME",
+    "AMGN",
+    "APH",
+    "ADI",
+    "AON",
+    "APA",
+    "APO",
+    "AAPL",
+    "AMAT",
+    "APP",
+    "APTV",
+    "ACGL",
+    "ADM",
+    "ARES",
+    "ANET",
+    "AJG",
+    "AIZ",
+    "T",
+    "ATO",
+    "ADSK",
+    "ADP",
+    "AZO",
+    "AVB",
+    "AVY",
+    "AXON",
+    "BKR",
+    "BALL",
+    "BAC",
+    "BAX",
+    "BDX",
+    "BRK.B",
+    "BBY",
+    "TECH",
+    "BIIB",
+    "BLK",
+    "BX",
+    "XYZ",
+    "BNY",
+    "BA",
+    "BKNG",
+    "BSX",
+    "BMY",
+    "AVGO",
+    "BR",
+    "BRO",
+    "BF.B",
+    "BLDR",
+    "BG",
+    "BXP",
+    "CHRW",
+    "CDNS",
+    "CPT",
+    "CPB",
+    "COF",
+    "CAH",
+    "CCL",
+    "CARR",
+    "CVNA",
+    "CASY",
+    "CAT",
+    "CBOE",
+    "CBRE",
+    "CDW",
+    "COR",
+    "CNC",
+    "CNP",
+    "CF",
+    "CRL",
+    "SCHW",
+    "CHTR",
+    "CVX",
+    "CMG",
+    "CB",
+    "CHD",
+    "CIEN",
+    "CI",
+    "CINF",
+    "CTAS",
+    "CSCO",
+    "C",
+    "CFG",
+    "CLX",
+    "CME",
+    "CMS",
+    "KO",
+    "CTSH",
+    "COHR",
+    "COIN",
+    "CL",
+    "CMCSA",
+    "FIX",
+    "CAG",
+    "COP",
+    "ED",
+    "STZ",
+    "CEG",
+    "COO",
+    "CPRT",
+    "GLW",
+    "CPAY",
+    "CTVA",
+    "CSGP",
+    "COST",
+    "CRH",
+    "CRWD",
+    "CCI",
+    "CSX",
+    "CMI",
+    "CVS",
+    "DHR",
+    "DRI",
+    "DDOG",
+    "DVA",
+    "DECK",
+    "DE",
+    "DELL",
+    "DAL",
+    "DVN",
+    "DXCM",
+    "FANG",
+    "DLR",
+    "DG",
+    "DLTR",
+    "D",
+    "DPZ",
+    "DASH",
+    "DOV",
+    "DOW",
+    "DHI",
+    "DTE",
+    "DUK",
+    "DD",
+    "ETN",
+    "EBAY",
+    "SATS",
+    "ECL",
+    "EIX",
+    "EW",
+    "EA",
+    "ELV",
+    "EME",
+    "EMR",
+    "ETR",
+    "EOG",
+    "EPAM",
+    "EQT",
+    "EFX",
+    "EQIX",
+    "EQR",
+    "ERIE",
+    "ESS",
+    "EL",
+    "EG",
+    "EVRG",
+    "ES",
+    "EXC",
+    "EXE",
+    "EXPE",
+    "EXPD",
+    "EXR",
+    "XOM",
+    "FFIV",
+    "FDS",
+    "FICO",
+    "FAST",
+    "FRT",
+    "FDX",
+    "FIS",
+    "FITB",
+    "FSLR",
+    "FE",
+    "FISV",
+    "F",
+    "FTNT",
+    "FTV",
+    "FOXA",
+    "FOX",
+    "BEN",
+    "FCX",
+    "GRMN",
+    "IT",
+    "GE",
+    "GEHC",
+    "GEV",
+    "GEN",
+    "GNRC",
+    "GD",
+    "GIS",
+    "GM",
+    "GPC",
+    "GILD",
+    "GPN",
+    "GL",
+    "GDDY",
+    "GS",
+    "HAL",
+    "HIG",
+    "HAS",
+    "HCA",
+    "DOC",
+    "HSIC",
+    "HSY",
+    "HPE",
+    "HLT",
+    "HD",
+    "HON",
+    "HRL",
+    "HST",
+    "HWM",
+    "HPQ",
+    "HUBB",
+    "HUM",
+    "HBAN",
+    "HII",
+    "IBM",
+    "IEX",
+    "IDXX",
+    "ITW",
+    "INCY",
+    "IR",
+    "PODD",
+    "INTC",
+    "IBKR",
+    "ICE",
+    "IFF",
+    "IP",
+    "INTU",
+    "ISRG",
+    "IVZ",
+    "INVH",
+    "IQV",
+    "IRM",
+    "JBHT",
+    "JBL",
+    "JKHY",
+    "J",
+    "JNJ",
+    "JCI",
+    "JPM",
+    "KVUE",
+    "KDP",
+    "KEY",
+    "KEYS",
+    "KMB",
+    "KIM",
+    "KMI",
+    "KKR",
+    "KLAC",
+    "KHC",
+    "KR",
+    "LHX",
+    "LH",
+    "LRCX",
+    "LVS",
+    "LDOS",
+    "LEN",
+    "LII",
+    "LLY",
+    "LIN",
+    "LYV",
+    "LMT",
+    "L",
+    "LOW",
+    "LULU",
+    "LITE",
+    "LYB",
+    "MTB",
+    "MPC",
+    "MAR",
+    "MRSH",
+    "MLM",
+    "MAS",
+    "MA",
+    "MKC",
+    "MCD",
+    "MCK",
+    "MDT",
+    "MRK",
+    "META",
+    "MET",
+    "MTD",
+    "MGM",
+    "MCHP",
+    "MU",
+    "MSFT",
+    "MAA",
+    "MRNA",
+    "TAP",
+    "MDLZ",
+    "MPWR",
+    "MNST",
+    "MCO",
+    "MS",
+    "MOS",
+    "MSI",
+    "MSCI",
+    "NDAQ",
+    "NTAP",
+    "NFLX",
+    "NEM",
+    "NWSA",
+    "NWS",
+    "NEE",
+    "NKE",
+    "NI",
+    "NDSN",
+    "NSC",
+    "NTRS",
+    "NOC",
+    "NCLH",
+    "NRG",
+    "NUE",
+    "NVDA",
+    "NVR",
+    "NXPI",
+    "ORLY",
+    "OXY",
+    "ODFL",
+    "OMC",
+    "ON",
+    "OKE",
+    "ORCL",
+    "OTIS",
+    "PCAR",
+    "PKG",
+    "PLTR",
+    "PANW",
+    "PSKY",
+    "PH",
+    "PAYX",
+    "PYPL",
+    "PNR",
+    "PEP",
+    "PFE",
+    "PCG",
+    "PM",
+    "PSX",
+    "PNW",
+    "PNC",
+    "POOL",
+    "PPG",
+    "PPL",
+    "PFG",
+    "PG",
+    "PGR",
+    "PLD",
+    "PRU",
+    "PEG",
+    "PTC",
+    "PSA",
+    "PHM",
+    "PWR",
+    "QCOM",
+    "DGX",
+    "Q",
+    "RL",
+    "RJF",
+    "RTX",
+    "O",
+    "REG",
+    "REGN",
+    "RF",
+    "RSG",
+    "RMD",
+    "RVTY",
+    "HOOD",
+    "ROK",
+    "ROL",
+    "ROP",
+    "ROST",
+    "RCL",
+    "SPGI",
+    "CRM",
+    "SNDK",
+    "SBAC",
+    "SLB",
+    "STX",
+    "SRE",
+    "NOW",
+    "SHW",
+    "SPG",
+    "SWKS",
+    "SJM",
+    "SW",
+    "SNA",
+    "SOLV",
+    "SO",
+    "LUV",
+    "SWK",
+    "SBUX",
+    "STT",
+    "STLD",
+    "STE",
+    "SYK",
+    "SMCI",
+    "SYF",
+    "SNPS",
+    "SYY",
+    "TMUS",
+    "TROW",
+    "TTWO",
+    "TPR",
+    "TRGP",
+    "TGT",
+    "TEL",
+    "TDY",
+    "TER",
+    "TSLA",
+    "TXN",
+    "TPL",
+    "TXT",
+    "TMO",
+    "TJX",
+    "TKO",
+    "TTD",
+    "TSCO",
+    "TT",
+    "TDG",
+    "TRV",
+    "TRMB",
+    "TFC",
+    "TYL",
+    "TSN",
+    "USB",
+    "UBER",
+    "UDR",
+    "ULTA",
+    "UNP",
+    "UAL",
+    "UPS",
+    "URI",
+    "UNH",
+    "UHS",
+    "VLO",
+    "VEEV",
+    "VTR",
+    "VLTO",
+    "VRSN",
+    "VRSK",
+    "VZ",
+    "VRTX",
+    "VRT",
+    "VTRS",
+    "VICI",
+    "V",
+    "VST",
+    "VMC",
+    "WRB",
+    "GWW",
+    "WAB",
+    "WMT",
+    "DIS",
+    "WBD",
+    "WM",
+    "WAT",
+    "WEC",
+    "WFC",
+    "WELL",
+    "WST",
+    "WDC",
+    "WY",
+    "WSM",
+    "WMB",
+    "WTW",
+    "WDAY",
+    "WYNN",
+    "XEL",
+    "XYL",
+    "YUM",
+    "ZBRA",
+    "ZBH",
+    "ZTS"
+  ],
+  "skipped_symbols": [],
+  "start": "2026-05-24",
+  "end": "2026-06-03",
+  "fetched_bars": 3503,
+  "inserted_bars": 3503,
+  "no_data_symbols": [],
+  "failed_symbols": [],
+  "failed_symbols_file": "/tmp/showmeedge-sp500-eod-20260603-120916-failed.json",
+  "no_data_symbols_file": "/tmp/showmeedge-sp500-eod-20260603-120916-no-data.json",
+  "run_summary_file": "/tmp/showmeedge-sp500-eod-20260603-120916-summary.json",
+  "coverage": [
+    {
+      "symbol": "MMM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AOS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ABT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ABBV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-01-02",
+      "end": "2026-06-03",
+      "row_count": 3375
+    },
+    {
+      "symbol": "ACN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-07-19",
+      "end": "2026-06-03",
+      "row_count": 6255
+    },
+    {
+      "symbol": "ADBE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AMD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AES",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AFL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "A",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-11-18",
+      "end": "2026-06-03",
+      "row_count": 6674
+    },
+    {
+      "symbol": "APD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ABNB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2020-12-10",
+      "end": "2026-06-03",
+      "row_count": 1375
+    },
+    {
+      "symbol": "AKAM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-10-29",
+      "end": "2026-06-03",
+      "row_count": 6688
+    },
+    {
+      "symbol": "ALB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ARE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-05-28",
+      "end": "2026-06-03",
+      "row_count": 7300
+    },
+    {
+      "symbol": "ALGN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-01-30",
+      "end": "2026-06-03",
+      "row_count": 6373
+    },
+    {
+      "symbol": "ALLE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-11-18",
+      "end": "2026-06-03",
+      "row_count": 3153
+    },
+    {
+      "symbol": "LNT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ALL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "GOOGL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-08-19",
+      "end": "2026-06-03",
+      "row_count": 5482
+    },
+    {
+      "symbol": "GOOG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-08-19",
+      "end": "2026-06-03",
+      "row_count": 5482
+    },
+    {
+      "symbol": "MO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AMZN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-05-15",
+      "end": "2026-06-03",
+      "row_count": 7308
+    },
+    {
+      "symbol": "AMCR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-05-15",
+      "end": "2026-06-03",
+      "row_count": 3533
+    },
+    {
+      "symbol": "AEE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-01-02",
+      "end": "2026-06-03",
+      "row_count": 7148
+    },
+    {
+      "symbol": "AEP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AXP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AIG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AMT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-02-27",
+      "end": "2026-06-03",
+      "row_count": 7110
+    },
+    {
+      "symbol": "AWK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2008-04-23",
+      "end": "2026-06-03",
+      "row_count": 4557
+    },
+    {
+      "symbol": "AMP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-09-15",
+      "end": "2026-06-03",
+      "row_count": 5211
+    },
+    {
+      "symbol": "AME",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AMGN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "APH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ADI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AON",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "APA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "APO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-03-30",
+      "end": "2026-06-03",
+      "row_count": 3817
+    },
+    {
+      "symbol": "AAPL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AMAT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "APP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2021-04-15",
+      "end": "2026-06-03",
+      "row_count": 1290
+    },
+    {
+      "symbol": "APTV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-11-17",
+      "end": "2026-06-03",
+      "row_count": 3655
+    },
+    {
+      "symbol": "ACGL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ADM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ARES",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2014-05-02",
+      "end": "2026-06-03",
+      "row_count": 3040
+    },
+    {
+      "symbol": "ANET",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2014-06-06",
+      "end": "2026-06-03",
+      "row_count": 3016
+    },
+    {
+      "symbol": "AJG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AIZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-02-05",
+      "end": "2026-06-02",
+      "row_count": 5616
+    },
+    {
+      "symbol": "T",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ATO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ADSK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ADP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AZO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AVB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AVY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AXON",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-06-19",
+      "end": "2026-06-03",
+      "row_count": 6276
+    },
+    {
+      "symbol": "BKR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BALL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BAC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BAX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BDX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BRK.B",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BBY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TECH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BIIB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BLK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-10-01",
+      "end": "2026-06-03",
+      "row_count": 6708
+    },
+    {
+      "symbol": "BX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-06-22",
+      "end": "2026-06-03",
+      "row_count": 4767
+    },
+    {
+      "symbol": "XYZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2015-11-19",
+      "end": "2026-06-03",
+      "row_count": 2648
+    },
+    {
+      "symbol": "BNY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BKNG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-03-31",
+      "end": "2026-06-03",
+      "row_count": 6836
+    },
+    {
+      "symbol": "BSX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BMY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "AVGO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2009-08-06",
+      "end": "2026-06-03",
+      "row_count": 4232
+    },
+    {
+      "symbol": "BR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-03-22",
+      "end": "2026-06-03",
+      "row_count": 4831
+    },
+    {
+      "symbol": "BRO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BF.B",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "BLDR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-06-28",
+      "end": "2026-06-03",
+      "row_count": 5266
+    },
+    {
+      "symbol": "BG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-08-02",
+      "end": "2026-06-03",
+      "row_count": 6245
+    },
+    {
+      "symbol": "BXP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-06-18",
+      "end": "2026-06-03",
+      "row_count": 7285
+    },
+    {
+      "symbol": "CHRW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-10-16",
+      "end": "2026-06-03",
+      "row_count": 7201
+    },
+    {
+      "symbol": "CDNS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CPT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CPB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "COF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CAH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CCL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CARR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2020-03-19",
+      "end": "2026-06-03",
+      "row_count": 1560
+    },
+    {
+      "symbol": "CVNA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2017-04-28",
+      "end": "2026-06-03",
+      "row_count": 2287
+    },
+    {
+      "symbol": "CASY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CAT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CBOE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-06-15",
+      "end": "2026-06-02",
+      "row_count": 4016
+    },
+    {
+      "symbol": "CBRE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-06-10",
+      "end": "2026-06-03",
+      "row_count": 5530
+    },
+    {
+      "symbol": "CDW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-06-27",
+      "end": "2026-06-03",
+      "row_count": 3253
+    },
+    {
+      "symbol": "COR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CNC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-12-13",
+      "end": "2026-06-03",
+      "row_count": 6156
+    },
+    {
+      "symbol": "CNP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-08-11",
+      "end": "2026-06-03",
+      "row_count": 5235
+    },
+    {
+      "symbol": "CRL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-06-23",
+      "end": "2026-06-03",
+      "row_count": 6524
+    },
+    {
+      "symbol": "SCHW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CHTR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-05",
+      "end": "2026-06-03",
+      "row_count": 4128
+    },
+    {
+      "symbol": "CVX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CMG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-01-26",
+      "end": "2026-06-03",
+      "row_count": 5120
+    },
+    {
+      "symbol": "CB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CHD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "CIEN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-02-07",
+      "end": "2026-06-03",
+      "row_count": 7375
+    },
+    {
+      "symbol": "CI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CINF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CTAS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CSCO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "C",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CFG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2014-09-24",
+      "end": "2026-06-03",
+      "row_count": 2940
+    },
+    {
+      "symbol": "CLX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CME",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2002-12-06",
+      "end": "2026-06-03",
+      "row_count": 5909
+    },
+    {
+      "symbol": "CMS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "KO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CTSH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-06-19",
+      "end": "2026-06-03",
+      "row_count": 7032
+    },
+    {
+      "symbol": "COHR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "COIN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2021-04-14",
+      "end": "2026-06-03",
+      "row_count": 1291
+    },
+    {
+      "symbol": "CL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CMCSA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FIX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-06-27",
+      "end": "2026-06-03",
+      "row_count": 7278
+    },
+    {
+      "symbol": "CAG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "COP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ED",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "STZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CEG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2022-01-19",
+      "end": "2026-06-03",
+      "row_count": 1097
+    },
+    {
+      "symbol": "COO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CPRT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GLW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CPAY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-12-15",
+      "end": "2026-06-03",
+      "row_count": 3889
+    },
+    {
+      "symbol": "CTVA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-05-24",
+      "end": "2026-06-03",
+      "row_count": 1766
+    },
+    {
+      "symbol": "CSGP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-07-01",
+      "end": "2026-06-03",
+      "row_count": 7024
+    },
+    {
+      "symbol": "COST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CRH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CRWD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-06-12",
+      "end": "2026-06-03",
+      "row_count": 1754
+    },
+    {
+      "symbol": "CCI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-08-18",
+      "end": "2026-06-03",
+      "row_count": 6991
+    },
+    {
+      "symbol": "CSX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CMI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CVS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DHR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DRI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DDOG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-09-19",
+      "end": "2026-06-03",
+      "row_count": 1685
+    },
+    {
+      "symbol": "DVA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DECK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DELL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2016-08-17",
+      "end": "2026-06-03",
+      "row_count": 2462
+    },
+    {
+      "symbol": "DAL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-05-03",
+      "end": "2026-06-03",
+      "row_count": 4802
+    },
+    {
+      "symbol": "DVN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DXCM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-04-14",
+      "end": "2026-06-03",
+      "row_count": 5318
+    },
+    {
+      "symbol": "FANG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-10-12",
+      "end": "2026-06-03",
+      "row_count": 3428
+    },
+    {
+      "symbol": "DLR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-10-29",
+      "end": "2026-06-03",
+      "row_count": 5432
+    },
+    {
+      "symbol": "DG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2009-11-13",
+      "end": "2026-06-03",
+      "row_count": 4162
+    },
+    {
+      "symbol": "DLTR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "D",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DPZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-07-13",
+      "end": "2026-06-03",
+      "row_count": 5509
+    },
+    {
+      "symbol": "DASH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2020-12-09",
+      "end": "2026-06-03",
+      "row_count": 1376
+    },
+    {
+      "symbol": "DOV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DOW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-03-20",
+      "end": "2026-06-03",
+      "row_count": 1812
+    },
+    {
+      "symbol": "DHI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DTE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DUK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ETN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EBAY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-09-24",
+      "end": "2026-06-03",
+      "row_count": 6965
+    },
+    {
+      "symbol": "SATS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2008-01-02",
+      "end": "2026-06-03",
+      "row_count": 4634
+    },
+    {
+      "symbol": "ECL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EIX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-03-27",
+      "end": "2026-06-03",
+      "row_count": 6586
+    },
+    {
+      "symbol": "EA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ELV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-10-30",
+      "end": "2026-06-03",
+      "row_count": 6187
+    },
+    {
+      "symbol": "EME",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EMR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ETR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EOG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EPAM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-02-08",
+      "end": "2026-06-03",
+      "row_count": 3600
+    },
+    {
+      "symbol": "EQT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EFX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EQIX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-08-11",
+      "end": "2026-06-03",
+      "row_count": 6490
+    },
+    {
+      "symbol": "EQR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ERIE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ESS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "EL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EVRG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ES",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "EXC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EXE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2021-02-10",
+      "end": "2026-06-03",
+      "row_count": 1334
+    },
+    {
+      "symbol": "EXPE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-07-21",
+      "end": "2026-06-03",
+      "row_count": 5250
+    },
+    {
+      "symbol": "EXPD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "EXR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-08-16",
+      "end": "2026-06-02",
+      "row_count": 5484
+    },
+    {
+      "symbol": "XOM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FFIV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-06-04",
+      "end": "2026-06-03",
+      "row_count": 6791
+    },
+    {
+      "symbol": "FDS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "FICO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "FAST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FRT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "FDX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FIS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-06-20",
+      "end": "2026-06-03",
+      "row_count": 6275
+    },
+    {
+      "symbol": "FITB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FSLR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-11-17",
+      "end": "2026-06-03",
+      "row_count": 4914
+    },
+    {
+      "symbol": "FE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-11-10",
+      "end": "2026-06-03",
+      "row_count": 7184
+    },
+    {
+      "symbol": "FISV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7400
+    },
+    {
+      "symbol": "F",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FTNT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2009-11-18",
+      "end": "2026-06-03",
+      "row_count": 4159
+    },
+    {
+      "symbol": "FTV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2016-07-05",
+      "end": "2026-06-03",
+      "row_count": 2493
+    },
+    {
+      "symbol": "FOXA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-03-12",
+      "end": "2026-06-03",
+      "row_count": 1818
+    },
+    {
+      "symbol": "FOX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-03-13",
+      "end": "2026-06-03",
+      "row_count": 1817
+    },
+    {
+      "symbol": "BEN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "FCX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "GRMN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-12-08",
+      "end": "2026-06-03",
+      "row_count": 6407
+    },
+    {
+      "symbol": "IT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GEHC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2022-12-15",
+      "end": "2026-06-03",
+      "row_count": 868
+    },
+    {
+      "symbol": "GEV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2024-03-27",
+      "end": "2026-06-03",
+      "row_count": 548
+    },
+    {
+      "symbol": "GEN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GNRC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-02-11",
+      "end": "2026-06-03",
+      "row_count": 4102
+    },
+    {
+      "symbol": "GD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GIS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-11-18",
+      "end": "2026-06-03",
+      "row_count": 3907
+    },
+    {
+      "symbol": "GPC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GILD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GPN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-01-16",
+      "end": "2026-06-03",
+      "row_count": 6383
+    },
+    {
+      "symbol": "GL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GDDY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2015-03-31",
+      "end": "2026-06-03",
+      "row_count": 2811
+    },
+    {
+      "symbol": "GS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-05-04",
+      "end": "2026-06-03",
+      "row_count": 6813
+    },
+    {
+      "symbol": "HAL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HIG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HAS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HCA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-03-10",
+      "end": "2026-06-03",
+      "row_count": 3831
+    },
+    {
+      "symbol": "DOC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HSIC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HSY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HPE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2015-10-19",
+      "end": "2026-06-03",
+      "row_count": 2671
+    },
+    {
+      "symbol": "HLT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-12-12",
+      "end": "2026-06-03",
+      "row_count": 3136
+    },
+    {
+      "symbol": "HD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HON",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HRL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HWM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2016-11-01",
+      "end": "2026-06-03",
+      "row_count": 2409
+    },
+    {
+      "symbol": "HPQ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HUBB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7400
+    },
+    {
+      "symbol": "HUM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "HBAN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HII",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-03-22",
+      "end": "2026-06-03",
+      "row_count": 3823
+    },
+    {
+      "symbol": "IBM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "IEX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "IDXX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ITW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "INCY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "IR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2017-05-12",
+      "end": "2026-06-03",
+      "row_count": 2277
+    },
+    {
+      "symbol": "PODD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-05-15",
+      "end": "2026-06-03",
+      "row_count": 4794
+    },
+    {
+      "symbol": "INTC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "IBKR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-05-04",
+      "end": "2026-06-03",
+      "row_count": 4801
+    },
+    {
+      "symbol": "ICE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-11-16",
+      "end": "2026-06-03",
+      "row_count": 5167
+    },
+    {
+      "symbol": "IFF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "IP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "INTU",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ISRG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-06-16",
+      "end": "2026-06-03",
+      "row_count": 6529
+    },
+    {
+      "symbol": "IVZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "INVH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2017-02-01",
+      "end": "2026-06-03",
+      "row_count": 2347
+    },
+    {
+      "symbol": "IQV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-05-09",
+      "end": "2026-06-03",
+      "row_count": 3287
+    },
+    {
+      "symbol": "IRM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "JBHT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "JBL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "JKHY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "J",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "JNJ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "JCI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "JPM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "KVUE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2023-05-04",
+      "end": "2026-06-03",
+      "row_count": 773
+    },
+    {
+      "symbol": "KDP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2008-05-07",
+      "end": "2026-06-03",
+      "row_count": 4547
+    },
+    {
+      "symbol": "KEY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "KEYS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2014-10-20",
+      "end": "2026-06-03",
+      "row_count": 2922
+    },
+    {
+      "symbol": "KMB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "KIM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "KMI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-02-11",
+      "end": "2026-06-03",
+      "row_count": 3849
+    },
+    {
+      "symbol": "KKR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-07-15",
+      "end": "2026-06-03",
+      "row_count": 3996
+    },
+    {
+      "symbol": "KLAC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "KHC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2015-07-06",
+      "end": "2026-06-03",
+      "row_count": 2745
+    },
+    {
+      "symbol": "KR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LHX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LRCX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LVS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-12-15",
+      "end": "2026-06-03",
+      "row_count": 5400
+    },
+    {
+      "symbol": "LDOS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-10-17",
+      "end": "2026-06-03",
+      "row_count": 4937
+    },
+    {
+      "symbol": "LEN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LII",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-07-29",
+      "end": "2026-06-03",
+      "row_count": 6753
+    },
+    {
+      "symbol": "LLY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LIN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LYV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-12-21",
+      "end": "2026-06-03",
+      "row_count": 5143
+    },
+    {
+      "symbol": "LMT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "L",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LOW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LULU",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-07-27",
+      "end": "2026-06-03",
+      "row_count": 4743
+    },
+    {
+      "symbol": "LITE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2015-07-23",
+      "end": "2026-06-03",
+      "row_count": 2732
+    },
+    {
+      "symbol": "LYB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-04-28",
+      "end": "2026-06-03",
+      "row_count": 4050
+    },
+    {
+      "symbol": "MTB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MPC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-06-24",
+      "end": "2026-06-03",
+      "row_count": 3757
+    },
+    {
+      "symbol": "MAR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-03-23",
+      "end": "2026-06-03",
+      "row_count": 7094
+    },
+    {
+      "symbol": "MRSH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MLM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "MAS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-05-25",
+      "end": "2026-06-03",
+      "row_count": 5037
+    },
+    {
+      "symbol": "MKC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MCD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MCK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MDT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MRK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "META",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-05-18",
+      "end": "2026-06-03",
+      "row_count": 3530
+    },
+    {
+      "symbol": "MET",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-04-05",
+      "end": "2026-06-03",
+      "row_count": 6579
+    },
+    {
+      "symbol": "MTD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-11-14",
+      "end": "2026-06-02",
+      "row_count": 7179
+    },
+    {
+      "symbol": "MGM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MCHP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MU",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MSFT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MAA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MRNA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2018-12-07",
+      "end": "2026-06-03",
+      "row_count": 1881
+    },
+    {
+      "symbol": "TAP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MDLZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-06-13",
+      "end": "2026-06-03",
+      "row_count": 6280
+    },
+    {
+      "symbol": "MPWR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-11-19",
+      "end": "2026-06-03",
+      "row_count": 5417
+    },
+    {
+      "symbol": "MNST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MCO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MOS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MSI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "MSCI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-11-15",
+      "end": "2026-06-02",
+      "row_count": 4664
+    },
+    {
+      "symbol": "NDAQ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2002-07-01",
+      "end": "2026-06-03",
+      "row_count": 6020
+    },
+    {
+      "symbol": "NTAP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NFLX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2002-05-23",
+      "end": "2026-06-03",
+      "row_count": 6046
+    },
+    {
+      "symbol": "NEM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NWSA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-06-19",
+      "end": "2026-06-03",
+      "row_count": 3259
+    },
+    {
+      "symbol": "NWS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-06-19",
+      "end": "2026-06-03",
+      "row_count": 3259
+    },
+    {
+      "symbol": "NEE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NKE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NDSN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NSC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NTRS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NOC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NCLH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-01-18",
+      "end": "2026-06-03",
+      "row_count": 3363
+    },
+    {
+      "symbol": "NRG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-02",
+      "end": "2026-06-03",
+      "row_count": 5661
+    },
+    {
+      "symbol": "NUE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NVDA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-01-22",
+      "end": "2026-06-03",
+      "row_count": 6883
+    },
+    {
+      "symbol": "NVR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "NXPI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-08-06",
+      "end": "2026-06-03",
+      "row_count": 3980
+    },
+    {
+      "symbol": "ORLY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "OXY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ODFL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "OMC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ON",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-05-02",
+      "end": "2026-06-03",
+      "row_count": 6561
+    },
+    {
+      "symbol": "OKE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "ORCL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "OTIS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2020-03-19",
+      "end": "2026-06-03",
+      "row_count": 1560
+    },
+    {
+      "symbol": "PCAR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PKG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-01-28",
+      "end": "2026-06-02",
+      "row_count": 6625
+    },
+    {
+      "symbol": "PLTR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2020-09-30",
+      "end": "2026-06-03",
+      "row_count": 1425
+    },
+    {
+      "symbol": "PANW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-07-20",
+      "end": "2026-06-03",
+      "row_count": 3487
+    },
+    {
+      "symbol": "PSKY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-12-05",
+      "end": "2026-06-03",
+      "row_count": 5155
+    },
+    {
+      "symbol": "PH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PAYX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PYPL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2015-07-06",
+      "end": "2026-06-03",
+      "row_count": 2745
+    },
+    {
+      "symbol": "PNR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PEP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PFE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PCG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2008-03-17",
+      "end": "2026-06-03",
+      "row_count": 4583
+    },
+    {
+      "symbol": "PSX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-04-12",
+      "end": "2026-06-03",
+      "row_count": 3556
+    },
+    {
+      "symbol": "PNW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PNC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "POOL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PPG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PPL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PFG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-10-23",
+      "end": "2026-06-03",
+      "row_count": 6192
+    },
+    {
+      "symbol": "PG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PGR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PLD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-11-21",
+      "end": "2026-06-03",
+      "row_count": 7175
+    },
+    {
+      "symbol": "PRU",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-12-13",
+      "end": "2026-06-03",
+      "row_count": 6156
+    },
+    {
+      "symbol": "PEG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PTC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PSA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PHM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "PWR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-02-12",
+      "end": "2026-06-03",
+      "row_count": 7120
+    },
+    {
+      "symbol": "QCOM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DGX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "Q",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2025-10-27",
+      "end": "2026-06-03",
+      "row_count": 151
+    },
+    {
+      "symbol": "RL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-06-12",
+      "end": "2026-06-03",
+      "row_count": 7289
+    },
+    {
+      "symbol": "RJF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "RTX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "O",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "REG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "REGN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "RF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "RSG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-07-01",
+      "end": "2026-06-03",
+      "row_count": 7024
+    },
+    {
+      "symbol": "RMD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "RVTY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "HOOD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2021-07-29",
+      "end": "2026-06-03",
+      "row_count": 1217
+    },
+    {
+      "symbol": "ROK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ROL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ROP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ROST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "RCL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SPGI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "CRM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-06-23",
+      "end": "2026-06-03",
+      "row_count": 5522
+    },
+    {
+      "symbol": "SNDK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2025-02-13",
+      "end": "2026-06-03",
+      "row_count": 327
+    },
+    {
+      "symbol": "SBAC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-06-16",
+      "end": "2026-06-03",
+      "row_count": 6783
+    },
+    {
+      "symbol": "SLB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "STX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2002-12-11",
+      "end": "2026-06-03",
+      "row_count": 5906
+    },
+    {
+      "symbol": "SRE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-06-29",
+      "end": "2026-06-03",
+      "row_count": 7026
+    },
+    {
+      "symbol": "NOW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-06-29",
+      "end": "2026-06-03",
+      "row_count": 3501
+    },
+    {
+      "symbol": "SHW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SPG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SWKS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SJM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2008-06-17",
+      "end": "2026-06-03",
+      "row_count": 4519
+    },
+    {
+      "symbol": "SNA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SOLV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2024-03-26",
+      "end": "2026-06-03",
+      "row_count": 549
+    },
+    {
+      "symbol": "SO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "LUV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SWK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SBUX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "STT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "STLD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "STE",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-02",
+      "row_count": 7400
+    },
+    {
+      "symbol": "SYK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SMCI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-03-29",
+      "end": "2026-06-03",
+      "row_count": 4826
+    },
+    {
+      "symbol": "SYF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2014-07-31",
+      "end": "2026-06-03",
+      "row_count": 2978
+    },
+    {
+      "symbol": "SNPS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "SYY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TMUS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-04-19",
+      "end": "2026-06-03",
+      "row_count": 4812
+    },
+    {
+      "symbol": "TROW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TTWO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-04-15",
+      "end": "2026-06-03",
+      "row_count": 7330
+    },
+    {
+      "symbol": "TPR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2000-10-06",
+      "end": "2026-06-03",
+      "row_count": 6451
+    },
+    {
+      "symbol": "TRGP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-12-07",
+      "end": "2026-06-03",
+      "row_count": 3895
+    },
+    {
+      "symbol": "TGT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TEL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-06-14",
+      "end": "2026-06-03",
+      "row_count": 4773
+    },
+    {
+      "symbol": "TDY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-11-23",
+      "end": "2026-06-03",
+      "row_count": 6671
+    },
+    {
+      "symbol": "TER",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TSLA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-06-29",
+      "end": "2026-06-03",
+      "row_count": 4007
+    },
+    {
+      "symbol": "TXN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TPL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TXT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TMO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TJX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TKO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-10-19",
+      "end": "2026-06-03",
+      "row_count": 6696
+    },
+    {
+      "symbol": "TTD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2016-09-21",
+      "end": "2026-06-03",
+      "row_count": 2438
+    },
+    {
+      "symbol": "TSCO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TDG",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-03-15",
+      "end": "2026-06-03",
+      "row_count": 5087
+    },
+    {
+      "symbol": "TRV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TRMB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TFC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TYL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "TSN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "USB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "UBER",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2019-05-10",
+      "end": "2026-06-03",
+      "row_count": 1776
+    },
+    {
+      "symbol": "UDR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ULTA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2007-10-25",
+      "end": "2026-06-03",
+      "row_count": 4680
+    },
+    {
+      "symbol": "UNP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "UAL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-02-06",
+      "end": "2026-06-03",
+      "row_count": 5113
+    },
+    {
+      "symbol": "UPS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1999-11-10",
+      "end": "2026-06-03",
+      "row_count": 6680
+    },
+    {
+      "symbol": "URI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-12-18",
+      "end": "2026-06-03",
+      "row_count": 7157
+    },
+    {
+      "symbol": "UNH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "UHS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "VLO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "VEEV",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-10-16",
+      "end": "2026-06-03",
+      "row_count": 3176
+    },
+    {
+      "symbol": "VTR",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-05-05",
+      "end": "2026-06-03",
+      "row_count": 7316
+    },
+    {
+      "symbol": "VLTO",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2023-10-04",
+      "end": "2026-06-03",
+      "row_count": 668
+    },
+    {
+      "symbol": "VRSN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1998-01-30",
+      "end": "2026-06-03",
+      "row_count": 7129
+    },
+    {
+      "symbol": "VRSK",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2009-10-07",
+      "end": "2026-06-03",
+      "row_count": 4189
+    },
+    {
+      "symbol": "VZ",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "VRTX",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "VRT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2018-08-02",
+      "end": "2026-06-03",
+      "row_count": 1969
+    },
+    {
+      "symbol": "VTRS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "VICI",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2018-01-02",
+      "end": "2026-06-03",
+      "row_count": 2116
+    },
+    {
+      "symbol": "V",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2008-03-19",
+      "end": "2026-06-03",
+      "row_count": 4581
+    },
+    {
+      "symbol": "VST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2016-10-05",
+      "end": "2026-06-03",
+      "row_count": 2428
+    },
+    {
+      "symbol": "VMC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WRB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "GWW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WAB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WMT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "DIS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WBD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2005-07-08",
+      "end": "2026-06-03",
+      "row_count": 5259
+    },
+    {
+      "symbol": "WM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WAT",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WEC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WFC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WELL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WST",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WDC",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WSM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WMB",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "WTW",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-06-12",
+      "end": "2026-06-03",
+      "row_count": 6281
+    },
+    {
+      "symbol": "WDAY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2012-10-12",
+      "end": "2026-06-03",
+      "row_count": 3428
+    },
+    {
+      "symbol": "WYNN",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2002-10-25",
+      "end": "2026-06-03",
+      "row_count": 5938
+    },
+    {
+      "symbol": "XEL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "XYL",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2011-10-13",
+      "end": "2026-06-03",
+      "row_count": 3680
+    },
+    {
+      "symbol": "YUM",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-09-17",
+      "end": "2026-06-03",
+      "row_count": 7222
+    },
+    {
+      "symbol": "ZBRA",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "1997-01-02",
+      "end": "2026-06-03",
+      "row_count": 7401
+    },
+    {
+      "symbol": "ZBH",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2001-07-25",
+      "end": "2026-06-03",
+      "row_count": 6251
+    },
+    {
+      "symbol": "ZTS",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2013-02-01",
+      "end": "2026-06-03",
+      "row_count": 3354
+    }
+  ],
+  "lookback_days": 10,
+  "timezone": "America/New_York"
+}

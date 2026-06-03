@@ -80,7 +80,7 @@ We now have a much cleaner market-data foundation:
  - .
 
  ```
-bash scripts/update-sp500-eod-safe.sh \
+bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
   --start 2026-05-20 \
   --end 2026-06-02
 ```
