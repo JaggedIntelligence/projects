@@ -77,7 +77,7 @@ function validateArgs(args) {
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/yahoo-earnings-calendar.mjs [options]
+  node scripts/yahoo-earnings-calendar/yahoo-earnings-calendar-backfill.mjs [options]
 
 Options:
   --from YYYY-MM-DD       Calendar range start. Default: ${DEFAULT_FROM}

@@ -28,25 +28,25 @@ Earnings On Wed, Jun 2
 Prototype file:
 
 ```text
-scripts/yahoo-earnings-calendar.mjs
+scripts/yahoo-earnings-calendar/yahoo-earnings-calendar-backfill.mjs
 ```
 
 Run:
 
 ```bash
-node scripts/yahoo-earnings-calendar.mjs
+node scripts/yahoo-earnings-calendar/yahoo-earnings-calendar-backfill.mjs
 ```
 
 JSON output:
 
 ```bash
-node scripts/yahoo-earnings-calendar.mjs --format json
+node scripts/yahoo-earnings-calendar/yahoo-earnings-calendar-backfill.mjs --format json
 ```
 
 Custom date:
 
 ```bash
-node scripts/yahoo-earnings-calendar.mjs \
+node scripts/yahoo-earnings-calendar/yahoo-earnings-calendar-backfill.mjs \
   --from 2010-05-30 \
   --to 2010-06-05 \
   --day 2010-06-02 \
@@ -200,7 +200,7 @@ This is important because Yahoo may change selectors, return a consent page, ret
 
 ## Next Implementation Steps
 
-1. Keep `scripts/yahoo-earnings-calendar.mjs` as the first prototype.
+1. Keep `scripts/yahoo-earnings-calendar/yahoo-earnings-calendar-backfill.mjs` as the first prototype.
 2. Add optional `--output path.json` so batch runs can write results to disk.
 3. Add `--screenshot-on-error` and `--html-on-error` debug artifacts.
 4. Add date-range iteration for multiple days.
