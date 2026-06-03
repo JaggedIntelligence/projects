@@ -88,14 +88,23 @@ Prints a JSON array of dates in the carousel that have earnings.
 }
 
 // ----------------------------------------------------
-function buildYahooEarningsUrl({ from, to, day, offset=0 }) {
+function buildYahooEarningsUrl({ from, to, day, offset, size }) {
   const url = new URL("https://finance.yahoo.com/calendar/earnings");
   url.searchParams.set("from", from);
   url.searchParams.set("to", to);
-  //url.searchParams.set("day", day);
 
-  //url.searchParams.set("offset", day);
-  //url.searchParams.set("size", 100);
+  if (day) {
+    url.searchParams.set("day", day);
+  }
+
+  if (offset != null) {
+    url.searchParams.set("offset", String(offset));
+  }
+
+  if (size != null) {
+    url.searchParams.set("size", String(size));
+  }
+
   return url.toString();
 }
 
@@ -127,7 +136,7 @@ export async function scrapeYahooEarningsCalendar(options = {}) {
 
     // --------------------
     // Map and flatten the URLs based on earningsCount chunks of 100
-    const urlarray = earningsDates.flatMap(item => {
+    const urlarray = earningsDates.flatMap((item) => {
       const urlsForDay = [];
       const count = item.earningsCount;
       
@@ -136,7 +145,15 @@ export async function scrapeYahooEarningsCalendar(options = {}) {
 
       // Loop through counts in increments of 100
       for (let offset = 0; offset < count; offset += 100) {
-        urlsForDay.push(`${item.date}&offset=${offset}&size=100`);
+        urlsForDay.push(
+          buildYahooEarningsUrl({
+            from: args.from,
+            to: args.to,
+            day: item.date,
+            offset,
+            size: 100
+          })
+        );
       }
       
       return urlsForDay;
@@ -327,10 +344,20 @@ async function main() {
     return;
   }
 
-  const result = await scrapeYahooEarningsCalendar(args);
-  //console.log(JSON.stringify(result.earningsDates, null, 2));
-  console.log(JSON.stringify(result, null, 2));
+  const datePairsArray = getStrictSundayToSaturdayPairs(args.from, args.to);
+  const results = [];
 
+  for (const item of datePairsArray) {
+    const result = await scrapeYahooEarningsCalendar({
+      from: item[0],
+      to: item[1],
+      headless: args.headless,
+      timeoutMs: args.timeoutMs
+    });
+    results.push(result);
+  }
+
+  console.log(JSON.stringify(results, null, 2));
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
