@@ -4,14 +4,14 @@
  - here we list what is working and what is not 
  - over all project status
 
- ### What is working 
+ ### 1. What is working 
   - all 3 services are coming up with commands shown below.
   -.
   - but SR needs to test what is Inside QuestDB , how to add DB rows in Quest DB and get the DATA OUT
   - read /1PROJECT-DOCS/feature-add-FASTAPI*.md file
 
 
- ### QuestDB, FastAPI server, PostGresDB 
+ ### 2. QuestDB, FastAPI server, PostGresDB 
   - 1. all 3 are installed using docker specified in /scripts/docker-compose.yml file
   -
   - 2. QuestDB and PostgreDB are started and Stopped as below 
@@ -27,8 +27,28 @@
     where above are defined in package.json as
         "market-api:start": "bash scripts/db-init.sh market",
 
+ - 4. QuestDB admin UI is available at 
+    http://127.0.0.1:9000/index.html
 
-### We got 3.18 million rows from 1997-01-01 to 2016-06-02 for all S&P 500 symbols
+### 2.1 Where QuestDB is getting starated
+
+ invoked from package.json as
+        "db:start": "bash scripts/db-init.sh start"
+
+ below is part of db-init.sh 
+```
+start_infra() {
+  echo "Starting Postgres and QuestDB..."
+  compose up -d postgres questdb
+}
+
+start)
+    start_infra
+    ;;
+```
+
+
+### 3. We got 3.18 million rows from 1997-01-01 to 2016-06-02 for all S&P 500 symbols
  - Thank god...  this is great achivement of getting 3.2 million rows ..
  - thanks to Codex $20 subscription it does all ..
  - thanks we selected QuestDB,  3 million row is breeze for  QuestDB ...
@@ -51,7 +71,7 @@ We now have a much cleaner market-data foundation:
 
 ```
 
-### EOD update run  on June-02  5 PM PST ..
+### 4. EOD update run  on June-02  5 PM PST ..
  - SR ran EOD update with the shell script bleow as given in the file '/1PROJECT-DOCS/4feature-add-EOD-refresh.md' and it worked.
  - nice multiple log files are in folder '/scripts/LOG/showmeedge-sp500-eod/20260602-170311' ( DATE-TIMEran 5 pm 03 min 11 sec)
  - I ran this from Mac Terminal being in /showmeedge folder
