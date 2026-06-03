@@ -1,0 +1,7 @@
+total_yfinance_rows=3183096
+distinct_yfinance_symbols=504
+requested_symbols=503
+latest_requested_ts=2026-06-02 00:00:00
+requested_symbols_with_latest_ts=486
+requested_symbols_missing_latest_ts=17
+missing_latest_symbols=BAC,CAH,CVX,FIX,ED,DRI,DOV,ESS,ES,HII,LII,MRK,MS,OKE,SPGI,TDG,GWW

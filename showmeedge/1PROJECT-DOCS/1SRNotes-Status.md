@@ -50,3 +50,17 @@ We now have a much cleaner market-data foundation:
   Next natural step when you’re ready is the EOD update job using the same scripts/LOG/.../<run-id>/ pattern.
 
 ```
+
+### EOD update run  on June-02  5 PM PST ..
+ - SR ran EOD update with the shell script bleow as given in the file '/1PROJECT-DOCS/4feature-add-EOD-refresh.md' and it worked.
+ - nice multiple log files are in folder '/scripts/LOG/showmeedge-sp500-eod/20260602-170311' ( DATE-TIMEran 5 pm 03 min 11 sec)
+ - I ran this from Mac Terminal being in /showmeedge folder
+ - I ran out of credits, so better to run these scripts from 'local Terminal' instead of 'Codex', Codex RUNS uses tokens ..
+ - now may need to go $100 plan .., Usage shows 'no credits ..'
+ - .
+
+ ```
+bash scripts/update-sp500-eod-safe.sh \
+  --start 2026-05-20 \
+  --end 2026-06-02
+```
