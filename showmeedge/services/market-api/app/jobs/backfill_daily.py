@@ -96,7 +96,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--sleep-seconds", type=non_negative_float, default=0.0, help="Pause between batches.")
     parser.add_argument(
         "--failed-symbols-file",
-        help="Optional JSON file path for failed symbols inside the running environment. The safe shell wrapper copies this into scripts/LOG.",
+        help="Optional JSON file path for failed symbols inside the running environment. The safe shell wrapper copies this into batch-jobs/yahoo-daily-bars-data/LOG.",
     )
     parser.add_argument(
         "--no-data-symbols-file",

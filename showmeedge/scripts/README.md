@@ -53,10 +53,10 @@ SR Notes:
 Use this wrapper for restartable QuestDB daily stock data backfills:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
-The script starts `questdb` and `market-api`, checks service health, refuses to run a full backfill if the selected universe is unexpectedly small, writes timestamped logs under `scripts/LOG/showmeedge-sp500-backfill`, and calls:
+The script starts `questdb` and `market-api`, checks service health, refuses to run a full backfill if the selected universe is unexpectedly small, writes timestamped logs under `batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill`, and calls:
 
 ```bash
 python -m app.jobs.backfill_daily \
@@ -70,13 +70,13 @@ python -m app.jobs.backfill_daily \
 For a small smoke test:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
 ```
 
 For a bounded historical window, pass both dates. The end date is inclusive:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --start 2015-01-01 --end 2020-12-31
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --start 2015-01-01 --end 2020-12-31
 ```
 
 Each run writes:
@@ -94,10 +94,10 @@ run-summary.json
 Use this wrapper after market close to refresh the recent daily window without rerunning the full historical backfill:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh
+bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh
 ```
 
-The script writes timestamped logs under `scripts/LOG/showmeedge-sp500-eod` and calls:
+The script writes timestamped logs under `batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-eod` and calls:
 
 ```bash
 python -m app.jobs.update_daily_recent \
@@ -110,7 +110,7 @@ python -m app.jobs.update_daily_recent \
 For a small smoke test:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/update-sp500-eod-safe.sh --max-symbols 5 --lookback-days 2
+bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh --max-symbols 5 --lookback-days 2
 ```
 
 Each EOD run writes:

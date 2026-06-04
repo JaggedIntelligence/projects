@@ -34,7 +34,7 @@ Therefore, the backfill must be restartable by design.
 Use a two-layer design:
 
 ```text
-scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
+batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh
   -> starts/checks Docker Compose services
   -> validates universe size
   -> creates timestamped logs
@@ -87,7 +87,7 @@ If a symbol is already complete, the Python job can skip it. If it is incomplete
 File:
 
 ```text
-scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
+batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
 Responsibilities:
@@ -183,13 +183,13 @@ The repo now has the full current S&P 500 ticker universe in `sp500_current.csv`
 Use this for smoke testing:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --max-symbols 20
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --max-symbols 20
 ```
 
 If you changed Python dependencies or code inside `services/market-api`, rebuild too:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild --max-symbols 20
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild --max-symbols 20
 ```
 
 ### Full S&P 500 Run
@@ -197,7 +197,7 @@ bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild --max-symbol
 For the full current S&P 500 universe:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
 ```
 
 Equivalent Python job called inside the wrapper:
@@ -216,14 +216,14 @@ python -m app.jobs.backfill_daily \
   --run-summary-file /tmp/showmeedge-sp500-backfill-<run-id>-summary.json
 ```
 
-The JSON report paths above are container-local. The safe wrapper copies them into the host run folder under `scripts/LOG/showmeedge-sp500-backfill/<run-id>/`.
+The JSON report paths above are container-local. The safe wrapper copies them into the host run folder under `batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/<run-id>/`.
 
 ### Bounded Historical Run
 
 The safe wrapper also supports an inclusive end date:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh \
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh \
   --start 2015-01-01 \
   --end 2020-12-31
 ```
@@ -241,7 +241,7 @@ The user-facing `--end` date is inclusive. The yfinance provider receives an exc
 
 ## Script Options
 
-`scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh` supports:
+`batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh` supports:
 
 ```text
 --universe NAME
@@ -270,7 +270,7 @@ retry-attempts: 3
 retry-sleep-seconds: 5
 sleep-seconds: 1
 min-symbols: 450
-log-root: scripts/LOG/showmeedge-sp500-backfill
+log-root: batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill
 ```
 
 ## Small Universe Protection
@@ -287,13 +287,13 @@ Running the "full" script against only a few symbols could create a false sense 
 To intentionally run against a small seed universe:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe
 ```
 
 For smoke tests:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe --max-symbols 20
 ```
 
 ## Failure And Restart Plan
@@ -303,7 +303,7 @@ bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --allow-small-universe
 Rerun the same command:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh --rebuild
 ```
 
 The wrapper invokes Python with `--skip-existing`.
@@ -393,7 +393,7 @@ This distinction matters for bounded historical runs. A current S&P 500 symbol t
 Rerun:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
 Already-complete symbols should be skipped.
@@ -403,7 +403,7 @@ Already-complete symbols should be skipped.
 Each run creates a timestamped host directory under the repo:
 
 ```text
-scripts/LOG/showmeedge-sp500-backfill/YYYYMMDD-HHMMSS/
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/YYYYMMDD-HHMMSS/
 ```
 
 Files:
@@ -433,7 +433,7 @@ run-summary.json
 
 `run-summary.json` is the machine-readable final summary with requested symbols, processed symbols, skipped symbols, counts, failed symbols, no-data symbols, and coverage.
 
-The Python job writes its report JSON files inside the `market-api` container first. The shell wrapper then copies those files into the host-side `scripts/LOG/...` run directory so the result is kept for future reference.
+The Python job writes its report JSON files inside the `market-api` container first. The shell wrapper then copies those files into the host-side `batch-jobs/yahoo-daily-bars-data/LOG/...` run directory so the result is kept for future reference.
 
 ## Verification Queries
 
@@ -503,10 +503,10 @@ QuestDB verification passed
 
 ### Log-Location Smoke Test
 
-After changing host logs from `/tmp` to `scripts/LOG`, this command was run:
+After changing host logs from `/tmp` to `batch-jobs/yahoo-daily-bars-data/LOG`, this command was run:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh \
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh \
   --rebuild \
   --max-symbols 1 \
   --batch-size 1 \
@@ -521,17 +521,17 @@ market-api image rebuilt
 questdb and market-api started
 health checks passed
 universe sp500_current contained 503 symbols
-logs written under scripts/LOG/showmeedge-sp500-backfill/<run-id>/
-failed-symbol report copied to scripts/LOG/showmeedge-sp500-backfill/<run-id>/failed-symbols.json
+logs written under batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/<run-id>/
+failed-symbol report copied to batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/<run-id>/failed-symbols.json
 QuestDB verification ran
 ```
 
 This run exited nonzero because yfinance returned no bars for `MMM` during that attempt. That is acceptable for this smoke test because it validated the failure path:
 
 ```text
-scripts/LOG/showmeedge-sp500-backfill/20260602-122314/backfill.log
-scripts/LOG/showmeedge-sp500-backfill/20260602-122314/failed-symbols.json
-scripts/LOG/showmeedge-sp500-backfill/20260602-122314/verification.log
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-122314/backfill.log
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-122314/failed-symbols.json
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-122314/verification.log
 ```
 
 The failed-symbol file contained:
@@ -551,13 +551,13 @@ The failed-symbol file contained:
 After the provider hardening changes, the full safe wrapper was run successfully:
 
 ```bash
-bash scripts/yahoo-daily-bars-data/backfill-sp500-safe.sh
+bash batch-jobs/yahoo-daily-bars-data/backfill-sp500-safe.sh
 ```
 
 Run directory:
 
 ```text
-scripts/LOG/showmeedge-sp500-backfill/20260602-123841/
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-123841/
 ```
 
 Result:
@@ -576,9 +576,9 @@ The extra symbol is expected because `SPY` was loaded earlier during seed/smoke 
 Run artifacts:
 
 ```text
-scripts/LOG/showmeedge-sp500-backfill/20260602-123841/backfill.log
-scripts/LOG/showmeedge-sp500-backfill/20260602-123841/verification.log
-scripts/LOG/showmeedge-sp500-backfill/20260602-123841/failed-symbols.json
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-123841/backfill.log
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-123841/verification.log
+batch-jobs/yahoo-daily-bars-data/LOG/showmeedge-sp500-backfill/20260602-123841/failed-symbols.json
 ```
 
 Additional verification confirmed:
