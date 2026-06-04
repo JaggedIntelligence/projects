@@ -256,7 +256,7 @@ Responsibilities:
 - Accept `--universe sp500_current`.
 - Resolve `services/market-api/app/data/<universe>.csv`.
 - Read source tickers from the CSV.
-- Support `--ticker ZS` for one-symbol debugging.
+- Support `--ticker AAPL` through the same wrapper/manifest/ingest path for one-symbol debugging.
 - Support `--max-symbols N` for smoke tests.
 - Write one JSONL manifest row per source ticker.
 

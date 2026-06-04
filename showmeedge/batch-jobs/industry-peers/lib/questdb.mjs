@@ -26,6 +26,18 @@ export async function pingQuestDb(sql) {
   return rows.length > 0;
 }
 
+export async function countIndustryPeerRows({ sql, sourceTicker, programId = DEFAULT_PROGRAM_ID }) {
+  await ensureIndustryPeersTable(sql);
+  const rows = await sql`
+    SELECT count() AS row_count
+    FROM industry_peers
+    WHERE source_ticker = ${normalizeTicker(sourceTicker)}
+      AND program_id = ${programId}
+  `;
+
+  return Number(rows[0]?.row_count ?? 0);
+}
+
 export async function insertIndustryPeerRows({
   sql,
   rows = [],

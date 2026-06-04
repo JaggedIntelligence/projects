@@ -19,35 +19,49 @@ getting peers into Database is big part
 - for Marvel this program show good Peers
 https://finance.yahoo.com/quote/MRVL/
 
+### S&P 500 batch backfill
 
-### Here is command line run and the Output 
+Use this wrapper for the normal S&P 500 industry peers load:
 
-- Here Rank is good thing, keep that field Rank  in the DB for the Symbol ..
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh
 ```
-% node batch-jobs/industry-peers/generate-peers-manifest.mjs --ticker ZS  --timeout-ms 20000
 
+Defaults:
+
+```text
+UNIVERSE=sp500_current
+PROGRAM_ID=yahoo-finance-compare-to
+RECORD_INSERT_FLAG=skip
 ```
-{"sourceTicker":"ZS","rank":2,"peerTicker":"PANW","companyName":"Palo Alto Networks, Inc.","industry":"Software—Infrastructure"}
 
-{"sourceTicker":"ZS","rank":3,"peerTicker":"CRWD","companyName":"CrowdStrike Holdings, Inc.","industry":"Software—Infrastructure"}
+`skip` means a source ticker is skipped when rows already exist for `source_ticker + program_id`.
 
-{"sourceTicker":"ZS","rank":4,"peerTicker":"NET","companyName":"Cloudflare, Inc.","industry":"Software—Infrastructure"}
+Smoke-test form:
 
-{"sourceTicker":"ZS","rank":5,"peerTicker":"OKTA","companyName":"Okta, Inc.","industry":"Software—Infrastructure"}
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
+  --max-symbols 20 \
+  --allow-small-universe \
+  --dry-run
+```
 
-{"sourceTicker":"ZS","rank":6,"peerTicker":"MDB","companyName":"MongoDB, Inc.","industry":"Software—Infrastructure"}
+Force a fresh snapshot:
 
-{"sourceTicker":"ZS","rank":7,"peerTicker":"FTNT","companyName":"Fortinet, Inc.","industry":"Software—Infrastructure"}
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
+  --record_insert_flag newrecord
+```
 
-{"sourceTicker":"ZS","rank":8,"peerTicker":"RBRK","companyName":"Rubrik, Inc.","industry":"Software—Infrastructure"}
+### Targeted wrapper run
 
-{"sourceTicker":"ZS","rank":9,"peerTicker":"S","companyName":"SentinelOne, Inc.","industry":"Software—Infrastructure"}
+Use the same wrapper path for one source ticker or a small subset:
 
-{"sourceTicker":"ZS","rank":10,"peerTicker":"SNPS","companyName":"Synopsys, Inc.","industry":"Software—Infrastructure"}
-
-{"sourceTicker":"ZS","rank":11,"peerTicker":"TWLO","companyName":"Twilio Inc.","industry":"Software—Infrastructure"}
-sreddy@Subbas-Ma
-
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
+  --ticker AAPL \
+  --allow-small-universe \
+  --dry-run
 ```
 
 ### QuestDB insert
@@ -58,25 +72,7 @@ The QuestDB table is defined in:
 batch-jobs/industry-peers/sql/industry_peers_table.sql
 ```
 
-The scraper still writes the full Yahoo peer JSONL for inspection, but QuestDB inserts only the essential columns from that table:
-
-```bash
-node batch-jobs/industry-peers/generate-peers-manifest.mjs \
-  --ticker ZS \
-  --timeout-ms 20000 \
-  --output batch-jobs/industry-peers/runs/zs-peers.jsonl \
-  --insert-questdb
-```
-
-Useful dry-run form:
-
-```bash
-node batch-jobs/industry-peers/generate-peers-manifest.mjs \
-  --ticker ZS \
-  --timeout-ms 20000 \
-  --insert-questdb \
-  --dry-run
-```
+The batch flow writes relationship JSONL artifacts under `runs/<run-id>/` and inserts only the essential columns from that table.
 
 Default QuestDB connection:
 

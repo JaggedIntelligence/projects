@@ -67,7 +67,7 @@ function validateArgs(args) {
 
 function printHelp() {
   console.log(`Usage:
-  node batch-jobs/industry-peers/generate-peers-manifest.mjs [options]
+  node batch-jobs/webscrape-template/generate-peers-manifest.mjs [options]
 
 Options:
   --ticker AAPL           Stock ticker. Default: ${DEFAULT_TICKER}

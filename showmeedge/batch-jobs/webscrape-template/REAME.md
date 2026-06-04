@@ -7,7 +7,7 @@
  - 
  - How to run , see below( be on Mac terminal , on root folder of the project ..)
 
- % node batch-jobs/industry-peers/generate-peers-manifest.mjs --ticker ZS  --timeout-ms 20000
+ % node batch-jobs/webscrape-template/generate-peers-manifest.mjs --ticker ZS  --timeout-ms 20000
 
 ### Big picture
 
@@ -32,7 +32,7 @@ https://finance.yahoo.com/quote/MRVL/
 
 - Here Rank is good thing, keep that field Rank  in the DB for the Symbol ..
 ```
-% node batch-jobs/industry-peers/generate-peers-manifest.mjs --ticker ZS  --timeout-ms 20000
+% node batch-jobs/webscrape-template/generate-peers-manifest.mjs --ticker ZS  --timeout-ms 20000
 
 ```
 {"sourceTicker":"ZS","rank":2,"peerTicker":"PANW","companyName":"Palo Alto Networks, Inc.","price":"280.43","changePercent":"-5.64%","marketCap":"228.55B","industry":"Software—Infrastructure","quoteUrl":"https://finance.yahoo.com/quote/PANW/","sourceUrl":"https://finance.yahoo.com/quote/ZS/"}
