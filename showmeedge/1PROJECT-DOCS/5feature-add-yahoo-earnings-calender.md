@@ -215,13 +215,13 @@ Use Node.js PGWire via the existing `postgres` npm package.
 Connection:
 
 ```text
-postgres://admin:quest@localhost:8812/qdb
+postgres://admin:quest@127.0.0.1:8812/qdb
 ```
 
 Default env var:
 
 ```text
-QUESTDB_URL=postgres://admin:quest@localhost:8812/qdb
+QUESTDB_URL=postgres://admin:quest@127.0.0.1:8812/qdb
 ```
 
 Reasoning:
