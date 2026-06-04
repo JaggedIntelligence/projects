@@ -49,3 +49,37 @@ https://finance.yahoo.com/quote/MRVL/
 sreddy@Subbas-Ma
 
 ```
+
+### QuestDB insert
+
+The QuestDB table is defined in:
+
+```text
+batch-jobs/industry-peers/sql/industry_peers_table.sql
+```
+
+The scraper still writes the full Yahoo peer JSONL for inspection, but QuestDB inserts only the essential columns from that table:
+
+```bash
+node batch-jobs/industry-peers/generate-peers-manifest.mjs \
+  --ticker ZS \
+  --timeout-ms 20000 \
+  --output batch-jobs/industry-peers/runs/zs-peers.jsonl \
+  --insert-questdb
+```
+
+Useful dry-run form:
+
+```bash
+node batch-jobs/industry-peers/generate-peers-manifest.mjs \
+  --ticker ZS \
+  --timeout-ms 20000 \
+  --insert-questdb \
+  --dry-run
+```
+
+Default QuestDB connection:
+
+```text
+QUESTDB_URL=postgres://admin:quest@127.0.0.1:8812/qdb
+```
