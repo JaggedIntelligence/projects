@@ -30,8 +30,7 @@ export async function scrapeIndustryPeerRecords({ page, ticker, timeoutMs = DEFA
     .filter((record) => includeSource || record.peerTicker !== sourceTicker)
     .map((record) => ({
       sourceTicker,
-      ...record,
-      sourceUrl: url
+      ...record
     }));
 }
 
@@ -70,11 +69,7 @@ function extractComparePeerGroupCarousel() {
         rank: index + 1,
         peerTicker,
         companyName: companyName || null,
-        price: compactText(card.querySelector(".price")?.textContent) || null,
-        changePercent: compactText(card.querySelector(".changes span")?.textContent) || null,
-        marketCap: metrics.marketCap ?? null,
-        industry: metrics.industry ?? null,
-        quoteUrl: new URL(quoteLink.getAttribute("href"), window.location.origin).toString()
+        industry: metrics.industry ?? null
       };
     })
     .filter(Boolean);
@@ -94,8 +89,6 @@ function extractComparePeerGroupCarousel() {
 
       if (label === "industry") {
         metrics.industry = value;
-      } else if (label.replace(/\s+/g, "") === "mktcap") {
-        metrics.marketCap = value;
       }
     }
 
