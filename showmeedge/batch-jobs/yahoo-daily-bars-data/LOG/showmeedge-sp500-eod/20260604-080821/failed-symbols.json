@@ -1,0 +1,7 @@
+{
+  "provider": "yfinance",
+  "universe": "sp500_current",
+  "start": "2026-05-25",
+  "end": "2026-06-04",
+  "failed_symbols": []
+}

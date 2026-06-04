@@ -1,0 +1,7 @@
+total_yfinance_rows=3184095
+distinct_yfinance_symbols=504
+requested_symbols=503
+latest_requested_ts=2026-06-04 00:00:00
+requested_symbols_with_latest_ts=479
+requested_symbols_missing_latest_ts=24
+missing_latest_symbols=ALL,AMP,AIZ,CNC,CIEN,DRI,DOV,ETN,ETR,FICO,DOC,ITW,MGM,OTIS,PNC,DGX,SPGI,STT,SYK,TT,WRB,GWW,WAB,WAT
