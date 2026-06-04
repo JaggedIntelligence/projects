@@ -41,9 +41,16 @@ Smoke-test form:
 
 ```bash
 bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
-  --max-symbols 20 \
+  --ticker AAPL \
   --allow-small-universe \
   --dry-run
+```
+
+Small live insert:
+
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
+  --max-symbols 20
 ```
 
 Force a fresh snapshot:
@@ -51,17 +58,6 @@ Force a fresh snapshot:
 ```bash
 bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
   --record_insert_flag newrecord
-```
-
-### Targeted wrapper run
-
-Use the same wrapper path for one source ticker or a small subset:
-
-```bash
-bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
-  --ticker AAPL \
-  --allow-small-universe \
-  --dry-run
 ```
 
 ### QuestDB insert
@@ -79,3 +75,27 @@ Default QuestDB connection:
 ```text
 QUESTDB_URL=postgres://admin:quest@127.0.0.1:8812/qdb
 ```
+
+### Verification
+
+Verified on 2026-06-04:
+
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh --max-symbols 20
+```
+
+Run directory:
+
+```text
+batch-jobs/industry-peers/runs/20260604T184610Z
+```
+
+Result:
+
+```text
+symbolsSucceeded=20
+symbolsFailed=0
+rowsInserted=200
+```
+
+QuestDB verification returned 200 rows across 20 source tickers for `run_id = '20260604T184610Z'`.

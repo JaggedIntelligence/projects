@@ -10,3 +10,5 @@ test-results
 tests/e2e/.auth
 batch-jobs/yahoo-earnings-calendar/runs/*
 !batch-jobs/yahoo-earnings-calendar/runs/.gitkeep
+batch-jobs/industry-peers/runs/*
+!batch-jobs/industry-peers/runs/.gitkeep

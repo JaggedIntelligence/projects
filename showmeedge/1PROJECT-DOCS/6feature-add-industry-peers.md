@@ -95,6 +95,18 @@ A smoke-test limit is still useful:
 
 But no extra `--confirm-full-run` flag is required.
 
+## Implementation Status
+
+Status as of 2026-06-04:
+
+- Batch wrapper implemented at `batch-jobs/industry-peers/bin/backfill-sp500-peers.sh`.
+- Source ticker manifest generation implemented at `batch-jobs/industry-peers/generate-manifest.mjs`.
+- Manifest ingestion and Yahoo peer scraping implemented at `batch-jobs/industry-peers/ingest-manifest.mjs`.
+- QuestDB insert and skip check implemented in `batch-jobs/industry-peers/lib/questdb.mjs`.
+- Source universe loading implemented in `batch-jobs/industry-peers/lib/symbols.mjs`.
+- Run artifact helpers implemented in `batch-jobs/industry-peers/lib/run-log.mjs`.
+- The older direct single-ticker CLI path was removed. One-ticker tests now use the same wrapper path with `--ticker`.
+
 ## QuestDB Table
 
 The table lives at:
@@ -128,7 +140,7 @@ snapshot_ts is part of the dedup/upsert key.
 
 So a new snapshot timestamp creates a new historical peer snapshot. This is correct for `newrecord`, but it means `skip` must use an explicit existence query by `source_ticker + program_id`.
 
-## Proposed Folder Structure
+## Implemented Folder Structure
 
 Use a layout similar to `batch-jobs/yahoo-earnings-calendar`:
 
@@ -223,9 +235,16 @@ Smoke test:
 
 ```bash
 bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
-  --max-symbols 20 \
+  --ticker AAPL \
   --allow-small-universe \
   --dry-run
+```
+
+Small live insert:
+
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
+  --max-symbols 20
 ```
 
 Force a new snapshot for all source tickers:
@@ -508,6 +527,21 @@ ORDER BY rank;
 
 ## Implementation Phases
 
+Phases 1 through 4 are implemented for the one-path wrapper/manifest/ingest workflow.
+
+Completed verification:
+
+- Syntax checks for the Node scripts and shell wrapper passed.
+- Dry-run smoke test for `AAPL` passed.
+- Live `--max-symbols 20` run passed and inserted 200 QuestDB rows.
+- QuestDB verification for run `20260604T184610Z` returned 200 rows across 20 source tickers.
+
+Remaining before a full production load:
+
+- Run the default full S&P 500 command.
+- Review the final full-run `failed-symbols.jsonl` and rerun if needed.
+- Decide whether to schedule a yearly/manual refresh or leave this fully manual.
+
 ### Phase 1: Batch Skeleton
 
 - Add `runs/.gitkeep`.
@@ -539,14 +573,20 @@ ORDER BY rank;
 
 ```bash
 bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
-  --max-symbols 5 \
+  --ticker AAPL \
   --allow-small-universe \
   --dry-run
 ```
 
-- Run live with a small symbol count.
+- Run live with a small symbol count:
+
+```bash
+bash batch-jobs/industry-peers/bin/backfill-sp500-peers.sh \
+  --max-symbols 20
+```
+
 - Verify QuestDB rows.
-- Run full S&P 500 load.
+- Run full S&P 500 load when ready.
 
 ## Open Future Enhancements
 
