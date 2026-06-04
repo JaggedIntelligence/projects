@@ -8,3 +8,5 @@ dist
 playwright-report
 test-results
 tests/e2e/.auth
+batch-jobs/yahoo-earnings-calendar/runs/*
+!batch-jobs/yahoo-earnings-calendar/runs/.gitkeep
