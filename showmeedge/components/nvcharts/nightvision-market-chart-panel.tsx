@@ -4,7 +4,7 @@ import { Activity, Database, Play } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
-import { NightVisionCandlestickChart } from "@/components/trading/nightvision-candlestick-chart";
+import { NightVisionCandlestickChart } from "@/components/nvcharts/nightvision-candlestick-chart";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -60,7 +60,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
         <div>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Market chart
+            Market chart* 
           </CardTitle>
         </div>
         <div className="flex flex-col gap-2 sm:w-64">

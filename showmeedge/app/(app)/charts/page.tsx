@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { NightVisionTradingPage } from "@/components/trading/nightvision-trading-page";
+import { NvChartMainPage } from "@/components/nvcharts/nightvision-chart-main-page";
 
 export const metadata: Metadata = {
   title: "Night Vision Charts Setup",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function NightVisionPage() {
-  return <NightVisionTradingPage />;
+  return <NvChartMainPage />;
 }
