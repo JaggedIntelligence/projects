@@ -14,7 +14,7 @@ const navItems = [
   // { href: "/dashboard", label: "Dashboard" },
   // { href: "/tasks", label: "Tasks" },
   
-  { href: "/nightvision", label: "Charts" },
+  { href: "/charts", label: "Charts" },
   { href: "/trading", label: "Admin" },
 ] as const;
 
