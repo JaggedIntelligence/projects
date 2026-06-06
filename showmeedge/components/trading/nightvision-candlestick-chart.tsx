@@ -2,26 +2,19 @@
 
 import { useEffect, useId, useMemo, useState } from "react";
 
-import type { CandleData, NightVisionData } from "night-vision";
+import type { CandleData, NightVisionData, SplineData } from "night-vision";
 
-export type NightVisionBar = {
-  date: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-};
+import type { OhlcvBar } from "@/lib/mock-ohlcv";
 
 function dateToUtcMs(date: string) {
-  return Date.parse(`${date}T00:00:00.000Z`);
+  return Date.parse(date.includes("T") ? date : `${date}T00:00:00.000Z`);
 }
 
-function toCandles(bars: NightVisionBar[]): CandleData[] {
-  return bars.map((bar) => [dateToUtcMs(bar.date), bar.open, bar.high, bar.low, bar.close, bar.volume]);
+function toCandles(bars: OhlcvBar[]): CandleData[] {
+  return bars.map((bar) => [dateToUtcMs(bar.time), bar.open, bar.high, bar.low, bar.close, bar.volume]);
 }
 
-function simpleMovingAverage(bars: NightVisionBar[], period: number) {
+function simpleMovingAverage(bars: OhlcvBar[], period: number): SplineData[] {
   return bars
     .map((bar, index) => {
       if (index < period - 1) return null;
@@ -29,22 +22,19 @@ function simpleMovingAverage(bars: NightVisionBar[], period: number) {
       const window = bars.slice(index - period + 1, index + 1);
       const average = window.reduce((sum, item) => sum + item.close, 0) / period;
 
-      return [dateToUtcMs(bar.date), Number(average.toFixed(2))] as [number, number];
+      return [dateToUtcMs(bar.time), Number(average.toFixed(2))] as SplineData;
     })
-    .filter((value): value is [number, number] => Boolean(value));
+    .filter((value): value is SplineData => Boolean(value));
 }
 
-function buildNightVisionData(bars: NightVisionBar[]): NightVisionData {
+function buildNightVisionData(bars: OhlcvBar[], ticker: string): NightVisionData {
   return {
     indexBased: true,
     panes: [
       {
-        settings: {
-          height: 460
-        },
         overlays: [
           {
-            name: "AAPL Daily",
+            name: `${ticker} Daily`,
             type: "Candles",
             main: true,
             data: toCandles(bars),
@@ -87,14 +77,19 @@ function buildNightVisionData(bars: NightVisionBar[]): NightVisionData {
   };
 }
 
-export function NightVisionStockChart({ bars }: { bars: NightVisionBar[] }) {
+export function NightVisionCandlestickChart({ bars, ticker }: { bars: OhlcvBar[]; ticker: string }) {
   const reactId = useId();
   const chartId = useMemo(() => `nightvision-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`, [reactId]);
-  const data = useMemo(() => buildNightVisionData(bars), [bars]);
+  const data = useMemo(() => buildNightVisionData(bars, ticker), [bars, ticker]);
   const [error, setError] = useState<string | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    if (!bars.length) {
+      setIsReady(false);
+      return;
+    }
+
     let chart: { destroy: () => void } | null = null;
     let isMounted = true;
 
@@ -105,7 +100,7 @@ export function NightVisionStockChart({ bars }: { bars: NightVisionBar[] }) {
         chart = new NightVision(chartId, {
           id: `${chartId}-instance`,
           autoResize: true,
-          height: 520,
+          height: 320,
           indexBased: true,
           showLogo: false,
           colors: {
@@ -139,24 +134,32 @@ export function NightVisionStockChart({ bars }: { bars: NightVisionBar[] }) {
       isMounted = false;
       chart?.destroy();
     };
-  }, [chartId, data]);
+  }, [bars.length, chartId, data]);
 
   if (error) {
     return (
-      <div className="flex min-h-[420px] items-center justify-center rounded-md border border-rose-400/30 bg-rose-950/20 p-6 text-center text-sm text-rose-100">
+      <div className="flex h-80 items-center justify-center rounded-md border bg-muted/20 p-6 text-center text-sm text-destructive">
         {error}
       </div>
     );
   }
 
+  if (!bars.length) {
+    return (
+      <div className="flex h-80 items-center justify-center rounded-md border bg-muted/20 p-6 text-center text-sm text-muted-foreground">
+        No bars available for {ticker}.
+      </div>
+    );
+  }
+
   return (
-    <div className="relative min-h-[420px] min-w-0 max-w-full overflow-hidden rounded-md border border-slate-700/80 bg-[#080d10] md:min-h-[540px]">
+    <div className="relative h-80 min-w-0 max-w-full overflow-hidden rounded-md border bg-[#080d10]">
       {!isReady ? (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#080d10] text-sm text-slate-300">
           Loading Night Vision chart...
         </div>
       ) : null}
-      <div id={chartId} className="h-[420px] min-w-0 max-w-full overflow-hidden md:h-[540px]" aria-label="AAPL sample Night Vision candlestick chart" />
+      <div id={chartId} className="h-80 min-w-0 max-w-full overflow-hidden" aria-label={`${ticker} Night Vision candlestick chart`} />
     </div>
   );
 }

@@ -111,7 +111,9 @@ function compactId(value: string | null | undefined) {
   return value.length > 20 ? `${value.slice(0, 10)}...${value.slice(-6)}` : value;
 }
 
-export function TradingPage() {
+type ChartPanelComponent = (props: { symbols: Array<{ id: string; ticker: string; name: string }> }) => JSX.Element;
+
+export function TradingPage({ ChartPanel = MarketChartPanel }: { ChartPanel?: ChartPanelComponent } = {}) {
   const utils = api.useUtils();
   const account = api.trading.accountContext.useQuery();
   const symbolsQuery = api.trading.symbols.list.useQuery({ assetType: "all" });
@@ -310,7 +312,7 @@ export function TradingPage() {
         </Card>
       </div>
 
-      <MarketChartPanel symbols={symbols.map((symbol) => ({ id: symbol.id, ticker: symbol.ticker, name: symbol.name }))} />
+      <ChartPanel symbols={symbols.map((symbol) => ({ id: symbol.id, ticker: symbol.ticker, name: symbol.name }))} />
 
       <CrudSection title="Symbols" count={symbols.length}>
         <form className="grid gap-3 lg:grid-cols-[1fr_2fr_130px_130px_110px_auto]" onSubmit={submitSymbol}>
