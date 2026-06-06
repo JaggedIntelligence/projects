@@ -1,8 +1,8 @@
 "use client";
 
 import { NightVisionMarketChartPanel } from "@/components/trading/nightvision-market-chart-panel";
-import { TradingPage } from "@/components/trading/trading-page";
+import { NvOuterlayerPage } from "@/components/trading/nv-outerlayer-page";
 
 export function NightVisionTradingPage() {
-  return <TradingPage ChartPanel={NightVisionMarketChartPanel} />;
+  return <NvOuterlayerPage ChartPanel={NightVisionMarketChartPanel} />;
 }
