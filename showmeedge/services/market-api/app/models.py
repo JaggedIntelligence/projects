@@ -74,9 +74,9 @@ class MockIngestResponse(BaseModel):
 class BacktestRequest(BaseModel):
     symbol: str = "AAPL"
     timeframe: Timeframe = "1d"
-    initial_cash: float = Field(default=100_000, gt=0)
+    initial_cash: float = Field(default=100, gt=0)
     fast_sma: int = Field(default=10, ge=2)
-    slow_sma: int = Field(default=30, ge=3)
+    slow_sma: int = Field(default=50, ge=3)
     seed_if_empty: bool = True
 
 
@@ -97,6 +97,7 @@ class BacktestResponse(BaseModel):
     symbol: str
     timeframe: Timeframe
     strategy: str
+    engine: str = "manual"
     source: str
     initial_cash: float
     final_equity: float

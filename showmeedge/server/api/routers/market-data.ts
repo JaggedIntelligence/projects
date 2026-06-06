@@ -26,6 +26,7 @@ type BacktestResponse = {
   symbol: string;
   timeframe: "1d";
   strategy: string;
+  engine?: string;
   source: string;
   initial_cash: number;
   final_equity: number;
@@ -48,10 +49,10 @@ type BacktestResponse = {
   }>;
 };
 
-async function fetchFromMarketApi<T>(path: string, init?: RequestInit): Promise<T> {
+async function fetchFromMarketApi<T>(path: string, init?: RequestInit, timeoutMs = 2500): Promise<T> {
   const response = await fetch(`${MARKET_API_BASE_URL}${path}`, {
     ...init,
-    signal: AbortSignal.timeout(2500),
+    signal: AbortSignal.timeout(timeoutMs),
     headers: {
       "content-type": "application/json",
       ...init?.headers
@@ -59,7 +60,16 @@ async function fetchFromMarketApi<T>(path: string, init?: RequestInit): Promise<
   });
 
   if (!response.ok) {
-    const message = await response.text();
+    const body = await response.text();
+    let message = body;
+    try {
+      const parsed = JSON.parse(body) as { detail?: unknown };
+      if (typeof parsed.detail === "string") {
+        message = parsed.detail;
+      }
+    } catch {
+      message = body;
+    }
     throw new Error(message || `Market API request failed with ${response.status}`);
   }
 
@@ -114,7 +124,7 @@ export const marketDataRouter = router({
           slow_sma: input.slowSma,
           seed_if_empty: true
         })
-      });
+      }, 15000);
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",

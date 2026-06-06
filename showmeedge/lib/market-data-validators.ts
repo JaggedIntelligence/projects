@@ -19,9 +19,9 @@ export const backtestRunSchema = z
   .object({
     ticker: z.string().trim().min(1).max(24).transform((value) => value.toUpperCase()),
     timeframe: timeframeSchema.default("1d"),
-    initialCash: z.coerce.number().finite().positive().default(100000),
+    initialCash: z.coerce.number().finite().positive().default(100),
     fastSma: z.coerce.number().int().min(2).default(10),
-    slowSma: z.coerce.number().int().min(3).default(30)
+    slowSma: z.coerce.number().int().min(3).default(50)
   })
   .refine((value) => value.fastSma < value.slowSma, {
     message: "Fast SMA must be lower than slow SMA",

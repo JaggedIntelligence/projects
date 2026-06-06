@@ -1,0 +1,6 @@
+total_yfinance_rows=3184622
+distinct_yfinance_symbols=504
+requested_symbols=503
+latest_requested_ts=2026-06-05 00:00:00
+requested_symbols_with_latest_ts=503
+requested_symbols_missing_latest_ts=0

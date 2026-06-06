@@ -121,6 +121,7 @@ def run_backtest(request: BacktestRequest) -> BacktestResponse:
     bars_response = get_market_bars(
         symbol=request.symbol,
         timeframe=request.timeframe,
+        provider="yfinance",
         seed_if_empty=request.seed_if_empty,
     )
 
