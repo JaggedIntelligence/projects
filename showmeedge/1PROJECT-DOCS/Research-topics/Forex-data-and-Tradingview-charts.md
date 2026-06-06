@@ -14,3 +14,13 @@
 
 ### Tradingview Charts
  - can we have Inidcators in Tradingview charts in this free version?
+ - Codex said we can add , but we need to calcuate our own indicators etc..
+ - .
+
+ ### Night vision Charts ..
+ - instead of spending time on TradingView , **first spend time on Night Vision** ....
+
+ - SR let us try to make NIGHT Vision work on a new page .. of Chart , 
+ - copy page of Trading View  Chart and and try to swap Trading View chart with NighVision
+ - with NightVision we have complete Control of Custom indicators , RSI, MACD etc. 
+ - https://nightvision.dev/guide/intro/10-basic-examples.html
