@@ -100,7 +100,7 @@ export function NightVisionCandlestickChart({ bars, ticker }: { bars: OhlcvBar[]
         chart = new NightVision(chartId, {
           id: `${chartId}-instance`,
           autoResize: true,
-          height: 320,
+          height: 820,
           indexBased: true,
           showLogo: false,
           colors: {
@@ -153,13 +153,15 @@ export function NightVisionCandlestickChart({ bars, ticker }: { bars: OhlcvBar[]
   }
 
   return (
-    <div className="relative h-80 min-w-0 max-w-full overflow-hidden rounded-md border bg-[#080d10]">
+    /*  SR-fix: in nightvision-chandlestick-chart.tsx ---> relative h-140 , it was h-80    */
+
+    <div className="relative h-140 min-w-0 max-w-full overflow-hidden rounded-md border bg-[#080d10]">
       {!isReady ? (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#080d10] text-sm text-slate-300">
           Loading Night Vision chart...
         </div>
       ) : null}
-      <div id={chartId} className="h-80 min-w-0 max-w-full overflow-hidden" aria-label={`${ticker} Night Vision candlestick chart`} />
+      <div id={chartId} className="h-140 min-w-0 max-w-full overflow-hidden" aria-label={`${ticker} Night Vision candlestick chart`} />
     </div>
   );
 }
