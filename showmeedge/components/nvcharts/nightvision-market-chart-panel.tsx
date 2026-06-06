@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, Database, Play } from "lucide-react";
+import { Activity } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
@@ -8,7 +8,6 @@ import { NightVisionCandlestickChart } from "@/components/nvcharts/nightvision-c
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type ChartSymbol = {
   id: string;
@@ -43,11 +42,6 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   }, [chartSymbols, ticker]);
 
   const barsQuery = api.marketData.bars.useQuery({ ticker, timeframe: "1d" });
-  const utils = api.useUtils();
-  const ingestMock = api.marketData.ingestMock.useMutation({
-    onSuccess: () => utils.marketData.bars.invalidate()
-  });
-  const runBacktest = api.marketData.runBacktest.useMutation();
   const bars = barsQuery.data?.bars ?? [];
   const latestBar = bars.at(-1);
   const previousBar = bars.at(-2);
@@ -60,26 +54,34 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
         <div>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Market chart* 
+            Market chart*
           </CardTitle>
-        </div>
-        <div className="flex flex-col gap-2 sm:w-64">
-          <Select value={ticker} onValueChange={setTicker}>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {chartSymbols.map((symbol) => (
-                <SelectItem key={symbol.id} value={symbol.ticker}>
-                  {symbol.ticker} · {symbol.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
         </div>
       </CardHeader>
       <CardContent className="grid min-w-0 gap-4">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Ticker">
+          {chartSymbols.map((symbol) => {
+            const isSelected = symbol.ticker === ticker;
+
+            return (
+              <Button
+                key={symbol.id}
+                type="button"
+                variant={isSelected ? "secondary" : "outline"}
+                size="sm"
+                aria-pressed={isSelected}
+                title={`${symbol.ticker} · ${symbol.name}`}
+                className="h-8 px-2.5 text-xs font-semibold"
+                onClick={() => setTicker(symbol.ticker)}
+              >
+                {symbol.ticker}
+              </Button>
+            );
+          })}
+        </div>
+
         <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="secondary">{ticker}</Badge>
           <Badge variant="outline">1d</Badge>
           {latestBar ? (
             <>
@@ -91,25 +93,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
             </>
           ) : null}
         </div>
-        <div className="flex flex-wrap gap-2">
-          
-         
-        </div>
-        
-        {ingestMock.error ? <p className="text-sm text-destructive">{ingestMock.error.message}</p> : null}
         {barsQuery.isLoading ? <div className="h-80 animate-pulse rounded-md border bg-muted" /> : <NightVisionCandlestickChart bars={bars} ticker={ticker} />}
-        
-        
       </CardContent>
     </Card>
-  );
-}
-
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="truncate text-sm font-medium">{value}</p>
-    </div>
   );
 }
