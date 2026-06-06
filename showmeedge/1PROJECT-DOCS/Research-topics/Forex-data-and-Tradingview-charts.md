@@ -9,7 +9,8 @@
 - for Stocks historical, seems, we used an API , see if can use same API with Forex ..
 - if so change the "sp500_universe"  to "Forex_universe"
 - I guess they have standard 6 pair forex data
--
+- **Codex** said we can do Forex .. 
+- ask more details of Forex , since no volume data, does it need to chage some Checks in CODE ....
 
 
 ### Tradingview Charts
