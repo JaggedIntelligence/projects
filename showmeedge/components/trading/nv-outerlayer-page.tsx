@@ -113,7 +113,7 @@ function compactId(value: string | null | undefined) {
 
 type ChartPanelComponent = (props: { symbols: Array<{ id: string; ticker: string; name: string }> }) => JSX.Element;
 
-export function NvOuterlayerPage({ ChartPanel = MarketChartPanel }: { ChartPanel?: ChartPanelComponent } = {}) {
+export function NightVisionOuterlayerPage({ ChartPanel = MarketChartPanel }: { ChartPanel?: ChartPanelComponent } = {}) {
   const utils = api.useUtils();
   const account = api.trading.accountContext.useQuery();
   const symbolsQuery = api.trading.symbols.list.useQuery({ assetType: "all" });
