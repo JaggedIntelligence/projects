@@ -11,10 +11,11 @@ import { cn } from "@/lib/utils";
 
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/tasks", label: "Tasks" },
-  { href: "/trading", label: "Trading" },
-  { href: "/nightvision", label: "Night Vision" }
+  // { href: "/dashboard", label: "Dashboard" },
+  // { href: "/tasks", label: "Tasks" },
+  
+  { href: "/nightvision", label: "Charts" },
+  { href: "/trading", label: "Admin" },
 ] as const;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -28,7 +29,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="container flex h-16 items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-4">
             <Link href="/dashboard" className="truncate text-base font-semibold">
-              Task Management
+              Stock Portfolios
             </Link>
             <nav className="hidden items-center gap-1 sm:flex">
               {navItems.map((item) => (
