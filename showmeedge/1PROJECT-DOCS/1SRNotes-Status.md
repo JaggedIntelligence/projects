@@ -100,3 +100,15 @@ bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
 ----------------------------------------------------------------------------
  - Forex Daily data ingested into QuestDB from 2003 for all major forex pairs ( into stame Table as Stocks data)
  - UI screen works for Forex just like Stocks ( no special treatement )
+ - for EOD refresh of forex data use this , run from terminal
+ - --allow-small-universe 30  is to LOAD for last 30 days, you can change it
+ ```
+batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
+  --universe forex_major_pairs \
+  --allow-small-universe 30
+ ```
+ -
+ - once done, you can rows from UI or from QuestDB DBAdmin with SQL
+ - http://127.0.0.1:9000/index.html
+ - select *  from equity_ohlcv_daily  where symbol = 'EURUSD'   order by ts desc
+ - 
