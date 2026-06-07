@@ -66,6 +66,19 @@ It exposes API docs at:
 http://127.0.0.1:8000/docs
 ```
 
+Market API logs are written to:
+
+```text
+services/market-api/logs/market-api.log
+```
+
+When running the service through Docker Compose, the container path `/app/logs/market-api.log` is mounted back to that host file. After code changes to the market API, rebuild/restart the service before expecting new logging behavior:
+
+```bash
+docker compose -f scripts/docker-compose.yml up -d --build market-api
+tail -f services/market-api/logs/market-api.log
+```
+
 If you prefer Drizzle migrations for later schema changes:
 
 ```bash

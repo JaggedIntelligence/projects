@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.backtesting import run_sma_crossover_backtest
 from app.config import get_settings
+from app.logging_config import configure_logging
 from app.mock_data import get_mock_ohlcv_bars
 from app.models import (
     BacktestRequest,
@@ -18,6 +19,7 @@ from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_
 from app.repositories.questdb_daily_bars import ensure_equity_ohlcv_daily_table, fetch_daily_bars
 
 settings = get_settings()
+configure_logging(settings)
 
 app = FastAPI(title=settings.app_name)
 

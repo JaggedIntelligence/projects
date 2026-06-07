@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime, timezone
 from typing import Any
 
@@ -113,6 +114,14 @@ def run_vectorbt_sma_crossover_backtest(
     except ImportError as exc:
         raise VectorBTUnavailable("vectorbt and pandas are required for the vectorbt backtest engine") from exc
 
+    logging.info(
+        "Using vectorbt backtest engine for symbol=%s fast_sma=%s slow_sma=%s bars=%s",
+        symbol.upper(),
+        fast_sma,
+        slow_sma,
+        len(bars),
+    )
+
     index = pd.to_datetime([bar.time for bar in bars])
     price = pd.Series([bar.close for bar in bars], index=index, name=symbol.upper())
 
@@ -188,8 +197,15 @@ def run_sma_crossover_backtest(
             source=source,
             started_at=started_at,
         )
-    except VectorBTUnavailable:
-        pass
+    except VectorBTUnavailable as exc:
+        logging.info(
+            "VectorBT unavailable; using manual SMA crossover backtest engine for symbol=%s fast_sma=%s slow_sma=%s bars=%s reason=%s",
+            symbol.upper(),
+            fast_sma,
+            slow_sma,
+            len(bars),
+            exc,
+        )
 
     closes = [bar.close for bar in bars]
     cash = initial_cash

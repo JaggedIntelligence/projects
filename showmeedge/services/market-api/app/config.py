@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     questdb_user: str = "admin"
     questdb_password: str = "quest"
     questdb_database: str = "qdb"
+    log_dir: str = "logs"
+    log_file: str = "market-api.log"
+    log_level: str = "INFO"
 
     @property
     def cors_origins(self) -> list[str]:
@@ -22,4 +25,3 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
-

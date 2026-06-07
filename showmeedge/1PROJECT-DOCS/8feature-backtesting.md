@@ -49,6 +49,8 @@ Status as of 2026-06-06:
 - FastAPI endpoint exists as `POST /backtests/run`.
 - FastAPI backtesting engine uses vectorbt when available.
 - Manual SMA crossover fallback remains for environments without vectorbt installed.
+- Market API writes file logs to `services/market-api/logs/market-api.log`.
+- Backtest logs include whether the run selected the `vectorbt` engine or the manual fallback.
 - Market API Docker image installs `vectorbt`.
 - Tests were added for the UI submit contract, input defaults, and the FastAPI internal provider call.
 
@@ -103,6 +105,57 @@ portfolio = vbt.Portfolio.from_signals(price, entries, exits, init_cash=initial_
 ```
 
 The manual fallback uses the same crossover idea, but vectorbt should be considered the preferred research engine.
+
+## Logging
+
+Market API file logs live at:
+
+```text
+services/market-api/logs/market-api.log
+```
+
+Inside Docker, the service writes to:
+
+```text
+/app/logs/market-api.log
+```
+
+Docker Compose mounts that path back to the host folder:
+
+```text
+../services/market-api/logs:/app/logs
+```
+
+Backtest engine selection is logged in:
+
+```text
+services/market-api/app/backtesting.py
+```
+
+Expected vectorbt log line:
+
+```text
+Using vectorbt backtest engine for symbol=AAPL fast_sma=10 slow_sma=50 bars=...
+```
+
+Expected manual fallback log line:
+
+```text
+VectorBT unavailable; using manual SMA crossover backtest engine for symbol=AAPL fast_sma=10 slow_sma=50 bars=... reason=...
+```
+
+The log file is runtime output and should not be committed. The repository keeps only:
+
+```text
+services/market-api/logs/.gitkeep
+```
+
+After changing market API logging code, rebuild/restart the Docker service:
+
+```bash
+docker compose -f scripts/docker-compose.yml up -d --build market-api
+tail -f services/market-api/logs/market-api.log
+```
 
 ## API Contract
 
@@ -219,10 +272,12 @@ Python service:
 
 ```text
 services/market-api/app/backtesting.py
+services/market-api/app/logging_config.py
 services/market-api/app/main.py
 services/market-api/app/models.py
 services/market-api/requirements.txt
 services/market-api/README.md
+services/market-api/logs/.gitkeep
 ```
 
 Tests:
