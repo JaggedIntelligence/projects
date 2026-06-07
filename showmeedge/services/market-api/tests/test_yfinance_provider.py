@@ -80,6 +80,63 @@ class YFinanceProviderTests(TestCase):
 
         self.assertEqual(bars, [])
 
+    def test_uses_zero_volume_for_yahoo_forex_nan_volume(self) -> None:
+        frame = pd.DataFrame(
+            [
+                {
+                    "Open": 1.08,
+                    "High": 1.09,
+                    "Low": 1.07,
+                    "Close": 1.085,
+                    "Adj Close": 1.085,
+                    "Volume": float("nan"),
+                }
+            ],
+            index=pd.to_datetime(["2024-01-02"]),
+        )
+
+        bars = _bars_from_frame("EURUSD", "EURUSD=X", "USD", frame)
+
+        self.assertEqual(len(bars), 1)
+        self.assertEqual(bars[0].volume, 0)
+
+    def test_uses_zero_volume_for_yahoo_forex_missing_volume(self) -> None:
+        frame = pd.DataFrame(
+            [
+                {
+                    "Open": 141.0,
+                    "High": 142.0,
+                    "Low": 140.5,
+                    "Close": 141.5,
+                    "Adj Close": 141.5,
+                }
+            ],
+            index=pd.to_datetime(["2024-01-02"]),
+        )
+
+        bars = _bars_from_frame("USDJPY", "JPY=X", "JPY", frame)
+
+        self.assertEqual(len(bars), 1)
+        self.assertEqual(bars[0].volume, 0)
+
+    def test_skips_stock_rows_with_missing_volume(self) -> None:
+        frame = pd.DataFrame(
+            [
+                {
+                    "Open": 100.0,
+                    "High": 101.0,
+                    "Low": 99.0,
+                    "Close": 100.5,
+                    "Adj Close": 100.5,
+                }
+            ],
+            index=pd.to_datetime(["2024-01-02"]),
+        )
+
+        bars = _bars_from_frame("TEST", "TEST", "USD", frame)
+
+        self.assertEqual(bars, [])
+
     def test_daily_bar_model_allows_tiny_ohlc_drift(self) -> None:
         bar = DailyOhlcvBar(
             symbol="TEST",

@@ -129,7 +129,7 @@ def _bars_from_frame(symbol: str, provider_symbol: str, currency: str, frame: An
         high_price = _row_float(row, "High")
         low_price = _row_float(row, "Low")
         close_price = _row_float(row, "Close")
-        volume = _row_int(row, "Volume")
+        volume = _row_volume(row, provider_symbol)
 
         if None in (open_price, high_price, low_price, close_price, volume):
             continue
@@ -189,6 +189,19 @@ def _row_int(row: Any, key: str) -> int | None:
     if _is_missing(value):
         return None
     return int(value)
+
+
+def _row_volume(row: Any, provider_symbol: str) -> int | None:
+    volume = _row_int(row, "Volume")
+    if volume is not None:
+        return volume
+    if _is_yahoo_forex_symbol(provider_symbol):
+        return 0
+    return None
+
+
+def _is_yahoo_forex_symbol(provider_symbol: str) -> bool:
+    return provider_symbol.strip().upper().endswith("=X")
 
 
 def _row_value(row: Any, key: str) -> Any:

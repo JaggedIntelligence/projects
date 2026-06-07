@@ -1,0 +1,7 @@
+{
+  "provider": "yfinance",
+  "universe": "forex_major_pairs",
+  "start": "2003-01-01",
+  "end": "2009-12-31",
+  "no_data_symbols": []
+}

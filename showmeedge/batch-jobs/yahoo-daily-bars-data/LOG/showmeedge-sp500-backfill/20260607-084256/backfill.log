@@ -1,0 +1,12 @@
+usage: backfill_daily.py [-h] [--symbols SYMBOLS [SYMBOLS ...]]
+                         [--universe UNIVERSE] [--start START] [--end END]
+                         [--provider {yfinance}] [--batch-size BATCH_SIZE]
+                         [--max-symbols MAX_SYMBOLS] [--skip-existing]
+                         [--coverage-stale-days COVERAGE_STALE_DAYS]
+                         [--retry-attempts RETRY_ATTEMPTS]
+                         [--retry-sleep-seconds RETRY_SLEEP_SECONDS]
+                         [--sleep-seconds SLEEP_SECONDS]
+                         [--failed-symbols-file FAILED_SYMBOLS_FILE]
+                         [--no-data-symbols-file NO_DATA_SYMBOLS_FILE]
+                         [--run-summary-file RUN_SUMMARY_FILE]
+backfill_daily.py: error: argument --end: invalid fromisoformat value: '2009-21-31'

@@ -1,0 +1,7 @@
+{
+  "provider": "yfinance",
+  "universe": "forex_major_pairs",
+  "start": "2026-05-28",
+  "end": "2026-06-07",
+  "failed_symbols": []
+}

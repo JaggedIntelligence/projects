@@ -18,3 +18,14 @@ class SymbolUniverseTests(TestCase):
     def test_maps_dot_class_symbols_for_yfinance(self) -> None:
         self.assertEqual(to_provider_symbol("BRK.B"), "BRK-B")
         self.assertEqual(to_provider_symbol("bf.b"), "BF-B")
+
+    def test_loads_forex_major_pairs_symbols(self) -> None:
+        symbols = load_symbol_universe("forex_major_pairs")
+        symbol_map = {entry.symbol: entry for entry in symbols}
+
+        self.assertGreaterEqual(len(symbols), 20)
+        self.assertEqual(symbol_map["EURUSD"].provider_symbol, "EURUSD=X")
+        self.assertEqual(symbol_map["EURUSD"].currency, "USD")
+        self.assertEqual(symbol_map["USDJPY"].provider_symbol, "JPY=X")
+        self.assertEqual(symbol_map["USDJPY"].currency, "JPY")
+        self.assertEqual(symbol_map["EURGBP"].sector, "Forex")

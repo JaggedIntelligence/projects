@@ -1,0 +1,10 @@
+requested_universe=forex_major_pairs
+requested_symbols=28
+requested_yfinance_rows=159958
+requested_distinct_symbols=28
+requested_start_ts=2003-01-01 00:00:00
+requested_end_ts=2026-06-07 00:00:00
+latest_requested_ts=2026-06-07 00:00:00
+requested_symbols_with_latest_ts=18
+requested_symbols_missing_latest_ts=10
+missing_latest_symbols=EURUSD,USDJPY,USDCHF,EURJPY,GBPJPY,GBPCHF,AUDJPY,NZDJPY,CADJPY,CHFJPY

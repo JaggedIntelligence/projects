@@ -94,3 +94,9 @@ bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
  - the botched files are in /services/market-api/app/test-not-working folder 
  - .
  - The solution is  Headless browser under Node.js  which is the file in /scripts/yahoo-earnings-calender.mjs
+
+
+### 9. Major version 1.2 : Forex data support  with Batch data and UI screens
+----------------------------------------------------------------------------
+ - Forex Daily data ingested into QuestDB from 2003 for all major forex pairs ( into stame Table as Stocks data)
+ - UI screen works for Forex just like Stocks ( no special treatement )

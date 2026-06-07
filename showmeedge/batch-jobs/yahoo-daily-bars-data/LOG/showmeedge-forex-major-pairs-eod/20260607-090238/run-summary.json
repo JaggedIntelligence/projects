@@ -1,0 +1,303 @@
+{
+  "event": "daily_recent_update_complete",
+  "provider": "yfinance",
+  "universe": "forex_major_pairs",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "USDCHF",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "EURGBP",
+    "EURJPY",
+    "EURCHF",
+    "EURCAD",
+    "EURAUD",
+    "EURNZD",
+    "GBPJPY",
+    "GBPCHF",
+    "GBPCAD",
+    "GBPAUD",
+    "GBPNZD",
+    "AUDJPY",
+    "AUDCHF",
+    "AUDCAD",
+    "AUDNZD",
+    "NZDJPY",
+    "NZDCHF",
+    "NZDCAD",
+    "CADJPY",
+    "CADCHF",
+    "CHFJPY"
+  ],
+  "processed_symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "USDCHF",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "EURGBP",
+    "EURJPY",
+    "EURCHF",
+    "EURCAD",
+    "EURAUD",
+    "EURNZD",
+    "GBPJPY",
+    "GBPCHF",
+    "GBPCAD",
+    "GBPAUD",
+    "GBPNZD",
+    "AUDJPY",
+    "AUDCHF",
+    "AUDCAD",
+    "AUDNZD",
+    "NZDJPY",
+    "NZDCHF",
+    "NZDCAD",
+    "CADJPY",
+    "CADCHF",
+    "CHFJPY"
+  ],
+  "skipped_symbols": [],
+  "start": "2026-05-28",
+  "end": "2026-06-07",
+  "fetched_bars": 207,
+  "inserted_bars": 207,
+  "no_data_symbols": [],
+  "failed_symbols": [],
+  "failed_symbols_file": "/tmp/showmeedge-forex-major-pairs-eod-20260607-090238-failed.json",
+  "no_data_symbols_file": "/tmp/showmeedge-forex-major-pairs-eod-20260607-090238-no-data.json",
+  "run_summary_file": "/tmp/showmeedge-forex-major-pairs-eod-20260607-090238-summary.json",
+  "coverage": [
+    {
+      "symbol": "EURUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-05",
+      "row_count": 5714
+    },
+    {
+      "symbol": "GBPUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5752
+    },
+    {
+      "symbol": "USDJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-01-01",
+      "end": "2026-06-05",
+      "row_count": 5822
+    },
+    {
+      "symbol": "USDCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-09-17",
+      "end": "2026-06-05",
+      "row_count": 5807
+    },
+    {
+      "symbol": "USDCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-09-17",
+      "end": "2026-06-07",
+      "row_count": 5797
+    },
+    {
+      "symbol": "AUDUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2006-05-16",
+      "end": "2026-06-07",
+      "row_count": 5077
+    },
+    {
+      "symbol": "NZDUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-03",
+      "end": "2026-06-07",
+      "row_count": 5481
+    },
+    {
+      "symbol": "EURGBP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-01-01",
+      "end": "2026-06-07",
+      "row_count": 6032
+    },
+    {
+      "symbol": "EURJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-01-23",
+      "end": "2026-06-05",
+      "row_count": 5839
+    },
+    {
+      "symbol": "EURCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-01-23",
+      "end": "2026-06-07",
+      "row_count": 5985
+    },
+    {
+      "symbol": "EURCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5764
+    },
+    {
+      "symbol": "EURAUD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5720
+    },
+    {
+      "symbol": "EURNZD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5667
+    },
+    {
+      "symbol": "GBPJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-02",
+      "end": "2026-06-05",
+      "row_count": 5675
+    },
+    {
+      "symbol": "GBPCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-10-01",
+      "end": "2026-06-05",
+      "row_count": 5804
+    },
+    {
+      "symbol": "GBPCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5766
+    },
+    {
+      "symbol": "GBPAUD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-06-03",
+      "end": "2026-06-07",
+      "row_count": 5829
+    },
+    {
+      "symbol": "GBPNZD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-06-03",
+      "end": "2026-06-07",
+      "row_count": 5818
+    },
+    {
+      "symbol": "AUDJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-05",
+      "row_count": 5638
+    },
+    {
+      "symbol": "AUDCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5543
+    },
+    {
+      "symbol": "AUDCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5737
+    },
+    {
+      "symbol": "AUDNZD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5706
+    },
+    {
+      "symbol": "NZDJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-05",
+      "row_count": 5623
+    },
+    {
+      "symbol": "NZDCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5706
+    },
+    {
+      "symbol": "NZDCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5709
+    },
+    {
+      "symbol": "CADJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2004-08-20",
+      "end": "2026-06-05",
+      "row_count": 5497
+    },
+    {
+      "symbol": "CADCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-01",
+      "end": "2026-06-07",
+      "row_count": 5765
+    },
+    {
+      "symbol": "CHFJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2003-12-02",
+      "end": "2026-06-05",
+      "row_count": 5685
+    }
+  ],
+  "lookback_days": 10,
+  "timezone": "America/New_York"
+}

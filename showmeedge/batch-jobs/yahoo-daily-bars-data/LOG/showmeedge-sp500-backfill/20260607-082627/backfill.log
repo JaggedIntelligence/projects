@@ -1,0 +1,307 @@
+{"event": "batch_inserted", "batch_index": 1, "attempt": 1, "symbols": ["EURUSD", "GBPUSD", "USDJPY", "USDCHF", "USDCAD", "AUDUSD", "NZDUSD", "EURGBP", "EURJPY", "EURCHF"], "fetched_bars": 41431, "inserted_bars": 41431, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 2, "attempt": 1, "symbols": ["EURCAD", "EURAUD", "EURNZD", "GBPJPY", "GBPCHF", "GBPCAD", "GBPAUD", "GBPNZD", "AUDJPY", "AUDCHF"], "fetched_bars": 41469, "inserted_bars": 41469, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 3, "attempt": 1, "symbols": ["AUDCAD", "AUDNZD", "NZDJPY", "NZDCHF", "NZDCAD", "CADJPY", "CADCHF", "CHFJPY"], "fetched_bars": 33098, "inserted_bars": 33098, "no_data_symbols": [], "failed_symbols": []}
+{"event": "failed_symbols_file_written", "path": "/tmp/showmeedge-sp500-backfill-20260607-082627-failed.json", "failed_symbols": []}
+{"event": "no_data_symbols_file_written", "path": "/tmp/showmeedge-sp500-backfill-20260607-082627-no-data.json", "no_data_symbols": []}
+{"event": "run_summary_file_written", "path": "/tmp/showmeedge-sp500-backfill-20260607-082627-summary.json"}
+{
+  "event": "backfill_complete",
+  "provider": "yfinance",
+  "universe": "forex_major_pairs",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "USDCHF",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "EURGBP",
+    "EURJPY",
+    "EURCHF",
+    "EURCAD",
+    "EURAUD",
+    "EURNZD",
+    "GBPJPY",
+    "GBPCHF",
+    "GBPCAD",
+    "GBPAUD",
+    "GBPNZD",
+    "AUDJPY",
+    "AUDCHF",
+    "AUDCAD",
+    "AUDNZD",
+    "NZDJPY",
+    "NZDCHF",
+    "NZDCAD",
+    "CADJPY",
+    "CADCHF",
+    "CHFJPY"
+  ],
+  "processed_symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY",
+    "USDCHF",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "EURGBP",
+    "EURJPY",
+    "EURCHF",
+    "EURCAD",
+    "EURAUD",
+    "EURNZD",
+    "GBPJPY",
+    "GBPCHF",
+    "GBPCAD",
+    "GBPAUD",
+    "GBPNZD",
+    "AUDJPY",
+    "AUDCHF",
+    "AUDCAD",
+    "AUDNZD",
+    "NZDJPY",
+    "NZDCHF",
+    "NZDCAD",
+    "CADJPY",
+    "CADCHF",
+    "CHFJPY"
+  ],
+  "skipped_symbols": [],
+  "start": "2010-01-01",
+  "end": null,
+  "fetched_bars": 115998,
+  "inserted_bars": 115998,
+  "no_data_symbols": [],
+  "failed_symbols": [],
+  "failed_symbols_file": "/tmp/showmeedge-sp500-backfill-20260607-082627-failed.json",
+  "no_data_symbols_file": "/tmp/showmeedge-sp500-backfill-20260607-082627-no-data.json",
+  "run_summary_file": "/tmp/showmeedge-sp500-backfill-20260607-082627-summary.json",
+  "coverage": [
+    {
+      "symbol": "EURUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4158
+    },
+    {
+      "symbol": "GBPUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4188
+    },
+    {
+      "symbol": "USDJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4028
+    },
+    {
+      "symbol": "USDCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4177
+    },
+    {
+      "symbol": "USDCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4169
+    },
+    {
+      "symbol": "AUDUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4136
+    },
+    {
+      "symbol": "NZDUSD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4096
+    },
+    {
+      "symbol": "EURGBP",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4213
+    },
+    {
+      "symbol": "EURJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4063
+    },
+    {
+      "symbol": "EURCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4203
+    },
+    {
+      "symbol": "EURCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4205
+    },
+    {
+      "symbol": "EURAUD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4150
+    },
+    {
+      "symbol": "EURNZD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4110
+    },
+    {
+      "symbol": "GBPJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4107
+    },
+    {
+      "symbol": "GBPCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4198
+    },
+    {
+      "symbol": "GBPCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4196
+    },
+    {
+      "symbol": "GBPAUD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4127
+    },
+    {
+      "symbol": "GBPNZD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4141
+    },
+    {
+      "symbol": "AUDJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4068
+    },
+    {
+      "symbol": "AUDCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4167
+    },
+    {
+      "symbol": "AUDCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4162
+    },
+    {
+      "symbol": "AUDNZD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4141
+    },
+    {
+      "symbol": "NZDJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4067
+    },
+    {
+      "symbol": "NZDCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4166
+    },
+    {
+      "symbol": "NZDCAD",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4139
+    },
+    {
+      "symbol": "CADJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4111
+    },
+    {
+      "symbol": "CADCHF",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-07",
+      "row_count": 4195
+    },
+    {
+      "symbol": "CHFJPY",
+      "provider": "yfinance",
+      "timeframe": "1d",
+      "start": "2010-01-01",
+      "end": "2026-06-05",
+      "row_count": 4117
+    }
+  ]
+}
