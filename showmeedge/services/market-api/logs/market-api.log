@@ -1,0 +1,4 @@
+2026-06-07 02:16:32,027 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
+2026-06-07 02:16:32,027 INFO [root] file logging smoke test
+2026-06-07 02:43:54,857 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
+2026-06-07 02:45:08,167 INFO [root] Using vectorbt backtest engine for symbol=AMD fast_sma=10 slow_sma=50 bars=7403
