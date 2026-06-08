@@ -3,3 +3,4 @@
 2026-06-07 02:43:54,857 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
 2026-06-07 02:45:08,167 INFO [root] Using vectorbt backtest engine for symbol=AMD fast_sma=10 slow_sma=50 bars=7403
 2026-06-07 15:26:26,655 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
+2026-06-08 03:16:00,233 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
