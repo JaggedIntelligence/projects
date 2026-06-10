@@ -19,6 +19,7 @@ WHERE symbol = 'AAPL'
 ORDER BY ts DESC
 LIMIT 50`;
 
+const SQL_PARAM_COUNT = 4;
 const DATE_TIME_CELL_PATTERN = /^(\d{4}-\d{2}-\d{2})(?:[ T]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?)?$/;
 const NUMERIC_CELL_PATTERN = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i;
 
@@ -46,6 +47,7 @@ type CellPresentation = {
 
 export function SqlQueryPage() {
   const [sql, setSql] = useState(DEFAULT_SQL);
+  const [sqlParams, setSqlParams] = useState(createEmptySqlParams);
   const [queryName, setQueryName] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
@@ -79,8 +81,14 @@ export function SqlQueryPage() {
       return;
     }
 
+    const { error, params } = buildSqlParams(sqlParams);
+    if (error) {
+      setFormError(error);
+      return;
+    }
+
     setFormError(null);
-    runSql.mutate({ sql: nextSql });
+    runSql.mutate({ sql: nextSql, params });
   }
 
   function handleSaveQuery() {
@@ -112,6 +120,7 @@ export function SqlQueryPage() {
     setSelectedSavedQueryId(savedQuery.id);
     setQueryName(savedQuery.name);
     setSql(savedQuery.sql);
+    setSqlParams(createEmptySqlParams());
     setFormError(null);
     setSaveMessage(`Loaded "${savedQuery.name}".`);
   }
@@ -176,6 +185,29 @@ export function SqlQueryPage() {
           />
         </div>
 
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {sqlParams.map((value, index) => (
+            <div key={index} className="grid gap-2">
+              <Label htmlFor={`sql-param-${index + 1}`}>Parameter ${formatSqlParamLabel(index)}</Label>
+              <Input
+                id={`sql-param-${index + 1}`}
+                aria-label={`Parameter ${formatSqlParamLabel(index)}`}
+                value={value}
+                onChange={(event) => {
+                  const nextValue = event.target.value;
+                  setSqlParams((currentParams) =>
+                    currentParams.map((currentValue, currentIndex) =>
+                      currentIndex === index ? nextValue : currentValue
+                    )
+                  );
+                }}
+                autoComplete="off"
+                placeholder={formatSqlParamLabel(index)}
+              />
+            </div>
+          ))}
+        </div>
+
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-h-5 text-sm text-destructive">
             {formError ?? saveQuery.error?.message ?? runSql.error?.message ?? savedQueries.error?.message ?? null}
@@ -211,6 +243,41 @@ export function SqlQueryPage() {
       </section>
     </main>
   );
+}
+
+function createEmptySqlParams() {
+  return Array.from({ length: SQL_PARAM_COUNT }, () => "");
+}
+
+function buildSqlParams(values: string[]): { error: string | null; params: string[] } {
+  const trimmedValues = values.map((value) => value.trim());
+  let highestFilledIndex = -1;
+
+  for (let index = trimmedValues.length - 1; index >= 0; index -= 1) {
+    if (trimmedValues[index]) {
+      highestFilledIndex = index;
+      break;
+    }
+  }
+
+  if (highestFilledIndex === -1) {
+    return { error: null, params: [] };
+  }
+
+  for (let index = 0; index <= highestFilledIndex; index += 1) {
+    if (!trimmedValues[index]) {
+      return {
+        error: `Parameter ${formatSqlParamLabel(index)} is required when ${formatSqlParamLabel(highestFilledIndex)} is filled.`,
+        params: []
+      };
+    }
+  }
+
+  return { error: null, params: trimmedValues.slice(0, highestFilledIndex + 1) };
+}
+
+function formatSqlParamLabel(index: number) {
+  return `$${index + 1}`;
 }
 
 function parseCsvTable(csv: string, fallbackColumns: string[]): CsvTable {

@@ -9,7 +9,11 @@ import { savedSqlQueries } from "@/server/db/schema";
 const MARKET_API_BASE_URL = (process.env.MARKET_API_BASE_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
 const sqlQueryInputSchema = z.object({
-  sql: z.string().trim().min(5, "SQL query must be at least 5 characters")
+  sql: z.string().trim().min(5, "SQL query must be at least 5 characters"),
+  params: z
+    .array(z.string().trim().min(1, "SQL parameters cannot be blank"))
+    .max(4, "Only four SQL parameters are supported")
+    .default([])
 });
 
 const savedSqlQueryInputSchema = z.object({
@@ -102,7 +106,7 @@ export const queryRouter = router({
     try {
       return await fetchFromMarketApi<SqlQueryResponse>("/query/sql", {
         method: "POST",
-        body: JSON.stringify({ sql: input.sql })
+        body: JSON.stringify({ sql: input.sql, params: input.params })
       });
     } catch (error) {
       throw new TRPCError({

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field, model_validator
 
 Timeframe = Literal["1d"]
 OHLC_RANGE_TOLERANCE = 1e-6
+SqlQueryParam = Annotated[str, Field(min_length=1)]
 
 
 class OhlcvBar(BaseModel):
@@ -113,6 +114,7 @@ class BacktestResponse(BaseModel):
 
 class SqlQueryRequest(BaseModel):
     sql: str = Field(min_length=1)
+    params: list[SqlQueryParam] = Field(default_factory=list, max_length=4)
 
 
 class SqlQueryResponse(BaseModel):

@@ -22,6 +22,7 @@ from app.models import (
 )
 from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_questdb, questdb_connection
 from app.repositories.questdb_daily_bars import ensure_equity_ohlcv_daily_table, fetch_daily_bars
+from app.sql_params import prepare_sql_query
 
 settings = get_settings()
 configure_logging(settings)
@@ -61,11 +62,15 @@ def questdb_health() -> dict[str, str]:
 @app.post("/query/sql", response_model=SqlQueryResponse)
 def run_sql_query(request: SqlQueryRequest) -> SqlQueryResponse:
     try:
+        prepared_sql = prepare_sql_query(request.sql, request.params)
+
         with questdb_connection() as connection:
             with connection.cursor() as cursor:
-                cursor.execute(request.sql)
+                cursor.execute(prepared_sql)
                 columns = [_column_name(column) for column in cursor.description or []]
                 rows = cursor.fetchall() if cursor.description else []
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:
         raise HTTPException(status_code=400, detail=f"QuestDB query failed: {exc}") from exc
 

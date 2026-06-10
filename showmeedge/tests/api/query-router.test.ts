@@ -1,4 +1,4 @@
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { createApiTestHarness, describeApi, expectSavedSqlQueryToMatch } from "@/tests/helpers/api-test-harness";
 
@@ -13,6 +13,10 @@ describeApi("queryRouter savedQueries", () => {
 
   beforeEach(async () => {
     await harness.clearSavedSqlQueries();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   it("creates and lists saved SQL queries for the authenticated user", async () => {
@@ -89,5 +93,37 @@ describeApi("queryRouter savedQueries", () => {
         sql: "abcd"
       })
     ).rejects.toThrow();
+  });
+
+  it("forwards SQL parameters to the market API", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          csv: "symbol\nAAPL\n",
+          row_count: 1,
+          columns: ["symbol"]
+        }),
+        { status: 200 }
+      )
+    );
+    const caller = harness.createCaller("user_a");
+
+    const result = await caller.query.runSql({
+      sql: " SELECT * FROM equity_ohlcv_daily WHERE symbol = $1 ",
+      params: [" AAPL "]
+    });
+    const [, requestInit] = fetchMock.mock.calls[0] ?? [];
+
+    expect(result.row_count).toBe(1);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "http://127.0.0.1:8000/query/sql",
+      expect.objectContaining({
+        method: "POST"
+      })
+    );
+    expect(JSON.parse(String((requestInit as RequestInit).body))).toEqual({
+      sql: "SELECT * FROM equity_ohlcv_daily WHERE symbol = $1",
+      params: ["AAPL"]
+    });
   });
 });

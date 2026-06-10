@@ -105,8 +105,45 @@ describe("SqlQueryPage", () => {
     fireEvent.click(screen.getByRole("button", { name: "Run query" }));
 
     await waitFor(() => {
-      expect(trpcMocks.mutate).toHaveBeenCalledWith({ sql: "SELECT 1" });
+      expect(trpcMocks.mutate).toHaveBeenCalledWith({ sql: "SELECT 1", params: [] });
     });
+  });
+
+  it("runs SQL with contiguous parameter values", async () => {
+    renderComponent(<SqlQueryPage />);
+
+    fireEvent.change(screen.getByLabelText("SQL"), {
+      target: { value: "SELECT * FROM equity_ohlcv_daily WHERE symbol = $1 AND provider = $2" }
+    });
+    fireEvent.change(screen.getByRole("textbox", { name: "Parameter $1" }), {
+      target: { value: " AAPL " }
+    });
+    fireEvent.change(screen.getByRole("textbox", { name: "Parameter $2" }), {
+      target: { value: " yfinance " }
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Run query" }));
+
+    await waitFor(() => {
+      expect(trpcMocks.mutate).toHaveBeenCalledWith({
+        sql: "SELECT * FROM equity_ohlcv_daily WHERE symbol = $1 AND provider = $2",
+        params: ["AAPL", "yfinance"]
+      });
+    });
+  });
+
+  it("requires earlier parameter values when a later parameter is filled", () => {
+    renderComponent(<SqlQueryPage />);
+
+    fireEvent.change(screen.getByRole("textbox", { name: "Parameter $1" }), {
+      target: { value: "AAPL" }
+    });
+    fireEvent.change(screen.getByRole("textbox", { name: "Parameter $3" }), {
+      target: { value: "2026-06-10" }
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Run query" }));
+
+    expect(screen.getByText("Parameter $2 is required when $3 is filled.")).toBeInTheDocument();
+    expect(trpcMocks.mutate).not.toHaveBeenCalled();
   });
 
   it("saves the current SQL with a query name", () => {

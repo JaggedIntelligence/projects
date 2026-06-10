@@ -8,6 +8,7 @@ The first version is intentionally small:
 
 - User opens `/query`.
 - User types a SQL query.
+- User can fill optional `$1` through `$4` parameter values.
 - User clicks `Run query`.
 - The query is sent to the Python market API.
 - FastAPI executes the SQL against QuestDB.
@@ -54,6 +55,7 @@ The first implementation keeps the surface simple:
 - Saved-query dropdown.
 - Query-name textbox.
 - `Save query as` button.
+- Four optional SQL parameter inputs for `$1` through `$4`.
 - Loading and error state.
 - Parsed CSV result table.
 - Clickable result column headers with ascending/descending sort toggle.
@@ -95,6 +97,7 @@ SQL form
   query name textbox
   Save query as button
   textarea
+  parameter inputs for $1 through $4
   Run query button
   inline error message
 
@@ -139,6 +142,14 @@ Saved query behavior:
 - Minimum validation is `name.length >= 5` and `sql.length >= 5` after trimming.
 - Saved query names are unique per user, not globally.
 
+SQL parameter behavior:
+
+- The screen always shows four optional inputs for `$1`, `$2`, `$3`, and `$4`.
+- Empty parameter inputs are omitted.
+- If a later parameter is filled, all earlier parameters must also be filled.
+- `$1` and `$3` with blank `$2` is blocked client-side before running the query.
+- Saved queries store only the query name and SQL text, not transient parameter values.
+
 Postgres table:
 
 ```text
@@ -176,9 +187,12 @@ Input:
 
 ```json
 {
-  "sql": "SELECT * FROM equity_ohlcv_daily LIMIT 10"
+  "sql": "SELECT * FROM equity_ohlcv_daily WHERE symbol = $1 LIMIT 10",
+  "params": ["AAPL"]
 }
 ```
+
+`params` is optional and defaults to `[]`. At most four parameter values are accepted.
 
 Output:
 
@@ -262,7 +276,8 @@ Request:
 
 ```json
 {
-  "sql": "SELECT 1"
+  "sql": "SELECT * FROM equity_ohlcv_daily WHERE symbol = $1 LIMIT 10",
+  "params": ["AAPL"]
 }
 ```
 
@@ -281,6 +296,7 @@ Implementation path:
 ```text
 services/market-api/app/main.py
 services/market-api/app/models.py
+services/market-api/app/sql_params.py
 ```
 
 CSV serialization should use Python's `csv.writer` and cursor metadata:
@@ -292,6 +308,17 @@ CSV serialization should use Python's `csv.writer` and cursor metadata:
 ## SQL Behavior
 
 For the MVP, the app assumes the user enters a valid read query.
+
+Parameterized queries use `$1` through `$4` in the SQL editor. The FastAPI service validates the referenced placeholders, renders escaped SQL literals server-side, and then executes the final SQL against QuestDB. This is necessary because QuestDB PGWire treats `psycopg` bind placeholders as SQL tokens in this query path.
+
+Backend parameter validation:
+
+- Only `$1`, `$2`, `$3`, and `$4` are supported.
+- A referenced placeholder must have a corresponding parameter value.
+- A provided parameter value must be referenced by the SQL text.
+- Repeated placeholders are allowed and render the same parameter value at each occurrence.
+- String-like values are single-quoted with embedded quotes escaped.
+- Numeric-looking values render as numeric literals.
 
 Current intentional non-goals:
 
@@ -316,6 +343,12 @@ Default:
 
 ```text
 http://127.0.0.1:8000
+```
+
+The `market-api` Docker image copies Python source at build time. Changes under `services/market-api/app` require rebuilding and recreating that service:
+
+```bash
+docker compose -f scripts/docker-compose.yml up -d --build --force-recreate market-api
 ```
 
 After changing FastAPI routes, rebuild or restart the Docker market API service so the container loads the new endpoint:
