@@ -1,6 +1,6 @@
 "use client";
 
-import { Database, Play } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Database, Play } from "lucide-react";
 import Papa from "papaparse";
 import { FormEvent, useMemo, useState } from "react";
 
@@ -23,6 +23,13 @@ type CsvTable = {
   rows: CsvRow[];
   errors: string[];
 };
+
+type SortDirection = "asc" | "desc";
+
+type SortState = {
+  column: string;
+  direction: SortDirection;
+} | null;
 
 export function SqlQueryPage() {
   const [sql, setSql] = useState(DEFAULT_SQL);
@@ -125,6 +132,27 @@ function parseCsvTable(csv: string, fallbackColumns: string[]): CsvTable {
 }
 
 function CsvResultTable({ table }: { table: CsvTable }) {
+  const [sortState, setSortState] = useState<SortState>(null);
+  const activeSort = sortState && table.columns.includes(sortState.column) ? sortState : null;
+  const sortedRows = useMemo(() => {
+    if (!activeSort) {
+      return table.rows;
+    }
+
+    return table.rows
+      .map((row, index) => ({ row, index }))
+      .sort((left, right) => {
+        const comparison = compareCellValues(left.row[activeSort.column], right.row[activeSort.column]);
+
+        if (comparison === 0) {
+          return left.index - right.index;
+        }
+
+        return activeSort.direction === "asc" ? comparison : -comparison;
+      })
+      .map(({ row }) => row);
+  }, [activeSort, table.rows]);
+
   if (!table.columns.length) {
     return (
       <div className="min-h-80 rounded-md border border-dashed p-4 text-sm text-muted-foreground">
@@ -145,15 +173,32 @@ function CsvResultTable({ table }: { table: CsvTable }) {
           <thead className="sticky top-0 z-10 bg-muted text-muted-foreground">
             <tr>
               {table.columns.map((column, columnIndex) => (
-                <th key={`${column}-${columnIndex}`} className="whitespace-nowrap px-3 py-2 text-left font-medium">
-                  {column}
+                <th
+                  key={`${column}-${columnIndex}`}
+                  aria-sort={getColumnAriaSort(activeSort, column)}
+                  className="whitespace-nowrap px-3 py-2 text-left font-medium"
+                >
+                  <button
+                    type="button"
+                    aria-label={getSortButtonLabel(activeSort, column)}
+                    className="-mx-2 flex w-full items-center gap-2 rounded px-2 py-1 text-left transition hover:bg-background/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    onClick={() => {
+                      setSortState((currentSort) => ({
+                        column,
+                        direction: currentSort?.column === column && currentSort.direction === "asc" ? "desc" : "asc"
+                      }));
+                    }}
+                  >
+                    <span className="truncate">{column}</span>
+                    <SortIndicator activeSort={activeSort} column={column} />
+                  </button>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {table.rows.length ? (
-              table.rows.map((row, rowIndex) => (
+            {sortedRows.length ? (
+              sortedRows.map((row, rowIndex) => (
                 <tr key={rowIndex} className="border-t">
                   {table.columns.map((column, columnIndex) => {
                     const cellValue = formatCellValue(row[column]);
@@ -180,6 +225,60 @@ function CsvResultTable({ table }: { table: CsvTable }) {
       </div>
     </div>
   );
+}
+
+function SortIndicator({ activeSort, column }: { activeSort: SortState; column: string }) {
+  if (activeSort?.column !== column) {
+    return <ArrowUpDown aria-hidden="true" className="h-3.5 w-3.5 shrink-0 opacity-50" />;
+  }
+
+  if (activeSort.direction === "asc") {
+    return <ArrowUp aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />;
+  }
+
+  return <ArrowDown aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />;
+}
+
+function getColumnAriaSort(activeSort: SortState, column: string): "ascending" | "descending" | "none" {
+  if (activeSort?.column !== column) {
+    return "none";
+  }
+
+  return activeSort.direction === "asc" ? "ascending" : "descending";
+}
+
+function getSortButtonLabel(activeSort: SortState, column: string) {
+  if (activeSort?.column === column && activeSort.direction === "asc") {
+    return `Sort by ${column} descending`;
+  }
+
+  return `Sort by ${column} ascending`;
+}
+
+function compareCellValues(leftValue: unknown, rightValue: unknown) {
+  const left = formatCellValue(leftValue).trim();
+  const right = formatCellValue(rightValue).trim();
+
+  if (!left && !right) {
+    return 0;
+  }
+
+  if (!left) {
+    return 1;
+  }
+
+  if (!right) {
+    return -1;
+  }
+
+  const leftNumber = Number(left);
+  const rightNumber = Number(right);
+
+  if (Number.isFinite(leftNumber) && Number.isFinite(rightNumber)) {
+    return leftNumber - rightNumber;
+  }
+
+  return left.localeCompare(right, undefined, { numeric: true, sensitivity: "base" });
 }
 
 function formatCellValue(value: unknown): string {
