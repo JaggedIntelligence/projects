@@ -109,3 +109,13 @@ class BacktestResponse(BaseModel):
     completed_at: datetime
     trades: list[BacktestTrade]
     equity_curve: list[EquityPoint]
+
+
+class SqlQueryRequest(BaseModel):
+    sql: str = Field(min_length=1)
+
+
+class SqlQueryResponse(BaseModel):
+    csv: str
+    row_count: int = Field(ge=0)
+    columns: list[str]

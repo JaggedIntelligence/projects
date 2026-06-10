@@ -1,3 +1,6 @@
+import csv
+from io import StringIO
+
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -13,9 +16,11 @@ from app.models import (
     MockIngestRequest,
     MockIngestResponse,
     OhlcvBar,
+    SqlQueryRequest,
+    SqlQueryResponse,
     Timeframe,
 )
-from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_questdb
+from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_questdb, questdb_connection
 from app.repositories.questdb_daily_bars import ensure_equity_ohlcv_daily_table, fetch_daily_bars
 
 settings = get_settings()
@@ -51,6 +56,24 @@ def questdb_health() -> dict[str, str]:
         raise HTTPException(status_code=503, detail=f"QuestDB is not ready: {exc}") from exc
 
     return {"status": "ok" if is_ready else "not_ready"}
+
+
+@app.post("/query/sql", response_model=SqlQueryResponse)
+def run_sql_query(request: SqlQueryRequest) -> SqlQueryResponse:
+    try:
+        with questdb_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(request.sql)
+                columns = [_column_name(column) for column in cursor.description or []]
+                rows = cursor.fetchall() if cursor.description else []
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=f"QuestDB query failed: {exc}") from exc
+
+    return SqlQueryResponse(
+        csv=_rows_to_csv(columns, rows),
+        row_count=len(rows),
+        columns=columns,
+    )
 
 
 @app.post("/market-data/ingest/mock", response_model=MockIngestResponse)
@@ -113,6 +136,25 @@ def daily_bar_to_ohlcv_bar(bar: DailyOhlcvBar) -> OhlcvBar:
         close=bar.close,
         volume=bar.volume,
     )
+
+
+def _column_name(column: object) -> str:
+    name = getattr(column, "name", None)
+    if name is not None:
+        return str(name)
+
+    return str(column[0])
+
+
+def _rows_to_csv(columns: list[str], rows: list[tuple[object, ...]]) -> str:
+    output = StringIO()
+    writer = csv.writer(output)
+
+    if columns:
+        writer.writerow(columns)
+    writer.writerows(rows)
+
+    return output.getvalue()
 
 
 @app.post("/backtests/run", response_model=BacktestResponse)

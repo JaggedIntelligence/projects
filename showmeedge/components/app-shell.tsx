@@ -1,7 +1,7 @@
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
-import { Moon, Plus, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -16,6 +16,7 @@ const navItems = [
   
   { href: "/charts", label: "Charts" },
   { href: "/backtest", label: "Backtest" },
+  { href: "/query", label: "Query" },
   { href: "/trading", label: "Admin" },
 ] as const;
 
@@ -55,7 +56,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <UserButton afterSignOutUrl="/sign-in" />
           </div>
         </div>
-        <nav className="container grid grid-cols-3 gap-2 pb-3 sm:hidden">
+        <nav className="container grid grid-cols-4 gap-2 pb-3 sm:hidden">
           {navItems.map((item) => (
             <Link
               key={item.href}
