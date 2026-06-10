@@ -12,7 +12,8 @@ The first version is intentionally small:
 - The query is sent to the Python market API.
 - FastAPI executes the SQL against QuestDB.
 - Results return to the UI as a CSV string.
-- The UI displays the raw CSV string.
+- The UI parses the CSV string and displays it as a table.
+- User can click any result column header to sort the visible table rows by that column.
 
 This feature is an internal data workbench for fast inspection and future CSV-driven workflows.
 
@@ -29,7 +30,8 @@ Browser
   -> FastAPI POST /query/sql
   -> QuestDB PGWire query execution
   -> JSON result returned to Next.js
-  -> CSV string displayed in UI
+  -> CSV string parsed by Papa Parse
+  -> sortable result table displayed in UI
 ```
 
 This preserves the current project boundary:
@@ -47,10 +49,11 @@ The first implementation keeps the surface simple:
 - SQL textarea.
 - `Run query` button.
 - Loading and error state.
-- Raw CSV result display.
+- Parsed CSV result table.
+- Clickable result column headers with ascending/descending sort toggle.
 - Response metadata for row and column counts.
 
-No advanced SQL editor, table browser, pagination, result grid, download button, history, or saved queries are included in this slice.
+No advanced SQL editor, table browser, pagination, download button, history, or saved queries are included in this slice.
 
 ## Route And Protection
 
@@ -89,7 +92,8 @@ SQL form
 Result section
   row count badge
   column count badge
-  raw CSV preformatted output
+  parsed CSV table
+  sortable column headers
 ```
 
 Default SQL:
@@ -102,7 +106,18 @@ ORDER BY ts DESC
 LIMIT 50
 ```
 
-The UI currently displays only the returned CSV string because downstream plans are expected to operate on that string later.
+The API still returns CSV because downstream plans may operate on that string later. The browser parses the string with Papa Parse using the first CSV row as headers and renders the result as a table for easier inspection.
+
+Result table behavior:
+
+- Column order follows the parsed CSV headers.
+- Each column header is a button.
+- First click on a header sorts ascending.
+- Clicking the same header again sorts descending.
+- Sorting is local to the displayed result set and does not re-run the SQL query.
+- Numeric-looking cell values sort numerically; other values sort as natural text.
+- Empty cell values sort after non-empty values.
+- The active header exposes `aria-sort` for accessibility.
 
 ## tRPC Contract
 
@@ -136,7 +151,7 @@ Output:
 }
 ```
 
-The UI displays `csv` and uses `row_count` / `columns.length` for small result badges.
+The UI parses `csv` for table display and uses `row_count` / `columns.length` for small result badges.
 
 ## FastAPI Contract
 
@@ -239,13 +254,14 @@ Browser smoke check:
 - Confirm Clerk redirects to `/sign-in?redirect_url=.../query`.
 - Sign in.
 - Run the default query.
-- Confirm CSV text is displayed.
+- Confirm CSV results are displayed as a table.
+- Click a column header once and confirm rows sort ascending.
+- Click the same column header again and confirm rows sort descending.
 
 ## Future Enhancements
 
 Possible next iterations:
 
-- Render CSV as a table/grid.
 - Add a CSV download button.
 - Add saved query snippets.
 - Add table/schema discovery.

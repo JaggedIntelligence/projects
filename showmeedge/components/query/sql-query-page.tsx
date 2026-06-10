@@ -16,6 +16,9 @@ WHERE symbol = 'AAPL'
 ORDER BY ts DESC
 LIMIT 50`;
 
+const DATE_TIME_CELL_PATTERN = /^(\d{4}-\d{2}-\d{2})(?:[ T]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?)?$/;
+const NUMERIC_CELL_PATTERN = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i;
+
 type CsvRow = Record<string, unknown>;
 
 type CsvTable = {
@@ -201,7 +204,7 @@ function CsvResultTable({ table }: { table: CsvTable }) {
               sortedRows.map((row, rowIndex) => (
                 <tr key={rowIndex} className="border-t">
                   {table.columns.map((column, columnIndex) => {
-                    const cellValue = formatCellValue(row[column]);
+                    const cellValue = formatCellValue(row[column], column);
 
                     return (
                       <td key={`${column}-${columnIndex}`} className="max-w-[24rem] whitespace-nowrap px-3 py-2 align-top font-mono text-xs tabular-nums">
@@ -256,6 +259,13 @@ function getSortButtonLabel(activeSort: SortState, column: string) {
 }
 
 function compareCellValues(leftValue: unknown, rightValue: unknown) {
+  const leftNumber = getNumericCellValue(leftValue);
+  const rightNumber = getNumericCellValue(rightValue);
+
+  if (leftNumber !== null && rightNumber !== null) {
+    return leftNumber - rightNumber;
+  }
+
   const left = formatCellValue(leftValue).trim();
   const right = formatCellValue(rightValue).trim();
 
@@ -271,23 +281,28 @@ function compareCellValues(leftValue: unknown, rightValue: unknown) {
     return -1;
   }
 
-  const leftNumber = Number(left);
-  const rightNumber = Number(right);
-
-  if (Number.isFinite(leftNumber) && Number.isFinite(rightNumber)) {
-    return leftNumber - rightNumber;
-  }
-
   return left.localeCompare(right, undefined, { numeric: true, sensitivity: "base" });
 }
 
-function formatCellValue(value: unknown): string {
+function formatCellValue(value: unknown, column?: string): string {
+  if (column && isDateColumn(column)) {
+    const dateValue = getDateCellValue(value);
+    if (dateValue) {
+      return dateValue;
+    }
+  }
+
+  const numericValue = getNumericCellValue(value);
+  if (numericValue !== null) {
+    return numericValue.toFixed(2);
+  }
+
   if (value === null || value === undefined) {
     return "";
   }
 
   if (Array.isArray(value)) {
-    return value.map(formatCellValue).join(", ");
+    return value.map((item) => formatCellValue(item)).join(", ");
   }
 
   if (typeof value === "object") {
@@ -295,4 +310,55 @@ function formatCellValue(value: unknown): string {
   }
 
   return String(value);
+}
+
+function isDateColumn(column: string) {
+  const normalizedColumn = column.trim().toLowerCase();
+
+  return (
+    normalizedColumn === "date" ||
+    normalizedColumn === "dt" ||
+    normalizedColumn === "ts" ||
+    normalizedColumn === "time" ||
+    normalizedColumn === "timestamp" ||
+    normalizedColumn.endsWith("_date") ||
+    normalizedColumn.endsWith("_dt") ||
+    normalizedColumn.endsWith("_ts") ||
+    normalizedColumn.endsWith("_time") ||
+    normalizedColumn.endsWith("_timestamp") ||
+    normalizedColumn.endsWith("_at")
+  );
+}
+
+function getDateCellValue(value: unknown): string | null {
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10);
+  }
+
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const matchedDate = value.trim().match(DATE_TIME_CELL_PATTERN);
+
+  return matchedDate?.[1] ?? null;
+}
+
+function getNumericCellValue(value: unknown): number | null {
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : null;
+  }
+
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const trimmedValue = value.trim();
+  if (!trimmedValue || !NUMERIC_CELL_PATTERN.test(trimmedValue)) {
+    return null;
+  }
+
+  const numericValue = Number(trimmedValue);
+
+  return Number.isFinite(numericValue) ? numericValue : null;
 }

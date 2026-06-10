@@ -62,21 +62,28 @@ describe("SqlQueryPage", () => {
 
   it("renders CSV results as a parsed table", () => {
     trpcMocks.mutationState.data = {
-      csv: 'id,name,note\n1,"Doe, Jane","hello, world"\n2,Sam,"plain value"\n',
+      csv: 'ts,id,name,note,price\n"2026-06-10 13:45:22",1,"Doe, Jane","hello, world",123.456\n"2026-06-09T09:30:00Z",2,Sam,"plain value",-4.5\n',
       row_count: 2,
-      columns: ["id", "name", "note"]
+      columns: ["ts", "id", "name", "note", "price"]
     };
 
     renderComponent(<SqlQueryPage />);
 
     expect(screen.getByText("2 rows")).toBeInTheDocument();
-    expect(screen.getByText("3 columns")).toBeInTheDocument();
+    expect(screen.getByText("5 columns")).toBeInTheDocument();
     expect(screen.getByRole("table")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Sort by ts ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by id ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by name ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by note ascending" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Sort by price ascending" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "2026-06-10" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "2026-06-09" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "Doe, Jane" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "hello, world" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "123.46" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "-4.50" })).toBeInTheDocument();
+    expect(screen.queryByText("2026-06-10 13:45:22")).not.toBeInTheDocument();
     expect(screen.queryByText(/id,name,note/)).not.toBeInTheDocument();
   });
 
@@ -89,16 +96,16 @@ describe("SqlQueryPage", () => {
 
     renderComponent(<SqlQueryPage />);
 
-    expect(getColumnValues(0)).toEqual(["2", "1", "3"]);
+    expect(getColumnValues(0)).toEqual(["2.00", "1.00", "3.00"]);
 
     fireEvent.click(screen.getByRole("button", { name: "Sort by id ascending" }));
 
-    expect(getColumnValues(0)).toEqual(["1", "2", "3"]);
+    expect(getColumnValues(0)).toEqual(["1.00", "2.00", "3.00"]);
     expect(getHeaderForSortButton("Sort by id descending")).toHaveAttribute("aria-sort", "ascending");
 
     fireEvent.click(screen.getByRole("button", { name: "Sort by id descending" }));
 
-    expect(getColumnValues(0)).toEqual(["3", "2", "1"]);
+    expect(getColumnValues(0)).toEqual(["3.00", "2.00", "1.00"]);
     expect(getHeaderForSortButton("Sort by id ascending")).toHaveAttribute("aria-sort", "descending");
   });
 });
