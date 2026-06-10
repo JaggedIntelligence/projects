@@ -14,6 +14,8 @@ The first version is intentionally small:
 - Results return to the UI as a CSV string.
 - The UI parses the CSV string and displays it as a table.
 - User can click any result column header to sort the visible table rows by that column.
+- User can save useful SQL snippets by name.
+- User can load a saved query from the dropdown without automatically running it.
 
 This feature is an internal data workbench for fast inspection and future CSV-driven workflows.
 
@@ -26,6 +28,7 @@ Flow:
 ```text
 Browser
   -> /query page
+  -> tRPC query.savedQueries list/save for user-owned saved SQL
   -> tRPC query.runSql mutation
   -> FastAPI POST /query/sql
   -> QuestDB PGWire query execution
@@ -48,12 +51,15 @@ The first implementation keeps the surface simple:
 - Protected route at `/query`.
 - SQL textarea.
 - `Run query` button.
+- Saved-query dropdown.
+- Query-name textbox.
+- `Save query as` button.
 - Loading and error state.
 - Parsed CSV result table.
 - Clickable result column headers with ascending/descending sort toggle.
 - Response metadata for row and column counts.
 
-No advanced SQL editor, table browser, pagination, download button, history, or saved queries are included in this slice.
+No advanced SQL editor, table browser, pagination, download button, delete/rename saved-query management, or query history are included in this slice.
 
 ## Route And Protection
 
@@ -83,8 +89,11 @@ Header
   QuestDB badge
   CSV badge
   Query title
+  saved-query dropdown
 
 SQL form
+  query name textbox
+  Save query as button
   textarea
   Run query button
   inline error message
@@ -119,6 +128,36 @@ Result table behavior:
 - Empty cell values sort after non-empty values.
 - The active header exposes `aria-sort` for accessibility.
 
+Saved query behavior:
+
+- Saved queries are user-owned app metadata stored in Postgres.
+- The dropdown is populated from the current user's saved query names.
+- Selecting a saved query loads its name and SQL text into the query form.
+- Selecting a saved query does not auto-run SQL.
+- `Save query as` creates a saved query when the name is new for the user.
+- `Save query as` updates/replaces the existing saved query when the same user saves the same name again.
+- Minimum validation is `name.length >= 5` and `sql.length >= 5` after trimming.
+- Saved query names are unique per user, not globally.
+
+Postgres table:
+
+```text
+saved_sql_queries
+  id uuid primary key
+  user_id text not null
+  name text not null
+  sql text not null
+  created_at timestamp with time zone not null
+  updated_at timestamp with time zone not null
+```
+
+Indexes:
+
+```text
+saved_sql_queries_user_id_idx on user_id
+saved_sql_queries_user_name_unique_idx unique on (user_id, name)
+```
+
 ## tRPC Contract
 
 Router:
@@ -152,6 +191,64 @@ Output:
 ```
 
 The UI parses `csv` for table display and uses `row_count` / `columns.length` for small result badges.
+
+Saved query procedures:
+
+```text
+api.query.savedQueries.list
+api.query.savedQueries.save
+```
+
+`savedQueries.list` input:
+
+```text
+none
+```
+
+`savedQueries.list` output:
+
+```json
+[
+  {
+    "id": "uuid",
+    "userId": "clerk_user_id",
+    "name": "Friday movers",
+    "sql": "SELECT * FROM assets_eod LIMIT 10",
+    "createdAt": "2026-06-10T00:00:00.000Z",
+    "updatedAt": "2026-06-10T00:00:00.000Z"
+  }
+]
+```
+
+`savedQueries.save` input:
+
+```json
+{
+  "name": "Friday movers",
+  "sql": "SELECT * FROM assets_eod LIMIT 10"
+}
+```
+
+Validation:
+
+- `name`: trimmed string, min 5, max 80.
+- `sql`: trimmed string, min 5, max 50,000.
+
+`savedQueries.save` output:
+
+```json
+{
+  "id": "uuid",
+  "userId": "clerk_user_id",
+  "name": "Friday movers",
+  "sql": "SELECT * FROM assets_eod LIMIT 10",
+  "createdAt": "2026-06-10T00:00:00.000Z",
+  "updatedAt": "2026-06-10T00:00:00.000Z",
+  "action": "created"
+}
+```
+
+`action` is `"created"` for a new saved query and `"updated"` when saving over the same name for the same user.
 
 ## FastAPI Contract
 
@@ -242,8 +339,9 @@ curl -s -i -X POST http://127.0.0.1:8000/query/sql \
 Expected checks for this feature:
 
 ```bash
+pnpm exec vitest run tests/components/sql-query-page.test.tsx tests/api/query-router.test.ts
 pnpm exec tsc --noEmit
-pnpm lint
+pnpm exec eslint components/query/sql-query-page.tsx server/api/routers/query.ts server/db/schema.ts tests/components/sql-query-page.test.tsx tests/api/query-router.test.ts tests/helpers/api-test-harness.ts
 PYTHONPYCACHEPREFIX=/private/tmp/showmeedge-pycache python3 -m compileall services/market-api/app
 PYTHONPYCACHEPREFIX=/private/tmp/showmeedge-pycache PYTHONPATH=services/market-api python3 -m unittest discover services/market-api/tests
 ```
@@ -253,6 +351,10 @@ Browser smoke check:
 - Open `/query` while signed out.
 - Confirm Clerk redirects to `/sign-in?redirect_url=.../query`.
 - Sign in.
+- Save a named query with `Save query as`.
+- Confirm the saved query appears in the dropdown.
+- Select the saved query.
+- Confirm the name and SQL load into the form without auto-running.
 - Run the default query.
 - Confirm CSV results are displayed as a table.
 - Click a column header once and confirm rows sort ascending.
@@ -263,7 +365,7 @@ Browser smoke check:
 Possible next iterations:
 
 - Add a CSV download button.
-- Add saved query snippets.
+- Add saved query delete/rename controls.
 - Add table/schema discovery.
 - Add query history.
 - Add editor features such as monospace line numbers and SQL highlighting.

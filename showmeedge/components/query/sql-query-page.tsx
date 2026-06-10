@@ -1,13 +1,15 @@
 "use client";
 
-import { ArrowDown, ArrowUp, ArrowUpDown, Database, Play } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Database, Play, Save } from "lucide-react";
 import Papa from "papaparse";
 import { FormEvent, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
@@ -44,8 +46,22 @@ type CellPresentation = {
 
 export function SqlQueryPage() {
   const [sql, setSql] = useState(DEFAULT_SQL);
+  const [queryName, setQueryName] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [selectedSavedQueryId, setSelectedSavedQueryId] = useState<string | null>(null);
+  const utils = api.useUtils();
+  const savedQueries = api.query.savedQueries.list.useQuery();
   const runSql = api.query.runSql.useMutation();
+  const saveQuery = api.query.savedQueries.save.useMutation({
+    onSuccess: async (savedQuery) => {
+      setSelectedSavedQueryId(savedQuery.id);
+      setQueryName(savedQuery.name);
+      setSql(savedQuery.sql);
+      setSaveMessage(savedQuery.action === "created" ? "Saved query created." : "Saved query updated.");
+      await utils.query.savedQueries.list.invalidate();
+    }
+  });
   const resultTable = useMemo(() => {
     if (!runSql.data) {
       return null;
@@ -58,8 +74,8 @@ export function SqlQueryPage() {
     event.preventDefault();
 
     const nextSql = sql.trim();
-    if (!nextSql) {
-      setFormError("SQL query is required");
+    if (nextSql.length < 5) {
+      setFormError("SQL query must be at least 5 characters");
       return;
     }
 
@@ -67,17 +83,88 @@ export function SqlQueryPage() {
     runSql.mutate({ sql: nextSql });
   }
 
+  function handleSaveQuery() {
+    setSaveMessage(null);
+
+    const nextName = queryName.trim();
+    const nextSql = sql.trim();
+
+    if (nextName.length < 5) {
+      setFormError("Query name must be at least 5 characters");
+      return;
+    }
+
+    if (nextSql.length < 5) {
+      setFormError("SQL query must be at least 5 characters");
+      return;
+    }
+
+    setFormError(null);
+    saveQuery.mutate({ name: nextName, sql: nextSql });
+  }
+
+  function handleSelectSavedQuery(savedQueryId: string) {
+    const savedQuery = savedQueries.data?.find((query) => query.id === savedQueryId);
+    if (!savedQuery) {
+      return;
+    }
+
+    setSelectedSavedQueryId(savedQuery.id);
+    setQueryName(savedQuery.name);
+    setSql(savedQuery.sql);
+    setFormError(null);
+    setSaveMessage(`Loaded "${savedQuery.name}".`);
+  }
+
   return (
     <main className="container grid gap-6 py-6">
-      <div className="flex flex-col gap-2 border-b pb-4">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="secondary">QuestDB</Badge>
-          <Badge variant="outline">CSV</Badge>
+      <div className="flex flex-col gap-3 border-b pb-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="grid gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="secondary">QuestDB</Badge>
+              <Badge variant="outline">CSV</Badge>
+            </div>
+            <h1 className="text-2xl font-semibold tracking-normal">Query</h1>
+          </div>
+          <div className="w-full sm:w-72">
+            <Select
+              value={selectedSavedQueryId ?? ""}
+              onValueChange={handleSelectSavedQuery}
+              disabled={savedQueries.isLoading || !savedQueries.data?.length}
+            >
+              <SelectTrigger aria-label="Saved queries">
+                <SelectValue placeholder={savedQueries.isLoading ? "Loading saved queries" : "Saved queries"} />
+              </SelectTrigger>
+              <SelectContent>
+                {(savedQueries.data ?? []).map((savedQuery) => (
+                  <SelectItem key={savedQuery.id} value={savedQuery.id}>
+                    {savedQuery.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-        <h1 className="text-2xl font-semibold tracking-normal">Query</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="grid gap-4 rounded-md border bg-card p-4 shadow-sm">
+        <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+          <div className="grid gap-2">
+            <Label htmlFor="saved-query-name">Query name</Label>
+            <Input
+              id="saved-query-name"
+              value={queryName}
+              onChange={(event) => setQueryName(event.target.value)}
+              placeholder="My saved query"
+            />
+          </div>
+          <Button type="button" variant="outline" onClick={handleSaveQuery} disabled={saveQuery.isPending}>
+            <Save className="h-4 w-4" />
+            {saveQuery.isPending ? "Saving" : "Save query as"}
+          </Button>
+        </div>
+
         <div className="grid gap-2">
           <Label htmlFor="sql-query">SQL</Label>
           <Textarea
@@ -91,13 +178,14 @@ export function SqlQueryPage() {
 
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-h-5 text-sm text-destructive">
-            {formError ?? runSql.error?.message ?? null}
+            {formError ?? saveQuery.error?.message ?? runSql.error?.message ?? savedQueries.error?.message ?? null}
           </div>
           <Button type="submit" disabled={runSql.isPending}>
             <Play className="h-4 w-4" />
             {runSql.isPending ? "Running" : "Run query"}
           </Button>
         </div>
+        {saveMessage ? <div className="text-sm text-muted-foreground">{saveMessage}</div> : null}
       </form>
 
       <section className="grid gap-3 rounded-md border bg-card p-4 shadow-sm">

@@ -4,7 +4,28 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderComponent } from "@/tests/helpers/render";
 
 const trpcMocks = vi.hoisted(() => ({
+  invalidateSavedQueries: vi.fn(),
   mutate: vi.fn(),
+  saveMutate: vi.fn(),
+  saveMutationState: {
+    error: null,
+    isPending: false
+  } as {
+    error: Error | null;
+    isPending: boolean;
+  },
+  savedQueriesState: {
+    data: [] as Array<{
+      id: string;
+      userId: string;
+      name: string;
+      sql: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }>,
+    error: null,
+    isLoading: false
+  },
   mutationState: {
     data: undefined,
     error: null,
@@ -24,7 +45,28 @@ const trpcMocks = vi.hoisted(() => ({
 
 vi.mock("@/components/providers/trpc-provider", () => ({
   api: {
+    useUtils: () => ({
+      query: {
+        savedQueries: {
+          list: {
+            invalidate: trpcMocks.invalidateSavedQueries
+          }
+        }
+      }
+    }),
     query: {
+      savedQueries: {
+        list: {
+          useQuery: () => trpcMocks.savedQueriesState
+        },
+        save: {
+          useMutation: () => ({
+            mutate: trpcMocks.saveMutate,
+            error: trpcMocks.saveMutationState.error,
+            isPending: trpcMocks.saveMutationState.isPending
+          })
+        }
+      },
       runSql: {
         useMutation: () => ({
           mutate: trpcMocks.mutate,
@@ -41,10 +83,17 @@ const { SqlQueryPage } = await import("@/components/query/sql-query-page");
 
 describe("SqlQueryPage", () => {
   beforeEach(() => {
+    trpcMocks.invalidateSavedQueries.mockReset();
     trpcMocks.mutate.mockReset();
+    trpcMocks.saveMutate.mockReset();
     trpcMocks.mutationState.data = undefined;
     trpcMocks.mutationState.error = null;
     trpcMocks.mutationState.isPending = false;
+    trpcMocks.saveMutationState.error = null;
+    trpcMocks.saveMutationState.isPending = false;
+    trpcMocks.savedQueriesState.data = [];
+    trpcMocks.savedQueriesState.error = null;
+    trpcMocks.savedQueriesState.isLoading = false;
   });
 
   it("runs SQL with the trimmed query", async () => {
@@ -58,6 +107,35 @@ describe("SqlQueryPage", () => {
     await waitFor(() => {
       expect(trpcMocks.mutate).toHaveBeenCalledWith({ sql: "SELECT 1" });
     });
+  });
+
+  it("saves the current SQL with a query name", () => {
+    renderComponent(<SqlQueryPage />);
+
+    fireEvent.change(screen.getByLabelText("Query name"), {
+      target: { value: "Friday winners" }
+    });
+    fireEvent.change(screen.getByLabelText("SQL"), {
+      target: { value: "  SELECT * FROM assets_eod LIMIT 10  " }
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Save query as" }));
+
+    expect(trpcMocks.saveMutate).toHaveBeenCalledWith({
+      name: "Friday winners",
+      sql: "SELECT * FROM assets_eod LIMIT 10"
+    });
+  });
+
+  it("validates saved query name and SQL length before saving", () => {
+    renderComponent(<SqlQueryPage />);
+
+    fireEvent.change(screen.getByLabelText("Query name"), {
+      target: { value: "abc" }
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Save query as" }));
+
+    expect(screen.getByText("Query name must be at least 5 characters")).toBeInTheDocument();
+    expect(trpcMocks.saveMutate).not.toHaveBeenCalled();
   });
 
   it("renders CSV results as a parsed table", () => {

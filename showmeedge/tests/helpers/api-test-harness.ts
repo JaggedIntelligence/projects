@@ -3,7 +3,7 @@ import { sql } from "drizzle-orm";
 import { describe, expect } from "vitest";
 
 import type { AppRouter } from "@/server/api/root";
-import type { Task } from "@/server/db/schema";
+import type { SavedSqlQuery, Task } from "@/server/db/schema";
 
 dotenv.config({ path: ".env.test" });
 
@@ -19,7 +19,7 @@ type ApiTestHarness = Awaited<ReturnType<typeof createApiTestHarness>>;
 type Caller = ReturnType<ApiTestHarness["createCaller"]>;
 
 export async function createApiTestHarness() {
-  const [{ appRouter }, { createCallerFactory }, { db }, { tasks }] = await Promise.all([
+  const [{ appRouter }, { createCallerFactory }, { db }, { savedSqlQueries, tasks }] = await Promise.all([
     import("@/server/api/root"),
     import("@/server/api/trpc"),
     import("@/server/db"),
@@ -30,6 +30,25 @@ export async function createApiTestHarness() {
 
   async function clearTasks() {
     await db.delete(tasks);
+  }
+
+  async function clearSavedSqlQueries() {
+    await db.delete(savedSqlQueries);
+  }
+
+  async function ensureSavedSqlQueriesTable() {
+    await db.execute(sql`
+      create table if not exists saved_sql_queries (
+        id uuid primary key default gen_random_uuid() not null,
+        user_id text not null,
+        name text not null,
+        sql text not null,
+        created_at timestamp with time zone default now() not null,
+        updated_at timestamp with time zone default now() not null
+      )
+    `);
+    await db.execute(sql`create index if not exists saved_sql_queries_user_id_idx on saved_sql_queries (user_id)`);
+    await db.execute(sql`create unique index if not exists saved_sql_queries_user_name_unique_idx on saved_sql_queries (user_id, name)`);
   }
 
   async function assertDatabaseIsTestDatabase() {
@@ -43,9 +62,12 @@ export async function createApiTestHarness() {
 
   return {
     db,
+    savedSqlQueries,
     tasks,
     createCaller: (userId: string | null) => createCaller({ userId, organizationId: null }),
     clearTasks,
+    clearSavedSqlQueries,
+    ensureSavedSqlQueriesTable,
     assertDatabaseIsTestDatabase
   };
 }
@@ -63,4 +85,8 @@ export function taskInput(overrides: Partial<Parameters<Caller["tasks"]["create"
 
 export function expectTaskToMatch(task: Task, expected: Partial<Task>) {
   expect(task).toMatchObject(expected);
+}
+
+export function expectSavedSqlQueryToMatch(savedQuery: SavedSqlQuery, expected: Partial<SavedSqlQuery>) {
+  expect(savedQuery).toMatchObject(expected);
 }
