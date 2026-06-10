@@ -62,27 +62,34 @@ describe("SqlQueryPage", () => {
 
   it("renders CSV results as a parsed table", () => {
     trpcMocks.mutationState.data = {
-      csv: 'ts,id,name,note,price\n"2026-06-10 13:45:22",1,"Doe, Jane","hello, world",123.456\n"2026-06-09T09:30:00Z",2,Sam,"plain value",-4.5\n',
+      csv: 'ts,id,name,note,price,pct_gain\n"2026-06-10 13:45:22",1,"Doe, Jane","hello, world",123.456," 5.42 "\n"2026-06-09T09:30:00Z",2,Sam,"plain value",-4.5,-1.2%\n',
       row_count: 2,
-      columns: ["ts", "id", "name", "note", "price"]
+      columns: ["ts", "id", "name", "note", "price", "pct_gain"]
     };
 
     renderComponent(<SqlQueryPage />);
 
     expect(screen.getByText("2 rows")).toBeInTheDocument();
-    expect(screen.getByText("5 columns")).toBeInTheDocument();
+    expect(screen.getByText("6 columns")).toBeInTheDocument();
     expect(screen.getByRole("table")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by ts ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by id ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by name ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by note ascending" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sort by price ascending" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Sort by pct_gain ascending" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "2026-06-10" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "2026-06-09" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "Doe, Jane" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "hello, world" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "123.46" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "-4.50" })).toBeInTheDocument();
+    expect(screen.getByText("5.42%")).toHaveClass("text-emerald-600");
+    expect(screen.getByText("5.42%")).toHaveAttribute("data-column-kind", "percent");
+    expect(screen.getByText("5.42%")).toHaveAttribute("data-value-sign", "positive");
+    expect(screen.getByText("-1.20%")).toHaveClass("text-rose-600");
+    expect(screen.getByText("-1.20%")).toHaveAttribute("data-column-kind", "percent");
+    expect(screen.getByText("-1.20%")).toHaveAttribute("data-value-sign", "negative");
     expect(screen.queryByText("2026-06-10 13:45:22")).not.toBeInTheDocument();
     expect(screen.queryByText(/id,name,note/)).not.toBeInTheDocument();
   });

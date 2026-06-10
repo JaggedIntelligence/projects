@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 const DEFAULT_SQL = `SELECT ts, symbol, provider, open, high, low, close, volume
 FROM equity_ohlcv_daily
@@ -33,6 +34,13 @@ type SortState = {
   column: string;
   direction: SortDirection;
 } | null;
+
+type CellPresentation = {
+  className?: string;
+  columnKind?: "percent";
+  sign?: "positive" | "negative" | "zero";
+  text: string;
+};
 
 export function SqlQueryPage() {
   const [sql, setSql] = useState(DEFAULT_SQL);
@@ -204,12 +212,18 @@ function CsvResultTable({ table }: { table: CsvTable }) {
               sortedRows.map((row, rowIndex) => (
                 <tr key={rowIndex} className="border-t">
                   {table.columns.map((column, columnIndex) => {
-                    const cellValue = formatCellValue(row[column], column);
+                    const rawCellValue = row[column];
+                    const cell = getCellPresentation(rawCellValue, column);
 
                     return (
                       <td key={`${column}-${columnIndex}`} className="max-w-[24rem] whitespace-nowrap px-3 py-2 align-top font-mono text-xs tabular-nums">
-                        <span className="block overflow-hidden text-ellipsis" title={cellValue || undefined}>
-                          {cellValue}
+                        <span
+                          className={cn("block overflow-hidden text-ellipsis", cell.className)}
+                          data-column-kind={cell.columnKind}
+                          data-value-sign={cell.sign}
+                          title={cell.text || undefined}
+                        >
+                          {cell.text}
                         </span>
                       </td>
                     );
@@ -285,31 +299,77 @@ function compareCellValues(leftValue: unknown, rightValue: unknown) {
 }
 
 function formatCellValue(value: unknown, column?: string): string {
+  return getCellPresentation(value, column).text;
+}
+
+function getCellPresentation(value: unknown, column?: string): CellPresentation {
+  if (column && isPercentColumn(column)) {
+    const percentValue = getNumericCellValue(value);
+    if (percentValue !== null) {
+      const sign = getNumberSign(percentValue);
+
+      return {
+        className: getNumberToneClass(sign),
+        columnKind: "percent",
+        sign,
+        text: `${percentValue.toFixed(2)}%`
+      };
+    }
+  }
+
   if (column && isDateColumn(column)) {
     const dateValue = getDateCellValue(value);
     if (dateValue) {
-      return dateValue;
+      return { text: dateValue };
     }
   }
 
   const numericValue = getNumericCellValue(value);
   if (numericValue !== null) {
-    return numericValue.toFixed(2);
+    return { text: numericValue.toFixed(2) };
   }
 
   if (value === null || value === undefined) {
-    return "";
+    return { text: "" };
   }
 
   if (Array.isArray(value)) {
-    return value.map((item) => formatCellValue(item)).join(", ");
+    return { text: value.map((item) => getCellPresentation(item).text).join(", ") };
   }
 
   if (typeof value === "object") {
-    return JSON.stringify(value);
+    return { text: JSON.stringify(value) };
   }
 
-  return String(value);
+  return { text: String(value) };
+}
+
+function isPercentColumn(column: string) {
+  return column.trim().toLowerCase().includes("pct");
+}
+
+function getNumberSign(value: number): "positive" | "negative" | "zero" {
+  if (value > 0) {
+    return "positive";
+  }
+
+  if (value < 0) {
+    return "negative";
+  }
+
+  return "zero";
+}
+
+function getNumberToneClass(sign: "positive" | "negative" | "zero") {
+  if (sign === "positive") {
+    return "font-medium text-emerald-600 dark:text-emerald-400";
+  }
+
+  if (sign === "negative") {
+    return "font-medium text-rose-600 dark:text-rose-400";
+  }
+
+  return undefined;
 }
 
 function isDateColumn(column: string) {
@@ -353,7 +413,7 @@ function getNumericCellValue(value: unknown): number | null {
     return null;
   }
 
-  const trimmedValue = value.trim();
+  const trimmedValue = value.trim().replace(/%$/, "").replace(/,/g, "");
   if (!trimmedValue || !NUMERIC_CELL_PATTERN.test(trimmedValue)) {
     return null;
   }
