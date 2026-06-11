@@ -28,7 +28,14 @@ export const backtestRunSchema = z
     path: ["fastSma"]
   });
 
+export const seasonalityInputSchema = z.object({
+  ticker: z.string().trim().min(1).max(24).transform((value) => value.toUpperCase()),
+  provider: z.string().trim().min(1).max(64).default("yfinance"),
+  lookbackYears: z.enum(["ALL"]).default("ALL")
+});
+
 export type Timeframe = z.infer<typeof timeframeSchema>;
 export type MarketBarsInput = z.infer<typeof marketBarsInputSchema>;
 export type MarketIngestMockInput = z.infer<typeof marketIngestMockSchema>;
 export type BacktestRunInput = z.infer<typeof backtestRunSchema>;
+export type SeasonalityInput = z.infer<typeof seasonalityInputSchema>;

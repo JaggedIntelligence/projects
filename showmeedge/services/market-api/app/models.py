@@ -121,3 +121,46 @@ class SqlQueryResponse(BaseModel):
     csv: str
     row_count: int = Field(ge=0)
     columns: list[str]
+
+
+class MonthlyDailySeasonality(BaseModel):
+    sample_years: int = Field(ge=0)
+    sample_days: int = Field(ge=0)
+    percent_up_days: float
+    percent_down_days: float
+    avg_return_pct: float | None = None
+    median_return_pct: float | None = None
+    stddev_return_pct: float | None = None
+
+
+class TradingDaySeasonality(BaseModel):
+    trading_day_of_month: int = Field(ge=1)
+    sample_observations: int = Field(ge=0)
+    percent_up_days: float
+    percent_down_days: float
+    avg_return_pct: float | None = None
+
+
+class MonthlyOutcomeSeasonality(BaseModel):
+    sample_months: int = Field(ge=0)
+    percent_positive_months: float
+    percent_negative_months: float
+    avg_month_return_pct: float | None = None
+    median_month_return_pct: float | None = None
+    stddev_month_return_pct: float | None = None
+
+
+class SeasonalityMonth(BaseModel):
+    month_num: int = Field(ge=1, le=12)
+    month_code: str
+    monthly_daily_seasonality: MonthlyDailySeasonality
+    trading_day_seasonality: list[TradingDaySeasonality]
+    monthly_outcome_seasonality: MonthlyOutcomeSeasonality | None = None
+
+
+class SeasonalityResponse(BaseModel):
+    symbol: str
+    provider: str
+    lookback_years: str
+    as_of_ts: datetime
+    months: list[SeasonalityMonth]

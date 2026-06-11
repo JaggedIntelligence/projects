@@ -16,12 +16,14 @@ from app.models import (
     MockIngestRequest,
     MockIngestResponse,
     OhlcvBar,
+    SeasonalityResponse,
     SqlQueryRequest,
     SqlQueryResponse,
     Timeframe,
 )
 from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_questdb, questdb_connection
 from app.repositories.questdb_daily_bars import ensure_equity_ohlcv_daily_table, fetch_daily_bars
+from app.repositories.questdb_seasonality import LOOKBACK_ALL, ensure_seasonality_tables, fetch_seasonality_response
 from app.sql_params import prepare_sql_query
 
 settings = get_settings()
@@ -42,6 +44,7 @@ app.add_middleware(
 def startup() -> None:
     ensure_market_bars_table()
     ensure_equity_ohlcv_daily_table()
+    ensure_seasonality_tables()
 
 
 @app.get("/health")
@@ -130,6 +133,33 @@ def get_market_bars(
         source = "questdb_seeded_from_mock"
 
     return BarsResponse(symbol=normalized_symbol, timeframe=timeframe, source=source, provider=None, bars=bars)
+
+
+@app.get("/seasonality/{symbol}", response_model=SeasonalityResponse)
+def get_stock_seasonality(
+    symbol: str,
+    provider: str = Query("yfinance", min_length=1, max_length=64),
+    lookback_years: str = Query(LOOKBACK_ALL, min_length=1, max_length=16),
+) -> SeasonalityResponse:
+    normalized_symbol = symbol.upper()
+    normalized_provider = provider.lower()
+    normalized_lookback = lookback_years.upper()
+
+    try:
+        response = fetch_seasonality_response(
+            normalized_symbol,
+            provider=normalized_provider,
+            lookback_years=normalized_lookback,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"QuestDB query failed: {exc}") from exc
+
+    if response is None:
+        raise HTTPException(status_code=404, detail=f"Seasonality data is not built yet for {normalized_symbol}")
+
+    return response
 
 
 def daily_bar_to_ohlcv_bar(bar: DailyOhlcvBar) -> OhlcvBar:

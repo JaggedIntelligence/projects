@@ -2,6 +2,7 @@
 
 import { UserButton } from "@clerk/nextjs";
 import { Moon, Sun } from "lucide-react";
+import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -14,11 +15,12 @@ const navItems = [
   // { href: "/dashboard", label: "Dashboard" },
   // { href: "/tasks", label: "Tasks" },
   
-  { href: "/charts", label: "Charts" },
-  { href: "/backtest", label: "Backtest" },
-  { href: "/query", label: "Query" },
-  { href: "/trading", label: "Admin" },
-] as const;
+  { href: "/charts" as Route, label: "Charts" },
+  { href: "/backtest" as Route, label: "Backtest" },
+  { href: "/seasonality" as Route, label: "Seasonality" },
+  { href: "/query" as Route, label: "Query" },
+  { href: "/trading" as Route, label: "Admin" },
+];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -56,7 +58,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <UserButton afterSignOutUrl="/sign-in" />
           </div>
         </div>
-        <nav className="container grid grid-cols-4 gap-2 pb-3 sm:hidden">
+        <nav className="container grid grid-cols-2 gap-2 pb-3 sm:hidden">
           {navItems.map((item) => (
             <Link
               key={item.href}

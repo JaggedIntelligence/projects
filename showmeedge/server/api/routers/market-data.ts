@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 
-import { backtestRunSchema, marketBarsInputSchema, marketIngestMockSchema } from "@/lib/market-data-validators";
+import { backtestRunSchema, marketBarsInputSchema, marketIngestMockSchema, seasonalityInputSchema } from "@/lib/market-data-validators";
 import { getMockOhlcvBars, type OhlcvBar } from "@/lib/mock-ohlcv";
 import { protectedProcedure, router } from "@/server/api/trpc";
 
@@ -46,6 +46,41 @@ type BacktestResponse = {
   equity_curve: Array<{
     time: string;
     equity: number;
+  }>;
+};
+
+type SeasonalityResponse = {
+  symbol: string;
+  provider: string;
+  lookback_years: "ALL";
+  as_of_ts: string;
+  months: Array<{
+    month_num: number;
+    month_code: string;
+    monthly_daily_seasonality: {
+      sample_years: number;
+      sample_days: number;
+      percent_up_days: number;
+      percent_down_days: number;
+      avg_return_pct: number | null;
+      median_return_pct: number | null;
+      stddev_return_pct: number | null;
+    };
+    trading_day_seasonality: Array<{
+      trading_day_of_month: number;
+      sample_observations: number;
+      percent_up_days: number;
+      percent_down_days: number;
+      avg_return_pct: number | null;
+    }>;
+    monthly_outcome_seasonality: {
+      sample_months: number;
+      percent_positive_months: number;
+      percent_negative_months: number;
+      avg_month_return_pct: number | null;
+      median_month_return_pct: number | null;
+      stddev_month_return_pct: number | null;
+    } | null;
   }>;
 };
 
@@ -125,6 +160,26 @@ export const marketDataRouter = router({
           seed_if_empty: true
         })
       }, 15000);
+    } catch (error) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: error instanceof Error ? error.message : "Market API is unavailable"
+      });
+    }
+  }),
+
+  getSeasonality: protectedProcedure.input(seasonalityInputSchema).query(async ({ input }) => {
+    try {
+      const params = new URLSearchParams({
+        provider: input.provider,
+        lookback_years: input.lookbackYears
+      });
+
+      return await fetchFromMarketApi<SeasonalityResponse>(
+        `/seasonality/${encodeURIComponent(input.ticker)}?${params.toString()}`,
+        undefined,
+        5000
+      );
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
