@@ -17,6 +17,7 @@ Status as of 2026-06-13:
 - The chart consumes live bars through the existing tRPC market-data router.
 - The chart panel includes a days-back replay control that can hide or reveal trailing daily bars one day at a time.
 - The chart panel displays the latest visible bar date in `Friday JUN 12` format next to the replay arrows.
+- The chart panel includes Track Trade controls that calculate forward P/L and max drawdown from a frozen buy price.
 - The existing `/trading` route and `components/trading` chart implementation remain separate.
 
 ## Night Vision Charts Reference
@@ -165,6 +166,8 @@ api.marketData.bars.useQuery({ ticker, timeframe: "1d" })
 - Renders the `Days go back` input and `Update` button.
 - Renders left/right arrow controls for removing one visible day or adding one hidden day back.
 - Displays the latest visible bar date next to the right arrow.
+- Renders the `Buy price` input and `Track Trade` button next to the latest visible date.
+- Derives active trade rows from the frozen trade entry and the current visible bar index.
 - Renders the selected ticker dropdown.
 - Renders the chart loading state while bars are loading.
 - Passes visible bars to `NightVisionCandlestickChart`.
@@ -175,6 +178,7 @@ The panel currently keeps a simplified UI compared with the original trading mar
 - Shows latest close and daily change when data is present.
 - Shows a hidden-day badge when the replay window has hidden trailing bars.
 - Shows the latest visible bar date as `Weekday MON D`, for example `Friday JUN 12`.
+- Shows active trade summary and rows after `Track Trade` is clicked.
 - Does not show the old TradingView credit.
 - Does not expose full ingest/backtest controls in the visible UI.
 
@@ -211,6 +215,7 @@ High-level flow:
   -> NightVisionMarketChartPanel
   -> api.marketData.bars({ ticker, timeframe: "1d" })
   -> derive visible bars from hidden trailing-day count
+  -> derive active trade rows when trade tracking is active
   -> NightVisionCandlestickChart
   -> NightVision canvas chart
 ```
@@ -245,6 +250,8 @@ Update
 left arrow
 right arrow
 latest visible bar date
+Buy price
+Track Trade
 ```
 
 Behavior:
@@ -276,6 +283,79 @@ Friday JUN 12
 ```
 
 Date formatting uses UTC so date-only market bars such as `2026-06-12` do not shift to the previous day in local timezones.
+
+## Track Trade Controls
+
+The replay row also includes trade-tracking controls:
+
+```text
+Buy price
+Track Trade
+```
+
+`Buy price` defaults to the latest visible bar close and auto-updates as the replay date changes. The user can edit the value, but no trade is tracked until `Track Trade` is clicked.
+
+Clicking `Track Trade` clears any previous active trade and starts a new one from:
+
+```text
+current visible bar index
+current visible bar date
+current Buy price input value
+```
+
+The active trade summary is shown above the trade table:
+
+```text
+Trade Buy Price: 123.45 ON Friday JUN 9
+```
+
+The trade table derives rows from the frozen entry index through the current visible bar index. Rows are not manually appended or removed; the same left/right replay arrows drive the visible trade window.
+
+Behavior:
+
+- The first tracked row appears only after the replay moves forward beyond the trade entry bar.
+- Right arrow adds forward rows as future bars become visible.
+- Left arrow unwinds rows when visible bars are hidden again.
+- Clicking `Track Trade` again replaces the previous trade with a fresh trade.
+- Changing ticker clears the active trade.
+- The editable `Buy price` input continues to follow the latest visible close after a trade is active, but active trade calculations use the frozen trade buy price.
+
+Trade table columns:
+
+```text
+Date
+Close
+P/L %
+Max DD
+```
+
+P/L percent is calculated from close:
+
+```ts
+((close - buyPrice) / buyPrice) * 100
+```
+
+P/L is shown to one decimal place. Positive values are green, negative values are red, and zero is neutral.
+
+Max DD is calculated from each day's low against the frozen buy price:
+
+```ts
+dayDrawdown = low < buyPrice
+  ? ((buyPrice - low) / buyPrice) * 100
+  : 0
+
+maxDD = Math.max(previousMaxDD, dayDrawdown)
+```
+
+Max DD is stored as a positive running worst adverse excursion, but displayed as a negative percentage:
+
+```text
+0.0%
+-1.8%
+-3.2%
+```
+
+Non-zero Max DD values are red.
 
 ## Night Vision Data Shape
 
@@ -471,6 +551,11 @@ Manual checks:
 - Right arrow adds one hidden daily bar back to the visible chart.
 - Left arrow removes one visible daily bar from the chart.
 - Latest visible bar date updates next to the right arrow.
+- Buy price follows the latest visible close until edited.
+- Clicking `Track Trade` shows the trade summary and starts rows from the next visible forward day.
+- Trade P/L uses close price and is green for gains, red for losses.
+- Max DD uses each row's low price, is displayed as a negative percentage, and never decreases for the active trade.
+- Left arrow unwinds active trade rows.
 - Empty state appears when no bars are available.
 - SMA 10 and SMA 20 overlays render over candles.
 - Existing `/trading` page remains visually and behaviorally unchanged.

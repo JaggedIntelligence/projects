@@ -17,6 +17,20 @@ type ChartSymbol = {
   name: string;
 };
 
+type TrackedTrade = {
+  buyPrice: number;
+  entryDate: string;
+  entryIndex: number;
+};
+
+type TrackedTradeRow = {
+  close: number;
+  date: string;
+  maxDrawdownPercent: number;
+  profitLossPercent: number;
+  time: string;
+};
+
 const fallbackSymbols: ChartSymbol[] = [
   { id: "mock-aapl", ticker: "AAPL", name: "Apple Inc." },
   { id: "mock-msft", ticker: "MSFT", name: "Microsoft Corp." },
@@ -35,6 +49,10 @@ function clampDays(value: number, max: number) {
   return Math.min(Math.max(Math.trunc(value), 0), max);
 }
 
+function formatBuyPrice(value: number) {
+  return value.toFixed(2);
+}
+
 function formatBarDate(value: string) {
   const date = new Date(value.includes("T") ? value : `${value}T00:00:00.000Z`);
 
@@ -47,6 +65,16 @@ function formatBarDate(value: string) {
   return `${weekday} ${month} ${day}`;
 }
 
+function formatSignedPercent(value: number) {
+  if (value > 0) return `+${value.toFixed(1)}%`;
+  if (value < 0) return `${value.toFixed(1)}%`;
+  return "0.0%";
+}
+
+function formatDrawdownPercent(value: number) {
+  return value > 0 ? `-${value.toFixed(1)}%` : "0.0%";
+}
+
 // ------***. SR removed lots of stuff inside Chart panel.  above Chart ---------------------
 
 export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
@@ -54,6 +82,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const [ticker, setTicker] = useState(chartSymbols[0]?.ticker ?? "AAPL");
   const [daysBackInput, setDaysBackInput] = useState("5");
   const [hiddenTailDays, setHiddenTailDays] = useState(0);
+  const [buyPriceInput, setBuyPriceInput] = useState("");
+  const [trackedTrade, setTrackedTrade] = useState<TrackedTrade | null>(null);
 
   useEffect(() => {
     if (!chartSymbols.some((symbol) => symbol.ticker === ticker)) {
@@ -66,11 +96,41 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const bars = useMemo(() => queryBars ?? [], [queryBars]);
   const maxHiddenTailDays = Math.max(bars.length - 1, 0);
   const displayedBars = useMemo(() => bars.slice(0, bars.length - hiddenTailDays), [bars, hiddenTailDays]);
+  const currentVisibleIndex = displayedBars.length - 1;
   const latestBar = displayedBars.at(-1);
   const previousBar = displayedBars.at(-2);
   const latestBarDate = latestBar ? formatBarDate(latestBar.time) : null;
+  const buyPrice = Number(buyPriceInput);
+  const isBuyPriceValid = Number.isFinite(buyPrice) && buyPrice > 0;
   const change = latestBar && previousBar ? latestBar.close - previousBar.close : 0;
   const changePercent = latestBar && previousBar ? (change / previousBar.close) * 100 : 0;
+  const trackedTradeRows = useMemo<TrackedTradeRow[]>(() => {
+    if (!trackedTrade || currentVisibleIndex <= trackedTrade.entryIndex) return [];
+
+    let maxDrawdownPercent = 0;
+
+    return bars.slice(trackedTrade.entryIndex + 1, currentVisibleIndex + 1).map((bar) => {
+      const profitLossPercent = ((bar.close - trackedTrade.buyPrice) / trackedTrade.buyPrice) * 100;
+      const dayDrawdownPercent = bar.low < trackedTrade.buyPrice ? ((trackedTrade.buyPrice - bar.low) / trackedTrade.buyPrice) * 100 : 0;
+      maxDrawdownPercent = Math.max(maxDrawdownPercent, dayDrawdownPercent);
+
+      return {
+        close: bar.close,
+        date: formatBarDate(bar.time),
+        maxDrawdownPercent,
+        profitLossPercent,
+        time: bar.time
+      };
+    });
+  }, [bars, currentVisibleIndex, trackedTrade]);
+
+  useEffect(() => {
+    setTrackedTrade(null);
+  }, [ticker]);
+
+  useEffect(() => {
+    setBuyPriceInput(latestBar ? formatBuyPrice(latestBar.close) : "");
+  }, [latestBar]);
 
   useEffect(() => {
     if (hiddenTailDays <= maxHiddenTailDays) return;
@@ -96,6 +156,16 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
 
   function showNextDay() {
     updateHiddenTailDays(hiddenTailDays - 1);
+  }
+
+  function trackTrade() {
+    if (!latestBar || !isBuyPriceValid) return;
+
+    setTrackedTrade({
+      buyPrice,
+      entryDate: latestBar.time,
+      entryIndex: currentVisibleIndex
+    });
   }
 
   return (
@@ -193,7 +263,75 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
               {latestBarDate}
             </Badge>
           ) : null}
+          <div className="grid gap-1.5">
+            <Label htmlFor="buy-price" className="text-xs font-medium text-muted-foreground">
+              Buy price
+            </Label>
+            <Input
+              id="buy-price"
+              type="number"
+              inputMode="decimal"
+              min={0}
+              step="0.01"
+              value={buyPriceInput}
+              onChange={(event) => setBuyPriceInput(event.target.value)}
+              disabled={!latestBar}
+              className="h-9 w-28"
+            />
+          </div>
+          <Button type="button" size="sm" onClick={trackTrade} disabled={!latestBar || !isBuyPriceValid}>
+            Track Trade
+          </Button>
         </div>
+
+        {trackedTrade ? (
+          <div className="w-full overflow-x-auto rounded-md border lg:w-1/2">
+            <div className="flex flex-wrap items-center gap-2 border-b bg-muted/30 px-3 py-2 text-xs">
+              <span className="font-medium">Trade Buy Price:</span>
+              <span className="font-semibold">${money(trackedTrade.buyPrice)}</span>
+              <span className="text-muted-foreground">ON</span>
+              <span className="font-semibold">{formatBarDate(trackedTrade.entryDate)}</span>
+            </div>
+            <table className="w-full min-w-[440px] text-xs">
+              <thead className="bg-muted/20 text-left text-[11px] uppercase text-muted-foreground">
+                <tr>
+                  <th className="px-3 py-2 font-medium">Date</th>
+                  <th className="px-3 py-2 text-right font-medium">Close</th>
+                  <th className="px-3 py-2 text-right font-medium">P/L %</th>
+                  <th className="px-3 py-2 text-right font-medium">Max DD</th>
+                </tr>
+              </thead>
+              <tbody>
+                {trackedTradeRows.map((row) => (
+                  <tr key={row.time} className="border-t">
+                    <td className="px-3 py-2 font-medium">{row.date}</td>
+                    <td className="px-3 py-2 text-right">${money(row.close)}</td>
+                    <td
+                      className={
+                        row.profitLossPercent > 0
+                          ? "px-3 py-2 text-right font-medium text-emerald-600 dark:text-emerald-400"
+                          : row.profitLossPercent < 0
+                            ? "px-3 py-2 text-right font-medium text-rose-600 dark:text-rose-400"
+                            : "px-3 py-2 text-right font-medium"
+                      }
+                    >
+                      {formatSignedPercent(row.profitLossPercent)}
+                    </td>
+                    <td
+                      className={
+                        row.maxDrawdownPercent > 0
+                          ? "px-3 py-2 text-right font-medium text-rose-600 dark:text-rose-400"
+                          : "px-3 py-2 text-right font-medium"
+                      }
+                    >
+                      {formatDrawdownPercent(row.maxDrawdownPercent)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : null}
 
         {barsQuery.isLoading ? <div className="h-80 animate-pulse rounded-md border bg-muted" /> : <NightVisionCandlestickChart bars={displayedBars} ticker={ticker} />}
       </CardContent>

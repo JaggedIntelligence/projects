@@ -453,7 +453,7 @@ Manual browser checks:
 - Home page loads over HTTPS.
 - Sign-in redirects work.
 - After sign-in, `/dashboard` loads.
-- `/charts` loads, can request market bars, and the days-back replay controls update the visible latest bar/date.
+- `/charts` loads, can request market bars, and the days-back replay plus Track Trade controls update visible rows correctly.
 - `/backtest` can run a small backtest.
 - `/trading` routes do not expose anything unintended.
 
