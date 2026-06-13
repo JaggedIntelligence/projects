@@ -1,6 +1,6 @@
 # Feature: Night Vision Charts
 
-Date: 2026-06-06
+Date: 2026-06-13
 
 This document records the current design for the Night Vision chart page and component set.
 
@@ -8,18 +8,20 @@ The goal is to provide a Night Vision based stock-chart experience that uses the
 
 ## Current Status
 
-Status as of 2026-06-06:
+Status as of 2026-06-13:
 
 - Night Vision package is installed as `night-vision@0.4.0`.
 - Local module typing is declared in `types/night-vision.d.ts`.
 - Night Vision UI files live under `components/nvcharts`.
 - The current route is `app/(app)/charts/page.tsx`.
 - The chart consumes live bars through the existing tRPC market-data router.
+- The chart panel includes a days-back replay control that can hide or reveal trailing daily bars one day at a time.
+- The chart panel displays the latest visible bar date in `Friday JUN 12` format next to the replay arrows.
 - The existing `/trading` route and `components/trading` chart implementation remain separate.
 
-# Nightvision charts reference
+## Night Vision Charts Reference
 
-Nightvison charts code in this project is based on the below given  URL of the site 
+The Night Vision chart code in this project is based on this reference:
 https://nightvision.dev/guide/intro/10-basic-examples.html
 
 ## Route Entry
@@ -53,6 +55,12 @@ components/nvcharts/
   nightvision-outerlayer-page.tsx
   nightvision-market-chart-panel.tsx
   nightvision-candlestick-chart.tsx
+```
+
+Related test coverage:
+
+```text
+tests/components/nightvision-market-chart-panel.test.tsx
 ```
 
 Supporting package typing:
@@ -152,15 +160,21 @@ SPY
 api.marketData.bars.useQuery({ ticker, timeframe: "1d" })
 ```
 
-- Computes latest close, one-day change, and one-day percent change.
+- Keeps the fetched bars as the source data and derives visible bars with a hidden trailing-day count.
+- Computes latest close, one-day change, and one-day percent change from the visible bars.
+- Renders the `Days go back` input and `Update` button.
+- Renders left/right arrow controls for removing one visible day or adding one hidden day back.
+- Displays the latest visible bar date next to the right arrow.
 - Renders the selected ticker dropdown.
 - Renders the chart loading state while bars are loading.
-- Passes loaded bars to `NightVisionCandlestickChart`.
+- Passes visible bars to `NightVisionCandlestickChart`.
 
 The panel currently keeps a simplified UI compared with the original trading market panel:
 
 - Shows the timeframe badge.
 - Shows latest close and daily change when data is present.
+- Shows a hidden-day badge when the replay window has hidden trailing bars.
+- Shows the latest visible bar date as `Weekday MON D`, for example `Friday JUN 12`.
 - Does not show the old TradingView credit.
 - Does not expose full ingest/backtest controls in the visible UI.
 
@@ -196,6 +210,7 @@ High-level flow:
   -> api.trading.symbols.list({ assetType: "all" })
   -> NightVisionMarketChartPanel
   -> api.marketData.bars({ ticker, timeframe: "1d" })
+  -> derive visible bars from hidden trailing-day count
   -> NightVisionCandlestickChart
   -> NightVision canvas chart
 ```
@@ -217,6 +232,50 @@ When the market API is unavailable, the router can return mock fallback bars fro
 ```text
 lib/mock-ohlcv.ts
 ```
+
+## Chart Replay Controls
+
+The `/charts` page supports a small daily-bar replay control in `NightVisionMarketChartPanel`.
+
+Visible controls:
+
+```text
+Days go back
+Update
+left arrow
+right arrow
+latest visible bar date
+```
+
+Behavior:
+
+- `Days go back` accepts the number of trailing daily bars to hide.
+- `Update` applies the typed value.
+- The left arrow removes one more visible bar from the right side of the chart.
+- The right arrow adds one hidden trailing bar back to the right side of the chart.
+- The hidden-day value is clamped between `0` and `bars.length - 1`, so at least one bar remains visible.
+- The latest close, daily change, hidden-day badge, and latest-bar date all follow the visible bar set.
+- The original fetched bars are not mutated; the chart receives `displayedBars`.
+
+Example:
+
+```text
+Full bars:      100 daily bars
+Days go back:  5
+Visible bars:  first 95 bars
+Hidden tail:   last 5 bars
+
+Right arrow:   hidden tail decreases to 4, visible bars increase to 96
+Left arrow:    hidden tail increases to 5, visible bars decrease to 95
+```
+
+The latest visible bar date is formatted without a year:
+
+```text
+Friday JUN 12
+```
+
+Date formatting uses UTC so date-only market bars such as `2026-06-12` do not shift to the previous day in local timezones.
 
 ## Night Vision Data Shape
 
@@ -289,6 +348,8 @@ This keeps the chart compatible with:
 
 - mock fallback bars like `2025-01-02`
 - API bars that may eventually return full ISO timestamps
+
+The replay control date display uses the same UTC interpretation for the latest visible bar date.
 
 ## Chart Configuration
 
@@ -384,6 +445,7 @@ Use these commands after Night Vision chart changes:
 
 ```bash
 pnpm exec tsc --noEmit
+pnpm exec vitest run tests/components/nightvision-market-chart-panel.test.tsx
 pnpm run build
 ```
 
@@ -405,6 +467,10 @@ Manual checks:
 - Ticker dropdown displays DB-backed symbols or fallback symbols.
 - Selected ticker triggers the bars query.
 - Chart renders candles when bars are available.
+- Entering `5` in `Days go back` and clicking `Update` hides the last 5 daily bars.
+- Right arrow adds one hidden daily bar back to the visible chart.
+- Left arrow removes one visible daily bar from the chart.
+- Latest visible bar date updates next to the right arrow.
 - Empty state appears when no bars are available.
 - SMA 10 and SMA 20 overlays render over candles.
 - Existing `/trading` page remains visually and behaviorally unchanged.
