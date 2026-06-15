@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import { chromium } from "@playwright/test";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
 import { setTimeout as sleep } from "node:timers/promises";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 export const DEFAULT_TIMEOUT_MS = 60_000;
 export const DEFAULT_RETRIES = 2;
@@ -13,6 +13,10 @@ export const DEFAULT_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36";
 export const DEFAULT_PAGES = [0, 1, 2, 3, 4];
 export const RUSSELL_3000_BASE_URL = "https://www.chartmill.com/stock/markets/usa/index/russell-3000";
+export const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
+export const DEFAULT_JSON_OUTPUT = join(SCRIPT_DIR, "russell3000_list.json");
+export const DEFAULT_CSV_OUTPUT = join(SCRIPT_DIR, "russell3000_current.csv");
+export const SYMBOL_CSV_COLUMNS = ["symbol", "provider_symbol", "name", "exchange", "currency", "sector", "industry"];
 
 export function buildRussell3000Url(pageIndex) {
   return `${RUSSELL_3000_BASE_URL}?p=${pageIndex}`;
@@ -177,7 +181,8 @@ function extractRussell3000TableRows(rankOffset) {
 
 function parseArgs(argv) {
   const args = {
-    output: null,
+    jsonOutput: DEFAULT_JSON_OUTPUT,
+    csvOutput: DEFAULT_CSV_OUTPUT,
     headless: true,
     timeoutMs: DEFAULT_TIMEOUT_MS,
     retries: DEFAULT_RETRIES,
@@ -189,8 +194,11 @@ function parseArgs(argv) {
     const arg = argv[index];
     const next = argv[index + 1];
 
-    if (arg === "--output") {
-      args.output = requiredValue(arg, next);
+    if (arg === "--json-output" || arg === "--output") {
+      args.jsonOutput = requiredValue(arg, next);
+      index += 1;
+    } else if (arg === "--csv-output") {
+      args.csvOutput = requiredValue(arg, next);
       index += 1;
     } else if (arg === "--timeout-ms") {
       args.timeoutMs = Number(requiredValue(arg, next));
@@ -289,7 +297,8 @@ function printHelp() {
   node batch-jobs/russell3000-symbol-scrape/russell3000-symbol-scrape.mjs [options]
 
 Options:
-  --output PATH           Write Russell 3000 records as a JSON array to PATH. Defaults to stdout.
+  --json-output PATH      Write Russell 3000 records as a JSON array. Default: ${DEFAULT_JSON_OUTPUT}
+  --csv-output PATH       Write symbol CSV. Default: ${DEFAULT_CSV_OUTPUT}
   --pages 0,1,2,3,4       Comma-separated ChartMill page indexes. Default: ${DEFAULT_PAGES.join(",")}
   --timeout-ms NUMBER     Page timeout in milliseconds. Default: ${DEFAULT_TIMEOUT_MS}
   --retries NUMBER        Retry each page after table-load failures. Default: ${DEFAULT_RETRIES}
@@ -299,16 +308,45 @@ Options:
 `);
 }
 
+async function writeArtifacts({ jsonOutput, csvOutput, records }) {
+  await Promise.all([writeJson({ output: jsonOutput, records }), writeCsv({ output: csvOutput, records })]);
+
+  console.log(`Wrote ${records.length} Russell 3000 records`);
+  console.log(`JSON: ${jsonOutput}`);
+  console.log(`CSV: ${csvOutput}`);
+}
+
 async function writeJson({ output, records }) {
   const json = `${JSON.stringify(records, null, 2)}\n`;
 
-  if (!output) {
-    process.stdout.write(json);
-    return;
-  }
-
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, json, "utf8");
+}
+
+async function writeCsv({ output, records }) {
+  const rows = records.map((record) => [
+    record.symbol,
+    record.symbol,
+    record.companyName ?? "",
+    "",
+    "",
+    "",
+    ""
+  ]);
+  const csv = [SYMBOL_CSV_COLUMNS, ...rows].map((row) => row.map(formatCsvField).join(",")).join("\n") + "\n";
+
+  await mkdir(dirname(output), { recursive: true });
+  await writeFile(output, csv, "utf8");
+}
+
+function formatCsvField(value) {
+  const text = String(value ?? "");
+
+  if (!/[",\r\n]/.test(text)) {
+    return text;
+  }
+
+  return `"${text.replace(/"/g, '""')}"`;
 }
 
 async function main() {
@@ -319,7 +357,7 @@ async function main() {
   }
 
   const records = await scrapeRussell3000Symbols(args);
-  await writeJson({ output: args.output, records });
+  await writeArtifacts({ jsonOutput: args.jsonOutput, csvOutput: args.csvOutput, records });
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
