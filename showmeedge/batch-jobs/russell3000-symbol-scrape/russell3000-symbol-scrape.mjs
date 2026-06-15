@@ -17,6 +17,21 @@ export const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 export const DEFAULT_JSON_OUTPUT = join(SCRIPT_DIR, "russell3000_list.json");
 export const DEFAULT_CSV_OUTPUT = join(SCRIPT_DIR, "russell3000_current.csv");
 export const SYMBOL_CSV_COLUMNS = ["symbol", "provider_symbol", "name", "exchange", "currency", "sector", "industry"];
+export const RUSSELL_3000_TABLE_SELECTOR = "app-large-table-view table.cm-table";
+export const RUSSELL_3000_TABLE_HEADERS = [
+  "Symbol",
+  "Company",
+  "Market Cap",
+  "Weight",
+  "TA Rating",
+  "FA Rating",
+  "Div %",
+  "% Chg",
+  "3M %",
+  "1Y %",
+  "PE",
+  "Analysts"
+];
 
 export function buildRussell3000Url(pageIndex) {
   return `${RUSSELL_3000_BASE_URL}?p=${pageIndex}`;
@@ -121,9 +136,13 @@ export async function scrapeRussell3000Page({ page, pageIndex, timeoutMs = DEFAU
 
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: timeoutMs });
   await page.waitForLoadState("networkidle", { timeout: 30_000 }).catch(() => {});
-  await page.waitForSelector("table tr", { state: "attached", timeout: timeoutMs });
+  await page.waitForSelector(`${RUSSELL_3000_TABLE_SELECTOR} tr`, { state: "attached", timeout: timeoutMs });
 
-  const records = await page.evaluate(extractRussell3000TableRows, rankOffset);
+  const records = await page.evaluate(extractRussell3000TableRows, {
+    expectedHeaders: RUSSELL_3000_TABLE_HEADERS,
+    rankOffset,
+    tableSelector: RUSSELL_3000_TABLE_SELECTOR
+  });
 
   if (records.length === 0) {
     throw new Error(`No Russell 3000 table rows found at ${url}`);
@@ -132,13 +151,14 @@ export async function scrapeRussell3000Page({ page, pageIndex, timeoutMs = DEFAU
   return records;
 }
 
-function extractRussell3000TableRows(rankOffset) {
-  const table = document.querySelector("table");
+function extractRussell3000TableRows({ expectedHeaders, rankOffset, tableSelector }) {
+  const table = document.querySelector(tableSelector);
   if (!table) {
-    throw new Error("Could not find Russell 3000 table");
+    throw new Error(`Could not find Russell 3000 table selector: ${tableSelector}`);
   }
 
   const rows = Array.from(table.querySelectorAll("tr"));
+  validateHeaders(rows, expectedHeaders);
 
   return rows
     .map((row) => Array.from(row.querySelectorAll("td")).map((cell) => compactText(cell.textContent)))
@@ -176,6 +196,17 @@ function extractRussell3000TableRows(rankOffset) {
 
   function nullIfBlank(value) {
     return value === "" ? null : value;
+  }
+
+  function validateHeaders(rows, expected) {
+    const headerCells = Array.from(rows[0]?.querySelectorAll("th,td") ?? []).map((cell) => compactText(cell.textContent));
+    const hasExpectedHeaders = expected.every((header, index) => headerCells[index] === header);
+
+    if (!hasExpectedHeaders) {
+      throw new Error(
+        `Russell 3000 table headers changed. Expected: ${expected.join(" | ")}. Found: ${headerCells.join(" | ")}`
+      );
+    }
   }
 }
 

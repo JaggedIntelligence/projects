@@ -116,6 +116,36 @@ The scraper also includes:
 - Deduplication by `symbol`.
 - Rank recalculation after dedupe.
 
+## Table Targeting
+
+The scraper should not use a broad selector such as:
+
+```css
+table
+```
+
+The current ChartMill page has one primary stock table, but a broad selector could silently scrape the wrong table if ChartMill adds another table above it.
+
+Use the narrower selector:
+
+```css
+app-large-table-view table.cm-table
+```
+
+This matches the rendered ChartMill large table component:
+
+```html
+<app-large-table-view>
+  <table approutedirective="" class="cm-table">
+```
+
+Do not depend on the `approutedirective` attribute unless required. It appears to be a framework/internal Angular attribute and is likely less meaningful than the component tag plus the stable `cm-table` class.
+
+The scraper also validates the table header row before extracting data. This gives two safeguards:
+
+- The CSS selector targets the intended ChartMill large table.
+- Header validation fails fast if ChartMill changes the table shape.
+
 ## Source Table Columns
 
 ChartMill table columns currently scraped:
@@ -247,6 +277,24 @@ p=1  600 rows
 p=2  600 rows
 p=3  600 rows
 p=4  492 rows
+```
+
+Selector hardening verified on 2026-06-15:
+
+```bash
+node --check batch-jobs/russell3000-symbol-scrape/russell3000-symbol-scrape.mjs
+node batch-jobs/russell3000-symbol-scrape/russell3000-symbol-scrape.mjs \
+  --pages 0 \
+  --json-output /private/tmp/russell3000-selector-check.json \
+  --csv-output /private/tmp/russell3000-selector-check.csv
+```
+
+Result:
+
+```text
+The selector app-large-table-view table.cm-table matched the intended ChartMill table.
+Header validation passed.
+Page p=0 wrote 600 records.
 ```
 
 Note:
