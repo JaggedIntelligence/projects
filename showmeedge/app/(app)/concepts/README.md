@@ -2,6 +2,9 @@
 
 ### How to  a  Viewable HTML with Github preview
 
+orignal page is here for reference
+https://simple-statistics.github.io/docs/#permutationsheap
+
 step 0: one should (SR or anybody), test a .html page ( inpsect of a random webpage )
  - get the inspect view source to text file
  - chnage all .css and .js references to full domain name , so links won't break
