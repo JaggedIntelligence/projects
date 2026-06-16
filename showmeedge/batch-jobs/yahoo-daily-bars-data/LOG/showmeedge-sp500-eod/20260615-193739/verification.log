@@ -1,0 +1,10 @@
+requested_universe=sp500_current
+requested_symbols=503
+requested_yfinance_rows=3183502
+requested_distinct_symbols=503
+requested_start_ts=1997-01-02 00:00:00
+requested_end_ts=2026-06-15 00:00:00
+latest_requested_ts=2026-06-15 00:00:00
+requested_symbols_with_latest_ts=492
+requested_symbols_missing_latest_ts=11
+missing_latest_symbols=AXP,AON,CL,EG,EXR,GM,IR,L,PG,RSG,RCL
