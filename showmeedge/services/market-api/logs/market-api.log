@@ -13,3 +13,6 @@
 2026-06-10 21:20:45,496 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
 2026-06-11 06:17:01,036 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
 2026-06-15 22:58:23,405 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
+2026-06-16 23:03:46,154 INFO [root] Using vectorbt backtest engine for symbol=AAPL fast_sma=10 slow_sma=50 bars=7410
+2026-06-16 23:04:33,384 INFO [root] Using vectorbt backtest engine for symbol=AMD fast_sma=10 slow_sma=50 bars=7410
+2026-06-16 23:04:46,854 INFO [root] Using vectorbt backtest engine for symbol=GOOG fast_sma=10 slow_sma=50 bars=5491
