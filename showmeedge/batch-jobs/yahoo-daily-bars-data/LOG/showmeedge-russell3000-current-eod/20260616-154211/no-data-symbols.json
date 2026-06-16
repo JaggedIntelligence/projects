@@ -1,0 +1,16 @@
+{
+  "provider": "yfinance",
+  "universe": "russell3000_current",
+  "start": "2026-06-06",
+  "end": "2026-06-16",
+  "no_data_symbols": [
+    "BRK.B",
+    "HEI.A",
+    "LEN.B",
+    "BF.A",
+    "MOG.A",
+    "BF.B",
+    "GEF.B",
+    "CRD.A"
+  ]
+}
