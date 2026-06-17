@@ -1,0 +1,5 @@
+locator.waitFor: Target page, context or browser has been closed
+Call log:
+[2m  - waiting for getByText(/Stock Forecast|Analyst Ratings|Detailed List/i) to be visible[22m
+
+    at /Users/sreddy/projects/showmeedge/batch-jobs/tipranks-analyst-targets/tipranks-forecast-archive.mjs:44:75

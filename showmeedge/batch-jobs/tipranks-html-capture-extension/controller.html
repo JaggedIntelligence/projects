@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TipRanks HTML Capture</title>
+    <link rel="stylesheet" href="controller.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <h1>TipRanks HTML Capture</h1>
+          <p>Save rendered forecast page HTML for each ticker in your logged-in Chrome session.</p>
+        </div>
+        <div class="status-pill" id="runState">Idle</div>
+      </header>
+
+      <section class="panel">
+        <label for="tickers">Tickers</label>
+        <textarea id="tickers" spellcheck="false">CBRS
+AMD
+SMCI
+AVGO
+ZS</textarea>
+        <p class="hint">One per line, or separated by spaces/commas.</p>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <label for="delaySeconds">Delay between tickers</label>
+          <div class="input-row">
+            <input id="delaySeconds" type="number" min="5" max="600" step="1" value="45">
+            <span>seconds</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <label for="loadWaitSeconds">Extra page wait</label>
+          <div class="input-row">
+            <input id="loadWaitSeconds" type="number" min="3" max="120" step="1" value="15">
+            <span>seconds</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <label for="outputFolder">Downloads subfolder</label>
+          <input id="outputFolder" type="text" value="tipranks-html">
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="startButton" type="button">Start</button>
+        <button id="pauseButton" type="button" disabled>Pause</button>
+        <button id="stopButton" type="button" disabled>Stop</button>
+        <button id="captureActiveButton" type="button">Save Active TipRanks Tab Once</button>
+      </section>
+
+      <section class="panel">
+        <div class="progress-top">
+          <strong id="progressLabel">Ready</strong>
+          <span id="progressCount">0 / 0</span>
+        </div>
+        <progress id="progressBar" max="1" value="0"></progress>
+      </section>
+
+      <section class="panel">
+        <div class="log-header">
+          <h2>Run Log</h2>
+          <button id="clearLogButton" type="button" class="secondary">Clear</button>
+        </div>
+        <pre id="log" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <script src="controller.js"></script>
+  </body>
+</html>

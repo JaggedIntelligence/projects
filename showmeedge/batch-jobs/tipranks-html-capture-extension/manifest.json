@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "TipRanks Forecast HTML Capture",
+  "version": "1.0.0",
+  "description": "Captures rendered TipRanks forecast page HTML for an editable ticker list.",
+  "permissions": [
+    "downloads",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.tipranks.com/*"
+  ],
+  "action": {
+    "default_title": "TipRanks HTML Capture"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
