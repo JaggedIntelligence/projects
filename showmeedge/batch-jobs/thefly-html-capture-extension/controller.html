@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TheFly HTML Capture</title>
+    <link rel="stylesheet" href="controller.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <h1>TheFly HTML Capture</h1>
+          <p>Save rendered page HTML from your logged-in Chrome session.</p>
+        </div>
+        <div class="status-pill" id="runState">Idle</div>
+      </header>
+
+      <section class="panel">
+        <label for="targetUrl">Page URL</label>
+        <input id="targetUrl" type="url" value="https://www.thefly.com/research">
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <label for="loadWaitSeconds">Extra render wait</label>
+          <div class="input-row">
+            <input id="loadWaitSeconds" type="number" min="1" max="180" step="1" value="15">
+            <span>seconds</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <label for="outputFolder">Downloads subfolder</label>
+          <input id="outputFolder" type="text" value="thefly-html">
+        </div>
+
+        <div class="panel">
+          <label for="outputFilename">Output filename</label>
+          <input id="outputFilename" type="text" value="thefly-research.html">
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="openAndSaveButton" type="button">Open Research and Save</button>
+        <button id="saveActiveButton" type="button">Save Most Recent TheFly Tab</button>
+        <button id="stopButton" type="button" disabled>Stop</button>
+      </section>
+
+      <section class="panel">
+        <div class="progress-top">
+          <strong id="progressLabel">Ready</strong>
+          <span id="pageStats">0 chars</span>
+        </div>
+        <progress id="progressBar" max="1" value="0"></progress>
+      </section>
+
+      <section class="panel">
+        <div class="log-header">
+          <h2>Run Log</h2>
+          <button id="clearLogButton" type="button" class="secondary">Clear</button>
+        </div>
+        <pre id="log" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <script src="controller.js"></script>
+  </body>
+</html>

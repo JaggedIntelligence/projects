@@ -23,7 +23,10 @@ It uses your normal Chrome session. Log into TipRanks in Chrome before starting 
 3. Edit the ticker textarea. Use one ticker per line, or separate tickers with spaces/commas.
 4. Set a delay between tickers. A conservative value such as `45` to `120` seconds is recommended for paid sites.
 5. Set the extra page wait. Start with `15` seconds and increase it if saved pages are missing table content.
-6. Click **Start**.
+6. Leave **Click Show More before saving** enabled if the table has expandable rows.
+7. Set **Max Show More clicks** high enough for the longest table. Start with `10`.
+8. Set **Wait after each click** to `3` to `5` seconds if new rows load slowly.
+9. Click **Start**.
 
 Files are saved under your Chrome Downloads folder:
 
@@ -38,6 +41,7 @@ Open any TipRanks page in Chrome, return to the extension controller tab, and cl
 ## Notes
 
 - This saves rendered DOM HTML using `document.documentElement.outerHTML`.
+- Before saving, the extension can scroll near the bottom and click visible buttons or links with text like `Show More`, `Load More`, `View More`, or `See More`.
 - It does not save DevTools' Inspect view. The extension reads the page DOM directly.
 - If TipRanks shows a login prompt, challenge, rate-limit, or access-denied page, stop the run and continue manually later.
 - Chrome extensions can save to the browser Downloads folder or a subfolder inside it. They cannot silently write to an arbitrary absolute path on disk.

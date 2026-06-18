@@ -3,6 +3,9 @@ const DEFAULT_SETTINGS = {
   delaySeconds: 45,
   loadWaitSeconds: 15,
   outputFolder: "tipranks-html",
+  expandShowMore: true,
+  showMoreMaxClicks: 10,
+  showMoreWaitSeconds: 3,
 };
 
 const els = {
@@ -10,6 +13,9 @@ const els = {
   delaySeconds: document.querySelector("#delaySeconds"),
   loadWaitSeconds: document.querySelector("#loadWaitSeconds"),
   outputFolder: document.querySelector("#outputFolder"),
+  expandShowMore: document.querySelector("#expandShowMore"),
+  showMoreMaxClicks: document.querySelector("#showMoreMaxClicks"),
+  showMoreWaitSeconds: document.querySelector("#showMoreWaitSeconds"),
   startButton: document.querySelector("#startButton"),
   pauseButton: document.querySelector("#pauseButton"),
   stopButton: document.querySelector("#stopButton"),
@@ -35,9 +41,21 @@ async function init() {
   els.delaySeconds.value = settings.delaySeconds;
   els.loadWaitSeconds.value = settings.loadWaitSeconds;
   els.outputFolder.value = settings.outputFolder;
+  els.expandShowMore.checked = Boolean(settings.expandShowMore);
+  els.showMoreMaxClicks.value = settings.showMoreMaxClicks;
+  els.showMoreWaitSeconds.value = settings.showMoreWaitSeconds;
 
-  for (const input of [els.tickers, els.delaySeconds, els.loadWaitSeconds, els.outputFolder]) {
+  for (const input of [
+    els.tickers,
+    els.delaySeconds,
+    els.loadWaitSeconds,
+    els.outputFolder,
+    els.expandShowMore,
+    els.showMoreMaxClicks,
+    els.showMoreWaitSeconds,
+  ]) {
     input.addEventListener("input", saveSettings);
+    input.addEventListener("change", saveSettings);
   }
 
   els.startButton.addEventListener("click", startRun);
@@ -68,6 +86,19 @@ function readSettings() {
       DEFAULT_SETTINGS.loadWaitSeconds,
     ),
     outputFolder: sanitizeFolder(els.outputFolder.value || DEFAULT_SETTINGS.outputFolder),
+    expandShowMore: els.expandShowMore.checked,
+    showMoreMaxClicks: clampNumber(
+      els.showMoreMaxClicks.value,
+      0,
+      50,
+      DEFAULT_SETTINGS.showMoreMaxClicks,
+    ),
+    showMoreWaitSeconds: clampNumber(
+      els.showMoreWaitSeconds.value,
+      1,
+      30,
+      DEFAULT_SETTINGS.showMoreWaitSeconds,
+    ),
   };
 }
 
@@ -152,7 +183,7 @@ async function captureTicker(ticker, settings) {
   await loadPromise;
   await sleep(1000);
 
-  const capture = await captureTabHtml(targetTabId, settings.loadWaitSeconds);
+  const capture = await captureTabHtml(targetTabId, settings);
 
   if (!capture.ok) {
     throw new Error(capture.reason || `Could not capture ${ticker}`);
@@ -161,8 +192,7 @@ async function captureTicker(ticker, settings) {
   const filename = buildFilename(settings.outputFolder, ticker);
   await downloadHtml(capture.html, filename);
 
-  const tableNote = capture.tableCount === 1 ? "1 table" : `${capture.tableCount} tables`;
-  logLine(`Saved ${filename} (${tableNote}, ${capture.html.length.toLocaleString()} chars).`);
+  logLine(`Saved ${filename} (${formatCaptureDetails(capture)}).`);
 
   if (capture.tableCount === 0) {
     logLine(`Warning: ${ticker} saved, but no HTML <table> elements were detected.`);
@@ -193,7 +223,7 @@ async function captureActiveTabOnce() {
 
   try {
     setRunState("Saving", "is-running");
-    const capture = await captureTabHtml(activeTab.id, settings.loadWaitSeconds);
+    const capture = await captureTabHtml(activeTab.id, settings);
 
     if (!capture.ok) {
       throw new Error(capture.reason || "Could not capture active TipRanks tab.");
@@ -201,7 +231,7 @@ async function captureActiveTabOnce() {
 
     const filename = buildFilename(settings.outputFolder, ticker);
     await downloadHtml(capture.html, filename);
-    logLine(`Saved active tab as ${filename}.`);
+    logLine(`Saved active tab as ${filename} (${formatCaptureDetails(capture)}).`);
     setRunState("Saved", "is-running");
   } catch (error) {
     logLine(`One-time capture failed: ${error.message}`);
@@ -225,11 +255,18 @@ async function ensureTargetTab() {
   return tab.id;
 }
 
-async function captureTabHtml(tabId, loadWaitSeconds) {
+async function captureTabHtml(tabId, settings) {
   const [result] = await chrome.scripting.executeScript({
     target: { tabId },
     func: captureRenderedOuterHtml,
-    args: [{ loadWaitSeconds }],
+    args: [
+      {
+        loadWaitSeconds: settings.loadWaitSeconds,
+        expandShowMore: settings.expandShowMore,
+        showMoreMaxClicks: settings.showMoreMaxClicks,
+        showMoreWaitSeconds: settings.showMoreWaitSeconds,
+      },
+    ],
   });
 
   return result.result;
@@ -254,11 +291,141 @@ async function downloadHtml(html, filename) {
 function captureRenderedOuterHtml(options) {
   const sleepInPage = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const loadWaitMs = Number(options.loadWaitSeconds || 15) * 1000;
+  const expandShowMore = Boolean(options.expandShowMore);
+  const showMoreMaxClicks = Math.max(0, Math.min(50, Number(options.showMoreMaxClicks || 0)));
+  const showMoreWaitMs = Math.max(
+    1000,
+    Math.min(30000, Number(options.showMoreWaitSeconds || 3) * 1000),
+  );
   const startedAt = Date.now();
   const readyTextPattern =
     /stock forecast|analyst ratings|price target|detailed list|forecast/i;
   const blockPattern =
     /captcha|are you a robot|access denied|too many requests|unusual traffic|verify you are human/i;
+  const showMorePattern = /\b(show|load|view|see)\s+(more|all)\b/i;
+
+  function isVisibleElement(element) {
+    const style = window.getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+
+    return (
+      rect.width > 0 &&
+      rect.height > 0 &&
+      style.display !== "none" &&
+      style.visibility !== "hidden" &&
+      Number(style.opacity) > 0 &&
+      element.getAttribute("aria-hidden") !== "true"
+    );
+  }
+
+  function isDisabledElement(element) {
+    return (
+      element.disabled === true ||
+      element.getAttribute("disabled") !== null ||
+      element.getAttribute("aria-disabled") === "true"
+    );
+  }
+
+  function getElementText(element) {
+    return (element.innerText || element.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function getTableRowCount() {
+    return document.querySelectorAll("table tr").length;
+  }
+
+  function findShowMoreControl() {
+    const candidates = Array.from(
+      document.querySelectorAll(
+        "button, a, [role='button'], [tabindex]:not([tabindex='-1'])",
+      ),
+    );
+
+    return candidates.reverse().find((element) => {
+      const text = getElementText(element);
+
+      return (
+        text &&
+        showMorePattern.test(text) &&
+        isVisibleElement(element) &&
+        !isDisabledElement(element)
+      );
+    });
+  }
+
+  function dispatchMouseClick(element) {
+    const rect = element.getBoundingClientRect();
+    const clientX = rect.left + rect.width / 2;
+    const clientY = rect.top + rect.height / 2;
+    const common = {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      view: window,
+      clientX,
+      clientY,
+      button: 0,
+    };
+
+    if (window.PointerEvent) {
+      element.dispatchEvent(new PointerEvent("pointerdown", common));
+      element.dispatchEvent(new PointerEvent("pointerup", common));
+    }
+
+    element.dispatchEvent(new MouseEvent("mousedown", common));
+    element.dispatchEvent(new MouseEvent("mouseup", common));
+    element.dispatchEvent(new MouseEvent("click", common));
+  }
+
+  async function clickShowMoreControls() {
+    const expansion = {
+      clicks: 0,
+      limitReached: false,
+      lastText: "",
+      rowCountBefore: getTableRowCount(),
+      rowCountAfter: getTableRowCount(),
+    };
+
+    if (!expandShowMore || showMoreMaxClicks <= 0) {
+      return expansion;
+    }
+
+    for (let clickIndex = 0; clickIndex < showMoreMaxClicks; clickIndex += 1) {
+      if (blockPattern.test(document.body?.innerText || "")) {
+        expansion.blockedReason =
+          "TipRanks showed a challenge, rate-limit, or access-denied page while expanding Show More.";
+        return expansion;
+      }
+
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "auto",
+      });
+      await sleepInPage(500);
+
+      const control = findShowMoreControl();
+
+      if (!control) {
+        expansion.rowCountAfter = getTableRowCount();
+        return expansion;
+      }
+
+      expansion.lastText = getElementText(control);
+      control.scrollIntoView({ block: "center", inline: "center", behavior: "auto" });
+      await sleepInPage(350);
+
+      dispatchMouseClick(control);
+      expansion.clicks += 1;
+      await sleepInPage(showMoreWaitMs);
+      expansion.rowCountAfter = getTableRowCount();
+    }
+
+    expansion.limitReached = Boolean(findShowMoreControl());
+    expansion.rowCountAfter = getTableRowCount();
+    return expansion;
+  }
 
   return (async () => {
     while (Date.now() - startedAt < loadWaitMs) {
@@ -280,6 +447,15 @@ function captureRenderedOuterHtml(options) {
 
     await sleepInPage(1000);
 
+    const showMoreExpansion = await clickShowMoreControls();
+
+    if (showMoreExpansion.blockedReason) {
+      return {
+        ok: false,
+        reason: showMoreExpansion.blockedReason,
+      };
+    }
+
     const html = `<!doctype html>\n${document.documentElement.outerHTML}`;
     const bodyText = document.body?.innerText || "";
 
@@ -290,6 +466,13 @@ function captureRenderedOuterHtml(options) {
       html,
       bodyLength: bodyText.length,
       tableCount: document.querySelectorAll("table").length,
+      tableRowCount: getTableRowCount(),
+      showMoreEnabled: expandShowMore,
+      showMoreClicks: showMoreExpansion.clicks,
+      showMoreLimitReached: showMoreExpansion.limitReached,
+      showMoreLastText: showMoreExpansion.lastText,
+      showMoreRowCountBefore: showMoreExpansion.rowCountBefore,
+      showMoreRowCountAfter: showMoreExpansion.rowCountAfter,
     };
   })();
 }
@@ -382,6 +565,23 @@ function logLine(message) {
   const time = new Date().toLocaleTimeString();
   els.log.textContent += `[${time}] ${message}\n`;
   els.log.scrollTop = els.log.scrollHeight;
+}
+
+function formatCaptureDetails(capture) {
+  const tableNote = capture.tableCount === 1 ? "1 table" : `${capture.tableCount} tables`;
+  const rowNote = `${Number(capture.tableRowCount || 0).toLocaleString()} rows`;
+  const sizeNote = `${capture.html.length.toLocaleString()} chars`;
+  const details = [tableNote, rowNote, sizeNote];
+
+  if (capture.showMoreEnabled) {
+    details.push(`Show More clicks: ${capture.showMoreClicks || 0}`);
+
+    if (capture.showMoreLimitReached) {
+      details.push("max click limit reached");
+    }
+  }
+
+  return details.join(", ");
 }
 
 function sleep(ms) {

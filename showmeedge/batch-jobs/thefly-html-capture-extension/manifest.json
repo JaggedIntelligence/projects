@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "TheFly HTML Capture",
+  "version": "1.0.0",
+  "description": "Captures rendered HTML from TheFly research pages in your logged-in Chrome session.",
+  "permissions": [
+    "downloads",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.thefly.com/*",
+    "https://thefly.com/*"
+  ],
+  "action": {
+    "default_title": "TheFly HTML Capture"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
