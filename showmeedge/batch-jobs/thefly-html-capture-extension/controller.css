@@ -59,6 +59,10 @@ h2 {
   color: var(--muted);
 }
 
+.hint {
+  color: var(--muted);
+}
+
 .status-pill {
   min-width: 96px;
   padding: 7px 12px;
@@ -85,21 +89,46 @@ h2 {
   gap: 14px;
 }
 
+.schedule-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.6fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: 700;
 }
 
-input {
+input,
+textarea {
   width: 100%;
-  height: 40px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 0 10px;
   background: #ffffff;
   color: var(--text);
   font: inherit;
+}
+
+input {
+  height: 40px;
+  padding: 0 10px;
+}
+
+textarea {
+  min-height: 118px;
+  padding: 10px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  accent-color: var(--accent);
 }
 
 .input-row {
@@ -108,6 +137,29 @@ input {
   align-items: center;
   gap: 10px;
   color: var(--muted);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-row label {
+  margin: 0;
+}
+
+.next-run {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#nextScheduledRun {
+  min-height: 40px;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .actions {
@@ -202,7 +254,8 @@ pre {
   }
 
   .masthead,
-  .grid {
+  .grid,
+  .schedule-grid {
     display: block;
   }
 }

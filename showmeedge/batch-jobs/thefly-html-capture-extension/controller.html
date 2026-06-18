@@ -41,6 +41,30 @@
         </div>
       </section>
 
+      <section class="panel">
+        <div class="checkbox-row">
+          <input id="scheduleEnabled" type="checkbox" checked>
+          <label for="scheduleEnabled">Enable scheduled saves</label>
+        </div>
+        <p class="hint">Times use this computer's local clock. On this machine, that is Pacific time.</p>
+
+        <div class="schedule-grid">
+          <div>
+            <label for="scheduleTimes">Run times</label>
+            <textarea id="scheduleTimes" spellcheck="false">18:00
+04:00
+05:00
+06:00</textarea>
+          </div>
+
+          <div class="next-run">
+            <label>Next scheduled run</label>
+            <div id="nextScheduledRun">Checking...</div>
+            <button id="saveScheduleButton" type="button" class="secondary">Save Schedule</button>
+          </div>
+        </div>
+      </section>
+
       <section class="actions">
         <button id="openAndSaveButton" type="button">Open Research and Save</button>
         <button id="saveActiveButton" type="button">Save Most Recent TheFly Tab</button>

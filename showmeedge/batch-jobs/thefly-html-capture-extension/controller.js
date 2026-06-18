@@ -3,6 +3,8 @@ const DEFAULT_SETTINGS = {
   loadWaitSeconds: 15,
   outputFolder: "thefly-html",
   outputFilename: "thefly-research.html",
+  scheduleEnabled: true,
+  scheduleTimes: "18:00\n04:00\n05:00\n06:00",
 };
 
 const els = {
@@ -10,6 +12,10 @@ const els = {
   loadWaitSeconds: document.querySelector("#loadWaitSeconds"),
   outputFolder: document.querySelector("#outputFolder"),
   outputFilename: document.querySelector("#outputFilename"),
+  scheduleEnabled: document.querySelector("#scheduleEnabled"),
+  scheduleTimes: document.querySelector("#scheduleTimes"),
+  nextScheduledRun: document.querySelector("#nextScheduledRun"),
+  saveScheduleButton: document.querySelector("#saveScheduleButton"),
   openAndSaveButton: document.querySelector("#openAndSaveButton"),
   saveActiveButton: document.querySelector("#saveActiveButton"),
   stopButton: document.querySelector("#stopButton"),
@@ -33,12 +39,16 @@ async function init() {
   els.loadWaitSeconds.value = settings.loadWaitSeconds;
   els.outputFolder.value = settings.outputFolder;
   els.outputFilename.value = settings.outputFilename;
+  els.scheduleEnabled.checked = Boolean(settings.scheduleEnabled);
+  els.scheduleTimes.value = settings.scheduleTimes || DEFAULT_SETTINGS.scheduleTimes;
 
   for (const input of [
     els.targetUrl,
     els.loadWaitSeconds,
     els.outputFolder,
     els.outputFilename,
+    els.scheduleEnabled,
+    els.scheduleTimes,
   ]) {
     input.addEventListener("input", saveSettings);
     input.addEventListener("change", saveSettings);
@@ -47,17 +57,28 @@ async function init() {
   els.openAndSaveButton.addEventListener("click", openAndSave);
   els.saveActiveButton.addEventListener("click", saveMostRecentTheFlyTab);
   els.stopButton.addEventListener("click", requestStop);
+  els.saveScheduleButton.addEventListener("click", async () => {
+    await saveSettings();
+    logLine("Schedule saved.");
+  });
   els.clearLogButton.addEventListener("click", () => {
     els.log.textContent = "";
   });
 
   setRunState("Idle", "");
   updateControls();
+  await refreshScheduleStatus();
   logLine("Ready. Log into TheFly in Chrome first, then save the research page.");
+
+  if (new URLSearchParams(window.location.search).get("autorun") === "1") {
+    logLine("Scheduled run started.");
+    await openAndSave({ scheduled: true });
+  }
 }
 
 async function saveSettings() {
   await chrome.storage.local.set(readSettings());
+  await refreshScheduleStatus();
 }
 
 function readSettings() {
@@ -73,10 +94,12 @@ function readSettings() {
     outputFilename: sanitizeFilename(
       els.outputFilename.value || DEFAULT_SETTINGS.outputFilename,
     ),
+    scheduleEnabled: els.scheduleEnabled.checked,
+    scheduleTimes: els.scheduleTimes.value || DEFAULT_SETTINGS.scheduleTimes,
   };
 }
 
-async function openAndSave() {
+async function openAndSave(options = {}) {
   if (running) {
     return;
   }
@@ -107,6 +130,11 @@ async function openAndSave() {
     await captureAndDownload(targetTabId, settings);
     setRunState("Saved", "is-running");
     setProgress("Saved HTML", 1);
+
+    if (options.scheduled) {
+      logLine("Scheduled save complete. Closing scheduled tabs shortly.");
+      window.setTimeout(closeScheduledTabs, 5000);
+    }
   } catch (error) {
     logLine(`Save failed: ${error.message}`);
     setRunState("Error", "is-stopped");
@@ -167,7 +195,7 @@ async function captureAndDownload(tabId, settings) {
     return;
   }
 
-  const filename = buildFilename(settings.outputFolder, settings.outputFilename);
+  const filename = buildFilename(settings.outputFolder, settings.outputFilename, new Date());
   await downloadHtml(capture.html, filename);
   els.pageStats.textContent = `${capture.html.length.toLocaleString()} chars`;
   logLine(
@@ -279,6 +307,23 @@ function updateControls() {
   els.stopButton.disabled = !running;
 }
 
+async function refreshScheduleStatus() {
+  try {
+    const response = await chrome.runtime.sendMessage({ type: "schedule:refresh" });
+
+    if (!response?.ok || !response.nextRun) {
+      els.nextScheduledRun.textContent = els.scheduleEnabled.checked
+        ? "No valid run time"
+        : "Schedule disabled";
+      return;
+    }
+
+    els.nextScheduledRun.textContent = response.nextRun.label;
+  } catch (error) {
+    els.nextScheduledRun.textContent = "Schedule unavailable";
+  }
+}
+
 function setProgress(label, value) {
   els.progressLabel.textContent = label;
   els.progressBar.value = value;
@@ -347,6 +392,45 @@ function sanitizeFilename(filename) {
   return /\.html?$/i.test(safeName) ? safeName : `${safeName}.html`;
 }
 
-function buildFilename(folder, filename) {
-  return `${folder || DEFAULT_SETTINGS.outputFolder}/${filename}`;
+async function closeScheduledTabs() {
+  try {
+    if (targetTabId !== null) {
+      await chrome.tabs.remove(targetTabId);
+    }
+  } catch (_error) {
+    // The user may have already closed the tab.
+  }
+
+  try {
+    const currentTab = await chrome.tabs.getCurrent();
+
+    if (currentTab?.id) {
+      await chrome.tabs.remove(currentTab.id);
+    }
+  } catch (_error) {
+    // Leave the controller open if Chrome does not allow this tab to close.
+  }
+}
+
+function buildFilename(folder, filename, date) {
+  return `${folder || DEFAULT_SETTINGS.outputFolder}/${addTimestampToFilename(filename, date)}`;
+}
+
+function addTimestampToFilename(filename, date) {
+  const timestamp = formatFilenameTimestamp(date);
+  const match = filename.match(/^(.*?)(\.[^.]+)?$/);
+  const base = match?.[1] || DEFAULT_SETTINGS.outputFilename.replace(/\.html?$/i, "");
+  const extension = match?.[2] || ".html";
+
+  return `${base}-${timestamp}${extension}`;
+}
+
+function formatFilenameTimestamp(date) {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}-${pad2(
+    date.getHours(),
+  )}${pad2(date.getMinutes())}`;
+}
+
+function pad2(value) {
+  return String(value).padStart(2, "0");
 }

@@ -28,9 +28,22 @@ It uses your normal Chrome session. Log into TheFly in Chrome before saving. It 
 
 Files are saved under your Chrome Downloads folder:
 
-`Downloads/thefly-html/thefly-research.html`
+`Downloads/thefly-html/thefly-research-YYYY-MM-DD-HHMM.html`
 
 Chrome will automatically uniquify names if a file already exists.
+
+## Schedule
+
+Scheduled saves are enabled by default for local Pacific wall-clock time:
+
+```text
+18:00
+04:00
+05:00
+06:00
+```
+
+Chrome must be open, the computer must be awake, and you must still be logged into TheFly. The controller shows the next scheduled run and lets you edit the times later.
 
 ## Save an already open tab
 
