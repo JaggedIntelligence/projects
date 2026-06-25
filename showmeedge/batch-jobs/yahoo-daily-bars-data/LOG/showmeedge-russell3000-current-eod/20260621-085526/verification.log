@@ -1,0 +1,10 @@
+requested_universe=russell3000_current
+requested_symbols=2892
+requested_yfinance_rows=13244712
+requested_distinct_symbols=2886
+requested_start_ts=1997-01-02 00:00:00
+requested_end_ts=2026-06-18 00:00:00
+latest_requested_ts=2026-06-18 00:00:00
+requested_symbols_with_latest_ts=2883
+requested_symbols_missing_latest_ts=9
+missing_latest_symbols=HEI.A,LEN.B,BF.A,MOG.A,MASI,GEF.B,KW,KALV,CRD.A

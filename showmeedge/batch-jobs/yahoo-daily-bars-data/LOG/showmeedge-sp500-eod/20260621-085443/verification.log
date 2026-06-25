@@ -1,0 +1,10 @@
+requested_universe=sp500_current
+requested_symbols=503
+requested_yfinance_rows=3184361
+requested_distinct_symbols=503
+requested_start_ts=1997-01-02 00:00:00
+requested_end_ts=2026-06-18 00:00:00
+latest_requested_ts=2026-06-18 00:00:00
+requested_symbols_with_latest_ts=180
+requested_symbols_missing_latest_ts=323
+missing_latest_symbols=ERIE,ESS,EL,EG,EVRG,ES,EXC,EXE,EXPE,EXPD,EXR,XOM,FFIV,FDS,FICO,FAST,FRT,FDX,FIS,FITB,FSLR,FE,FISV,F,FTNT,FTV,FOXA,FOX,BEN,FCX,GRMN,IT,GE,GEHC,GEV,GEN,GNRC,GD,GIS,GM,GPC,GILD,GPN,GL,GDDY,GS,HAL,HIG,HAS,HCA,DOC,HSIC,HSY,HPE,HLT,HD,HON,HRL,HST,HWM,HPQ,HUBB,HUM,HBAN,HII,IBM,IEX,IDXX,ITW,INCY,IR,PODD,INTC,IBKR,ICE,IFF,IP,INTU,ISRG,IVZ,INVH,IQV,IRM,JBHT,JBL,JKHY,J,JNJ,JCI,JPM,KVUE,KDP,KEY,KEYS,KMB,KIM,KMI,KKR,KLAC,KHC
