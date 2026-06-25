@@ -1,0 +1,348 @@
+ipo_date,symbol,company_name,ipo_price,current,return
+2025-12-23,SCPQ,Social Commerce Partners Corporation,10.00,9.98,-0.20
+2025-12-23,SVAQ,Silicon Valley Acquisition Corp.,10.00,10.07,0.70
+2025-12-19,BEBE,TGE Value Creative Solutions Corp,10.00,9.97,-0.30
+2025-12-18,ADAC,American Drive Acquisition Company,10.00,10.01,0.40
+2025-12-18,LPCV,Launchpad Cadenza Acquisition Corp I,10.00,10.00,
+2025-12-18,VHCP,Vine Hill Capital Investment Corp. II,10.00,10.01,0.10
+2025-12-17,ANDG,Andersen Group Inc.,16.00,36.74,129.63
+2025-12-17,CCXI,Churchill Capital Corp XI,10.00,11.99,19.90
+2025-12-17,IRHO,Iron Horse Acquisitions Corp. II,10.00,10.07,0.70
+2025-12-17,MDLN,Medline Inc.,29.00,36.05,24.31
+2025-12-16,CRAN,Crane Harbor Acquisition Corp. II,10.00,10.11,1.10
+2025-12-12,ITHA,ITHAX Acquisition Corp III,10.00,9.97,-0.30
+2025-12-12,TWLV,Twelve Seas Investment Company III,10.00,10.00,
+2025-12-12,WLTH,Wealthfront Corporation,14.00,8.07,-42.36
+2025-12-11,BLRK,Bluerock Acquisition Corp.,10.00,9.99,-0.10
+2025-12-11,KBON,Karbon Capital Partners Corp.,10.00,10.07,0.70
+2025-12-11,LMRI,"Lumexa Imaging Holdings, Inc.",18.50,9.98,-46.05
+2025-12-10,CDNL,Cardinal Infrastructure Group Inc.,21.00,81.94,290.19
+2025-12-10,JMG,JM Group Limited,4.00,6.61,65.25
+2025-12-10,MESH,Meshflow Acquisition Corp.,10.00,9.99,-0.10
+2025-12-09,DSAC,Daedalus Special Acquisition Corp.,10.00,10.05,0.50
+2025-12-05,LFAC,Leapfrog Acquisition Corporation,10.00,10.01,0.10
+2025-12-04,AEAQ,Activate Energy Acquisition Corp.,10.00,10.00,
+2025-12-04,NWAX,New America Acquisition I Corp.,10.00,10.05,0.50
+2025-12-04,RGNT,Regentis Biomaterials Ltd.,8.00,4.20,-47.50
+2025-12-04,SAC,Safeguard Acquisition Corp.,10.00,10.02,0.20
+2025-12-04,SMJF,SMJ International Holdings Inc.,4.00,5.20,30.00
+2025-12-03,GPAC,General Purpose Acquisition Corp.,10.00,10.01,0.10
+2025-12-03,PARK,"Park Dental Partners, Inc.",13.00,17.30,37.39
+2025-12-03,SBXE,SilverBox Corp V,10.00,10.05,0.50
+2025-12-02,BIXI,Bitcoin Infrastructure Acquisition Corp Ltd.,10.00,10.00,
+2025-11-26,SCII,SC II Acquisition Corp.,10.00,10.05,0.50
+2025-11-25,IGAC,Invest Green Acquisition Corporation,10.00,10.01,0.10
+2025-11-21,HCAC,Hall Chadwick Acquisition Corp.,10.00,10.03,0.30
+2025-11-19,GLOO,"Gloo Holdings, Inc.",8.00,4.53,-43.38
+2025-11-13,NXB,NextBoat Inc.,,2.08,
+2025-11-13,POAS,Phaos Technology Holdings (Cayman) Limited,4.00,0.287,-92.83
+2025-11-12,BPAC,Blueport Acquisition Ltd,10.00,10.12,1.20
+2025-11-11,EVOX,Evolution Global Acquisition Corp,10.00,10.01,0.30
+2025-11-07,CRAC,Crown Reserve Acquisition Corp. I,10.00,10.12,1.20
+2025-11-07,TDWD,Tailwind 2.0 Acquisition Corp.,10.00,10.04,0.40
+2025-11-06,AERO,"Grupo Aeroméxico, S.A.B. de C.V.",19.00,17.70,-6.84
+2025-11-06,BLLN,"BillionToOne, Inc.",60.00,107.74,79.57
+2025-11-06,EVMN,"Evommune, Inc.",16.00,23.56,47.25
+2025-11-05,ELWT,"Elauwit Connection, Inc.",9.00,6.10,-32.08
+2025-11-05,XZO,"Exzeo Group, Inc.",21.00,14.43,-31.29
+2025-11-04,BETA,"BETA Technologies, Inc.",34.00,15.68,-53.88
+2025-11-04,CEPV,"Cantor Equity Partners V, Inc.",10.00,10.32,3.20
+2025-11-04,WSTN,Westin Acquisition Corp,10.00,10.11,1.10
+2025-10-31,VACI,Viking Acquisition Corp. I,10.00,10.22,2.20
+2025-10-30,DNMX,Dynamix Corporation III,10.00,10.00,0.10
+2025-10-30,NAVN,"Navan, Inc.",25.00,21.78,-12.88
+2025-10-29,DYOR,Insight Digital Partners II,10.00,10.05,0.50
+2025-10-28,APXT,Apex Treasury Corporation,10.00,10.06,0.55
+2025-10-27,MPLT,"MapLight Therapeutics, Inc.",17.00,30.65,80.29
+2025-10-24,LAFA,LaFayette Acquisition Corp.,10.00,10.11,1.10
+2025-10-23,HAVA,Harvard Ave Acquisition Corporation,10.00,10.12,1.20
+2025-10-23,MMTX,Miluna Acquisition Corp,10.00,10.12,1.20
+2025-10-22,AGCC,Agencia Comercial Spirits Ltd,4.00,15.04,276.00
+2025-10-22,ALIS,Calisa Acquisition Corp,10.00,10.12,1.20
+2025-10-22,NPT,Texxon Holding Limited,5.00,2.35,-53.00
+2025-10-21,AHMA,Ambitions Enterprise Management Co. L.L.C,4.00,1.94,-51.50
+2025-10-21,BGIN,Bgin Blockchain Limited,6.00,1.90,-68.33
+2025-10-21,MCTA,Charming Medical Limited,4.00,29.11,627.75
+2025-10-17,ACCL,Acco Group Holdings Limited,4.00,1.72,-57.00
+2025-10-15,SLGB,Smart Logistics Global Limited,5.00,0.58,-88.40
+2025-10-15,TCGL,TechCreate Group Ltd.,4.00,172.84,4817.75
+2025-10-14,RPGL,Republic Power Group Limited,4.00,2.08,-48.00
+2025-10-09,ALH,Alliance Laundry Holdings Inc.,22.00,26.12,18.73
+2025-10-09,LFS,"Leifras Co., Ltd.",4.00,2.39,-40.25
+2025-10-09,PXED,"Phoenix Education Partners, Inc.",32.00,31.51,-1.53
+2025-10-09,YDDL,One and one Green Technologies. Inc,5.00,2.41,-51.80
+2025-10-08,POM,Pomdoctor Limited,4.00,1.33,-66.75
+2025-10-07,LKSP,Lake Superior Acquisition Corp.,10.00,10.15,1.50
+2025-10-06,GIW,GigCapital8 Corp.,10.00,10.07,0.70
+2025-10-03,AIIA,AI Infrastructure Acquisition Corp.,10.00,10.23,2.30
+2025-10-03,CCHH,CCH Holdings Ltd,4.00,0.44,-89.00
+2025-10-03,RNGT,Range Capital Acquisition Corp II,10.00,10.09,0.90
+2025-10-02,CBK,"Commercial Bancgroup, Inc.",24.00,31.99,33.29
+2025-10-01,AGRZ,Agroz Inc.,4.00,0.34,-91.50
+2025-10-01,FRMI,Fermi Inc.,21.00,7.99,-61.95
+2025-10-01,KRSP,Rice Acquisition Corporation 3,10.00,10.47,4.70
+2025-10-01,NP,Neptune Insurance Holdings Inc.,20.00,28.99,44.95
+2025-10-01,YCY,AA Mission Acquisition Corp. II,10.00,10.18,1.80
+2025-09-30,APAC,StoneBridge Acquisition II Corporation,10.00,10.15,1.50
+2025-09-30,BCSS,Bain Capital GSS Investment Corp.,10.00,10.28,2.80
+2025-09-30,BDCI,BTC Development Corp.,10.00,10.06,0.60
+2025-09-29,KNRX,Knorex Ltd.,4.00,0.448,-88.81
+2025-09-26,AEXA,American Exceptionalism Acquisition Corp. A,10.00,11.43,14.30
+2025-09-26,FCRS,FutureCrest Acquisition Corp.,10.00,10.19,1.90
+2025-09-26,MGN,Megan Holdings Limited,4.00,0.218,-94.54
+2025-09-25,DMII,Drugs Made In America Acquisition II Corp.,10.00,10.10,1.00
+2025-09-25,EMIS,Emmis Acquisition Corp.,10.00,10.15,1.50
+2025-09-19,LATA,Galata Acquisition Corp. II,10.00,10.09,0.90
+2025-09-19,PLTS,Platinum Analytics Cayman Limited,4.00,17.50,337.50
+2025-09-19,PTRN,Pattern Group Inc.,14.00,21.79,55.64
+2025-09-18,NTSK,"Netskope, Inc.",19.00,9.50,-50.00
+2025-09-17,STUB,"StubHub Holdings, Inc.",23.50,11.27,-52.04
+2025-09-17,WBI,WaterBridge Infrastructure LLC,20.00,28.31,41.55
+2025-09-16,CHEC,Chenghe Acquisition III Co.,10.00,10.16,1.60
+2025-09-16,CHOW,ChowChow Cloud International Holdings Limited,4.00,0.43,-89.25
+2025-09-12,BRCB,"Black Rock Coffee Bar, Inc.",20.00,7.53,-62.35
+2025-09-12,FOFO,"Hang Feng Technology Innovation Co., Ltd.",4.00,3.64,-9.00
+2025-09-12,GEMI,"Gemini Space Station, Inc.",28.00,4.18,-85.07
+2025-09-12,LGN,Legence Corp.,28.00,79.79,184.96
+2025-09-12,OTGA,OTG Acquisition Corp. I,10.00,10.15,1.50
+2025-09-12,VIA,"Via Transportation, Inc.",46.00,15.10,-67.17
+2025-09-11,FIGR,"Figure Technology Solutions, Inc.",25.00,27.40,9.60
+2025-09-11,LBRX,LB Pharmaceuticals Inc,15.00,30.48,103.20
+2025-09-10,BLZR,Trailblazer Acquisition Corp.,10.00,10.11,1.10
+2025-09-10,KLAR,Klarna Group plc,40.00,18.39,-54.03
+2025-09-09,TLNC,Talon Capital Corp.,10.00,10.22,2.20
+2025-09-09,ZTG,Zenta Group Company Limited,,1.77,
+2025-09-04,FCHL,Fitness Champs Holdings Limited,4.00,1.19,-70.25
+2025-09-04,GSRF,GSR IV Acquisition Corp.,10.00,10.16,1.60
+2025-09-04,SVAC,Spring Valley Acquisition Corp. III,10.00,10.28,2.80
+2025-08-29,PMI,"Picard Medical, Inc.",4.00,0.17,-95.75
+2025-08-28,ELOG,Eastern International Ltd.,4.00,0.862,-78.46
+2025-08-28,TGHL,The Growhub Limited,4.00,0.448,-88.81
+2025-08-28,THH,TryHard Holdings Limited,4.00,0.31,-92.26
+2025-08-27,KOYN,"CSLM Digital Asset Acquisition Corp III, Ltd",10.00,10.14,1.35
+2025-08-27,MBVI,M3-Brigade Acquisition Vi Corp.,10.00,10.14,1.50
+2025-08-26,CURX,Curanex Pharmaceuticals Inc,4.00,0.265,-93.38
+2025-08-21,CEPF,"Cantor Equity Partners IV, Inc.",10.00,10.36,3.60
+2025-08-21,ETS,Elite Express Holding Inc.,4.00,0.716,-82.10
+2025-08-19,YMT,Yimutian Inc.,4.10,0.592,-85.56
+2025-08-15,NUTR,NusaTrip Incorporated,4.00,9.00,125.00
+2025-08-14,BUUU,BUUU Group Limited,4.00,23.03,475.75
+2025-08-14,MIAX,"Miami International Holdings, Inc.",23.00,36.49,58.65
+2025-08-14,NSRX,Nasus Pharma Ltd.,8.00,3.30,-58.75
+2025-08-14,RYOJ,"rYojbaba Co., Ltd.",4.00,2.26,-43.50
+2025-08-13,BLSH,Bullish,37.00,23.47,-36.57
+2025-08-12,HVMC,Highview Merger Corp.,10.00,10.15,1.50
+2025-08-12,MAGH,Magnitude International Ltd,4.00,6.81,70.25
+2025-08-12,MKLY,McKinley Acquisition Corporation,10.00,10.16,1.60
+2025-08-08,DKI,Darkiris Inc.,4.00,4.74,18.50
+2025-08-08,EFTY,"Etoiles Capital Group Co., Ltd",4.00,15.02,275.50
+2025-08-08,HTFL,"HeartFlow, Inc.",19.00,34.91,83.74
+2025-08-08,SSEA,Starry Sea Acquisition Corp,10.00,10.23,2.30
+2025-08-07,FLY,Firefly Aerospace Inc.,45.00,24.98,-44.49
+2025-08-07,WYFI,"WhiteFiber, Inc.",17.00,38.71,127.71
+2025-08-06,CTW,CTW,5.00,2.37,-52.62
+2025-08-06,QUMS,Quantumsphere Acquisition Corporation,10.00,10.23,2.30
+2025-08-01,HCMA,HCM III Acquisition Corp.,10.00,10.25,2.50
+2025-07-31,BCAR,D. Boral ARC Acquisition I Corp.,10.00,10.53,5.30
+2025-07-31,FIG,"Figma, Inc.",33.00,18.64,-43.52
+2025-07-31,SI,"Shoulder Innovations, Inc.",15.00,19.77,31.80
+2025-07-30,AMBQ,"Ambiq Micro, Inc.",24.00,81.18,238.25
+2025-07-30,APAD,A Paradise Acquisition Corp.,10.00,8.03,-19.70
+2025-07-30,YMAT,"J-Star Holding Co., Ltd.",4.00,0.621,-84.48
+2025-07-24,ARX,Accelerant Holdings,21.00,13.37,-36.33
+2025-07-24,LHAI,Linkhome Holdings Inc.,4.00,0.711,-82.24
+2025-07-24,MH,"McGraw Hill, Inc.",17.00,9.70,-42.94
+2025-07-23,CARL,"Carlsmed, Inc.",15.00,11.09,-26.00
+2025-07-23,CRE,Cre8 Enterprise Limited,4.00,3.22,-19.50
+2025-07-23,NIQ,NIQ Global Intelligence plc,21.00,8.20,-60.95
+2025-07-23,TDIC,Dreamland Limited,4.00,6.74,68.50
+2025-07-18,MJID,Majestic Ideal Holdings Ltd,6.00,1.24,-79.33
+2025-07-17,LAWR,"Robot Consulting Co., Ltd.",4.00,3.75,-6.25
+2025-07-17,PAII,Pyrophyte Acquisition Corp. II,10.00,10.20,2.00
+2025-07-16,KMRK,K-TECH Solutions Company Limited,4.00,1.01,-74.75
+2025-07-16,MGRT,Mega Fortune Company Limited,4.00,77.01,1825.25
+2025-07-16,SOCA,Solarius Capital Acquisition Corp.,10.00,10.30,3.00
+2025-07-15,SPEG,Silver Pegasus Acquisition Corp.,10.00,10.28,2.80
+2025-07-11,BMHL,Bluemount Holdings Limited,4.00,5.75,43.75
+2025-07-09,DLXY,Delixy Holdings Limited,4.00,0.426,-89.36
+2025-07-09,GTER,Globa Terra Acquisition Corporation,10.00,10.44,3.90
+2025-07-08,ANPA,Rich Sparkle Holdings Limited,4.00,11.00,61.50
+2025-07-08,MSGY,Masonglory Limited,4.00,0.52,-86.99
+2025-07-08,TLIH,Ten-League International Holdings Limited,4.00,4.24,6.00
+2025-07-07,MAMK,MaxsMaking Inc.,4.00,13.00,225.00
+2025-07-02,CV,"CapsoVision, Inc.",5.00,7.09,41.80
+2025-07-02,EMPG,Empro Group Inc.,4.00,17.36,334.00
+2025-07-02,EVAC,EQV Ventures Acquisition Corp. II,10.00,10.18,1.80
+2025-07-02,ONCH,1RT Acquisition Corp.,10.00,10.24,2.40
+2025-07-02,ORIQ,Origin Investment Corp I,10.00,10.32,3.20
+2025-07-02,VNME,Vendome Acquisition Corporation I,10.00,10.20,2.00
+2025-07-01,CCII,Cohen Circle Acquisition Corp. II,10.00,10.33,3.30
+2025-07-01,GRAN,Grande Group Limited,5.00,1.45,-71.00
+2025-07-01,INAC,Indigo Acquisition Corp.,10.00,10.24,2.40
+2025-07-01,NMP,NMP Acquisition Corp.,10.00,10.29,2.90
+2025-06-27,FIGX,FIGX Capital Acquisition Corp.,10.00,10.22,2.20
+2025-06-27,YORK,Yorkville Acquisition Corp.,10.00,11.28,12.80
+2025-06-26,CAEP,"Cantor Equity Partners III, Inc.",10.00,15.00,50.00
+2025-06-26,JCAP,"Jefferson Capital, Inc.",15.00,18.05,20.33
+2025-06-26,JLHL,Julong Holding Limited,4.00,13.25,231.25
+2025-06-25,FMFC,Kandal M Venture Limited,4.00,0.324,-91.90
+2025-06-25,LWAC,LightWave Acquisition Corp.,10.00,10.21,2.10
+2025-06-25,OBA,Oxley Bridge Acquisition Limited,10.00,10.24,2.40
+2025-06-24,HCHL,Happy City Holdings Limited,5.00,3.96,-20.80
+2025-06-18,AXIN,Axiom Intelligence Acquisition Corp 1,10.00,10.35,3.50
+2025-06-18,CAI,"Caris Life Sciences, Inc.",21.00,18.15,-13.57
+2025-06-18,EGG,Enigmatig Limited,5.00,7.60,52.00
+2025-06-18,PACH,Pioneer Acquisition I Corp,10.00,10.24,2.40
+2025-06-18,SLDE,"Slide Insurance Holdings, Inc.",17.00,18.31,7.71
+2025-06-17,MENS,Jyong Biotech Ltd.,,1.74,
+2025-06-13,AIRO,"AIRO Group Holdings, Inc.",10.00,7.03,-29.70
+2025-06-13,BACC,Blue Acquisition Corp.,10.00,10.38,3.70
+2025-06-13,BSAA,BEST SPAC I Acquisition Corp.,10.00,12.81,28.10
+2025-06-12,CHYM,"Chime Financial, Inc.",27.00,17.38,-35.63
+2025-06-12,VNTG,Vantage Corp,4.00,0.65,-83.75
+2025-06-11,ASIC,Ategrity Specialty Insurance Company Holdings,17.00,22.00,29.41
+2025-06-11,VOYG,"Voyager Technologies, Inc.",31.00,30.36,-2.07
+2025-06-10,BLUW,Blue Water Acquisition Corp. III,10.00,10.31,3.10
+2025-06-09,JEM,707 Cayman Holdings Limited,4.00,2.65,-33.75
+2025-06-06,OMDA,"Omada Health, Inc.",19.00,18.60,-2.11
+2025-06-05,CRCL,"Circle Internet Group, Inc.",31.00,70.98,128.97
+2025-05-30,PTNM,Pitanium Limited,4.00,10.39,159.75
+2025-05-29,JENA,Jena Acquisition Corporation II,10.00,10.35,3.50
+2025-05-29,WTG,Wintergreen Acquisition Corp.,10.00,10.41,4.05
+2025-05-28,KCHV,Kochav Defense Acquisition Corp.,10.00,10.37,3.70
+2025-05-23,CRA,Cal Redwood Acquisition Corp.,10.00,8.04,-19.60
+2025-05-23,FTRK,Fast Track Group,4.00,0.419,-89.53
+2025-05-23,PELI,Pelican Acquisition Corporation,10.00,8.23,-17.70
+2025-05-22,HNGE,"Hinge Health, Inc.",32.00,70.56,120.50
+2025-05-22,MNTN,"MNTN, Inc.",16.00,8.38,-47.63
+2025-05-22,OYSE,Oyster Enterprises II Acquisition Corp,10.00,10.29,2.90
+2025-05-21,AACI,Armada Acquisition Corp. II,10.00,10.29,2.90
+2025-05-21,OFAL,OFA Group,4.50,0.207,-95.40
+2025-05-21,PCAP,ProCap Acquisition Corp,10.00,10.27,2.70
+2025-05-16,CCCM,Columbus Circle Capital Corp I,10.00,11.13,13.50
+2025-05-16,WENN,Wen Acquisition Corp.,10.00,10.29,2.90
+2025-05-15,RTAC,Renatus Tactical Acquisition Corp I,10.00,10.41,4.10
+2025-05-15,TVAI,Thayer Ventures Acquisition Corporation II,10.00,10.31,3.10
+2025-05-14,ANTA,Antalpha Platform Holding Company,12.80,6.19,-51.64
+2025-05-14,CCCX,Churchill Capital Corp X,10.00,13.66,36.60
+2025-05-14,ETOR,eToro Group Ltd.,52.00,36.53,-29.75
+2025-05-13,OMSE,OMS Energy Technologies Inc.,9.00,3.95,-56.11
+2025-05-13,PMTR,Perimeter Acquisition Corp. I,10.00,10.41,4.10
+2025-05-09,APUS,"Apimeds Pharmaceuticals US, Inc.",4.00,0.89,-77.75
+2025-05-09,EGHA,EGH Acquisition Corp.,10.00,10.31,3.10
+2025-05-08,AHL,Aspen Insurance Holdings Limited,30.00,37.50,25.00
+2025-05-08,AII,"American Integrity Insurance Group, Inc.",16.00,18.04,12.75
+2025-05-07,CCAQ,Collective Acquisition Corp.,,10.43,
+2025-05-02,CEPT,"Cantor Equity Partners II, Inc.",10.00,10.65,6.50
+2025-05-02,CGCT,Cartesian Growth Corporation III,10.00,11.90,19.00
+2025-05-02,GTEN,"Gores Holdings X, Inc.",10.00,10.42,4.20
+2025-05-02,SDM,Smart Digital Group Limited,4.00,1.85,-53.75
+2025-05-01,COPL,Copley Acquisition Corp,10.00,10.44,4.40
+2025-05-01,RDAG,Republic Digital Acquisition Company,10.00,10.33,3.30
+2025-04-30,LCCC,Lakeshore Acquisition III Corp.,10.00,10.41,4.10
+2025-04-30,TACO,Berto Acquisition Corp.,10.00,10.39,3.80
+2025-04-30,YB,Yuanbao Inc.,15.00,14.34,-4.47
+2025-04-29,DAAQ,Digital Asset Acquisition Corp.,10.00,10.38,3.80
+2025-04-29,RAAQ,Real Asset Acquisition Corp.,10.00,10.84,8.40
+2025-04-25,CHAC,Crane Harbor Acquisition Corp.,10.00,9.72,-2.80
+2025-04-25,IPCX,Inflection Point Acquisition Corp. III,10.00,10.32,3.20
+2025-04-25,PHOE,Phoenix Asia Holdings Limited,4.00,17.56,339.00
+2025-04-24,NPAC,New Providence Acquisition Corp. III,10.00,10.38,3.79
+2025-04-23,TVA,Texas Ventures Acquisition III Corp,10.00,10.46,4.60
+2025-04-22,PFAI,Pinnacle Food Group Limited,4.00,3.74,-6.50
+2025-04-22,YOOV,Concorde International Group Ltd.,,0.462,
+2025-04-21,TMDE,TMD Energy Limited,3.25,0.704,-78.34
+2025-04-17,CHA,Chagee Holdings Limited,28.00,11.75,-58.04
+2025-04-17,EDHL,Everbright Digital Holding Limited,4.00,4.41,10.25
+2025-04-15,HXHX,Haoxin Holdings Limited,4.00,0.452,-88.70
+2025-04-10,ATHR,"Aether Holdings, Inc.",4.30,3.30,-23.26
+2025-04-10,CUPR,Cuprina Holdings (Cayman) Limited,4.00,5.74,43.50
+2025-04-10,IOTR,iOThree Limited,4.00,2.80,-30.00
+2025-04-10,MB,MasterBeef Group,4.00,5.52,38.00
+2025-04-09,TACH,Titan Acquisition Corp,10.00,10.41,4.10
+2025-04-08,FATN,"FatPipe, Inc.",5.75,5.44,-5.39
+2025-04-08,RYET,Ruanyun Edai Technology Inc.,4.00,1.08,-73.00
+2025-04-04,BLIV,BeLive Holdings,4.00,2.35,-41.25
+2025-04-03,LHSW,Lianhe Sowell International Group Ltd,4.00,1.91,-52.25
+2025-04-02,SMA,"SmartStop Self Storage REIT, Inc.",30.00,32.85,9.50
+2025-04-02,SORA,AsiaStrategy,,2.14,
+2025-04-02,SZZL,Sizzle Acquisition Corp. II,10.00,10.37,3.70
+2025-04-01,ENGS,Energys Group Limited,4.50,2.42,-46.22
+2025-04-01,SDHI,Siddhi Acquisition Corp.,10.00,10.42,4.20
+2025-04-01,WTF,Waton Financial Limited,4.00,2.51,-37.25
+2025-04-01,WXM,WF International Limited,4.00,4.67,16.75
+2025-03-31,NMAX,Newsmax Inc.,10.00,7.02,-29.80
+2025-03-31,UYSC,UY Scuti Acquisition Corp.,10.00,10.65,6.50
+2025-03-28,CRWV,"CoreWeave, Inc.",40.00,100.88,152.20
+2025-03-28,NCT,Intercont (Cayman) Limited,7.00,2.92,-58.29
+2025-03-27,WFF,WF Holding Limited,4.00,2.83,-29.25
+2025-03-26,EPSM,Epsium Enterprise Limited,4.00,1.34,-66.50
+2025-03-25,LGPS,LogProstyle Inc.,5.00,0.671,-86.59
+2025-03-21,BIYA,Baiya International Group Inc.,4.00,0.385,-90.38
+2025-03-21,GSHR,Gesher Acquisition Corp. II,10.00,10.41,4.10
+2025-03-21,RCT,RedCloud Holdings plc,4.50,0.507,-88.74
+2025-03-18,QSEA,Quartzsea Acquisition Corporation,10.00,10.52,5.20
+2025-03-13,MWYN,"Marwynn Holdings, Inc.",4.00,1.10,-72.50
+2025-03-07,MCRP,Micropolis AI Robotics,4.00,1.66,-58.50
+2025-03-07,SAGT,Sagtec Global Limited,4.00,1.21,-69.75
+2025-03-06,ADVB,Advanced Biomed Inc.,4.00,4.76,21.13
+2025-03-06,JFB,JFB Construction Holdings,4.13,4.87,17.92
+2025-03-06,KMTS,"Kestra Medical Technologies, Ltd.",17.00,22.08,29.88
+2025-03-06,TBH,"Brag House Holdings, Inc.",4.00,4.02,0.50
+2025-03-04,PN,PN Smart Energy Limited,4.00,3.71,-7.25
+2025-02-28,FERA,Fifth Era Acquisition Corp I,10.00,10.43,4.30
+2025-02-28,LOKV,Live Oak Acquisition Corp. V,10.00,11.52,15.20
+2025-02-28,NHIC,NewHold Investment Corp III,10.00,10.96,9.60
+2025-02-27,LUD,Luda Technology Group Limited,4.00,5.21,30.25
+2025-02-27,LZMH,LZ Technology Holdings Limited,4.00,1.31,-67.25
+2025-02-27,RAC,Rithm Acquisition Corp.,10.00,10.43,4.30
+2025-02-27,WETO,Wetour Robotics Limited,4.00,0.851,-78.73
+2025-02-26,STAK,STAK Inc.,4.00,3.68,-8.00
+2025-02-25,BMGL,Basel Medical Group Ltd,4.00,7.03,75.75
+2025-02-21,WGRX,"Wellgistics Health, Inc.",4.50,2.82,-37.33
+2025-02-19,NNNN,Anbio Biotechnology,5.00,15.25,205.00
+2025-02-14,NPB,"Northpointe Bancshares, Inc.",14.50,18.56,28.00
+2025-02-13,AACB,Artius II Acquisition Inc.,10.00,10.50,5.00
+2025-02-13,AARD,"Aardvark Therapeutics, Inc.",16.00,4.96,-69.00
+2025-02-13,IPEX,Inflection Point Acquisition Corp. V,,10.49,
+2025-02-13,KRMN,Karman Holdings Inc.,22.00,44.84,103.82
+2025-02-13,SAIL,"SailPoint, Inc.",23.00,12.57,-45.35
+2025-02-13,XHLD,"TEN Holdings, Inc.",6.00,1.23,-79.50
+2025-02-12,PUSA,Aureus Greenway Holdings Inc.,,3.89,
+2025-02-11,ATII,Archimedes Tech SPAC Partners II Co.,10.00,10.77,7.70
+2025-02-07,SION,"Sionna Therapeutics, Inc.",18.00,41.09,128.28
+2025-02-07,TTAM,Titan America SA,16.00,18.77,17.31
+2025-02-06,EPWK,EPWK Holdings Ltd.,4.10,0.665,-81.62
+2025-02-06,FBGL,FBS Global Limited,4.50,0.53,-88.22
+2025-02-05,CJMB,Callan JMB Inc.,4.00,0.73,-81.75
+2025-02-05,HCAI,"Huachen AI Parking Management Technology Holding Co., Ltd",4.00,7.33,83.25
+2025-02-05,KFII,K&F Growth Acquisition Corp. II,10.00,10.55,5.50
+2025-02-05,PLUT,Plutus Financial Group Limited,4.00,3.02,-24.59
+2025-01-31,INR,"Infinity Natural Resources, Inc.",20.00,12.88,-35.60
+2025-01-31,MAZE,"Maze Therapeutics, Inc.",16.00,26.67,66.69
+2025-01-31,MTSR,"Metsera, Inc.",18.00,70.50,291.67
+2025-01-30,BBNX,"Beta Bionics, Inc.",17.00,14.73,-13.35
+2025-01-30,SVCC,Stellar V Capital Corp.,10.00,10.55,5.50
+2025-01-29,FGMC,FG Merger II Corp.,10.00,10.05,0.50
+2025-01-28,DMAA,Drugs Made In America Acquisition Corp.,10.00,10.64,6.40
+2025-01-28,SFD,"Smithfield Foods, Inc.",20.00,24.68,23.40
+2025-01-24,AAPG,Ascentage Pharma Group International,17.25,17.08,-0.99
+2025-01-24,VG,"Venture Global, Inc.",25.00,10.51,-57.96
+2025-01-23,COLA,Columbus Acquisition Corp,10.00,10.62,6.20
+2025-01-23,KAZR,Skyline Builders Group Holding Limited,,2.78,
+2025-01-22,DGNX,Diginex Limited,4.10,0.918,-77.62
+2025-01-22,DXST,Decent Holding Inc.,4.00,1.97,-50.75
+2025-01-22,TJGC,TJGC Group Limited,4.00,4.36,11.81
+2025-01-22,TOPP,Toppoint Holdings Inc.,4.00,1.23,-69.25
+2025-01-17,HVII,Hennessy Capital Investment Corp. VII,10.00,10.42,4.25
+2025-01-16,FLOC,Flowco Holdings Inc.,24.00,21.46,-10.58
+2025-01-16,PCLA,PicoCELA Inc.,4.00,3.42,-14.50
+2025-01-15,HKPD,"Cellyan Biotechnology Co., Ltd",4.00,0.39,-90.25
+2025-01-15,PLMK,Plum Acquisition Corp. IV,10.00,10.64,6.40
+2025-01-15,RIBB,Ribbon Acquisition Corp.,10.00,10.84,8.40
+2025-01-14,UFG,Uni-Fuels Holdings Limited,4.00,0.87,-78.25
+2025-01-10,MIMI,Mint Incorporation Limited,4.00,2.71,-32.25
+2025-01-08,MASK,3 E Network Technology Group Limited,4.00,2.00,-50.00
+2025-01-07,CEPO,"Cantor Equity Partners I, Inc.",10.00,10.00,
+2025-01-07,ZYBT,Zhengye Biotechnology Holding Limited,4.00,0.772,-81.75
+2025-01-02,INLF,INLIF Limited,4.00,0.04,-99.01

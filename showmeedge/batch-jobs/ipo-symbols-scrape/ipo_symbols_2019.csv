@@ -1,0 +1,233 @@
+ipo_date,symbol,company_name,ipo_price,current,return
+2019-12-30,MKDTY,Molecular Data Inc.,5.38,,-100.00
+2019-12-19,INDO,Indonesia Energy Corporation Limited,11.00,2.56,-76.73
+2019-12-19,MNPR,Monopar Therapeutics Inc.,8.00,88.99,1012.38
+2019-12-13,CIIC,CIIG Merger,10.00,21.60,116.00
+2019-12-13,HCCO,Healthcare Merger Corp,10.00,8.97,-10.30
+2019-12-13,OCFT,OneConnect Financial Technology Co. Ltd.,10.00,7.89,-21.10
+2019-12-13,SPT,"Sprout Social, Inc.",17.00,6.70,-60.59
+2019-12-12,BILL,"BILL Holdings, Inc.",22.00,33.46,52.09
+2019-12-12,EH,EHang Holdings Limited,12.50,6.63,-46.96
+2019-12-11,LIVK,LIV Capital Acquisition Corp.,10.00,10.30,3.00
+2019-12-11,XP,XP Inc.,27.00,15.56,-42.37
+2019-12-05,LMPX,"LMP Automotive Holdings, Inc.",5.00,0.35,-93.00
+2019-11-26,ALUS,Alussa Energy Acquisition Corp.,10.00,9.50,-5.00
+2019-11-22,CHPM,CHP Merger Corp.,10.00,10.18,1.80
+2019-11-22,PINE,"Alpine Income Property Trust, Inc.",19.00,20.18,6.21
+2019-11-22,PTAC,PropTech Acquisition Corp.,10.00,14.81,48.10
+2019-11-21,CAN,Canaan Inc.,9.00,0.321,-96.43
+2019-11-21,GRNV,Greenvision Acquisition Corp.,10.00,8.14,-18.60
+2019-11-21,SITM,SiTime Corporation,13.00,692.47,5226.69
+2019-11-20,AMHC,Amplitude Healthcare Acquisition Corp.,10.00,15.12,51.20
+2019-11-20,SAQN,Software Acquisition Group,10.00,10.10,1.00
+2019-11-13,YAYO,"EVmo, Inc.",4.00,,-100.00
+2019-11-11,ETNB,"89bio, Inc.",16.00,14.84,-7.25
+2019-11-08,CNSP,"CNS Pharmaceuticals, Inc.",4.00,4.17,4.25
+2019-11-08,JIH,"Juniper Industrial Holdings, Inc.",10.00,13.19,31.90
+2019-11-08,KRKR,36Kr Holdings Inc.,14.50,2.93,-79.10
+2019-11-08,MOHOY,ECMOHO Limited,10.00,,
+2019-11-08,SRAC,Stable Road Acquisition Corp.,10.00,10.97,9.70
+2019-11-08,TELA,"TELA Bio, Inc.",13.00,0.75,-94.23
+2019-11-07,CNTG,Centogene N.V.,14.00,,
+2019-11-07,DFNS,LGL Systems Acquisition,10.00,13.84,38.40
+2019-11-07,GRTX,"Galera Therapeutics, Inc.",12.00,0.07,-99.44
+2019-11-07,SICP,Silvergate Capital Corporation,12.00,1.19,-90.08
+2019-11-05,MCMJ,Merida Merger Corp. I,10.00,6.53,-34.70
+2019-11-05,XHG,XChange TEC.INC,,0.975,
+2019-11-01,DUO,Fangdd Network Group Ltd.,13.00,0.77,-94.08
+2019-11-01,FSRV,Finserv Acquisition Corp,10.00,14.52,45.20
+2019-11-01,SFTW,Osprey Technology Acquisition Corp.,10.00,11.41,14.10
+2019-10-31,OYST,"Oyster Point Pharma, Inc.",16.00,11.17,-30.19
+2019-10-31,RAPT,"Rapt Therapeutics, Inc.",12.00,58.02,383.42
+2019-10-25,CABA,"Cabaletta Bio, Inc.",11.00,3.03,-72.46
+2019-10-25,DAO,"Youdao, Inc.",17.00,10.73,-36.88
+2019-10-25,PAIYY,Aesthetic Medical International Holdings Group Ltd.,,0.201,
+2019-10-25,PAVS,Paranovus Entertainment Technology Ltd.,5.50,0.134,-97.57
+2019-10-25,PGNY,"Progyny, Inc.",13.00,26.89,106.85
+2019-10-25,PHAT,"Phathom Pharmaceuticals, Inc.",19.00,10.61,-44.16
+2019-10-25,TFFP,TFF Group,5.00,0.065,-98.70
+2019-10-24,BWIN,"The Baldwin Insurance Group, Inc.",,24.87,
+2019-10-18,GLEO,Galileo Acquisition Corp.,10.00,8.54,-14.60
+2019-10-18,LATN,Union Acquisition Corp. II,10.00,9.86,-1.40
+2019-10-17,BRBR,"BellRing Brands, Inc.",14.00,11.91,-14.93
+2019-10-17,IPHA,Innate Pharma S.A.,5.50,1.90,-65.46
+2019-10-11,HBT,"HBT Financial, Inc.",16.00,31.47,97.06
+2019-10-11,VIR,"Vir Biotechnology, Inc.",20.00,9.95,-50.25
+2019-10-10,BNTX,BioNTech SE,15.00,90.21,501.40
+2019-10-03,APRE,"Aprea Therapeutics, Inc.",15.00,0.808,-94.61
+2019-10-03,KRRO,"Korro Bio, Inc.",14.00,13.77,-1.64
+2019-10-03,MCBS,"MetroCity Bankshares, Inc.",13.50,35.17,160.52
+2019-10-03,VIE,Viela Bio,19.00,53.01,179.00
+2019-09-26,OPRT,Oportun Financial Corporation,15.00,5.66,-62.27
+2019-09-26,PTON,"Peloton Interactive, Inc.",29.00,5.73,-80.24
+2019-09-19,DDOG,"Datadog, Inc.",27.00,222.65,724.63
+2019-09-19,PING,Ping Identity Holding Corp.,15.00,28.50,90.00
+2019-09-19,XGN,Exagen Inc.,14.00,4.52,-67.71
+2019-09-18,IGMS,"IGM Biosciences, Inc.",16.00,1.27,-92.06
+2019-09-18,NVST,Envista Holdings Corporation,22.00,26.04,18.36
+2019-09-17,APXT,Apex Technology Acquisition Corp.,10.00,12.11,21.10
+2019-09-13,ALRS,Alerus Financial Corporation,21.00,30.61,45.76
+2019-09-13,EXPC,Experience Investment Corp.,10.00,8.70,-13.00
+2019-09-13,NET,"Cloudflare, Inc.",15.00,223.48,1389.87
+2019-09-13,STSA,"Satsuma Pharmaceuticals, Inc.",15.00,1.10,-92.67
+2019-09-13,SWTX,"Springworks Therapeutics, Inc.",18.00,46.99,161.06
+2019-09-12,SDCCQ,"SmileDirectClub, Inc.",,,
+2019-09-12,TXG,"10x Genomics, Inc.",39.00,34.60,-11.28
+2019-09-11,SONG,Akazoo S.A.,,,
+2019-09-09,NPA,New Providence Acquisition Corp.,10.00,11.60,16.00
+2019-08-15,CFB,"CrossFirst Bankshares, Inc.",14.50,15.99,10.28
+2019-08-15,JFU,9F Inc.,9.50,2.76,-70.95
+2019-08-14,BTOG,Bit Origin Ltd,5.00,1.77,-64.60
+2019-08-09,THBR,Thunder Bridge Acquisition II Ltd.,10.00,10.87,8.70
+2019-08-08,INMD,InMode Ltd.,14.00,14.79,5.64
+2019-08-08,SSPK,Silver Spike Acquisition Corp.,10.00,18.84,88.40
+2019-08-05,AMTD,AMTD IDEA Group,8.38,1.00,-88.07
+2019-08-02,ORSN,Orisun Acquisition,10.00,8.17,-18.30
+2019-08-01,DT,"Dynatrace, Inc.",16.00,40.61,153.81
+2019-08-01,KRUS,"Kura Sushi USA, Inc.",14.00,52.64,276.00
+2019-08-01,SNDL,SNDL Inc.,13.00,1.39,-89.31
+2019-07-31,BORR,Borr Drilling Limited,9.30,4.37,-53.01
+2019-07-31,NFIN,Netfin Acquisition,10.00,11.40,14.00
+2019-07-26,BHAT,Blue Hat Interactive Entertainment Technology,4.00,0.34,-83.13
+2019-07-26,CCX,Churchill Capital Corp II,10.00,10.75,7.50
+2019-07-26,SBE,Switchback Energy Acquisition Corporation,10.00,30.83,208.30
+2019-07-26,VIST,"Vista Energy, S.A.B. de C.V.",9.00,64.42,615.78
+2019-07-26,WSG,Wanda Sports Group Co. Ltd.,8.00,2.50,-68.81
+2019-07-25,CSTL,"Castle Biosciences, Inc.",16.00,22.12,38.25
+2019-07-25,FLLC,"Fellazo, Inc.",10.00,10.00,
+2019-07-25,HCAT,"Health Catalyst, Inc.",26.00,1.72,-93.39
+2019-07-25,LVGO,Livongo Health,28.00,139.77,399.18
+2019-07-25,NOVA,"Sunnova Energy International, Inc.",12.00,0.22,-98.69
+2019-07-25,PROS,"ProSight Global, Inc.",14.00,12.85,-8.21
+2019-07-24,EIC,Eagle Point Income Company Inc.,19.00,10.08,-46.95
+2019-07-19,AFYA,Afya Limited,19.00,14.59,-23.16
+2019-07-19,IFS,Intercorp Financial Services Inc.,46.00,54.76,19.04
+2019-07-19,MDLA,"Medallia, Inc.",21.00,33.99,61.86
+2019-07-18,AMK,"AssetMark Financial Holdings, Inc.",22.00,35.24,60.18
+2019-07-18,CPAA,Conyers Park II Acquisition Corp.,10.00,8.86,-11.40
+2019-07-18,FULC,"Fulcrum Therapeutics, Inc.",16.00,3.76,-76.50
+2019-07-18,IHRT,"iHeartMedia, Inc.",17.00,4.00,-76.50
+2019-07-18,MIRM,"Mirum Pharmaceuticals, Inc.",15.00,114.97,666.47
+2019-07-18,OAC,Oaktree Acquisition Corp.,10.00,16.38,63.80
+2019-07-18,OBDC,Blue Owl Capital Corporation,15.30,10.72,-29.94
+2019-07-18,PHR,"Phreesia, Inc.",17.00,9.59,-43.59
+2019-07-17,DOYU,DouYu International Holdings Limited,11.50,4.53,-60.48
+2019-07-12,PIC,Pivotal Investment Corporation II,10.00,19.54,95.40
+2019-07-12,SCPE,SC Health Corporation,10.00,15.84,58.40
+2019-07-12,THCA,Tuscan Holdings Corp. II,10.00,10.45,4.50
+2019-07-02,RMBI,"Richmond Mutual Bancorporation, Inc.",10.00,15.26,52.60
+2019-06-28,KRTX,"Karuna Therapeutics, Inc.",16.00,329.83,1961.44
+2019-06-28,REAL,"The RealReal, Inc.",20.00,12.86,-35.70
+2019-06-27,ADPT,Adaptive Biotechnologies Corporation,20.00,19.34,-3.30
+2019-06-27,BBIO,"BridgeBio Pharma, Inc.",17.00,69.36,308.00
+2019-06-27,CHNG,"Change Healthcare, Inc.",13.00,27.49,111.46
+2019-06-27,MORF,"Morphic Holding, Inc.",15.00,56.99,279.93
+2019-06-26,CMBM,Cambium Networks Corporation,12.00,0.425,-96.66
+2019-06-26,LINX,Linx S.A.,9.40,7.50,-20.21
+2019-06-20,AKRO,"Akero Therapeutics, Inc.",16.00,54.65,241.88
+2019-06-20,BCEL,"Atreca, Inc.",17.00,0.09,-99.47
+2019-06-20,GO,Grocery Outlet Holding Corp.,22.00,9.80,-55.46
+2019-06-20,PRVL,Prevail Therapeutics Inc.,17.00,23.00,35.29
+2019-06-20,PSNL,"Personalis, Inc.",17.00,11.36,-33.18
+2019-06-20,SMMC,South Mountain Merger Corp.,10.00,16.80,68.00
+2019-06-20,WORK,"Slack Technologies, Inc.",26.00,45.20,73.85
+2019-06-19,STOK,"Stoke Therapeutics, Inc.",18.00,30.39,68.83
+2019-06-14,CHWY,"Chewy, Inc.",22.00,19.01,-13.59
+2019-06-13,FVRR,Fiverr International Ltd.,21.00,10.58,-49.62
+2019-06-12,CRWD,"CrowdStrike Holdings, Inc.",34.00,673.02,1879.47
+2019-06-12,MWK,"Mohawk Group Holdings, Inc.",10.00,23.70,137.00
+2019-06-07,HYAC,Haymaker Acquisition Corp. II,10.00,9.52,-4.80
+2019-06-07,RVLV,"Revolve Group, Inc.",18.00,22.94,27.44
+2019-06-06,GIX,"GigCapital2, Inc.",10.00,10.47,4.70
+2019-06-06,GOTU,Gaotu Techedu Inc.,10.50,1.76,-83.24
+2019-05-23,BCYC,Bicycle Therapeutics plc,14.00,3.96,-71.71
+2019-05-23,IDYA,"IDEAYA Biosciences, Inc.",10.00,36.28,262.80
+2019-05-23,RTLR,Rattler Midstream LP,17.50,15.22,-13.03
+2019-05-21,GXGX,GX Acquisition Corp.,10.00,10.20,2.00
+2019-05-17,AVTR,"Avantor, Inc.",14.00,9.69,-30.79
+2019-05-17,FSLY,"Fastly, Inc.",16.00,16.38,2.38
+2019-05-17,LKNCY,"Luckin Coffee, Inc.",17.00,18.95,11.47
+2019-05-15,PSTL,"Postal Realty Trust, Inc.",17.00,23.60,38.82
+2019-05-14,AGBA,AGBA Group Holding Limited,10.00,1.40,-86.00
+2019-05-14,APLT,"Applied Therapeutics, Inc.",10.00,0.103,-98.97
+2019-05-10,JFIN,Jiayin Group Inc.,10.50,3.01,-71.33
+2019-05-10,SONM,"DNA X, Inc.",11.00,4.88,-55.64
+2019-05-10,UBER,"Uber Technologies, Inc.",45.00,73.85,64.11
+2019-05-09,AXLA,"Axcella Health, Inc.",20.00,0.401,-98.00
+2019-05-09,HHR,Headhunter Group PLC,13.50,,
+2019-05-09,MEC,"Mayville Engineering Company, Inc.",17.00,34.39,102.29
+2019-05-09,NXTC,"NextCure, Inc.",15.00,1.77,-88.20
+2019-05-09,QNCX,"Quince Therapeutics, Inc.",17.00,0.952,-94.40
+2019-05-09,SPFI,"South Plains Financial, Inc.",17.50,42.18,141.03
+2019-05-08,PSN,Parsons Corporation,27.00,48.84,80.89
+2019-05-07,LCA,"Landcadia Holdings II, Inc.",10.00,25.49,154.90
+2019-05-07,TRVI,"Trevi Therapeutics, Inc.",10.00,17.52,75.20
+2019-05-06,TBBA,"TEB Bancorp, Inc.",10.00,6.39,-36.10
+2019-05-03,ATIF,ATIF Holdings Limited,5.00,0.64,-87.20
+2019-05-03,RRBI,"Red River Bancshares, Inc.",45.00,91.44,103.20
+2019-05-03,SCPL,SciPlay Corporation,16.00,22.94,43.38
+2019-05-03,YJ,Yunji Inc.,11.00,1.58,-85.65
+2019-05-02,BYND,"Beyond Meat, Inc.",25.00,0.682,-97.27
+2019-05-02,SY,So-Young International Inc.,13.80,1.40,-89.86
+2019-05-02,TMDX,"TransMedics Group, Inc.",16.00,77.62,385.09
+2019-04-30,WAFU,Wah Fu Education Group Limited,5.00,1.61,-67.80
+2019-04-18,GNLN,"Greenlane Holdings, Inc.",17.00,2.40,-85.88
+2019-04-18,HOOK,HOOKIPA Pharma Inc.,14.00,0.83,-94.00
+2019-04-18,MNRL,"Brigham Minerals, Inc.",18.00,32.50,80.56
+2019-04-18,PINS,"Pinterest, Inc.",19.00,19.86,4.53
+2019-04-18,ZM,"Zoom Communications, Inc.",36.00,85.47,137.42
+2019-04-17,BWAY,BrainsWay Ltd.,11.00,14.40,30.91
+2019-04-17,PLMR,"Palomar Holdings, Inc.",15.00,118.91,692.73
+2019-04-17,TPTX,"Turning Point Therapeutics, Inc.",18.00,76.01,322.28
+2019-04-12,JMIA,Jumia Technologies AG,14.50,6.33,-56.35
+2019-04-11,PD,"PagerDuty, Inc.",24.00,8.87,-63.04
+2019-04-11,TUFN,Tufin Software Technologies Ltd.,14.00,12.94,-7.57
+2019-04-05,GHSI,"Guardion Health Sciences, Inc.",4.00,3.25,-18.75
+2019-04-04,NGM,"NGM Biopharmaceuticals, Inc.",16.00,1.54,-90.38
+2019-04-04,RPLA,Replay Acquisition,10.00,9.48,-5.20
+2019-04-04,SILK,"Silk Road Medical, Inc.",20.00,27.49,37.45
+2019-04-04,TW,Tradeweb Markets Inc.,27.00,96.05,255.74
+2019-04-03,RUHN,Ruhnn Holding Limited,12.50,3.40,-72.80
+2019-04-02,XTKG,"X3 Holdings Co., Ltd.",,0.594,
+2019-03-29,HPH,Highest Performances Holdings Inc.,,6.65,
+2019-03-29,LYFT,"Lyft, Inc.",72.00,14.40,-80.00
+2019-03-28,DTIL,"Precision BioSciences, Inc.",16.00,6.74,-57.88
+2019-03-28,JFK,8i Enterprises Acquisition,10.00,9.00,-10.00
+2019-03-28,WTRE,Watford Holdings Ltd.,25.26,34.99,38.52
+2019-03-27,GNFT,Genfit S.A.,22.00,4.85,-77.96
+2019-03-21,LEVI,Levi Strauss & Co.,17.00,23.56,38.59
+2019-03-20,INSU,Insurance Acquisition,10.00,11.66,16.60
+2019-03-20,TIGR,UP Fintech Holding Limited,8.00,4.66,-41.75
+2019-03-15,TRNE,Trine Acquisition,10.00,24.77,147.70
+2019-03-08,CRSA,Crescent Acquisition Corp.,10.00,8.81,-11.90
+2019-03-08,FUTU,Futu Holdings Limited,12.00,98.30,719.17
+2019-03-07,SWAV,"Shockwave Medical, Inc.",17.00,334.75,1869.12
+2019-03-05,THCB,Tuscan Holdings Corp.,10.00,10.00,
+2019-03-01,HCAC,Hennessy Capital Acquisition Corp IV,10.00,19.49,94.90
+2019-02-28,DPHC,DiamondPeak Holdings,10.00,18.21,82.10
+2019-02-28,KLDO,"Kaleido Biosciences, Inc.",15.00,0.29,-98.07
+2019-02-28,SHLL,Tortoise Acquisition Corp.,10.00,44.91,349.10
+2019-02-26,SLE,"Super League Enterprise, Inc.",11.00,3.10,-71.82
+2019-02-22,ACAM,Acamar Partners Acquisition Corp.,10.00,12.30,23.00
+2019-02-19,SOLY,"Soliton, Inc.",5.00,22.58,351.60
+2019-02-15,AREC,American Resources Corporation,4.00,1.97,-50.75
+2019-02-15,MITO,Stealth BioTherapeutics Corp.,12.00,0.32,-97.33
+2019-02-15,RKTO,Rocket One Inc.,,1.01,
+2019-02-14,AVDR,"Avedro, Inc.",14.00,22.99,64.21
+2019-02-14,TCRR,TCR2 Therapeutics Inc.,15.00,1.48,-89.80
+2019-02-13,BACK,"IMAC Holdings, Inc.",5.13,0.196,-96.18
+2019-02-12,ANCN,Anchiano Therapeutics,11.50,75.36,555.30
+2019-02-08,GOSS,"Gossamer Bio, Inc.",16.00,0.169,-98.94
+2019-02-08,HARP,"Harpoon Therapeutics, Inc.",14.00,23.01,64.36
+2019-02-08,RMG,RMG Acquisition Corp.,10.00,27.00,170.00
+2019-02-07,ALEC,"Alector, Inc.",19.00,1.79,-90.58
+2019-02-07,MNCL,Monocle Acquisition Corporation,10.00,12.20,22.00
+2019-02-04,INMB,INmune Bio Inc.,8.00,1.35,-83.13
+2019-02-04,IPV,InterPrivate Acquisition,10.00,13.04,30.40
+2019-02-01,GMHI,Gores Metropoulos,10.00,18.00,80.00
+2019-01-31,NFE,New Fortress Energy Inc.,14.00,0.37,-97.36
+2019-01-17,RBKB,"Rhinebeck Bancorp, Inc.",10.00,17.18,71.80
+2019-01-09,BCOW,"1895 Bancorp of Wisconsin, Inc.",10.00,9.40,-6.00
+2019-01-08,MDJH,MDJM Ltd.,5.00,0.16,-96.78
+2019-01-08,MTC,"MMTec, Inc.",4.00,2.78,-30.50
+2019-01-04,SXTC,"China SXT Pharmaceuticals, Inc.",4.00,2.54,-36.50

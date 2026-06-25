@@ -1,0 +1,182 @@
+ipo_date,symbol,company_name,ipo_price,current,return
+2022-12-30,ATMC,AlphaTime Acquisition Corp,10.00,15.60,56.00
+2022-12-29,COYA,"Coya Therapeutics, Inc.",5.00,5.32,6.40
+2022-12-22,HSPO,Horizon Space Acquisition I Corp.,10.00,12.17,21.70
+2022-12-20,ATMV,AlphaVest Acquisition Corp,10.00,10.30,3.00
+2022-12-20,LIPO,Lipella Pharmaceuticals Inc.,5.75,2.36,-58.96
+2022-12-14,RAYA,Erayak Power Solution Group Inc.,4.00,2.56,-35.92
+2022-12-09,JEWL,Adamas One Corp.,4.50,,
+2022-11-15,ACRV,"Acrivon Therapeutics, Inc.",12.50,1.62,-87.04
+2022-11-11,ATAT,Atour Lifestyle Holdings Limited,11.00,31.93,190.27
+2022-11-10,ASPI,ASP Isotopes Inc.,4.00,7.06,76.50
+2022-11-10,PLTN,Plutonian Acquisition Corp.,10.00,5.80,-42.00
+2022-11-10,SNAL,"Snail, Inc.",5.00,0.618,-87.63
+2022-10-26,MBLY,Mobileye Global Inc.,21.00,7.79,-62.91
+2022-10-20,PRME,"Prime Medicine, Inc.",17.00,3.12,-81.65
+2022-10-14,HUDA,Hudson Acquisition I Corp.,10.00,12.55,25.50
+2022-10-14,TENK,TenX Keane Acquisition,10.00,41.00,305.00
+2022-10-13,SVII,Spring Valley Acquisition Corp. II,10.00,12.70,27.00
+2022-10-04,AQU,Aquaron Acquisition Corp.,10.00,11.68,16.80
+2022-09-30,DMYY,"dMY Squared Technology Group, Inc.",10.00,12.16,24.40
+2022-09-30,LASE,Laser Photonics Corporation,5.00,1.94,-61.20
+2022-09-30,QOMO,Qomolangma Acquisition Corp.,10.00,11.45,14.50
+2022-09-27,NXU,"Nxu, Inc.",27.50,2.45,-91.09
+2022-09-20,GLST,"Global Star Acquisition, Inc.",10.00,6.56,-34.40
+2022-09-16,NXL,"Nexalin Technology, Inc.",4.15,0.335,-91.93
+2022-09-15,CRBG,"Corebridge Financial, Inc.",21.00,27.98,33.24
+2022-09-15,THRD,"Third Harmonic Bio, Inc.",17.00,5.38,-68.35
+2022-09-13,WLDS,Wearable Devices Ltd.,4.25,1.89,-55.53
+2022-09-09,EFHT,EF Hutton Acquisition Corporation I,10.00,,
+2022-09-09,VSTD,Vestand Inc.,,0.226,
+2022-09-01,BIAF,"bioAffinity Technologies, Inc.",6.13,0.851,-86.13
+2022-08-31,SHPH,"Shuttle Pharmaceuticals Holdings, Inc.",8.13,3.69,-54.61
+2022-08-30,HPCO,"Hempacco Co., Inc.",6.00,,
+2022-08-26,JZ,Jianzhi Education Technology Group Company Limited,5.00,0.154,-96.92
+2022-08-26,NEXR,Nexera Technologies Ltd,,0.563,
+2022-08-26,ONFO,"Onfolio Holdings, Inc.",5.00,0.271,-94.58
+2022-08-26,PXMD,"PaxMedica, Inc.",5.25,0.08,-98.48
+2022-08-25,MOB,Mobilicom Limited,4.13,5.33,29.06
+2022-08-23,STBX,Starbox Group Holdings Ltd.,4.00,2.11,-47.25
+2022-08-18,GCT,GigaCloud Technology Inc.,12.25,33.37,172.41
+2022-08-15,LUCY,"Lucyd, Inc",7.50,0.765,-89.80
+2022-08-12,CHG,CorpHousing Group Inc.,4.00,1.32,
+2022-08-12,FRZA,"Forza X1, Inc.",5.00,0.26,-94.80
+2022-08-12,REBN,"Reborn Coffee, Inc.",5.00,1.52,-69.60
+2022-08-11,HMAC,Hainan Manaslu Acquisition Corp.,10.00,5.85,-41.50
+2022-08-11,TGL,Treasure Global Inc.,4.00,3.95,-1.25
+2022-08-10,EMCG,Embrace Change Acquisition Corp.,10.00,11.00,10.00
+2022-08-05,MEGL,Magic Empire Global Limited,4.00,1.19,-70.25
+2022-08-05,PTWO,"Pono Capital Two, Inc.",10.00,11.00,10.00
+2022-08-04,MOBV,Mobiv Acquisition Corp,10.00,5.00,-50.00
+2022-08-03,BRSH,Bruush Oral Care Inc.,4.16,,
+2022-07-29,MGAM,Mobile Global Esports Inc.,4.00,0.02,-99.63
+2022-07-28,MAIA,"MAIA Biotechnology, Inc.",5.00,1.39,-72.20
+2022-07-21,VRAX,Virax Biolabs Group Limited,5.00,0.132,-97.36
+2022-07-15,HKD,AMTD Digital Inc.,7.80,1.56,-80.00
+2022-07-13,ILAG,Intelligent Living Application Group Inc.,4.00,3.37,-15.75
+2022-07-12,NA,Nano Labs Ltd,11.50,1.76,-84.70
+2022-06-28,IE,Ivanhoe Electric Inc.,11.75,9.39,-20.09
+2022-06-24,SKGR,SK Growth Opportunities Corporation,10.00,12.02,20.20
+2022-06-22,GSUN,Golden Sun Technology Group Limited,4.00,0.436,-89.10
+2022-06-16,FLFV,Feutune Light Acquisition Corporation,10.00,2.56,-74.40
+2022-06-15,HSCS,HeartSciences Inc.,4.25,2.63,-38.12
+2022-06-15,LYT,Lytus Technologies Holdings PTV. LTD.,4.75,0.098,-97.93
+2022-06-10,ACAC,Acri Capital Acquisition Corporation,10.00,11.20,12.00
+2022-06-08,PEV,Phoenix Motor Inc.,7.50,0.23,-96.93
+2022-06-03,SVRE,SaverOne 2014 Ltd.,5.80,3.42,-41.03
+2022-06-01,TOP,TOP Financial Group Limited,5.00,1.47,-70.60
+2022-05-24,BNRG,Brenmiller Energy Ltd,5.18,0.829,-84.00
+2022-05-17,BGXX,Bright Green Corporation,8.00,0.148,-98.15
+2022-05-17,GV,Visionary Holdings Inc.,4.00,0.199,-95.03
+2022-05-17,OKYO,OKYO Pharma Limited,4.00,1.55,-61.25
+2022-05-13,ACDC,ProFrac Holding Corp.,18.00,5.35,-70.28
+2022-05-13,ASNS,"Actelis Networks, Inc.",4.00,0.079,-97.77
+2022-05-13,PFHC,ProFrac Holding Corp.,18.00,,
+2022-05-13,PNAC,Prime Number Acquisition I Corp.,10.00,,
+2022-05-11,HNVR,"Hanover Bancorp, Inc.",21.00,23.46,11.74
+2022-05-11,MCAC,Monterey Capital Acquisition Corporation,10.00,3.54,-64.60
+2022-05-10,GBBK,Global Blockchain Acquisition Corp.,10.00,11.50,15.00
+2022-05-10,IVCA,Investcorp Acquisition Corp.,10.00,12.00,20.00
+2022-05-06,BLCO,Bausch + Lomb Corporation,18.00,15.51,-13.83
+2022-05-06,PEPG,PepGen Inc.,12.00,1.77,-85.25
+2022-05-06,RENE,Cartesian Growth Corporation II,10.00,11.75,17.50
+2022-05-05,EDBL,Edible Garden AG Incorporated,5.00,0.19,-96.20
+2022-05-04,AUST,Austin Gold Corp.,4.00,1.10,-72.50
+2022-05-03,ASCB,A SPAC II Acquisition Corp.,10.00,11.19,11.90
+2022-04-29,BLTE,"Belite Bio, Inc",6.00,150.77,2412.83
+2022-04-29,HLVX,"HilleVax, Inc.",17.00,2.09,-87.71
+2022-04-28,CHEA,Chenghe Acquisition Co.,10.00,5.58,-44.20
+2022-04-28,CLRC,ClimateRock,10.00,12.00,20.00
+2022-04-27,OST,"Ostin Technology Group Co., Ltd.",4.00,1.70,-57.63
+2022-04-27,TNON,"Tenon Medical, Inc.",5.00,0.40,-92.00
+2022-04-26,AIMAU,Aimfinity Investment Corp. I,10.00,17.50,75.00
+2022-04-22,ACON,"Aclarion, Inc.",4.35,2.74,-37.01
+2022-04-22,JCSE,JE Cleantech Holdings Limited,4.00,1.25,-68.75
+2022-04-20,YOTA,Yotta Acquisition Corporation,10.00,11.18,13.00
+2022-04-14,STSS,"Sharps Technology, Inc.",4.25,2.17,-48.94
+2022-04-13,AFAR,Aura FAT Projects Acquisition Corp,10.00,11.68,16.80
+2022-04-13,EE,"Excelerate Energy, Inc.",24.00,35.70,48.75
+2022-04-12,GNS,Genius Group Limited,6.00,0.196,-96.73
+2022-04-07,DECA,Denali Capital Acquisition Corp.,10.00,11.43,14.30
+2022-04-01,MSSA,Metal Sky Star Acquisition Corporation,10.00,11.50,15.00
+2022-04-01,XPON,Expion360 Inc.,7.00,0.452,-93.54
+2022-03-31,RVSN,Rail Vision Ltd.,4.13,4.48,8.48
+2022-03-31,RWOD,Redwoods Acquisition Corp.,10.00,2.34,-76.61
+2022-03-25,ANTX,"AN2 Therapeutics, Inc.",15.00,5.20,-65.33
+2022-03-25,LCFY,Locafy Limited,4.13,3.78,-8.48
+2022-03-24,RFAC,RF Acquisition Corp.,10.00,2.70,-73.00
+2022-03-17,GDST,Goldenstone Acquisition Limited,10.00,11.57,15.70
+2022-03-15,AKAN,Akanda Corp.,4.00,16.01,300.25
+2022-03-11,NUBI,Nubia Brand International Corp.,10.00,4.53,-54.70
+2022-03-10,PLAO,Patria Latin American Opportunity Acquisition Corp.,10.00,11.63,16.30
+2022-03-09,LBBB,Lakeshore Acquisition II Corp.,10.00,3.00,-70.00
+2022-03-02,KCAC3,Kensington Capital Acquisition Corp. IV,10.00,9.21,-7.90
+2022-03-02,SHUA,SHUAA Partners Acquisition Corp I,10.00,10.96,9.60
+2022-03-02,SPCM,"Sound Point Acquisition Corp I, Ltd",10.00,10.62,6.20
+2022-03-01,VMCA,Valuence Merger Corp. I,10.00,11.76,17.40
+2022-02-25,FGMC,FG Merger Corp.,10.00,4.82,-51.80
+2022-02-25,GSRM,GSR II Meteora Acquisition Corp.,10.00,3.23,-67.70
+2022-02-24,CLIN,Clean Earth Acquisitions Corp.,10.00,5.00,-50.00
+2022-02-18,ONCO,"Onconetix, Inc.",9.00,1.00,-88.89
+2022-02-18,PWUP,PowerUp Acquisition Corp.,10.00,9.24,-7.60
+2022-02-16,AXAC,AXIOS Sustainable Growth Acquisition Corporation,10.00,10.43,4.30
+2022-02-16,FTII,FutureTech II Acquisition Corp.,10.00,11.41,14.10
+2022-02-16,MHUA,"Meihua International Medical Technologies Co., Ltd.",10.00,6.11,-23.90
+2022-02-16,SMFL,"Smart for Life, Inc.",10.00,0.78,-92.20
+2022-02-15,ASCA,A SPAC I Acquisition Corp.,10.00,9.16,-8.40
+2022-02-15,GENQ,Genesis Unicorn Capital Corp.,10.00,10.47,4.70
+2022-02-11,DRCT,"Direct Digital Holdings, Inc.",5.50,2.79,-49.27
+2022-02-11,HNRA,HNR Acquisition Corp.,10.00,1.19,-88.10
+2022-02-11,JGGC,Jaguar Global Growth Corporation I,10.00,1.70,-83.00
+2022-02-11,MDV,"Modiv Industrial, Inc.",25.00,17.87,-28.52
+2022-02-11,RACY,Relativity Acquisition Corp.,10.00,,
+2022-02-11,SGHL,Signal Hill Acquisition Corp.,10.00,10.43,4.25
+2022-02-11,TCBP,TC BioPharm (Holdings) plc,4.25,0.50,-88.24
+2022-02-10,HTCR,"HeartCore Enterprises, Inc.",5.00,3.22,-35.60
+2022-02-10,SKYX,SKYX Platforms Corp.,14.00,1.02,-92.71
+2022-02-09,BYNO,byNordic Acquisition Corporation,10.00,11.36,13.60
+2022-02-09,CPAQ,Counter Press Acquisition Corporation,10.00,10.33,3.30
+2022-02-09,EVGR,Evergreen Corporation,10.00,11.95,19.50
+2022-02-08,LIVB,LIV Capital Acquisition Corp. II,10.00,10.97,9.70
+2022-02-07,ATAK,Aurora Technology Acquisition Corp.,10.00,5.02,-49.80
+2022-02-04,ACLX,"Arcellx, Inc.",15.00,115.07,667.13
+2022-02-04,LIEN,"Chicago Atlantic BDC, Inc.",,10.46,
+2022-02-04,NVCT,"Nuvectis Pharma, Inc.",5.00,24.48,389.60
+2022-02-04,TGR,Kimbell Tiger Acquisition Corporation,10.00,10.55,5.50
+2022-02-03,MURF,Murphy Canyon Acquisition Corp.,10.00,16.85,68.50
+2022-02-02,MTEK,Maris-Tech Ltd.,4.20,1.17,-72.14
+2022-02-01,ACAX,Alset Capital Acquisition Corp.,10.00,3.82,-61.80
+2022-01-31,BWAQ,Blue World Acquisition Corporation,10.00,4.24,-57.60
+2022-01-27,CRDO,Credo Technology Group Holding Ltd,10.00,268.99,2589.90
+2022-01-27,KSCP,"Knightscope, Inc.",10.00,1.94,-80.60
+2022-01-25,FGI,FGI Industries Ltd.,6.00,4.23,-29.50
+2022-01-25,KYCH,Keyarch Acquisition Corporation,10.00,4.10,-59.00
+2022-01-25,LATG,LatAmGrowth SPAC,10.00,7.05,-29.50
+2022-01-21,HCMA,HCM Acquisition Corp.,10.00,14.50,45.00
+2022-01-21,HMA,Heartland Media Acquisition Corp.,10.00,10.54,5.40
+2022-01-21,KNSW,KnightSwan Acquisition Corporation,10.00,10.60,6.00
+2022-01-20,BYN,Banyan Acquisition Corporation,10.00,10.90,9.00
+2022-01-20,DUET,DUET Acquisition Corp.,10.00,11.33,13.31
+2022-01-20,GAQ,Generation Asia I Acquisition Limited,10.00,11.40,14.00
+2022-01-19,AIBAF,AIB Acquisition Corporation,10.00,8.50,-15.00
+2022-01-18,TETE,Technology & Telecommunication Acquisition Corporation,10.00,12.50,28.90
+2022-01-18,TKLF,"Tokyo Lifestyle Co., Ltd.",4.00,2.04,-50.50
+2022-01-14,ACAB,Atlantic Coastal Acquisition Corp. II,10.00,5.77,-42.30
+2022-01-14,PPYA,Papaya Growth Opportunity Corp. I,10.00,11.40,14.00
+2022-01-13,CSLM,"Consilium Acquisition Corp I, Ltd.",10.00,11.69,16.90
+2022-01-13,TPG,TPG Inc.,29.50,38.74,31.32
+2022-01-13,WNNR,Andretti Acquisition Corp.,10.00,,
+2022-01-12,CNTN,"Canton Strategic Holdings, Inc.",,2.67,
+2022-01-12,GHIX,"Gores Holdings IX, Inc.",10.00,10.18,1.80
+2022-01-12,ITAQ,"Industrial Tech Acquisitions II, Inc.",10.00,10.95,9.50
+2022-01-12,VCXB,10x Capital Venture Acquisition Corp. III,10.00,11.07,10.70
+2022-01-12,WAVS,Western Acquisition Ventures Corp.,10.00,9.75,-2.50
+2022-01-11,BRAC,Broad Capital Acquisition Corp.,10.00,11.70,17.00
+2022-01-07,AMLX,"Amylyx Pharmaceuticals, Inc.",19.00,17.00,-10.53
+2022-01-07,CINC,"CinCor Pharma, Inc.",16.00,29.06,81.63
+2022-01-07,CXAC,C5 Acquisition Corporation,10.00,10.74,7.40
+2022-01-07,HOUR,"Hour Loop, Inc.",4.00,1.87,-53.25
+2022-01-07,VBOC,Viscogliosi Brothers Acquisition Corp.,10.00,10.48,4.75
+2022-01-07,VIGL,"Vigil Neuroscience, Inc.",14.00,8.05,-42.50
+2022-01-06,SCRM,Screaming Eagle Acquisition Corp.,10.00,10.18,1.80
+2022-01-05,CITE,Cartica Acquisition Corp,10.00,11.85,18.50
