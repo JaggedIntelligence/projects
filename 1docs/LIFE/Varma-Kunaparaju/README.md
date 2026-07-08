@@ -1,2 +1,2 @@
-# Main Carrer path of Vara garu
+# The Startup Journey of  Varma garu
 
