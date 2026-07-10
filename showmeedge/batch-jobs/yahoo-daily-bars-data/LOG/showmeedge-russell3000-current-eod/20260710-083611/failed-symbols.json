@@ -1,0 +1,7 @@
+{
+  "provider": "yfinance",
+  "universe": "russell3000_current",
+  "start": "2026-06-30",
+  "end": "2026-07-10",
+  "failed_symbols": []
+}
