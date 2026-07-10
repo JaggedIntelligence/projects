@@ -68,7 +68,19 @@ function buildNightVisionData(bars: OhlcvBar[], ticker: string): NightVisionData
               zIndex: 3
             },
             props: {
-              color: "#5cc8ff"
+              color: "#b4d887"
+            }
+          },
+          {
+            name: "SMA 50",
+            type: "Spline",
+            data: simpleMovingAverage(bars, 50),
+            settings: {
+              precision: 2,
+              zIndex: 3
+            },
+            props: {
+              color: "#0c6732"
             }
           }
         ]

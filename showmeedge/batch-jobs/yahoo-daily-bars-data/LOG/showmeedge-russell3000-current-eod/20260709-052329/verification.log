@@ -1,0 +1,10 @@
+requested_universe=russell3000_current
+requested_symbols=2892
+requested_yfinance_rows=13279241
+requested_distinct_symbols=2886
+requested_start_ts=1997-01-02 00:00:00
+requested_end_ts=2026-07-08 00:00:00
+latest_requested_ts=2026-07-08 00:00:00
+requested_symbols_with_latest_ts=2870
+requested_symbols_missing_latest_ts=22
+missing_latest_symbols=BRK.B,HEI.A,SATS,LEN.B,BF.A,MOG.A,BF.B,BLD,MASI,JHG,CWAN,GEF.B,SEM,STEL,SILA,KW,KALV,PRA,CRD.A,SCVL,SNFCA,SNBR
