@@ -6,7 +6,7 @@ declare module "night-vision" {
     name: string;
     type: string;
     main?: boolean;
-    data?: Array<CandleData | SplineData>;
+    data?: Array<CandleData | SplineData | number[]>;
     settings?: {
       display?: boolean;
       precision?: number;
@@ -33,6 +33,7 @@ declare module "night-vision" {
     data?: NightVisionData;
     indexBased?: boolean;
     showLogo?: boolean;
+    scripts?: string[];
     timezone?: number;
   };
 

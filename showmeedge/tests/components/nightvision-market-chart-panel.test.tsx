@@ -30,8 +30,8 @@ vi.mock("@/components/providers/trpc-provider", () => ({
 }));
 
 vi.mock("@/components/nvcharts/nightvision-candlestick-chart", () => ({
-  NightVisionCandlestickChart: ({ bars, ticker }: { bars: TestBar[]; ticker: string }) => (
-    <div data-testid="nightvision-chart" data-bars={bars.length} data-ticker={ticker}>
+  NightVisionCandlestickChart: ({ bars, ticker, rectangle }: { bars: TestBar[]; ticker: string; rectangle?: Record<string, unknown> | null }) => (
+    <div data-testid="nightvision-chart" data-bars={bars.length} data-ticker={ticker} data-rectangle={rectangle ? JSON.stringify(rectangle) : "none"}>
       {bars.at(-1)?.time ?? "empty"}
     </div>
   )
@@ -137,6 +137,34 @@ describe("NightVisionMarketChartPanel", () => {
     expect(screen.getByTestId("nightvision-chart")).toHaveAttribute("data-bars", "1");
     expect(screen.getByLabelText("Days go back")).toHaveValue(9);
     expect(screen.getByRole("button", { name: "Remove one visible day" })).toBeDisabled();
+  });
+
+  it("validates, draws, and clears a chart rectangle", () => {
+    renderComponent(<NightVisionMarketChartPanel symbols={[{ id: "aapl", ticker: "AAPL", name: "Apple Inc." }]} />);
+
+    fireEvent.change(screen.getByLabelText("Start time"), { target: { value: "2026-01-03" } });
+    fireEvent.change(screen.getByLabelText("End time"), { target: { value: "2026-01-07" } });
+    fireEvent.change(screen.getByLabelText("Top price"), { target: { value: "105" } });
+    fireEvent.change(screen.getByLabelText("Bottom price"), { target: { value: "110" } });
+    fireEvent.click(screen.getByRole("button", { name: "Draw rectangle" }));
+
+    expect(screen.getByRole("alert")).toHaveTextContent("Top price must be greater than bottom price.");
+    expect(screen.getByTestId("nightvision-chart")).toHaveAttribute("data-rectangle", "none");
+
+    fireEvent.change(screen.getByLabelText("Top price"), { target: { value: "110" } });
+    fireEvent.change(screen.getByLabelText("Bottom price"), { target: { value: "105" } });
+    fireEvent.click(screen.getByRole("button", { name: "Draw rectangle" }));
+
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    expect(screen.getByTestId("nightvision-chart")).toHaveAttribute(
+      "data-rectangle",
+      JSON.stringify({ startTime: "2026-01-03", endTime: "2026-01-07", topPrice: 110, bottomPrice: 105 })
+    );
+    expect(screen.getByRole("button", { name: "Clear rectangle" })).toBeEnabled();
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear rectangle" }));
+    expect(screen.getByTestId("nightvision-chart")).toHaveAttribute("data-rectangle", "none");
+    expect(screen.getByRole("button", { name: "Clear rectangle" })).toBeDisabled();
   });
 });
 

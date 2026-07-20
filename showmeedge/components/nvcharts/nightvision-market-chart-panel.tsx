@@ -4,7 +4,7 @@ import { Activity, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
-import { NightVisionCandlestickChart } from "@/components/nvcharts/nightvision-candlestick-chart";
+import { NightVisionCandlestickChart, type ChartRectangle } from "@/components/nvcharts/nightvision-candlestick-chart";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -75,6 +75,10 @@ function formatDrawdownPercent(value: number) {
   return value > 0 ? `-${value.toFixed(1)}%` : "0.0%";
 }
 
+function dateToUtcMs(date: string) {
+  return Date.parse(date.includes("T") ? date : `${date}T00:00:00.000Z`);
+}
+
 // ------***. SR removed lots of stuff inside Chart panel.  above Chart ---------------------
 
 export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
@@ -84,6 +88,14 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const [hiddenTailDays, setHiddenTailDays] = useState(0);
   const [buyPriceInput, setBuyPriceInput] = useState("");
   const [trackedTrade, setTrackedTrade] = useState<TrackedTrade | null>(null);
+  const [rectangleForm, setRectangleForm] = useState({
+    startTime: "",
+    endTime: "",
+    topPrice: "",
+    bottomPrice: ""
+  });
+  const [rectangle, setRectangle] = useState<ChartRectangle | null>(null);
+  const [rectangleError, setRectangleError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!chartSymbols.some((symbol) => symbol.ticker === ticker)) {
@@ -126,6 +138,9 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
 
   useEffect(() => {
     setTrackedTrade(null);
+    setRectangle(null);
+    setRectangleError(null);
+    setRectangleForm({ startTime: "", endTime: "", topPrice: "", bottomPrice: "" });
   }, [ticker]);
 
   useEffect(() => {
@@ -166,6 +181,57 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
       entryDate: latestBar.time,
       entryIndex: currentVisibleIndex
     });
+  }
+
+  function applyRectangle() {
+    const { startTime, endTime, topPrice: topPriceInput, bottomPrice: bottomPriceInput } = rectangleForm;
+    const startTimeMs = dateToUtcMs(startTime);
+    const endTimeMs = dateToUtcMs(endTime);
+    const topPrice = Number(topPriceInput);
+    const bottomPrice = Number(bottomPriceInput);
+
+    if (!startTime || !endTime || !topPriceInput || !bottomPriceInput) {
+      setRectangleError("Enter both dates and both prices.");
+      return;
+    }
+
+    if (!Number.isFinite(startTimeMs) || !Number.isFinite(endTimeMs)) {
+      setRectangleError("Enter valid start and end dates.");
+      return;
+    }
+
+    if (startTimeMs > endTimeMs) {
+      setRectangleError("Start time must be on or before end time.");
+      return;
+    }
+
+    if (!Number.isFinite(topPrice) || !Number.isFinite(bottomPrice) || topPrice <= 0 || bottomPrice <= 0) {
+      setRectangleError("Top and bottom prices must be positive numbers.");
+      return;
+    }
+
+    if (topPrice <= bottomPrice) {
+      setRectangleError("Top price must be greater than bottom price.");
+      return;
+    }
+
+    const overlapsVisibleBars = displayedBars.some((bar) => {
+      const time = dateToUtcMs(bar.time);
+      return time >= startTimeMs && time <= endTimeMs;
+    });
+
+    if (!overlapsVisibleBars) {
+      setRectangleError("The selected time range does not contain a visible trading day.");
+      return;
+    }
+
+    setRectangle({ startTime, endTime, topPrice, bottomPrice });
+    setRectangleError(null);
+  }
+
+  function clearRectangle() {
+    setRectangle(null);
+    setRectangleError(null);
   }
 
   return (
@@ -284,6 +350,84 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
           </Button>
         </div>
 
+        <div className="grid gap-3 rounded-md border bg-muted/20 p-3">
+          <div>
+            <p className="text-sm font-medium">Chart rectangle</p>
+            <p className="text-xs text-muted-foreground">Highlight a time and price range on the candlestick chart.</p>
+          </div>
+          <div className="flex flex-wrap items-end gap-2">
+            <div className="grid gap-1.5">
+              <Label htmlFor="rectangle-start-time" className="text-xs font-medium text-muted-foreground">
+                Start time
+              </Label>
+              <Input
+                id="rectangle-start-time"
+                type="date"
+                value={rectangleForm.startTime}
+                onChange={(event) => setRectangleForm({ ...rectangleForm, startTime: event.target.value })}
+                disabled={!displayedBars.length}
+                className="h-9 w-40"
+              />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="rectangle-end-time" className="text-xs font-medium text-muted-foreground">
+                End time
+              </Label>
+              <Input
+                id="rectangle-end-time"
+                type="date"
+                value={rectangleForm.endTime}
+                onChange={(event) => setRectangleForm({ ...rectangleForm, endTime: event.target.value })}
+                disabled={!displayedBars.length}
+                className="h-9 w-40"
+              />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="rectangle-top-price" className="text-xs font-medium text-muted-foreground">
+                Top price
+              </Label>
+              <Input
+                id="rectangle-top-price"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step="0.01"
+                value={rectangleForm.topPrice}
+                onChange={(event) => setRectangleForm({ ...rectangleForm, topPrice: event.target.value })}
+                disabled={!displayedBars.length}
+                className="h-9 w-28"
+              />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="rectangle-bottom-price" className="text-xs font-medium text-muted-foreground">
+                Bottom price
+              </Label>
+              <Input
+                id="rectangle-bottom-price"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step="0.01"
+                value={rectangleForm.bottomPrice}
+                onChange={(event) => setRectangleForm({ ...rectangleForm, bottomPrice: event.target.value })}
+                disabled={!displayedBars.length}
+                className="h-9 w-28"
+              />
+            </div>
+            <Button type="button" size="sm" onClick={applyRectangle} disabled={!displayedBars.length}>
+              Draw rectangle
+            </Button>
+            <Button type="button" variant="outline" size="sm" onClick={clearRectangle} disabled={!rectangle}>
+              Clear rectangle
+            </Button>
+          </div>
+          {rectangleError ? (
+            <p role="alert" className="text-xs text-destructive">
+              {rectangleError}
+            </p>
+          ) : null}
+        </div>
+
         {trackedTrade ? (
           <div className="w-full overflow-x-auto rounded-md border lg:w-1/2">
             <div className="flex flex-wrap items-center gap-2 border-b bg-muted/30 px-3 py-2 text-xs">
@@ -333,7 +477,11 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
           </div>
         ) : null}
 
-        {barsQuery.isLoading ? <div className="h-80 animate-pulse rounded-md border bg-muted" /> : <NightVisionCandlestickChart bars={displayedBars} ticker={ticker} />}
+        {barsQuery.isLoading ? (
+          <div className="h-80 animate-pulse rounded-md border bg-muted" />
+        ) : (
+          <NightVisionCandlestickChart bars={displayedBars} ticker={ticker} rectangle={rectangle} />
+        )}
       </CardContent>
     </Card>
   );

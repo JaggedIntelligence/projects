@@ -1,10 +1,57 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 
-import type { CandleData, NightVisionData, SplineData } from "night-vision";
+import type { CandleData, NightVision, NightVisionData, SplineData } from "night-vision";
 
 import type { OhlcvBar } from "@/lib/mock-ohlcv";
+
+export type ChartRectangle = {
+  startTime: string;
+  endTime: string;
+  topPrice: number;
+  bottomPrice: number;
+};
+
+type RectangleData = [timeMs: number, topPrice: number, bottomPrice: number];
+
+const RECTANGLE_AREA_SCRIPT = `
+// Navy ~ 0.2-lite
+
+[OVERLAY name=RectangleArea, ctx=Canvas, version=1.0.0]
+
+prop('fillColor', { type: 'color', def: '#38bdf833' })
+prop('borderColor', { type: 'color', def: '#38bdf8cc' })
+prop('lineWidth', { type: 'number', def: 1 })
+
+draw(ctx) {
+    const data = $core.data
+    if (!data.length) return
+
+    const layout = $core.layout
+    const first = data[0]
+    const lastIndex = data.length - 1
+    const last = data[lastIndex]
+    const halfStep = Math.max(layout.pxStep * 0.5, 0.5)
+    const left = layout.ti2x(first[0], 0) - halfStep
+    const right = layout.ti2x(last[0], lastIndex) + halfStep
+    const firstPriceY = layout.value2y(first[1])
+    const secondPriceY = layout.value2y(first[2])
+    const top = Math.min(firstPriceY, secondPriceY)
+    const bottom = Math.max(firstPriceY, secondPriceY)
+
+    ctx.save()
+    ctx.fillStyle = $props.fillColor
+    ctx.fillRect(left, top, right - left, bottom - top)
+    ctx.strokeStyle = $props.borderColor
+    ctx.lineWidth = $props.lineWidth
+    ctx.strokeRect(left, top, right - left, bottom - top)
+    ctx.restore()
+}
+
+yRange() => null
+legend() => null
+`;
 
 function dateToUtcMs(date: string) {
   return Date.parse(date.includes("T") ? date : `${date}T00:00:00.000Z`);
@@ -27,7 +74,25 @@ function simpleMovingAverage(bars: OhlcvBar[], period: number): SplineData[] {
     .filter((value): value is SplineData => Boolean(value));
 }
 
-function buildNightVisionData(bars: OhlcvBar[], ticker: string): NightVisionData {
+function rectangleData(bars: OhlcvBar[], rectangle: ChartRectangle | null): RectangleData[] {
+  if (!rectangle) return [];
+
+  const startTime = dateToUtcMs(rectangle.startTime);
+  const endTime = dateToUtcMs(rectangle.endTime);
+
+  if (!Number.isFinite(startTime) || !Number.isFinite(endTime)) return [];
+
+  return bars
+    .filter((bar) => {
+      const time = dateToUtcMs(bar.time);
+      return time >= startTime && time <= endTime;
+    })
+    .map((bar) => [dateToUtcMs(bar.time), rectangle.topPrice, rectangle.bottomPrice]);
+}
+
+function buildNightVisionData(bars: OhlcvBar[], ticker: string, rectangle: ChartRectangle | null): NightVisionData {
+  const boxData = rectangleData(bars, rectangle);
+
   return {
     indexBased: true,
     panes: [
@@ -82,39 +147,76 @@ function buildNightVisionData(bars: OhlcvBar[], ticker: string): NightVisionData
             props: {
               color: "#0c6732"
             }
-          }
+          },
+          ...(boxData.length
+            ? [
+                {
+                  name: "Price Rectangle",
+                  type: "RectangleArea",
+                  data: boxData,
+                  settings: {
+                    precision: 2,
+                    zIndex: -1
+                  },
+                  props: {
+                    fillColor: "#38bdf833",
+                    borderColor: "#38bdf8cc",
+                    lineWidth: 1
+                  }
+                }
+              ]
+            : [])
         ]
       }
     ]
   };
 }
 
-export function NightVisionCandlestickChart({ bars, ticker }: { bars: OhlcvBar[]; ticker: string }) {
+export function NightVisionCandlestickChart({
+  bars,
+  ticker,
+  rectangle = null
+}: {
+  bars: OhlcvBar[];
+  ticker: string;
+  rectangle?: ChartRectangle | null;
+}) {
   const reactId = useId();
   const chartId = useMemo(() => `nightvision-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`, [reactId]);
-  const data = useMemo(() => buildNightVisionData(bars, ticker), [bars, ticker]);
+  const data = useMemo(() => buildNightVisionData(bars, ticker, rectangle), [bars, rectangle, ticker]);
+  const dataRef = useRef(data);
+  const chartRef = useRef<NightVision | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isReady, setIsReady] = useState(false);
+  const hasBars = bars.length > 0;
 
   useEffect(() => {
-    if (!bars.length) {
+    dataRef.current = data;
+
+    if (chartRef.current) {
+      chartRef.current.data = data;
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (!hasBars) {
       setIsReady(false);
       return;
     }
 
-    let chart: { destroy: () => void } | null = null;
     let isMounted = true;
 
     import("night-vision")
       .then(({ NightVision }) => {
         if (!isMounted) return;
 
-        chart = new NightVision(chartId, {
+        chartRef.current = new NightVision(chartId, {
           id: `${chartId}-instance`,
           autoResize: true,
           height: 820,
           indexBased: true,
           showLogo: false,
+          scripts: [RECTANGLE_AREA_SCRIPT],
           colors: {
             back: "#080d10",
             grid: "#20303a88",
@@ -130,7 +232,7 @@ export function NightVisionCandlestickChart({ bars, ticker }: { bars: OhlcvBar[]
             cross: "#f8c537",
             panel: "#132028"
           },
-          data
+          data: dataRef.current
         });
 
         setError(null);
@@ -144,9 +246,10 @@ export function NightVisionCandlestickChart({ bars, ticker }: { bars: OhlcvBar[]
 
     return () => {
       isMounted = false;
-      chart?.destroy();
+      chartRef.current?.destroy();
+      chartRef.current = null;
     };
-  }, [bars.length, chartId, data]);
+  }, [chartId, hasBars]);
 
   if (error) {
     return (
