@@ -6,7 +6,7 @@ Date: 2026-07-20
 
 Allow an authorized user to define, display, and persist multiple rectangular price areas on a symbol's NightVision candlestick chart.
 
-Each rectangle is defined by four user inputs:
+Each rectangle is defined by four values captured from a chart drag:
 
 - `startTime`
 - `endTime`
@@ -22,34 +22,33 @@ The feature is implemented for daily (`1d`) charts.
 The current implementation supports:
 
 - Drawing multiple rectangle areas on one chart.
+- Drawing an unsaved rectangle by dragging across the chart and reviewing its values before saving.
 - Persisting areas in PostgreSQL.
 - Loading saved areas when a symbol's chart opens.
-- Selecting an area from the list below the input form.
+- Selecting an area from the saved-area list.
 - Visually highlighting the selected area on the chart.
 - Deleting the selected area after confirmation.
 - Keeping every saved area private to its authorized owner.
-- Validating inputs in the UI, tRPC API, and PostgreSQL database.
+- Validating drawn values in the UI, tRPC API, and PostgreSQL database.
 
 Editing an existing rectangle is not included in the current version. A user deletes the old rectangle and adds a replacement.
 
 ## User Experience
 
-The chart panel contains four inputs and two action buttons:
+The chart panel contains three primary action buttons and a read-only draft summary:
 
 | Control | Purpose |
 | --- | --- |
-| Start time | Sets the left boundary of the rectangle. |
-| End time | Sets the right boundary of the rectangle. |
-| Top price | Sets the upper price boundary. |
-| Bottom price | Sets the lower price boundary. |
+| `Draw Area` | Arms drag mode so the user can draw an unsaved draft on the chart. |
 | `Add Area` | Validates and saves a new rectangle. |
 | `Delete Area` | Deletes the currently selected rectangle. |
+| Draft summary | Displays the captured time and price boundaries without editable inputs. |
 
-Saved areas appear in a list beneath the inputs. Clicking an item selects it. The selected area receives an amber highlight on the chart, while unselected areas use the standard translucent blue style.
+Saved areas appear beneath the drawing controls. Clicking an item selects it. The selected area receives an amber highlight on the chart, while unselected areas use the standard translucent blue style.
 
 `Delete Area` remains disabled until an area is selected. Deletion requires confirmation before the database record is removed.
 
-When the selected ticker changes, the panel clears the current selection and input values, then loads the saved areas belonging to the current user for the new ticker.
+When the selected ticker changes, the panel clears the current selection and unsaved draft, then loads the saved areas belonging to the current user for the new ticker.
 
 ## High-Level Architecture
 
@@ -61,12 +60,14 @@ flowchart LR
     D --> T
     T --> P
     P --> C["NightVision candlestick chart"]
-    C --> O["Custom RectangleArea overlay"]
+    C --> O["Persisted RectangleArea overlays"]
+    C --> R["RectangleDrawTool interaction overlay"]
+    R -->|"completed draft"| P
 ```
 
 The implementation has three primary layers:
 
-1. The chart panel owns the form, query, mutations, selection state, and user feedback.
+1. The chart panel owns the draft, query, mutations, selection state, and user feedback.
 2. The tRPC router validates requests and enforces authenticated ownership.
 3. The NightVision chart converts saved areas into custom overlay data and renders them on the canvas.
 
@@ -74,8 +75,8 @@ The implementation has three primary layers:
 
 | File | Responsibility |
 | --- | --- |
-| `components/nvcharts/nightvision-market-chart-panel.tsx` | Rectangle form, area list, selection, create/delete mutations, query refresh, and visible-range validation. |
-| `components/nvcharts/nightvision-candlestick-chart.tsx` | NightVision chart lifecycle, rectangle overlay registration, area-to-overlay conversion, and selected styling. |
+| `components/nvcharts/nightvision-market-chart-panel.tsx` | Rectangle draft/review state, area list, selection, create/delete mutations, query refresh, and visible-range validation. |
+| `components/nvcharts/nightvision-candlestick-chart.tsx` | NightVision chart lifecycle, saved/draft overlays, mouse interaction tool, event bridge, area-to-overlay conversion, and selected styling. |
 | `lib/chart-area-validators.ts` | Shared tRPC input schemas and cross-field validation rules. |
 | `server/api/routers/chart-areas.ts` | Private list, create, and delete operations. |
 | `server/api/root.ts` | Registers the router as `chartAreas`. |
@@ -90,8 +91,8 @@ The chart receives rectangle areas in the following logical form:
 
 ```ts
 type ChartRectangle = {
-  startTime: number;
-  endTime: number;
+  startTime: string;
+  endTime: string;
   topPrice: number;
   bottomPrice: number;
 };
@@ -101,14 +102,37 @@ type ChartRectangleArea = ChartRectangle & {
 };
 ```
 
-`startTime` and `endTime` are Unix timestamps in milliseconds inside the chart layer. The API uses ISO timestamp strings at the network boundary. Prices are numbers in the client and numeric values in PostgreSQL.
+`startTime` and `endTime` are date or ISO timestamp strings in React. The drawing overlay temporarily uses Unix timestamps in milliseconds and the event bridge converts them back to `YYYY-MM-DD` values for review and persistence. The API uses ISO-compatible timestamp strings at the network boundary. Prices are numbers in the client and numeric values in PostgreSQL.
 
 The database-generated `id` is used for React identity, selection, rendering, and deletion.
 
+## Drag-to-Review Flow
+
+Drag drawing is an explicit interaction mode so normal chart navigation remains available when the tool is not armed.
+
+1. The user clicks `Draw Area`.
+2. The chart changes to a crosshair cursor.
+3. Mouse down records the first candle time and price.
+4. Mouse movement renders a live translucent amber rectangle.
+5. Mouse up records the second candle time and price.
+6. The drawing tool normalizes drag direction, snaps both time boundaries to real candles, and emits the four rectangle values to React.
+7. React exits drawing mode and renders an amber dashed review draft plus a read-only time/price summary.
+8. `Add Area` validates and saves the draft. `Cancel Draft` clears it without calling the API.
+
+Pressing Escape, clicking `Cancel Drawing`, leaving the chart during an active gesture, or switching tickers cancels drawing without persistence. A drag smaller than four pixels in either dimension is rejected so an ordinary click does not create a draft.
+
+The interaction follows this state progression:
+
+```text
+idle -> armed -> dragging -> reviewing -> saving -> idle
+                     |           |
+                     +-> cancel <-+
+```
+
 ## Add Area Flow
 
-1. The user enters the start time, end time, top price, and bottom price.
-2. The panel validates the form.
+1. The user reviews the four values produced by a drag.
+2. The panel validates the draft.
 3. The panel calls `api.chartAreas.create` with the current ticker and `1d` timeframe.
 4. The server obtains the owner from `ctx.userId`; the client never supplies a user ID.
 5. PostgreSQL stores the rectangle.
@@ -153,6 +177,10 @@ The overlay:
 - Does not contribute its prices to automatic Y-axis range calculation.
 - Does not add a legend entry.
 - Uses a negative Z index so candles and normal chart information remain readable.
+
+The chart also registers exactly one `RectangleDrawTool` overlay. It receives NightVision's mouse and keyboard hooks, converts canvas coordinates through the current chart layout, draws the live preview, and emits completed values through the NightVision event bus. React subscribes to that event and owns the review and persistence state.
+
+While a drag is active, the tool locks chart scrolling/panning so one gesture cannot both move the chart and define an area. The lock is released on completion, validation failure, or cancellation. Persisted rectangle overlays do not contain mouse handlers, preventing one gesture from being processed once per saved area.
 
 ### Styling
 
@@ -287,7 +315,7 @@ Validation is intentionally layered.
 
 Before `Add Area` is submitted, the panel verifies:
 
-- All four values are present.
+- The completed drag contains all four values.
 - Both dates are valid.
 - Start time is not after end time.
 - Both prices are positive.
@@ -347,14 +375,17 @@ The migration should be applied through the project's normal migration command r
 - Resolving boundaries around non-trading dates.
 - Applying selected-area styling.
 - Reusing a stable NightVision chart instance.
+- Registering the drawing tool, bridging a completed drag to React, and rendering the review draft.
 
 ### Chart Panel Tests
 
 `tests/components/nightvision-market-chart-panel.test.tsx` covers:
 
-- Form validation and area creation.
+- Draft validation and area creation.
 - Loading and displaying multiple saved areas.
 - Selecting and deleting an area.
+- Reviewing a dragged rectangle as read-only text before saving.
+- Cancelling an unsaved draft without calling the create mutation.
 
 ### API Tests
 
@@ -388,6 +419,8 @@ The feature is complete when all of the following are true:
 - Deleting an area removes it from PostgreSQL, the list, and the chart.
 - User A cannot list or delete User B's rectangles, including for the same ticker.
 - Invalid time and price ranges are rejected before persistence.
+- Dragging creates a review draft and never persists until `Add Area` is clicked.
+- Cancelling drawing or a review draft does not write to PostgreSQL.
 - Weekend and holiday boundaries remain aligned to real candles.
 - Chart interactions continue without recreating the NightVision instance for every area-state change.
 
@@ -398,7 +431,7 @@ The current scope is intentionally narrow:
 - Only the `1d` timeframe is supported.
 - Areas do not yet have names, notes, custom colors, or categories.
 - Existing areas cannot be resized or edited in place.
-- Drawing is driven by form inputs rather than click-and-drag chart interaction.
+- Drag drawing currently targets mouse/desktop interaction; touch-specific gestures are not yet supported.
 - Areas are private to one user and cannot be shared.
 
 Possible future additions include an update mutation, drag handles, labels and colors, soft deletion, intraday timeframe support, and explicitly authorized team sharing. Any sharing feature must introduce a separate authorization model rather than weakening the current `user_id` ownership filter.

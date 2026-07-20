@@ -1,10 +1,10 @@
 "use client";
 
-import { Activity, ChevronLeft, ChevronRight } from "lucide-react";
+import { Activity, ChevronLeft, ChevronRight, SquareDashed, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
-import { NightVisionCandlestickChart } from "@/components/nvcharts/nightvision-candlestick-chart";
+import { NightVisionCandlestickChart, type ChartRectangle } from "@/components/nvcharts/nightvision-candlestick-chart";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,13 +36,6 @@ const fallbackSymbols: ChartSymbol[] = [
   { id: "mock-msft", ticker: "MSFT", name: "Microsoft Corp." },
   { id: "mock-spy", ticker: "SPY", name: "SPDR S&P 500 ETF" }
 ];
-
-const emptyRectangleForm = {
-  startTime: "",
-  endTime: "",
-  topPrice: "",
-  bottomPrice: ""
-};
 
 function money(value: number) {
   return value.toLocaleString(undefined, {
@@ -96,9 +89,11 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const [hiddenTailDays, setHiddenTailDays] = useState(0);
   const [buyPriceInput, setBuyPriceInput] = useState("");
   const [trackedTrade, setTrackedTrade] = useState<TrackedTrade | null>(null);
-  const [rectangleForm, setRectangleForm] = useState(emptyRectangleForm);
+  const [draftArea, setDraftArea] = useState<ChartRectangle | null>(null);
   const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [rectangleError, setRectangleError] = useState<string | null>(null);
+  const [isDrawingArea, setIsDrawingArea] = useState(false);
+  const isReviewingDrawnArea = draftArea !== null;
 
   useEffect(() => {
     if (!chartSymbols.some((symbol) => symbol.ticker === ticker)) {
@@ -111,8 +106,9 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const createArea = api.chartAreas.create.useMutation({
     onSuccess: async (area, input) => {
       setSelectedAreaId(area.id);
-      setRectangleForm(emptyRectangleForm);
+      setDraftArea(null);
       setRectangleError(null);
+      setIsDrawingArea(false);
       await utils.chartAreas.list.invalidate({ ticker: input.ticker, timeframe: input.timeframe });
     }
   });
@@ -160,7 +156,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
     setTrackedTrade(null);
     setSelectedAreaId(null);
     setRectangleError(null);
-    setRectangleForm(emptyRectangleForm);
+    setDraftArea(null);
+    setIsDrawingArea(false);
   }, [ticker]);
 
   useEffect(() => {
@@ -204,19 +201,17 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   }
 
   function addArea() {
-    const { startTime, endTime, topPrice: topPriceInput, bottomPrice: bottomPriceInput } = rectangleForm;
-    const startTimeMs = dateToUtcMs(startTime);
-    const endTimeMs = dateToUtcMs(endTime);
-    const topPrice = Number(topPriceInput);
-    const bottomPrice = Number(bottomPriceInput);
-
-    if (!startTime || !endTime || !topPriceInput || !bottomPriceInput) {
-      setRectangleError("Enter both dates and both prices.");
+    if (!draftArea) {
+      setRectangleError("Draw an area on the chart before saving.");
       return;
     }
 
+    const { startTime, endTime, topPrice, bottomPrice } = draftArea;
+    const startTimeMs = dateToUtcMs(startTime);
+    const endTimeMs = dateToUtcMs(endTime);
+
     if (!Number.isFinite(startTimeMs) || !Number.isFinite(endTimeMs)) {
-      setRectangleError("Enter valid start and end dates.");
+      setRectangleError("The drawn area has invalid start or end dates.");
       return;
     }
 
@@ -246,6 +241,30 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
     }
 
     createArea.mutate({ ticker, timeframe: "1d", startTime, endTime, topPrice, bottomPrice });
+  }
+
+  function startDrawingArea() {
+    setSelectedAreaId(null);
+    setDraftArea(null);
+    setRectangleError(null);
+    setIsDrawingArea(true);
+  }
+
+  function cancelDrawingArea() {
+    setIsDrawingArea(false);
+    setRectangleError(null);
+  }
+
+  function reviewDrawnArea(rectangle: ChartRectangle) {
+    setDraftArea(rectangle);
+    setSelectedAreaId(null);
+    setRectangleError(null);
+    setIsDrawingArea(false);
+  }
+
+  function cancelDrawnAreaReview() {
+    setDraftArea(null);
+    setRectangleError(null);
   }
 
   function removeSelectedArea() {
@@ -380,76 +399,55 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
         <div className="grid gap-3 rounded-md border bg-muted/20 p-3">
           <div>
             <p className="text-sm font-medium">Chart rectangle</p>
-            <p className="text-xs text-muted-foreground">Highlight a time and price range on the candlestick chart.</p>
+            <p className="text-xs text-muted-foreground">
+              {isDrawingArea
+                ? "Drag from one corner to the other on the chart. Press Escape to cancel."
+                : isReviewingDrawnArea
+                  ? "Review the drawn values below, then click Add Area to save it."
+                  : "Draw a time and price range on the candlestick chart."}
+            </p>
           </div>
-          <div className="flex flex-wrap items-end gap-2">
-            <div className="grid gap-1.5">
-              <Label htmlFor="rectangle-start-time" className="text-xs font-medium text-muted-foreground">
-                Start time
-              </Label>
-              <Input
-                id="rectangle-start-time"
-                type="date"
-                value={rectangleForm.startTime}
-                onChange={(event) => setRectangleForm({ ...rectangleForm, startTime: event.target.value })}
-                disabled={!displayedBars.length}
-                className="h-9 w-40"
-              />
+          {draftArea ? (
+            <div className="flex flex-wrap gap-x-4 gap-y-1 rounded-md border border-amber-400/60 bg-amber-400/10 px-3 py-2 text-xs" aria-label="Rectangle draft">
+              <span>
+                <span className="font-medium">Time:</span> {draftArea.startTime.slice(0, 10)} to {draftArea.endTime.slice(0, 10)}
+              </span>
+              <span>
+                <span className="font-medium">Price:</span> ${money(draftArea.bottomPrice)}–${money(draftArea.topPrice)}
+              </span>
             </div>
-            <div className="grid gap-1.5">
-              <Label htmlFor="rectangle-end-time" className="text-xs font-medium text-muted-foreground">
-                End time
-              </Label>
-              <Input
-                id="rectangle-end-time"
-                type="date"
-                value={rectangleForm.endTime}
-                onChange={(event) => setRectangleForm({ ...rectangleForm, endTime: event.target.value })}
-                disabled={!displayedBars.length}
-                className="h-9 w-40"
-              />
-            </div>
-            <div className="grid gap-1.5">
-              <Label htmlFor="rectangle-top-price" className="text-xs font-medium text-muted-foreground">
-                Top price
-              </Label>
-              <Input
-                id="rectangle-top-price"
-                type="number"
-                inputMode="decimal"
-                min={0}
-                step="0.01"
-                value={rectangleForm.topPrice}
-                onChange={(event) => setRectangleForm({ ...rectangleForm, topPrice: event.target.value })}
-                disabled={!displayedBars.length}
-                className="h-9 w-28"
-              />
-            </div>
-            <div className="grid gap-1.5">
-              <Label htmlFor="rectangle-bottom-price" className="text-xs font-medium text-muted-foreground">
-                Bottom price
-              </Label>
-              <Input
-                id="rectangle-bottom-price"
-                type="number"
-                inputMode="decimal"
-                min={0}
-                step="0.01"
-                value={rectangleForm.bottomPrice}
-                onChange={(event) => setRectangleForm({ ...rectangleForm, bottomPrice: event.target.value })}
-                disabled={!displayedBars.length}
-                className="h-9 w-28"
-              />
-            </div>
-            <Button type="button" size="sm" onClick={addArea} disabled={!displayedBars.length || createArea.isPending}>
+          ) : null}
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              type="button"
+              variant={isDrawingArea ? "secondary" : "outline"}
+              size="sm"
+              onClick={isDrawingArea ? cancelDrawingArea : startDrawingArea}
+              disabled={!displayedBars.length || createArea.isPending}
+              aria-pressed={isDrawingArea}
+            >
+              {isDrawingArea ? <X className="mr-1.5 h-4 w-4" /> : <SquareDashed className="mr-1.5 h-4 w-4" />}
+              {isDrawingArea ? "Cancel Drawing" : "Draw Area"}
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              onClick={addArea}
+              disabled={!displayedBars.length || !draftArea || createArea.isPending || isDrawingArea}
+            >
               {createArea.isPending ? "Adding..." : "Add Area"}
             </Button>
+            {isReviewingDrawnArea ? (
+              <Button type="button" variant="ghost" size="sm" onClick={cancelDrawnAreaReview} disabled={createArea.isPending}>
+                Cancel Draft
+              </Button>
+            ) : null}
             <Button
               type="button"
               variant="outline"
               size="sm"
               onClick={removeSelectedArea}
-              disabled={!selectedAreaId || deleteArea.isPending}
+              disabled={!selectedAreaId || deleteArea.isPending || isDrawingArea}
             >
               {deleteArea.isPending ? "Deleting..." : "Delete Area"}
             </Button>
@@ -544,7 +542,17 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
         {barsQuery.isLoading ? (
           <div className="h-80 animate-pulse rounded-md border bg-muted" />
         ) : (
-          <NightVisionCandlestickChart bars={displayedBars} ticker={ticker} areas={rectangleAreas} selectedAreaId={selectedAreaId} />
+          <NightVisionCandlestickChart
+            bars={displayedBars}
+            ticker={ticker}
+            areas={rectangleAreas}
+            selectedAreaId={selectedAreaId}
+            draftArea={draftArea}
+            drawingEnabled={isDrawingArea}
+            onRectangleDrawn={reviewDrawnArea}
+            onRectangleDrawingCancelled={cancelDrawingArea}
+            onRectangleDrawingError={setRectangleError}
+          />
         )}
       </CardContent>
     </Card>

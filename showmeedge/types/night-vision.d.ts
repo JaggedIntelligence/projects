@@ -37,9 +37,15 @@ declare module "night-vision" {
     timezone?: number;
   };
 
+  export type NightVisionEvents = {
+    on<TEvent = unknown>(componentAndType: string, handler: (event: TEvent) => void): void;
+    off(component: string, type?: string): void;
+  };
+
   export class NightVision {
     constructor(target: string, props?: NightVisionProps);
     data: NightVisionData;
+    events: NightVisionEvents;
     range: unknown;
     update(type?: string, opt?: Record<string, unknown>): void;
     fullReset(): void;
