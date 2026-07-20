@@ -41,3 +41,22 @@ CREATE TABLE IF NOT EXISTS "saved_sql_queries" (
 
 CREATE INDEX IF NOT EXISTS "saved_sql_queries_user_id_idx" ON "saved_sql_queries" ("user_id");
 CREATE UNIQUE INDEX IF NOT EXISTS "saved_sql_queries_user_name_unique_idx" ON "saved_sql_queries" ("user_id", "name");
+
+CREATE TABLE IF NOT EXISTS "chart_rectangle_areas" (
+  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  "user_id" text NOT NULL,
+  "ticker" text NOT NULL,
+  "timeframe" text DEFAULT '1d' NOT NULL,
+  "start_time" timestamp with time zone NOT NULL,
+  "end_time" timestamp with time zone NOT NULL,
+  "top_price" numeric(24, 8) NOT NULL,
+  "bottom_price" numeric(24, 8) NOT NULL,
+  "created_at" timestamp with time zone DEFAULT now() NOT NULL,
+  "updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+  CONSTRAINT "chart_rectangle_areas_valid_time_range" CHECK ("end_time" >= "start_time"),
+  CONSTRAINT "chart_rectangle_areas_valid_price_range" CHECK ("top_price" > "bottom_price"),
+  CONSTRAINT "chart_rectangle_areas_positive_prices" CHECK ("top_price" > 0 AND "bottom_price" > 0)
+);
+
+CREATE INDEX IF NOT EXISTS "chart_rectangle_areas_user_ticker_timeframe_idx"
+  ON "chart_rectangle_areas" ("user_id", "ticker", "timeframe");

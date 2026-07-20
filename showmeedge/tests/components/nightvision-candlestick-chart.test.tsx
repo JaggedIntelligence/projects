@@ -7,6 +7,7 @@ type OverlayData = {
   name: string;
   type: string;
   data?: number[][];
+  props?: Record<string, unknown>;
 };
 
 type ChartData = {
@@ -66,17 +67,25 @@ describe("NightVisionCandlestickChart", () => {
       <NightVisionCandlestickChart
         bars={bars}
         ticker="AAPL"
-        rectangle={{ startTime: "2026-01-03", endTime: "2026-01-06", topPrice: 110, bottomPrice: 104 }}
+        areas={[
+          { id: "area-1", startTime: "2026-01-03", endTime: "2026-01-06", topPrice: 110, bottomPrice: 104 },
+          { id: "area-2", startTime: "2026-01-02", endTime: "2026-01-02", topPrice: 106, bottomPrice: 100 }
+        ]}
+        selectedAreaId="area-2"
       />
     );
 
     await waitFor(() => expect(nightVisionMocks.dataUpdates).toHaveLength(1));
 
-    const rectangleOverlay = nightVisionMocks.dataUpdates[0].panes[0].overlays.find((overlay) => overlay.type === "RectangleArea");
-    expect(rectangleOverlay?.data).toEqual([
+    const rectangleOverlays = nightVisionMocks.dataUpdates[0].panes[0].overlays.filter((overlay) => overlay.type === "RectangleArea");
+    expect(rectangleOverlays).toHaveLength(2);
+    expect(rectangleOverlays[0]?.data).toEqual([
       [Date.parse("2026-01-05T00:00:00.000Z"), 110, 104],
       [Date.parse("2026-01-06T00:00:00.000Z"), 110, 104]
     ]);
+    expect(rectangleOverlays[1]?.data).toEqual([[Date.parse("2026-01-02T00:00:00.000Z"), 106, 100]]);
+    expect(rectangleOverlays[0]?.props).toMatchObject({ borderColor: "#38bdf8cc", lineWidth: 1 });
+    expect(rectangleOverlays[1]?.props).toMatchObject({ borderColor: "#f8c537", lineWidth: 2 });
     expect(nightVisionMocks.constructorCalls).toHaveLength(1);
     expect(nightVisionMocks.destroy).not.toHaveBeenCalled();
   });

@@ -13,7 +13,13 @@ export type ChartRectangle = {
   bottomPrice: number;
 };
 
+export type ChartRectangleArea = ChartRectangle & {
+  id: string;
+};
+
 type RectangleData = [timeMs: number, topPrice: number, bottomPrice: number];
+
+const EMPTY_RECTANGLE_AREAS: ChartRectangleArea[] = [];
 
 const RECTANGLE_AREA_SCRIPT = `
 // Navy ~ 0.2-lite
@@ -90,9 +96,12 @@ function rectangleData(bars: OhlcvBar[], rectangle: ChartRectangle | null): Rect
     .map((bar) => [dateToUtcMs(bar.time), rectangle.topPrice, rectangle.bottomPrice]);
 }
 
-function buildNightVisionData(bars: OhlcvBar[], ticker: string, rectangle: ChartRectangle | null): NightVisionData {
-  const boxData = rectangleData(bars, rectangle);
-
+function buildNightVisionData(
+  bars: OhlcvBar[],
+  ticker: string,
+  areas: ChartRectangleArea[],
+  selectedAreaId: string | null
+): NightVisionData {
   return {
     indexBased: true,
     panes: [
@@ -148,24 +157,29 @@ function buildNightVisionData(bars: OhlcvBar[], ticker: string, rectangle: Chart
               color: "#0c6732"
             }
           },
-          ...(boxData.length
-            ? [
-                {
-                  name: "Price Rectangle",
-                  type: "RectangleArea",
-                  data: boxData,
-                  settings: {
-                    precision: 2,
-                    zIndex: -1
-                  },
-                  props: {
-                    fillColor: "#38bdf833",
-                    borderColor: "#38bdf8cc",
-                    lineWidth: 1
-                  }
+          ...areas.flatMap((area) => {
+            const boxData = rectangleData(bars, area);
+            if (!boxData.length) return [];
+
+            const isSelected = area.id === selectedAreaId;
+
+            return [
+              {
+                name: `Price Area ${area.id}`,
+                type: "RectangleArea",
+                data: boxData,
+                settings: {
+                  precision: 2,
+                  zIndex: -1
+                },
+                props: {
+                  fillColor: isSelected ? "#f8c5372e" : "#38bdf833",
+                  borderColor: isSelected ? "#f8c537" : "#38bdf8cc",
+                  lineWidth: isSelected ? 2 : 1
                 }
-              ]
-            : [])
+              }
+            ];
+          })
         ]
       }
     ]
@@ -175,15 +189,17 @@ function buildNightVisionData(bars: OhlcvBar[], ticker: string, rectangle: Chart
 export function NightVisionCandlestickChart({
   bars,
   ticker,
-  rectangle = null
+  areas = EMPTY_RECTANGLE_AREAS,
+  selectedAreaId = null
 }: {
   bars: OhlcvBar[];
   ticker: string;
-  rectangle?: ChartRectangle | null;
+  areas?: ChartRectangleArea[];
+  selectedAreaId?: string | null;
 }) {
   const reactId = useId();
   const chartId = useMemo(() => `nightvision-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`, [reactId]);
-  const data = useMemo(() => buildNightVisionData(bars, ticker, rectangle), [bars, rectangle, ticker]);
+  const data = useMemo(() => buildNightVisionData(bars, ticker, areas, selectedAreaId), [areas, bars, selectedAreaId, ticker]);
   const dataRef = useRef(data);
   const chartRef = useRef<NightVision | null>(null);
   const [error, setError] = useState<string | null>(null);

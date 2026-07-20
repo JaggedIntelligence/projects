@@ -19,7 +19,7 @@ type ApiTestHarness = Awaited<ReturnType<typeof createApiTestHarness>>;
 type Caller = ReturnType<ApiTestHarness["createCaller"]>;
 
 export async function createApiTestHarness() {
-  const [{ appRouter }, { createCallerFactory }, { db }, { savedSqlQueries, tasks }] = await Promise.all([
+  const [{ appRouter }, { createCallerFactory }, { db }, { chartRectangleAreas, savedSqlQueries, tasks }] = await Promise.all([
     import("@/server/api/root"),
     import("@/server/api/trpc"),
     import("@/server/db"),
@@ -34,6 +34,10 @@ export async function createApiTestHarness() {
 
   async function clearSavedSqlQueries() {
     await db.delete(savedSqlQueries);
+  }
+
+  async function clearChartRectangleAreas() {
+    await db.delete(chartRectangleAreas);
   }
 
   async function ensureSavedSqlQueriesTable() {
@@ -51,23 +55,50 @@ export async function createApiTestHarness() {
     await db.execute(sql`create unique index if not exists saved_sql_queries_user_name_unique_idx on saved_sql_queries (user_id, name)`);
   }
 
+  async function ensureChartRectangleAreasTable() {
+    await db.execute(sql`
+      create table if not exists chart_rectangle_areas (
+        id uuid primary key default gen_random_uuid() not null,
+        user_id text not null,
+        ticker text not null,
+        timeframe text default '1d' not null,
+        start_time timestamp with time zone not null,
+        end_time timestamp with time zone not null,
+        top_price numeric(24, 8) not null,
+        bottom_price numeric(24, 8) not null,
+        created_at timestamp with time zone default now() not null,
+        updated_at timestamp with time zone default now() not null,
+        constraint chart_rectangle_areas_valid_time_range check (end_time >= start_time),
+        constraint chart_rectangle_areas_valid_price_range check (top_price > bottom_price),
+        constraint chart_rectangle_areas_positive_prices check (top_price > 0 and bottom_price > 0)
+      )
+    `);
+    await db.execute(sql`
+      create index if not exists chart_rectangle_areas_user_ticker_timeframe_idx
+      on chart_rectangle_areas (user_id, ticker, timeframe)
+    `);
+  }
+
   async function assertDatabaseIsTestDatabase() {
     const result = await db.execute(sql`select current_database()`);
     const currentDatabase = String(result[0]?.current_database ?? "");
 
-    if (!currentDatabase?.includes("second_brain")) {
-      throw new Error(`Refusing to run API tests against non-test database: ${currentDatabase ?? "unknown"}`);
+    if (!currentDatabase.endsWith("_test")) {
+      throw new Error(`Refusing to run API tests against database without an _test suffix: ${currentDatabase || "unknown"}`);
     }
   }
 
   return {
     db,
+    chartRectangleAreas,
     savedSqlQueries,
     tasks,
     createCaller: (userId: string | null) => createCaller({ userId, organizationId: null }),
     clearTasks,
     clearSavedSqlQueries,
+    clearChartRectangleAreas,
     ensureSavedSqlQueriesTable,
+    ensureChartRectangleAreasTable,
     assertDatabaseIsTestDatabase
   };
 }

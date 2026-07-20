@@ -4,7 +4,7 @@ import { Activity, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
-import { NightVisionCandlestickChart, type ChartRectangle } from "@/components/nvcharts/nightvision-candlestick-chart";
+import { NightVisionCandlestickChart } from "@/components/nvcharts/nightvision-candlestick-chart";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -36,6 +36,13 @@ const fallbackSymbols: ChartSymbol[] = [
   { id: "mock-msft", ticker: "MSFT", name: "Microsoft Corp." },
   { id: "mock-spy", ticker: "SPY", name: "SPDR S&P 500 ETF" }
 ];
+
+const emptyRectangleForm = {
+  startTime: "",
+  endTime: "",
+  topPrice: "",
+  bottomPrice: ""
+};
 
 function money(value: number) {
   return value.toLocaleString(undefined, {
@@ -82,19 +89,15 @@ function dateToUtcMs(date: string) {
 // ------***. SR removed lots of stuff inside Chart panel.  above Chart ---------------------
 
 export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
+  const utils = api.useUtils();
   const chartSymbols = useMemo(() => (symbols.length ? symbols : fallbackSymbols), [symbols]);
   const [ticker, setTicker] = useState(chartSymbols[0]?.ticker ?? "AAPL");
   const [daysBackInput, setDaysBackInput] = useState("5");
   const [hiddenTailDays, setHiddenTailDays] = useState(0);
   const [buyPriceInput, setBuyPriceInput] = useState("");
   const [trackedTrade, setTrackedTrade] = useState<TrackedTrade | null>(null);
-  const [rectangleForm, setRectangleForm] = useState({
-    startTime: "",
-    endTime: "",
-    topPrice: "",
-    bottomPrice: ""
-  });
-  const [rectangle, setRectangle] = useState<ChartRectangle | null>(null);
+  const [rectangleForm, setRectangleForm] = useState(emptyRectangleForm);
+  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [rectangleError, setRectangleError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -104,8 +107,25 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   }, [chartSymbols, ticker]);
 
   const barsQuery = api.marketData.bars.useQuery({ ticker, timeframe: "1d" });
+  const chartAreasQuery = api.chartAreas.list.useQuery({ ticker, timeframe: "1d" });
+  const createArea = api.chartAreas.create.useMutation({
+    onSuccess: async (area, input) => {
+      setSelectedAreaId(area.id);
+      setRectangleForm(emptyRectangleForm);
+      setRectangleError(null);
+      await utils.chartAreas.list.invalidate({ ticker: input.ticker, timeframe: input.timeframe });
+    }
+  });
+  const deleteArea = api.chartAreas.delete.useMutation({
+    onSuccess: async () => {
+      setSelectedAreaId(null);
+      setRectangleError(null);
+      await utils.chartAreas.list.invalidate({ ticker, timeframe: "1d" });
+    }
+  });
   const queryBars = barsQuery.data?.bars;
   const bars = useMemo(() => queryBars ?? [], [queryBars]);
+  const rectangleAreas = useMemo(() => chartAreasQuery.data ?? [], [chartAreasQuery.data]);
   const maxHiddenTailDays = Math.max(bars.length - 1, 0);
   const displayedBars = useMemo(() => bars.slice(0, bars.length - hiddenTailDays), [bars, hiddenTailDays]);
   const currentVisibleIndex = displayedBars.length - 1;
@@ -138,9 +158,9 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
 
   useEffect(() => {
     setTrackedTrade(null);
-    setRectangle(null);
+    setSelectedAreaId(null);
     setRectangleError(null);
-    setRectangleForm({ startTime: "", endTime: "", topPrice: "", bottomPrice: "" });
+    setRectangleForm(emptyRectangleForm);
   }, [ticker]);
 
   useEffect(() => {
@@ -183,7 +203,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
     });
   }
 
-  function applyRectangle() {
+  function addArea() {
     const { startTime, endTime, topPrice: topPriceInput, bottomPrice: bottomPriceInput } = rectangleForm;
     const startTimeMs = dateToUtcMs(startTime);
     const endTimeMs = dateToUtcMs(endTime);
@@ -225,13 +245,20 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
       return;
     }
 
-    setRectangle({ startTime, endTime, topPrice, bottomPrice });
-    setRectangleError(null);
+    createArea.mutate({ ticker, timeframe: "1d", startTime, endTime, topPrice, bottomPrice });
   }
 
-  function clearRectangle() {
-    setRectangle(null);
-    setRectangleError(null);
+  function removeSelectedArea() {
+    const selectedArea = rectangleAreas.find((area) => area.id === selectedAreaId);
+    if (!selectedArea) return;
+
+    const shouldDelete = window.confirm(
+      `Delete the area from ${selectedArea.startTime.slice(0, 10)} to ${selectedArea.endTime.slice(0, 10)}?`
+    );
+
+    if (shouldDelete) {
+      deleteArea.mutate({ id: selectedArea.id });
+    }
   }
 
   return (
@@ -414,18 +441,55 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                 className="h-9 w-28"
               />
             </div>
-            <Button type="button" size="sm" onClick={applyRectangle} disabled={!displayedBars.length}>
-              Draw rectangle
+            <Button type="button" size="sm" onClick={addArea} disabled={!displayedBars.length || createArea.isPending}>
+              {createArea.isPending ? "Adding..." : "Add Area"}
             </Button>
-            <Button type="button" variant="outline" size="sm" onClick={clearRectangle} disabled={!rectangle}>
-              Clear rectangle
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={removeSelectedArea}
+              disabled={!selectedAreaId || deleteArea.isPending}
+            >
+              {deleteArea.isPending ? "Deleting..." : "Delete Area"}
             </Button>
           </div>
-          {rectangleError ? (
+          {rectangleError || createArea.error || deleteArea.error || chartAreasQuery.error ? (
             <p role="alert" className="text-xs text-destructive">
-              {rectangleError}
+              {rectangleError ?? createArea.error?.message ?? deleteArea.error?.message ?? chartAreasQuery.error?.message}
             </p>
           ) : null}
+          <div className="grid gap-2" aria-label="Saved chart areas">
+            {chartAreasQuery.isLoading ? <p className="text-xs text-muted-foreground">Loading saved areas...</p> : null}
+            {!chartAreasQuery.isLoading && !rectangleAreas.length ? (
+              <p className="text-xs text-muted-foreground">No saved areas for {ticker}.</p>
+            ) : null}
+            {rectangleAreas.map((area, index) => {
+              const isSelected = area.id === selectedAreaId;
+
+              return (
+                <button
+                  key={area.id}
+                  type="button"
+                  aria-pressed={isSelected}
+                  onClick={() => setSelectedAreaId(area.id)}
+                  className={
+                    isSelected
+                      ? "flex flex-wrap items-center gap-x-2 gap-y-1 rounded-md border border-amber-400 bg-amber-400/10 px-3 py-2 text-left text-xs"
+                      : "flex flex-wrap items-center gap-x-2 gap-y-1 rounded-md border bg-background/50 px-3 py-2 text-left text-xs hover:bg-muted/50"
+                  }
+                >
+                  <span className="font-semibold">Area {index + 1}</span>
+                  <span className="text-muted-foreground">
+                    {area.startTime.slice(0, 10)} to {area.endTime.slice(0, 10)}
+                  </span>
+                  <span>
+                    ${money(area.bottomPrice)}–${money(area.topPrice)}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {trackedTrade ? (
@@ -480,7 +544,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
         {barsQuery.isLoading ? (
           <div className="h-80 animate-pulse rounded-md border bg-muted" />
         ) : (
-          <NightVisionCandlestickChart bars={displayedBars} ticker={ticker} rectangle={rectangle} />
+          <NightVisionCandlestickChart bars={displayedBars} ticker={ticker} areas={rectangleAreas} selectedAreaId={selectedAreaId} />
         )}
       </CardContent>
     </Card>
