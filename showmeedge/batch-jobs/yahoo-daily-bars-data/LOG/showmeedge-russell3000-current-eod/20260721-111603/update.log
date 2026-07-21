@@ -1,0 +1,420 @@
+{"event": "batch_inserted", "batch_index": 1, "attempt": 1, "symbols": ["NVDA", "GOOGL", "GOOG", "AAPL", "MSFT", "AMZN", "AVGO", "TSLA", "META", "MU"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['BRK.B']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "batch_inserted", "batch_index": 2, "attempt": 1, "symbols": ["LLY", "BRK.B", "WMT", "JPM", "AMD", "INTC", "XOM", "V", "JNJ", "ORCL"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["BRK.B"], "failed_symbols": []}
+
+1 Failed download:
+['BRK.B']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "symbol_inserted", "symbol": "BRK.B", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["BRK.B"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 3, "attempt": 1, "symbols": ["CSCO", "LRCX", "AMAT", "COST", "MA", "CAT", "ABBV", "BAC", "CVX", "UNH"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 4, "attempt": 1, "symbols": ["KO", "GE", "PG", "NFLX", "MS", "HD", "GS", "PLTR", "MRK", "SNDK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 5, "attempt": 1, "symbols": ["PM", "TXN", "DELL", "WFC", "IBM", "GEV", "RTX", "MRVL", "LIN", "C"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 6, "attempt": 1, "symbols": ["PANW", "QCOM", "AXP", "ANET", "TMUS", "ADI", "MCD", "VZ", "PEP", "WDC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 7, "attempt": 1, "symbols": ["AMGN", "APH", "TJX", "NEE", "TMO", "CRWD", "DIS", "BA", "BLK", "APP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 8, "attempt": 1, "symbols": ["T", "UNP", "SCHW", "SCCO", "DE", "GILD", "GLW", "IBKR", "ABT", "ETN"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 9, "attempt": 1, "symbols": ["WELL", "PFE", "BX", "ISRG", "COP", "UBER", "HON", "PLD", "CRM", "CVS"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 10, "attempt": 1, "symbols": ["BKNG", "DHR", "CB", "LMT", "SPGI", "LOW", "MO", "SYK", "PGR", "SBUX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 11, "attempt": 1, "symbols": ["BMY", "VRT", "COF", "PH", "VRTX", "FTNT", "NEM", "PWR", "CDNS", "MAR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 12, "attempt": 1, "symbols": ["SO", "HWM", "NOW", "ACN", "EQIX", "MDT", "TT", "SPOT", "FCX", "CME"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 13, "attempt": 1, "symbols": ["DUK", "GD", "PNC", "MCK", "UPS", "CEG", "USB", "CMI", "MNST", "ADP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 14, "attempt": 1, "symbols": ["JCI", "CSX", "WMB", "WM", "ELV", "CMCSA", "AMT", "SNPS", "KKR", "HCA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 15, "attempt": 1, "symbols": ["SLB", "HOOD", "MMM", "ADBE", "DDOG", "MRSH", "MDLZ", "NET", "FDX", "SNOW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 16, "attempt": 1, "symbols": ["EMR", "ICE", "RCL", "CI", "HLT", "ABNB", "SHW", "MCO", "NOC", "MPWR"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 17, "attempt": 1, "symbols": ["ROST", "BAM", "APO", "MPC", "VLO", "CRH", "INTU", "ORLY", "COHR", "ECL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 18, "attempt": 1, "symbols": ["ITW", "BE", "GM", "AEP", "EOG", "PSX", "LITE", "AON", "CL", "KMI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 19, "attempt": 1, "symbols": ["SPG", "CTAS", "NSC", "CVNA", "TDG", "BSX", "MSI", "WBD", "URI", "NKE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 20, "attempt": 1, "symbols": ["FIX", "DASH", "TRV", "DLR", "RSG", "TFC", "REGN", "HPE", "TER", "CIEN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 21, "attempt": 1, "symbols": ["ALAB", "APD", "BKR", "PCAR", "GWW", "TGT", "NUE", "SRE", "KEYS", "AFL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 22, "attempt": 1, "symbols": ["D", "RKLB", "NU", "F", "TRGP", "O", "CARR", "LHX", "PSA", "MET"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 23, "attempt": 1, "symbols": ["OKE", "ALL", "AJG", "OXY", "FLEX", "COR", "DAL", "FANG", "FAST", "CAH"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 24, "attempt": 1, "symbols": ["DVN", "AZO", "AME", "MCHP", "ROK", "ODFL", "EA", "CTVA", "ETR", "LNG"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 25, "attempt": 1, "symbols": ["NDAQ", "VST", "FITB", "XEL", "EW", "EBAY", "MDLN", "EXC", "STT", "HEI"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 26, "attempt": 1, "symbols": ["CRDO", "GRMN", "ON", "HUM", "WAB", "GFS", "FERG", "ARES", "MSTR", "IDXX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 27, "attempt": 1, "symbols": ["DHI", "AU", "MSCI", "KDP", "YUM", "COIN", "ADSK", "XYZ", "CMG", "AMP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 28, "attempt": 1, "symbols": ["VIK", "VTR", "STLD", "JBL", "BDX", "CCI", "AIG", "LYV", "KR", "PEG"], "fetched_bars": 64, "inserted_bars": 64, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 29, "attempt": 1, "symbols": ["ED", "TTWO", "CBRE", "TKO", "ADM", "BBT", "SYY", "IRM", "ALNY", "PRU"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 30, "attempt": 1, "symbols": ["UAL", "PCG", "VMC", "RKT", "WEC", "HSY", "A", "PYPL", "EME", "CCL"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['HEI.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "batch_inserted", "batch_index": 31, "attempt": 1, "symbols": ["PAYX", "UI", "AXON", "HIG", "HBAN", "WAT", "KVUE", "MLM", "HEI.A", "MTB"], "fetched_bars": 62, "inserted_bars": 62, "no_data_symbols": ["HEI.A"], "failed_symbols": []}
+
+1 Failed download:
+['HEI.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "symbol_inserted", "symbol": "HEI.A", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["HEI.A"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 32, "attempt": 1, "symbols": ["KMB", "ROP", "LVS", "ZTS", "KLAC", "CASY", "HAL", "SATS", "RVMD", "WDAY"], "fetched_bars": 64, "inserted_bars": 64, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 33, "attempt": 1, "symbols": ["EQT", "EL", "NTRS", "CNC", "ACGL", "ASTS", "NTAP", "EXR", "RPRX", "Q"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 34, "attempt": 1, "symbols": ["RDDT", "VICI", "RBLX", "TWLO", "CBOE", "DTE", "NTRA", "IQV", "CPNG", "AEE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 35, "attempt": 1, "symbols": ["RJF", "TPR", "GEHC", "BIIB", "DOV", "DXCM", "TDY", "MTSI", "IR", "KHC"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 36, "attempt": 1, "symbols": ["FSLR", "MTZ", "FISV", "CFG", "CPRT", "ATO", "RMD", "FTI", "EIX", "CNP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 37, "attempt": 1, "symbols": ["CW", "CRS", "FOXA", "ZM", "MDB", "FICO", "JBHT", "FE", "OTIS", "ATI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 38, "attempt": 1, "symbols": ["EXPE", "PPL", "NVT", "XPO", "PPG", "AVB", "NRG", "STRL", "WSM", "XYL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 39, "attempt": 1, "symbols": ["CINF", "TPL", "VEEV", "QSR", "ES", "STZ", "VRSN", "WRB", "DG", "LLYVK"], "fetched_bars": 64, "inserted_bars": 64, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 40, "attempt": 1, "symbols": ["EQR", "HUBB", "RF", "FTAI", "WTW", "FOX", "CTSH", "SYF", "BG", "AWK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 41, "attempt": 1, "symbols": ["KEY", "RL", "FCNCA", "DOW", "ILMN", "LLYVA", "DRI", "VRSK", "MKSI", "P"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 42, "attempt": 1, "symbols": ["PFG", "LPLA", "TROW", "PHM", "CPAY", "WST", "UTHR", "CHD", "MKL", "HPQ"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 43, "attempt": 1, "symbols": ["WWD", "ENTG", "MTD", "CHRW", "CMS", "ROL", "SW", "NI", "SNX", "DGX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 44, "attempt": 1, "symbols": ["TEAM", "FFIV", "FWONK", "L", "LEN", "LUV", "AFRM", "DLTR", "FN", "OMC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['LEN.B']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 45, "attempt": 1, "symbols": ["LH", "LEN.B", "EXPD", "SBAC", "INCY", "ROIV", "IONQ", "TW", "RIVN", "BURL"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["LEN.B"], "failed_symbols": []}
+
+1 Failed download:
+['LEN.B']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "LEN.B", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["LEN.B"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 46, "attempt": 1, "symbols": ["SOFI", "EXE", "ROKU", "INSM", "RS", "ZS", "LYB", "AS", "USFD", "FWONA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 47, "attempt": 1, "symbols": ["AMKR", "VLTO", "ULTA", "PKG", "BRO", "FIS", "STE", "TSN", "OKTA", "TTMI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 48, "attempt": 1, "symbols": ["ALB", "SNA", "RBA", "IFF", "MRNA", "LSCC", "DD", "DKS", "IOT", "EFX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 49, "attempt": 1, "symbols": ["AKAM", "CRCL", "EVRG", "SITM", "FLUT", "VTRS", "IP", "RBC", "SN", "LNT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 50, "attempt": 1, "symbols": ["H", "AMCR", "GPN", "GIS", "APG", "FTV", "SMCI", "NXT", "ESS", "EWBC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 51, "attempt": 1, "symbols": ["AA", "CHTR", "WY", "LII", "DOCN", "CDE", "BWXT", "INVH", "RGLD", "KIM"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 52, "attempt": 1, "symbols": ["GH", "NVR", "ZBH", "WPC", "HST", "ITT", "WCC", "CDW", "CF", "BR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 53, "attempt": 1, "symbols": ["BEN", "BBY", "TPG", "CG", "TSCO", "TLN", "PFGC", "PR", "SSNC", "IEX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 54, "attempt": 1, "symbols": ["MAA", "OVV", "TXT", "NLY", "ONTO", "NBIX", "NDSN", "NWS", "VNOM", "RMBS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 55, "attempt": 1, "symbols": ["DECK", "TIGO", "LAMR", "SUI", "SMTC", "WSO", "GNRC", "LDOS", "BWA", "MLI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 56, "attempt": 1, "symbols": ["CLH", "SGI", "BALL", "OWL", "THC", "J", "IESC", "MAS", "UNM", "EVR"], "fetched_bars": 67, "inserted_bars": 67, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 57, "attempt": 1, "symbols": ["REG", "GEN", "PNFP", "DTM", "MOD", "JAZZ", "APTV", "TOST", "DKNG", "GPC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 58, "attempt": 1, "symbols": ["ARMK", "DOC", "LECO", "RRX", "DY", "NWSA", "RBRK", "JLL", "CSL", "VICR"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 59, "attempt": 1, "symbols": ["RGA", "TOL", "LULU", "SANM", "RPM", "SOLV", "OHI", "HRL", "ALLY", "AAOI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 60, "attempt": 1, "symbols": ["AEIS", "GLPI", "EG", "CSGP", "DVA", "EXEL", "MEDP", "NTNX", "KNX", "COO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 61, "attempt": 1, "symbols": ["SOLS", "VIAV", "MKC", "CNH", "PTC", "AXSM", "CRBG", "APA", "BBIO", "SWK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 62, "attempt": 1, "symbols": ["GL", "DRS", "AIZ", "WULF", "FNF", "SAIA", "ONON", "DINO", "RNR", "IVZ"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['BF.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "batch_inserted", "batch_index": 63, "attempt": 1, "symbols": ["UDR", "TRU", "JEF", "TYL", "ELS", "BF.A", "PNW", "PEN", "MGM", "ALGN"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["BF.A"], "failed_symbols": []}
+
+1 Failed download:
+['BF.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "symbol_inserted", "symbol": "BF.A", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["BF.A"], "failed_symbols": []}
+
+2 Failed downloads:
+['BF.B']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+['MOG.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "batch_inserted", "batch_index": 64, "attempt": 1, "symbols": ["MOG.A", "COKE", "SJM", "EQH", "BF.B", "GGG", "BTSG", "UHAL", "CNA", "APLD"], "fetched_bars": 56, "inserted_bars": 56, "no_data_symbols": ["MOG.A", "BF.B"], "failed_symbols": []}
+
+1 Failed download:
+['MOG.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "symbol_inserted", "symbol": "MOG.A", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["MOG.A"], "failed_symbols": []}
+
+1 Failed download:
+['BF.B']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "BF.B", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["BF.B"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 65, "attempt": 1, "symbols": ["AVY", "IONS", "ELAN", "QXO", "AUR", "DT", "AMH", "WBS", "LFUS", "FHN"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 66, "attempt": 1, "symbols": ["CR", "PNR", "PAG", "U", "NYT", "HAS", "AGNC", "AIT", "TRMB", "HII"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['BLD']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 67, "attempt": 1, "symbols": ["CLX", "BJ", "ARW", "CPT", "BLD", "SPXC", "ALLE", "BROS", "MUSA", "CACI"], "fetched_bars": 62, "inserted_bars": 62, "no_data_symbols": ["BLD"], "failed_symbols": []}
+
+1 Failed download:
+['BLD']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "BLD", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["BLD"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 68, "attempt": 1, "symbols": ["WLK", "PINS", "SF", "AFG", "WYNN", "SWKS", "WTS", "RVTY", "HUT", "PL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 69, "attempt": 1, "symbols": ["MDGL", "CCK", "EGP", "TXRH", "FIVE", "GMED", "ZBRA", "SMMT", "FRT", "FORM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 70, "attempt": 1, "symbols": ["R", "KTOS", "BMRN", "AR", "BAX", "DPZ", "SEIC", "WTFC", "POWL", "ESI"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 71, "attempt": 1, "symbols": ["WTRG", "VMI", "SCI", "CAVA", "CGNX", "BXP", "SFD", "ARWR", "AES", "GSAT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 72, "attempt": 1, "symbols": ["MOH", "AAON", "BPOP", "GWRE", "JHX", "PODD", "SNEX", "WMS", "AM", "UMBF"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 73, "attempt": 1, "symbols": ["HL", "MP", "W", "LINE", "GDDY", "EHC", "RIOT", "CIFR", "DCI", "OKLO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 74, "attempt": 1, "symbols": ["BRX", "FLS", "IT", "AAL", "GTLS", "ZION", "OGE", "FCFS", "OC", "GME"], "fetched_bars": 66, "inserted_bars": 66, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 75, "attempt": 1, "symbols": ["NUVL", "ALSN", "ONB", "CART", "SSB", "HUBS", "VSAT", "DDS", "TKR", "HLI"], "fetched_bars": 67, "inserted_bars": 67, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['MASI']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 76, "attempt": 1, "symbols": ["CYTK", "CUBE", "MASI", "CNM", "RYAN", "ORI", "ALGM", "KRYS", "AMG", "BSY"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["MASI"], "failed_symbols": []}
+
+1 Failed download:
+['MASI']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "MASI", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["MASI"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 77, "attempt": 1, "symbols": ["CFR", "LGN", "BAH", "ARE", "SIRI", "MSGS", "HSIC", "WAL", "JKHY", "ADC"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 78, "attempt": 1, "symbols": ["RRC", "COLB", "TTD", "DAR", "CRL", "AYI", "ACM", "JOBY", "BIRK", "AGX"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 79, "attempt": 1, "symbols": ["SARO", "VIRT", "NCLH", "CORT", "UHS", "NNN", "TTC", "PRI", "FDS", "CORZ"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 80, "attempt": 1, "symbols": ["PRMB", "DOCU", "LUMN", "ENSG", "CTRE", "QRVO", "QBTS", "AVAV", "CMC", "EMN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 81, "attempt": 1, "symbols": ["TEM", "OSCR", "ORA", "FRHC", "MANH", "TECH", "FR", "OSK", "BLDR", "CRUS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 82, "attempt": 1, "symbols": ["VOYA", "SAIL", "XP", "BRKR", "HALO", "ENS", "BOKF", "AGCO", "AOS", "MTCH"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['JHG']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 83, "attempt": 1, "symbols": ["CBSH", "ESE", "SFM", "VLY", "VSH", "ZWS", "JHG", "SSD", "IDA", "REXR"], "fetched_bars": 62, "inserted_bars": 62, "no_data_symbols": ["JHG"], "failed_symbols": []}
+
+1 Failed download:
+['JHG']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "JHG", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["JHG"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 84, "attempt": 1, "symbols": ["CHWY", "PLXS", "GAP", "CLF", "RHP", "KNTK", "CWEN", "KEX", "NEU", "BIO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 85, "attempt": 1, "symbols": ["QGEN", "LTH", "ACI", "CHRD", "LSTR", "ECG", "NOV", "TGTX", "JXN", "MXL"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 86, "attempt": 1, "symbols": ["ATR", "UGI", "NE", "AXS", "SM", "CELH", "GKOS", "IBRX", "PRAX", "AVT"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 87, "attempt": 1, "symbols": ["STAG", "RAL", "TAP", "HQY", "ALKS", "TTEK", "ZG", "NFG", "HXL", "RGEN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['CWAN']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 88, "attempt": 1, "symbols": ["IDCC", "ST", "PB", "Z", "WFRD", "TEX", "KMX", "LEA", "CWAN", "SLAB"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["CWAN"], "failed_symbols": []}
+
+1 Failed download:
+['CWAN']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "CWAN", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["CWAN"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 89, "attempt": 1, "symbols": ["MRCY", "MAC", "MOS", "VNO", "ENPH", "KNSL", "HR", "MIDD", "PPC", "TRNO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 90, "attempt": 1, "symbols": ["LAD", "LNC", "POOL", "KYMR", "FLR", "AXTA", "NPO", "PTGX", "SYRE", "RGTI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 91, "attempt": 1, "symbols": ["KGS", "MYRG", "THG", "VFC", "CBC", "IMVT", "GTES", "INGM", "RSI", "PCVX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 92, "attempt": 1, "symbols": ["SGHC", "EAT", "LNTH", "CPB", "RIG", "SNDR", "TMHC", "YOU", "MTDR", "FAF"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 93, "attempt": 1, "symbols": ["M", "EPRT", "LKQ", "MORN", "EXP", "APGE", "FSS", "BEPC", "BBUC", "FNB"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 94, "attempt": 1, "symbols": ["CAR", "ETSY", "RYN", "URBN", "RRR", "AWI", "CAG", "MHK", "OMF", "JBTM"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 95, "attempt": 1, "symbols": ["MSM", "BYD", "GBCI", "ACMR", "SWX", "ROAD", "COMP", "AROC", "AVTR", "AN"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 96, "attempt": 1, "symbols": ["INGR", "PCOR", "LOAR", "ACA", "KRMN", "LQDA", "ESTC", "TXNM", "STWD", "UBSI"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 97, "attempt": 1, "symbols": ["GTX", "FIGR", "PAYC", "LW", "PTCT", "VAL", "FLG", "HIMS", "GATX", "CROX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 98, "attempt": 1, "symbols": ["MSA", "GVA", "MATX", "DBX", "PJT", "DOX", "PSN", "CHDN", "MIRM", "RYTM"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 99, "attempt": 1, "symbols": ["CENX", "CZR", "ABCB", "WH", "KRG", "ACT", "KLIC", "HWC", "POR", "CE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 100, "attempt": 1, "symbols": ["PCTY", "PRM", "LUNR", "TFX", "AUB", "FND", "GOLF", "PACS", "VSNT", "CACC"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 101, "attempt": 1, "symbols": ["GXO", "NOVT", "DUOL", "APPF", "OZK", "HOMB", "CWST", "COGT", "SSRM", "PSMT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 102, "attempt": 1, "symbols": ["PIPR", "BKH", "MCY", "AMTM", "ESAB", "MUR", "CHE", "NJR", "NVTS", "ACLS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 103, "attempt": 1, "symbols": ["SIGI", "IBP", "OUT", "RUSHB", "GNTX", "VSEC", "PATH", "SPHR", "PEGA", "MTG"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 104, "attempt": 1, "symbols": ["SEI", "RUSHA", "G", "UEC", "ESNT", "ADT", "MARA", "BC", "PRIM", "SYNA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 105, "attempt": 1, "symbols": ["NXST", "MC", "VCTR", "BCPC", "STEP", "SRRK", "PECO", "SXT", "ALK", "CVLT"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 106, "attempt": 1, "symbols": ["CGON", "LPX", "GLNG", "CRC", "RITM", "HCC", "BOOT", "AMRX", "FBIN", "LAUR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 107, "attempt": 1, "symbols": ["MTRN", "LYFT", "AX", "AIR", "LGND", "MGY", "FLY", "SEB", "WSC", "S"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 108, "attempt": 1, "symbols": ["CAI", "GHC", "OLLI", "ALH", "ZETA", "XENE", "NAVN", "WTM", "IRDM", "SON"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 109, "attempt": 1, "symbols": ["RLI", "DIOD", "CHH", "EPAM", "BIPC", "DLB", "MTH", "REYN", "PBF", "LBRDK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 110, "attempt": 1, "symbols": ["SAIC", "ASB", "USAR", "LBRDA", "HASI", "UCTT", "OGS", "GBTG", "IPGP", "CSTM"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 111, "attempt": 1, "symbols": ["TVTX", "FTDR", "HRI", "FFIN", "CRSP", "VVV", "EBC", "REZI", "UNF", "FCN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 112, "attempt": 1, "symbols": ["UFPI", "CUZ", "IBOC", "MTN", "TFSL", "TWST", "TREX", "WHD", "VECO", "SBRA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 113, "attempt": 1, "symbols": ["SITE", "AHR", "LBRT", "ENVA", "CNO", "WEX", "GTLB", "CNX", "NNI", "SR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 114, "attempt": 1, "symbols": ["RXO", "XMTR", "INDV", "SKT", "CNR", "HRB", "TNL", "COCO", "SHC", "RDN"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 115, "attempt": 1, "symbols": ["ACIW", "EPR", "FELE", "TDS", "CVCO", "FRMI", "KBR", "AZZ", "CBT", "SFBS"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 116, "attempt": 1, "symbols": ["DNTH", "BDC", "TNGX", "FULT", "SEZL", "KRC", "RDNT", "MRX", "HLNE", "CSW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 117, "attempt": 1, "symbols": ["TCBI", "WING", "LMND", "MDU", "EXLS", "NWE", "FLNC", "CVSA", "ERAS", "POWI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 118, "attempt": 1, "symbols": ["KTB", "KNF", "PTEN", "QS", "LIVN", "BTDR", "SLGN", "CELC", "SKY", "LAZ"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 119, "attempt": 1, "symbols": ["GFF", "MKTX", "OLED", "MAT", "PFSI", "CLSK", "POST", "SLM", "ORKA", "LBTYA"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 120, "attempt": 1, "symbols": ["BCO", "BELFB", "LION", "LRN", "MIR", "UCB", "COLD", "VNT", "BFH", "MIAX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 121, "attempt": 1, "symbols": ["BLSH", "CATY", "ALHC", "EXTR", "ATMU", "LBTYK", "INSW", "THO", "PLNT", "ANF"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 122, "attempt": 1, "symbols": ["HGV", "PI", "BNL", "MWA", "PII", "INDB", "RELY", "OPLN", "NVST", "HHH"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 123, "attempt": 1, "symbols": ["STNG", "IRT", "CRK", "MMSI", "CNS", "RNST", "CNK", "FBP", "ZGN", "TPC"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['GEF.B']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 124, "attempt": 1, "symbols": ["LASR", "OII", "GEF.B", "HP", "QLYS", "CDP", "WSFS", "BBWI", "LOPE", "BANF"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["GEF.B"], "failed_symbols": []}
+
+1 Failed download:
+['GEF.B']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "GEF.B", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["GEF.B"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 125, "attempt": 1, "symbols": ["EE", "GPI", "ACHR", "ARCB", "PLUG", "BMI", "CPRX", "FG", "APLE", "VRNS"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 126, "attempt": 1, "symbols": ["TDW", "CRGY", "DORM", "YETI", "UWMC", "GEO", "KFY", "VCYT", "PVH", "OTTR"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 127, "attempt": 1, "symbols": ["UUUU", "EWTX", "CVBF", "BETA", "CAKE", "IRTC", "JOE", "OSIS", "BELFA", "ABG"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 128, "attempt": 1, "symbols": ["GPGI", "CHEF", "CALM", "SXI", "LIF", "AAP", "DOCS", "TXG", "DAVE", "SKYW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 129, "attempt": 1, "symbols": ["SLG", "ELF", "CRNX", "BHF", "MHO", "SMR", "ACAD", "FIBK", "CON", "WAY"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 130, "attempt": 1, "symbols": ["YSS", "SMG", "SIG", "ITRI", "BKU", "HAE", "ICUI", "WSBC", "NSA", "OGN"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 131, "attempt": 1, "symbols": ["ADEA", "BOX", "BATRA", "AVA", "NHI", "FHB", "BULL", "CBU", "MSGE", "CECO"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 132, "attempt": 1, "symbols": ["FUL", "AVNT", "FIZZ", "ATRO", "DNLI", "COLM", "GNW", "BFAM", "AEHR", "KN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 133, "attempt": 1, "symbols": ["FFBC", "AGO", "KBH", "SHOO", "NSIT", "VKTX", "BTU", "KAI", "DAN", "RHI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 134, "attempt": 1, "symbols": ["VGNT", "CC", "BILL", "HWKN", "LFST", "INOD", "TOWN", "ASO", "HIW", "MMS"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 135, "attempt": 1, "symbols": ["CURB", "NATL", "FOUR", "SFNC", "NG", "PRK", "IPAR", "OPCH", "PENG", "BATRK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['VAC']: YFRateLimitError('Too Many Requests. Rate limited. Try after a while.')
+{"event": "batch_inserted", "batch_index": 136, "attempt": 1, "symbols": ["WRBY", "RNG", "BHE", "BANC", "BKD", "VAC", "LEU", "RLAY", "BOH", "HAYW"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["VAC"], "failed_symbols": []}
+{"event": "symbol_inserted", "symbol": "VAC", "attempt": 1, "fetched_bars": 7, "inserted_bars": 7, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 137, "attempt": 1, "symbols": ["HG", "GPK", "CWK", "VC", "NIC", "GEF", "PHIN", "AEO", "LXP", "CALY"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 138, "attempt": 1, "symbols": ["SBCF", "KALU", "GRBK", "USLM", "TDC", "BXMT", "UNIT", "ITGR", "NHC", "CVI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 139, "attempt": 1, "symbols": ["ALMS", "RUN", "PFS", "CTRI", "TTAM", "UNFI", "MZTI", "CRVL", "ARQT", "AWR"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 140, "attempt": 1, "symbols": ["PLMR", "ICHR", "UE", "PPTA", "RDW", "DYN", "WDFC", "CLMT", "RCUS", "GPOR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 141, "attempt": 1, "symbols": ["BEAM", "SOUN", "ASH", "AMBA", "MPT", "CPK", "NTCT", "TENB", "PRVA", "AKR"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 142, "attempt": 1, "symbols": ["CDNL", "WOR", "NN", "MGEE", "TR", "PK", "UPST", "APAM", "FSLY", "DBRG"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 143, "attempt": 1, "symbols": ["PENN", "DK", "COHU", "RH", "HTFL", "OLN", "VISN", "PATK", "VVX", "HUBG"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 144, "attempt": 1, "symbols": ["FBK", "DBD", "DHT", "FA", "MGRC", "ADPT", "NMIH", "ELVN", "PARR", "AAMI"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 145, "attempt": 1, "symbols": ["HLIO", "DX", "WHR", "FCPT", "EXPO", "SDRL", "TRN", "HUN", "WT", "SPNT"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 146, "attempt": 1, "symbols": ["QTWO", "WK", "BKV", "WAFD", "STNE", "GRDN", "IVT", "CWT", "CCC", "DFTX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 147, "attempt": 1, "symbols": ["HOG", "ROG", "NMRK", "TRMK", "ABM", "PDFS", "CENT", "CXW", "ATKR", "SAH"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 148, "attempt": 1, "symbols": ["NESR", "KMT", "TARS", "FRME", "CUBI", "KD", "WERN", "DXPE", "OSW", "WTTR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 149, "attempt": 1, "symbols": ["TNK", "FRSH", "IRON", "DGII", "FRPT", "BWIN", "UAA", "SUPN", "GRAL", "DNOW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 150, "attempt": 1, "symbols": ["FBNC", "AGYS", "AMR", "IDYA", "EEFT", "OUST", "TMDX", "AMBP", "KWR", "NBTB"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 151, "attempt": 1, "symbols": ["PAGS", "UA", "BCC", "NGVT", "TALO", "CLOV", "SHAK", "DCO", "ALGT", "VERA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 152, "attempt": 1, "symbols": ["BLBD", "CPRI", "CLDX", "CARG", "CALX", "ANDE", "CXT", "NIQ", "BRZE", "VOYG"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 153, "attempt": 1, "symbols": ["DRH", "RUM", "BUSE", "CTOS", "MTX", "PTON", "RARE", "FUN", "TBBK", "HTO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 154, "attempt": 1, "symbols": ["HNI", "TE", "CENTA", "WU", "AMPX", "NTB", "EFSC", "PBI", "BKE", "MGNI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 155, "attempt": 1, "symbols": ["IMAX", "HE", "ALRM", "AVPT", "MBIN", "GCMG", "MCRI", "AXGN", "ATEN", "BANR"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 156, "attempt": 1, "symbols": ["WLY", "PBH", "ACHC", "RAMP", "LCII", "PAYO", "HTH", "MH", "QUBT", "GRC"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 157, "attempt": 1, "symbols": ["SYBT", "NEXT", "DRVN", "BCRX", "WS", "NOG", "BRSL", "DHC", "SHO", "TNET"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 158, "attempt": 1, "symbols": ["PLUS", "NWBI", "DJT", "UTI", "CLBK", "CMPR", "FLOC", "PRDO", "IOSP", "KOD"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 159, "attempt": 1, "symbols": ["PRKS", "ARR", "LMAT", "NWN", "BAND", "NWL", "PGNY", "LC", "IMNM", "GRND"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['SEM']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 160, "attempt": 1, "symbols": ["SEM", "PEB", "NVCR", "EOSE", "DEI", "HCI", "WMK", "AUPH", "TGLS", "OFG"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["SEM"], "failed_symbols": []}
+
+1 Failed download:
+['SEM']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "SEM", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["SEM"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 161, "attempt": 1, "symbols": ["LCID", "SKWD", "SPSC", "KSS", "INVX", "FCF", "XRAY", "GTY", "TRVI", "AIN"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 162, "attempt": 1, "symbols": ["SGRY", "CMRE", "GNL", "FIGS", "MD", "HRMY", "VERX", "STC", "NTST", "NEOG"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['STEL']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 163, "attempt": 1, "symbols": ["STEL", "AGM", "HMN", "NBHC", "OCUL", "MLYS", "LPG", "SPB", "BBAI", "ASTH"], "fetched_bars": 62, "inserted_bars": 62, "no_data_symbols": ["STEL"], "failed_symbols": []}
+
+1 Failed download:
+['STEL']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "STEL", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["STEL"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 164, "attempt": 1, "symbols": ["SLDE", "VCEL", "AMSC", "ADMA", "PUMP", "SAM", "AIP", "CBZ", "CTS", "SRCE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 165, "attempt": 1, "symbols": ["LTC", "AGL", "PRLB", "PLAB", "ALG", "TIC", "BLX", "XPRO", "PAX", "JBLU"], "fetched_bars": 67, "inserted_bars": 67, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 166, "attempt": 1, "symbols": ["ANIP", "STOK", "VPG", "TILE", "CHCO", "TH", "INTA", "GT", "CNXN", "RAPP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 167, "attempt": 1, "symbols": ["PLPC", "GENI", "SONO", "WD", "COTY", "IOVA", "MBC", "UFPT", "AMBQ", "EPAC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 168, "attempt": 1, "symbols": ["VRDN", "LOB", "TFIN", "SKYT", "XHR", "FLYW", "SMA", "WGS", "ADNT", "CASH"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 169, "attempt": 1, "symbols": ["HURN", "DCOM", "NVRI", "APPN", "NRIX", "AGIO", "STRA", "SHLS", "IMKTA", "IE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 170, "attempt": 1, "symbols": ["ECPG", "VSTS", "ADUS", "IIPR", "CCS", "GABC", "STBA", "OMCL", "RBCAA", "EFC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 171, "attempt": 1, "symbols": ["NUVB", "ZD", "ASAN", "KOS", "BHVN", "NTLA", "FLNG", "RCAT", "MBX", "SFL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['SILA']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 172, "attempt": 1, "symbols": ["PLSE", "HOPE", "BL", "TCBK", "SOC", "INVA", "NCNO", "RLJ", "SILA", "ZYME"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["SILA"], "failed_symbols": []}
+
+1 Failed download:
+['SILA']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "SILA", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["SILA"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 173, "attempt": 1, "symbols": ["RXRX", "SNDA", "SLVM", "LILAK", "FLO", "CNOB", "LILA", "STGW", "TSHA", "ANAB"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 174, "attempt": 1, "symbols": ["WKC", "BFC", "FSUN", "ALKT", "FIVN", "MQ", "WBTN", "AMLX", "SION", "SEPN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 175, "attempt": 1, "symbols": ["HLIT", "HTZ", "EVTC", "GLOB", "SNDX", "SRPT", "EVCM", "BY", "PCT", "TYRA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 176, "attempt": 1, "symbols": ["TPB", "CNXC", "RES", "QCRH", "PGEN", "AI", "MAN", "RYZ", "CRI", "LZB"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 177, "attempt": 1, "symbols": ["AEVA", "DV", "PVLA", "FTRE", "ALNT", "OBK", "ATEX", "AVAH", "PRG", "GLUE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['KW']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 178, "attempt": 1, "symbols": ["LKFN", "SVV", "LIND", "CBL", "HCSG", "COUR", "KW", "PRGO", "HLMN", "DCH"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["KW"], "failed_symbols": []}
+
+1 Failed download:
+['KW']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "KW", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["KW"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 179, "attempt": 1, "symbols": ["NBR", "DXC", "AAT", "CAPR", "JJSF", "EYE", "GBX", "FOR", "GIII", "AMRC"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 180, "attempt": 1, "symbols": ["PWP", "FMC", "MRTN", "TRS", "TNC", "WWW", "RVLV", "KMPR", "LINC", "PRCT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 181, "attempt": 1, "symbols": ["NVAX", "ATRC", "SLS", "WLDN", "ENVX", "VIR", "NEO", "BFLY", "URGN", "REX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['KALV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 182, "attempt": 1, "symbols": ["LEG", "TRIP", "KALV", "ULCC", "HLX", "WINA", "ECVT", "AMC", "BCAX", "AVBP"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["KALV"], "failed_symbols": []}
+
+1 Failed download:
+['KALV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "KALV", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["KALV"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 183, "attempt": 1, "symbols": ["NVGS", "CLVT", "STAA", "BORR", "TTI", "ARI", "OI", "ARDX", "ARLO", "HROW"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 184, "attempt": 1, "symbols": ["NSP", "ATLC", "ENR", "FDP", "IART", "AHCO", "DFH", "OLPX", "IDT", "ODC"], "fetched_bars": 57, "inserted_bars": 57, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 185, "attempt": 1, "symbols": ["ACDC", "WABC", "DOLE", "RXT", "AOSL", "INBX", "BHRB", "UVV", "ALX", "ARDT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 186, "attempt": 1, "symbols": ["WLTH", "WLFC", "AMAL", "MAZE", "NSSC", "AHRT", "TDOC", "PRGS", "TMP", "SBH"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 187, "attempt": 1, "symbols": ["CMP", "HYLN", "ICFI", "PEBO", "PRCH", "GSHD", "PRSU", "ORC", "CDRE", "VTOL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 188, "attempt": 1, "symbols": ["UMH", "TWO", "WEN", "LADR", "CTBI", "MRVI", "CEVA", "BLKB", "DSGR", "TROX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+
+1 Failed download:
+['PRA']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "batch_inserted", "batch_index": 189, "attempt": 1, "symbols": ["PAHC", "PGY", "PRA", "BLFS", "ATEC", "YELP", "NPKI", "GOLD", "MPLT", "LGIH"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": ["PRA"], "failed_symbols": []}
+
+1 Failed download:
+['PRA']: YFPricesMissingError('possibly delisted; no price data found  (1d 2026-07-11 -> 2026-07-22)')
+{"event": "symbol_inserted", "symbol": "PRA", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["PRA"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 190, "attempt": 1, "symbols": ["ENOV", "GCT", "HLF", "ZBIO", "CXM", "HTLD", "XPEL", "UFCS", "FMBH", "NWPX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 191, "attempt": 1, "symbols": ["REAL", "SCL", "INNV", "ADTN", "INSP", "VIA", "GIC", "KMTS", "GHM", "NNE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 192, "attempt": 1, "symbols": ["BKSY", "PFBC", "BV", "LNN", "PLTK", "MCB", "HFWA", "IRMD", "ROCK", "ARRY"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 193, "attempt": 1, "symbols": ["AMN", "XZO", "SENEA", "CDNA", "UVSP", "LQDT", "ASTE", "APPS", "NAT", "XERS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 194, "attempt": 1, "symbols": ["AKTS", "AVNS", "OSBC", "ASST", "CVLG", "PNTG", "MMI", "PDM", "TNDM", "SMPL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 195, "attempt": 1, "symbols": ["TDAY", "SAFE", "MNKD", "WVE", "COLL", "CCB", "CIM", "DEA", "THRM", "HBT"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 196, "attempt": 1, "symbols": ["NBN", "MLKN", "BJRI", "UPBD", "PXED", "EVLV", "EYPT", "PLOW", "DLX", "RHLD"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 197, "attempt": 1, "symbols": ["VYX", "SDGR", "SVRA", "SG", "ACEL", "TK", "PZZA", "OPK", "OCFC", "FUBO"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 198, "attempt": 1, "symbols": ["ABSI", "UVE", "NMAX", "EPC", "SAFT", "GPRE", "ACVA", "UPWK", "GNK", "SVC"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 199, "attempt": 1, "symbols": ["CNMD", "CFFN", "CBRL", "UAMY", "AZTA", "TRUP", "UTZ", "BRBR", "SBSI", "OMDA"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 200, "attempt": 1, "symbols": ["MYE", "SCSC", "ARHS", "LZ", "SBGI", "HBNC", "PSNL", "CRVS", "ABR", "DEC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 201, "attempt": 1, "symbols": ["ESQ", "EQBK", "USPH", "ASIC", "METC", "EEX", "NUTX", "HPK", "SATL", "MSEX"], "fetched_bars": 64, "inserted_bars": 64, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 202, "attempt": 1, "symbols": ["MCBS", "CSR", "DAKT", "WSR", "AORT", "CRAI", "CCNE", "VRTS", "SPRY", "ARKO"], "fetched_bars": 64, "inserted_bars": 64, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 203, "attempt": 1, "symbols": ["TRST", "QDEL", "DFIN", "MFA", "FSBC", "AEBI", "APEI", "BFST", "CPF", "SCHL"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 204, "attempt": 1, "symbols": ["WYFI", "MBWM", "GO", "HAFC", "EVEX", "LMB", "CRCT", "KODK", "AMTB", "LYTS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 205, "attempt": 1, "symbols": ["PSIX", "ESRT", "BUR", "UTL", "NPK", "INDI", "JBSS", "LMRI", "NBBK", "ABX"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 206, "attempt": 1, "symbols": ["BFS", "XNCR", "AMPL", "SHEN", "JCAP", "RPC", "PCRX", "GLIBK", "KOPN", "MEC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 207, "attempt": 1, "symbols": ["RZLV", "CRSR", "BOW", "GLIBA", "THFF", "KFRC", "FTK", "CAC", "AVR", "EVC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 208, "attempt": 1, "symbols": ["WOOF", "MGTX", "AMPH", "PMT", "WRLD", "LXU", "SMP", "TALK", "EGBN", "ROOT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 209, "attempt": 1, "symbols": ["MPB", "ETON", "OLMA", "EFOR", "FMNB", "MOV", "TBPH", "JBGS", "APOG", "ORIC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 210, "attempt": 1, "symbols": ["MTUS", "TRNS", "EIG", "CGEM", "ABUS", "BBSI", "MATW", "ADAM", "KOP", "INR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 211, "attempt": 1, "symbols": ["FCBC", "HPP", "GTM", "PHAT", "JANX", "WGO", "GSBC", "ASPI", "CWH", "PGC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 212, "attempt": 1, "symbols": ["LBRX", "SXC", "SPFI", "ESPR", "KRO", "CERT", "CCBG", "HTB", "KURA", "BIOA"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 213, "attempt": 1, "symbols": ["NXDR", "SMBC", "CCOI", "AVO", "NB", "ORRF", "NX", "BH", "SMBK", "RDVT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 214, "attempt": 1, "symbols": ["HNRG", "CODI", "ANNX", "DJCO", "REPX", "GSM", "FWRG", "HSTM", "SHBI", "ALRS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 215, "attempt": 1, "symbols": ["FOXF", "JBIO", "NAVI", "HZO", "BZH", "ZVRA", "FISI", "SANA", "PKE", "DNUT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 216, "attempt": 1, "symbols": ["MITK", "GDOT", "FEIM", "GERN", "IVR", "CYRX", "REPL", "SPIR", "BRSP", "NXRT"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 217, "attempt": 1, "symbols": ["BALY", "IBCP", "IBTA", "JBI", "NGVC", "DSP", "HSHP", "VTS", "EVMN", "OPFI"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 218, "attempt": 1, "symbols": ["BLMN", "VRRM", "QNST", "ELA", "CTO", "EVER", "HOV", "SB", "SKYH", "SLDB"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 219, "attempt": 1, "symbols": ["CBLL", "ASC", "HELE", "PD", "MCS", "VEL", "RMR", "CRMD", "DSGN", "WASH"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 220, "attempt": 1, "symbols": ["SIBN", "HRTG", "RSVR", "SABR", "INN", "HY", "TIPT", "HIPO", "TCBX", "TRTX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 221, "attempt": 1, "symbols": ["CARE", "AURA", "PSTL", "DC", "AROW", "NTGR", "SWIM", "RWT", "SWBI", "ALLO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 222, "attempt": 1, "symbols": ["DGICA", "TDUP", "GRNT", "BBNX", "HIFS", "GRPN", "GOOD", "FBRT", "CCSI", "CSV"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 223, "attempt": 1, "symbols": ["CASS", "PFIS", "BCAL", "CNNE", "OMER", "NPB", "SLDP", "RGR", "CSTL", "EVGO"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 224, "attempt": 1, "symbols": ["CADL", "MSBI", "PACK", "KE", "BHB", "NFBK", "VTEX", "TRAX", "ASIX", "OPTU"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 225, "attempt": 1, "symbols": ["PAR", "VLGEA", "RRBI", "SMC", "RIGL", "BTBT", "MAMA", "CLB", "NABL", "WTI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 226, "attempt": 1, "symbols": ["ACRS", "IHRT", "IRWD", "CLDT", "ILPT", "KRT", "FET", "PRAA", "DRUG", "KRUS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 227, "attempt": 1, "symbols": ["LEGH", "TCMD", "MG", "AMSF", "MAX", "ORN", "ACNB", "MLAB", "RYAM", "BVS"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 228, "attempt": 1, "symbols": ["IIIV", "IDR", "SFST", "NRIM", "TECX", "FIP", "EGY", "KRNY", "UNTY", "AIOT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 229, "attempt": 1, "symbols": ["NVEC", "CIVB", "BDN", "MCFT", "BBCP", "IIIN", "PHR", "NRDS", "UHT", "BWB"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+Failed to get ticker 'CRD.A' reason: Expecting value: line 1 column 1 (char 0)
+
+1 Failed download:
+['CRD.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "batch_inserted", "batch_index": 230, "attempt": 1, "symbols": ["SD", "CBNK", "OXM", "MLR", "ETD", "MBUU", "BWMN", "CRD.A", "GYRE", "EVH"], "fetched_bars": 62, "inserted_bars": 62, "no_data_symbols": ["CRD.A"], "failed_symbols": []}
+Failed to get ticker 'CRD.A' reason: Expecting value: line 1 column 1 (char 0)
+
+1 Failed download:
+['CRD.A']: YFTzMissingError('possibly delisted; no timezone found')
+{"event": "symbol_inserted", "symbol": "CRD.A", "attempt": 1, "fetched_bars": 0, "inserted_bars": 0, "no_data_symbols": ["CRD.A"], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 231, "attempt": 1, "symbols": ["SERV", "OLP", "MDXG", "CLFD", "GLRE", "NGS", "HBCP", "NPCE", "CTGO", "OSPN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 232, "attempt": 1, "symbols": ["TOI", "FLGT", "CARS", "GDYN", "PUBM", "CTEV", "BSRR", "SSTK", "SFIX", "EBF"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 233, "attempt": 1, "symbols": ["XOMA", "CPS", "AQST", "ADV", "TRC", "GCBC", "CERS", "CHCT", "OIS", "CTKB"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 234, "attempt": 1, "symbols": ["TREE", "ALT", "FBIZ", "PRTH", "ACIC", "PANL", "PRME", "BETR", "PKOH", "ANGO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 235, "attempt": 1, "symbols": ["TWI", "GOGO", "CAL", "OBT", "DNA", "ASPN", "XRN", "JOUT", "KLC", "ARVN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 236, "attempt": 1, "symbols": ["LXFR", "COFS", "YORW", "IPI", "OOMA", "CWCO", "CRNC", "ITIC", "MNRO", "SCVL"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 237, "attempt": 1, "symbols": ["RPD", "LOCO", "RR", "BLZE", "RBBN", "TITN", "INV", "SRTA", "PDLB", "GBFH"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 238, "attempt": 1, "symbols": ["ACTG", "OEC", "KREF", "VREX", "ALTI", "FDMT", "GCO", "ALMU", "ABAT", "NGNE"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 239, "attempt": 1, "symbols": ["KIDS", "FRPH", "VITL", "XRX", "MAGN", "ULH", "IMXI", "FVR", "PLAY", "MATV"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 240, "attempt": 1, "symbols": ["MTW", "CBAN", "BWFG", "FSTR", "EOLS", "AMCX", "BSVN", "DDD", "CYH", "WEAV"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 241, "attempt": 1, "symbols": ["SPT", "ATNI", "FPI", "BBBY", "CMDB", "DIN", "PRTA", "RLGT", "WTBA", "ERII"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 242, "attempt": 1, "symbols": ["EBS", "BXC", "MPTI", "MEI", "BMRC", "NRC", "CTRN", "PBFS", "CBK", "FWRD"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 243, "attempt": 1, "symbols": ["CLMB", "CLNE", "EDIT", "RBB", "VHI", "KELYA", "NATH", "ISTR", "IBEX", "FRBA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 244, "attempt": 1, "symbols": ["BOC", "BMBL", "ALIT", "BLND", "MYGN", "CCRN", "PACB", "YEXT", "NEWT", "DCTH"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 245, "attempt": 1, "symbols": ["BBW", "CLPT", "GTN", "NC", "VMD", "MNPR", "HNST", "SVCO", "CMCO", "FMAO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 246, "attempt": 1, "symbols": ["CZNC", "WNC", "PLBC", "TBRG", "QUAD", "PAYS", "CMCL", "FRST", "SI", "LAND"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 247, "attempt": 1, "symbols": ["MTRX", "RZLT", "RMNI", "BNTC", "LWAY", "LE", "NPWR", "HVT", "LDI", "BNED"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 248, "attempt": 1, "symbols": ["PCB", "AIRS", "PKBK", "RNGR", "MVST", "OFIX", "BKKT", "PBYI", "ACCO", "XPER"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 249, "attempt": 1, "symbols": ["GNE", "USNA", "CMPX", "MVBF", "PSFE", "MLP", "NATR", "LRMR", "VSTM", "AVIR"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 250, "attempt": 1, "symbols": ["CV", "NECB", "TSSI", "TCI", "USCB", "VOXR", "CMTG", "WSBF", "VNDA", "WEYS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 251, "attempt": 1, "symbols": ["MGPI", "BCML", "BYND", "NWFL", "CHMG", "DBI", "ATOM", "REAX", "FNLC", "LAB"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 252, "attempt": 1, "symbols": ["ENTA", "RGNX", "LXEO", "RM", "TLS", "GEVO", "NCMI", "BRCC", "OPAL", "PTLO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 253, "attempt": 1, "symbols": ["CATX", "CDZI", "CZFS", "TSBK", "GLSI", "AII", "PINE", "PAMT", "UPB", "LTBR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 254, "attempt": 1, "symbols": ["SLP", "OABI", "BGS", "COSO", "STRT", "VALU", "NODK", "XPOF", "CIX", "ZUMZ"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 255, "attempt": 1, "symbols": ["FSBW", "SEG", "ABEO", "MBI", "MASS", "FENC", "BKTI", "ESOA", "OFLX", "CARL"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 256, "attempt": 1, "symbols": ["GETY", "SIGA", "HLLY", "PNRG", "ONIT", "PPHC", "ELMD", "JMSB", "DMAC", "ALCO"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 257, "attempt": 1, "symbols": ["FCCO", "PDYN", "RCKY", "FVCB", "ORGO", "FNKO", "RCKT", "NREF", "MYFW", "RPAY"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 258, "attempt": 1, "symbols": ["BRBS", "ASLE", "NL", "SBC", "ZIP", "OVLY", "FDBC", "MPAA", "OSUR", "AIRJ"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 259, "attempt": 1, "symbols": ["TG", "CLW", "BRT", "NVCT", "CIA", "UIS", "RNAC", "RC", "SGHT", "HCKT"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 260, "attempt": 1, "symbols": ["FLWS", "ELDN", "WNEB", "HBB", "NAGE", "FC", "SSP", "ACRE", "FRAF", "FXNC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 261, "attempt": 1, "symbols": ["FUNC", "AFRI", "ATLO", "CABO", "NUS", "MKTW", "EU", "TBCH", "TMCI", "TTGT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 262, "attempt": 1, "symbols": ["HWBK", "VUZI", "SITC", "PCYO", "LPRO", "JAKK", "FLXS", "ESCA", "RELL", "BPRN"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 263, "attempt": 1, "symbols": ["ACH", "NXDT", "JACK", "USAU", "AIRO", "ASUR", "DMRC", "EGHT", "CFFI", "TRDA"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 264, "attempt": 1, "symbols": ["AVNW", "SNFCA", "RGCO", "LCNB", "MITT", "AKBA", "FRD", "FHTX", "CBNA", "VABK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 265, "attempt": 1, "symbols": ["LVWR", "HDSN", "PEBK", "LOVE", "REFI", "ARL", "OPRT", "FATE", "WALD", "POWW"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 266, "attempt": 1, "symbols": ["MRBK", "MNTK", "OVBC", "BRCB", "KINS", "CXDO", "LMNR", "HUMA", "MFIN", "PESI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 267, "attempt": 1, "symbols": ["FBLA", "PAL", "AVXL", "TLSI", "NKSH", "FULC", "LAW", "ALTG", "STRS", "INBK"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 268, "attempt": 1, "symbols": ["SPOK", "LFMD", "ANGI", "TKNO", "CMRC", "INSE", "JILL", "IKT", "TARA", "GENC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 269, "attempt": 1, "symbols": ["PMTS", "CDXS", "EVI", "CNDT", "SGC", "IMMR", "CHRS", "UTMD", "FCAP", "LENZ"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 270, "attempt": 1, "symbols": ["TBI", "OPBK", "RNA", "LFCR", "VYGR", "CMT", "KLTR", "AOMR", "BZAI", "RICK"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 271, "attempt": 1, "symbols": ["CZWI", "CPSS", "QSI", "NKTX", "EGAN", "CFBK", "GWRS", "FINW", "FF", "III"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 272, "attempt": 1, "symbols": ["KROS", "SMHI", "PDEX", "ARCT", "CURV", "ANIK", "RMAX", "RXST", "COOK", "BCBP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 273, "attempt": 1, "symbols": ["HQI", "JRVR", "FLYX", "SMTI", "KGEI", "CBFV", "SEVN", "NRDY", "MDV", "EBMT"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 274, "attempt": 1, "symbols": ["RBKB", "ONEW", "EMBC", "KRMD", "LUCD", "LARK", "MDWD", "RCMT", "MRDN", "TNXP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 275, "attempt": 1, "symbols": ["INSG", "FOA", "STXS", "STRW", "MNSB", "KULR", "NLOP", "ACU", "INGN", "HNVR"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 276, "attempt": 1, "symbols": ["THRY", "TRAK", "EPSN", "ALEC", "ECBK", "PLX", "KRRO", "SMID", "WHG", "RGP"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 277, "attempt": 1, "symbols": ["TUSK", "RMBI", "DOUG", "SLQT", "SRBK", "JELD", "EFSI", "CURI", "EPM", "BHR"], "fetched_bars": 68, "inserted_bars": 68, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 278, "attempt": 1, "symbols": ["TCX", "HURA", "FNWD", "SBFG", "QTRX", "NFE", "BOOM", "BYRN", "SKYX", "HCAT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 279, "attempt": 1, "symbols": ["JYNT", "DERM", "DOMO", "BSET", "FORR", "ADCT", "CVRX", "MED", "EML", "AOUT"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 280, "attempt": 1, "symbols": ["SAMG", "ACR", "SNWV", "ACNT", "RVSB", "NNOX", "EXFY", "DH", "RCEL", "MVIS"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 281, "attempt": 1, "symbols": ["MXCT", "CLAR", "EP", "SUNS", "ARQ", "TTEC", "LFVN", "PNBK", "ZVIA", "SAFX"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 282, "attempt": 1, "symbols": ["SFBC", "TZOO", "UNB", "LAKE", "USGO", "ALDX", "CRDF", "SSTI", "FTLF", "VIRC"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 283, "attempt": 1, "symbols": ["HFFG", "OPRX", "LPA", "SLSN", "CSPI", "STIM", "BTMD", "ISPR", "KG", "FFAI"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 284, "attempt": 1, "symbols": ["GAMB", "SEAT", "AARD", "SKIN", "BARK", "AVD", "AEYE", "OM", "PROP", "MYPS"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 285, "attempt": 1, "symbols": ["HRTX", "SIEB", "NXXT", "FSP", "LNSR", "CD", "GAIA", "VGAS", "AREN", "LUNG"], "fetched_bars": 69, "inserted_bars": 69, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 286, "attempt": 1, "symbols": ["EHTH", "DCGO", "HAIN", "LFT", "SLND", "SKIL", "CLPR", "ACTU", "ATLN", "MYO"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 287, "attempt": 1, "symbols": ["ATYR", "ARAY", "GOSS", "INMB", "FLD", "ARAI", "TVRD", "NEON", "CRMT", "PMI"], "fetched_bars": 64, "inserted_bars": 64, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 288, "attempt": 1, "symbols": ["SNBR", "GOCO", "MCHB", "CWBC", "RPT", "BGC", "WEST", "OSG", "SPWR", "VRM"], "fetched_bars": 63, "inserted_bars": 63, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 289, "attempt": 1, "symbols": ["AESI", "LZM", "BVFL", "BEEP", "FBYD", "AISP", "NEXN", "TVGN", "CRML", "MRP"], "fetched_bars": 70, "inserted_bars": 70, "no_data_symbols": [], "failed_symbols": []}
+{"event": "batch_inserted", "batch_index": 290, "attempt": 1, "symbols": ["STRZ", "AVBH"], "fetched_bars": 14, "inserted_bars": 14, "no_data_symbols": [], "failed_symbols": []}

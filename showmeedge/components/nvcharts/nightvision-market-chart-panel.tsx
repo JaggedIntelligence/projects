@@ -1,7 +1,7 @@
 "use client";
 
 import { Activity, ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
 import { NightVisionCandlestickChart, type ChartRectangle } from "@/components/nvcharts/nightvision-candlestick-chart";
@@ -89,6 +89,7 @@ function dateToUtcMs(date: string) {
 
 export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[] }) {
   const utils = api.useUtils();
+  const chartAreaRef = useRef<HTMLDivElement>(null);
   const chartSymbols = useMemo(() => (symbols.length ? symbols : fallbackSymbols), [symbols]);
   const [ticker, setTicker] = useState(chartSymbols[0]?.ticker ?? "AAPL");
   const [daysBackInput, setDaysBackInput] = useState("5");
@@ -129,6 +130,10 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const queryBars = barsQuery.data?.bars;
   const bars = useMemo(() => queryBars ?? [], [queryBars]);
   const rectangleAreas = useMemo(() => chartAreasQuery.data ?? [], [chartAreasQuery.data]);
+  const displayedRectangleAreas = useMemo(
+    () => rectangleAreas.map((area, index) => ({ area, areaNumber: index + 1 })).reverse(),
+    [rectangleAreas]
+  );
   const maxHiddenTailDays = Math.max(bars.length - 1, 0);
   const displayedBars = useMemo(() => bars.slice(0, bars.length - hiddenTailDays), [bars, hiddenTailDays]);
   const currentVisibleIndex = displayedBars.length - 1;
@@ -170,6 +175,21 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   useEffect(() => {
     setBuyPriceInput(latestBar ? formatBuyPrice(latestBar.close) : "");
   }, [latestBar]);
+
+  useEffect(() => {
+    function clearChartInteractionOutsideChart(event: PointerEvent) {
+      if (event.target instanceof Node && chartAreaRef.current?.contains(event.target)) return;
+
+      setDrawingColorKey(null);
+      setSelectedAreaId(null);
+    }
+
+    document.addEventListener("pointerdown", clearChartInteractionOutsideChart, true);
+
+    return () => {
+      document.removeEventListener("pointerdown", clearChartInteractionOutsideChart, true);
+    };
+  }, []);
 
   useEffect(() => {
     if (hiddenTailDays <= maxHiddenTailDays) return;
@@ -414,9 +434,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                   : "STEP 1: Choose a color, then drag a time and price range on the chart; --- STEP2: then Click on 'Add Area' button."}
             </p>
           </div>
-          <div className="grid gap-1.5">
-            <span className="text-xs font-medium text-muted-foreground">Draw Area</span>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Draw Area colors">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-1 rounded-md border bg-background/60 p-1" role="group" aria-label="Draw Area colors">
               {CHART_AREA_COLOR_KEYS.map((colorKey) => {
                 const color = CHART_AREA_COLORS[colorKey];
                 const isActive = drawingColorKey === colorKey;
@@ -432,15 +451,36 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                     onClick={() => selectDrawingColor(colorKey)}
                     className={
                       isActive
-                        ? "grid h-9 w-9 place-items-center rounded-full border-2 border-foreground ring-2 ring-ring ring-offset-2 ring-offset-background disabled:opacity-50"
-                        : "grid h-9 w-9 place-items-center rounded-full border-2 border-transparent hover:border-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
+                        ? "grid h-7 w-7 place-items-center rounded-full border-2 border-foreground ring-1 ring-ring ring-offset-1 ring-offset-background disabled:opacity-50"
+                        : "grid h-7 w-7 place-items-center rounded-full border-2 border-transparent hover:border-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:opacity-50"
                     }
                   >
-                    <span className="h-6 w-6 rounded-full border border-black/20" style={{ backgroundColor: color.solid }} aria-hidden="true" />
+                    <span className="h-5 w-5 rounded-full border border-black/20" style={{ backgroundColor: color.solid }} aria-hidden="true" />
                   </button>
                 );
               })}
             </div>
+            <Button
+              type="button"
+              size="sm"
+              onClick={addArea}
+              disabled={!displayedBars.length || !draftArea || createArea.isPending || isDrawingArea}
+              className="h-8 px-2.5 text-xs"
+            >
+              {createArea.isPending ? "Adding..." : "Add Area"}
+            </Button>
+            {isReviewingDrawnArea ? (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={cancelDrawnAreaReview}
+                disabled={createArea.isPending}
+                className="h-8 px-2.5 text-xs"
+              >
+                Cancel Draft
+              </Button>
+            ) : null}
           </div>
           {draftArea ? (
             <div className="flex flex-wrap gap-x-4 gap-y-1 rounded-md border border-amber-400/60 bg-amber-400/10 px-3 py-2 text-xs" aria-label="Rectangle draft">
@@ -457,21 +497,6 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
               </span>
             </div>
           ) : null}
-          <div className="flex flex-wrap items-center gap-2">
-            <Button
-              type="button"
-              size="sm"
-              onClick={addArea}
-              disabled={!displayedBars.length || !draftArea || createArea.isPending || isDrawingArea}
-            >
-              {createArea.isPending ? "Adding..." : "Add Area"}
-            </Button>
-            {isReviewingDrawnArea ? (
-              <Button type="button" variant="ghost" size="sm" onClick={cancelDrawnAreaReview} disabled={createArea.isPending}>
-                Cancel Draft
-              </Button>
-            ) : null}
-          </div>
           {rectangleError || createArea.error || deleteArea.error || chartAreasQuery.error ? (
             <p role="alert" className="text-xs text-destructive">
               {rectangleError ?? createArea.error?.message ?? deleteArea.error?.message ?? chartAreasQuery.error?.message}
@@ -482,7 +507,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
             {!chartAreasQuery.isLoading && !rectangleAreas.length ? (
               <p className="text-xs text-muted-foreground">No saved areas for {ticker}.</p>
             ) : null}
-            {rectangleAreas.map((area, index) => {
+            {displayedRectangleAreas.map(({ area, areaNumber }) => {
               const isSelected = area.id === selectedAreaId;
               const color = CHART_AREA_COLORS[area.colorKey] ?? CHART_AREA_COLORS[DEFAULT_CHART_AREA_COLOR_KEY];
               const isDeleting = deleteArea.isPending && deleteArea.variables?.id === area.id;
@@ -503,7 +528,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                     className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2 text-left text-xs"
                   >
                     <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: color.solid }} aria-hidden="true" />
-                    <span className="font-semibold">Area {index + 1}</span>
+                    <span className="font-semibold">Area {areaNumber}</span>
                     <span className="text-muted-foreground">
                       {area.startTime.slice(0, 10)} to {area.endTime.slice(0, 10)}
                     </span>
@@ -515,8 +540,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                     type="button"
                     variant="ghost"
                     size="icon"
-                    title={`Delete Area ${index + 1}`}
-                    aria-label={`Delete Area ${index + 1}`}
+                    title={`Delete Area ${areaNumber}`}
+                    aria-label={`Delete Area ${areaNumber}`}
                     onClick={() => removeArea(area)}
                     disabled={isDeleting}
                     className="mr-1 h-8 w-8 shrink-0 text-muted-foreground hover:text-destructive"
@@ -578,22 +603,24 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
           </div>
         ) : null}
 
-        {barsQuery.isLoading ? (
-          <div className="h-80 animate-pulse rounded-md border bg-muted" />
-        ) : (
-          <NightVisionCandlestickChart
-            bars={displayedBars}
-            ticker={ticker}
-            areas={rectangleAreas}
-            selectedAreaId={selectedAreaId}
-            draftArea={draftArea}
-            drawingEnabled={isDrawingArea}
-            drawingColorKey={drawingColorKey ?? DEFAULT_CHART_AREA_COLOR_KEY}
-            onRectangleDrawn={reviewDrawnArea}
-            onRectangleDrawingCancelled={cancelDrawingArea}
-            onRectangleDrawingError={setRectangleError}
-          />
-        )}
+        <div ref={chartAreaRef}>
+          {barsQuery.isLoading ? (
+            <div className="h-80 animate-pulse rounded-md border bg-muted" />
+          ) : (
+            <NightVisionCandlestickChart
+              bars={displayedBars}
+              ticker={ticker}
+              areas={rectangleAreas}
+              selectedAreaId={selectedAreaId}
+              draftArea={draftArea}
+              drawingEnabled={isDrawingArea}
+              drawingColorKey={drawingColorKey ?? DEFAULT_CHART_AREA_COLOR_KEY}
+              onRectangleDrawn={reviewDrawnArea}
+              onRectangleDrawingCancelled={cancelDrawingArea}
+              onRectangleDrawingError={setRectangleError}
+            />
+          )}
+        </div>
       </CardContent>
     </Card>
   );

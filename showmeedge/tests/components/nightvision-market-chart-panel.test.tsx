@@ -97,6 +97,7 @@ vi.mock("@/components/nvcharts/nightvision-candlestick-chart", () => ({
     bars,
     ticker,
     areas,
+    selectedAreaId,
     draftArea,
     drawingEnabled,
     drawingColorKey,
@@ -105,6 +106,7 @@ vi.mock("@/components/nvcharts/nightvision-candlestick-chart", () => ({
     bars: TestBar[];
     ticker: string;
     areas?: TestChartArea[];
+    selectedAreaId?: string | null;
     draftArea?: { startTime: string; endTime: string; topPrice: number; bottomPrice: number; colorKey: TestChartArea["colorKey"] } | null;
     drawingEnabled?: boolean;
     drawingColorKey?: TestChartArea["colorKey"];
@@ -121,6 +123,7 @@ vi.mock("@/components/nvcharts/nightvision-candlestick-chart", () => ({
       data-bars={bars.length}
       data-ticker={ticker}
       data-areas={JSON.stringify(areas ?? [])}
+      data-selected-area={selectedAreaId ?? ""}
       data-draft={JSON.stringify(draftArea ?? null)}
       data-drawing={String(Boolean(drawingEnabled))}
       data-drawing-color={drawingColorKey}
@@ -316,6 +319,34 @@ describe("NightVisionMarketChartPanel", () => {
     expect(screen.getByRole("button", { name: "Add Area" })).toBeDisabled();
   });
 
+  it("clears drawing and selection when clicking outside the chart", () => {
+    trpcMocks.chartAreasState.data = [makeArea("area-1", "2026-01-02", "2026-01-04", 110, 100)];
+
+    renderComponent(<NightVisionMarketChartPanel symbols={[{ id: "aapl", ticker: "AAPL", name: "Apple Inc." }]} />);
+
+    const chart = screen.getByTestId("nightvision-chart");
+    const violetSwatch = screen.getByRole("button", { name: "Draw violet area" });
+
+    fireEvent.click(violetSwatch);
+    expect(violetSwatch).toHaveAttribute("aria-pressed", "true");
+
+    fireEvent.pointerDown(chart);
+    expect(violetSwatch).toHaveAttribute("aria-pressed", "true");
+
+    fireEvent.pointerDown(document.body);
+    expect(violetSwatch).toHaveAttribute("aria-pressed", "false");
+    expect(chart).toHaveAttribute("data-drawing", "false");
+
+    fireEvent.click(screen.getByRole("button", { name: /Area 1.*2026-01-02/ }));
+    expect(chart).toHaveAttribute("data-selected-area", "area-1");
+
+    fireEvent.pointerDown(chart);
+    expect(chart).toHaveAttribute("data-selected-area", "area-1");
+
+    fireEvent.pointerDown(document.body);
+    expect(chart).toHaveAttribute("data-selected-area", "");
+  });
+
   it("loads multiple saved areas and deletes only the selected area", () => {
     trpcMocks.chartAreasState.data = [
       makeArea("area-1", "2026-01-02", "2026-01-04", 110, 100),
@@ -327,6 +358,7 @@ describe("NightVisionMarketChartPanel", () => {
 
     expect(screen.getByText("Area 1")).toBeInTheDocument();
     expect(screen.getByText("Area 2")).toBeInTheDocument();
+    expect(screen.getAllByText(/^Area [12]$/).map((areaLabel) => areaLabel.textContent)).toEqual(["Area 2", "Area 1"]);
     expect(JSON.parse(screen.getByTestId("nightvision-chart").getAttribute("data-areas") ?? "[]")).toHaveLength(2);
     expect(screen.queryByRole("button", { name: "Delete Area" })).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Delete Area 1" })).toBeEnabled();

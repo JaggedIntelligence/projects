@@ -35,7 +35,7 @@ Editing an existing rectangle is not included in the current version. A user del
 
 ## User Experience
 
-The chart panel presents the feature under the heading `Draw a Price Range area on Chart:` and contains a six-color drawing palette, save/cancel controls, and a read-only draft summary:
+The chart panel presents the feature under the heading `Draw a Price Range area on Chart:`. To conserve chart space, the six-color palette is enclosed in one compact outlined group, with the smaller `Add Area` and conditional `Cancel Draft` buttons directly beside it on the same row.
 
 | Control | Purpose |
 | --- | --- |
@@ -44,7 +44,7 @@ The chart panel presents the feature under the heading `Draw a Price Range area 
 | Row trash icon | Deletes the corresponding saved rectangle after confirmation. |
 | Draft summary | Displays the captured time and price boundaries without editable inputs. |
 
-Saved areas appear beneath the drawing controls. Clicking an item selects it. Every area retains its saved palette color, and the selected area receives an additional white dashed outline.
+Saved areas appear beneath the drawing controls in descending area-number order: the highest/newest area number is on top and `Area 1` remains at the bottom. Clicking an item selects it. Every area retains its saved palette color, and the selected area receives an additional white dashed outline.
 
 Every saved-area row has its own accessible trash icon. The user does not need to select an area before deleting it, and deletion still requires confirmation.
 
@@ -124,6 +124,8 @@ Drag drawing is an explicit interaction mode so normal chart navigation remains 
 
 Pressing Escape, clicking the active swatch again, leaving the chart during an active gesture, or switching tickers cancels drawing without persistence. Clicking a different swatch changes the armed color. A drag smaller than four pixels in either dimension is rejected so an ordinary click does not create a draft.
 
+Clicking anywhere outside the complete chart container also clears the armed color. This lets the user abandon drawing by interacting with another part of the screen. Clicking inside the chart preserves the armed drawing state.
+
 The interaction follows this state progression:
 
 ```text
@@ -153,6 +155,8 @@ When the user selects an area:
 - The selected list item is highlighted.
 - The chart receives the same `selectedAreaId`.
 - The corresponding canvas overlay gains the selected outline without losing its saved color.
+
+Clicking outside the complete chart container clears `selectedAreaId`, removing the white selection outline. Clicking inside the chart keeps the current selection visible; clicking another saved-area row selects that row normally.
 
 When deletion is confirmed:
 
@@ -435,6 +439,9 @@ The feature is complete when all of the following are true:
 - Clicking any palette swatch immediately arms drawing in that color.
 - Saved colors survive reloads and selection does not replace the rectangle color.
 - Each saved row has its own confirmed delete action; no global delete button is present.
+- The palette, `Add Area`, and `Cancel Draft` controls share one compact row.
+- Saved areas are displayed with the highest area number first.
+- Clicking outside the chart clears both an armed palette color and the selected area's white outline.
 - Cancelling drawing or a review draft does not write to PostgreSQL.
 - Weekend and holiday boundaries remain aligned to real candles.
 - Chart interactions continue without recreating the NightVision instance for every area-state change.
