@@ -411,7 +411,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                 ? `Drawing a ${CHART_AREA_COLORS[drawingColorKey].label.toLowerCase()} area. Drag from one corner to the other. Press Escape to cancel.`
                 : isReviewingDrawnArea
                   ? "Review the drawn values below, then click Add Area to save it."
-                  : "Choose a color, then drag a time and price range on the chart."}
+                  : "STEP 1: Choose a color, then drag a time and price range on the chart; --- STEP2: then Click on 'Add Area' button."}
             </p>
           </div>
           <div className="grid gap-1.5">
