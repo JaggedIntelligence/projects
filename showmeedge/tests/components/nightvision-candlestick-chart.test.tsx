@@ -84,8 +84,8 @@ describe("NightVisionCandlestickChart", () => {
         bars={bars}
         ticker="AAPL"
         areas={[
-          { id: "area-1", startTime: "2026-01-03", endTime: "2026-01-06", topPrice: 110, bottomPrice: 104 },
-          { id: "area-2", startTime: "2026-01-02", endTime: "2026-01-02", topPrice: 106, bottomPrice: 100 }
+          { id: "area-1", startTime: "2026-01-03", endTime: "2026-01-06", topPrice: 110, bottomPrice: 104, colorKey: "sky" },
+          { id: "area-2", startTime: "2026-01-02", endTime: "2026-01-02", topPrice: 106, bottomPrice: 100, colorKey: "violet" }
         ]}
         selectedAreaId="area-2"
       />
@@ -100,8 +100,8 @@ describe("NightVisionCandlestickChart", () => {
       [Date.parse("2026-01-06T00:00:00.000Z"), 110, 104]
     ]);
     expect(rectangleOverlays[1]?.data).toEqual([[Date.parse("2026-01-02T00:00:00.000Z"), 106, 100]]);
-    expect(rectangleOverlays[0]?.props).toMatchObject({ borderColor: "#38bdf8cc", lineWidth: 1 });
-    expect(rectangleOverlays[1]?.props).toMatchObject({ borderColor: "#f8c537", lineWidth: 2 });
+    expect(rectangleOverlays[0]?.props).toMatchObject({ borderColor: "#38bdf8cc", lineWidth: 1, selected: false });
+    expect(rectangleOverlays[1]?.props).toMatchObject({ borderColor: "#a78bfacc", lineWidth: 2, selected: true });
     expect(nightVisionMocks.constructorCalls).toHaveLength(1);
     expect(nightVisionMocks.destroy).not.toHaveBeenCalled();
   });
@@ -113,13 +113,23 @@ describe("NightVisionCandlestickChart", () => {
     ];
     const onRectangleDrawn = vi.fn();
     const view = renderComponent(
-      <NightVisionCandlestickChart bars={bars} ticker="AAPL" drawingEnabled onRectangleDrawn={onRectangleDrawn} />
+      <NightVisionCandlestickChart
+        bars={bars}
+        ticker="AAPL"
+        drawingEnabled
+        drawingColorKey="emerald"
+        onRectangleDrawn={onRectangleDrawn}
+      />
     );
 
     await waitFor(() => expect(nightVisionMocks.constructorCalls).toHaveLength(1));
 
     const initialOverlays = nightVisionMocks.constructorCalls[0].options.data.panes[0].overlays;
-    expect(initialOverlays.find((overlay) => overlay.type === "RectangleDrawTool")?.props).toMatchObject({ enabled: true });
+    expect(initialOverlays.find((overlay) => overlay.type === "RectangleDrawTool")?.props).toMatchObject({
+      enabled: true,
+      borderColor: "#22c55ecc",
+      fillColor: "#22c55e33"
+    });
 
     const drawHandler = [...nightVisionMocks.eventHandlers.entries()].find(([name]) => name.endsWith(":rectangle-drawn"))?.[1];
     expect(drawHandler).toBeDefined();
@@ -135,21 +145,22 @@ describe("NightVisionCandlestickChart", () => {
       startTime: "2026-01-02",
       endTime: "2026-01-05",
       topPrice: 108.25,
-      bottomPrice: 101.5
+      bottomPrice: 101.5,
+      colorKey: "emerald"
     });
 
     view.rerender(
       <NightVisionCandlestickChart
         bars={bars}
         ticker="AAPL"
-        draftArea={{ startTime: "2026-01-02", endTime: "2026-01-05", topPrice: 108.25, bottomPrice: 101.5 }}
+        draftArea={{ startTime: "2026-01-02", endTime: "2026-01-05", topPrice: 108.25, bottomPrice: 101.5, colorKey: "emerald" }}
       />
     );
 
     await waitFor(() => expect(nightVisionMocks.dataUpdates.length).toBeGreaterThan(0));
     const overlays = nightVisionMocks.dataUpdates.at(-1)?.panes[0].overlays ?? [];
     expect(overlays.find((overlay) => overlay.name === "Rectangle draft")?.props).toMatchObject({
-      borderColor: "#f8c537",
+      borderColor: "#22c55ecc",
       dashed: true,
       lineWidth: 2
     });

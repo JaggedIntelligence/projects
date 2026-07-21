@@ -1,0 +1,2 @@
+ALTER TABLE "chart_rectangle_areas" ADD COLUMN "color_key" text DEFAULT 'sky' NOT NULL;--> statement-breakpoint
+ALTER TABLE "chart_rectangle_areas" ADD CONSTRAINT "chart_rectangle_areas_valid_color_key" CHECK ("chart_rectangle_areas"."color_key" IN ('sky', 'amber', 'emerald', 'rose', 'violet', 'orange'));

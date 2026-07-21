@@ -1,6 +1,6 @@
 import { and, asc, eq } from "drizzle-orm";
 
-import { chartAreaCreateSchema, chartAreaDeleteSchema, chartAreaListSchema } from "@/lib/chart-area-validators";
+import { chartAreaColorSchema, chartAreaCreateSchema, chartAreaDeleteSchema, chartAreaListSchema } from "@/lib/chart-area-validators";
 import { protectedProcedure, router } from "@/server/api/trpc";
 import { db } from "@/server/db";
 import { chartRectangleAreas, type ChartRectangleArea } from "@/server/db/schema";
@@ -14,6 +14,7 @@ function serializeArea(area: ChartRectangleArea) {
     endTime: area.endTime.toISOString(),
     topPrice: Number(area.topPrice),
     bottomPrice: Number(area.bottomPrice),
+    colorKey: chartAreaColorSchema.parse(area.colorKey),
     createdAt: area.createdAt,
     updatedAt: area.updatedAt
   };
@@ -46,7 +47,8 @@ export const chartAreasRouter = router({
         startTime: new Date(input.startTime),
         endTime: new Date(input.endTime),
         topPrice: String(input.topPrice),
-        bottomPrice: String(input.bottomPrice)
+        bottomPrice: String(input.bottomPrice),
+        colorKey: input.colorKey
       })
       .returning();
 

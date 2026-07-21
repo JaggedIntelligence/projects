@@ -25,7 +25,8 @@ describeApi("chartAreasRouter", () => {
       startTime: "2026-01-03",
       endTime: "2026-01-07",
       topPrice: 110,
-      bottomPrice: 104
+      bottomPrice: 104,
+      colorKey: "violet"
     });
     await userA.chartAreas.create({
       ticker: "MSFT",
@@ -47,11 +48,12 @@ describeApi("chartAreasRouter", () => {
     const userAAreas = await userA.chartAreas.list({ ticker: "aapl", timeframe: "1d" });
     const userBAreas = await userB.chartAreas.list({ ticker: "AAPL", timeframe: "1d" });
 
-    expect(created).toMatchObject({ ticker: "AAPL", timeframe: "1d", topPrice: 110, bottomPrice: 104 });
+    expect(created).toMatchObject({ ticker: "AAPL", timeframe: "1d", topPrice: 110, bottomPrice: 104, colorKey: "violet" });
     expect(created.startTime).toBe("2026-01-03T00:00:00.000Z");
     expect(userAAreas.map((area) => area.id)).toEqual([created.id]);
     expect(userBAreas).toHaveLength(1);
     expect(userBAreas[0]?.topPrice).toBe(125);
+    expect(userBAreas[0]?.colorKey).toBe("sky");
   });
 
   it("prevents one user from deleting another user's area", async () => {
@@ -99,5 +101,17 @@ describeApi("chartAreasRouter", () => {
         bottomPrice: 104
       })
     ).rejects.toThrow("Top price must be greater than bottom price");
+
+    await expect(
+      caller.chartAreas.create({
+        ticker: "AAPL",
+        timeframe: "1d",
+        startTime: "2026-01-03",
+        endTime: "2026-01-07",
+        topPrice: 110,
+        bottomPrice: 104,
+        colorKey: "black" as never
+      })
+    ).rejects.toThrow();
   });
 });

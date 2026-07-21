@@ -66,13 +66,16 @@ export async function createApiTestHarness() {
         end_time timestamp with time zone not null,
         top_price numeric(24, 8) not null,
         bottom_price numeric(24, 8) not null,
+        color_key text default 'sky' not null,
         created_at timestamp with time zone default now() not null,
         updated_at timestamp with time zone default now() not null,
         constraint chart_rectangle_areas_valid_time_range check (end_time >= start_time),
         constraint chart_rectangle_areas_valid_price_range check (top_price > bottom_price),
-        constraint chart_rectangle_areas_positive_prices check (top_price > 0 and bottom_price > 0)
+        constraint chart_rectangle_areas_positive_prices check (top_price > 0 and bottom_price > 0),
+        constraint chart_rectangle_areas_valid_color_key check (color_key in ('sky', 'amber', 'emerald', 'rose', 'violet', 'orange'))
       )
     `);
+    await db.execute(sql`alter table chart_rectangle_areas add column if not exists color_key text default 'sky' not null`);
     await db.execute(sql`
       create index if not exists chart_rectangle_areas_user_ticker_timeframe_idx
       on chart_rectangle_areas (user_id, ticker, timeframe)

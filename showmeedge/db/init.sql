@@ -51,11 +51,13 @@ CREATE TABLE IF NOT EXISTS "chart_rectangle_areas" (
   "end_time" timestamp with time zone NOT NULL,
   "top_price" numeric(24, 8) NOT NULL,
   "bottom_price" numeric(24, 8) NOT NULL,
+  "color_key" text DEFAULT 'sky' NOT NULL,
   "created_at" timestamp with time zone DEFAULT now() NOT NULL,
   "updated_at" timestamp with time zone DEFAULT now() NOT NULL,
   CONSTRAINT "chart_rectangle_areas_valid_time_range" CHECK ("end_time" >= "start_time"),
   CONSTRAINT "chart_rectangle_areas_valid_price_range" CHECK ("top_price" > "bottom_price"),
-  CONSTRAINT "chart_rectangle_areas_positive_prices" CHECK ("top_price" > 0 AND "bottom_price" > 0)
+  CONSTRAINT "chart_rectangle_areas_positive_prices" CHECK ("top_price" > 0 AND "bottom_price" > 0),
+  CONSTRAINT "chart_rectangle_areas_valid_color_key" CHECK ("color_key" IN ('sky', 'amber', 'emerald', 'rose', 'violet', 'orange'))
 );
 
 CREATE INDEX IF NOT EXISTS "chart_rectangle_areas_user_ticker_timeframe_idx"

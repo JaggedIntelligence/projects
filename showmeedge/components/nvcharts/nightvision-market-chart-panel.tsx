@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, ChevronLeft, ChevronRight, SquareDashed, X } from "lucide-react";
+import { Activity, ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { api } from "@/components/providers/trpc-provider";
@@ -10,6 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  CHART_AREA_COLORS,
+  CHART_AREA_COLOR_KEYS,
+  DEFAULT_CHART_AREA_COLOR_KEY,
+  type ChartAreaColorKey
+} from "@/lib/chart-area-colors";
 
 type ChartSymbol = {
   id: string;
@@ -92,7 +98,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
   const [draftArea, setDraftArea] = useState<ChartRectangle | null>(null);
   const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [rectangleError, setRectangleError] = useState<string | null>(null);
-  const [isDrawingArea, setIsDrawingArea] = useState(false);
+  const [drawingColorKey, setDrawingColorKey] = useState<ChartAreaColorKey | null>(null);
+  const isDrawingArea = drawingColorKey !== null;
   const isReviewingDrawnArea = draftArea !== null;
 
   useEffect(() => {
@@ -108,13 +115,13 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
       setSelectedAreaId(area.id);
       setDraftArea(null);
       setRectangleError(null);
-      setIsDrawingArea(false);
+      setDrawingColorKey(null);
       await utils.chartAreas.list.invalidate({ ticker: input.ticker, timeframe: input.timeframe });
     }
   });
   const deleteArea = api.chartAreas.delete.useMutation({
-    onSuccess: async () => {
-      setSelectedAreaId(null);
+    onSuccess: async (_, input) => {
+      setSelectedAreaId((currentAreaId) => (currentAreaId === input.id ? null : currentAreaId));
       setRectangleError(null);
       await utils.chartAreas.list.invalidate({ ticker, timeframe: "1d" });
     }
@@ -157,7 +164,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
     setSelectedAreaId(null);
     setRectangleError(null);
     setDraftArea(null);
-    setIsDrawingArea(false);
+    setDrawingColorKey(null);
   }, [ticker]);
 
   useEffect(() => {
@@ -206,7 +213,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
       return;
     }
 
-    const { startTime, endTime, topPrice, bottomPrice } = draftArea;
+    const { startTime, endTime, topPrice, bottomPrice, colorKey } = draftArea;
     const startTimeMs = dateToUtcMs(startTime);
     const endTimeMs = dateToUtcMs(endTime);
 
@@ -240,18 +247,23 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
       return;
     }
 
-    createArea.mutate({ ticker, timeframe: "1d", startTime, endTime, topPrice, bottomPrice });
+    createArea.mutate({ ticker, timeframe: "1d", startTime, endTime, topPrice, bottomPrice, colorKey });
   }
 
-  function startDrawingArea() {
+  function selectDrawingColor(colorKey: ChartAreaColorKey) {
+    if (drawingColorKey === colorKey) {
+      cancelDrawingArea();
+      return;
+    }
+
     setSelectedAreaId(null);
     setDraftArea(null);
     setRectangleError(null);
-    setIsDrawingArea(true);
+    setDrawingColorKey(colorKey);
   }
 
   function cancelDrawingArea() {
-    setIsDrawingArea(false);
+    setDrawingColorKey(null);
     setRectangleError(null);
   }
 
@@ -259,7 +271,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
     setDraftArea(rectangle);
     setSelectedAreaId(null);
     setRectangleError(null);
-    setIsDrawingArea(false);
+    setDrawingColorKey(null);
   }
 
   function cancelDrawnAreaReview() {
@@ -267,16 +279,11 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
     setRectangleError(null);
   }
 
-  function removeSelectedArea() {
-    const selectedArea = rectangleAreas.find((area) => area.id === selectedAreaId);
-    if (!selectedArea) return;
-
-    const shouldDelete = window.confirm(
-      `Delete the area from ${selectedArea.startTime.slice(0, 10)} to ${selectedArea.endTime.slice(0, 10)}?`
-    );
+  function removeArea(area: { id: string; startTime: string; endTime: string }) {
+    const shouldDelete = window.confirm(`Delete the area from ${area.startTime.slice(0, 10)} to ${area.endTime.slice(0, 10)}?`);
 
     if (shouldDelete) {
-      deleteArea.mutate({ id: selectedArea.id });
+      deleteArea.mutate({ id: area.id });
     }
   }
 
@@ -398,14 +405,42 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
 
         <div className="grid gap-3 rounded-md border bg-muted/20 p-3">
           <div>
-            <p className="text-sm font-medium">Chart rectangle</p>
+            <p className="text-sm font-medium">Draw a Price Range area on Chart:</p>
             <p className="text-xs text-muted-foreground">
-              {isDrawingArea
-                ? "Drag from one corner to the other on the chart. Press Escape to cancel."
+              {drawingColorKey
+                ? `Drawing a ${CHART_AREA_COLORS[drawingColorKey].label.toLowerCase()} area. Drag from one corner to the other. Press Escape to cancel.`
                 : isReviewingDrawnArea
                   ? "Review the drawn values below, then click Add Area to save it."
-                  : "Draw a time and price range on the candlestick chart."}
+                  : "Choose a color, then drag a time and price range on the chart."}
             </p>
+          </div>
+          <div className="grid gap-1.5">
+            <span className="text-xs font-medium text-muted-foreground">Draw Area</span>
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Draw Area colors">
+              {CHART_AREA_COLOR_KEYS.map((colorKey) => {
+                const color = CHART_AREA_COLORS[colorKey];
+                const isActive = drawingColorKey === colorKey;
+
+                return (
+                  <button
+                    key={colorKey}
+                    type="button"
+                    title={`Draw ${color.label.toLowerCase()} area`}
+                    aria-label={`Draw ${color.label.toLowerCase()} area`}
+                    aria-pressed={isActive}
+                    disabled={!displayedBars.length || createArea.isPending}
+                    onClick={() => selectDrawingColor(colorKey)}
+                    className={
+                      isActive
+                        ? "grid h-9 w-9 place-items-center rounded-full border-2 border-foreground ring-2 ring-ring ring-offset-2 ring-offset-background disabled:opacity-50"
+                        : "grid h-9 w-9 place-items-center rounded-full border-2 border-transparent hover:border-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50"
+                    }
+                  >
+                    <span className="h-6 w-6 rounded-full border border-black/20" style={{ backgroundColor: color.solid }} aria-hidden="true" />
+                  </button>
+                );
+              })}
+            </div>
           </div>
           {draftArea ? (
             <div className="flex flex-wrap gap-x-4 gap-y-1 rounded-md border border-amber-400/60 bg-amber-400/10 px-3 py-2 text-xs" aria-label="Rectangle draft">
@@ -415,20 +450,14 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
               <span>
                 <span className="font-medium">Price:</span> ${money(draftArea.bottomPrice)}–${money(draftArea.topPrice)}
               </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="font-medium">Color: </span>
+                <span className="h-3 w-3 rounded-full" style={{ backgroundColor: CHART_AREA_COLORS[draftArea.colorKey].solid }} aria-hidden="true" />
+                <span>{CHART_AREA_COLORS[draftArea.colorKey].label}</span>
+              </span>
             </div>
           ) : null}
           <div className="flex flex-wrap items-center gap-2">
-            <Button
-              type="button"
-              variant={isDrawingArea ? "secondary" : "outline"}
-              size="sm"
-              onClick={isDrawingArea ? cancelDrawingArea : startDrawingArea}
-              disabled={!displayedBars.length || createArea.isPending}
-              aria-pressed={isDrawingArea}
-            >
-              {isDrawingArea ? <X className="mr-1.5 h-4 w-4" /> : <SquareDashed className="mr-1.5 h-4 w-4" />}
-              {isDrawingArea ? "Cancel Drawing" : "Draw Area"}
-            </Button>
             <Button
               type="button"
               size="sm"
@@ -442,15 +471,6 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
                 Cancel Draft
               </Button>
             ) : null}
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={removeSelectedArea}
-              disabled={!selectedAreaId || deleteArea.isPending || isDrawingArea}
-            >
-              {deleteArea.isPending ? "Deleting..." : "Delete Area"}
-            </Button>
           </div>
           {rectangleError || createArea.error || deleteArea.error || chartAreasQuery.error ? (
             <p role="alert" className="text-xs text-destructive">
@@ -464,27 +484,46 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
             ) : null}
             {rectangleAreas.map((area, index) => {
               const isSelected = area.id === selectedAreaId;
+              const color = CHART_AREA_COLORS[area.colorKey] ?? CHART_AREA_COLORS[DEFAULT_CHART_AREA_COLOR_KEY];
+              const isDeleting = deleteArea.isPending && deleteArea.variables?.id === area.id;
 
               return (
-                <button
+                <div
                   key={area.id}
-                  type="button"
-                  aria-pressed={isSelected}
-                  onClick={() => setSelectedAreaId(area.id)}
                   className={
                     isSelected
-                      ? "flex flex-wrap items-center gap-x-2 gap-y-1 rounded-md border border-amber-400 bg-amber-400/10 px-3 py-2 text-left text-xs"
-                      : "flex flex-wrap items-center gap-x-2 gap-y-1 rounded-md border bg-background/50 px-3 py-2 text-left text-xs hover:bg-muted/50"
+                      ? "flex items-center rounded-md border border-foreground bg-muted/50"
+                      : "flex items-center rounded-md border bg-background/50 hover:bg-muted/50"
                   }
                 >
-                  <span className="font-semibold">Area {index + 1}</span>
-                  <span className="text-muted-foreground">
-                    {area.startTime.slice(0, 10)} to {area.endTime.slice(0, 10)}
-                  </span>
-                  <span>
-                    ${money(area.bottomPrice)}–${money(area.topPrice)}
-                  </span>
-                </button>
+                  <button
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => setSelectedAreaId(area.id)}
+                    className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2 text-left text-xs"
+                  >
+                    <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: color.solid }} aria-hidden="true" />
+                    <span className="font-semibold">Area {index + 1}</span>
+                    <span className="text-muted-foreground">
+                      {area.startTime.slice(0, 10)} to {area.endTime.slice(0, 10)}
+                    </span>
+                    <span>
+                      ${money(area.bottomPrice)}–${money(area.topPrice)}
+                    </span>
+                  </button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    title={`Delete Area ${index + 1}`}
+                    aria-label={`Delete Area ${index + 1}`}
+                    onClick={() => removeArea(area)}
+                    disabled={isDeleting}
+                    className="mr-1 h-8 w-8 shrink-0 text-muted-foreground hover:text-destructive"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
               );
             })}
           </div>
@@ -549,6 +588,7 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
             selectedAreaId={selectedAreaId}
             draftArea={draftArea}
             drawingEnabled={isDrawingArea}
+            drawingColorKey={drawingColorKey ?? DEFAULT_CHART_AREA_COLOR_KEY}
             onRectangleDrawn={reviewDrawnArea}
             onRectangleDrawingCancelled={cancelDrawingArea}
             onRectangleDrawingError={setRectangleError}

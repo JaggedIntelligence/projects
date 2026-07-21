@@ -4,6 +4,11 @@ import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 import type { CandleData, NightVision, NightVisionData, SplineData } from "night-vision";
 
+import {
+  CHART_AREA_COLORS,
+  DEFAULT_CHART_AREA_COLOR_KEY,
+  type ChartAreaColorKey
+} from "@/lib/chart-area-colors";
 import type { OhlcvBar } from "@/lib/mock-ohlcv";
 
 export type ChartRectangle = {
@@ -11,6 +16,7 @@ export type ChartRectangle = {
   endTime: string;
   topPrice: number;
   bottomPrice: number;
+  colorKey: ChartAreaColorKey;
 };
 
 export type ChartRectangleArea = ChartRectangle & {
@@ -37,6 +43,7 @@ prop('fillColor', { type: 'color', def: '#38bdf833' })
 prop('borderColor', { type: 'color', def: '#38bdf8cc' })
 prop('lineWidth', { type: 'number', def: 1 })
 prop('dashed', { type: 'boolean', def: false })
+prop('selected', { type: 'boolean', def: false })
 
 draw(ctx) {
     const data = $core.data
@@ -61,6 +68,12 @@ draw(ctx) {
     ctx.lineWidth = $props.lineWidth
     if ($props.dashed) ctx.setLineDash([6, 4])
     ctx.strokeRect(left, top, right - left, bottom - top)
+    if ($props.selected) {
+        ctx.strokeStyle = '#f8fafc'
+        ctx.lineWidth = 2
+        ctx.setLineDash([5, 4])
+        ctx.strokeRect(left - 2, top - 2, right - left + 4, bottom - top + 4)
+    }
     ctx.restore()
 }
 
@@ -261,7 +274,7 @@ function rectangleData(bars: OhlcvBar[], rectangle: ChartRectangle | null): Rect
     .map((bar) => [dateToUtcMs(bar.time), rectangle.topPrice, rectangle.bottomPrice]);
 }
 
-function normalizeDrawnRectangle(event: RectangleDrawEvent): ChartRectangle | null {
+function normalizeDrawnRectangle(event: RectangleDrawEvent, colorKey: ChartAreaColorKey): ChartRectangle | null {
   const { startTime, endTime, topPrice, bottomPrice } = event;
 
   if (![startTime, endTime, topPrice, bottomPrice].every(Number.isFinite)) return null;
@@ -271,7 +284,8 @@ function normalizeDrawnRectangle(event: RectangleDrawEvent): ChartRectangle | nu
     startTime: new Date(startTime).toISOString().slice(0, 10),
     endTime: new Date(endTime).toISOString().slice(0, 10),
     topPrice,
-    bottomPrice
+    bottomPrice,
+    colorKey
   };
 }
 
@@ -281,7 +295,8 @@ function buildNightVisionData(
   areas: ChartRectangleArea[],
   selectedAreaId: string | null,
   draftArea: ChartRectangle | null,
-  drawingEnabled: boolean
+  drawingEnabled: boolean,
+  drawingColorKey: ChartAreaColorKey
 ): NightVisionData {
   return {
     indexBased: true,
@@ -343,6 +358,7 @@ function buildNightVisionData(
             if (!boxData.length) return [];
 
             const isSelected = area.id === selectedAreaId;
+            const color = CHART_AREA_COLORS[area.colorKey] ?? CHART_AREA_COLORS[DEFAULT_CHART_AREA_COLOR_KEY];
 
             return [
               {
@@ -354,10 +370,11 @@ function buildNightVisionData(
                   zIndex: -1
                 },
                 props: {
-                  fillColor: isSelected ? "#f8c5372e" : "#38bdf833",
-                  borderColor: isSelected ? "#f8c537" : "#38bdf8cc",
+                  fillColor: color.fill,
+                  borderColor: color.border,
                   lineWidth: isSelected ? 2 : 1,
-                  dashed: false
+                  dashed: false,
+                  selected: isSelected
                 }
               }
             ];
@@ -373,10 +390,11 @@ function buildNightVisionData(
                     zIndex: 8
                   },
                   props: {
-                    fillColor: "#f8c5372e",
-                    borderColor: "#f8c537",
+                    fillColor: CHART_AREA_COLORS[draftArea.colorKey].fill,
+                    borderColor: CHART_AREA_COLORS[draftArea.colorKey].border,
                     lineWidth: 2,
-                    dashed: true
+                    dashed: true,
+                    selected: false
                   }
                 }
               ]
@@ -391,8 +409,8 @@ function buildNightVisionData(
             },
             props: {
               enabled: drawingEnabled,
-              fillColor: "#f8c5372e",
-              borderColor: "#f8c537"
+              fillColor: CHART_AREA_COLORS[drawingColorKey].fill,
+              borderColor: CHART_AREA_COLORS[drawingColorKey].border
             }
           }
         ]
@@ -408,6 +426,7 @@ export function NightVisionCandlestickChart({
   selectedAreaId = null,
   draftArea = null,
   drawingEnabled = false,
+  drawingColorKey = DEFAULT_CHART_AREA_COLOR_KEY,
   onRectangleDrawn,
   onRectangleDrawingCancelled,
   onRectangleDrawingError
@@ -418,6 +437,7 @@ export function NightVisionCandlestickChart({
   selectedAreaId?: string | null;
   draftArea?: ChartRectangle | null;
   drawingEnabled?: boolean;
+  drawingColorKey?: ChartAreaColorKey;
   onRectangleDrawn?: (rectangle: ChartRectangle) => void;
   onRectangleDrawingCancelled?: () => void;
   onRectangleDrawingError?: (message: string) => void;
@@ -425,11 +445,12 @@ export function NightVisionCandlestickChart({
   const reactId = useId();
   const chartId = useMemo(() => `nightvision-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`, [reactId]);
   const data = useMemo(
-    () => buildNightVisionData(bars, ticker, areas, selectedAreaId, draftArea, drawingEnabled),
-    [areas, bars, draftArea, drawingEnabled, selectedAreaId, ticker]
+    () => buildNightVisionData(bars, ticker, areas, selectedAreaId, draftArea, drawingEnabled, drawingColorKey),
+    [areas, bars, draftArea, drawingColorKey, drawingEnabled, selectedAreaId, ticker]
   );
   const dataRef = useRef(data);
   const chartRef = useRef<NightVision | null>(null);
+  const drawingColorKeyRef = useRef(drawingColorKey);
   const onRectangleDrawnRef = useRef(onRectangleDrawn);
   const onRectangleDrawingCancelledRef = useRef(onRectangleDrawingCancelled);
   const onRectangleDrawingErrorRef = useRef(onRectangleDrawingError);
@@ -437,6 +458,7 @@ export function NightVisionCandlestickChart({
   const [isReady, setIsReady] = useState(false);
   const hasBars = bars.length > 0;
 
+  drawingColorKeyRef.current = drawingColorKey;
   onRectangleDrawnRef.current = onRectangleDrawn;
   onRectangleDrawingCancelledRef.current = onRectangleDrawingCancelled;
   onRectangleDrawingErrorRef.current = onRectangleDrawingError;
@@ -487,7 +509,7 @@ export function NightVisionCandlestickChart({
         });
 
         chart.events.on(`${chartId}-rectangle-drawn:rectangle-drawn`, (drawEvent: RectangleDrawEvent) => {
-          const rectangle = normalizeDrawnRectangle(drawEvent);
+          const rectangle = normalizeDrawnRectangle(drawEvent, drawingColorKeyRef.current);
 
           if (rectangle) {
             onRectangleDrawnRef.current?.(rectangle);

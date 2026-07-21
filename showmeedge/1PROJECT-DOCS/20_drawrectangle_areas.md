@@ -35,18 +35,18 @@ Editing an existing rectangle is not included in the current version. A user del
 
 ## User Experience
 
-The chart panel contains three primary action buttons and a read-only draft summary:
+The chart panel presents the feature under the heading `Draw a Price Range area on Chart:` and contains a six-color drawing palette, save/cancel controls, and a read-only draft summary:
 
 | Control | Purpose |
 | --- | --- |
-| `Draw Area` | Arms drag mode so the user can draw an unsaved draft on the chart. |
+| Six color swatches | Clicking one swatch immediately arms drawing with that color. |
 | `Add Area` | Validates and saves a new rectangle. |
-| `Delete Area` | Deletes the currently selected rectangle. |
+| Row trash icon | Deletes the corresponding saved rectangle after confirmation. |
 | Draft summary | Displays the captured time and price boundaries without editable inputs. |
 
-Saved areas appear beneath the drawing controls. Clicking an item selects it. The selected area receives an amber highlight on the chart, while unselected areas use the standard translucent blue style.
+Saved areas appear beneath the drawing controls. Clicking an item selects it. Every area retains its saved palette color, and the selected area receives an additional white dashed outline.
 
-`Delete Area` remains disabled until an area is selected. Deletion requires confirmation before the database record is removed.
+Every saved-area row has its own accessible trash icon. The user does not need to select an area before deleting it, and deletion still requires confirmation.
 
 When the selected ticker changes, the panel clears the current selection and unsaved draft, then loads the saved areas belonging to the current user for the new ticker.
 
@@ -77,11 +77,13 @@ The implementation has three primary layers:
 | --- | --- |
 | `components/nvcharts/nightvision-market-chart-panel.tsx` | Rectangle draft/review state, area list, selection, create/delete mutations, query refresh, and visible-range validation. |
 | `components/nvcharts/nightvision-candlestick-chart.tsx` | NightVision chart lifecycle, saved/draft overlays, mouse interaction tool, event bridge, area-to-overlay conversion, and selected styling. |
+| `lib/chart-area-colors.ts` | Shared six-color keys, labels, and canvas/UI color values. |
 | `lib/chart-area-validators.ts` | Shared tRPC input schemas and cross-field validation rules. |
 | `server/api/routers/chart-areas.ts` | Private list, create, and delete operations. |
 | `server/api/root.ts` | Registers the router as `chartAreas`. |
 | `server/db/schema.ts` | Drizzle definition for `chart_rectangle_areas`. |
 | `drizzle/0002_plain_archangel.sql` | PostgreSQL migration for the rectangle-area table, index, and constraints. |
+| `drizzle/0003_lazy_may_parker.sql` | Adds the persisted color key, defaults existing rows to sky, and adds the palette constraint. |
 | `db/init.sql` | Base database initialization definition. |
 | `types/night-vision.d.ts` | Local NightVision typings for custom scripts and overlay data. |
 
@@ -95,6 +97,7 @@ type ChartRectangle = {
   endTime: string;
   topPrice: number;
   bottomPrice: number;
+  colorKey: "sky" | "amber" | "emerald" | "rose" | "violet" | "orange";
 };
 
 type ChartRectangleArea = ChartRectangle & {
@@ -110,16 +113,16 @@ The database-generated `id` is used for React identity, selection, rendering, an
 
 Drag drawing is an explicit interaction mode so normal chart navigation remains available when the tool is not armed.
 
-1. The user clicks `Draw Area`.
-2. The chart changes to a crosshair cursor.
+1. The user clicks one of the six color swatches.
+2. Drawing mode starts immediately, the selected swatch receives an active ring, and the chart changes to a crosshair cursor.
 3. Mouse down records the first candle time and price.
-4. Mouse movement renders a live translucent amber rectangle.
+4. Mouse movement renders a live translucent rectangle in the selected palette color.
 5. Mouse up records the second candle time and price.
 6. The drawing tool normalizes drag direction, snaps both time boundaries to real candles, and emits the four rectangle values to React.
-7. React exits drawing mode and renders an amber dashed review draft plus a read-only time/price summary.
+7. React exits drawing mode and renders a dashed review draft in the selected color plus a read-only time/price/color summary.
 8. `Add Area` validates and saves the draft. `Cancel Draft` clears it without calling the API.
 
-Pressing Escape, clicking `Cancel Drawing`, leaving the chart during an active gesture, or switching tickers cancels drawing without persistence. A drag smaller than four pixels in either dimension is rejected so an ordinary click does not create a draft.
+Pressing Escape, clicking the active swatch again, leaving the chart during an active gesture, or switching tickers cancels drawing without persistence. Clicking a different swatch changes the armed color. A drag smaller than four pixels in either dimension is rejected so an ordinary click does not create a draft.
 
 The interaction follows this state progression:
 
@@ -149,16 +152,16 @@ When the user selects an area:
 
 - The selected list item is highlighted.
 - The chart receives the same `selectedAreaId`.
-- The corresponding canvas overlay changes to the selected style.
-- The `Delete Area` button becomes available.
+- The corresponding canvas overlay gains the selected outline without losing its saved color.
 
 When deletion is confirmed:
 
-1. The panel calls `api.chartAreas.delete` with the rectangle ID.
-2. The server deletes only when both `id` and `ctx.userId` match.
-3. The client clears the selection.
-4. The list query is invalidated and reloaded.
-5. The deleted rectangle disappears from both the list and chart.
+1. The user clicks the trash icon on a specific row and confirms deletion.
+2. The panel calls `api.chartAreas.delete` with that rectangle ID.
+3. The server deletes only when both `id` and `ctx.userId` match.
+4. The client clears selection only if the deleted row was selected.
+5. The list query is invalidated and reloaded.
+6. The deleted rectangle disappears from both the list and chart.
 
 An ID alone is never sufficient authorization to delete a row.
 
@@ -186,8 +189,9 @@ While a drag is active, the tool locks chart scrolling/panning so one gesture ca
 
 | State | Appearance |
 | --- | --- |
-| Normal | Translucent blue fill with a one-pixel border. |
-| Selected | Amber fill/border with a two-pixel border. |
+| Normal | Translucent user-selected fill with its matching one-pixel border. |
+| Selected | The same saved color plus a thicker white dashed outer outline. |
+| Review draft | User-selected translucent fill with a dashed matching border. |
 
 The styling distinction is intentionally simple: selection is obvious, but the rectangle does not obscure candle bodies, wicks, or price movement.
 
@@ -230,6 +234,7 @@ Table: `chart_rectangle_areas`
 | `end_time` | Timestamp with time zone | Required. |
 | `top_price` | Numeric(24,8) | Required and positive. |
 | `bottom_price` | Numeric(24,8) | Required and positive. |
+| `color_key` | Text | Required; defaults to `sky` and must be one of the six palette keys. |
 | `created_at` | Timestamp with time zone | Creation audit timestamp. |
 | `updated_at` | Timestamp with time zone | Last-update audit timestamp. |
 
@@ -248,6 +253,7 @@ end_time >= start_time
 top_price > bottom_price
 top_price > 0
 bottom_price > 0
+color_key IN (sky, amber, emerald, rose, violet, orange)
 ```
 
 These constraints are the final protection against invalid data, even if another application or future code path writes to the table.
@@ -292,6 +298,7 @@ api.chartAreas.create.mutate({
   endTime: "2026-07-10T00:00:00.000Z",
   topPrice: 225,
   bottomPrice: 210,
+  colorKey: "violet",
 });
 ```
 
@@ -321,6 +328,7 @@ Before `Add Area` is submitted, the panel verifies:
 - Both prices are positive.
 - Top price is greater than bottom price.
 - The requested time interval overlaps at least one visible trading bar.
+- The draft color is one of the six supported palette keys.
 
 Client validation provides immediate feedback but is not a security boundary.
 
@@ -334,6 +342,7 @@ The shared schemas verify:
 - Price values are positive numbers.
 - End time is not before start time.
 - Top price is greater than bottom price.
+- Color is one of `sky`, `amber`, `emerald`, `rose`, `violet`, or `orange`.
 
 ### Database Validation
 
@@ -352,7 +361,7 @@ A failed create must not add a permanent local-only area. A failed delete must n
 
 ## Database Migration and Deployment
 
-The migration is stored in `drizzle/0002_plain_archangel.sql` and must be applied before deploying application code that calls the chart-area router.
+The base table migration is stored in `drizzle/0002_plain_archangel.sql`. Color persistence is added by `drizzle/0003_lazy_may_parker.sql`; both must be applied before deploying this version of the application.
 
 Recommended deployment order:
 
@@ -386,6 +395,8 @@ The migration should be applied through the project's normal migration command r
 - Selecting and deleting an area.
 - Reviewing a dragged rectangle as read-only text before saving.
 - Cancelling an unsaved draft without calling the create mutation.
+- Arming drawing from a color swatch and sending the selected color through the create mutation.
+- Deleting a specific area from its row-level trash icon.
 
 ### API Tests
 
@@ -394,6 +405,7 @@ The migration should be applied through the project's normal migration command r
 - Creating and listing areas with per-user isolation.
 - Preventing one user from deleting another user's area.
 - Rejecting invalid time and price ranges.
+- Persisting supported colors, defaulting omitted colors to sky, and rejecting unsupported keys.
 
 ## Test Database Safety
 
@@ -420,6 +432,9 @@ The feature is complete when all of the following are true:
 - User A cannot list or delete User B's rectangles, including for the same ticker.
 - Invalid time and price ranges are rejected before persistence.
 - Dragging creates a review draft and never persists until `Add Area` is clicked.
+- Clicking any palette swatch immediately arms drawing in that color.
+- Saved colors survive reloads and selection does not replace the rectangle color.
+- Each saved row has its own confirmed delete action; no global delete button is present.
 - Cancelling drawing or a review draft does not write to PostgreSQL.
 - Weekend and holiday boundaries remain aligned to real candles.
 - Chart interactions continue without recreating the NightVision instance for every area-state change.
@@ -429,9 +444,9 @@ The feature is complete when all of the following are true:
 The current scope is intentionally narrow:
 
 - Only the `1d` timeframe is supported.
-- Areas do not yet have names, notes, custom colors, or categories.
+- Areas do not yet have names, notes, arbitrary custom colors, or categories beyond the fixed six-color palette.
 - Existing areas cannot be resized or edited in place.
 - Drag drawing currently targets mouse/desktop interaction; touch-specific gestures are not yet supported.
 - Areas are private to one user and cannot be shared.
 
-Possible future additions include an update mutation, drag handles, labels and colors, soft deletion, intraday timeframe support, and explicitly authorized team sharing. Any sharing feature must introduce a separate authorization model rather than weakening the current `user_id` ownership filter.
+Possible future additions include an update mutation, drag handles, labels, arbitrary color selection, soft deletion, intraday timeframe support, and explicitly authorized team sharing. Any sharing feature must introduce a separate authorization model rather than weakening the current `user_id` ownership filter.

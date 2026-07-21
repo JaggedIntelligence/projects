@@ -57,6 +57,7 @@ export const chartRectangleAreas = pgTable(
     endTime: timestamp("end_time", { withTimezone: true }).notNull(),
     topPrice: numeric("top_price", { precision: 24, scale: 8 }).notNull(),
     bottomPrice: numeric("bottom_price", { precision: 24, scale: 8 }).notNull(),
+    colorKey: text("color_key").notNull().default("sky"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
@@ -71,7 +72,11 @@ export const chartRectangleAreas = pgTable(
     ),
     validTimeRange: check("chart_rectangle_areas_valid_time_range", sql`${table.endTime} >= ${table.startTime}`),
     validPriceRange: check("chart_rectangle_areas_valid_price_range", sql`${table.topPrice} > ${table.bottomPrice}`),
-    positivePrices: check("chart_rectangle_areas_positive_prices", sql`${table.topPrice} > 0 AND ${table.bottomPrice} > 0`)
+    positivePrices: check("chart_rectangle_areas_positive_prices", sql`${table.topPrice} > 0 AND ${table.bottomPrice} > 0`),
+    validColorKey: check(
+      "chart_rectangle_areas_valid_color_key",
+      sql`${table.colorKey} IN ('sky', 'amber', 'emerald', 'rose', 'violet', 'orange')`
+    )
   })
 );
 
