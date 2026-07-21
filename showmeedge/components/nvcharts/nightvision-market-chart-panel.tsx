@@ -32,6 +32,8 @@ type TrackedTrade = {
 type TrackedTradeRow = {
   close: number;
   date: string;
+  high: number;
+  low: number;
   maxDrawdownPercent: number;
   profitLossPercent: number;
   time: string;
@@ -157,6 +159,8 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
       return {
         close: bar.close,
         date: formatBarDate(bar.time),
+        high: bar.high,
+        low: bar.low,
         maxDrawdownPercent,
         profitLossPercent,
         time: bar.time
@@ -554,28 +558,46 @@ export function NightVisionMarketChartPanel({ symbols }: { symbols: ChartSymbol[
           </div>
         </div>
 
-        {trackedTrade ? (
+        {trackedTrade ? 
+        
+        /* 'Track Trade' table display  has  High Low values , so the LOW make it is easy to understand why 'Max DD' increased 
+        on the Day when "LOW of the day " badly contributed to 'Max DD'
+        */
+        (
           <div className="w-full overflow-x-auto rounded-md border lg:w-1/2">
             <div className="flex flex-wrap items-center gap-2 border-b bg-muted/30 px-3 py-2 text-xs">
-              <span className="font-medium">Trade Buy Price:</span>
+              <span className="font-medium">TRADE Buy Price:</span>
               <span className="font-semibold">${money(trackedTrade.buyPrice)}</span>
               <span className="text-muted-foreground">ON</span>
               <span className="font-semibold">{formatBarDate(trackedTrade.entryDate)}</span>
             </div>
-            <table className="w-full min-w-[440px] text-xs">
-              <thead className="bg-muted/20 text-left text-[11px] uppercase text-muted-foreground">
+            <table className="w-full min-w-[560px] text-xs">
+              <thead className="bg-violet-600 text-left text-[11px] uppercase text-white dark:bg-violet-700">
                 <tr>
-                  <th className="px-3 py-2 font-medium">Date</th>
-                  <th className="px-3 py-2 text-right font-medium">Close</th>
-                  <th className="px-3 py-2 text-right font-medium">P/L %</th>
-                  <th className="px-3 py-2 text-right font-medium">Max DD</th>
+                  <th className="px-3 py-2 font-bold">Date</th>
+                  <th className="px-3 py-2 text-right font-bold">Close</th>
+                  <th className="px-3 py-2 text-right font-bold">High</th>
+                  <th className="px-3 py-2 text-right font-bold">Low</th>
+                  <th className="px-3 py-2 text-right font-bold">P/L %</th>
+                  <th className="px-3 py-2 text-right font-bold">Max DD</th>
                 </tr>
               </thead>
               <tbody>
                 {trackedTradeRows.map((row) => (
-                  <tr key={row.time} className="border-t">
+                  <tr
+                    key={row.time}
+                    className={
+                      row.date.startsWith("Monday ")
+                        ? "border-t bg-emerald-100 dark:bg-emerald-950/50"
+                        : row.date.startsWith("Wednesday ")
+                          ? "border-t bg-slate-200 dark:bg-slate-800/70"
+                          : "border-t"
+                    }
+                  >
                     <td className="px-3 py-2 font-medium">{row.date}</td>
                     <td className="px-3 py-2 text-right">${money(row.close)}</td>
+                    <td className="px-3 py-2 text-right">${money(row.high)}</td>
+                    <td className="px-3 py-2 text-right">${money(row.low)}</td>
                     <td
                       className={
                         row.profitLossPercent > 0

@@ -217,15 +217,22 @@ describe("NightVisionMarketChartPanel", () => {
     fireEvent.click(screen.getByRole("button", { name: "Add one visible day" }));
 
     expect(screen.getByLabelText("Buy price")).toHaveValue(106);
+    expect(screen.getAllByRole("columnheader").map((header) => header.textContent)).toEqual(["Date", "Close", "High", "Low", "P/L %", "Max DD"]);
+    expect(screen.getByRole("columnheader", { name: "Date" })).toHaveClass("font-bold");
+    expect(screen.getByRole("columnheader", { name: "Date" }).closest("thead")).toHaveClass("bg-violet-600", "text-white");
     expect(screen.getByRole("cell", { name: "Tuesday JAN 6" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "$106.00" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "$107.00" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "$103.00" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "+1.4%" })).toHaveClass("text-emerald-600");
     expect(screen.getByRole("cell", { name: "-1.4%" })).toHaveClass("text-rose-600");
 
     fireEvent.click(screen.getByRole("button", { name: "Add one visible day" }));
 
     expect(screen.getByLabelText("Buy price")).toHaveValue(107);
-    expect(screen.getByRole("cell", { name: "Wednesday JAN 7" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "Wednesday JAN 7" }).closest("tr")).toHaveClass("bg-slate-200");
+    expect(screen.getByRole("cell", { name: "$108.00" })).toBeInTheDocument();
+    expect(screen.getByRole("cell", { name: "$104.00" })).toBeInTheDocument();
     expect(screen.getByRole("cell", { name: "+2.4%" })).toHaveClass("text-emerald-600");
     expect(screen.getAllByRole("cell", { name: "-1.4%" })).toHaveLength(2);
 
@@ -240,6 +247,19 @@ describe("NightVisionMarketChartPanel", () => {
     expect(screen.getAllByText("$106.00")).toHaveLength(2);
     expect(screen.getAllByText("Tuesday JAN 6")).toHaveLength(2);
     expect(screen.queryByRole("cell", { name: "+1.4%" })).not.toBeInTheDocument();
+  });
+
+  it("highlights Monday trade rows in green", () => {
+    renderComponent(<NightVisionMarketChartPanel symbols={[{ id: "aapl", ticker: "AAPL", name: "Apple Inc." }]} />);
+
+    fireEvent.change(screen.getByLabelText("Days go back"), {
+      target: { value: "6" }
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Update" }));
+    fireEvent.click(screen.getByRole("button", { name: "Track Trade" }));
+    fireEvent.click(screen.getByRole("button", { name: "Add one visible day" }));
+
+    expect(screen.getByRole("cell", { name: "Monday JAN 5" }).closest("tr")).toHaveClass("bg-emerald-100");
   });
 
   it("clamps days go back so at least one bar remains visible", () => {
