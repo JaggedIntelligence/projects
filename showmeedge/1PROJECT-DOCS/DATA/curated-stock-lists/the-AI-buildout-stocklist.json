@@ -1,0 +1,355 @@
+[
+  {
+    "category": "Semiconductors",
+    "_comment":  {
+        "source" :" The Travelling Trader",
+        "article_title" : "THE AI BOOM BLUEPRINT \n The Hottest Stocks to Watch to Capitalize Off theNext Big Move",
+        "article_header1" : "A comprehensive guide to the infrastructure, energy, and software layers driving the artificial intelligence (AI) revolution. ",
+        "article_header2" : "Artificial Intelligence is not just a software trend; it is a physical, massive-scale industrial buildout. To understand where the money is flowing, we must look beyond the models themselves and into the shovels and pickaxes: the semiconductors, the power grid, the specialized data centers, and the networking hardware that makes it all possible.",
+        "article_url" : "https://assets.cdn.filesafe.space/DM5xdMrN3nxopLwiEUQY/media/6a033ea882125b987472f962.pdf",
+        "pdf_to_json" : "extraction work done by Gemini AI"
+    },
+    "stocks": [
+      {
+        "ticker": "$NVDA",
+        "company": "NVIDIA Corp",
+        "why_its_essential_for_ai": "The 'Gold Standard' for AI GPUs; provides the essential compute power for training LLMs."
+      },
+      {
+        "ticker": "$AMD",
+        "company": "Advanced Micro Devices",
+        "why_its_essential_for_ai": "Leading challenger to NVIDIA with its MI300 accelerators, essential for supply chain diversity."
+      },
+      {
+        "ticker": "$INTC",
+        "company": "Intel Corp",
+        "why_its_essential_for_ai": "Scaling its Gaudi AI chips and building out massive domestic foundry capacity."
+      },
+      {
+        "ticker": "$ASML",
+        "company": "ASML Holding",
+        "why_its_essential_for_ai": "Monopoly on the EUV lithography machines required to manufacture the world's most advanced AI chips."
+      },
+      {
+        "ticker": "$TSM",
+        "company": "Taiwan Semiconductor Holdings",
+        "why_its_essential_for_ai": "The world's premier foundry; manufactures nearly every high-end AI chip for NVDA, AMD, and Apple."
+      },
+      {
+        "ticker": "$ARM",
+        "company": "Arm",
+        "why_its_essential_for_ai": "Designs the power-efficient processor architectures that power edge AI and modern data center CPUs."
+      },
+      {
+        "ticker": "$AVGO",
+        "company": "Broadcom Inc",
+        "why_its_essential_for_ai": "Leader in networking silicon and custom AI ASICs for hyperscalers like Google and Meta."
+      },
+      {
+        "ticker": "$MRVL",
+        "company": "Marvell Technology",
+        "why_its_essential_for_ai": "Specializes in high-speed data movement and optical DSPs critical for scaling AI clusters."
+      },
+      {
+        "ticker": "$QCOM",
+        "company": "Qualcomm Inc",
+        "why_its_essential_for_ai": "Dominates the 'Edge AI' market, bringing generative AI capabilities to mobile devices and PCs."
+      },
+      {
+        "ticker": "$TXN",
+        "company": "Texas Instruments",
+        "why_its_essential_for_ai": "Provides the analog and power management chips essential for the massive electrical needs of AI racks."
+      }
+    ]
+  },
+  {
+    "category": "Memory & Storage",
+    "stocks": [
+      {
+        "ticker": "$MU",
+        "company": "Micron Technology",
+        "why_its_essential_for_ai": "Top provider of High Bandwidth Memory (HBM3e) which is critical for feeding data to AI GPUs."
+      },
+      {
+        "ticker": "$STX",
+        "company": "Seagate Technology",
+        "why_its_essential_for_ai": "Leading provider of high-capacity mass storage for the 'Data Lakes' that train AI models."
+      },
+      {
+        "ticker": "$WDC",
+        "company": "Western Digital",
+        "why_its_essential_for_ai": "Dual-threat in NAND Flash and Hard Drives; essential for the long-term storage of AI-generated content."
+      },
+      {
+        "ticker": "$SNDK",
+        "company": "SanDisk",
+        "why_its_essential_for_ai": "The premium flash storage brand (owned by WDC), foundational for fast data access in edge and mobile AI."
+      }
+    ]
+  },
+  {
+    "category": "Networking & Photonics",
+    "stocks": [
+      {
+        "ticker": "$ANET",
+        "company": "Arista Networks",
+        "why_its_essential_for_ai": "Industry leader in high-performance Ethernet switching for AI-scale data centers."
+      },
+      {
+        "ticker": "$CSCO",
+        "company": "Cisco Systems",
+        "why_its_essential_for_ai": "Building the security and networking backbone for enterprise-wide AI adoption."
+      },
+      {
+        "ticker": "$NOK",
+        "company": "Nokia",
+        "why_its_essential_for_ai": "Key player in optical transport and 5G infrastructure required for remote AI processing."
+      },
+      {
+        "ticker": "$LITE",
+        "company": "Lumentum Holdings",
+        "why_its_essential_for_ai": "Manufactures optical components that enable laser-speed data transfer between AI servers."
+      },
+      {
+        "ticker": "$COHR",
+        "company": "Coherent Corp",
+        "why_its_essential_for_ai": "Provides high-end lasers and materials for the transceivers that connect GPU clusters."
+      },
+      {
+        "ticker": "$AAOI",
+        "company": "Applied Optoelectronics",
+        "why_its_essential_for_ai": "Focuses on cost-effective fiber optic components for high-speed data center links."
+      },
+      {
+        "ticker": "$GLW",
+        "company": "Corning Inc",
+        "why_its_essential_for_ai": "The glass and fiber giant providing the physical cabling for the global AI buildout."
+      },
+      {
+        "ticker": "$CIEN",
+        "company": "Ciena Corp",
+        "why_its_essential_for_ai": "Experts in optical networking systems that handle the surge in data traffic caused by GenAI."
+      }
+    ]
+  },
+  {
+    "category": "Data Centers & Neoclouds",
+    "stocks": [
+      {
+        "ticker": "$NBIS",
+        "company": "Nebius Group",
+        "why_its_essential_for_ai": "A specialized 'Neocloud' provider focused exclusively on GPU-as-a-Service for AI startups."
+      },
+      {
+        "ticker": "$IREN",
+        "company": "Iris Energy",
+        "why_its_essential_for_ai": "Pivoting from mining to AI data centers, using proprietary cooling and renewable power sites."
+      },
+      {
+        "ticker": "$CRWV",
+        "company": "CoreWeave",
+        "why_its_essential_for_ai": "The leading specialized cloud provider offering massive-scale NVIDIA GPU clusters."
+      },
+      {
+        "ticker": "$CIFR",
+        "company": "Cipher Mining",
+        "why_its_essential_for_ai": "Developing large-scale data center infrastructure with a focus on low-cost compute energy."
+      },
+      {
+        "ticker": "$WULF",
+        "company": "TeraWulf",
+        "why_its_essential_for_ai": "Focused on 'Net Zero' data center infrastructure, providing carbon-free compute for AI training."
+      }
+    ]
+  },
+  {
+    "category": "Power & Energy",
+    "stocks": [
+      {
+        "ticker": "$CEG",
+        "company": "Constellation Energy",
+        "why_its_essential_for_ai": "Largest operator of nuclear plants in the US, providing 24/7 carbon-free power to big tech."
+      },
+      {
+        "ticker": "$BE",
+        "company": "Bloom Energy",
+        "why_its_essential_for_ai": "Provides hydrogen/gas fuel cells for reliable, on-site 'behind the meter' power for data centers."
+      },
+      {
+        "ticker": "$VRT",
+        "company": "Vertiv Holdings",
+        "why_its_essential_for_ai": "The leader in liquid cooling and power infrastructure for high-density AI server racks."
+      },
+      {
+        "ticker": "$NVTS",
+        "company": "Navitas Semiconductor",
+        "why_its_essential_for_ai": "Specializes in GaN power chips that make AI power supplies smaller and much more efficient."
+      },
+      {
+        "ticker": "$OKLO",
+        "company": "Oklo Inc",
+        "why_its_essential_for_ai": "Advanced fission startup building Small Modular Reactors (SMRs) to power AI directly."
+      },
+      {
+        "ticker": "$UUUU",
+        "company": "Energy Fuels",
+        "why_its_essential_for_ai": "Critical uranium and rare earth producer essential for the US nuclear power renaissance."
+      },
+      {
+        "ticker": "$GEV",
+        "company": "GE Vernova",
+        "why_its_essential_for_ai": "The spin-off giant providing the heavy turbines and grid equipment for the AI energy surge."
+      },
+      {
+        "ticker": "$LEU",
+        "company": "Centrus Energy",
+        "why_its_essential_for_ai": "A key domestic supplier of enriched uranium fuel for the next generation of SMRs."
+      },
+      {
+        "ticker": "$EOSE",
+        "company": "Eos Energy Enterprises",
+        "why_its_essential_for_ai": "Zinc-based long-duration energy storage to stabilize the grid as AI demand spikes."
+      },
+      {
+        "ticker": "$SMR",
+        "company": "NuScale Power",
+        "why_its_essential_for_ai": "Leading developer of SMR technology, aiming to provide dedicated power to industrial AI hubs."
+      },
+      {
+        "ticker": "$ETN",
+        "company": "Eaton Corp",
+        "why_its_essential_for_ai": "The infrastructure play providing the transformers and switchgear needed to upgrade the grid."
+      }
+    ]
+  },
+  {
+    "category": "Applications & Software",
+    "stocks": [
+      {
+        "ticker": "$PLTR",
+        "company": "Palantir Technologies",
+        "why_its_essential_for_ai": "Its AIP platform is the 'Operating System' for modern enterprise and defense AI."
+      },
+      {
+        "ticker": "$NOW",
+        "company": "ServiceNow",
+        "why_its_essential_for_ai": "Integrating GenAI into workflows to automate enterprise IT and customer service."
+      },
+      {
+        "ticker": "$PANW",
+        "company": "Palo Alto Networks",
+        "why_its_essential_for_ai": "Using AI to revolutionize cybersecurity through automated threat detection and 'platformization'."
+      },
+      {
+        "ticker": "$CRWD",
+        "company": "CrowdStrike",
+        "why_its_essential_for_ai": "The AI-native leader in endpoint security, stopping breaches with its Falcon platform."
+      },
+      {
+        "ticker": "$IGV",
+        "company": "iShares Software ETF",
+        "why_its_essential_for_ai": "A diversified way to play the entire software layer that will monetize the AI buildout."
+      }
+    ]
+  },
+  {
+    "category": "Ancillary: Robotics & Drones",
+    "stocks": [
+      {
+        "ticker": "$TSLA",
+        "company": "Tesla Inc",
+        "why_its_essential_for_ai": "Developing the Optimus humanoid robot and the 'FSD' AI chip for autonomous systems."
+      },
+      {
+        "ticker": "$PATH",
+        "company": "UiPath",
+        "why_its_essential_for_ai": "The leader in Robotic Process Automation (RPA), automating business tasks with software bots."
+      },
+      {
+        "ticker": "$AMZN",
+        "company": "Amazon",
+        "why_its_essential_for_ai": "World leader in warehouse robotics; using AI to optimize global logistics and AWS cloud."
+      },
+      {
+        "ticker": "$KTOS",
+        "company": "Kratos Defense",
+        "why_its_essential_for_ai": "Builds high-performance tactical drones and unmanned systems for AI-driven warfare."
+      },
+      {
+        "ticker": "$ONDS",
+        "company": "Ondas Holdings",
+        "why_its_essential_for_ai": "Provides 'drone-in-a-box' autonomous solutions for industrial and security monitoring."
+      },
+      {
+        "ticker": "$LMT",
+        "company": "Lockheed Martin",
+        "why_its_essential_for_ai": "Integrating advanced AI into stealth drones and next-gen defense systems."
+      },
+      {
+        "ticker": "$AVAV",
+        "company": "AeroVironment",
+        "why_its_essential_for_ai": "Leading provider of tactical UAS (unmanned aircraft systems) for intelligence and precision strikes."
+      },
+      {
+        "ticker": "$UMAC",
+        "company": "Unusual Machines",
+        "why_its_essential_for_ai": "Supplies U.S.-made drone components and FPV technology for the expanding drone ecosystem."
+      }
+    ]
+  },
+  {
+    "category": "Ancillary: Space & Materials",
+    "stocks": [
+      {
+        "ticker": "$FCX",
+        "company": "Freeport-McMoRan",
+        "why_its_essential_for_ai": "The copper giant; AI data centers and grid upgrades require massive amounts of copper."
+      },
+      {
+        "ticker": "$ASTS",
+        "company": "AST SpaceMobile",
+        "why_its_essential_for_ai": "Building the first space-based cellular broadband network for global AI connectivity."
+      },
+      {
+        "ticker": "$FLY",
+        "company": "Firefly Aerospace",
+        "why_its_essential_for_ai": "Provides launch services and lunar landers, critical for the new space infrastructure."
+      },
+      {
+        "ticker": "$RKLB",
+        "company": "Rocket Lab",
+        "why_its_essential_for_ai": "A top competitor to SpaceX, providing satellite hardware and reliable launch for space assets."
+      },
+      {
+        "ticker": "$PL",
+        "company": "Planet Labs",
+        "why_its_essential_for_ai": "Uses a constellation of satellites to provide daily Earth data for AI-driven analytics."
+      },
+      {
+        "ticker": "$LUNR",
+        "company": "Intuitive Machines",
+        "why_its_essential_for_ai": "Building the infrastructure for the lunar economy, including communications and landing."
+      },
+      {
+        "ticker": "$BKSY",
+        "company": "BlackSky Technology",
+        "why_its_essential_for_ai": "Specializes in high-frequency satellite imaging and real-time AI intelligence."
+      },
+      {
+        "ticker": "$USAR",
+        "company": "USA Rare Earth",
+        "why_its_essential_for_ai": "Developing a domestic supply chain for the magnets essential to AI robotics motors."
+      },
+      {
+        "ticker": "$MP",
+        "company": "MP Materials",
+        "why_its_essential_for_ai": "The only scaled producer of rare earth materials in the Western Hemisphere."
+      },
+      {
+        "ticker": "$AA",
+        "company": "Alcoa Corp",
+        "why_its_essential_for_ai": "Provides the aluminum required for structural data center components and transmission lines."
+      }
+    ]
+  }
+]
