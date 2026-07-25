@@ -30,8 +30,9 @@ if [ "$current_epoch" -gt "$end_epoch" ]; then
 fi
 
 while [ "$current_epoch" -le "$end_epoch" ]; do
-    format_date "$current_epoch" || exit 1
-    echo "today date is $formatted_date"
+    formatted_date=$(format_date "$current_epoch") || exit 1
+    final_date=$(printf '%s' "$formatted_date" | tr -d '\r\n')
+    echo "$final_date"
     next_epoch=$((current_epoch + 86400))
 
     if [ "$next_epoch" -le "$current_epoch" ]; then
