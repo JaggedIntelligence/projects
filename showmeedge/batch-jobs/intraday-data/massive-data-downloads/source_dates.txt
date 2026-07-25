@@ -1,9 +1,3 @@
-[s3massive]
-type = s3
-env_auth = false
-access_key_id = e754da0f-31d9-4e10-82c3-d76094190342
-secret_access_key = lZFbR15FKx1HOiNqlVUbiagM0hPOog5K
-endpoint = https://files.massive.com
 2021/08/2021-08-01
 2021/08/2021-08-02
 2021/08/2021-08-03
