@@ -7,6 +7,17 @@ Source page:
 - <https://en.wikipedia.org/wiki/Russell_1000_Index>
 - HTML table selector: `table#constituents`
 
+## SR NOte:
+
+In the United States, the top 3,000 stocks (those of the 3,000 largest companies) make up the broad-market Russell 3000 Index. 
+
+The top 1,000 of those companies make up the large-cap Russell 1000 Index, 
+
+and the bottom 2,000 (the smallest companies) make up the small-cap Russell 2000 Index.
+
+- SO we go with 1000 Russell list, that covers major companies
+- when I checked the last RUSSELL 1000 company has a Market Cap of $2 Billions ..; that is good enough list for SR Intraday pruposes.
+
 ## Requirements
 
 - Node.js
