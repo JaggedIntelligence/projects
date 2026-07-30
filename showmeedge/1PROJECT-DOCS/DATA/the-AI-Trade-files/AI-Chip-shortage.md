@@ -5,9 +5,11 @@
 Source
 https://x.com/tengyanAI/status/2061250957619736592
 
-Dated :  JUNE 1st 
+Dated :  MAY 31st
 SR NOte: see How prices chaged from JUNE 1st
  - seems Micron MU is 960 on June 1st
+
+ That was  May 31st  Story ,  when Micron was 940 , then raised to 1200 , now back to  740  on  JULY 30th -- all in 2 months period.
 
  **TODAY is on JULY 30** , Micron dropped to $830? on AI-trade-wind-down due to Korea KOSPI crash , hence SK hynix Crash, which is imported to  'all US AI-trade players'
 
