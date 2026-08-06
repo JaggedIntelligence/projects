@@ -1,0 +1,13 @@
+[project]
+name = "yahoofinance-options-data"
+version = "0.1.0"
+description = "yahoo fin options data"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "yfinance==1.5.2",
+]
+
+[tool.uv]
+package = false
+python-preference = "only-managed"
+required-version = "==0.11.30"
