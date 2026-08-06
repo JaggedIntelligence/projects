@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-"""Get MSFT revenue, net income, and EPS from historical 10-Q filings."""
+"""Get quarterly and annual MSFT revenue, net income, and diluted EPS."""
 
-import re
+from collections import Counter
+
 import pandas as pd
 
 from edgar import Company, set_identity
@@ -10,168 +11,227 @@ from edgar.xbrl import XBRLS
 
 
 TICKER = "MSFT"
+MAX_QUARTERLY_PERIODS = 100
+MAX_ANNUAL_PERIODS = 100
 
 set_identity("srview9@gmail.com")
 
+
+METRICS = {
+    "Revenue": {
+        "standard_concepts": ["Revenue"],
+        "concept_suffixes": [
+            "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "SalesRevenueNet",
+            "Revenues",
+        ],
+    },
+    "Net Income": {
+        "standard_concepts": ["NetIncome"],
+        "concept_suffixes": ["NetIncomeLoss"],
+    },
+    "Diluted EPS": {
+        "standard_concepts": ["EarningsPerShareDiluted"],
+        "concept_suffixes": ["EarningsPerShareDiluted"],
+    },
+}
+
+
+def period_columns(statement):
+    """Return the DataFrame column name and metadata for each XBRL period."""
+    periods = statement.statement_data["periods"]
+    end_dates = [period_id[-10:] for period_id, _ in periods]
+    end_date_counts = Counter(end_dates)
+
+    return [
+        {
+            "end_date": end_date,
+            "label": label,
+            "column": end_date if end_date_counts[end_date] == 1 else label,
+        }
+        for (period_id, label), end_date in zip(periods, end_dates)
+    ]
+
+
+def select_metric_rows(statement_df, value_columns):
+    """Select one well-populated XBRL row for each requested metric."""
+    selected_rows = {}
+
+    concepts = statement_df["concept"].fillna("").astype(str)
+    standard_concepts = statement_df["standard_concept"].fillna("").astype(str)
+
+    for metric_name, mapping in METRICS.items():
+        standard_match = standard_concepts.isin(mapping["standard_concepts"])
+        concept_match = concepts.str.endswith(tuple(mapping["concept_suffixes"]))
+        candidates = statement_df[standard_match | concept_match].copy()
+
+        if candidates.empty:
+            continue
+
+        candidates["_period_count"] = candidates[value_columns].notna().sum(axis=1)
+        selected_rows[metric_name] = candidates.sort_values(
+            "_period_count",
+            ascending=False,
+        ).iloc[0]
+
+    return selected_rows
+
+
+def filing_metadata(xbrls):
+    """Index fiscal-year metadata by each filing's document period end."""
+    metadata = {}
+
+    for xbrl in xbrls.xbrl_list:
+        entity_info = xbrl.entity_info
+        period_end = entity_info.get("document_period_end_date")
+        fiscal_year = entity_info.get("fiscal_year")
+        fiscal_period = entity_info.get("fiscal_period")
+
+        if period_end and fiscal_year and fiscal_period:
+            metadata[str(period_end)] = {
+                "Fiscal Year": int(fiscal_year),
+                "Quarter": fiscal_period,
+            }
+
+    return metadata
+
+
+def statement_records(statement, xbrls, wanted_periods):
+    """Convert selected statement periods into one record per fiscal period."""
+    statement_df = statement.to_dataframe()
+    periods = period_columns(statement)
+    value_columns = [period["column"] for period in periods]
+    metric_rows = select_metric_rows(statement_df, value_columns)
+    metadata = filing_metadata(xbrls)
+    records = []
+
+    for period in periods:
+        fiscal = metadata.get(period["end_date"])
+        if fiscal is None:
+            continue
+
+        period_name = period["label"].split()[0]
+        if period_name not in wanted_periods:
+            continue
+
+        # Q2 and Q3 filings contain both a discrete quarter and a YTD period.
+        if "YTD" in period["label"]:
+            continue
+
+        record = {
+            "Fiscal Year": fiscal["Fiscal Year"],
+            "Quarter": period_name,
+            "Period End": pd.to_datetime(period["end_date"]),
+        }
+
+        for metric_name, row in metric_rows.items():
+            record[metric_name] = row[period["column"]]
+
+        records.append(record)
+
+    return records
+
+
 company = Company(TICKER)
 
-
-# ---------------------------------------------------------
-# Get all original XBRL 10-Q filings
-# ---------------------------------------------------------
-filings = company.get_filings(
+quarterly_filings = company.get_filings(
     form="10-Q",
     amendments=False,
     is_xbrl=True,
 )
 
-if filings is None or len(filings) == 0:
-    raise RuntimeError(f"No 10-Q XBRL filings found for {TICKER}")
-
-
-# ---------------------------------------------------------
-# Stitch all quarterly filings
-# ---------------------------------------------------------
-xbrls = XBRLS.from_filings(filings)
-
-income_statement = xbrls.statements.income_statement(
-    max_periods=100,
+annual_filings = company.get_filings(
+    form="10-K",
+    amendments=False,
+    is_xbrl=True,
 )
 
-income_df = income_statement.to_dataframe()
+quarterly_xbrls = XBRLS.from_filings(quarterly_filings)
+annual_xbrls = XBRLS.from_filings(annual_filings)
 
-print("\nFULL QUARTERLY INCOME STATEMENT")
-print(income_df.to_string(index=False))
-
-
-# ---------------------------------------------------------
-# Identify period columns such as 2025-09-30
-# ---------------------------------------------------------
-period_columns = [
-    column
-    for column in income_df.columns
-    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(column))
-]
-
-if not period_columns:
-    raise RuntimeError(
-        "No quarterly date columns were found.\n"
-        f"Available columns: {income_df.columns.tolist()}"
-    )
-
-
-# ---------------------------------------------------------
-# Metrics to extract
-# ---------------------------------------------------------
-metric_names = {
-    "Revenue": "Revenue",
-    "NetIncome": "Net Income",
-    "EarningsPerShareDiluted": "Diluted EPS",
-}
-
-selected = income_df[
-    income_df["standard_concept"].isin(metric_names.keys())
-].copy()
-
-if selected.empty:
-    print("\nAvailable standardized concepts:")
-    print(
-        income_df[
-            ["label", "concept", "standard_concept"]
-        ].to_string(index=False)
-    )
-
-    raise RuntimeError(
-        "Revenue, net income, or diluted EPS concepts were not found."
-    )
-
-
-# A company may have multiple rows mapped to the same standardized
-# concept. Keep the row with the greatest historical coverage.
-selected["_period_count"] = (
-    selected[period_columns]
-    .notna()
-    .sum(axis=1)
+quarterly_statement = quarterly_xbrls.statements.income_statement(
+    max_periods=MAX_QUARTERLY_PERIODS,
+    include_quarterly=True,
 )
 
-selected = (
-    selected
-    .sort_values("_period_count", ascending=False)
-    .drop_duplicates(subset="standard_concept")
+annual_statement = annual_xbrls.statements.income_statement(
+    max_periods=MAX_ANNUAL_PERIODS,
 )
 
 
-# ---------------------------------------------------------
-# Convert metrics from rows to columns
-# ---------------------------------------------------------
-quarterly_df = (
-    selected
-    .set_index("standard_concept")[period_columns]
-    .transpose()
-    .rename(columns=metric_names)
-    .reset_index(names="Period End")
+# Reported fiscal Q1-Q3 values from 10-Q filings.
+quarterly_records = statement_records(
+    quarterly_statement,
+    quarterly_xbrls,
+    {"Q1", "Q2", "Q3"},
 )
 
-quarterly_df["Period End"] = pd.to_datetime(
-    quarterly_df["Period End"],
-    errors="coerce",
+
+# Reported fiscal-year values from 10-K filings.
+annual_records = statement_records(
+    annual_statement,
+    annual_xbrls,
+    {"FY"},
 )
 
+annual_df = pd.DataFrame(annual_records).drop(columns="Quarter")
+annual_df["Source"] = "10-K"
+annual_df = annual_df.sort_values("Fiscal Year").reset_index(drop=True)
+
+
+quarters_by_year = {}
+
+for record in quarterly_records:
+    quarters_by_year.setdefault(record["Fiscal Year"], []).append(record)
+
+for annual_record in annual_records:
+    fiscal_year = annual_record["Fiscal Year"]
+    first_three_quarters = quarters_by_year.get(fiscal_year, [])
+    if {row["Quarter"] for row in first_three_quarters} != {"Q1", "Q2", "Q3"}:
+        continue
+
+    q4_record = {
+        "Fiscal Year": fiscal_year,
+        "Quarter": "Q4",
+        "Period End": annual_record["Period End"],
+    }
+
+    for metric_name in ["Revenue", "Net Income"]:
+        if metric_name in annual_record:
+            q4_record[metric_name] = annual_record[metric_name] - sum(
+                quarter.get(metric_name, 0)
+                for quarter in first_three_quarters
+            )
+
+    q4_record["Source"] = "10-K derived"
+
+    quarterly_records.append(q4_record)
+
+
+quarterly_df = pd.DataFrame(quarterly_records)
+quarterly_df["Source"] = quarterly_df.get("Source", "10-Q").fillna("10-Q")
+quarterly_df["_quarter_number"] = quarterly_df["Quarter"].str.removeprefix("Q").astype(int)
 quarterly_df = (
     quarterly_df
-    .sort_values("Period End")
+    .sort_values(["Fiscal Year", "_quarter_number"])
+    .drop(columns="_quarter_number")
     .reset_index(drop=True)
 )
 
-quarterly_df.insert(
-    0,
-    "Year",
-    quarterly_df["Period End"].dt.year,
-)
 
-quarterly_df.insert(
-    1,
-    "Quarter",
-    quarterly_df["Period End"].dt.quarter.map(
-        lambda quarter: f"Q{quarter}"
-    ),
-)
-
-
-# ---------------------------------------------------------
-# Raw values DataFrame
-# ---------------------------------------------------------
-print("\nQUARTERLY RAW VALUES")
+print("\nQUARTERLY REVENUE, NET INCOME, AND DILUTED EPS")
 print(quarterly_df.to_string(index=False))
 
-
-# ---------------------------------------------------------
-# Display revenue/net income in millions
-# ---------------------------------------------------------
-display_df = quarterly_df.copy()
-
-for column in ["Revenue", "Net Income"]:
-    if column in display_df.columns:
-        display_df[column] = (
-            pd.to_numeric(display_df[column], errors="coerce")
-            / 1_000_000
-        )
-
-display_df = display_df.rename(
-    columns={
-        "Revenue": "Revenue ($ millions)",
-        "Net Income": "Net Income ($ millions)",
-    }
-)
-
-print("\nQUARTERLY REVENUE, NET INCOME, AND EPS")
-print(display_df.to_string(index=False))
+print("\nANNUAL REVENUE, NET INCOME, AND DILUTED EPS")
+print(annual_df.to_string(index=False))
 
 
-# Save to CSV
 quarterly_df.to_csv(
     f"{TICKER.lower()}_quarterly_revenue_netincome_eps.csv",
     index=False,
 )
 
-
+annual_df.to_csv(
+    f"{TICKER.lower()}_annual_revenue_netincome_eps.csv",
+    index=False,
+)
