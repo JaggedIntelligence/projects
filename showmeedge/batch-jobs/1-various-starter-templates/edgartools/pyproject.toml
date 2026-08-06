@@ -5,6 +5,7 @@ description = "Restartable Massive Benzinga analyst-ratings collector"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "edgartools==5.45.1",
+  "yfinance==1.5.2",
 ]
 
 [tool.uv]

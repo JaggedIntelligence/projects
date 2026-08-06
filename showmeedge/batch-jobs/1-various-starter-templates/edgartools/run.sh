@@ -12,4 +12,4 @@ fi
 exec uv run \
   --project "$JOB_DIR" \
   --locked \
-  python "$JOB_DIR/financials.py" "$@"
+  python "$JOB_DIR/yfinoptions.py" "$@"
