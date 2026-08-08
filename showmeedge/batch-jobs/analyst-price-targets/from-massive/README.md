@@ -57,6 +57,10 @@ bash batch-jobs/analyst-price-targets/from-massive/run.sh --max-symbols 20
 
 # Full available history for the current S&P 500 universe
 bash batch-jobs/analyst-price-targets/from-massive/run.sh
+
+# to run for all sp500 universe
+bash batch-jobs/analyst-price-targets/from-massive/run.sh --universe sp500_current
+
 ```
 
 `run.sh` always uses `uv run --locked`. It refuses an outdated lockfile and uses only a uv-managed Python interpreter.
