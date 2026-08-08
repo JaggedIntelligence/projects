@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import importlib.util
 import json
 import tempfile
@@ -99,7 +100,7 @@ class FetchTests(unittest.TestCase):
     def test_mid_stream_failure_restarts_symbol_without_partial_duplicates(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            destination = root / "AMD.jsonl"
+            destination = root / "AMD.csv"
             event_log = root / "events.jsonl"
             args = args_for(root, root)
             client = MidStreamFailureClient()
@@ -115,12 +116,13 @@ class FetchTests(unittest.TestCase):
                 sleep_fn=lambda _: None,
                 random_fn=lambda: 0.0,
             )
-            rows = [json.loads(line) for line in destination.read_text().splitlines()]
+            with destination.open(newline="", encoding="utf-8") as source:
+                rows = list(csv.DictReader(source))
 
         self.assertEqual(count, 1)
         self.assertEqual(attempts, 2)
         self.assertEqual([row["benzinga_id"] for row in rows], ["final"])
-        self.assertEqual(rows[0]["_ingest"]["requested_ticker"], "AMD")
+        self.assertNotIn("_ingest", rows[0])
 
     def test_build_query_uses_integer_page_size_and_inclusive_dates(self):
         args = SimpleNamespace(page_size=50_000, start=date(2026, 7, 1), end=date(2026, 7, 21))
@@ -176,7 +178,21 @@ class CollectionTests(unittest.TestCase):
             args = args_for(runs_dir, universe_dir)
             first_client = FakeClient(
                 [
-                    [{"ticker": "AMD", "benzinga_id": "amd-1", "price_target": 200}],
+                    [
+                        {
+                            "ticker": "AMD",
+                            "benzinga_id": "amd-1",
+                            "price_target": 200,
+                            "benzinga_calendar_url": "https://example.test/calendar",
+                            "benzinga_news_url": "https://example.test/news",
+                            "analyst": {"name": "Example Analyst"},
+                        },
+                        {
+                            "ticker": "AMD",
+                            "benzinga_id": "amd-2",
+                            "rating_action": "Maintains",
+                        },
+                    ],
                     [],
                 ]
             )
@@ -190,16 +206,34 @@ class CollectionTests(unittest.TestCase):
             second_summary = collector.run_collection(
                 resume_args, second_client, "secret-key", sleep_fn=lambda _: None, random_fn=lambda: 0.0
             )
-            combined_rows = [json.loads(line) for line in (run_dir / "rows.jsonl").read_text().splitlines()]
+            with (run_dir / "AMD.csv").open(newline="", encoding="utf-8") as source:
+                amd_rows = list(csv.DictReader(source))
+            records_per_symbols = json.loads(
+                (run_dir / "records_per_symbols.json").read_text(encoding="utf-8")
+            )
+            no_data_csv_exists = (run_dir / "BRK.B.csv").is_file()
+            no_data_csv_content = (run_dir / "BRK.B.csv").read_text(encoding="utf-8")
+            combined_jsonl_exists = (run_dir / "rows.jsonl").exists()
+            symbols_directory_exists = (run_dir / "symbols").exists()
 
         self.assertTrue(first_summary["complete"])
         self.assertEqual(first_summary["symbols_succeeded"], 1)
         self.assertEqual(first_summary["symbols_no_data"], 1)
-        self.assertEqual(first_summary["records_written"], 1)
+        self.assertEqual(first_summary["records_written"], 2)
         self.assertTrue(second_summary["complete"])
         self.assertEqual(second_summary["symbols_already_complete"], 2)
         self.assertEqual(second_client.queries, [])
-        self.assertEqual(combined_rows[0]["benzinga_id"], "amd-1")
+        self.assertEqual([row["benzinga_id"] for row in amd_rows], ["amd-1", "amd-2"])
+        self.assertEqual(amd_rows[0]["analyst"], '{"name":"Example Analyst"}')
+        self.assertIn("rating_action", amd_rows[0])
+        self.assertNotIn("_ingest", amd_rows[0])
+        self.assertNotIn("benzinga_calendar_url", amd_rows[0])
+        self.assertNotIn("benzinga_news_url", amd_rows[0])
+        self.assertEqual(records_per_symbols, {"AMD": 2, "BRK.B": 0})
+        self.assertTrue(no_data_csv_exists)
+        self.assertEqual(no_data_csv_content, "")
+        self.assertFalse(combined_jsonl_exists)
+        self.assertFalse(symbols_directory_exists)
 
 
 if __name__ == "__main__":

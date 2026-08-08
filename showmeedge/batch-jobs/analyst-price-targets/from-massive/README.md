@@ -1,6 +1,6 @@
 # Massive Benzinga Analyst Ratings Collector
 
-This first implementation slice downloads Massive's Benzinga analyst-rating events into restartable JSONL artifacts. It does not connect to QuestDB or any other database.
+This collector downloads Massive's Benzinga analyst-rating events into restartable per-ticker CSV artifacts. It does not connect to QuestDB or any other database.
 
 ## Security setup
 
@@ -69,15 +69,15 @@ Each new invocation creates `runs/<UTC-run-id>/` containing:
 
 - `manifest.jsonl`: selected symbols in processing order.
 - `run-config.json`: immutable API query settings reused by resumed invocations.
-- `symbols/<TICKER>.jsonl`: complete records for each successfully fetched symbol.
-- `rows.jsonl`: combined records from all completed symbol files.
+- `<TICKER>.csv`: final analyst-rating records for each successfully fetched symbol.
+- `records_per_symbols.json`: record count for each completed symbol.
 - `checkpoints/<TICKER>.json`: atomic completion checkpoints.
 - `events.jsonl`: attempt and run events.
 - `failed-symbols.jsonl`: symbols that failed in the latest invocation.
 - `no-data-symbols.jsonl`: completed symbols for which Massive returned no rows.
 - `summary.json`: machine-readable totals and completion status.
 
-Each row contains the Massive rating fields plus an `_ingest` object with source, requested ticker, fetch time, and run ID.
+Each CSV contains the Massive rating fields except `_ingest`, `benzinga_calendar_url`, and `benzinga_news_url`. Dictionaries and lists are preserved as compact JSON inside their CSV cells. Symbols with no data receive an empty CSV file.
 
 If a run is interrupted or finishes with failures, resume it without re-fetching completed symbols:
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect Benzinga analyst ratings from Massive into restartable JSONL artifacts."""
+"""Collect Benzinga analyst ratings from Massive into per-ticker CSV artifacts."""
 
 from __future__ import annotations
 
@@ -28,6 +28,13 @@ DEFAULT_RETRY_DELAY_SECONDS = 2.0
 DEFAULT_REQUEST_DELAY_SECONDS = 0.25
 API_KEY_ENV = "MASSIVE_API_KEY"
 SOURCE_NAME = "massive-benzinga-analyst-ratings"
+CSV_EXCLUDED_FIELDS = frozenset(
+    {
+        "_ingest",
+        "benzinga_calendar_url",
+        "benzinga_news_url",
+    }
+)
 
 
 class CollectionError(RuntimeError):
@@ -158,8 +165,7 @@ def append_json_line(path: Path, value: Mapping[str, Any]) -> None:
         output.write("\n")
 
 
-def read_jsonl(path: Path) -> List[Dict[str, Any]]:
-    records: List[Dict[str, Any]] = []
+def iter_jsonl(path: Path) -> Iterator[Dict[str, Any]]:
     with path.open(encoding="utf-8") as source:
         for line_number, line in enumerate(source, start=1):
             stripped = line.strip()
@@ -171,8 +177,11 @@ def read_jsonl(path: Path) -> List[Dict[str, Any]]:
                 raise CollectionError(f"Invalid JSONL at {path}:{line_number}: {error}") from error
             if not isinstance(value, dict):
                 raise CollectionError(f"Expected a JSON object at {path}:{line_number}")
-            records.append(value)
-    return records
+            yield value
+
+
+def read_jsonl(path: Path) -> List[Dict[str, Any]]:
+    return list(iter_jsonl(path))
 
 
 def json_default(value: Any) -> Any:
@@ -181,6 +190,44 @@ def json_default(value: Any) -> Any:
     if isinstance(value, Path):
         return str(value)
     raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")
+
+
+def csv_cell_value(value: Any) -> Any:
+    if value is None:
+        return ""
+    if isinstance(value, (Mapping, list, tuple)):
+        return json.dumps(value, sort_keys=True, separators=(",", ":"), default=json_default)
+    return value
+
+
+def write_csv_from_jsonl_atomic(source_path: Path, destination: Path) -> None:
+    fieldnames = sorted(
+        {
+            key
+            for record in iter_jsonl(source_path)
+            for key in record
+            if key not in CSV_EXCLUDED_FIELDS
+        }
+    )
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_name(f".{destination.name}.tmp")
+    try:
+        with temporary.open("w", newline="", encoding="utf-8") as output:
+            writer = csv.DictWriter(output, fieldnames=fieldnames, lineterminator="\n")
+            if fieldnames:
+                writer.writeheader()
+            for record in iter_jsonl(source_path):
+                writer.writerow(
+                    {
+                        key: csv_cell_value(value)
+                        for key, value in record.items()
+                        if key not in CSV_EXCLUDED_FIELDS
+                    }
+                )
+        os.replace(str(temporary), str(destination))
+    except BaseException:
+        temporary.unlink(missing_ok=True)
+        raise
 
 
 def rating_to_dict(rating: Any) -> Dict[str, Any]:
@@ -291,7 +338,8 @@ def fetch_symbol_with_retry(
                     output.write(json.dumps(wrapped, sort_keys=True, default=json_default))
                     output.write("\n")
                     record_count += 1
-            os.replace(str(temporary), str(destination))
+            write_csv_from_jsonl_atomic(temporary, destination)
+            temporary.unlink(missing_ok=True)
             append_json_line(
                 event_log,
                 {
@@ -306,6 +354,7 @@ def fetch_symbol_with_retry(
             return record_count, attempt
         except BaseException as error:
             if isinstance(error, (KeyboardInterrupt, SystemExit)):
+                temporary.unlink(missing_ok=True)
                 raise
             last_error = error
             retryable = is_retryable_error(error)
@@ -329,6 +378,7 @@ def fetch_symbol_with_retry(
             sleep_fn(delay)
 
     assert last_error is not None
+    temporary.unlink(missing_ok=True)
     raise SymbolFetchError(ticker, attempt, last_error)
 
 
@@ -336,8 +386,8 @@ def checkpoint_path(run_dir: Path, ticker: str) -> Path:
     return run_dir / "checkpoints" / f"{safe_ticker_filename(ticker)}.json"
 
 
-def row_path(run_dir: Path, ticker: str) -> Path:
-    return run_dir / "symbols" / f"{safe_ticker_filename(ticker)}.jsonl"
+def csv_path(run_dir: Path, ticker: str) -> Path:
+    return run_dir / f"{safe_ticker_filename(ticker)}.csv"
 
 
 def load_checkpoint(run_dir: Path, ticker: str) -> Optional[Dict[str, Any]]:
@@ -350,28 +400,9 @@ def load_checkpoint(run_dir: Path, ticker: str) -> Optional[Dict[str, Any]]:
         raise CollectionError(f"Invalid checkpoint {path}: {error}") from error
     if value.get("status") not in {"succeeded", "no_data"}:
         return None
-    if not row_path(run_dir, ticker).is_file():
+    if not csv_path(run_dir, ticker).is_file():
         return None
     return value
-
-
-def combine_rows(run_dir: Path, manifest: Sequence[Mapping[str, Any]]) -> int:
-    destination = run_dir / "rows.jsonl"
-    temporary = run_dir / ".rows.jsonl.tmp"
-    total = 0
-    with temporary.open("w", encoding="utf-8") as output:
-        for record in manifest:
-            ticker = normalize_ticker(record["ticker"])
-            if load_checkpoint(run_dir, ticker) is None:
-                continue
-            source_path = row_path(run_dir, ticker)
-            with source_path.open(encoding="utf-8") as source:
-                for line in source:
-                    if line.strip():
-                        output.write(line)
-                        total += 1
-    os.replace(str(temporary), str(destination))
-    return total
 
 
 def prepare_run(args: argparse.Namespace) -> Tuple[Path, str, List[Dict[str, Any]], bool]:
@@ -461,7 +492,7 @@ def run_collection(
             record_count, attempts = fetch_symbol_with_retry(
                 client=client,
                 ticker=ticker,
-                destination=row_path(run_dir, ticker),
+                destination=csv_path(run_dir, ticker),
                 args=args,
                 run_id=run_id,
                 api_key=api_key,
@@ -496,9 +527,9 @@ def run_collection(
         if args.request_delay_seconds and index < len(manifest):
             sleep_fn(args.request_delay_seconds)
 
-    rows_written = combine_rows(run_dir, manifest)
     checkpoints = [load_checkpoint(run_dir, normalize_ticker(record["ticker"])) for record in manifest]
     complete_checkpoints = [checkpoint for checkpoint in checkpoints if checkpoint is not None]
+    rows_written = sum(int(checkpoint["records"]) for checkpoint in complete_checkpoints)
     succeeded = sum(checkpoint["status"] == "succeeded" for checkpoint in complete_checkpoints)
     no_data = sum(checkpoint["status"] == "no_data" for checkpoint in complete_checkpoints)
     failed_tickers = {failure["ticker"] for failure in failures}
@@ -535,6 +566,13 @@ def run_collection(
         run_dir / "no-data-symbols.jsonl",
         [checkpoint for checkpoint in complete_checkpoints if checkpoint["status"] == "no_data"],
     )
+    write_json_atomic(
+        run_dir / "records_per_symbols.json",
+        {
+            normalize_ticker(checkpoint["ticker"]): int(checkpoint["records"])
+            for checkpoint in complete_checkpoints
+        },
+    )
     write_json_atomic(run_dir / "summary.json", summary)
     append_json_line(event_log, summary)
     return summary
@@ -553,7 +591,7 @@ def create_massive_client(api_key: str) -> Any:
 
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Collect Massive Benzinga analyst ratings into restartable JSONL run artifacts."
+        description="Collect Massive Benzinga analyst ratings into per-ticker CSV run artifacts."
     )
     parser.add_argument("--universe", default=DEFAULT_UNIVERSE, help="CSV name in the market-api data directory.")
     parser.add_argument("--universe-dir", type=Path, default=DEFAULT_UNIVERSE_DIR)
