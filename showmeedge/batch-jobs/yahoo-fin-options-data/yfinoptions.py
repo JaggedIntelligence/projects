@@ -5,6 +5,13 @@ import yfinance as yf
 # ---- Source Code: got all this source by just by asking Gemini ------
 # Prmompt : how to extract yahoo finance EPS Trend data using python lib
 
+# -------  company  stats
+def company_stats(ticker_symbol):
+    dat = yf.Ticker(ticker_symbol)
+    print("----Info:\n", dat.info)
+    print("-------calendar:\n", dat.calendar)
+    print("-------analyst_price_targets:\n", dat.analyst_price_targets)
+    print("-------quarterly_income_stmt:\n", dat.quarterly_income_stmt)
 
 # ---- get Options data 
 def get_optionschain(ticker_symbol):
@@ -73,3 +80,5 @@ get_financials("AMD")
 get_financials("AMZN")
 
 get_financials("EBAY")
+
+company_stats("AMD")
