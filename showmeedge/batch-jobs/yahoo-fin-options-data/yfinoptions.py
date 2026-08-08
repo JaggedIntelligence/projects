@@ -12,6 +12,7 @@ def company_stats(ticker_symbol):
     print("-------calendar:\n", dat.calendar)
     print("-------analyst_price_targets:\n", dat.analyst_price_targets)
     print("-------quarterly_income_stmt:\n", dat.quarterly_income_stmt)
+    print("-------News :\n", dat.get_news(count=100))  # --- stock news ---------
 
 # ---- get Options data 
 def get_optionschain(ticker_symbol):
