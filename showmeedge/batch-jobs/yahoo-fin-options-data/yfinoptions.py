@@ -26,6 +26,7 @@ def get_optionschain(ticker_symbol):
     print(f"----------- Options Chian for :{ticker_symbol}")
     print(calls_df.head())
 
+    # ALL Apis https://ranaroussi.github.io/yfinance/reference/api/yfinance.Calendars.html#yfinance.Calendars
     calendars = yf.Calendars() 
     df_econevents_cal = calendars.get_economic_events_calendar(limit=100)
     print("\n------------ Economic Events Calender\n", df_econevents_cal)
