@@ -49,6 +49,9 @@ bash batch-jobs/analyst-price-targets/from-massive/run.sh \
 
 The default universe is `services/market-api/app/data/sp500_current.csv`. The collector uses its canonical `symbol` column, such as `BRK.B`, rather than its Yahoo-specific `provider_symbol` column.
 
+Russell 3000 csv file also resides in the same folder ...
+`services/market-api/app/data/russell3000_current.csv`
+
 Other useful forms:
 
 ```bash
@@ -57,6 +60,9 @@ bash batch-jobs/analyst-price-targets/from-massive/run.sh --max-symbols 20
 
 # Full available history for the current S&P 500 universe
 bash batch-jobs/analyst-price-targets/from-massive/run.sh
+
+# to run for all Russel 3000 universe
+bash batch-jobs/analyst-price-targets/from-massive/run.sh --universe russell3000_current
 
 # to run for all sp500 universe
 bash batch-jobs/analyst-price-targets/from-massive/run.sh --universe sp500_current
