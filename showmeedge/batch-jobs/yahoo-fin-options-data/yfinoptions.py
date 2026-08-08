@@ -26,6 +26,10 @@ def get_optionschain(ticker_symbol):
     print(f"----------- Options Chian for :{ticker_symbol}")
     print(calls_df.head())
 
+    calendars = yf.Calendars() 
+    df_econevents_cal = calendars.get_economic_events_calendar(limit=100)
+    print("\n------------ Economic Events Calender\n", df_econevents_cal)
+
 
 # ---------- Extract the EPS Trend data as a DataFrame
 def get_financials(ticker_symbol):
