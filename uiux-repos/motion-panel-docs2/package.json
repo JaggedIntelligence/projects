@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter motion-panels run build && next dev --port 3200",
+    "dev": "pnpm --filter motion-panels run build && next dev --port 3000",
     "build": "pnpm --filter motion-panels run build && shadcn build && next build",
-    "start": "next start --port 3200",
+    "start": "next start --port 3000",
     "check-types": "tsc",
     "registry": "shadcn build"
   },

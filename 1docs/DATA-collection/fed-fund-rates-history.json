@@ -1,0 +1,743 @@
+{
+  "source": "https://www.forbes.com/advisor/investing/fed-funds-rate-history-1/",
+  "source_title": "Federal Funds Rate History 1990 to 2026 – Forbes Advisor",
+  "extracted_on": "2026-09-11",
+  "work_done_by_theLLM" : "ChatGPT5.6-Luna-light -- SR added these fields manuallly to the file",
+  "prompt" : "pls extract the fed interest hike/cut data from the tables on this web page , give output as JSON file with various hike/cut tables as on json file with an additional column as notes which is heading of the table column , example : 'Fed Rate Hikes 2022-2023: Taming Inflation and Beyond'  https://www.forbes.com/advisor/investing/fed-funds-rate-history-1/",
+  "tables": [
+    {
+      "title": "2024-2025",
+      "rows": [
+        {
+          "meeting_date": "Dec. 10, 2025",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "3.50% to 3.75%",
+          "notes": "Fed Rate Cuts 2024-2026: Still Taming Inflation"
+        },
+        {
+          "meeting_date": "Oct 29, 2025",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "3.75% to 4.00%",
+          "notes": "Fed Rate Cuts 2024-2026: Still Taming Inflation"
+        },
+        {
+          "meeting_date": "Sept 17, 2025",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.00% to 4.25%",
+          "notes": "Fed Rate Cuts 2024-2026: Still Taming Inflation"
+        },
+        {
+          "meeting_date": "Dec 18, 2024",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.25% to 4.50%",
+          "notes": "Fed Rate Cuts 2024-2026: Still Taming Inflation"
+        },
+        {
+          "meeting_date": "Nov 7, 2024",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.50% to 4.75%",
+          "notes": "Fed Rate Cuts 2024-2026: Still Taming Inflation"
+        },
+        {
+          "meeting_date": "Sept 18, 2024",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "4.75% to 5.00%",
+          "notes": "Fed Rate Cuts 2024-2026: Still Taming Inflation"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond",
+      "rows": [
+        {
+          "meeting_date": "July 26, 2023",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.25% to 5.50%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "May 3, 2023",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.00% to 5.25%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "March 22, 2023",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "4.75% to 5.00%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "Feb 1, 2023",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "4.50% to 4.75%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "Dec 14, 2022",
+          "rate_change_bps": 50,
+          "federal_funds_rate": "4.25% to 4.50%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "Nov 2, 2022",
+          "rate_change_bps": 75,
+          "federal_funds_rate": "3.75% to 4.00%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "Sept 21, 2022",
+          "rate_change_bps": 75,
+          "federal_funds_rate": "3.00% to 3.25%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "July 27, 2022",
+          "rate_change_bps": 75,
+          "federal_funds_rate": "2.25% to 2.50%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "June 16, 2022",
+          "rate_change_bps": 75,
+          "federal_funds_rate": "1.50% to 1.75%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "May 5, 2022",
+          "rate_change_bps": 50,
+          "federal_funds_rate": "0.75% to 1.00%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        },
+        {
+          "meeting_date": "March 17, 2022",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "0.25% to 0.50%",
+          "notes": "Fed Rate Hikes 2022-2023: Taming Inflation and Beyond"
+        }
+      ]
+    },
+    {
+      "title": "2020 Fed Rate Cuts: Coping with Covid-19",
+      "rows": [
+        {
+          "meeting_date": "March 16, 2020",
+          "rate_change_bps": -100,
+          "federal_funds_rate": "0% to 0.25%",
+          "notes": "2020 Fed Rate Cuts: Coping with Covid-19"
+        },
+        {
+          "meeting_date": "March 3, 2020",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "1.0% to 1.25%",
+          "notes": "2020 Fed Rate Cuts: Coping with Covid-19"
+        }
+      ]
+    },
+    {
+      "title": "2019 Fed Rate Cuts: Mid-Cycle Adjustment",
+      "rows": [
+        {
+          "meeting_date": "October 31, 2019",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "1.50% to 1.75%",
+          "notes": "2019 Fed Rate Cuts: Mid-Cycle Adjustment"
+        },
+        {
+          "meeting_date": "Sept. 19, 2019",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "1.75% to 2.0%",
+          "notes": "2019 Fed Rate Cuts: Mid-Cycle Adjustment"
+        },
+        {
+          "meeting_date": "Aug. 1, 2019",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "2.0% to 2.25%",
+          "notes": "2019 Fed Rate Cuts: Mid-Cycle Adjustment"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Hikes 2015-2018: Returning to Normalcy",
+      "rows": [
+        {
+          "meeting_date": "December 20, 2018",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "2.25% to 2.50%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "Sept. 27, 2018",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "2.0% to 2.25%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "Jun. 14, 2018",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.75% to 2.0%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "March 22, 2018",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.50% to 1.75%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "Dec. 14, 2017",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.25% to 1.50%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "June 15, 2017",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.00% to 1.25%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "March 16, 2017",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "0.75% to 1.00%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "Dec. 15, 2016",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "0.5% to 0.75%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        },
+        {
+          "meeting_date": "Dec. 17, 2015",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "0.25% to 0.50%",
+          "notes": "Fed Rate Hikes 2015-2018: Returning to Normalcy"
+        }
+      ]
+    },
+    {
+      "title": "2008 Fed Rate Cuts: The Great Recession",
+      "rows": [
+        {
+          "meeting_date": "Dec. 16, 2008",
+          "rate_change_bps": -100,
+          "federal_funds_rate": "0% to 0.25%",
+          "notes": "2008 Fed Rate Cuts: The Great Recession"
+        },
+        {
+          "meeting_date": "Oct. 29, 2008",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "1.00%",
+          "notes": "2008 Fed Rate Cuts: The Great Recession"
+        },
+        {
+          "meeting_date": "Oct. 8, 2008",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "1.50%",
+          "notes": "2008 Fed Rate Cuts: The Great Recession"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Cuts 2007-2008: The Housing Market Crash",
+      "rows": [
+        {
+          "meeting_date": "Apr. 30, 2008",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "2.00%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        },
+        {
+          "meeting_date": "Mar. 18, 2008",
+          "rate_change_bps": -75,
+          "federal_funds_rate": "2.25%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        },
+        {
+          "meeting_date": "Jan. 30, 2008",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "3.00%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        },
+        {
+          "meeting_date": "Jan. 22, 2008",
+          "rate_change_bps": -75,
+          "federal_funds_rate": "3.50%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        },
+        {
+          "meeting_date": "Dec. 11, 2007",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.25%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        },
+        {
+          "meeting_date": "Oct. 31, 2007",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.50%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        },
+        {
+          "meeting_date": "Sept. 18, 2007",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "4.75%",
+          "notes": "Fed Rate Cuts 2007-2008: The Housing Market Crash"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Hikes 2005-2006: The Housing Market Boom",
+      "rows": [
+        {
+          "meeting_date": "Jun. 29, 2006",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.25%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "May. 10, 2006",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.00%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Mar. 28, 2006",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "4.75%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Jan. 31, 2006",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "4.50%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Dec. 13, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "4.25%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Nov. 1, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "4.00%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Sept. 20, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.75%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Aug. 9, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.50%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "June 30, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.25%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "May 3, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.00%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "March 22, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "2.75%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Feb. 2, 2005",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "2.50%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Dec. 14, 2004",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "2.25%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Nov. 10, 2004",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "2.00%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Sept. 21, 2004",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.75%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "Aug. 10, 2004",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.50%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        },
+        {
+          "meeting_date": "June 30, 2004",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "1.25%",
+          "notes": "Fed Rate Hikes 2005-2006: The Housing Market Boom"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Cuts 2002-2003: Flagging Recovery, Low Inflation",
+      "rows": [
+        {
+          "meeting_date": "June 25, 2003",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "1.00%",
+          "notes": "Fed Rate Cuts 2002-2003: Flagging Recovery, Low Inflation"
+        },
+        {
+          "meeting_date": "November 6, 2002",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "1%",
+          "notes": "Fed Rate Cuts 2002-2003: Flagging Recovery, Low Inflation"
+        }
+      ]
+    },
+    {
+      "title": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11",
+      "rows": [
+        {
+          "meeting_date": "Dec. 11, 2001",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "1.75%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "Nov. 6, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "2.00%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "Oct. 2, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "2.50%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "Sept. 17, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "3.00%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "Aug. 21, 2001",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "3.50%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "June 27, 2001",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "3.75%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "May 15, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "4.00%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "April 18, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "4.50%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "March 20, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "5.00%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "Jan. 31, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "5.50%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        },
+        {
+          "meeting_date": "Jan. 3, 2001",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "6.00%",
+          "notes": "2001 Fed Rate Cuts: The Dot-Com Bust and 9/11"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Hikes 1999-2000: The Dot-Com Boom",
+      "rows": [
+        {
+          "meeting_date": "May 16, 2000",
+          "rate_change_bps": 50,
+          "federal_funds_rate": "6.50%",
+          "notes": "Fed Rate Hikes 1999-2000: The Dot-Com Boom"
+        },
+        {
+          "meeting_date": "March 21, 2000",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "6.00%",
+          "notes": "Fed Rate Hikes 1999-2000: The Dot-Com Boom"
+        },
+        {
+          "meeting_date": "Feb. 2, 2000",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.75%",
+          "notes": "Fed Rate Hikes 1999-2000: The Dot-Com Boom"
+        },
+        {
+          "meeting_date": "Nov. 16, 1999",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.50%",
+          "notes": "Fed Rate Hikes 1999-2000: The Dot-Com Boom"
+        },
+        {
+          "meeting_date": "Aug. 24, 1999",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.25%",
+          "notes": "Fed Rate Hikes 1999-2000: The Dot-Com Boom"
+        },
+        {
+          "meeting_date": "June 30, 1999",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.00%",
+          "notes": "Fed Rate Hikes 1999-2000: The Dot-Com Boom"
+        }
+      ]
+    },
+    {
+      "title": "1998 Fed Rate Cuts: Global Currency Crisis",
+      "rows": [
+        {
+          "meeting_date": "November 17, 1998",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.75%",
+          "notes": "1998 Fed Rate Cuts: Global Currency Crisis"
+        },
+        {
+          "meeting_date": "October 15, 1998",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.00%",
+          "notes": "1998 Fed Rate Cuts: Global Currency Crisis"
+        },
+        {
+          "meeting_date": "September 29, 1998",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.25%",
+          "notes": "1998 Fed Rate Cuts: Global Currency Crisis"
+        }
+      ]
+    },
+    {
+      "title": "1997 Fed Rate Hike: FOMC Lightly Taps the Brakes",
+      "rows": [
+        {
+          "meeting_date": "March 25, 1997",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "5.50%",
+          "notes": "1997 Fed Rate Hike: FOMC Lightly Taps the Brakes"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Cuts 1995-1996: Midcycle Adjustment, 90s-Style",
+      "rows": [
+        {
+          "meeting_date": "Jan. 31, 1996",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.25%",
+          "notes": "Fed Rate Cuts 1995-1996: Midcycle Adjustment, 90s-Style"
+        },
+        {
+          "meeting_date": "Dec. 19, 1995",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.50%",
+          "notes": "Fed Rate Cuts 1995-1996: Midcycle Adjustment, 90s-Style"
+        },
+        {
+          "meeting_date": "July 6, 1995",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.75%",
+          "notes": "Fed Rate Cuts 1995-1996: Midcycle Adjustment, 90s-Style"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Hikes 1994-1995: A Soft Landing",
+      "rows": [
+        {
+          "meeting_date": "Feb. 1, 1995",
+          "rate_change_bps": 50,
+          "federal_funds_rate": "6.00%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        },
+        {
+          "meeting_date": "Nov. 15, 1994",
+          "rate_change_bps": 75,
+          "federal_funds_rate": "5.50%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        },
+        {
+          "meeting_date": "Aug. 16, 1994",
+          "rate_change_bps": 50,
+          "federal_funds_rate": "4.75%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        },
+        {
+          "meeting_date": "May 17, 1994",
+          "rate_change_bps": 50,
+          "federal_funds_rate": "4.25%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        },
+        {
+          "meeting_date": "April 18, 1994",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.75%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        },
+        {
+          "meeting_date": "March 22, 1994",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.50%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        },
+        {
+          "meeting_date": "Feb. 4, 1994",
+          "rate_change_bps": 25,
+          "federal_funds_rate": "3.25%",
+          "notes": "Fed Rate Hikes 1994-1995: A Soft Landing"
+        }
+      ]
+    },
+    {
+      "title": "Fed Rate Cuts 1990-1992: The Gulf War Recession",
+      "rows": [
+        {
+          "meeting_date": "Sept. 4, 1992",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "3.00%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "July 2, 1992",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "3.25%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "April 9, 1992",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "3.75%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Dec. 20, 1991",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "4.00%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Dec. 6, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.50%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Nov. 6, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "4.75%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Oct. 31, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.00%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Sept. 13, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.25%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Aug. 6, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.50%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "April 30, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "5.75%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "March 8, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "6.00%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Feb. 1, 1991",
+          "rate_change_bps": -50,
+          "federal_funds_rate": "6.25%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Jan. 9, 1991",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "6.75%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Dec. 18, 1990",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "7.00%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Dec. 7, 1990",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "7.25%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Nov. 13, 1990",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "7.50%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "Oct. 29, 1990",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "7.75%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        },
+        {
+          "meeting_date": "July 13, 1990",
+          "rate_change_bps": -25,
+          "federal_funds_rate": "8.00%",
+          "notes": "Fed Rate Cuts 1990-1992: The Gulf War Recession"
+        }
+      ]
+    }
+  ]
+}
