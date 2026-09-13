@@ -31,6 +31,7 @@
     "db:start": "bash scripts/db-init.sh start",
     "db:stop": "bash scripts/db-init.sh stop",
     "db:reset": "bash scripts/db-init.sh reset",
+    "questdb:migrate": "bash scripts/db-init.sh questdb-migrate",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",

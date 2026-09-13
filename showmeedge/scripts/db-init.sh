@@ -5,6 +5,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 COMPOSE_FILE="$SCRIPT_DIR/docker-compose.yml"
 INIT_SQL="$REPO_ROOT/db/init.sql"
+QUESTDB_INIT_SQL="$REPO_ROOT/db/questdb/init.sql"
+QUESTDB_MIGRATIONS_DIR="$REPO_ROOT/db/questdb/migrations"
 POSTGRES_CONTAINER_NAME="second-brain-postgres"
 
 compose() {
@@ -59,6 +61,35 @@ apply_schema() {
   docker exec -i "$POSTGRES_CONTAINER_NAME" psql -U postgres -d second_brain < "$INIT_SQL"
 }
 
+wait_for_questdb() {
+  echo "Waiting for QuestDB..."
+  for _ in {1..60}; do
+    if docker exec -e PGPASSWORD=quest "$POSTGRES_CONTAINER_NAME" \
+      psql -h questdb -p 8812 -U admin -d qdb -c "SELECT 1" >/dev/null 2>&1; then
+      return 0
+    fi
+    sleep 1
+  done
+
+  echo "QuestDB did not become healthy in time." >&2
+  exit 1
+}
+
+apply_questdb_schema() {
+  local migration
+
+  echo "Applying QuestDB base schema from db/questdb/init.sql..."
+  docker exec -e PGPASSWORD=quest -i "$POSTGRES_CONTAINER_NAME" \
+    psql -v ON_ERROR_STOP=1 -h questdb -p 8812 -U admin -d qdb < "$QUESTDB_INIT_SQL"
+
+  for migration in "$QUESTDB_MIGRATIONS_DIR"/*.sql; do
+    [[ -e "$migration" ]] || continue
+    echo "Applying QuestDB migration: $(basename "$migration")"
+    docker exec -e PGPASSWORD=quest -i "$POSTGRES_CONTAINER_NAME" \
+      psql -v ON_ERROR_STOP=1 -h questdb -p 8812 -U admin -d qdb < "$migration"
+  done
+}
+
 command="${1:-init}"
 
 case "$command" in
@@ -66,6 +97,8 @@ case "$command" in
     start_infra
     wait_for_postgres
     apply_schema
+    wait_for_questdb
+    apply_questdb_schema
     echo "Database is ready at postgres://postgres:postgres@localhost:5432/second_brain"
     echo "QuestDB is available at http://localhost:9000 and PGWire localhost:8812"
     ;;
@@ -88,11 +121,20 @@ case "$command" in
     start_infra
     wait_for_postgres
     apply_schema
+    wait_for_questdb
+    apply_questdb_schema
     echo "Database has been reset at postgres://postgres:postgres@localhost:5432/second_brain"
     echo "QuestDB has been reset at http://localhost:9000"
     ;;
+  questdb-migrate)
+    start_infra
+    wait_for_postgres
+    wait_for_questdb
+    apply_questdb_schema
+    echo "QuestDB schema is up to date."
+    ;;
   *)
-    echo "Usage: $0 [init|start|market|stop|reset]" >&2
+    echo "Usage: $0 [init|start|market|stop|reset|questdb-migrate]" >&2
     exit 1
     ;;
 esac

@@ -117,8 +117,17 @@ Each EOD run writes:
 
 ```text
 update.log
+ema-update.log
 verification.log
 failed-symbols.json
 no-data-symbols.json
 run-summary.json
+```
+
+After a successful OHLCV refresh, the EOD wrapper populates missing `ema10`, `ema20`,
+`ema50`, `ema200`, `volema10`, and `volema20` values. The indicator job can also be run
+on its own:
+
+```bash
+bash batch-jobs/equity-daily-indicators/update-emas.sh --universe sp500_current
 ```

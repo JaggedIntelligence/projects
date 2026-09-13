@@ -240,6 +240,7 @@ HOST_FAILED_FILE="$LOG_DIR/failed-symbols.json"
 HOST_NO_DATA_FILE="$LOG_DIR/no-data-symbols.json"
 HOST_RUN_SUMMARY_FILE="$LOG_DIR/run-summary.json"
 UPDATE_LOG="$LOG_DIR/update.log"
+EMA_LOG="$LOG_DIR/ema-update.log"
 VERIFY_LOG="$LOG_DIR/verification.log"
 
 UPDATE_CMD=(
@@ -361,8 +362,30 @@ if [[ "$UPDATE_STATUS" -ne 0 ]]; then
   exit "$UPDATE_STATUS"
 fi
 
+EMA_CMD=(
+  python -m app.jobs.update_daily_emas
+  --provider yfinance
+  --universe "$UNIVERSE"
+)
+
+if [[ -n "$MAX_SYMBOLS" ]]; then
+  EMA_CMD+=(--max-symbols "$MAX_SYMBOLS")
+fi
+
+echo "Updating price and volume EMAs for refreshed symbols..."
+set +e
+compose exec -T market-api "${EMA_CMD[@]}" 2>&1 | tee "$EMA_LOG"
+EMA_STATUS="${PIPESTATUS[0]}"
+set -e
+
+if [[ "$EMA_STATUS" -ne 0 ]]; then
+  echo "OHLCV refresh succeeded, but the EMA update failed. See: $EMA_LOG" >&2
+  exit "$EMA_STATUS"
+fi
+
 echo "EOD update finished successfully."
 echo "Update log: $UPDATE_LOG"
+echo "EMA log: $EMA_LOG"
 echo "Verification log: $VERIFY_LOG"
 if [[ -f "$HOST_RUN_SUMMARY_FILE" ]]; then
   echo "Run summary: $HOST_RUN_SUMMARY_FILE"

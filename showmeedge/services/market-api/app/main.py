@@ -22,7 +22,7 @@ from app.models import (
     Timeframe,
 )
 from app.questdb import ensure_market_bars_table, fetch_bars, insert_bars, ping_questdb, questdb_connection
-from app.repositories.questdb_daily_bars import ensure_equity_ohlcv_daily_table, fetch_daily_bars
+from app.repositories.questdb_daily_bars import fetch_daily_bars, migrate_equity_ohlcv_daily_table
 from app.repositories.questdb_seasonality import LOOKBACK_ALL, ensure_seasonality_tables, fetch_seasonality_response
 from app.sql_params import prepare_sql_query
 
@@ -43,7 +43,7 @@ app.add_middleware(
 @app.on_event("startup")
 def startup() -> None:
     ensure_market_bars_table()
-    ensure_equity_ohlcv_daily_table()
+    migrate_equity_ohlcv_daily_table()
     ensure_seasonality_tables()
 
 

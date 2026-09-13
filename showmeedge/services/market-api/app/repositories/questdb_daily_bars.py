@@ -17,6 +17,12 @@ CREATE TABLE IF NOT EXISTS equity_ohlcv_daily (
   close DOUBLE,
   adj_close DOUBLE,
   volume LONG,
+  ema10 DOUBLE,
+  ema20 DOUBLE,
+  ema50 DOUBLE,
+  ema200 DOUBLE,
+  volema10 DOUBLE,
+  volema20 DOUBLE,
   currency SYMBOL CAPACITY 8,
   ingested_at TIMESTAMP
 ) TIMESTAMP(ts)
@@ -24,11 +30,31 @@ PARTITION BY MONTH WAL
 DEDUP UPSERT KEYS(ts, symbol, provider)
 """
 
+EQUITY_OHLCV_DAILY_MIGRATION_SQL = {
+    "ema10": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema10 DOUBLE",
+    "ema20": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema20 DOUBLE",
+    "ema50": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema50 DOUBLE",
+    "ema200": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema200 DOUBLE",
+    "volema10": "ALTER TABLE equity_ohlcv_daily ADD COLUMN volema10 DOUBLE",
+    "volema20": "ALTER TABLE equity_ohlcv_daily ADD COLUMN volema20 DOUBLE",
+}
+
 
 def ensure_equity_ohlcv_daily_table() -> None:
     with questdb_connection() as connection:
         with connection.cursor() as cursor:
             cursor.execute(EQUITY_OHLCV_DAILY_TABLE_SQL)
+
+
+def migrate_equity_ohlcv_daily_table() -> None:
+    ensure_equity_ohlcv_daily_table()
+    with questdb_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT \"column\" FROM table_columns('equity_ohlcv_daily')")
+            existing_columns = {str(row[0]) for row in cursor.fetchall()}
+            for column, statement in EQUITY_OHLCV_DAILY_MIGRATION_SQL.items():
+                if column not in existing_columns:
+                    cursor.execute(statement)
 
 
 def insert_daily_bars(bars: list[DailyOhlcvBar]) -> int:

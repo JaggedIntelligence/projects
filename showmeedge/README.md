@@ -54,6 +54,12 @@ http://localhost:9000
 postgresql://admin:quest@localhost:8812/qdb
 ```
 
+Apply the idempotent QuestDB schema and migrations without resetting data:
+
+```bash
+pnpm run questdb:migrate
+```
+
 The separate FastAPI market-data service can be started with:
 
 ```bash
