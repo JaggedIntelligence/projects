@@ -403,3 +403,70 @@ Possible next iterations:
 - Add query history.
 - Add editor features such as monospace line numbers and SQL highlighting.
 - Add optional guardrails for internal production use, such as SELECT-only enforcement or a max row count.
+
+### Sample Queries worked :  window_of_max_drawdown_highest_profit
+
+ --name : window_of_max_drawdown_highest_profit
+ -- parameters: enter these values on the web site /query router web page AFTER pasting the Query below ...
+ -- it shows Max Drawn down and Max Profit as % for a Given Stock in that DATE Range.
+$1 : ticker : AAPL
+$2 : source:  yfinance
+$3 start_date = 2015-06-01
+$4 end_date = 2015-06-01
+
+WITH price_rows AS (
+  SELECT
+    ts,
+    close
+  FROM equity_ohlcv_daily
+  WHERE symbol = $1
+    AND provider = $2
+    AND ts >= to_timestamp($3, 'yyyy-MM-dd')
+    AND ts < dateadd(
+      'd',
+      1,
+      to_timestamp($4, 'yyyy-MM-dd')
+    )
+    AND close > 0
+),
+summary AS (
+  SELECT
+    min(ts) AS actual_start_date,
+    max(ts) AS actual_end_date,
+
+    arg_min(close, ts) AS start_close,
+    arg_max(close, ts) AS end_close,
+
+    min(close) AS lowest_close,
+    arg_min(ts, close) AS lowest_close_date,
+
+    max(close) AS highest_close,
+    arg_max(ts, close) AS highest_close_date,
+
+    count() AS trading_days
+  FROM price_rows
+)
+SELECT
+  actual_start_date,
+  actual_end_date,
+  start_close,
+  end_close,
+
+  100.0 * (
+    end_close - start_close
+  ) / start_close AS performance_pct,
+
+  lowest_close,
+  lowest_close_date,
+  100.0 * (
+    lowest_close - start_close
+  ) / start_close AS max_drawdown_pct,
+
+  highest_close,
+  highest_close_date,
+  100.0 * (
+    highest_close - start_close
+  ) / start_close AS max_profit_potential_pct,
+
+  trading_days
+FROM summary;
