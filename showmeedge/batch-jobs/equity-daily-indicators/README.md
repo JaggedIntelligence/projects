@@ -1,13 +1,15 @@
 # Equity daily indicators
 
-Populate missing price and volume EMA values after daily OHLCV ingestion:
+Populate missing price EMA, volume EMA, and daily close-change values after daily OHLCV ingestion:
 
 ```bash
 bash batch-jobs/equity-daily-indicators/update-emas.sh --rebuild
 ```
 
-The default run updates every `yfinance` row with at least one empty EMA column. Price EMAs use
-`adj_close` with `close` as a fallback. Volume EMAs use `volume`.
+The default run updates every eligible `yfinance` row with at least one empty indicator column.
+Price EMAs use `adj_close` with `close` as a fallback. Volume EMAs use `volume`.
+`close_change_pct` uses the raw close-to-previous-close percentage change; the first row in each
+symbol/provider series remains null.
 
 Limit a run to a universe or a few symbols:
 

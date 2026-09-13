@@ -125,8 +125,8 @@ run-summary.json
 ```
 
 After a successful OHLCV refresh, the EOD wrapper populates missing `ema10`, `ema20`,
-`ema50`, `ema200`, `volema10`, and `volema20` values. The indicator job can also be run
-on its own:
+`ema50`, `ema200`, `volema10`, `volema20`, and `close_change_pct` values. The indicator
+job can also be run on its own:
 
 ```bash
 bash batch-jobs/equity-daily-indicators/update-emas.sh --universe sp500_current

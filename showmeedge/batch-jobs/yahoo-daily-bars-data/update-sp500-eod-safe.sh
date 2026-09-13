@@ -372,7 +372,7 @@ if [[ -n "$MAX_SYMBOLS" ]]; then
   EMA_CMD+=(--max-symbols "$MAX_SYMBOLS")
 fi
 
-echo "Updating price and volume EMAs for refreshed symbols..."
+echo "Updating price EMA, volume EMA, and close-change indicators for refreshed symbols..."
 set +e
 compose exec -T market-api "${EMA_CMD[@]}" 2>&1 | tee "$EMA_LOG"
 EMA_STATUS="${PIPESTATUS[0]}"

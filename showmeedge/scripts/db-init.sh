@@ -76,7 +76,11 @@ wait_for_questdb() {
 }
 
 apply_questdb_schema() {
+  local column_name
+  local column_exists
   local migration
+  local statement
+  local table_name
 
   echo "Applying QuestDB base schema from db/questdb/init.sql..."
   docker exec -e PGPASSWORD=quest -i "$POSTGRES_CONTAINER_NAME" \
@@ -85,8 +89,28 @@ apply_questdb_schema() {
   for migration in "$QUESTDB_MIGRATIONS_DIR"/*.sql; do
     [[ -e "$migration" ]] || continue
     echo "Applying QuestDB migration: $(basename "$migration")"
-    docker exec -e PGPASSWORD=quest -i "$POSTGRES_CONTAINER_NAME" \
-      psql -v ON_ERROR_STOP=1 -h questdb -p 8812 -U admin -d qdb < "$migration"
+    while IFS= read -r statement || [[ -n "$statement" ]]; do
+      [[ -n "$statement" ]] || continue
+      if [[ "$statement" =~ ^ALTER[[:space:]]+TABLE[[:space:]]+([a-zA-Z0-9_]+)[[:space:]]+ADD[[:space:]]+COLUMN[[:space:]]+IF[[:space:]]+NOT[[:space:]]+EXISTS[[:space:]]+([a-zA-Z0-9_]+) ]]; then
+        table_name="${BASH_REMATCH[1]}"
+        column_name="${BASH_REMATCH[2]}"
+      else
+        echo "Unsupported QuestDB migration statement in $(basename "$migration"): $statement" >&2
+        exit 1
+      fi
+
+      column_exists="$(
+        docker exec -e PGPASSWORD=quest "$POSTGRES_CONTAINER_NAME" \
+          psql -At -h questdb -p 8812 -U admin -d qdb \
+          -c "SELECT count() FROM table_columns('$table_name') WHERE \"column\" = '$column_name'"
+      )"
+      if [[ "$column_exists" == "0" ]]; then
+        docker exec -e PGPASSWORD=quest "$POSTGRES_CONTAINER_NAME" \
+          psql -v ON_ERROR_STOP=1 -h questdb -p 8812 -U admin -d qdb -c "$statement"
+      else
+        echo "QuestDB column already exists: $table_name.$column_name"
+      fi
+    done < "$migration"
   done
 }
 

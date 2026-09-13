@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS equity_ohlcv_daily (
   close DOUBLE,
   adj_close DOUBLE,
   volume LONG,
+  close_change_pct DOUBLE,
   ema10 DOUBLE,
   ema20 DOUBLE,
   ema50 DOUBLE,
@@ -31,6 +32,7 @@ DEDUP UPSERT KEYS(ts, symbol, provider)
 """
 
 EQUITY_OHLCV_DAILY_MIGRATION_SQL = {
+    "close_change_pct": "ALTER TABLE equity_ohlcv_daily ADD COLUMN close_change_pct DOUBLE",
     "ema10": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema10 DOUBLE",
     "ema20": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema20 DOUBLE",
     "ema50": "ALTER TABLE equity_ohlcv_daily ADD COLUMN ema50 DOUBLE",

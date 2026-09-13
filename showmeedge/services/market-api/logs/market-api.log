@@ -29,3 +29,4 @@
 2026-09-13 02:45:48,924 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
 2026-09-13 02:45:55,210 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log
 2026-09-13 02:53:32,841 INFO [app.logging_config] Market API file logging configured path=/workspace/logs/market-api.log
+2026-09-13 05:40:50,423 INFO [app.logging_config] Market API file logging configured path=/app/logs/market-api.log

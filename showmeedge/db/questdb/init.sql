@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS equity_ohlcv_daily (
   close DOUBLE,
   adj_close DOUBLE,
   volume LONG,
+  close_change_pct DOUBLE,
   ema10 DOUBLE,
   ema20 DOUBLE,
   ema50 DOUBLE,

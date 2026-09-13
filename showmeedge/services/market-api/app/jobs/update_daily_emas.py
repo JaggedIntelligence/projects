@@ -16,6 +16,7 @@ EMA_EXPRESSIONS = {
     "volema10": "avg(volume, 'period', 10)",
     "volema20": "avg(volume, 'period', 20)",
 }
+CLOSE_CHANGE_COLUMN = "close_change_pct"
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -53,7 +54,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Populate price and volume EMA columns on QuestDB daily OHLCV rows."
+        description="Populate price EMA, volume EMA, and close-change columns on QuestDB daily OHLCV rows."
     )
     parser.add_argument("--provider", default="yfinance", help="Provider partition to update. Default: yfinance")
     parser.add_argument("--symbols", nargs="+", help="Optional symbols to update. Default: every symbol for the provider.")
@@ -62,7 +63,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--rebuild-all",
         action="store_true",
-        help="Recalculate every selected row instead of updating only rows with an empty EMA column.",
+        help="Recalculate every selected row instead of updating only rows with an empty indicator column.",
     )
     return parser.parse_args(argv)
 
@@ -87,17 +88,38 @@ def build_scope_sql(provider: str, symbols: list[str] | None) -> str:
     return " AND ".join(clauses)
 
 
-def build_missing_sql(alias: str = "") -> str:
-    prefix = f"{alias}." if alias else ""
-    return " OR ".join(f"{prefix}{column} IS NULL" for column in EMA_EXPRESSIONS)
+def build_candidate_sql() -> str:
+    missing_ema_sql = " OR ".join(f"current_{column} IS NULL" for column in EMA_EXPRESSIONS)
+    missing_eligible_close_change_sql = (
+        f"current_{CLOSE_CHANGE_COLUMN} IS NULL "
+        "AND close IS NOT NULL "
+        "AND previous_close IS NOT NULL "
+        "AND previous_close <> 0"
+    )
+    return f"({missing_ema_sql}) OR ({missing_eligible_close_change_sql})"
 
 
 def build_count_sql(scope_sql: str, *, only_missing: bool) -> str:
-    missing_filter = f" AND ({build_missing_sql('target')})" if only_missing else ""
+    if not only_missing:
+        return f"""
+            SELECT count()
+            FROM equity_ohlcv_daily
+            WHERE {scope_sql}
+        """
+
     return f"""
+        WITH calculated AS (
+          SELECT
+            close,
+            {CLOSE_CHANGE_COLUMN} AS current_{CLOSE_CHANGE_COLUMN},
+            {", ".join(f"{column} AS current_{column}" for column in EMA_EXPRESSIONS)},
+            lag(close) OVER (PARTITION BY symbol, provider ORDER BY ts) AS previous_close
+          FROM equity_ohlcv_daily
+          WHERE {scope_sql}
+        )
         SELECT count()
-        FROM equity_ohlcv_daily target
-        WHERE {scope_sql}{missing_filter}
+        FROM calculated
+        WHERE {build_candidate_sql()}
     """
 
 
@@ -110,9 +132,7 @@ def build_insert_sql(scope_sql: str, *, only_missing: bool) -> str:
     output_ema_columns = ",\n          ".join(f"calculated_{column}" for column in EMA_EXPRESSIONS)
     missing_filter = ""
     if only_missing:
-        missing_filter = "\n        WHERE " + " OR ".join(
-            f"current_{column} IS NULL" for column in EMA_EXPRESSIONS
-        )
+        missing_filter = f"\n        WHERE {build_candidate_sql()}"
 
     return f"""
         WITH calculated AS (
@@ -129,16 +149,22 @@ def build_insert_sql(scope_sql: str, *, only_missing: bool) -> str:
             volume,
             currency,
             ingested_at,
+            {CLOSE_CHANGE_COLUMN} AS current_{CLOSE_CHANGE_COLUMN},
             {current_columns},
+            lag(close) OVER (PARTITION BY symbol, provider ORDER BY ts) AS previous_close,
             {calculated_columns}
           FROM equity_ohlcv_daily
           WHERE {scope_sql}
         )
         INSERT INTO equity_ohlcv_daily
           (ts, symbol, provider, provider_symbol, open, high, low, close, adj_close, volume,
-           ema10, ema20, ema50, ema200, volema10, volema20, currency, ingested_at)
+           close_change_pct, ema10, ema20, ema50, ema200, volema10, volema20, currency, ingested_at)
         SELECT
           ts, symbol, provider, provider_symbol, open, high, low, close, adj_close, volume,
+          CASE
+            WHEN close IS NULL OR previous_close IS NULL OR previous_close = 0 THEN NULL
+            ELSE ((close / previous_close) - 1) * 100.0
+          END,
           {output_ema_columns},
           currency, ingested_at
         FROM calculated{missing_filter}

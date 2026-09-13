@@ -1,10 +1,10 @@
-# Feature: Daily Price and Volume EMA Indicators
+# Feature: Daily EMA and Close-Change Indicators
 
 Date: 2026-09-12
 
 ## Goal
 
-Extend the QuestDB `equity_ohlcv_daily` table with reusable exponential moving-average indicators for daily price and volume data.
+Extend the QuestDB `equity_ohlcv_daily` table with reusable exponential moving-average indicators for daily price and volume data, plus the daily percentage change in raw closing price.
 
 The implemented indicators are:
 
@@ -16,6 +16,7 @@ The implemented indicators are:
 | `ema200` | Adjusted close, falling back to close | 200 trading observations |
 | `volema10` | Volume | 10 trading observations |
 | `volema20` | Volume | 20 trading observations |
+| `close_change_pct` | Raw close versus the previous trading observation | 1 trading observation |
 
 This feature also provides:
 
@@ -29,7 +30,7 @@ This feature also provides:
 
 The feature is implemented.
 
-The six columns have been added to the local QuestDB table. The market API was rebuilt and verified against QuestDB `9.3.5`.
+All seven indicator columns have been added to the local QuestDB table. Both migrations were applied and verified as rerunnable against QuestDB `9.3.5`.
 
 The initial full historical calculation was intentionally not started during implementation verification. At the time the migration was applied, `equity_ohlcv_daily` contained approximately 13.56 million rows. The standalone batch command described below should be used when the full calculation is ready to run.
 
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS equity_ohlcv_daily (
   close DOUBLE,
   adj_close DOUBLE,
   volume LONG,
+  close_change_pct DOUBLE,
   ema10 DOUBLE,
   ema20 DOUBLE,
   ema50 DOUBLE,
@@ -82,13 +84,14 @@ PARTITION BY MONTH WAL
 DEDUP UPSERT KEYS(ts, symbol, provider);
 ```
 
-All six indicator columns are nullable `DOUBLE` values.
+All seven indicator columns are nullable `DOUBLE` values.
 
 They are nullable because:
 
 - The schema migration adds empty columns to existing historical rows.
 - Daily OHLCV ingestion does not calculate indicators inline.
-- The separate EMA job calculates indicators after ingestion.
+- The separate daily indicator job calculates values after ingestion.
+- The first row in each symbol/provider series has no previous close, so `close_change_pct` remains null.
 - A missing source price or volume may leave an indicator empty.
 
 Volume is stored as `LONG`, but its EMA is stored as `DOUBLE` because exponential smoothing normally produces fractional results.
@@ -119,6 +122,27 @@ EMA(current) = alpha * current_value + (1 - alpha) * EMA(previous)
 QuestDB initializes a series from its first non-null value. Therefore, an `ema200` value can exist before a symbol has 200 rows. The period controls the smoothing factor; it is not a rule requiring the first 199 results to be null.
 
 The periods count ordered trading observations. Weekends and market holidays do not create synthetic rows and do not count as EMA periods.
+
+## Daily Close-Change Definition
+
+`close_change_pct` uses raw `close` values:
+
+```text
+((current_close / previous_close) - 1) * 100
+```
+
+QuestDB obtains `previous_close` with:
+
+```sql
+lag(close) OVER (
+  PARTITION BY symbol, provider
+  ORDER BY ts
+)
+```
+
+The stored value is expressed in percentage points: `5.0` means a positive five-percent change. The first row in each symbol/provider series remains null. A row also remains null when its current close is missing or its previous close is missing or zero.
+
+This column intentionally uses raw `close`, not `adj_close`. Corporate actions such as splits can therefore appear as large raw close changes. A separate adjusted-close return column can be added later if needed.
 
 ## Price Selection
 
@@ -163,7 +187,7 @@ File:
 db/questdb/init.sql
 ```
 
-This file contains the complete current table definition, including all six EMA columns. A new machine can create the correct table directly without first creating an older version of the schema.
+This file contains the complete current table definition, including all six EMA columns and `close_change_pct`. A new machine can create the correct table directly without first creating an older version of the schema.
 
 ### Existing-Database Migration
 
@@ -180,6 +204,12 @@ ALTER TABLE equity_ohlcv_daily ADD COLUMN IF NOT EXISTS ema10 DOUBLE;
 ```
 
 Separate statements are used for each column because QuestDB does not apply a multi-column `ADD COLUMN` operation atomically.
+
+The raw close-change column is added by:
+
+```text
+db/questdb/migrations/0002_add_equity_ohlcv_daily_close_change_pct.sql
+```
 
 ### Migration Execution
 
@@ -198,7 +228,7 @@ pnpm run db:reset
 
 The migration helper uses the `psql` client in the project's PostgreSQL container to connect to QuestDB over PGWire. This avoids requiring a separate host-level PostgreSQL client installation.
 
-The migration flow is intentionally small and does not maintain a separate migration-history table. The current DDL files are rerunnable because their operations use `IF NOT EXISTS`.
+The migration flow is intentionally small and does not maintain a separate migration-history table. Before executing each additive migration statement, the helper checks `table_columns` and skips columns that already exist. The SQL files also retain `IF NOT EXISTS` so their intent remains explicit.
 
 ### Runtime Schema Safety
 
@@ -237,7 +267,7 @@ Operator or EOD wrapper
       -> verifies/migrates the table schema
       -> resolves provider and optional symbols
       -> counts candidate rows
-      -> calculates all six EMA windows
+      -> calculates all six EMA windows and previous raw close
       -> appends complete replacement rows
       -> QuestDB WAL applies the rows
       -> DEDUP replaces rows with matching keys
@@ -259,7 +289,7 @@ QuestDB `9.3.5` rejects joined `UPDATE` statements for WAL tables. The productio
 The implemented solution follows QuestDB's append-oriented model:
 
 1. Select every original source column.
-2. Calculate the six indicator columns.
+2. Calculate the six EMA columns and `close_change_pct`.
 3. Insert a complete new version of each selected row into the same table.
 4. Preserve the original `ts`, `symbol`, and `provider` values.
 5. Allow `DEDUP UPSERT KEYS(ts, symbol, provider)` to replace the older version.
@@ -278,7 +308,7 @@ The replacement insert preserves:
 
 ## Empty-Only Calculation
 
-The default job updates rows where at least one of the following columns is null:
+The default job updates rows where at least one eligible indicator is null:
 
 ```text
 ema10
@@ -287,9 +317,10 @@ ema50
 ema200
 volema10
 volema20
+close_change_pct
 ```
 
-When any one indicator is missing, the job recalculates and writes all six indicators for that row.
+When an indicator is missing, the job writes all seven indicator columns for that row. A missing `close_change_pct` is eligible only when the row has a current close and a nonzero previous close. This prevents the legitimate null on the first row of every series from being rewritten on every run.
 
 A critical correctness rule is that the null-row filter is applied after the EMA window calculations.
 
@@ -297,8 +328,8 @@ Correct logical order:
 
 ```text
 Read the complete selected symbol/provider history
-  -> calculate cumulative EMA windows
-    -> retain rows with at least one missing stored EMA
+  -> calculate cumulative EMA windows and lag(close)
+    -> retain rows with at least one missing eligible indicator
       -> insert replacement rows
 ```
 
@@ -306,7 +337,7 @@ Filtering to null rows before running the window functions would be incorrect. A
 
 ## Full Recalculation
 
-The optional `--rebuild-all` flag recalculates every selected row, even when all six stored values are already populated.
+The optional `--rebuild-all` flag recalculates every selected row, even when all seven stored values are already populated.
 
 Example:
 
@@ -406,7 +437,7 @@ QuestDB applies WAL transactions asynchronously. Immediately after a large submi
 
 ## End-of-Day Integration
 
-The existing EOD wrapper now invokes the EMA job after a successful price refresh:
+The existing EOD wrapper now invokes the daily indicator job after a successful price refresh:
 
 ```text
 batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh
@@ -420,7 +451,7 @@ Start services and check health
   -> copy ingestion reports
   -> verify recent OHLCV coverage
   -> stop if ingestion failed
-  -> calculate missing price and volume EMAs
+  -> calculate missing price EMA, volume EMA, and close-change indicators
   -> stop if EMA calculation failed
   -> report successful EOD completion
 ```
@@ -448,14 +479,14 @@ run-summary.json
 
 The daily ingestion statement inserts only the original OHLCV and metadata columns. It does not supply EMA values.
 
-When a recent row is refreshed with the same deduplication key, its replacement version therefore has null EMA columns. The EOD indicator step runs afterward and writes a second complete replacement containing the recalculated indicators.
+When a recent row is refreshed with the same deduplication key, its replacement version therefore has null indicator columns. The EOD indicator step runs afterward and writes a second complete replacement containing the recalculated indicators.
 
 This ordering is intentional:
 
 ```text
 provider refresh
-  -> source row becomes authoritative and EMA columns are empty
-  -> EMA job reads the refreshed history
+  -> source row becomes authoritative and indicator columns are empty
+  -> daily indicator job reads the refreshed history
   -> indicator-enriched row becomes authoritative
 ```
 
@@ -464,14 +495,15 @@ provider refresh
 | File | Responsibility |
 | --- | --- |
 | `db/questdb/init.sql` | Complete QuestDB base definition for `equity_ohlcv_daily`. |
-| `db/questdb/migrations/0001_add_equity_ohlcv_daily_emas.sql` | Idempotently adds the six columns to an existing table. |
+| `db/questdb/migrations/0001_add_equity_ohlcv_daily_emas.sql` | Idempotently adds the six EMA columns to an existing table. |
+| `db/questdb/migrations/0002_add_equity_ohlcv_daily_close_change_pct.sql` | Idempotently adds the daily raw close-change column. |
 | `scripts/db-init.sh` | Waits for QuestDB and applies its base schema and ordered migrations. |
 | `package.json` | Exposes `pnpm run questdb:migrate`. |
 | `services/market-api/app/repositories/questdb_daily_bars.py` | Runtime table definition and missing-column startup migration. |
-| `services/market-api/app/jobs/update_daily_emas.py` | Builds and executes the price/volume EMA calculation. |
+| `services/market-api/app/jobs/update_daily_emas.py` | Builds and executes the price/volume EMA and close-change calculations. |
 | `batch-jobs/equity-daily-indicators/update-emas.sh` | Standalone Docker-aware operator wrapper. |
 | `batch-jobs/equity-daily-indicators/README.md` | Short command reference for the batch job. |
-| `batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh` | Runs the EMA job after successful EOD ingestion. |
+| `batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh` | Runs the daily indicator job after successful EOD ingestion. |
 | `services/market-api/tests/test_daily_emas.py` | Focused schema and generated-SQL tests. |
 
 No Next.js API response model or chart UI was changed. The indicators are stored in QuestDB and are available to SQL queries, but exposing them through typed API responses or chart overlays is a separate future feature.
@@ -482,9 +514,9 @@ The implementation was verified with:
 
 - Shell syntax checks for the migration and batch wrappers.
 - Python compilation checks.
-- Focused unit tests for all six columns and generated SQL.
+- Focused unit tests for all seven indicator columns and generated SQL.
 - Applying `pnpm run questdb:migrate` to the running local QuestDB.
-- Querying `SHOW COLUMNS FROM equity_ohlcv_daily` and confirming all six columns exist.
+- Querying `SHOW COLUMNS FROM equity_ohlcv_daily` and confirming all seven indicator columns exist.
 - Rebuilding and restarting the market API.
 - Checking the market API QuestDB health endpoint.
 - An isolated QuestDB WAL-table integration test.
@@ -497,6 +529,15 @@ third-row volema10 = 1512.3966942148759
 ```
 
 The isolated test also confirmed that inserting calculated replacement rows into a WAL table and allowing deduplication to replace the earlier rows works correctly.
+
+A second isolated WAL-table test verified the raw daily close-change cases:
+
+```text
+first row                           -> NULL
+100 to 105                         -> 5.0
+105 to 0                           -> -100.0
+previous close 0, current close 10 -> NULL
+```
 
 The complete market API unit-test run produced 23 passing tests and one unrelated existing seasonality endpoint failure under the freshly resolved FastAPI version. The focused EMA tests passed.
 
@@ -557,6 +598,7 @@ Adjusted-close history can change retroactively after corporate actions or provi
 ## References
 
 - QuestDB EMA window functions: https://questdb.com/docs/query/functions/window-functions/reference/
+- QuestDB `lag()` window function: https://questdb.com/docs/query/functions/window-functions/reference/#lag
 - QuestDB `ALTER TABLE ADD COLUMN`: https://questdb.com/docs/query/sql/alter-table-add-column/
 - QuestDB `INSERT`: https://questdb.com/docs/query/sql/insert/
 - QuestDB deduplication: https://questdb.com/docs/concepts/deduplication/
