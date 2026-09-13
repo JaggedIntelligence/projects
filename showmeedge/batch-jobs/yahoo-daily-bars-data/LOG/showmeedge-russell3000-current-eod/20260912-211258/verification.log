@@ -1,0 +1,10 @@
+requested_universe=russell3000_current
+requested_symbols=2892
+requested_yfinance_rows=13376105
+requested_distinct_symbols=2886
+requested_start_ts=1997-01-02 00:00:00
+requested_end_ts=2026-09-11 00:00:00
+latest_requested_ts=2026-09-11 00:00:00
+requested_symbols_with_latest_ts=2835
+requested_symbols_missing_latest_ts=57
+missing_latest_symbols=BRK.B,EA,HEI.A,SATS,AVB,EQR,LEN.B,BF.A,MOG.A,BF.B,WBS,BLD,GTLS,NUVL,MASI,JHG,CWAN,TMHC,APGE,LBRDK,LBRDA,GEF.B,CPRX,CRNX,NSA,LC,SEM,STEL,SKYT,SILA,KW,LEG,KALV,HLX,FDP,OLPX,TWO,PRA,AVNS,EEX,WSR,TALK,ESPR,NFBK,CRD.A,TOI,XOMA,SCVL,CCRN,TBRG,LPRO,RMAX,MDV,GAMB,ATLN,SNBR,GOCO
