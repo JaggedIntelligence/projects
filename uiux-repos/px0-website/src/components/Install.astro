@@ -1,0 +1,278 @@
+---
+import { GITHUB, RELEASES, INSTALL_CMD, VERSION } from '../data/links';
+import { TARGETS, LSP_SERVERS } from '../data/px0';
+
+const count = TARGETS.reduce((a, t) => a + t.arch.length, 0);
+const fromSource = `git clone ${GITHUB}.git
+cd px0
+make build
+sudo install px0 /usr/local/bin/`;
+---
+
+<section class="sec" id="install">
+  <div class="wrap">
+    <header class="sec-head">
+      <div class="sec-id"><span class="sec-n">07</span><span>/install</span></div>
+      <div>
+        <h2 class="sec-title">One binary. <em>Pick a way in.</em></h2>
+        <p class="sec-sub">Install, point it at a repository, and read. Language servers are optional and picked up from your <code class="inline-code">$PATH</code> whenever they exist.</p>
+      </div>
+    </header>
+
+    <div class="opts">
+      <div class="pnl ticks reveal">
+        <div class="pnl-h"><span><b>a</b> · quick install</span><span>macos · linux · bsd</span></div>
+        <div class="pnl-b opt">
+          <button class="copyline" type="button" data-copy={INSTALL_CMD} aria-label="Copy install command">
+            <span class="copyline-p">$</span>
+            <code><span>{INSTALL_CMD}</span></code>
+            <span class="copyline-s"></span>
+          </button>
+          <p>Installs or upgrades to the latest release.</p>
+          <dl class="env">
+            <div><dt>VERSION</dt><dd>pin a release, default <code>latest</code></dd></div>
+            <div><dt>INSTALL_DIR</dt><dd><code>/usr/local/bin</code> or <code>~/.local/bin</code></dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="pnl reveal">
+        <div class="pnl-h"><span><b>b</b> · prebuilt binary</span><span>{count} targets</span></div>
+        <div class="pnl-b opt">
+          <div class="targets">
+            {TARGETS.map((t) => (
+              <div class="tg"><span class="tg-os">{t.os}</span><span class="tg-arch">{t.arch.map((a) => <span>{a}</span>)}</span></div>
+            ))}
+          </div>
+          <pre class="snip"><span class="s-dim">$</span> sudo install px0-{VERSION}-darwin-arm64 /usr/local/bin/px0</pre>
+          <a class="more" href={RELEASES} target="_blank" rel="noopener noreferrer">GitHub releases →</a>
+        </div>
+      </div>
+
+      <div class="pnl reveal">
+        <div class="pnl-h"><span><b>c</b> · from source</span><span>go 1.24+</span></div>
+        <div class="pnl-b opt">
+          <pre class="snip">{fromSource}</pre>
+          <p>No npm, no node, no CGO, no system libraries. <code class="inline-code">make dist</code> cross-compiles all {count} targets.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pnl reveal lsp">
+      <div class="pnl-h"><span>optional · language servers for go to definition, hover, references</span><span>click a command to copy</span></div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>language</th><th>server</th><th>install</th></tr></thead>
+          <tbody>
+            {LSP_SERVERS.map((s) => (
+              <tr>
+                <td>{s.lang}</td>
+                <td class="srv">{s.server}</td>
+                <td><button class="cmd" type="button" data-copy={s.cmd}><span class="s-dim">$</span> {s.cmd}</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="final ticks reveal">
+      <p class="final-cmd"><span class="s-dim">$</span> px0<span class="caret"></span></p>
+      <p class="final-sub">Your codebase, open in the time it takes to read this line.</p>
+      <div class="final-actions">
+        <button class="copyline" type="button" data-copy={INSTALL_CMD} aria-label="Copy install command">
+          <span class="copyline-p">$</span>
+          <code><span>{INSTALL_CMD}</span></code>
+          <span class="copyline-s"></span>
+        </button>
+        <a class="btn btn-primary" href={GITHUB} target="_blank" rel="noopener noreferrer">Star on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .opts {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .pnl-h b {
+    color: var(--amber);
+  }
+
+  .opt {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: calc(100% - 37px);
+  }
+
+  .opt p {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--txt-2);
+  }
+
+  .env div {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    border-top: 1px solid var(--bdr);
+    font-size: 11.5px;
+  }
+
+  .env dt {
+    width: 11ch;
+    flex-shrink: 0;
+    color: var(--cyan);
+  }
+
+  .env dd {
+    color: var(--txt-3);
+  }
+
+  .env code {
+    color: var(--txt);
+  }
+
+  .targets {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tg {
+    display: flex;
+    gap: 10px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--bdr);
+    font-size: 11.5px;
+  }
+
+  .tg-os {
+    width: 8ch;
+    color: var(--txt);
+  }
+
+  .tg-arch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tg-arch span {
+    padding: 0 5px;
+    background: var(--surface-2);
+    color: var(--txt-2);
+    font-size: 10.5px;
+  }
+
+  .snip {
+    padding: 10px 12px;
+    border: 1px solid var(--bdr);
+    background: var(--code-bg);
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--txt);
+    overflow-x: auto;
+  }
+
+  .more {
+    margin-top: auto;
+    font-size: 11.5px;
+    color: var(--amber);
+  }
+
+  .more:hover {
+    text-decoration: underline;
+  }
+
+  .lsp {
+    margin-top: 16px;
+  }
+
+  .lsp .tbl {
+    min-width: 640px;
+  }
+
+  .lsp .srv {
+    color: var(--txt);
+  }
+
+  .cmd {
+    border: 0;
+    background: none;
+    font-size: 11.5px;
+    color: var(--txt-2);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .cmd:hover {
+    color: var(--amber);
+  }
+
+  .cmd.copied::after {
+    content: '  copied';
+    color: var(--green);
+  }
+
+  .final {
+    margin-top: 56px;
+    padding: 56px 24px;
+    border: 1px solid var(--bdr);
+    background: radial-gradient(60% 100% at 50% 100%, var(--amber-wash), transparent 70%), var(--bg-elev);
+    text-align: center;
+  }
+
+  .final-cmd {
+    font-size: clamp(40px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .final-sub {
+    margin-top: 16px;
+    font-size: 13.5px;
+    color: var(--txt-2);
+  }
+
+  .final-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    max-width: 660px;
+    margin: 28px auto 0;
+  }
+
+  .final-actions .copyline {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .final-actions .btn {
+    height: 44px;
+    padding: 0 20px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .final-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .final-actions .copyline,
+    .final-actions .btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .opts { grid-template-columns: minmax(0, 1fr); }
+    .opt { height: auto; }
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+import { GITHUB, RELEASES, ISSUES, LICENSE, MAILTO, VERSION, INSTALL_CMD, repoDoc } from '../data/links';
+const year = new Date().getFullYear();
+const base = Astro.url.pathname === '/' ? '' : '/';
+
+const cols = [
+  {
+    title: 'site',
+    links: ['bench', 'why', 'features', 'arch', 'keys', 'cli', 'install'].map((s) => ({ label: s, href: `${base}#${s}` })),
+  },
+  {
+    title: 'docs',
+    links: ['README.md', 'BENCHMARKS.md', 'ARCHITECTURE.md', 'STYLING.md', 'CONTRIBUTING.md'].map((d) => ({
+      label: d,
+      href: repoDoc(d),
+      ext: true,
+    })),
+  },
+  {
+    title: 'project',
+    links: [
+      { label: 'GitHub', href: GITHUB, ext: true },
+      { label: 'Releases', href: RELEASES, ext: true },
+      { label: 'Issues', href: ISSUES, ext: true },
+      { label: 'MIT License', href: LICENSE, ext: true },
+      { label: 'Email', href: MAILTO },
+    ],
+  },
+];
+---
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="f-brand">
+      <a href="/" class="logo-link" aria-label="px0 home">
+        <img src="/logo/px0-logo-dark.png" alt="px0" class="logo-img logo-dark" />
+        <img src="/logo/px0-logo-light.png" alt="px0" class="logo-img logo-light" />
+      </a>
+      <p>The read-only IDE for the AI-agent era. Starts in under a millisecond, idles at about 16 MB.</p>
+      <div class="f-install">
+        <button class="copyline" type="button" data-copy={INSTALL_CMD} aria-label="Copy install command">
+          <span class="copyline-p">$</span>
+          <code><span>{INSTALL_CMD}</span></code>
+          <span class="copyline-s"></span>
+        </button>
+      </div>
+      <span class="f-ver"><i></i>v{VERSION} · stable channel</span>
+    </div>
+
+    {cols.map((c) => (
+      <nav class="f-col" aria-label={c.title}>
+        <h3>{c.title}</h3>
+        {c.links.map((l) => (
+          <a
+            href={l.href}
+            target={'ext' in l && l.ext ? '_blank' : undefined}
+            rel={'ext' in l && l.ext ? 'noopener noreferrer' : undefined}
+          >{l.label}</a>
+        ))}
+      </nav>
+    ))}
+  </div>
+
+  <div class="wrap f-base">
+    <span>&copy; {year} px0 · MIT licensed</span>
+  </div>
+
+  <div class="f-wordmark" aria-hidden="true">px<span>[</span>0<span>]</span></div>
+</footer>
+
+<style>
+  footer {
+    padding: 56px 0 0;
+    border-top: 1px solid var(--bdr);
+    overflow: hidden;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  .f-brand p {
+    max-width: 320px;
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--txt-2);
+  }
+
+  .f-install {
+    max-width: 440px;
+    margin-top: 16px;
+  }
+
+  .f-ver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--txt-3);
+  }
+
+  .f-ver i {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+  }
+
+  .f-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .f-col h3 {
+    margin-bottom: 4px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--txt-3);
+  }
+
+  .f-col a {
+    width: fit-content;
+    font-size: 12px;
+    color: var(--txt-2);
+    transition: color 0.15s;
+  }
+
+  .f-col a:hover {
+    color: var(--amber);
+  }
+
+  .f-base {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-top: 1px solid var(--bdr);
+    font-size: 11px;
+    color: var(--txt-3);
+  }
+
+  .f-base a {
+    color: var(--txt-2);
+  }
+
+  .f-base a:hover {
+    color: var(--amber);
+  }
+
+  .f-wordmark {
+    padding-inline: 16px;
+    font-size: clamp(90px, 21vw, 300px);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+    text-align: center;
+    color: var(--txt);
+    opacity: 0.05;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 860px) {
+    .footer-inner {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+    .f-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>
