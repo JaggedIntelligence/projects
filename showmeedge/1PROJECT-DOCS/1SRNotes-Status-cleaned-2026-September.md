@@ -59,8 +59,11 @@ $bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh --universe russe
 $bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh --universe sp500_current
 
 
-$bash batch-jobs/yahoo-daily-bars-data/update-sp500-eod-safe.sh \
-  --start 2026-05-20 \
-  --end 2026-06-02
+## 4/ Industry Peers for a Given Stock
 
+ - Industry_peers table is populated in the QuestDB, following  Query shows AMD peers ( I think we scraped from Yahoo finance peers page)
  
+ select *  from industry_peers     where source_ticker  = 'AMD'  
+
+ - TODO: so Build a route /peers and UI screens to show , for a given symbole like AMD show the Peers 
+ - how peers stock is performing in the last 1 day, 2 days, 5 days, 20 days, 100 days to get an Idea
