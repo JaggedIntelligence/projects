@@ -1,40 +1,50 @@
-# extract youtube video meta data info
+# Bloomberg YouTube metadata collector
 
+Collects metadata for videos published on Bloomberg Television's `/videos` tab
+during the last 10 days. It uses `yt-dlp` without downloading video or audio.
 
-## What it does today
+## Output
 
-`news-analysis-youtube.py` currently:
+- `bloomberg_videos.jsonl` is an append-only processing index. Each line contains
+  `video_id`, `title`, and `published_at`.
+- `metadata/YYYY-MM-DD-video_id.json` contains the full retained metadata for one
+  video, including its description, chapters, duration, views, and likes.
 
- extract youtube video meta data info.
+Existing video IDs are not appended to the index again. If an indexed video's
+metadata file is missing, the collector recreates that file without adding a
+duplicate index record.
 
-## Files
-
-- `news-analysis-youtube.py` — 
-- `run.sh` — runs the script through `uv` using this folder's locked environment.
-- `pyproject.toml` — declares Python and the direct `edgartools` dependency.
-- `uv.lock` — pins the full dependency graph for reproducible installs.
+Every run uses the same rolling 10-day window. If one video fails, the collector
+continues with the remaining videos and exits nonzero at the end. Because failed
+videos are not indexed, they are retried on the next run while they remain inside
+the 10-day window.
 
 ## Requirements
 
 - `uv` 0.11.30
 - Python 3.12, managed by `uv`
--  
-
-The project pins yt-dlp 2026.8.19
+- `yt-dlp` 2026.8.19, pinned in `uv.lock`
 
 ## Run
 
-From this folder:
+From this directory:
 
 ```bash
 ./run.sh
 ```
 
-Or from another directory:
+The script resolves all default output paths relative to its own directory, so
+it can also be invoked from another working directory.
+
+Optional arguments are forwarded to the Python program:
 
 ```bash
-path/to/bloomberg-youtubes/run.sh
+./run.sh --lookback-days 10
+./run.sh --help
 ```
 
-`run.sh` resolves its own directory, uses `uv run --locked`, and exits immediately if `uv` is unavailable. Any arguments passed to `run.sh` are forwarded to `news-analysis-youtube.py`
+The default source is:
 
+```text
+https://www.youtube.com/channel/UCIALMKvObZNtJ6AmdCLP7Lg/videos
+```

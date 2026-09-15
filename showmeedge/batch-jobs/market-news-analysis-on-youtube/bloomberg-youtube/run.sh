@@ -12,4 +12,4 @@ fi
 exec uv run \
   --project "$JOB_DIR" \
   --locked \
-  python "$JOB_DIR/news-analysis-youtube.py" "https://www.youtube.com/watch?v=NuvaglYGWj4"  "bloomberg_metadata.json"
+  python "$JOB_DIR/news-analysis-youtube.py" "$@"
