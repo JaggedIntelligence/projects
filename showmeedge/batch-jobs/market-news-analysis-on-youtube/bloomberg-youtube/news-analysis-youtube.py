@@ -25,6 +25,7 @@ CHANNEL_BATCH_SIZE = 50
 JOB_DIR = Path(__file__).resolve().parent
 DEFAULT_METADATA_DIR = JOB_DIR / "metadata"
 DEFAULT_INDEX_FILE = JOB_DIR / "bloomberg_videos.jsonl"
+DEFAULT_STATE_FILE = JOB_DIR / "bloomberg_scan_state.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -53,6 +54,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DEFAULT_INDEX_FILE,
         help="Append-only JSON Lines file of processed videos.",
+    )
+    parser.add_argument(
+        "--state-file",
+        type=Path,
+        default=DEFAULT_STATE_FILE,
+        help="JSON file containing the last successful scan time.",
     )
     args = parser.parse_args()
     if args.lookback_days < 1:
@@ -113,10 +120,13 @@ def is_recent(
     publication_time: datetime,
     cutoff: datetime,
     has_exact_timestamp: bool,
+    strict_cutoff: bool = False,
 ) -> bool:
     # upload_date has only day precision. Include the entire boundary day rather
     # than risk omitting a video that is actually inside the rolling window.
     if has_exact_timestamp:
+        if strict_cutoff:
+            return publication_time > cutoff
         return publication_time >= cutoff
     return publication_time.date() >= cutoff.date()
 
@@ -179,6 +189,29 @@ def write_json_atomically(path: Path, value: dict[str, Any]) -> None:
     finally:
         if temporary_name and os.path.exists(temporary_name):
             os.unlink(temporary_name)
+
+
+def load_last_successful_scan(state_file: Path) -> datetime | None:
+    if not state_file.exists():
+        return None
+    try:
+        state = json.loads(state_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON in state file: {exc}") from exc
+    if not isinstance(state, dict):
+        raise ValueError("State file is not a JSON object")
+    raw_timestamp = state.get("last_successful_scan_at")
+    if not isinstance(raw_timestamp, str) or not raw_timestamp:
+        raise ValueError("State file has no valid 'last_successful_scan_at'")
+    try:
+        parsed = datetime.fromisoformat(raw_timestamp.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError(
+            "State file has an invalid 'last_successful_scan_at'"
+        ) from exc
+    if parsed.tzinfo is None:
+        raise ValueError("State timestamp must include a timezone")
+    return parsed.astimezone(timezone.utc)
 
 
 def stored_metadata_exists(metadata_dir: Path, index_record: dict[str, Any]) -> bool:
@@ -251,8 +284,8 @@ def extract_video(url: str) -> dict[str, Any]:
 
 
 def run(args: argparse.Namespace) -> int:
-    now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(days=args.lookback_days)
+    scan_started_at = datetime.now(timezone.utc)
+    rolling_cutoff = scan_started_at - timedelta(days=args.lookback_days)
     args.metadata_dir.mkdir(parents=True, exist_ok=True)
     args.index_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -263,6 +296,13 @@ def run(args: argparse.Namespace) -> int:
             print("Another Bloomberg metadata scan is already running.", file=sys.stderr)
             return 1
 
+        last_successful_scan = load_last_successful_scan(args.state_file)
+        if last_successful_scan and last_successful_scan > scan_started_at:
+            raise ValueError("State timestamp is later than the current time")
+        cutoff = max(rolling_cutoff, last_successful_scan or rolling_cutoff)
+        strict_cutoff = bool(
+            last_successful_scan and last_successful_scan >= rolling_cutoff
+        )
         processed = load_index(index_handle)
         print(
             f"Scanning {args.channel_url} for videos published since "
@@ -293,7 +333,10 @@ def run(args: argparse.Namespace) -> int:
             entry_publication = published_at(entry)
             entry_has_timestamp = isinstance(entry.get("timestamp"), (int, float))
             if entry_publication and not is_recent(
-                entry_publication, cutoff, entry_has_timestamp
+                entry_publication,
+                cutoff,
+                entry_has_timestamp,
+                strict_cutoff,
             ):
                 # YouTube's /videos tab is ordered newest first.
                 break
@@ -302,7 +345,10 @@ def run(args: argparse.Namespace) -> int:
             if entry_publication is None and existing:
                 indexed_publication = index_publication_time(existing)
                 if indexed_publication and not is_recent(
-                    indexed_publication, cutoff, has_exact_timestamp=True
+                    indexed_publication,
+                    cutoff,
+                    has_exact_timestamp=True,
+                    strict_cutoff=strict_cutoff,
                 ):
                     break
             if existing and stored_metadata_exists(args.metadata_dir, existing):
@@ -325,6 +371,7 @@ def run(args: argparse.Namespace) -> int:
                     publication_time,
                     cutoff,
                     isinstance(info.get("timestamp"), (int, float)),
+                    strict_cutoff,
                 ):
                     break
 
@@ -358,7 +405,21 @@ def run(args: argparse.Namespace) -> int:
             f"Scan complete: {added} added, {skipped} already processed, "
             f"{len(failures)} failed."
         )
-        return 1 if failures else 0
+        if failures:
+            print("Scan state was not advanced because processing failed.")
+            return 1
+
+        write_json_atomically(
+            args.state_file,
+            {
+                "last_successful_scan_at": scan_started_at.isoformat().replace(
+                    "+00:00", "Z"
+                )
+            },
+        )
+        saved_timestamp = scan_started_at.isoformat().replace("+00:00", "Z")
+        print(f"Advanced scan state to {saved_timestamp}")
+        return 0
 
 
 def main() -> int:

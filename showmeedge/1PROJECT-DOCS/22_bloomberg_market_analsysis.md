@@ -32,6 +32,11 @@ both the first execution and all subsequent executions. If the job does not run
 for more than 10 days, videos that have aged out of this window are not
 backfilled.
 
+After the initial run, the effective cutoff is the later of the rolling 10-day
+cutoff and the last successful scan time. Therefore, routine subsequent runs
+inspect videos published after the previous successful scan without exceeding
+the maximum 10-day lookback.
+
 ## 3. Functional requirements
 
 The collector must:
@@ -135,13 +140,40 @@ If an ID exists in the processing index but its metadata file is missing, the
 job extracts and restores the metadata file without appending a duplicate index
 record.
 
+### 5.3 Scan state
+
+Operational state is stored in:
+
+```text
+bloomberg_scan_state.json
+```
+
+Its schema is:
+
+```json
+{
+  "last_successful_scan_at": "2026-09-14T18:10:00Z"
+}
+```
+
+The timestamp is the start time of the last completely successful run. Saving
+the start time, instead of the completion time, ensures that a video published
+while a scan is running remains eligible for discovery on the next run.
+
+The state file is written atomically through a temporary file and rename. A
+missing state file identifies an initial run. A malformed or future-dated state
+timestamp is a fatal error.
+
 ## 6. Processing flow
 
 ```text
 Acquire exclusive index lock
           |
           v
-Load processed video IDs
+Load processed video IDs and scan state
+          |
+          v
+Choose later of 10-day cutoff or last successful scan
           |
           v
 Enumerate /videos newest first in bounded batches
@@ -161,6 +193,9 @@ For each eligible, unprocessed video
           +--> Durably append the compact index record
           |
           v
+If fully successful, atomically advance scan state
+          |
+          v
 Report counts and return success or failure
 ```
 
@@ -175,7 +210,9 @@ an indexed video's metadata file must be restored.
 
 ## 7. Publication-date handling
 
-The collector calculates the cutoff as the current UTC time minus 10 days.
+The collector calculates a rolling cutoff as the current UTC time minus 10
+days. If a state file exists, the effective cutoff is the later of that rolling
+cutoff and `last_successful_scan_at`.
 
 For each video:
 
@@ -213,6 +250,10 @@ This makes retries automatic. On the next execution, successful IDs are skipped
 and failed IDs are attempted again while they remain within the rolling 10-day
 window.
 
+The state file is not advanced when any eligible video fails. It is also not
+advanced when channel enumeration is incomplete or fails. This preserves the
+failed interval for the next retry.
+
 A channel-enumeration failure is fatal because the job cannot prove that it has
 discovered all eligible videos.
 
@@ -239,6 +280,7 @@ Supported options include:
 --lookback-days
 --metadata-dir
 --index-file
+--state-file
 ```
 
 Example:
