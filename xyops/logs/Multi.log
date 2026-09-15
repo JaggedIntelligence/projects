@@ -1,0 +1,6 @@
+[1789483240.332][2026-09-15 07:40:40][subbas-macbook-air.local][99289][Multi][debug][2][Initializing multi-server management system][{"id":"subbas-macbook-air.local"}]
+[1789483240.332][2026-09-15 07:40:40][subbas-macbook-air.local][99289][Multi][debug][1][No master data found, registering ourselves (first run)][]
+[1789483240.332][2026-09-15 07:40:40][subbas-macbook-air.local][99289][Multi][debug][5][Saving master data to disk: conf/masters.json][{"masters":["subbas-macbook-air.local"]}]
+[1789483240.332][2026-09-15 07:40:40][subbas-macbook-air.local][99289][Multi][debug][1][We are becoming primary][{"id":"subbas-macbook-air.local"}]
+[1789484554.127][2026-09-15 08:02:34][subbas-macbook-air.local][4306][Multi][debug][2][Initializing multi-server management system][{"id":"subbas-macbook-air.local"}]
+[1789484554.128][2026-09-15 08:02:34][subbas-macbook-air.local][4306][Multi][debug][1][We are becoming primary][{"id":"subbas-macbook-air.local"}]

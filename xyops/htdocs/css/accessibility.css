@@ -1,0 +1,531 @@
+/* xyOps Style Overrides for Accessibility */
+
+/* Copyright (c) 2019 - 2026 PixlCore LLC
+Released under the BSD 3-Clause License.
+See the LICENSE.md file in this repository. */
+
+/* High Contrast */
+
+body.highcon {
+	--border-color: rgb(163, 168, 180);
+	--shadow-color: rgb(141, 143, 146);
+	--background-color: rgb(248, 250, 252);
+	--header-background-color: rgb(255, 255, 255);
+	--header-text-color: rgb(74, 81, 90);
+	--box-background-color: rgb(255, 255, 255);
+	--form-background-color: rgb(248, 250, 252);
+	--table-header-background-color: rgba(0, 50, 100, 0.03);
+	
+	--sidebar-background-color: rgb(255, 255, 255);
+	--sidebar-text-color: rgb(68, 68, 78);
+	
+	--body-text-color: rgb(19, 22, 27);
+	--link-color: rgb(46, 52, 61);
+	--label-color: rgb(74, 74, 84);
+	--alt-label-color: rgb(90, 100, 110);
+	--icon-color: rgb(128, 132, 140);
+}
+body.highcon .plugin_param_editor_cont {
+	--shadow-color: rgb(255, 255, 255);
+}
+body.highcon .multiselect .item {
+	--border-color: rgb(227, 229, 233);
+}
+body.highcon .button {
+	--shadow-color: rgb(233, 236, 240);
+}
+body.highcon div.header_widget:hover, body.highcon div.header_widget.popped {
+	--shadow-color: rgb(233, 236, 240);
+}
+
+/* Low Contrast */
+
+body.lowcon {
+	--theme-color: rgb(54, 126, 208);
+	--theme-color-highlight: rgb(82, 152, 218);
+	--theme-color-half: rgba(54, 126, 208, 0.5);
+	--theme-color-naught-seven: rgba(54, 126, 208, 0.07);
+	
+	--border-color: rgb(198, 200, 205);
+	--shadow-color: rgb(199, 202, 206);
+	--background-color: rgb(222, 230, 238);
+	--header-background-color: rgb(222, 230, 238);
+	--header-text-color: rgb(117, 127, 141);
+	--box-background-color: rgb(218, 226, 234);
+	--form-background-color: rgb(211, 217, 225);
+	--table-header-background-color: rgba(0, 50, 100, 0.03);
+	
+	--sidebar-background-color: rgb(222, 230, 238);
+	--sidebar-text-color: rgb(130, 130, 147);
+	
+	--body-text-color: rgb(76, 89, 108);
+	--link-color: rgb(95, 107, 124);
+	--label-color: rgb(134, 134, 151);
+	--alt-label-color: rgb(140, 150, 160);
+	--icon-color: rgb(194, 200, 210);
+}
+body.lowcon .button.primary, body.lowcon .button.default {
+	color: rgba(255, 255, 255, 0.8);
+}
+body.lowcon .color_label {
+	opacity: 0.8;
+}
+body.lowcon .CodeMirror {
+	background: rgb(218, 226, 234);
+}
+
+/* Dark High Contrast */
+
+body.dark.highcon {
+	--theme-color-half: rgb(55, 145, 245);
+	
+	--border-color: rgb(93, 99, 106);
+	--shadow-color: rgba(0, 0, 0, 0.0);
+	--background-color: rgb(0, 0, 0);
+	--header-background-color: rgb(0, 0, 0);
+	--header-text-color: rgb(143, 154, 171);
+	--box-background-color: rgb(17, 18, 20);
+	--form-background-color: rgb(25, 30, 35);
+	--table-header-background-color: rgba(200, 225, 255, 0.05);
+	
+	--sidebar-background-color: rgb(17, 18, 20);
+	--sidebar-text-color: rgb(143, 154, 172);
+	
+	--body-text-color: rgb(184, 194, 214);
+	--link-color: rgb(161, 171, 187);
+	--label-color: rgb(164, 174, 190);
+	--alt-label-color: rgb(150, 160, 170);
+	--icon-color: rgb(141, 141, 159);
+	--icon-color-half: rgba(141, 141, 159, 0.5);
+}
+body.dark.highcon .plugin_param_editor_cont {
+	--border-color: rgb(15, 18, 21);
+	--shadow-color: rgb(15, 18, 21);
+	border: 1px solid rgb(79, 84, 90);
+}
+
+body.dark.highcon .plugin_param_editor_cont textarea, body.dark.highcon .plugin_param_editor_cont input, body.dark.highcon .plugin_param_editor_cont select {
+	border: 1px solid rgb(79, 84, 90);
+}
+body.dark.highcon .plugin_param_editor_cont textarea:focus, body.dark.highcon .plugin_param_editor_cont input:focus, body.dark.highcon .plugin_param_editor_cont select:focus {
+	border: 1px solid var(--theme-color);
+}
+
+body.dark.highcon .multiselect .item {
+	--border-color: rgb(35, 40, 45);
+}
+body.dark.highcon .CodeMirror {
+	background: rgb(6, 10, 14) !important;
+}
+
+body.dark.highcon .button {
+	--shadow-color: rgba(0, 0, 0, 0.0);
+}
+
+/* Dark Low Contrast */
+
+body.dark.lowcon {
+	/* Dark theme */
+	--border-color: rgb(64, 69, 75);
+	--shadow-color: rgba(0, 0, 0, 0.0);
+	--background-color: rgb(38, 44, 50);
+	--header-background-color: rgb(54, 58, 64);
+	--header-text-color: rgb(106, 115, 128);
+	--box-background-color: rgb(44, 48, 53);
+	--form-background-color: rgb(54, 60, 65);
+	--table-header-background-color: rgba(200, 225, 255, 0.03);
+	
+	--sidebar-background-color: rgb(44, 47, 51);
+	--sidebar-text-color: rgb(103, 112, 125);
+	
+	--body-text-color: rgb(142, 151, 169);
+	--link-color: rgb(115, 123, 135);
+	--label-color: rgb(115, 123, 135);
+	--alt-label-color: rgb(100, 110, 120);
+	--icon-color: rgb(86, 86, 98);
+	--icon-color-half: rgba(90, 90, 102, 0.5);
+}
+
+/* Color Accessibility Mode */
+
+body.coloracc a, body.coloracc span.link, body.coloracc button.link {
+	-webkit-text-decoration: dashed underline;
+	text-decoration: dashed underline;
+}
+body.coloracc a:hover, body.coloracc span.link:hover, body.coloracc button.link:hover {
+	-webkit-text-decoration: solid underline !important;
+	text-decoration: solid underline !important;
+}
+
+body.coloracc .checkbox_container > input ~ label {
+	-webkit-text-decoration: dashed underline;
+	text-decoration: dashed underline;
+}
+body.coloracc .checkbox_container > input:hover ~ label {
+	-webkit-text-decoration: solid underline !important;
+	text-decoration: solid underline !important;
+}
+
+body.coloracc .button:hover {
+	text-decoration: underline !important;
+	border-style: dashed !important;
+}
+
+body.coloracc .diff_removed {
+	text-decoration: line-through;
+}
+
+body.coloracc .diff_added {
+	-webkit-text-decoration: dashed underline;
+	text-decoration: dashed underline;
+}
+
+body.coloracc .header_widget:hover {
+	text-decoration: underline !important;
+	border-style: dashed !important;
+}
+
+body.coloracc input:focus, body.coloracc textarea:focus {
+	border-color: var(--theme-color) !important;
+	border-style: dashed !important;
+}
+
+body.coloracc .multiselect:hover {
+	border-color: var(--theme-color) !important;
+	border-style: dashed !important;
+}
+
+body.coloracc .sel_dialog_item:hover {
+	text-decoration: underline !important;
+}
+
+/* Privacy Mode */
+
+body.privacy [data-private] {
+	filter: blur(4px);
+}
+body.safari.privacy [data-private] {
+	filter: blur(8px);
+}
+
+/* Reduced Motion */
+
+body.reduced .progress_bar_inner {
+	animation: none !important;
+}
+body.reduced .marquee {
+	animation: none !important;
+}
+body.reduced .flash, body.reduced .iflash, body.reduced .rflash {
+	animation: none !important;
+}
+body.reduced .wf_event, body.reduced .wf_entity > div {
+	animation: none !important;
+}
+body.reduced .button.pulse {
+	animation: none !important;
+}
+
+/* Filter Overlay */
+
+#filter_overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 20000;
+	pointer-events: none;
+	contain: paint;
+	background-color: rgba(0,0,0,0.001); /* Safari Hack */
+	will-change: backdrop-filter;
+	display: none;
+}
+
+/* Focus */
+
+.sidebar .section a:focus-visible, .header_nav_item:focus-visible, .sel_dialog_item:focus-visible, select:focus-visible { 
+	outline: 2px solid var(--theme-color); 
+	outline-offset: -2px;
+}
+.button:focus-visible, button:focus-visible { 
+	outline: 2px solid var(--theme-color); 
+	outline-offset: 2px;
+}
+button.link:focus-visible, button.editor_toolbar_button:focus-visible { 
+	outline: 2px solid var(--theme-color); 
+	outline-offset: -2px;
+}
+
+/* Category Colors */
+
+body.highcon .clr_red,
+	body.highcon ul.clr_red > div,
+	body.coloracc .clr_red,
+	body.coloracc ul.clr_red > div,
+	body.highcon .clr_fire,
+	body.highcon ul.clr_fire > div,
+	body.coloracc .clr_fire,
+	body.coloracc ul.clr_fire > div,
+	body.highcon .clr_orange,
+	body.highcon ul.clr_orange > div,
+	body.coloracc .clr_orange,
+	body.coloracc ul.clr_orange > div,
+	body.highcon .clr_tangerine,
+	body.highcon ul.clr_tangerine > div,
+	body.coloracc .clr_tangerine,
+	body.coloracc ul.clr_tangerine > div,
+	body.highcon .clr_amber,
+	body.highcon ul.clr_amber > div,
+	body.coloracc .clr_amber,
+	body.coloracc ul.clr_amber > div,
+	body.highcon .clr_gold,
+	body.highcon ul.clr_gold > div,
+	body.coloracc .clr_gold,
+	body.coloracc ul.clr_gold > div,
+	body.highcon .clr_yellow,
+	body.highcon ul.clr_yellow > div,
+	body.coloracc .clr_yellow,
+	body.coloracc ul.clr_yellow > div,
+	body.highcon .clr_lemon,
+	body.highcon ul.clr_lemon > div,
+	body.coloracc .clr_lemon,
+	body.coloracc ul.clr_lemon > div,
+	body.highcon .clr_lime,
+	body.highcon ul.clr_lime > div,
+	body.coloracc .clr_lime,
+	body.coloracc ul.clr_lime > div,
+	body.highcon .clr_grass,
+	body.highcon ul.clr_grass > div,
+	body.coloracc .clr_grass,
+	body.coloracc ul.clr_grass > div,
+	body.highcon .clr_green,
+	body.highcon ul.clr_green > div,
+	body.coloracc .clr_green,
+	body.coloracc ul.clr_green > div,
+	body.highcon .clr_mint,
+	body.highcon ul.clr_mint > div,
+	body.coloracc .clr_mint,
+	body.coloracc ul.clr_mint > div,
+	body.highcon .clr_emerald,
+	body.highcon ul.clr_emerald > div,
+	body.coloracc .clr_emerald,
+	body.coloracc ul.clr_emerald > div,
+	body.highcon .clr_aqua,
+	body.highcon ul.clr_aqua > div,
+	body.coloracc .clr_aqua,
+	body.coloracc ul.clr_aqua > div,
+	body.highcon .clr_teal,
+	body.highcon ul.clr_teal > div,
+	body.coloracc .clr_teal,
+	body.coloracc ul.clr_teal > div,
+	body.highcon .clr_turquoise,
+	body.highcon ul.clr_turquoise > div,
+	body.coloracc .clr_turquoise,
+	body.coloracc ul.clr_turquoise > div,
+	body.highcon .clr_cyan,
+	body.highcon ul.clr_cyan > div,
+	body.coloracc .clr_cyan,
+	body.coloracc ul.clr_cyan > div,
+	body.highcon .clr_ice,
+	body.highcon ul.clr_ice > div,
+	body.coloracc .clr_ice,
+	body.coloracc ul.clr_ice > div,
+	body.highcon .clr_skyblue,
+	body.highcon ul.clr_skyblue > div,
+	body.coloracc .clr_skyblue,
+	body.coloracc ul.clr_skyblue > div,
+	body.highcon .clr_azure,
+	body.highcon ul.clr_azure > div,
+	body.coloracc .clr_azure,
+	body.coloracc ul.clr_azure > div,
+	body.highcon .clr_blue,
+	body.highcon ul.clr_blue > div,
+	body.coloracc .clr_blue,
+	body.coloracc ul.clr_blue > div,
+	body.highcon .clr_sapphire,
+	body.highcon ul.clr_sapphire > div,
+	body.coloracc .clr_sapphire,
+	body.coloracc ul.clr_sapphire > div,
+	body.highcon .clr_indigo,
+	body.highcon ul.clr_indigo > div,
+	body.coloracc .clr_indigo,
+	body.coloracc ul.clr_indigo > div,
+	body.highcon .clr_lavender,
+	body.highcon ul.clr_lavender > div,
+	body.coloracc .clr_lavender,
+	body.coloracc ul.clr_lavender > div,
+	body.highcon .clr_violet,
+	body.highcon ul.clr_violet > div,
+	body.coloracc .clr_violet,
+	body.coloracc ul.clr_violet > div,
+	body.highcon .clr_orchid,
+	body.highcon ul.clr_orchid > div,
+	body.coloracc .clr_orchid,
+	body.coloracc ul.clr_orchid > div,
+	body.highcon .clr_purple,
+	body.highcon ul.clr_purple > div,
+	body.coloracc .clr_purple,
+	body.coloracc ul.clr_purple > div,
+	body.highcon .clr_magenta,
+	body.highcon ul.clr_magenta > div,
+	body.coloracc .clr_magenta,
+	body.coloracc ul.clr_magenta > div,
+	body.highcon .clr_fuchsia,
+	body.highcon ul.clr_fuchsia > div,
+	body.coloracc .clr_fuchsia,
+	body.coloracc ul.clr_fuchsia > div,
+	body.highcon .clr_hotpink,
+	body.highcon ul.clr_hotpink > div,
+	body.coloracc .clr_hotpink,
+	body.coloracc ul.clr_hotpink > div,
+	body.highcon .clr_pink,
+	body.highcon ul.clr_pink > div,
+	body.coloracc .clr_pink,
+	body.coloracc ul.clr_pink > div,
+	body.highcon .clr_blush,
+	body.highcon ul.clr_blush > div,
+	body.coloracc .clr_blush,
+	body.coloracc ul.clr_blush > div,
+	body.highcon .clr_rose,
+	body.highcon ul.clr_rose > div,
+	body.coloracc .clr_rose,
+	body.coloracc ul.clr_rose > div { 
+	color: var(--label-color); 
+	--link-color: var(--link-color); 
+	--theme-color: color-mix(in oklch, var(--link-color) 80%, white); 
+}
+
+body.highcon .cat_red,
+	body.coloracc .cat_red,
+	body.highcon .cat_fire,
+	body.coloracc .cat_fire,
+	body.highcon .cat_orange,
+	body.coloracc .cat_orange,
+	body.highcon .cat_tangerine,
+	body.coloracc .cat_tangerine,
+	body.highcon .cat_amber,
+	body.coloracc .cat_amber,
+	body.highcon .cat_gold,
+	body.coloracc .cat_gold,
+	body.highcon .cat_yellow,
+	body.coloracc .cat_yellow,
+	body.highcon .cat_lemon,
+	body.coloracc .cat_lemon,
+	body.highcon .cat_lime,
+	body.coloracc .cat_lime,
+	body.highcon .cat_grass,
+	body.coloracc .cat_grass,
+	body.highcon .cat_green,
+	body.coloracc .cat_green,
+	body.highcon .cat_mint,
+	body.coloracc .cat_mint,
+	body.highcon .cat_emerald,
+	body.coloracc .cat_emerald,
+	body.highcon .cat_aqua,
+	body.coloracc .cat_aqua,
+	body.highcon .cat_teal,
+	body.coloracc .cat_teal,
+	body.highcon .cat_turquoise,
+	body.coloracc .cat_turquoise,
+	body.highcon .cat_cyan,
+	body.coloracc .cat_cyan,
+	body.highcon .cat_ice,
+	body.coloracc .cat_ice,
+	body.highcon .cat_skyblue,
+	body.coloracc .cat_skyblue,
+	body.highcon .cat_azure,
+	body.coloracc .cat_azure,
+	body.highcon .cat_blue,
+	body.coloracc .cat_blue,
+	body.highcon .cat_sapphire,
+	body.coloracc .cat_sapphire,
+	body.highcon .cat_indigo,
+	body.coloracc .cat_indigo,
+	body.highcon .cat_lavender,
+	body.coloracc .cat_lavender,
+	body.highcon .cat_violet,
+	body.coloracc .cat_violet,
+	body.highcon .cat_orchid,
+	body.coloracc .cat_orchid,
+	body.highcon .cat_purple,
+	body.coloracc .cat_purple,
+	body.highcon .cat_magenta,
+	body.coloracc .cat_magenta,
+	body.highcon .cat_fuchsia,
+	body.coloracc .cat_fuchsia,
+	body.highcon .cat_hotpink,
+	body.coloracc .cat_hotpink,
+	body.highcon .cat_pink,
+	body.coloracc .cat_pink,
+	body.highcon .cat_blush,
+	body.coloracc .cat_blush,
+	body.highcon .cat_rose,
+	body.coloracc .cat_rose { 
+	color: var(--label-color); 
+}
+body.highcon .cat_red:hover,
+	body.coloracc .cat_red:hover,
+	body.highcon .cat_fire:hover,
+	body.coloracc .cat_fire:hover,
+	body.highcon .cat_orange:hover,
+	body.coloracc .cat_orange:hover,
+	body.highcon .cat_tangerine:hover,
+	body.coloracc .cat_tangerine:hover,
+	body.highcon .cat_amber:hover,
+	body.coloracc .cat_amber:hover,
+	body.highcon .cat_gold:hover,
+	body.coloracc .cat_gold:hover,
+	body.highcon .cat_yellow:hover,
+	body.coloracc .cat_yellow:hover,
+	body.highcon .cat_lemon:hover,
+	body.coloracc .cat_lemon:hover,
+	body.highcon .cat_lime:hover,
+	body.coloracc .cat_lime:hover,
+	body.highcon .cat_grass:hover,
+	body.coloracc .cat_grass:hover,
+	body.highcon .cat_green:hover,
+	body.coloracc .cat_green:hover,
+	body.highcon .cat_mint:hover,
+	body.coloracc .cat_mint:hover,
+	body.highcon .cat_emerald:hover,
+	body.coloracc .cat_emerald:hover,
+	body.highcon .cat_aqua:hover,
+	body.coloracc .cat_aqua:hover,
+	body.highcon .cat_teal:hover,
+	body.coloracc .cat_teal:hover,
+	body.highcon .cat_turquoise:hover,
+	body.coloracc .cat_turquoise:hover,
+	body.highcon .cat_cyan:hover,
+	body.coloracc .cat_cyan:hover,
+	body.highcon .cat_ice:hover,
+	body.coloracc .cat_ice:hover,
+	body.highcon .cat_skyblue:hover,
+	body.coloracc .cat_skyblue:hover,
+	body.highcon .cat_azure:hover,
+	body.coloracc .cat_azure:hover,
+	body.highcon .cat_blue:hover,
+	body.coloracc .cat_blue:hover,
+	body.highcon .cat_sapphire:hover,
+	body.coloracc .cat_sapphire:hover,
+	body.highcon .cat_indigo:hover,
+	body.coloracc .cat_indigo:hover,
+	body.highcon .cat_lavender:hover,
+	body.coloracc .cat_lavender:hover,
+	body.highcon .cat_violet:hover,
+	body.coloracc .cat_violet:hover,
+	body.highcon .cat_orchid:hover,
+	body.coloracc .cat_orchid:hover,
+	body.highcon .cat_purple:hover,
+	body.coloracc .cat_purple:hover,
+	body.highcon .cat_magenta:hover,
+	body.coloracc .cat_magenta:hover,
+	body.highcon .cat_fuchsia:hover,
+	body.coloracc .cat_fuchsia:hover,
+	body.highcon .cat_hotpink:hover,
+	body.coloracc .cat_hotpink:hover,
+	body.highcon .cat_pink:hover,
+	body.coloracc .cat_pink:hover,
+	body.highcon .cat_blush:hover,
+	body.coloracc .cat_blush:hover,
+	body.highcon .cat_rose:hover,
+	body.coloracc .cat_rose:hover { 
+	color: color-mix(in oklch, var(--link-color) 90%, white); 
+}

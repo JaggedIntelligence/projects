@@ -1,0 +1,92 @@
+
+Building project (dev)...
+
+symlinkFile: ["node_modules/codemirror","htdocs/codemirror"]
+Symlink: node_modules/codemirror --> htdocs/codemirror
+symlinkFile: ["node_modules/@highlightjs/cdn-assets","htdocs/highlight"]
+Symlink: node_modules/@highlightjs/cdn-assets --> htdocs/highlight
+symlinkCompress: ["node_modules/@highlightjs/cdn-assets/styles/atom-one-light.css","htdocs/css/"]
+Symlink: node_modules/@highlightjs/cdn-assets/styles/atom-one-light.css --> htdocs/css/atom-one-light.css
+Compress: node_modules/@highlightjs/cdn-assets/styles/atom-one-light.css --> htdocs/css/atom-one-light.css.gz
+symlinkCompress: ["node_modules/@highlightjs/cdn-assets/styles/atom-one-dark.css","htdocs/css/"]
+Symlink: node_modules/@highlightjs/cdn-assets/styles/atom-one-dark.css --> htdocs/css/atom-one-dark.css
+Compress: node_modules/@highlightjs/cdn-assets/styles/atom-one-dark.css --> htdocs/css/atom-one-dark.css.gz
+symlinkCompress: ["node_modules/jquery/dist/jquery.min.js","htdocs/js/external/"]
+Symlink: node_modules/jquery/dist/jquery.min.js --> htdocs/js/external/jquery.min.js
+Compress: node_modules/jquery/dist/jquery.min.js --> htdocs/js/external/jquery.min.js.gz
+symlinkCompress: ["node_modules/jquery/dist/jquery.min.map","htdocs/js/external/"]
+Symlink: node_modules/jquery/dist/jquery.min.map --> htdocs/js/external/jquery.min.map
+Compress: node_modules/jquery/dist/jquery.min.map --> htdocs/js/external/jquery.min.map.gz
+symlinkCompress: ["node_modules/pixl-chart/chart.min.js","htdocs/js/external/"]
+Symlink: node_modules/pixl-chart/chart.min.js --> htdocs/js/external/chart.min.js
+Compress: node_modules/pixl-chart/chart.min.js --> htdocs/js/external/chart.min.js.gz
+symlinkCompress: ["node_modules/zeroupload/zeroupload.min.js","htdocs/js/external/"]
+Symlink: node_modules/zeroupload/zeroupload.min.js --> htdocs/js/external/zeroupload.min.js
+Compress: node_modules/zeroupload/zeroupload.min.js --> htdocs/js/external/zeroupload.min.js.gz
+Symlink: node_modules/@mdi/font/css/materialdesignicons.min.css --> htdocs/css/materialdesignicons.min.css
+symlinkCompress: ["node_modules/@mdi/font/css/materialdesignicons.min.css","htdocs/css/"]
+Compress: node_modules/@mdi/font/css/materialdesignicons.min.css --> htdocs/css/materialdesignicons.min.css.gz
+symlinkCompress: ["node_modules/@mdi/font/css/materialdesignicons.min.css.map","htdocs/css/"]
+Symlink: node_modules/@mdi/font/css/materialdesignicons.min.css.map --> htdocs/css/materialdesignicons.min.css.map
+Compress: node_modules/@mdi/font/css/materialdesignicons.min.css.map --> htdocs/css/materialdesignicons.min.css.map.gz
+Symlink: node_modules/@mdi/font/css/materialdesignicons.css.map --> htdocs/css/materialdesignicons.css.map
+symlinkCompress: ["node_modules/@mdi/font/css/materialdesignicons.css.map","htdocs/css/"]
+Compress: node_modules/@mdi/font/css/materialdesignicons.css.map --> htdocs/css/materialdesignicons.css.map.gz
+copyFiles: ["node_modules/@mdi/font/fonts/*","htdocs/fonts/"]
+Copy: node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot --> htdocs/fonts/materialdesignicons-webfont.eot
+Copy: node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf --> htdocs/fonts/materialdesignicons-webfont.ttf
+Copy: node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff --> htdocs/fonts/materialdesignicons-webfont.woff
+Copy: node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2 --> htdocs/fonts/materialdesignicons-webfont.woff2
+symlinkCompress: ["node_modules/diff/dist/diff.js","htdocs/js/external/"]
+Symlink: node_modules/diff/dist/diff.js --> htdocs/js/external/diff.js
+Compress: node_modules/diff/dist/diff.js --> htdocs/js/external/diff.js.gz
+symlinkCompress: ["node_modules/marked/marked.min.js","htdocs/js/external/"]
+Symlink: node_modules/marked/marked.min.js --> htdocs/js/external/marked.min.js
+Compress: node_modules/marked/marked.min.js --> htdocs/js/external/marked.min.js.gz
+symlinkCompress: ["node_modules/ansi_up/ansi_up.js","htdocs/js/external/"]
+Symlink: node_modules/ansi_up/ansi_up.js --> htdocs/js/external/ansi_up.js
+Compress: node_modules/ansi_up/ansi_up.js --> htdocs/js/external/ansi_up.js.gz
+symlinkCompress: ["node_modules/ansi_up/ansi_up.js.map","htdocs/js/external/"]
+Symlink: node_modules/ansi_up/ansi_up.js.map --> htdocs/js/external/ansi_up.js.map
+Compress: node_modules/ansi_up/ansi_up.js.map --> htdocs/js/external/ansi_up.js.map.gz
+symlinkCompress: ["node_modules/@xterm/xterm/lib/xterm.js","htdocs/js/external/"]
+Symlink: node_modules/@xterm/xterm/lib/xterm.js --> htdocs/js/external/xterm.js
+Compress: node_modules/@xterm/xterm/lib/xterm.js --> htdocs/js/external/xterm.js.gz
+symlinkCompress: ["node_modules/@xterm/xterm/lib/xterm.js.map","htdocs/js/external/"]
+Symlink: node_modules/@xterm/xterm/lib/xterm.js.map --> htdocs/js/external/xterm.js.map
+Compress: node_modules/@xterm/xterm/lib/xterm.js.map --> htdocs/js/external/xterm.js.map.gz
+symlinkCompress: ["node_modules/@xterm/addon-fit/lib/addon-fit.js","htdocs/js/external/"]
+Symlink: node_modules/@xterm/addon-fit/lib/addon-fit.js --> htdocs/js/external/addon-fit.js
+Compress: node_modules/@xterm/addon-fit/lib/addon-fit.js --> htdocs/js/external/addon-fit.js.gz
+symlinkCompress: ["node_modules/@xterm/addon-fit/lib/addon-fit.js.map","htdocs/js/external/"]
+Symlink: node_modules/@xterm/addon-fit/lib/addon-fit.js.map --> htdocs/js/external/addon-fit.js.map
+Compress: node_modules/@xterm/addon-fit/lib/addon-fit.js.map --> htdocs/js/external/addon-fit.js.map.gz
+symlinkCompress: ["node_modules/@xterm/xterm/css/xterm.css","htdocs/css/"]
+Symlink: node_modules/@xterm/xterm/css/xterm.css --> htdocs/css/xterm.css
+Compress: node_modules/@xterm/xterm/css/xterm.css --> htdocs/css/xterm.css.gz
+Symlink: node_modules/canvas-confetti/dist/confetti.browser.js --> htdocs/js/external/confetti.browser.js
+symlinkCompress: ["node_modules/canvas-confetti/dist/confetti.browser.js","htdocs/js/external/"]
+Compress: node_modules/canvas-confetti/dist/confetti.browser.js --> htdocs/js/external/confetti.browser.js.gz
+symlinkFile: ["node_modules/pixl-xyapp/js","htdocs/js/common"]
+Symlink: node_modules/pixl-xyapp/js --> htdocs/js/common
+symlinkFile: ["node_modules/pixl-xyapp/css/normalize.css","htdocs/css/"]
+Symlink: node_modules/pixl-xyapp/css/normalize.css --> htdocs/css/normalize.css
+symlinkFile: ["node_modules/pixl-xyapp/css/base.css","htdocs/css/"]
+Symlink: node_modules/pixl-xyapp/css/base.css --> htdocs/css/base.css
+chmodFiles: ["755","bin/*"]
+prepIconFont: ["htdocs/js/external/icon-font-names.js"]
+Compress: htdocs/js/external/icon-font-names.js --> htdocs/js/external/icon-font-names.js.gz
+compressFile: ["htdocs/js/external/icon-font-names.js","htdocs/js/external/icon-font-names.js.gz"]
+deleteFiles: ["htdocs/css/_combo*"]
+deleteFiles: ["htdocs/js/_combo*"]
+deleteFile: ["htdocs/index.html"]
+Delete: htdocs/index.html
+deleteFile: ["htdocs/index.html.gz"]
+Delete: htdocs/index.html.gz
+symlinkFile: ["htdocs/index-dev.html","htdocs/index.html"]
+Symlink: htdocs/index-dev.html --> htdocs/index.html
+symlinkFile: ["sample_conf","conf"]
+Symlink: sample_conf --> conf
+
+Build complete.
+

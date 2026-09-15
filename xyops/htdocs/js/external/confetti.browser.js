@@ -1,0 +1,1 @@
+../../../node_modules/canvas-confetti/dist/confetti.browser.js

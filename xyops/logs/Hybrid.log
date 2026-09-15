@@ -1,0 +1,6 @@
+[1789483240.305][2026-09-15 07:40:40][subbas-macbook-air.local][99289][Hybrid][debug][2][Setting up hybrid engine][{"docEngine":"SQLite","binaryEngine":"Filesystem"}]
+[1789483240.31][2026-09-15 07:40:40][subbas-macbook-air.local][99289][Hybrid][debug][3][Hybrid engine will use native doc engine transactions][]
+[1789484545.792][2026-09-15 08:02:25][subbas-macbook-air.local][99289][Hybrid][debug][2][Shutting down hybrid system][]
+[1789484554.105][2026-09-15 08:02:34][subbas-macbook-air.local][4306][Hybrid][debug][2][Setting up hybrid engine][{"docEngine":"SQLite","binaryEngine":"Filesystem"}]
+[1789484554.11][2026-09-15 08:02:34][subbas-macbook-air.local][4306][Hybrid][debug][3][Hybrid engine will use native doc engine transactions][]
+[1789490510.372][2026-09-15 09:41:50][subbas-macbook-air.local][4306][Hybrid][debug][2][Shutting down hybrid system][]

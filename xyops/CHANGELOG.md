@@ -1,0 +1,2089 @@
+# xyOps Changelog
+
+## Version v1.0.97
+
+> September 11, 2026
+
+- [`77e405cf`](https://github.com/pixlcore/xyops/commit/77e405cf9fc1c5d0de5c4055227be82076b28f64): Version 1.0.97
+- [`765a9516`](https://github.com/pixlcore/xyops/commit/765a9516bcbd3b1c025961edc7f534f243ad4a27): Feature: Add ability to wire multiple outputs to splits, including other controllers.
+- [`1eff5668`](https://github.com/pixlcore/xyops/commit/1eff56681b96e4f3b950036812d8a73aa3a4962d): Feature: Allow user to skip over workflow wait controllers during a job run.
+- [`67c0e2f7`](https://github.com/pixlcore/xyops/commit/67c0e2f7867126feeb1d0d8c8e0f810d53e1eebf): Bug Fix: User revision history was incorrectly handling usernames with dots and dashes.
+- [`ee97f123`](https://github.com/pixlcore/xyops/commit/ee97f123499b1d6286e2fefa18c5a58fb0e47541): Bug Fix: Prevent malformed monitoring data from crashing the conductor.  Fixes #445.
+- [`bb81a34c`](https://github.com/pixlcore/xyops/commit/bb81a34c2e41f9322010a186144b5096fd437551): Feature: Improve web hook test system, to actually run an ad-hoc test job with web hook attached.  Fixes #444.
+- [`cc79b918`](https://github.com/pixlcore/xyops/commit/cc79b9185b6bf4cc6baff863fe06d5548d4ca0b2): Dep: Bump pixl-mail to v1.1.10 for upstream vuln fixes in nodemailer
+- [`01997d6b`](https://github.com/pixlcore/xyops/commit/01997d6bd80ea90dc4475e703439bf520756b32f): Dep: Bump pixl-request to v2.6.11 for Node.js v24 warning fix.
+- [`ae1a5212`](https://github.com/pixlcore/xyops/commit/ae1a52124197cae3f258f4f7d15e069f0f41e4ba): Doc: API: get_server: Output data format was outdated.
+- [`fd014589`](https://github.com/pixlcore/xyops/commit/fd014589b616d4ee1e6236cacb02e4ee7e9ee819): Feature: Internal DB CLI: Add "idx" command to dump out raw DB indexing information for a record.
+- [`65468947`](https://github.com/pixlcore/xyops/commit/654689476f0611f5850cacdf613dcf0c446ec572): Bug Fix: Add sorter arrays to all DB tables to prevent search API crash.
+- [`3b022222`](https://github.com/pixlcore/xyops/commit/3b022222cd366f6ca2e3305abb6af2c8c1629b40): Bug Fix: API Keys: Allow API keys to be re-imported after export.
+- [`17c1f3f8`](https://github.com/pixlcore/xyops/commit/17c1f3f8342c083678b354612147df3ca77340b9): Bug Fix: Crasher if suspend action is added via API without a users array.  Fixes #443.
+- [`f3280a94`](https://github.com/pixlcore/xyops/commit/f3280a94bf3ae2c026e3ced07ad3dd80f310a202): Bug Fix: Windows: Right-clicking nodes in the workflow editor still shows the native OS right-click menu.  Ref #435
+
+## Version v1.0.96
+
+> September 4, 2026
+
+- [`6ee623d0`](https://github.com/pixlcore/xyops/commit/6ee623d076cd68ff4b530555020ba244298e0ffa): Version 1.0.96
+- [`86de8b92`](https://github.com/pixlcore/xyops/commit/86de8b92abec4207ace4c47dcd6b0e14a47c4337): Feature: Show sub-second job elapsed values.
+- [`1af01f23`](https://github.com/pixlcore/xyops/commit/1af01f23be7af58b90fc313b91c5ef9e09f43136): Bug Fix: Ensure job.elapsed is never negative (i.e. clock drift).
+- [`2f418132`](https://github.com/pixlcore/xyops/commit/2f41813285356c6ce95ce312bcc72acc2a6acc85): Feature: Select custom color for ticket search presets (shown when results are non-zero).
+- [`68cc87f2`](https://github.com/pixlcore/xyops/commit/68cc87f25a02edb79a4471dd876a22430dd672d4): Feature: Right-click context menu for workflow nodes.  Fixes #435.
+- [`b96f6a74`](https://github.com/pixlcore/xyops/commit/b96f6a74fec5e1fc56df880be3f49e3c70099103): Feature: Fullscreen mode for workflow editor.  Ref #435
+- [`330be27c`](https://github.com/pixlcore/xyops/commit/330be27c820b72e28f109b2072a36d801d5a9d4c): Bug Fix: Cosmetic: Marketplace: Hide repo button on tablet/mobile to avoid bad content shift.
+- [`322ce3db`](https://github.com/pixlcore/xyops/commit/322ce3db6f4362988e40d2da87321cc6d9f7ee9e): Bug Fix: Shorten job.completed float precision so it isn't a million digits long.
+- [`f7819928`](https://github.com/pixlcore/xyops/commit/f781992841e151706eb236b0f420726b9c4ef3a1): Bug Fix: Run Job Again: Copy over event base params in case they changed.  Fixes #439
+- [`9fd3625c`](https://github.com/pixlcore/xyops/commit/9fd3625c70fe5da0439966e919f7c1752f780963): Bug Fix: upload_bucket_files: Also accept "id" param inside a "json" field wrapper.
+- [`6780c290`](https://github.com/pixlcore/xyops/commit/6780c2909041fbb5c496917185e372a5b07a91ba): Doc: API: Correct get_server_summaries response shape and add more details.
+- [`6305407a`](https://github.com/pixlcore/xyops/commit/6305407a9b9bfea4b73320237492ddac230c6b2f): Feature: API: stream_job: Add optional "meta" param which streams updates from the job's meta log.
+- [`3db11727`](https://github.com/pixlcore/xyops/commit/3db11727a1665d2e8f85eb20134340dd98b14722): Bug FIx: Crontab parser "H" feature was throwing an exception.
+- [`6c42aaf0`](https://github.com/pixlcore/xyops/commit/6c42aaf022f8f59458915af95fb9ca21dd8f96f5): Doc: Contributing: Tweak wording slightly.
+- [`50f7c059`](https://github.com/pixlcore/xyops/commit/50f7c059bcf0db0c59ce044a0165d7b33aefce15): Doc: Plugins: Expand instructions regarding secret variable usage in the HTTP Request Plugin.  Fixes #440
+- [`52e41343`](https://github.com/pixlcore/xyops/commit/52e41343364f8806bafabfdaf01b3730f6f81925): Doc: Contributing: Clarify our stance on PRs (temporary)
+- [`c7ce613c`](https://github.com/pixlcore/xyops/commit/c7ce613c4e34c12e9e44ec3859c2062d12e5c224): UI Tweak: Dashboard: Change box title "Event Queues" to "Job Queues".
+- [`93b4e208`](https://github.com/pixlcore/xyops/commit/93b4e2082b1b9b59b479e0cbed0abf220930f564): UI Tweak: Fix form field labels in edit limit dialog.
+- [`7791fb8d`](https://github.com/pixlcore/xyops/commit/7791fb8db837cd61df8724aa63fa90c09eacf150): Bug Fix: Never display "undefined" in the UI for missing or undefined parameter values.
+- [`900b3350`](https://github.com/pixlcore/xyops/commit/900b33504340becb143a887128d0ad690205dde5): Bug Fix: Harden plugin parameter validation at submit time, so missing values are rejected.
+- [`3b439823`](https://github.com/pixlcore/xyops/commit/3b439823c77a7128591d8fa1a3d57fff8bc5c062): Bug Fix: Add validation for select parameter values in plugin API, and prevent potential crash for missing default select plugin values.
+- [`ba16d5ce`](https://github.com/pixlcore/xyops/commit/ba16d5cef2971b7d90571dc5a3fe07fb875a908c): API: get_multiple: Include current job rate limit pools when jobs are requested.
+- [`cd37ed90`](https://github.com/pixlcore/xyops/commit/cd37ed904fa485dde631961f32b9f6ce89c9797a): UI Tweak: Fix default headers for user content sections, if no titles specified in job.
+- [`714e0fb8`](https://github.com/pixlcore/xyops/commit/714e0fb81407bcd323f64e505eb3db67b48204bf): Feature: Improve logging in startup storage test.
+- [`d477e6a2`](https://github.com/pixlcore/xyops/commit/d477e6a2600546c1fc96ce41a3cc80e75f8535bc): Sample Config: Reduce S3 maxAttempts from 50 to 10, as AWS adds exp backoffs.  Fixes #438
+
+## Version v1.0.95
+
+> August 30, 2026
+
+- [`c96de35c`](https://github.com/pixlcore/xyops/commit/c96de35c6714b9511182b035b7f15d6be444e193): Version 1.0.95
+- [`1e2b0d31`](https://github.com/pixlcore/xyops/commit/1e2b0d317952621029d4e8a6d4b421fa18bc9a99): Bug Fix: Cosmetic: Tweak code span font size in job meta log rows.
+- [`3cda126b`](https://github.com/pixlcore/xyops/commit/3cda126b0e6d10d7d36b7c134cce970170f5f238): Docs: API: Add docs for new admin_reset_job_rate_limits, flush_job_queue, and get_queue_summary endpoints.
+- [`648f2a2a`](https://github.com/pixlcore/xyops/commit/648f2a2aef363ea98f67fc3d417ca1a99c95d7de): Feature: Add full day rate limit window option.
+- [`e10c83ae`](https://github.com/pixlcore/xyops/commit/e10c83ae6af21ad56974c0021fdc96bbbb2cc0cb): Feature: Align rate limits to the selected time window (second, minute, hour, day), for more deterministic resets.
+- [`1624a89a`](https://github.com/pixlcore/xyops/commit/1624a89ae63dde3d4498f79a4d55b3fb5a5364aa): Feature: Add rate limit viewer and improved queue viewer on dashboard.
+- [`bfa0dc8e`](https://github.com/pixlcore/xyops/commit/bfa0dc8e906a23144738b7b48bcab8a2824e7364): Rename: "Max Run Time" to "Max Time Limit" in the UI.
+- [`b9ff8dba`](https://github.com/pixlcore/xyops/commit/b9ff8dbac23f72f8e467a289140d6cf34ac81db0): Rename: "Max Output Size" to "Max Output Limit" in the UI.
+- [`a1b732ce`](https://github.com/pixlcore/xyops/commit/a1b732ce08735c233f53cdf5f25e0d18c81ecdb2): Rename: "Max Concurrent Jobs" to "Max Jobs Limit" in the UI.
+- [`95ad0b3b`](https://github.com/pixlcore/xyops/commit/95ad0b3b8e6dc61ab729feb49df88d7ede67ee14): Feature: Custom Job Rate Limit System v1
+- [`62697a21`](https://github.com/pixlcore/xyops/commit/62697a21bf3fced96f7cace73e2783b7e0529d29): Sample Config: Tweak job email templates so user content is above the raw job log excerpt.
+- [`76e82d6d`](https://github.com/pixlcore/xyops/commit/76e82d6d0e7a6d8c84e90d60ee08487e8f44b8c8): Bug Fix: get_job_log API now supports jobs with "inline" (non-compressed) logs.  Updated docs as well.
+- [`399d1b49`](https://github.com/pixlcore/xyops/commit/399d1b49060ee68e3de2117d7b61f1cb2a72e2ae): Bug Fix: Properly handle case where jobs are in "finishing" state when xyOps is upgraded.
+- [`cd78c672`](https://github.com/pixlcore/xyops/commit/cd78c672b71250e2186c60847c66b535165fa9c4): Feature: Allow Action Plugins to specify custom data to merge into the current job data.
+- [`260a71ae`](https://github.com/pixlcore/xyops/commit/260a71ae2abb9236020b69c3d6fab1994a56e6e4): Feature: Allow "Run Event" action to include raw job output as a text input to launched job.
+- [`808e21c5`](https://github.com/pixlcore/xyops/commit/808e21c54381aeed0cefeeb47f0ee8a75c9ab191): Feature: Allow resume_job API to inject input or output data into job (shallow-merged).
+- [`ea54e487`](https://github.com/pixlcore/xyops/commit/ea54e48717be515bc90ad325730d8e45c785c3a7): Bug Fix: UI: Prevent suspension actions from duplicating in action table.
+- [`c62aed88`](https://github.com/pixlcore/xyops/commit/c62aed88f97e29ef198e52d74eb9cafb40c2c348): Bug Fix: Suspend Job: Allow web hook to be empty (unset).
+- [`9274dce8`](https://github.com/pixlcore/xyops/commit/9274dce8021944229d752b38dee8aca58b3f29e2): Bug Fix: Add support for retrieving job output in completion state (inline output for jobs under default 1MB limit)
+- [`cd6c6af6`](https://github.com/pixlcore/xyops/commit/cd6c6af65e4dec5343196fe5e4e6f0bc2fc870fe): Docs: Revise README for clarity and structure; enhance feature descriptions and add important notes on open-source features.
+- [`34be5a14`](https://github.com/pixlcore/xyops/commit/34be5a14ac2f9f0ee0808605ebd0e7eec197aab1): Doc: Compare: Update with new research (Aug 2026), and add Airflow and Dagster comparisons.
+- [`3d0e447a`](https://github.com/pixlcore/xyops/commit/3d0e447ace239984d1e4d993861a342f983627f9): Bug Fix: admin_export_data API: Allow single scalar strings for the lists, indexes and extras params.  Ref #432.
+- [`2583d504`](https://github.com/pixlcore/xyops/commit/2583d504ead5d4fbc068e1471b72a35e2ca652cb): Bug Fix: Redact sensitive headers when logging errors.  Fixes #432
+- [`f9909646`](https://github.com/pixlcore/xyops/commit/f9909646d6e05b50cd9742da89bbf73aba1170d8): Bug Fix: Reload secret cache on bulk data import.  Fixes #431
+- [`142e8ca9`](https://github.com/pixlcore/xyops/commit/142e8ca9fb4b425628258593515d34f6eeeec70b): Docs: Clarify web hook configuration visibility
+
+## Version v1.0.94
+
+> August 24, 2026
+
+- [`13f01937`](https://github.com/pixlcore/xyops/commit/13f019372e3ef5da737f3e25c669ffa264dd2625): Version 1.0.94
+- [`90d17501`](https://github.com/pixlcore/xyops/commit/90d17501871d581b0450bf026fe29a511d8ced17): Feature: Allow tags to be dynamically added by title rather than ID (from user code in jobs).
+- [`c183e0ad`](https://github.com/pixlcore/xyops/commit/c183e0ad22ada4fcad591f853186abdd36568cc4): Feature: Add custom job override rules with JEXL expressions.  Fixes #424.
+- [`c31e0427`](https://github.com/pixlcore/xyops/commit/c31e042724e317592dd191cc1fb9be9229697a0e): Bug Fix: Plugin "Push Defaults" fails if any users are currently editing any affected events.  Fixes #426.
+- [`dd254f24`](https://github.com/pixlcore/xyops/commit/dd254f24b939fb128c13cb07ba7a6f213fc533f8): Bug Fix: Show ephemeral sub-jobs as deleted in workflow jobs table.
+- [`f229f8da`](https://github.com/pixlcore/xyops/commit/f229f8da3c95e9039f599ed2088aeebaca309297): Doc: Marketplace: Add section on requiring a minimum xyOps version for plugins.  Ref #422.
+- [`56707730`](https://github.com/pixlcore/xyops/commit/567077305688737e8e16b8c63d4e8c679237c7b1): UI Tweak: Fix wording in ephemeral checkbox caption.
+- [`ac5613c4`](https://github.com/pixlcore/xyops/commit/ac5613c45e85da2158c9d2f96d5266378926aa14): Bug Fix: Cosmetic: Prevent benign warning from hitting workflow meta log when a join controller is used.
+
+## Version v1.0.93
+
+> August 22, 2026
+
+- [`68b6def4`](https://github.com/pixlcore/xyops/commit/68b6def4bc7ef904a1366d256c57850151f1ce4e): Version 1.0.93
+- [`b450c530`](https://github.com/pixlcore/xyops/commit/b450c530b97f31f8b963455f060b9025df57ac15): Feature: Show inline release notes in system upgrade dialogs for both xyOps and xySat.
+- [`285b7bfd`](https://github.com/pixlcore/xyops/commit/285b7bfd4a086bbd368f116995f887cdf14060bc): Feature: Add shared capacity pools for job concurrency limits.
+- [`e95e641f`](https://github.com/pixlcore/xyops/commit/e95e641f400d272819ce9108f18d6e62899ab1fd): Feature: Add new limited system tag for runtime limit triggers.
+- [`1df8a375`](https://github.com/pixlcore/xyops/commit/1df8a375c6dbe79cbc71ad6525658ba9d61c4f1d): Bug Fix: Reset action and limit runtime state for job retries.
+- [`a7e2578c`](https://github.com/pixlcore/xyops/commit/a7e2578cb75f1d6d620d909849ae2236df665a10): Feature: Add alerted system tag for jobs affected by server alerts.
+- [`54b1173c`](https://github.com/pixlcore/xyops/commit/54b1173ce09d43e6fdb56c00f3af047d466c50c7): Docs: Improve bulk data export guidance
+- [`61829bfe`](https://github.com/pixlcore/xyops/commit/61829bfee67375caffd4bd63767c068ee4d659f4): Feature: Make offline server cache retention configurable
+- [`fd8146fa`](https://github.com/pixlcore/xyops/commit/fd8146fa49b33b4f02bec40ac5f9cd005ad78f78): Bug Fix: Doc Search API: Strip HTML markup from source files before searching.
+- [`e3d11a1d`](https://github.com/pixlcore/xyops/commit/e3d11a1d03136a48200d238393675d210f87600f): Bug Fix: Admin bulk data export can timeout and crash with massive amounts of jobs, with "Job Files" or "Job Logs" extras enabled.
+- [`f36fd9d9`](https://github.com/pixlcore/xyops/commit/f36fd9d94130859a93126efbee184447bd238ef0): Doc: Servers: Add section about active server list and server history.
+- [`6f899496`](https://github.com/pixlcore/xyops/commit/6f899496dad8a75c987791d7f0d38edc49c683c5): Bug Fix: UI: Workflow Details: Show controller nodes in table even if they are in an error state.
+
+## Version v1.0.92
+
+> August 19, 2026
+
+- [`a9a75dcf`](https://github.com/pixlcore/xyops/commit/a9a75dcfa36848024437e02e129253338686938f): Version 1.0.92
+- [`d0dd73ed`](https://github.com/pixlcore/xyops/commit/d0dd73ed8891fe24fad1ddff017dbcc84f2860ce): Bug Fix: Prevent negative numbers from breaking server and group donut pies.  Fixes #419.
+- [`b82c62d3`](https://github.com/pixlcore/xyops/commit/b82c62d375b6f8aaba5f749f11cdca724a0298d9): Doc: Limits: Add retry force property, and new section on retry eligibility.
+- [`7a90aaa9`](https://github.com/pixlcore/xyops/commit/7a90aaa9ad9010adcebaa0c2bd11aab3613a341a): Bug FIx: Stop showing error notifications in the UI when GitHub is down.
+- [`0dcc9585`](https://github.com/pixlcore/xyops/commit/0dcc95857634a2631a8734b87c52f4b01308e285): Feature: UI: Improve display of server names: Pull label/hostname from recently offline cache before falling back to showing the raw ID.
+- [`e7875acf`](https://github.com/pixlcore/xyops/commit/e7875acf5c88fe9ab5727835761bb591cf2afc2a): Bug Fix: Client-side JS error in server detail view for offline server when updates come in.
+- [`dd0fa2a4`](https://github.com/pixlcore/xyops/commit/dd0fa2a42fdbe3e56c364e94bc07b90576cfa067): Bug Fix: Allow job aborts via xySat shutdown to trigger a retry.  Ref #417.
+- [`51982284`](https://github.com/pixlcore/xyops/commit/51982284e23d1d3785687d1e5f742618ea296036): Bug Fix: Regression from v1.0.70: Conductor failover does not automatically resume active jobs.  Ref #418.
+- [`b2b361b6`](https://github.com/pixlcore/xyops/commit/b2b361b682c0bb20939caab0093507f119b54a8b): Bug Fix: updateJobLate could inadvertenly reset the job event and tags.
+- [`e918cee7`](https://github.com/pixlcore/xyops/commit/e918cee7f51ed3f93efd86e8572583fc68a6caba): Feature: Optional "force" mode for retries, so they will always run, even on job abort.
+- [`871451e6`](https://github.com/pixlcore/xyops/commit/871451e621c70ae464c8e755eb58aab99ba1a384): Feature: The stream_job API can now optionally include the raw job text output.
+- [`5cc4d9d3`](https://github.com/pixlcore/xyops/commit/5cc4d9d3bd0bb6afc0853bff0ca5de40ac96abf6): Bug Fix: UI: Race condition when navigating to job details page at the exact moment the job is finishing.
+- [`fe732387`](https://github.com/pixlcore/xyops/commit/fe732387dc489712c1405bd1794ff5732a57b73b): Bug Fix: Job progress bar tends to lag behind actual progress by a second or so.
+- [`d6d34eb8`](https://github.com/pixlcore/xyops/commit/d6d34eb80dc24278e065a60778c48f7a40e68303): Doc: Plugins: Add blurb about XYOPS_BASE_URL env var passed to action and trigger plugins.
+
+## Version v1.0.91
+
+> August 16, 2026
+
+- [`59416344`](https://github.com/pixlcore/xyops/commit/59416344e2384f1f27006e846bd97f8e0f459b73): Version 1.0.91
+- [`4a5d2f23`](https://github.com/pixlcore/xyops/commit/4a5d2f23b909c9ad22ec2f37f95e0663fac5248a): Dep: Bump pixl-xyapp to v2.1.43 for nav fix inside code editor dialog, when used for markdown.
+- [`bc275f81`](https://github.com/pixlcore/xyops/commit/bc275f81f2929a30b82e3f37e6c870fa4b25de3e): Bug Fix: run_event and magic APIs should skip the job launch queue, to avoid the scheduler throttle delay.
+- [`44bccf76`](https://github.com/pixlcore/xyops/commit/44bccf76a56f1f34667a7210463d195bfff46842): Feature: Visually indicate which dash grid units can be clicked.  Fixes #414.
+- [`93564d2e`](https://github.com/pixlcore/xyops/commit/93564d2ebfbc62db7ba39901e3bc1372bac14f5b): Feature: Push default plugin values to existing events.  Fixes #412.
+- [`c8c031e7`](https://github.com/pixlcore/xyops/commit/c8c031e722e4c6a78fb02e742ba5c9fb0fa8bcb9): Bug Fix: Typo in error path validating number range params.
+- [`548dde9e`](https://github.com/pixlcore/xyops/commit/548dde9e2065a4d9c61247fb9e01f2d4b1a65ca0): Feature: Move revision history to new header icon button, along with job history where applicable.
+- [`59fe4b25`](https://github.com/pixlcore/xyops/commit/59fe4b252e8badda245c8c1227a58365da616349): Bug Fix: launchJob: Only apply missing plugin params when they actually have a default value.
+- [`c3beaf48`](https://github.com/pixlcore/xyops/commit/c3beaf48af720b9bf09d0fc1950c3f146e9e7e86): Feature: System message broadcast: Add "success" notification type, and add sender prefix to all messages.
+- [`de9ee2b7`](https://github.com/pixlcore/xyops/commit/de9ee2b7b7b8590cfd56d3a9c09b64ce106d499f): Bug FIx: Do not allow plugin types to be changed when editing.
+- [`32eee4e3`](https://github.com/pixlcore/xyops/commit/32eee4e36fc87b819639850350410c028bd51a81): Feature: Plugin Editor: Add new icon buttons for rev history, job history, and a new "Show Dependants" dialog.
+- [`c8bebba8`](https://github.com/pixlcore/xyops/commit/c8bebba870f091cd8b86533fce3918d938b166cf): Bug Fix: UI: Prevent workflow controller progress bars from flickering when at 0%.
+- [`269c497d`](https://github.com/pixlcore/xyops/commit/269c497dc649509ea6dd351cb9e5a98b6f16e625): Dep: Update sanitize-html and nanoid for more vuln fixes.
+- [`2aa0bc44`](https://github.com/pixlcore/xyops/commit/2aa0bc440119b89d0b563a89125a53e4b59b4760): Doc: XYEXP: Add blurb about using hyphens in property names (JEXL syntax).  Ref #413.
+- [`d835a131`](https://github.com/pixlcore/xyops/commit/d835a131b3028621a7938b1918df70b555066f70): Bug Fix: Restore code that adds missing job.params with plugin params at job launch time.  Fixes #411.
+- [`f8092b45`](https://github.com/pixlcore/xyops/commit/f8092b4570421cd15b2fd380c5cb94601968b80a): Config: Disable low-level storage CRUD transaction logging by default (becomes extremely verbose at scale).
+- [`2b705d63`](https://github.com/pixlcore/xyops/commit/2b705d63c55228be9decd9d57827cffd3f4fc223): Bug Fix: Cosmetic: Log actual DB index name in code column in the API perf logs, instead of "0".
+- [`68825573`](https://github.com/pixlcore/xyops/commit/68825573474b27a4971d03b35318ca18e7ef67ab): Dep: Bump sanitize-html to v2.17.6 for multiple vuln fixes.
+
+## Version v1.0.90
+
+> August 11, 2026
+
+- [`aaab52e0`](https://github.com/pixlcore/xyops/commit/aaab52e0eaf3b88e548744c6b62e49269d9eda15): Version 1.0.90
+- [`e548b8fc`](https://github.com/pixlcore/xyops/commit/e548b8fc01d2f6380dbcfb2cd923b3035e6ac5ec): Feature: Allow servers to "disable" themselves during unplanned graceful shutdown.
+- [`7806865f`](https://github.com/pixlcore/xyops/commit/7806865f18254e4680a4aaab391c1049bcde8fec): Feature: Worker server upgrade requests now automatically disable server (to prevent new jobs from being dispatched during upgrade).
+- [`1d25f999`](https://github.com/pixlcore/xyops/commit/1d25f999c6030535948edf0454d384e3075f715c): Bug Fix: UI: Server list page needs to visually indicate which servers are disabled.
+- [`335a9345`](https://github.com/pixlcore/xyops/commit/335a9345ff3915b21f4e29caa8b00f739c77743d): Dep: Bump pixl-xyapp to v2.1.42 for various API performance improvements, including a client-side queue for all GET requests.
+- [`426f8103`](https://github.com/pixlcore/xyops/commit/426f8103aa3a788d1fb3750d8f4745c1143ed463): Bug Fix: Performance: A bunch of front-end UI API calls were incorrectly using HTTP POST (should be GET).
+- [`ce96796e`](https://github.com/pixlcore/xyops/commit/ce96796e02d276e49e2fa728458e453be94df94c): Feature: Performance: Implement queue for DB search queries so they do not stack up under heavy load.
+- [`986eeeb7`](https://github.com/pixlcore/xyops/commit/986eeeb784c902dcb460662e482e10b447deedc9): Feature: Add detailed performance metrics logging for all DB search queries (see API log).
+- [`3ce3cb9f`](https://github.com/pixlcore/xyops/commit/3ce3cb9f1aefdf909a415b00aa32a41772d24f36): Feature: The nightly DB maint can now optionally create XYBK backups containing all chopped rows, for offline analysis or re-importing.
+- [`5b27e67f`](https://github.com/pixlcore/xyops/commit/5b27e67f09930b90ff92c1a6242ca82a55963e08): Feature: DB maint settings now editable as JSON in UI, for advanced options such as custom queries.
+
+## Version v1.0.89
+
+> August 8, 2026
+
+- [`92ce9963`](https://github.com/pixlcore/xyops/commit/92ce996379c8adbae73fdd1e239d4c543443e3c2): Unit Test: Fix failling unit test with update_active_job API.
+- [`05e9b250`](https://github.com/pixlcore/xyops/commit/05e9b2500648a209d628653f9285ef011ea96f6d): Version 1.0.89
+- [`696c8905`](https://github.com/pixlcore/xyops/commit/696c890555e7a5d1581578f591accca42b7a5291): Dep: Add @pixlcore/xyops-sdk to main deps, for trigger / action plugins to use.
+- [`734c74df`](https://github.com/pixlcore/xyops/commit/734c74df19a5ec4771b28c882982901b5b0791ca): Feature: Add new update_active_job API and privilege, for dynamically changing workflows as they are running.
+- [`14fc75df`](https://github.com/pixlcore/xyops/commit/14fc75df11a1685f3a75ec1146a4659cd14fc13d): Feature: Show abbreviated last run delta time for all events in event list (hover for full date/time).  Fixes #377.
+- [`00f74dcb`](https://github.com/pixlcore/xyops/commit/00f74dcbbac7bca7f90982c03273d4b7c23e81e5): Security: Harden search APIs for category and group limited users.
+- [`7db86423`](https://github.com/pixlcore/xyops/commit/7db864238e786ac49590537e2ae16953adbc4db6): Feature: Allow workflow event nodes to specify custom titles.  Ref #408.
+- [`8db36e5d`](https://github.com/pixlcore/xyops/commit/8db36e5dca9226e242c0cab81dcb2cccff48dd32): Feature: Show ticket counts in sidebar for search presets (opt-in).  Fixes #355.
+- [`648471ae`](https://github.com/pixlcore/xyops/commit/648471aeb5a5aac5669894e95fc06e0f923285fd): Feature: When the "/wait" URL suffix is used on either run_event or magic, and the launched job is a workflow, the response will now include all sub-job objects as well.  Ref #403
+- [`fe2c47a2`](https://github.com/pixlcore/xyops/commit/fe2c47a2e3f1d810c8cc0f90790e459345f31673): Feature: Show event and/or plugin params while job is still running.  Fixes #405.
+- [`522ebf50`](https://github.com/pixlcore/xyops/commit/522ebf5024fdc45b491d69301c35f18774860e95): Feature: Restore inline enable/disable checkbox on Event List.  Fixes #407.
+- [`a4db8bda`](https://github.com/pixlcore/xyops/commit/a4db8bda7345215432f5e1b4226757db88408087): Dep: Bump pixl-xyapp to v2.1.41 for bug fix in query parser with SSO numeric usernames.  Fixes #406.
+- [`ece5b158`](https://github.com/pixlcore/xyops/commit/ece5b1584cd029769407205f40980dc48e4110d2): Dep: Bump pixl-request to v2.6.10 for regression bug fix in download retries.  Fixes #404.
+
+## Version v1.0.88
+
+> August 5, 2026
+
+- [`5f976741`](https://github.com/pixlcore/xyops/commit/5f976741926ce7688bbf2ab320da452507dc9018): Version 1.0.88
+- [`e1a296da`](https://github.com/pixlcore/xyops/commit/e1a296da409126fb5f3197b1f0df04c167023351): Feature: Add settings checkbox for users to opt into tables that scroll horizontally instead of compress / collapse columns.  Fixes #253.
+- [`b721b4c2`](https://github.com/pixlcore/xyops/commit/b721b4c2bdb61a2c95d5ee240c5169916dbc379c): Feature: Both run_event and magic APIs now accept an optional "/wait" URL suffix, to wait for the job to complete before sending a response.  Ref #403.
+- [`2180487f`](https://github.com/pixlcore/xyops/commit/2180487fe22309a3262438d26459113660f38395): Bug Fix: Crasher in tail_live_job_log API when a custom "bytes" parameter is present.
+- [`8b930f84`](https://github.com/pixlcore/xyops/commit/8b930f84692d37906d79454f615addc5043f23d9): Feature: Server alert toast notifications can be clicked, and nav to the alert detail screen.
+- [`4ea8da07`](https://github.com/pixlcore/xyops/commit/4ea8da0777d6e35a5574cf0885e9eadd4eb95d6f): Bug Fix: With a catch-up modifier in play, single-shot and precision schedules were not correctly fired during catch-up.  Ref #401.
+- [`7f4e7cdd`](https://github.com/pixlcore/xyops/commit/7f4e7cddf956cd16e0dbc522eeb52ff7a02d4112): Bug Fix: Normalize all single-shot, date range and blackout epoch timestamps to the minute on create / update.  Fixes #401.
+
+## Version v1.0.87
+
+> August 3, 2026
+
+- [`132ee752`](https://github.com/pixlcore/xyops/commit/132ee752c99d0fab24a0d1e871e7d01ac7d5963a): Version 1.0.87
+- [`6237fb09`](https://github.com/pixlcore/xyops/commit/6237fb095293dd99b50d2ff24cfab671d8038336): Bug Fix: API: Preserve external ports in xySat install and upgrade URLs.  Ref #392.
+- [`e9352757`](https://github.com/pixlcore/xyops/commit/e93527571054fe8621b79156efacf72c54fe562f): Feature: Complete overhaul of user category / group restriction system.
+- [`c4152ed3`](https://github.com/pixlcore/xyops/commit/c4152ed31f3af937c9e2910f19ad25c82b0b8734): Bug FIx: Secrets assigned to the category of a workflow event are not propagated down into it for sub-jobs assigned to differrent categories.  Fixes #398.
+- [`77533746`](https://github.com/pixlcore/xyops/commit/77533746e68088829ee287b212b33535bbb34db5): Docs: Rewrote hosting doc from scratch, for clarity and ease of use.
+- [`261d4035`](https://github.com/pixlcore/xyops/commit/261d4035b72642d573ebb80a4d10d9b31e2c809a): Bug Fix: Non-admins running workflows with admin-locked event plugin params revert to defaults.  Fixes #397.
+- [`c27a747c`](https://github.com/pixlcore/xyops/commit/c27a747cc96ff633f89fe2da52097687128ab1f4): Bug Fix: Workflow revision history rollback not working properly.  Fixes #394.
+- [`8c9a2e97`](https://github.com/pixlcore/xyops/commit/8c9a2e9724377028ecb6af98a71f5a4b08ab705f): Docs: Hosting: Add a new "Before You Install" section, plus a number of clarifications and corrections.
+
+## Version v1.0.86
+
+> July 29, 2026
+
+- [`101b42c0`](https://github.com/pixlcore/xyops/commit/101b42c06a6bba1624465687bee643373b00e5de): Version 1.0.86
+- [`b400f439`](https://github.com/pixlcore/xyops/commit/b400f4392358f97b66d0bfc60a657d9c8330270e): Feature: Administrator broadcast custom message to all connected users (access from System page).
+- [`ba58be25`](https://github.com/pixlcore/xyops/commit/ba58be25ed6061e75f21e9f1bf0b449be31f5f9c): Feature: Visually show users editing events on event list status column (hover to see who it is).  Fixes #376.
+- [`9321c05c`](https://github.com/pixlcore/xyops/commit/9321c05c06dd7f6a135bd2c8b4f7f264b144d27d): Feature: Show warning notification if trying to edit anything while another user is already editing it.  Ref #376.
+- [`f39592f4`](https://github.com/pixlcore/xyops/commit/f39592f40dc2d87e33d6cbe4d7e28a7e24d3f1e7): Bug Fix: Race condition in UI can cause JS errors when switching between group view and group edit pages.
+- [`9f34c4a8`](https://github.com/pixlcore/xyops/commit/9f34c4a8d77eeba11a32aebf2b0b358af3c19ccf): Bug FIx: Servers that are not a member of any groups fail to submit monitoring metrics.  Fixes #391
+- [`99b11af7`](https://github.com/pixlcore/xyops/commit/99b11af784dca23d872fa186747133a26a8b4aa7): Feature: Enhance get_multiple API response to include epoch timestamp, active jobs, alerts, and stats
+- [`e2d6a953`](https://github.com/pixlcore/xyops/commit/e2d6a9532aeeb088ba1a4e0897fbcc4b00e13b1e): Feature: In debug mode, show toast notifications for all global javascript errors in UI.
+- [`463ff0a3`](https://github.com/pixlcore/xyops/commit/463ff0a3563448a87a7b4959820769db18b33ad0): Feature: Show all workflow controller nodes in jobs table, with elapsed time and progress bars.  Fixes #386.
+- [`bfb2c052`](https://github.com/pixlcore/xyops/commit/bfb2c0527e0e7002342febb3c7da5aa185f2ea0d): Feature: Allow workflow event / job nodes to be togged between compact and expanded modes.  Ref #387
+- [`8216e365`](https://github.com/pixlcore/xyops/commit/8216e36537d8bc550a7b264f84af74fca7b6b621): Bug Fix: Rare race condition could cause crash when processing server monitoring data.  Fixes #385
+
+## Version v1.0.85
+
+> July 22, 2026
+
+- [`cb8d5423`](https://github.com/pixlcore/xyops/commit/cb8d54235560d74c62467697ba19f7819203ed7f): Version 1.0.85
+- [`74445b30`](https://github.com/pixlcore/xyops/commit/74445b30181c429909867957aa81dcb151219de0): UI Tweak: More adjustments to disabled grid rows in dark mode.
+- [`9a3299ae`](https://github.com/pixlcore/xyops/commit/9a3299aea9f59e7b2711cc6fc278c9ad9ce1061c): Feature: Test dialog should save default user prefs regarding action condition and limit selection.
+- [`e3b0e15e`](https://github.com/pixlcore/xyops/commit/e3b0e15e2a07bfd0d8abe953c38ff5127efed5c6): Feature: Allow administrators to optionally see invisible jobs (upcoming and running).  Fixes #380.
+- [`837793f1`](https://github.com/pixlcore/xyops/commit/837793f18b26027400cd390f5ac14214a1d21130): Feature: Add new "T" keyboard shortcut to test event from the view page.
+- [`0d784edc`](https://github.com/pixlcore/xyops/commit/0d784edc3fa2ee1a3f78dd4c618249a134b94bab): Feature: Allow test jobs to specify exactly which action conditions should fire.  Fixes #378.
+- [`a5914e09`](https://github.com/pixlcore/xyops/commit/a5914e09910cb9ede62df60daec1007f3641c033): Bug Fix: UI: Opacity on disabled data grid elements is too faded in some cases.
+- [`b3dd53ca`](https://github.com/pixlcore/xyops/commit/b3dd53cab10b97c3f6a89a002f986468e19162a7): Feature: Scheduler can now launch multiple jobs for the same event on the same minute with varying params.
+- [`5f27b726`](https://github.com/pixlcore/xyops/commit/5f27b726d28755a703c7a97fc108c722f7368798): Bug Fix: Filtering event list by a single server target fails when workflows are present.
+
+## Version v1.0.84
+
+> July 20, 2026
+
+- [`6c8559a6`](https://github.com/pixlcore/xyops/commit/6c8559a632c59045f77836189da17d06433cd7d2): Version 1.0.84
+- [`168cf55e`](https://github.com/pixlcore/xyops/commit/168cf55e0f7ed6f60c05c0ea514f39c0387f04d6): API: Add new `get_multiple` endpoint for fetching multiple lists at once.
+- [`f04fd209`](https://github.com/pixlcore/xyops/commit/f04fd209848f540e534473478b489ed4c9434bc3): Feature: Preferred Conductors, for active primary handoff.  Fixes #375.
+- [`a14dfacb`](https://github.com/pixlcore/xyops/commit/a14dfacbba979215c46f5fe536a0dd6908d7d109): Docs: Plugins: Describe new "password" text field variant, and add a note about data handling.
+
+## Version v1.0.83
+
+> July 16, 2026
+
+- [`f24c1580`](https://github.com/pixlcore/xyops/commit/f24c15801a614db1a8615c6f06db6aa86f2d4322): Version 1.0.83
+- [`5868aded`](https://github.com/pixlcore/xyops/commit/5868adedb4abc50b0022911f1a7879dd05bcf609): Feature: Add "password" text field variant in the UI.
+- [`cc3457e2`](https://github.com/pixlcore/xyops/commit/cc3457e21ed209315829c8ef800c24edcb1f1afe): Feature: Add sortable last modified date to event list (only on wide screens).
+- [`2aebbc54`](https://github.com/pixlcore/xyops/commit/2aebbc5447e796ba27a42c4e9634cd910c16e60f): Feature: Stagger parallel scheduled job launches by 50ms (configurable), for scalability.
+- [`d2f6c03c`](https://github.com/pixlcore/xyops/commit/d2f6c03cfcd2ff8337d222941e3ec17d9031f0c7): Bug Fix: Event history graphs may render incorrectly with large numbers of parallel executed jobs.
+- [`80eb5ec7`](https://github.com/pixlcore/xyops/commit/80eb5ec770ce677813b02026319b33d7ca4d92f0): Feature: Improve scalability by debouncing job status broadcasts.
+- [`3986605b`](https://github.com/pixlcore/xyops/commit/3986605b26753b4508b9a1643ba9b03902a631af): Bug Fix: Include magic and keyboard triggers in event timing summary text.
+- [`98bcd05d`](https://github.com/pixlcore/xyops/commit/98bcd05d47470544d175f0993efccf35d0250b07): Bug Fix: requireMaster error path was returning an HTTP 200.  Changed to 500.
+- [`7b088270`](https://github.com/pixlcore/xyops/commit/7b0882704de4e58cdc7f5e60d1869816d8264093): Meta: Add provenance attestation to GitHub Actions build artifacts.
+- [`14ddde19`](https://github.com/pixlcore/xyops/commit/14ddde19d1ea3853687480904076284ec05c2c1e): Feature: Allow Plugins to define `uid` and `gid` parameters, and if they are admin-locked, they can be overridden at the event / trigger level.  Fixes #373.
+
+## Version v1.0.82
+
+> July 14, 2026
+
+- [`3292a11e`](https://github.com/pixlcore/xyops/commit/3292a11e110be01ed338aab0d75618df5617d9cb): Version 1.0.82
+- [`4e05da1e`](https://github.com/pixlcore/xyops/commit/4e05da1eea9a3ae1810c30416a39f5cf6b9d1642): Bug Fixes: Fix a number of small API validation issues, and documentation errors.
+- [`0700d7da`](https://github.com/pixlcore/xyops/commit/0700d7da6cb3dbab5525945cac5bb7afdadc1411): Bug Fix: Add server hostname regex validation in create_group and update_group APIs.
+- [`83a1f95b`](https://github.com/pixlcore/xyops/commit/83a1f95b1603569d552fbed264d62957132f03fa): Bug Fix: Typo in api_watch_group error path.
+- [`29c21a87`](https://github.com/pixlcore/xyops/commit/29c21a872aa96b6c630f6db3b9757fd98fb23b5d): Bug Fix: Missing return call before doError in api_upload_job_file.
+- [`b086dd76`](https://github.com/pixlcore/xyops/commit/b086dd76d272323a51062d7fecd5ea0f86d60f4c): Bug Fix: Prevent crasher when job user content `table.rows` is not an array.
+- [`542669b0`](https://github.com/pixlcore/xyops/commit/542669b00ad2ecd3cdba61799abe347cd99d37cf): Bug Fix: upload_files API: Allow usage by API Key as well as user session.
+- [`421088e1`](https://github.com/pixlcore/xyops/commit/421088e17dc475e98b3f1af12c9a0c177c76f886): Feature: Add client.run_event_dialog global configuration, for hiding specific dialog sections.
+- [`2d098d35`](https://github.com/pixlcore/xyops/commit/2d098d35d1dcb45cd0d91d8752948cc49b50a9e1): Feature: Config Editor: Update local client configuration on save.
+
+## Version v1.0.81
+
+> July 10, 2026
+
+- [`30e06bc1`](https://github.com/pixlcore/xyops/commit/30e06bc18e06aec2183e7dfcd1f9fe991e016048): Version 1.0.81
+- [`eeb3ff08`](https://github.com/pixlcore/xyops/commit/eeb3ff084d4361cccd0ed14ba02847a04ccfed7d): Feature: New "Apply Label" job action, for events or workflows.
+- [`7babc5fb`](https://github.com/pixlcore/xyops/commit/7babc5fb4f0ddcde5a3373f5226798b7ed850f6c): UI Tweak: Change "User Fields" to "User Parameters" to be consistent across the app.
+- [`641d4839`](https://github.com/pixlcore/xyops/commit/641d4839ea62bfd37b95f5cee4c09398f08a9505): Docs: send_email API: Add note about specifying a HTML formatted body.  Fixes #364.
+- [`91d36a17`](https://github.com/pixlcore/xyops/commit/91d36a1722d346243de2d7525f2fca74dfc26062): Bug Fix: Stop storing Event Plugin script inside job object (no longer needed).
+
+## Version v1.0.80
+
+> July 9, 2026
+
+- [`53ea547b`](https://github.com/pixlcore/xyops/commit/53ea547b80bac2f4719177a965b1a1d58fd1c0d2): Version 1.0.80
+- [`0dbd7668`](https://github.com/pixlcore/xyops/commit/0dbd766878a64a63143db700110f7ef0afd2a4b7): Feature: Display workflow sub-jobs with an additional icon and indent, and sort jobs on the dashboard by parent relationship.  Fixes #362.
+- [`5d625afa`](https://github.com/pixlcore/xyops/commit/5d625afa0585e5bdb3f5333a77c344eba8c3d37f): Feature: Trigger Plugins can now enable/disable invisible mode for launched jobs.
+- [`b00afde2`](https://github.com/pixlcore/xyops/commit/b00afde275dde627ba9b390dcd57dbb587e8e652): Docs: Plugins: Added more clarity around text variants, and their use in toolsets.  Fixes #366.
+- [`056637ca`](https://github.com/pixlcore/xyops/commit/056637ca523204140e443354b05ce6848e9d1482): Feature: Bulk job deletion now traverses into workflows and auto-deletes all nested sub-jobs and sub-workflows.
+- [`d32e68b0`](https://github.com/pixlcore/xyops/commit/d32e68b042e94acd11afca8e49b9f4d34ed336b6): Docs: Recipes: Add link to wiki for more recipes.
+- [`df36b5c3`](https://github.com/pixlcore/xyops/commit/df36b5c3e92640bb10fdcb022c062970121b5a0c): Docs: Data: Add Event.type, missing trigger types, and update related descriptions in data structures.
+- [`0d80b0a0`](https://github.com/pixlcore/xyops/commit/0d80b0a0cac79ccc1de77afe2c90ad2d64c7fc5b): Feature: Customizable "Run Event" Dialog without User Files or Tags.  Fixes #363.
+- [`c4ce1c98`](https://github.com/pixlcore/xyops/commit/c4ce1c98dbb821dc0c289f7eb17c298d555d0dde): Bug Fix: Tag links inside job completion banner on details page have incorrect hrefs.  Fixes #365.
+- [`e4c9c7be`](https://github.com/pixlcore/xyops/commit/e4c9c7beab19901adc0428704d5adc24c0da8b9e): Bug Fix: Fix embedded web hook / email alert URLs.
+- [`5e6080cf`](https://github.com/pixlcore/xyops/commit/5e6080cf939fb09921fd0625e6b28cd96fbcba8b): Bug Fix: Linux Satellite Upgrade Script: Improve compatibility with older systemd versions.
+
+## Version v1.0.79
+
+> July 7, 2026
+
+- [`32227052`](https://github.com/pixlcore/xyops/commit/3222705275f8b1b1b91d19d18fd3e8324ec8db26): Version 1.0.79
+- [`e21f3bdb`](https://github.com/pixlcore/xyops/commit/e21f3bdb39816016a3913720338a25701127163d): Feature: Add robustness to Linux satellite install and upgrade scripts, to properly handle network issues during download.
+- [`edf48c44`](https://github.com/pixlcore/xyops/commit/edf48c44212fdf24327160afbc0ddc58de5ae2a8): Meta: Delete unused "locale" folder inside sample config.
+- [`0c139cb8`](https://github.com/pixlcore/xyops/commit/0c139cb86c8d365e7287ee35def06820f2b19476): Bug Fix: Least CPU and Least Mem algorithms could select a server outside of the target set.
+- [`a41b30ec`](https://github.com/pixlcore/xyops/commit/a41b30ec7852fe3fbebda7d5cde981cbcfff71c0): Bug Fix: Possible crasher during upgrade with active job set to "Least Monitor Value" algorithms.
+
+## Version v1.0.78
+
+> July 6, 2026
+
+- [`64883ecf`](https://github.com/pixlcore/xyops/commit/64883ecf714d4b08fff7016b23477c020e381ca2): Version 1.0.78
+- [`34eee691`](https://github.com/pixlcore/xyops/commit/34eee6910d9ee5084a8a6fb0d1f73e8435af8f68): Feature: New core event algorithm: "Fewest Active Jobs".  Fixes #360
+- [`f8b474bb`](https://github.com/pixlcore/xyops/commit/f8b474bb9fdbd3d489555644c381acb47f96d4f0): Feature: Allow event user fields to override Plugin parameters, unless they are admin-locked.  Fixes #359
+- [`921cd442`](https://github.com/pixlcore/xyops/commit/921cd442f38fe25aec4966ecf320105cd941c7aa): Feature: Hold Alt/Opt when clicking "Edit Event" or "Edit Workflow" to edit the raw JSON.
+- [`e09f23bf`](https://github.com/pixlcore/xyops/commit/e09f23bfccd54b976811c6fcd58ba59433bed404): UI Tweak: Job Search: If user enters a Job ID with no other search options, nav directly to that job's detail page.
+- [`3115a6e6`](https://github.com/pixlcore/xyops/commit/3115a6e60de03fdec06f5b1d27ee3250b95bc460): Feature: Add custom workflow note highlight colors.
+- [`77f1c22c`](https://github.com/pixlcore/xyops/commit/77f1c22c4e2ed9fe6b113aaa2d04ee878ed33d15): Meta: Move CS colors to their own file, for organization.
+- [`5a942014`](https://github.com/pixlcore/xyops/commit/5a94201439db55a9fce0c23f07b9b8136b9993b6): Feature: Allow nested workflows to be multiplexed.  Fixes #358
+- [`642c3a46`](https://github.com/pixlcore/xyops/commit/642c3a460a5281fe43efff1bd0c6861d31b7bc86): API: Multi/Satellite release APIs: Add better sanity checks for GitHub partial outages.
+
+## Version v1.0.77
+
+> July 2, 2026
+
+- [`744c1389`](https://github.com/pixlcore/xyops/commit/744c138966b5e8a53ff9dff7453286e82344ed85): Version 1.0.77
+- [`cf115e81`](https://github.com/pixlcore/xyops/commit/cf115e81876f2ab5013d30e08c7b6745c669e71b): Feature: Allow xySat monitoring to be disabled for some or all servers.
+- [`a906e493`](https://github.com/pixlcore/xyops/commit/a906e49309c78b396faa8cb23c3f7a1974e615ad): UI Tweak: On alert detail page, show job event (not job server) in job table.
+- [`226e2e7e`](https://github.com/pixlcore/xyops/commit/226e2e7e1fa0401fd71f12edd132705c9ddf9083): UI Tweak: Improve active jobs table display re: job elapsed and remaining time.
+- [`13d1f0e6`](https://github.com/pixlcore/xyops/commit/13d1f0e62dd1b1b41fd4baeb6b995b6dee636ec4): Feature: Add "Batch Size" to the workflow split controller, to send multiple items to each job.
+- [`28dbba1c`](https://github.com/pixlcore/xyops/commit/28dbba1cbe5602618eb2a094be7a769670d5a728): Feature: Improve UX around Marketplace Plugins
+- [`c51ae97d`](https://github.com/pixlcore/xyops/commit/c51ae97d7f5ac8278ac67dfad1214e7039b612c6): Feature: Marketplace Plugins: Show banner to setup secret vault for installed plugins that need one.
+- [`7c5ac6f7`](https://github.com/pixlcore/xyops/commit/7c5ac6f7a684538a6248e4f66c9003cff6fc5fb8): Feature: Allow users to edit marketplace plugins locally (after displaying a warning).
+- [`05f6d131`](https://github.com/pixlcore/xyops/commit/05f6d131cde18ed84048080676c027b15466dbc1): UI Tweak: Fix button colors on event detail screen.
+- [`ca17bd31`](https://github.com/pixlcore/xyops/commit/ca17bd313d1d5d2c76d47b14d9f2ca42940ee02d): UI Tweak: Allow ics / ical files as uploads into code editor.
+- [`c51168b3`](https://github.com/pixlcore/xyops/commit/c51168b3130bb80caad6374f6bfbba6de4ecc953): Feature: Allow file drag-drop onto secret variable editor.
+
+## Version v1.0.76
+
+> June 28, 2026
+
+- [`3ce7fb46`](https://github.com/pixlcore/xyops/commit/3ce7fb468d1cf25a255932af290dd76901dcca71): Version 1.0.76
+- [`56dbd3a4`](https://github.com/pixlcore/xyops/commit/56dbd3a40bcb66589d0254c56186ccd06435e625): Feature: Dynamically fire an action on-demand during a job: Instant Job Actions
+- [`84c2fef9`](https://github.com/pixlcore/xyops/commit/84c2fef95fc01764ce833276e260c99356a0b77f): Icons: Add xyOps logo icon into the MDI icon set.  Fixes #278.
+- [`414b70c4`](https://github.com/pixlcore/xyops/commit/414b70c432a713c7863ed8b47be88502d7af7b74): CSS: Improve progress bars in table rows with category colors, so they blend together better.
+- [`9901c8a1`](https://github.com/pixlcore/xyops/commit/9901c8a1b522027b7de5afd22c88067031f67c86): Bug Fix: Custom email action with a custom body should not need to include To/Subject macros.  Fixes #349
+- [`0266ebee`](https://github.com/pixlcore/xyops/commit/0266ebee2033aaa8aa5c259e61abc5514afd8a74): Security: Improve user field sanitization on settings update.
+- [`5e6ac1dd`](https://github.com/pixlcore/xyops/commit/5e6ac1ddf0347faff6a42f01f29b16f595410a46): Bug Fix: Do not check marketplace versions on login unless user is admin.  Fixes #348.
+- [`e0df7306`](https://github.com/pixlcore/xyops/commit/e0df73063dfbda617e2a6cbd668cc2c0234f8e8e): Security: Encode a few more user values before rendering into HTML.
+- [`c11e4417`](https://github.com/pixlcore/xyops/commit/c11e441782e9aa198f4c22c6739210224f76a2f5): Bug Fix: Tighten action controls so only official event fields may be specified.
+- [`d99a7f14`](https://github.com/pixlcore/xyops/commit/d99a7f14181a4f7a544d39e191e3884022152a6c): Bug Fix: Satellite config port was set to webserver port during bootstrap.  Fixes #345.
+- [`7f96ae47`](https://github.com/pixlcore/xyops/commit/7f96ae47e0a3c56b7dcfaff199bbd92bddfb4358): Feature: Add full sort options to draggable sort tables (Categories, Groups, Monitors).  Fixes #346
+- [`74fd36a5`](https://github.com/pixlcore/xyops/commit/74fd36a5de709f5eaf68be0dbc7732f1dbee0c0b): UI Tweak: Change Category / Group / Monitor / Param drag sort icon, to make its purpose a bit clearer.
+- [`9bcc96b5`](https://github.com/pixlcore/xyops/commit/9bcc96b5bac883b58861b46d664795f554d62ad7): Docs: Add new Trust document.
+
+## Version v1.0.75
+
+> June 25, 2026
+
+- [`ced3c94f`](https://github.com/pixlcore/xyops/commit/ced3c94f454c17611226f773e7e167b8a6feed2c): Version 1.0.75
+- [`29585b88`](https://github.com/pixlcore/xyops/commit/29585b8893616fac0b3c0dc0c9e4d9fc0d374d4e): Feature: Add table searching and sorting to secrets, and add new variable names column.
+- [`a2993821`](https://github.com/pixlcore/xyops/commit/a29938212ec46f3732fdb3ebacef41eaa44e8d52): Feature: Add configurable defaults for new tickets
+- [`51d1b404`](https://github.com/pixlcore/xyops/commit/51d1b404b7879ab47f0cc7d304893390a04888d9): UI: Improve "Abort Job" dialogs to include more job details (event name, state).
+- [`2a8ea194`](https://github.com/pixlcore/xyops/commit/2a8ea194eaffd3a9c3c1d01d61a803cd439913ef): UI: Alphabetically sort actions and limits menus, and tweak limit dialog.
+- [`f74f7fe8`](https://github.com/pixlcore/xyops/commit/f74f7fe87a9f46c6be22176a15115f36539ccb35): UI: Workflows: Fix Wait controller label, to include more precision.
+- [`ec8213b8`](https://github.com/pixlcore/xyops/commit/ec8213b892ab1703e297c64535fa85e6b7becd76): UI: Add dialog descriptions to the "Test Event" and "Test Workflow" dialogs.
+- [`0e043a67`](https://github.com/pixlcore/xyops/commit/0e043a67553822e31ec470e888e24d2f998d9d8e): Feature: Allow user to skip over job retry or start delay, by clicking the state label.  Fixes #343.
+- [`f29b1a63`](https://github.com/pixlcore/xyops/commit/f29b1a630e9632f1cb3afdc17724caaa5bc385f7): Feature: Add optional "Start Delay" to the Run Event action.  Fixes #344.
+
+## Version v1.0.74
+
+> June 23, 2026
+
+- [`97ff6f7c`](https://github.com/pixlcore/xyops/commit/97ff6f7cbe14ba0224cca478feeae6aa47662a77): Version 1.0.74
+- [`54ff7ac7`](https://github.com/pixlcore/xyops/commit/54ff7ac7ef191bc41d8b7e07ef84a453fb6e8878): Docs: Update docs for new workflow replay feature.
+- [`a347eacd`](https://github.com/pixlcore/xyops/commit/a347eacd86ba8582d7272cb2f16b6febb3bd6ea9): Docs: Update docs for new workflow suspend/resume jump to node feature.
+- [`bfa862a5`](https://github.com/pixlcore/xyops/commit/bfa862a5a9d55bcb08347db0c5abeb532a69a19e): Feature: Workflows: Add "Replay" feature to freeze a node to simulate a previous job.
+- [`106ebea0`](https://github.com/pixlcore/xyops/commit/106ebea03b7b83a22ff8654633c891f3a9fc03a8): CSS Tweak: Remove cyan color from inherited limits / actions
+- [`4022a714`](https://github.com/pixlcore/xyops/commit/4022a7146827a4416c56140ba12e4755f12d3b02): Feature: Workflow Suspend/Resume: Allow user to select a target node to jump to after resume.
+- [`c7e82892`](https://github.com/pixlcore/xyops/commit/c7e82892f04b54ebe8a676b741df3bed5761db4f): Meta: Release Script: Add protection against accidental release with local git changes.
+- [`9b9931f2`](https://github.com/pixlcore/xyops/commit/9b9931f228ee19cf779570b1204684d3550f7dbe): Feature: Upgrade System: Automatically filter out prereleases.
+- [`0f2fc549`](https://github.com/pixlcore/xyops/commit/0f2fc549e5baa4b635957e3eea4132ef02678592): Dependency: Remove "clean-css", as it is no longer maintained.
+
+## Version v1.0.73
+
+> June 22, 2026
+
+- [`b40d2de9`](https://github.com/pixlcore/xyops/commit/b40d2de975358cb5194510663c507ef3f1be9d22): Version 1.0.73
+- [`78ec5358`](https://github.com/pixlcore/xyops/commit/78ec5358e8f9ccca83e0bc5cdeae217ee2324065): Emergency CSS Fix: Our CSS minifier does not support nesting.
+
+## Version v1.0.72
+
+> June 22, 2026
+
+- [`1872bb3f`](https://github.com/pixlcore/xyops/commit/1872bb3f1513280d44de53f83c7e41eab3adbb73): Version 1.0.72
+	- Bump pixl-server-storage to v4.2.2 for new deleteAll and Postgres plugin APIs.
+	- Bump pixl-xyapp to v2.1.37 for new color variants.
+- [`cd37f247`](https://github.com/pixlcore/xyops/commit/cd37f247f80dd6fb2ac5f4ab3c09b354219fafe4): CSS: Further adjustments to some category colors in light mode to increase contrast.
+- [`27fc506f`](https://github.com/pixlcore/xyops/commit/27fc506f1742ba3b70ac10bb25144d3a23bdb37a): Accessibility: Change category color text in color accessibility and high contrast modes.
+- [`5573760b`](https://github.com/pixlcore/xyops/commit/5573760b098578f7935f236b538aa79c9af1676b): Docs: Plugins: Add sample Event Plugin source code.
+- [`d61b39ec`](https://github.com/pixlcore/xyops/commit/d61b39ecf885a09783ccd9bc26eef62274efad46): Feature: Limit the maximum number of sub-jobs per workflow run to 1000 (configurable).
+- [`d279bd44`](https://github.com/pixlcore/xyops/commit/d279bd44a4e8a7f887fc57e0b4fda76384f09172): Feature: Delete Job: Add robustness, and auto-delete all workflow sub-jobs when parent is deleted.
+- [`446737a2`](https://github.com/pixlcore/xyops/commit/446737a2956c7752f4b16124e0ecccfd7fe09c43): NPM: add new allowScripts property, for upcoming NPM v12 restrictions.
+- [`0915e2a5`](https://github.com/pixlcore/xyops/commit/0915e2a565e6a316037cd2af8a518fb91b64bc9e): Feature: Deleting jobs now deletes input files as well as output files (unless they are linked to buckets or tickets).
+- [`d02c9e73`](https://github.com/pixlcore/xyops/commit/d02c9e73f5c1443479bc779b73074e8126a1f297): UI Tweak: Improve job file table to show magic link and user inputs.
+- [`9cf94b29`](https://github.com/pixlcore/xyops/commit/9cf94b298c2c48162711c3e23aa77839641b41b7): UI Tweak: Fix default event icons in drop-down menus, and add category colors there as well.
+- [`cd3d065e`](https://github.com/pixlcore/xyops/commit/cd3d065e4a2b9869f1dbcdd30eba1a2afd035ac3): UI Bug Fix: Category color may get stuck in search menus.
+
+## Version v1.0.71
+
+> June 21, 2026
+
+- [`36566e6a`](https://github.com/pixlcore/xyops/commit/36566e6a17c9ff62bf810343bc9b6387d7fc37bc): Version 1.0.71
+	- Bump pixl-xyapp to v2.1.36 for color system improvements.
+- [`540d419d`](https://github.com/pixlcore/xyops/commit/540d419d365a8411cfb6b6b6614fc70bd856c043): Feature: Further improvements to category color system.
+- [`a22215f8`](https://github.com/pixlcore/xyops/commit/a22215f89ab66127bf60676b2526f42ed937a534): UI Tweak: Event view page header: Clicking outer nav breadcrumbs now honors sidebar selection.
+- [`8fdb4ce8`](https://github.com/pixlcore/xyops/commit/8fdb4ce823ea8de888ee1f968037b02c6b03acab): Feature: Event author (owner) is now editable.
+- [`a3902fa3`](https://github.com/pixlcore/xyops/commit/a3902fa3864b59fb389390d410233954297bce7a): UI Tweak: Make suspended jobs more visible by changing icon.
+- [`d422ef75`](https://github.com/pixlcore/xyops/commit/d422ef75114f4017f21e1de4ed7b8d90eacc4f0d): UI Tweak: Add named groups to category color sets.
+- [`e740ccbb`](https://github.com/pixlcore/xyops/commit/e740ccbb0f8c9eb9fa5ca4dddc88e2bc471f1efe): Feature: Accept gzip-compressed JSON files when dropped on xyOps, and from "Import File...".
+- [`e85ee7bd`](https://github.com/pixlcore/xyops/commit/e85ee7bdf10f0a56bfb6ec8197043acfcb5541a8): Feature: Add "Test" button to notification channel editor.
+- [`b599ddd1`](https://github.com/pixlcore/xyops/commit/b599ddd1ae86978ae86c2444c8bcb848ab5465ff): Feature: Add many more custom colors to categories.  Fixes #309
+- [`267dd74c`](https://github.com/pixlcore/xyops/commit/267dd74cf62252964b43ce635f7d69c61fc17259): Docs: Storage: Add section on Postgres SSL
+- [`fb5abdbb`](https://github.com/pixlcore/xyops/commit/fb5abdbb2549015114712e3d8b75b758efb0b495): Feature: Make applicable action descriptions clickable on event detail page.  Fixes #331
+- [`0df49000`](https://github.com/pixlcore/xyops/commit/0df49000e759e3e0a142f07a8f1659462c2cbdc7): Tighten validation for reserved job overrides
+
+## Version v1.0.70
+
+> June 18, 2026
+
+- [`8a02cb91`](https://github.com/pixlcore/xyops/commit/8a02cb91b36f839c10d805c824e2ab3c7c070716): Version 1.0.70
+- [`e72934c2`](https://github.com/pixlcore/xyops/commit/e72934c2d30907acfe72525e9796f6b86f38fbd7): Docs: Hosting: Add section on migrating to a new server.
+- [`bd645fb8`](https://github.com/pixlcore/xyops/commit/bd645fb87ac5c9daef9146e4b6490de7db636522): Feature: Improve performance of data sync between conductor peers.
+- [`7baa3847`](https://github.com/pixlcore/xyops/commit/7baa38475545e8ac2a721f3687ed0806da4266b4): Bug Fix: Crasher when email format is set to plain text.
+- [`ce683512`](https://github.com/pixlcore/xyops/commit/ce683512556d6016af636bb2e3a7818de5295faf): UI Tweak: Fix workflow rendering quirks at 0.25x zoom, especially with Safari
+- [`5e0a53c7`](https://github.com/pixlcore/xyops/commit/5e0a53c76b67b581c1cd1d582db1be8dbd84de31): Feature: Log Viewer: Save current settings inside sidebar tab link (active session only).
+- [`a6d2619c`](https://github.com/pixlcore/xyops/commit/a6d2619c52a39a03f89b713e1da3fbfa235141f1): Feature: Job Details Page: Add "D" keyboard shortcut to download raw job JSON data.
+- [`5e15625c`](https://github.com/pixlcore/xyops/commit/5e15625cd42e788f0df747626e59845443cee1fe): Feature: Job Details Page: Add "V" keyboard shortcut to view and copy raw job JSON data.
+- [`92197a60`](https://github.com/pixlcore/xyops/commit/92197a608a12f4f853f4a77bf3578caf0a4b33bd): Feature: Job Details Page: Add download button to job metadata log (CSV format for now).
+- [`94c6d0a6`](https://github.com/pixlcore/xyops/commit/94c6d0a694848f8b9cc10d02a3f0858111f4ffce): Event API: Add checks to ensure workflow nodes and connections are not duplicated (via external tools).
+- [`0cac576c`](https://github.com/pixlcore/xyops/commit/0cac576c5a8761b6c41224e460bcda5a13030fb6): Docs: Config: Remove experimental "network transactions" checkbox (replaced by engine native transactions)
+- [`c01ae217`](https://github.com/pixlcore/xyops/commit/c01ae217e146b552baa9a34855af6d0898292591): Setup: Shell Plugin: Remove legacy `pass` checkbox (superseded by the workflowData system).
+- [`794ace74`](https://github.com/pixlcore/xyops/commit/794ace7496da60d4f0f2bc5902b7f64821c38fbb): Docs: Plugins: Add section for new "Fire Web Hook" built-in plugin.
+- [`89bdb9a9`](https://github.com/pixlcore/xyops/commit/89bdb9a9e9d57b7aa7f88b3b2dc4d60e23de3259): Config: Add default example Redis storage configuration.
+- [`97489916`](https://github.com/pixlcore/xyops/commit/97489916df0d4eebcc159d5843c99ce03a71ee6e): Docs: Storage: Corrected some typos in the sample JSON configurations.
+- [`17da3308`](https://github.com/pixlcore/xyops/commit/17da330877a4d09feb09f77c0d0618211167309e): Docs: Hosting: Add upgrade_timeout_sec prop in satellite configuration.
+
+## Version v1.0.69
+
+> June 15, 2026
+
+- [`f0ea4b2a`](https://github.com/pixlcore/xyops/commit/f0ea4b2ad303374b523bcde44b2459b3c2c7d2ef): Version 1.0.69
+	- Bump pixl-mail to v1.1.8 for upstream vuln fixes in nodemailer.
+	- Bump pixl-request to v2.6.7 for upstream vuln fixes in form-data and basic-ftp.
+	- Bump ws to v7.5.11 for vuln fix.
+- [`fe5ffba1`](https://github.com/pixlcore/xyops/commit/fe5ffba10f9347a9c415d30fe4346feae325f4ca): Docs: Update several docs regarding new native engine transactions, and new recommended storage configurations.
+- [`e572375d`](https://github.com/pixlcore/xyops/commit/e572375d338bbfc0de9bd6dcfc48d6b8484056e5): Feature: Pressing the Tab key in textarea (text box) params now actually types a tab character.
+- [`e41a9ffb`](https://github.com/pixlcore/xyops/commit/e41a9ffb6c734d50ab0dc1ce95d6ff02a6a38fef): Feature: Allow system menu params to be marked as "required".
+- [`b72ac5c8`](https://github.com/pixlcore/xyops/commit/b72ac5c83cafe67a7fc67c8fff1a36f60f38bd85): Setup: Add new "Fire Web Hook" built-in Plugin.
+- [`c2a95807`](https://github.com/pixlcore/xyops/commit/c2a958078959632796430bb36166e3304b06a18c): API: Add new fire_job_web_hook API
+- [`cb0df45a`](https://github.com/pixlcore/xyops/commit/cb0df45a9e3093d78da6e2e1c546fce93e609306): UI Tweak: Fix spacing in code blocks inside user job markdown HTML content
+- [`d637ea37`](https://github.com/pixlcore/xyops/commit/d637ea37e0ebe4da928d621fdbb867d8eef79ddb): Feature: System DB Optimization now supports multiple engines (namely Postgres).
+- [`a44f6b55`](https://github.com/pixlcore/xyops/commit/a44f6b55fae003b7420a54604bb0cc579f4a6297): Bump sanitize-html to v2.17.5 for vuln fix.
+- [`3a8a326f`](https://github.com/pixlcore/xyops/commit/3a8a326f8ce737e19e07136462749e334bf6c5f5): Bump pixl-request to v2.6.6 for fixes to download handling and possible stream handle leaks on error.
+- [`89e520db`](https://github.com/pixlcore/xyops/commit/89e520dbba2bec27b8f3a7791c337e4f660a6397): Bump pixl-server-storage to v4.2.1 for new native engine transaction support in Postgres, Redis, and SQLite.
+
+## Version v1.0.68
+
+> June 12, 2026
+
+- [`c2308671`](https://github.com/pixlcore/xyops/commit/c2308671e1316ce98d3ea08791ccf9afdd8f7106): Version 1.0.68
+- [`84e3268e`](https://github.com/pixlcore/xyops/commit/84e3268e03f91188db3049973bf28e96a59dbcdb): Bug Fix: File search results were using the wrong responsive CSS classes.  Fixes #319.
+- [`6b93b826`](https://github.com/pixlcore/xyops/commit/6b93b8265982b884edfb113388d8c0d8a01d93a9): Bug Fix: If an adminstrator is assigned a role that includes category or group restrictions, those should NOT apply.
+- [`a8da68b5`](https://github.com/pixlcore/xyops/commit/a8da68b5210bf3a74b4a30505aa7735ec0f1d456): Feature: Trigger Plugins are now passed all active jobs in an array, to use in making launch decisions.
+- [`59ee6f08`](https://github.com/pixlcore/xyops/commit/59ee6f08e7f14acea9ec167e39de05f281163ddd): Feature: Improve trigger plugin error handling, and include full raw output in activity log report.
+- [`e78b8680`](https://github.com/pixlcore/xyops/commit/e78b868016284b9d30f514a9f925e43283235d14): UI Tweak: Change "New Server" to "Add Server" in the sidebar.
+- [`9daac9d6`](https://github.com/pixlcore/xyops/commit/9daac9d66f8e09f6210597b444ea3bff70ef7eed): Feature: On the category list page, the "Event" count columns are now clickable, and nav directly to the event list w/ the selected category.
+- [`b8896f7a`](https://github.com/pixlcore/xyops/commit/b8896f7a502f3b3145396345caa883f4029503dc): Feature: Pass a localhost base URL property and env var to all action and trigger plugins, so they can make API calls.
+- [`9ddcef34`](https://github.com/pixlcore/xyops/commit/9ddcef343e4300b67ad442e7ba56cb1b317a81e7): Docs: Plugins: Fix typo in link.
+- [`98d9289a`](https://github.com/pixlcore/xyops/commit/98d9289a5dd7096bec1ad7abcb683fcdcd347b7a): Docs: Hosting: Add blurb in air-gapped section about client.outdated_badges setting, which must be disabled in air-gapped mode.
+
+## Version v1.0.67
+
+> June 10, 2026
+
+- [`6a41a1d2`](https://github.com/pixlcore/xyops/commit/6a41a1d2fafd43901926296886452213fc08a480): Version 1.0.67
+- [`858ea8a5`](https://github.com/pixlcore/xyops/commit/858ea8a5982321452056e3a68947c89da3be49c3): Bug Fix: Critical crasher bug in Plugin API and Event API in toolset validation.  Regression from v1.0.64.
+
+## Version v1.0.66
+
+> June 10, 2026
+
+- [`c64b9cc3`](https://github.com/pixlcore/xyops/commit/c64b9cc390a2ffc95b0f3e05ae58b8c74e8fd745): Version 1.0.66
+- [`8a75f414`](https://github.com/pixlcore/xyops/commit/8a75f41410be86ca5441ecdd95bc496687d7ab81): Dep: Bump pixl-xyapp to v2.1.33 for configurable client API timeout, and auto-hide timeout errors after 8 seconds.
+- [`f938589c`](https://github.com/pixlcore/xyops/commit/f938589c8389ff6c90243cf402bfc010a51177f3): API Tweak: Force no-cache on admin_stats API.
+- [`dcfa1be0`](https://github.com/pixlcore/xyops/commit/dcfa1be0c77202cc10bd4bc6f3d1c245db6223c1): Cleanup: Remove unused client.events_per_page config property (legacy).
+- [`be7a3952`](https://github.com/pixlcore/xyops/commit/be7a3952d515d4ea53b5f4056b42b680140ecc54): Feature: Add support for configurable client API timeout (default 10 seconds).
+- [`3ba1a810`](https://github.com/pixlcore/xyops/commit/3ba1a810bd498e9219edbc4b6f153fbc5ddeaa5d): Bug Fix: Change default job search sort to start date (primary key), for performance.
+
+## Version v1.0.65
+
+> June 9, 2026
+
+- [`553d9a9a`](https://github.com/pixlcore/xyops/commit/553d9a9a9fe13b987382f0ee2033f84c8085cf7c): Version 1.0.65
+- [`adaf3819`](https://github.com/pixlcore/xyops/commit/adaf3819364ca1c2d1318796c600d8ded619fa24): Configuration: Disable pixl-server-web's recent_requests (unused) to reduce load.
+- [`f343e05f`](https://github.com/pixlcore/xyops/commit/f343e05fcdde4b13f5d410c0e421fa057ad422af): Bug Fix: Ensure an active queue limit is always accompanied by a max concurrent jobs limit.
+- [`654f733f`](https://github.com/pixlcore/xyops/commit/654f733f61aa4e6e5b8d5e4126c70411f05cec0b): Bug Fix: Improve behavior of job/workflow detail page with large amounts of queued sub-jobs.
+- [`d8a93115`](https://github.com/pixlcore/xyops/commit/d8a93115e3a4b7306ad9619f9f559e60a35620fc): Bug Fix: Some web took templates (e.g. telegram) were failing to save due to malformed URLs.  Fixes #317.
+- [`345652ad`](https://github.com/pixlcore/xyops/commit/345652ad2fb668427814778a4fea5d842f632859): Bug Fix: The marketplace API crashes when air-gapped instead of returning an error.
+
+## Version v1.0.64
+
+> June 8, 2026
+
+- [`cbe44b52`](https://github.com/pixlcore/xyops/commit/cbe44b52e8e464cfc97fe4f07f4257239991b9b2): Version 1.0.64
+- [`1f3438ea`](https://github.com/pixlcore/xyops/commit/1f3438eae5a536baf1047e72a6cbf940fc81159c): UI Tweak: Reorder / rename controls in the workflow "Job Node" dialog to better match the event editor.
+- [`68181462`](https://github.com/pixlcore/xyops/commit/68181462110a5efdbfaf31ad8c1e66ad736ca461): Bug Fix: Further improvements to event parameter / field handling and validation in the API, to prevent misuse.
+- [`dd6d358d`](https://github.com/pixlcore/xyops/commit/dd6d358dc53e2d1140a047c8106893f3ac76ed12): Feature: Add XYEXP event() helper function to resolve an Event or Job ID to the event title.  Fixes #314
+- [`e0d493a8`](https://github.com/pixlcore/xyops/commit/e0d493a80d495933c2d8a6929e2c6c58936eacfb): Docs: Recipes: Add recipe for a web service health alert.
+- [`7a8e0acf`](https://github.com/pixlcore/xyops/commit/7a8e0acf938b4f4627a4b9de0432dada03714711): Bug Fix: Improve JEXL match() utility function to better handle non-string values.
+- [`e915dfef`](https://github.com/pixlcore/xyops/commit/e915dfef2662e8c8716cb92083e509ba8e108e32): Bug Fix: Alert search and view pages were not automatically updating when alerts changed state.
+- [`98ff7ee0`](https://github.com/pixlcore/xyops/commit/98ff7ee074b7c8593c1af4b1a94016391dc7e31a): Docs: Update plugin parameters in HTTP Request, Test and Docker Plugins.  Add param IDs and missing params.
+- [`888ae37e`](https://github.com/pixlcore/xyops/commit/888ae37e6054f62aebfda4936d87787ce6b8bf74): Bug Fix: Improve sparse event update handling in the update_event API.
+
+## Version v1.0.63
+
+> June 5, 2026
+
+- [`abc095d6`](https://github.com/pixlcore/xyops/commit/abc095d6b7691a47f78cefb2302a7e7276eeeb16): Version 1.0.63
+- [`ba7510f6`](https://github.com/pixlcore/xyops/commit/ba7510f6cba684a61f127ea4bb8bed6fdb01bb9a): Plugins Doc: Add more details around plugin parameters, and show the underlying JSON structures.
+- [`de7e9053`](https://github.com/pixlcore/xyops/commit/de7e9053d536328d7122c0e479553cf7eafb7de6): Feature: Allow toolsets to be used in event user fields.
+- [`e6aa0b67`](https://github.com/pixlcore/xyops/commit/e6aa0b674ab0197ba2ccdf31c2845cbea8517bdd): UI Tweak: Add hover tooltips for server titles (in case they are cut off)
+- [`fd781088`](https://github.com/pixlcore/xyops/commit/fd7810882cd7fc463095c23552a7c5c8a1fd2a45): Bug FIx: User settings change needs to sync to all other connected users (in case name or icon changed)
+- [`e5c8e1aa`](https://github.com/pixlcore/xyops/commit/e5c8e1aa3f29aacc08c639c42038b3d79b4845a4): Bug Fix: Perform macro substitution on job params in a specific key order, to prevent issues with logically using param values inside a macro code block, inside a shell script.  Fixes #312.
+- [`77ff93a6`](https://github.com/pixlcore/xyops/commit/77ff93a6987e6fab7dcd62ddef386e45c553211c): Bug Fix: Prevent infinite loop with param macros that expand to their own values.
+- [`d1e1d1d5`](https://github.com/pixlcore/xyops/commit/d1e1d1d599b267efa58112fd44647c9a21824b81): Several key improvements and bug fixes to the ticketing system...
+- [`af638787`](https://github.com/pixlcore/xyops/commit/af638787d0de9a5ac543d4040c135ec7666d0b7d): UI Tweak: Convert email box margins and padding to be responsive, based on viewport width.
+- [`6785db16`](https://github.com/pixlcore/xyops/commit/6785db161a7626331b46ea906c134f2f94027c8d): UI Tweak: Sort users alphabetically by full name (locale-aware).
+
+## Version v1.0.62
+
+> June 1, 2026
+
+- [`f2e2b6bb`](https://github.com/pixlcore/xyops/commit/f2e2b6bb43ec10de962e017dbe6c1bfe3b945f27): Version 1.0.62
+	- Bump pixl-xyapp to v2.1.32 for bug fix in menu handling with true/value string values.
+- [`d779682e`](https://github.com/pixlcore/xyops/commit/d779682eb8c5bf8f658f2b9a9e576134da93caa3): Bug Fix: Test Action Plugin was failing to select the main server group.
+- [`22595b8d`](https://github.com/pixlcore/xyops/commit/22595b8d911682ae310404940b630a83fbb5d51f): UI Bug Fix: Some icons in system menus were not displaying properly.
+- [`aec7ce4a`](https://github.com/pixlcore/xyops/commit/aec7ce4a22582549fd285eb3975e99f1ed99da6f): Bug Fix: Add missing system menu item into Plugin Param editor.
+- [`1ebef7f5`](https://github.com/pixlcore/xyops/commit/1ebef7f5b5d4fc4ae259a52e415eb6ba021db590): Marketplace UI: Show actual version number in "Latest Version" menu item, to match system tab behavior.
+- [`7bea480f`](https://github.com/pixlcore/xyops/commit/7bea480fdaadc5734508c9d840f1b9f4104fd61a): UI: Tweak wording for suspend action job trigger menu, and some minor event / workflow wording / icons.
+- [`290c09fd`](https://github.com/pixlcore/xyops/commit/290c09fdcb547be8d8c4bf98eb821f345128df1a): Bug Fix: Cannot rollback events (regression from v0.9.63).  Fixes #306.
+
+## Version v1.0.61
+
+> May 27, 2026
+
+- [`b3964a1c`](https://github.com/pixlcore/xyops/commit/b3964a1c5d68c5a7d28a5d1f11e844ec389e409e): Version 1.0.61
+	- Bump pixl-xyapp to v2.1.31 for CSS and nav system fixes.
+- [`404d5e67`](https://github.com/pixlcore/xyops/commit/404d5e67411a8cb312ad7686e086faec70942074): CSS Tweaks: Fix various issues with links truncating on mobile screens.
+- [`09295723`](https://github.com/pixlcore/xyops/commit/0929572355c14b83ce503e9fba12b15f39808e4c): CSS UI: Fix privacy blur issue on safari
+- [`b1b63111`](https://github.com/pixlcore/xyops/commit/b1b63111377a8d629788493674183878c941b07c): Feature: Add unsaved navigation protection (confirmation dialog) to all major pages.
+- [`ac34e418`](https://github.com/pixlcore/xyops/commit/ac34e41863b229e32367e91ec9497b0d16f1994d): Feature: Config Editor UI: Support newly introduced config properties, even if they don't exist in old config files.
+- [`f639ac68`](https://github.com/pixlcore/xyops/commit/f639ac684f048164393311849b1fa89ac2e0a45d): Feature: Show outdated badges in sidebar for conductors, servers, and marketplace plugins.  Fixes #305.
+- [`cff69216`](https://github.com/pixlcore/xyops/commit/cff6921670ab87502bd67a97ebc8e2bfd7b19ab8): Feature: Marketplace: Optional search by installed / not installed.
+- [`da75b079`](https://github.com/pixlcore/xyops/commit/da75b07934751d88e079bf767e6a58b3a487b8fe): Feature: Cache xyOps/xySat release metadata locally, and add `enable_version_checks` config settings.
+- [`d970efc0`](https://github.com/pixlcore/xyops/commit/d970efc044fa8b6cb7e15248c0dd4ddded3a8fa9): Feature: Unsaved change detection and nav confirmation in event and workflow editors.
+- [`0e6a688f`](https://github.com/pixlcore/xyops/commit/0e6a688fe1565f54e38d7cd740e523bf2b8e18bf): Feature: Add floating button palette on workflow editor.
+- [`92cd4e79`](https://github.com/pixlcore/xyops/commit/92cd4e79d9491656dfe2c982fbf614aff7cb6bca): Feature: Workflow decision controller can optionally abort the entire workflow on false eval.
+- [`8e539232`](https://github.com/pixlcore/xyops/commit/8e539232a21e118d9995ff56613e4f0d95ed1753): Workflows: Active join controllers need to detect an idle workflow state and deactivate themselves.
+- [`5392c975`](https://github.com/pixlcore/xyops/commit/5392c9753e570356008fad479950004b70786bf3): UI Tweak: Sort workflow controller type menu by title.
+
+## Version v1.0.60
+
+> May 25, 2026
+
+- [`11ff41a9`](https://github.com/pixlcore/xyops/commit/11ff41a9c429809626124ddb8e6abbca8ef0b28a): Version 1.0.60
+	- Bump pixl-xyapp to v2.1.30 for CSS tweaks and a scrolling dialog popover fix in Safari.
+- [`7ee46c5b`](https://github.com/pixlcore/xyops/commit/7ee46c5b0d49b4588c624e4025916cf50baa85cd): Bug Fix: When rerunning a job, inherited actions and limits accumulate in the new job.
+- [`6aa2b5ee`](https://github.com/pixlcore/xyops/commit/6aa2b5eeeda3c72f63fafcc32cae16774cdef870): Feature: Number fields can now define a min/max range, and a step increment.
+- [`e97f35fb`](https://github.com/pixlcore/xyops/commit/e97f35fb6f21502729df41927011c708c6a9dafa): Feature: Improve param group separators, add optional captions, and play nicer with toolsets.
+- [`66c72e3b`](https://github.com/pixlcore/xyops/commit/66c72e3b8c3c34f5d1024e872a6b5b2287cd703e): Bug Fix: Login: Initial admin password reset form missing a keyboard handler on the current password field.
+- [`9856af46`](https://github.com/pixlcore/xyops/commit/9856af46cd9efe94e2943843e721514527d2b666): Plugins Doc: Add section on legacy shell plugin "data passthrough" feature.  Fixes #303.
+
+## Version v1.0.59
+
+> May 23, 2026
+
+- [`0a41a7ce`](https://github.com/pixlcore/xyops/commit/0a41a7ced59422627621955186f62faee640e61c): Version 1.0.59
+	- Bump pixl-xyapp to v2.1.29 for regression bug fix with multi-menus not showing correct items selected.  Fixes #304.
+
+## Version v1.0.58
+
+> May 22, 2026
+
+- [`2a9e2be7`](https://github.com/pixlcore/xyops/commit/2a9e2be7fa230a3629217564847bdefeb426ae77): Version 1.0.58
+- [`ccacf56a`](https://github.com/pixlcore/xyops/commit/ccacf56ab93daa3a7b6409d8274a16b4853701d0): Feature: Custom regular expression validation for text / textarea / code plugin and event params.  Fixes #300.
+- [`6751dde3`](https://github.com/pixlcore/xyops/commit/6751dde3e93f85b54b00c8946207f681bfde2a25): Hosting Doc: Renamed some sections to fix issues with the TOC.
+- [`1e7570d0`](https://github.com/pixlcore/xyops/commit/1e7570d0aace54466075e6fe7b21eb30e588698c): Bug Fix: When a browser reconnects after losing a WebSocket connection, push a full data update to resync.  Ref #302
+- [`fb266b6e`](https://github.com/pixlcore/xyops/commit/fb266b6ea6eb65ffe897c097095797cb20d877a1): Bug FIx: Another tweak for toolset number variant behavior.
+- [`1e2e7503`](https://github.com/pixlcore/xyops/commit/1e2e75034032fdf0feb8fbf4133b0e665eaa88b7): CSS: Fix "color" input type, so it renders properly in safari.
+- [`e26e0bfe`](https://github.com/pixlcore/xyops/commit/e26e0bfe326e689d89988388b8e9d74f9e1ad4e6): Feature: Event and plugin params can now be grouped into custom named sections.
+- [`e4a24e99`](https://github.com/pixlcore/xyops/commit/e4a24e99cc39e293e5ae24cfd90a89b3b782fba7): Bug Fix: Allow toolset number variant text fields to have a null (unset) default value.
+- [`fc359a5d`](https://github.com/pixlcore/xyops/commit/fc359a5d7e40f625a1d5142f8a382f8960d71dba): Multi-Menu UI: Show "(Multi)" suffix in menu type descriptions.
+- [`d2314afc`](https://github.com/pixlcore/xyops/commit/d2314afce47bac06d2075103fa56b672da0b059f): System Menus: Add icon menu, and add monitors to algo menu.
+- [`0be452ff`](https://github.com/pixlcore/xyops/commit/0be452ffd31352f426c34bf357406daa7136ffb9): SSO Doc: Add note about minimum xyOps version, and reformat links to OIDC provider guides.
+
+## Version v1.0.57
+
+> May 18, 2026
+
+- [`2285e4b3`](https://github.com/pixlcore/xyops/commit/2285e4b3cd48a988d83ba8c1ba9f836ff951cbab): Version 1.0.57
+	- Bump pixl-xyapp to v2.1.28 for bug fix in menu handling.  Fixes #299.
+- [`3a0b46b0`](https://github.com/pixlcore/xyops/commit/3a0b46b0b5b9942feba1ca975b6e5359c92a65ad): Bug Fix: Workflows: If split item filter returns zero items, workflow job hangs.
+
+## Version v1.0.56
+
+> May 17, 2026
+
+- [`613f2e2c`](https://github.com/pixlcore/xyops/commit/613f2e2caa6be04edc4f72e18401669be167d547): Version 1.0.56
+- [`9ee387e4`](https://github.com/pixlcore/xyops/commit/9ee387e4f2ccf22f9b3d6eb9b63e9c6d608d0559): Feature: Multi-select menus in plugin and event parameters.
+- [`8ebe888b`](https://github.com/pixlcore/xyops/commit/8ebe888bc1ab0589b0475657b65f53d946b3f3a8): Docs: Update SSO documentation with new OIDC Plugin, including header mapping and configuration details.
+- [`c789f8e9`](https://github.com/pixlcore/xyops/commit/c789f8e9ebbf08745b2fab57dd9d1e8faf6a81dd): SSO: Enhance custom command to include base_app_url and query parameters, and support redirection
+- [`181cb7e3`](https://github.com/pixlcore/xyops/commit/181cb7e399698737df5e7dd57ecc2117e5d8e946): Bug Fix: Search Page: Do not auto-refresh search results on jobsChanged event if user has performed a job FILE search.
+- [`172fa793`](https://github.com/pixlcore/xyops/commit/172fa793ee27cc0fff19608fc4fc728cf30c2b60): Recipes Doc: Enhance server hooks documentation to include server_add notifications
+- [`860392d5`](https://github.com/pixlcore/xyops/commit/860392d56f6634a96ea564f0b9a54e5bebc33317): Feature: Add job source types filer for suspension actions and update UI accordingly
+- [`0efe89f4`](https://github.com/pixlcore/xyops/commit/0efe89f4f4453069943addeb8c030e60fd29d549): xySat Windows Install/Upgrade Scripts: Improve error handling.
+
+## Version v1.0.55
+
+> May 15, 2026
+
+- [`da767a54`](https://github.com/pixlcore/xyops/commit/da767a544fa5f0e677afb8667e6f4f95a8830ced): Version 1.0.55
+- [`ea727ab5`](https://github.com/pixlcore/xyops/commit/ea727ab5a36560da6b340a235baac417d0d0dd0e): Feature: Allow special `_xy_override_` prefixed event param IDs to override job props at runtime (i.e. targets, algo).
+- [`2a1f7c07`](https://github.com/pixlcore/xyops/commit/2a1f7c075a317d422e9e5f14b3a706fa28962f6b): Actions Doc: Remove note about suspend only working within workflows (it now works everywhere).
+- [`51116eb6`](https://github.com/pixlcore/xyops/commit/51116eb63d91f9604589ead74de2e11e05d37a2b): Feature: New plugin/event param type: "System Menu", pre-populated with various xyOps internal system list items.
+- [`72279f53`](https://github.com/pixlcore/xyops/commit/72279f5309b915261bee870df4eb3dc6b9bc64dc): Recipes Doc: Add recipe for using system hooks to send notification for any server going offline.
+- [`aee647fd`](https://github.com/pixlcore/xyops/commit/aee647fdd56f834a60ed84f86d68dd8c53600dbf): Workflows Doc: Rewrite "Continue After Controllers" section to be much more clear.
+- [`cc612696`](https://github.com/pixlcore/xyops/commit/cc61269612b88135c8a2e97792c0716f427f6de8): Bug Fix: Various UI issues with the new fancy searchable plugin/event param menus.
+- [`d9863fea`](https://github.com/pixlcore/xyops/commit/d9863fea7eea0b05c4d24f19515aaca87eba0291): Bug Fix: Sidebar: Shortcuts and admin sections couldn not be user-hidden in some cases.  Fixes #293.
+- [`784f9aac`](https://github.com/pixlcore/xyops/commit/784f9aac7a19c3f628b2afd91a4fc4a5e4e94242): Feature: Workflow Split controllers now offer an optional "item filter" expression, to filter out specific items based on their properties, or array index, or other.  Fixes #298.
+- [`049beffb`](https://github.com/pixlcore/xyops/commit/049beffba7fe38cc8a268a1d0f1bb415c9c1e3ae): Feature: Add JEXL macro function: `match` (regular expression match on a string property).
+- [`0e70e730`](https://github.com/pixlcore/xyops/commit/0e70e7306b711dff5731e4d90dd21b1e98a09828): Bug Fix: Workflows: On abort, make sure ALL controllers are deactivated, to prevent UI animation from running after completion.
+- [`5cfe53b4`](https://github.com/pixlcore/xyops/commit/5cfe53b4fac3629ae55b15ed4a2e14c016bf89fe): Bug Fix: Workflows: Ensure split controller is only ever wired to an event or job node (match behavior of all other job control nodes).
+- [`e7d6ddc2`](https://github.com/pixlcore/xyops/commit/e7d6ddc20163630c343d3da04214bc584074b72e): Feature: Plugin and event param drop-down menus are now searchable.
+- [`19072ec9`](https://github.com/pixlcore/xyops/commit/19072ec91d5ce4abdcb05c5e470f917fb65be5e2): Feature: Allow suspend action to be attached to regular events (outside of workflows).
+- [`6ddeb11d`](https://github.com/pixlcore/xyops/commit/6ddeb11dd3e31da1137f9adb47b6fb4d43e3d2d3): SSO Doc: Add section on RAM requirements with Authentik.
+- [`b92adf34`](https://github.com/pixlcore/xyops/commit/b92adf344fca80b0e4ffb6773adbf0f2a817b8b5): SSO Doc: Add section on Authentik, and fix a number of errors.
+- [`a9d67ebe`](https://github.com/pixlcore/xyops/commit/a9d67ebe1afddc06e3cb43f1a9a07e0695236d7f): README: Add community section with links to Reddit, Discord, and social media.
+
+## Version v1.0.54
+
+> May 8, 2026
+
+- [`c748f725`](https://github.com/pixlcore/xyops/commit/c748f725fdac798fdf3d6ad81f5739b88101723e): Version 1.0.54
+- [`f283f258`](https://github.com/pixlcore/xyops/commit/f283f25853a3da5cbf247c7e1b3b8dcf4fdc789b): Events Doc: Added better explanation of parameter macro expansion.  Fixes #291.
+- [`ec2a15ac`](https://github.com/pixlcore/xyops/commit/ec2a15acd70d35136de2a925605ce7ff1a20af57): Workflow Split/Decision: Include current workflowData in eval context.
+- [`dbbbb053`](https://github.com/pixlcore/xyops/commit/dbbbb053fcba2ac5e30b1c3fc5c2da4c1d4fbb53): Workflow Data: Copy workflowData object into top-level job data upon completion, so it is visible to the user.
+- [`9ae046ba`](https://github.com/pixlcore/xyops/commit/9ae046ba9fbc9197c1804004c827fbde23e3c72f): UI Optimizations: Use page visibility system to prevent unnecessary API calls, and debounce expensive search API calls when jobs change.
+- [`373ce992`](https://github.com/pixlcore/xyops/commit/373ce9921a7558946035cd51c1d408ee0289e39c): Feature: When merging data and workflowData from sub-jobs, allow top-level arrays to concatenate instead of replace.
+- [`b99becd4`](https://github.com/pixlcore/xyops/commit/b99becd4b135da3359319a51a32d2d7e8e61a22e): Job Data Optimization: Move workflowData and serverData into jobDetails immediiately, to prevent syncing to all clients.
+- [`764986fc`](https://github.com/pixlcore/xyops/commit/764986fc789fe498aa63be6c92237ca24ebb3fae): Plugins Doc: Add new details on progressively updating job data, server data, and workflow data, and the new data push array syntax.
+- [`d2e0ffda`](https://github.com/pixlcore/xyops/commit/d2e0ffdaeff8dcde85115bdc1aaf1158e607e9c3): Doc Viewer: Properly sanitize backslashes in search results preview.
+- [`2d195aab`](https://github.com/pixlcore/xyops/commit/2d195aab4c95185662437de7bd53655ca48af624): Bug Fix: For new workflows, make sure to populate the sample plugin params, in case the user saves without editing it.
+- [`86e99b76`](https://github.com/pixlcore/xyops/commit/86e99b7652e9324d948cf3c72baa511a4b4d9920): Channels UI: Show list of dependants in the delete confirmation dialog.
+- [`085a9569`](https://github.com/pixlcore/xyops/commit/085a9569a1c60d41b676b5bcd77864ca8f7c8a26): Web Hooks UI: Show list of dependants in the delete confirmation dialog.
+- [`8641f4e3`](https://github.com/pixlcore/xyops/commit/8641f4e323cde56ef28b88ee64ded89d08be1807): Plugin UI: Include alerts when showing plugin deps (on update / delete).
+- [`46c74bb3`](https://github.com/pixlcore/xyops/commit/46c74bb3e628b8f4ce4574033382511efee77242): Bug Fix: Prevent crash if web hook is deleted and pre-existing event tries to run it.
+- [`0e976d3a`](https://github.com/pixlcore/xyops/commit/0e976d3a266b9d23292f61f5d3d7d0719ff78c04): UI Bug Fix: Sort web hooks alphabetically by title.
+- [`fb806e49`](https://github.com/pixlcore/xyops/commit/fb806e4940184dc152a089edf20ade029c40ddb0): Web Hooks Doc: Add details about using job and workflow params inside the web hook.
+- [`f386e5ba`](https://github.com/pixlcore/xyops/commit/f386e5bad27a4314a94efdd736035eb364b79145): Colophon Doc: Update colophon to include ioredis and pg packages
+- [`6ca2a125`](https://github.com/pixlcore/xyops/commit/6ca2a125b8bab075cf4d3c43109f873fbb3de9e5): Getting Started: Add new getting started guide for new users.
+
+## Version v1.0.53
+
+> May 6, 2026
+
+- [`cd538674`](https://github.com/pixlcore/xyops/commit/cd538674d47a2bbdadd4dc8f0a55e75f99ff8caa): Version 1.0.53
+- [`e0a05cd2`](https://github.com/pixlcore/xyops/commit/e0a05cd2bb8359b34a5ee8ca11f0184d2c396f17): Hosting and SSO Docs: Add Docker volume mount for the logs directory, so it can survive container upgrades.
+- [`7642e3d6`](https://github.com/pixlcore/xyops/commit/7642e3d6eb3c311ed391268abed9dcff0095459d): Feature: Web Hook Templates for creating web hooks using many popular services.
+- [`cdbae8ec`](https://github.com/pixlcore/xyops/commit/cdbae8ec306acf4edf0ba106bc19f985e4be037b): Sample Config: Decrease default db_maint.jobs.max_rows to 100,000.
+- [`958499ae`](https://github.com/pixlcore/xyops/commit/958499ae9e28d547cb32fcba1182e3aeaa69dd90): UI Document: Add new doc describing the user interface configuration settings.
+- [`3aa2841d`](https://github.com/pixlcore/xyops/commit/3aa2841d6e3c809e2667df73e57270bff4d85477): Sortable Table UI: Fallback default sort settings to global client config, if user pref is not set.
+- [`21b9357f`](https://github.com/pixlcore/xyops/commit/21b9357f9e060cf970a1fe8aa9ab8272eb188fd3): Event List UI: Change default table sort to be by category.
+- [`ab055dd1`](https://github.com/pixlcore/xyops/commit/ab055dd107701da3e42290c5fa9f19e00510341b): Comparison Doc: Add feature comparisons to major players in the space.
+- [`9d28e780`](https://github.com/pixlcore/xyops/commit/9d28e780dc817720b8baebfcbf2ed911c2c47c5f): README: Add section on our YouTube videos.
+- [`3d5848dc`](https://github.com/pixlcore/xyops/commit/3d5848dc2ed5be61b5eb780ef8a9f300d20b845a): Improve UX for underprivileged users: hide appropriate buttons, links, shortcuts, sidebar sections, etc.
+
+## Version v1.0.52
+
+> May 3, 2026
+
+- [`f4a8c231`](https://github.com/pixlcore/xyops/commit/f4a8c231f5e8b37b17e54b03fa4c93ddd6dc7a2a): Version 1.0.52
+- [`7d064ea6`](https://github.com/pixlcore/xyops/commit/7d064ea663d492d9cefe88f8f4804dc1ed0dd66b): Feature: Visually indicate when xyOps and xySat are up to date, on the conductor and server pages, respectfully.
+- [`ecedffec`](https://github.com/pixlcore/xyops/commit/ecedffec6a9a824f2a98b29f986b899a6d29c808): Feature: Add optional `disable_version_checks` flag in both satellite and multi configs.
+- [`5fdbd7b9`](https://github.com/pixlcore/xyops/commit/5fdbd7b9a363e373fcb444e4a5f842ad749da62c): Workflow UI: Show warning toast if selected event node is a sub-workflow that is missing a manual trigger node.
+- [`77926474`](https://github.com/pixlcore/xyops/commit/779264749f94d13953c784b9ec799c5776bf1112): Feature: Show inherited actions and limits in workflow nodes.
+
+## Version v1.0.51
+
+> April 30, 2026
+
+- [`dc5815d4`](https://github.com/pixlcore/xyops/commit/dc5815d44d72b07df3334fb206db0cdfcb5035fe): Version 1.0.51
+	- Bump pixl-xyapp to v2.1.25 for bug fix in keybind assignment UI.
+- [`e0a546b8`](https://github.com/pixlcore/xyops/commit/e0a546b86eecf66f4c26186ab43cbaa004b4837d): Bug Fix: Local Satellite: Fix localhost hostname issue (must use hostID due to remote runners).
+- [`9b6b39ba`](https://github.com/pixlcore/xyops/commit/9b6b39bac988a1ac5350ff5b880f73ec3a85e49c): Markdown Rendering: Fix styling for code spans inside blockquotes.
+- [`de2e8ee9`](https://github.com/pixlcore/xyops/commit/de2e8ee936fd39249b0469f8418ce67fff6f9e8e): UI: Add caption note regarding "files" keyword for split controller.
+- [`bb60200a`](https://github.com/pixlcore/xyops/commit/bb60200a928a19f2065f374b6a18d50986d1fc61): Bug Fix: Workflow Split Controller: Evaluate expression using XYEXP (was using legacy getPath API).
+- [`0e57018a`](https://github.com/pixlcore/xyops/commit/0e57018a71c2c55cf31f7f841087287bf032c277): Marketplace Doc: Add section on inline source plugins and how to publish them.
+- [`ec6d0b76`](https://github.com/pixlcore/xyops/commit/ec6d0b766ca63778fbf8bad06eae12b1a3ea9a49): Import File UI: When importing plugins, show syntax-highlighted script separately from JSON, when applicable.
+- [`0bce1660`](https://github.com/pixlcore/xyops/commit/0bce16600692b02144db7e32b444598b33f4a539): Marketplace: Add UI support for dependency-free plugins.
+- [`a88d1e45`](https://github.com/pixlcore/xyops/commit/a88d1e45c357448bec977366b8e9b5eaffd1064e): Marketplace: Show a more user-friendly plugin source view when installing / upgrading plugins.
+- [`dfa2de44`](https://github.com/pixlcore/xyops/commit/dfa2de44fcbf3892dcd9fe14526466e59179d6a4): Bug Fix: Apply event user field defaults to schedule triggers on every save.  Fixes #283
+- [`46d90de7`](https://github.com/pixlcore/xyops/commit/46d90de7b56ed770126232d167a632dd73cb71ee): Scheduler State Menu: Prevent updating state and showing a notification if the selected menu item is re-selected.
+- [`ded6204d`](https://github.com/pixlcore/xyops/commit/ded6204d32e0aa27e18d126096dd1be3d977ea9c): Bug FIx: If admin priv is inherited from a role, editing own account or settings can "appear" to remove the admin priv in the UI.  Fixes #282.
+
+## Version v1.0.50
+
+> April 27, 2026
+
+- [`401ab942`](https://github.com/pixlcore/xyops/commit/401ab942608468273023894dc80257593efff6d6): Version 1.0.50
+	- Bump pixl-config to v1.0.15 for improved startup IP sniffing logic.
+- [`b1812e5b`](https://github.com/pixlcore/xyops/commit/b1812e5b29482a3eeac02e4cac1fa4d60cf45d6b): Job User Content: Improve macro expansion, include `base_app_url` in context object.
+- [`c50856bc`](https://github.com/pixlcore/xyops/commit/c50856bc251be4bac6cb5639cf000c5dc13c7a18): Servers Doc: Typo in automated docker workers sample docker compose YAML env vars.  Fixes #281.
+- [`1e855815`](https://github.com/pixlcore/xyops/commit/1e85581506170f6462d0bafe1162859c11098925): Bug fix: Ad-hoc plugin tests using incorrect property for Event ID.
+- [`27fad370`](https://github.com/pixlcore/xyops/commit/27fad37065f57fccc5ee3f8a491658597df2bd7e): Feature: If job user content (markdown, text or html) to contains placeholder macros, expand them.
+- [`a72b2d51`](https://github.com/pixlcore/xyops/commit/a72b2d5147b2a2fa7c7d069b0edf5949cb03699f): Feature: New workflowData object to share data between all nodes in a workflow.
+- [`e5c6d041`](https://github.com/pixlcore/xyops/commit/e5c6d04168455cd75d17848ec72893d6bbc7bef9): JEXL: Add `server()` helper function for resolving a server ID into a title (label or hostname).
+- [`936594b8`](https://github.com/pixlcore/xyops/commit/936594b8acb3394a7d9b3202bf91b1f509d35bd9): Actions: Prevent crash if email action is missing a users array (both job and alert actions).
+- [`cee5d415`](https://github.com/pixlcore/xyops/commit/cee5d415ab8efda9e019fbe46147049a40e9187a): Workflows Doc: Add section on sharing data between nodes
+- [`94fcca51`](https://github.com/pixlcore/xyops/commit/94fcca511fea2484d440beb028bc39d8342c7582): Servers Doc: Add link to serverData definition in section about user data.
+- [`11afaf76`](https://github.com/pixlcore/xyops/commit/11afaf7613bed9ff14c802bb493be36443037fe9): Plugins Doc: Add section on event plugin environment variables
+- [`2139a7ea`](https://github.com/pixlcore/xyops/commit/2139a7eaf1b607f213e03654a85cfea4883a70e3): Data Doc: Add section on Job.workflowData
+- [`704c186c`](https://github.com/pixlcore/xyops/commit/704c186cdbea76f1a46a4b143bff47e145986709): Plugin UI: Save state of key menus in test plugin dialogs.
+- [`53036dea`](https://github.com/pixlcore/xyops/commit/53036deaff51b0794c6236d0d8e381cbb901ec39): Privileges Doc: Add note regarding removal of all privs to create a read-only user.  Ref discussion #275.
+- [`e139b5b9`](https://github.com/pixlcore/xyops/commit/e139b5b91c8ecc722a7ecf0ee30246655d6f08c5): Default Privileges: Handle case where priv properties are set to false (treat as missing).
+- [`2d715254`](https://github.com/pixlcore/xyops/commit/2d7152541292b7fca146118df41c505e999c67a4): Tailscale Doc: Add steps to create and apply a tag, to properly isolate the app capabilities grant.  Fixes #273.
+
+## Version v1.0.49
+
+> April 22, 2026
+
+- [`86a410e3`](https://github.com/pixlcore/xyops/commit/86a410e381f6831a4b4b9f05e949986d88c5a3c7): Version 1.0.49
+	- Bump pixl-tools to v2.0.3 for updated getBytesFromText and getTextFromBytes functions.
+- [`3c016abe`](https://github.com/pixlcore/xyops/commit/3c016abe73e0e00f3ab3501eecbf8bc8d59768a4): Diagnostic Report: Redact all IP addresses by regex.
+- [`da83f3a3`](https://github.com/pixlcore/xyops/commit/da83f3a3691ec20613a59035de5eb72c4857e236): CSS: Tweak responsive data grid rules for server list to improve readability.
+- [`a669eb18`](https://github.com/pixlcore/xyops/commit/a669eb188b5f20dda52a2b74fea965fa9255e34b): Server Data Explorer / Test Alert & Monitor: Save/restore server menu selection in localStorage.
+- [`6cc01881`](https://github.com/pixlcore/xyops/commit/6cc01881c6c0c2c3e056116281358c3fb5e1cd4e): Feature: Docker container monitoring and basic management on server/group pages.
+- [`63ece0be`](https://github.com/pixlcore/xyops/commit/63ece0bec48a219a8ff6f21919cdac5b5ad4929e): Feature: Allow individual live server processes to be killed with a custom signal.
+- [`d999de86`](https://github.com/pixlcore/xyops/commit/d999de867e83f05a86e82e240fe20edd3cf903d8): Cosmetic UI FIx: Show proper "admin" badge for users that inherit administrator priv from a role.  Fixes #270
+- [`5606f2e1`](https://github.com/pixlcore/xyops/commit/5606f2e122f4f7f8d992268533c426512e149d90): Workflows Doc: Add clarification on data and files output.  Ref discussion #268.
+- [`0a54276d`](https://github.com/pixlcore/xyops/commit/0a54276d859987badf6d7f4ca5aed373eafce17b): New API: `empty_bucket`: Delete all files and/or data from a bucket, but leave the bucket itself intact.  Ref discussion #269.
+- [`179c5c73`](https://github.com/pixlcore/xyops/commit/179c5c7330259c6d879c4789f27f027d65b06ea8): Server Detail View UI: Correctly strip hostname suffix in header.
+- [`7f63e861`](https://github.com/pixlcore/xyops/commit/7f63e8617c34cfca2ae674d8170d11734494a658): SSO: Correctly apply "admin" privilege as sole privilege.
+- [`560150c7`](https://github.com/pixlcore/xyops/commit/560150c7544dbc302af2d866d505296e7969edcb): Tailscale Doc: Minor adjustments for clarity.
+- [`50d1904e`](https://github.com/pixlcore/xyops/commit/50d1904e103cef480a6bc58e74804def826b64c5): SSO Doc: Clarified behavior regarding replace_privileges and default_user_privileges.
+
+## Version v1.0.48
+
+> April 16, 2026
+
+- [`c95f5c86`](https://github.com/pixlcore/xyops/commit/c95f5c86a9da5900cf497273ad81ee0283a65858): Version 1.0.48
+	- Bump pixl-request to v2.6.5 for upstream vuln fix in basic-ftp (sub-dep of proxy-agent).  Yes, another one.
+- [`0635e844`](https://github.com/pixlcore/xyops/commit/0635e8446e9a875c174a887ace3f253837171c53): Satellite Bootstrap: Always honor `satellite.config.port` when constructing one-liner install URLs.
+- [`bf5a2ba2`](https://github.com/pixlcore/xyops/commit/bf5a2ba256e092c44bcbaedd566aaf77d5139ce6): Server Hostname/IP Changes: Fix typos in warning activity messages.
+- [`cb17082b`](https://github.com/pixlcore/xyops/commit/cb17082b0db6e3b570a1e625a2e496df1693b30c): Local Satellite: Now connecting via localhost instead of hostID, to work better with proxy setups.  Also, support airgap.
+- [`98042bf2`](https://github.com/pixlcore/xyops/commit/98042bf2b7bf4ec5300f78c3c20fb98b0fd930f6): Cosmetic: My Account Page: Fix typo in caption text for "Sync Enabled" checkbox.
+- [`8f315cda`](https://github.com/pixlcore/xyops/commit/8f315cda9d894ec28dec953bf27629f79f609127): Cosmetic: Support displaying custom IP address sent by xySat instead of socket IP (with Tailscale socket IP is always 127.0.0.1).
+- [`354a10b3`](https://github.com/pixlcore/xyops/commit/354a10b3bdd7b3e5cdd6b28ec565eafdc7db5174): Cosmetic UI Fix: Properly strip hostnames in system upgrade menus.
+- [`43d6957c`](https://github.com/pixlcore/xyops/commit/43d6957c2db9c1896c353352e92cc281f1e16ec0): Feature: Add enhanced support for Tailscale, including priv/role auto assignment, and a full tailscale setup guide.
+- [`4e11477c`](https://github.com/pixlcore/xyops/commit/4e11477c2e90bba4c939bfd438ad815b0bd558a8): API: get_events: Allow basic filtering to search for events by title, plugin, etc.  Fixes #262.
+- [`8a0c060a`](https://github.com/pixlcore/xyops/commit/8a0c060a9686beb270c99ca6a5b312fabdf0c427): Initial Login UI: Improve the "change initial password" dialog to be more clear, include a password verification field.
+- [`da3d950d`](https://github.com/pixlcore/xyops/commit/da3d950dce69a810f85670b9c5e1650aec560a3f): UI Bug Fix: Incorrectly populating schedule hour menu items when browser timezone differs from user selected timezone.
+- [`d887b4e0`](https://github.com/pixlcore/xyops/commit/d887b4e04820a1686942655c867d9746a7f33a86): Typo fix: When testing web hooks, the word "took" is used by mistake in the sample output string.
+- [`fc008176`](https://github.com/pixlcore/xyops/commit/fc00817674a8fb0581253369894f93ffc728d88c): Hosting Guide: Corrected some inaccurate information about TLS.
+- [`78b75b7a`](https://github.com/pixlcore/xyops/commit/78b75b7a589b15baccfefc839332739b37bd509f): Initial Setup: Change default abort policy of Docker Plugin to "all".  Ref #258
+- [`34c5da22`](https://github.com/pixlcore/xyops/commit/34c5da224dbd82879e5c48686ee46c965cdbc933): Actions and Buckets Docs: Add note regarding job output data and files required for Store Bucket to work.  Ref #260.
+- [`f50d0e81`](https://github.com/pixlcore/xyops/commit/f50d0e81dfb36b11520aea5e22f4a3f79fc99e3b): UI Bug Fix: Alert Invocation Details: Use correct ID for alert history day graph (swatch grid).
+- [`620e8178`](https://github.com/pixlcore/xyops/commit/620e8178ba99faf2d15f1d2e7c48b4a5849c6661): Limits Doc: Fix link regarding job weight.
+- [`59e322ee`](https://github.com/pixlcore/xyops/commit/59e322ee0813032d945796a80f592fe069d00ab8): Triggers Doc: Typo in link.
+- [`a289c763`](https://github.com/pixlcore/xyops/commit/a289c7636ed9e823dd4dca9422a571bf04f07c3b): Storage Doc: Typo fix
+
+## Version v1.0.47
+
+> April 13, 2026
+
+- [`e59f9e88`](https://github.com/pixlcore/xyops/commit/e59f9e888344b70e157a9491117c0efa6839781b): Version 1.0.47
+- [`b5e810d1`](https://github.com/pixlcore/xyops/commit/b5e810d1b95da62a6ccd7785378e14d5ef4ff0db): Events Doc: Add sections on new custom job weight, group priority sorting, and priority job queuing features.
+- [`31f60fc3`](https://github.com/pixlcore/xyops/commit/31f60fc310402a0fe615bf350e96dff279a7d972): Servers Doc: Add section on new max jobs per server feature.
+- [`dd9275f3`](https://github.com/pixlcore/xyops/commit/dd9275f3ce3c57e83e4c287c293ef613256c69d4): UI Bug Fix: getNiceJobSourceList was missing alert, magic, and startup definitions.  Also added a catch-all.  Fixes #255.
+- [`a438ee70`](https://github.com/pixlcore/xyops/commit/a438ee70132195aef66558a80c50278ee9b3cbde): Feature: Events can now define a job "weight" in the max jobs limiter, which is used in server max jobs calculations.
+- [`40098d1d`](https://github.com/pixlcore/xyops/commit/40098d1dccea84311d3c79abf0dcc4c115e3ef39): Feature: Custom QuickMon Plugins and graphs.
+- [`44e115e2`](https://github.com/pixlcore/xyops/commit/44e115e24041bb378b980f07f9433fce70b1fbf3): Snapshot Icons: Differentiate between single server and group snapshots.
+
+## Version v1.0.46
+
+> April 10, 2026
+
+- [`9dd9b49b`](https://github.com/pixlcore/xyops/commit/9dd9b49bbcfa5460d4a6a199fadd35c2d9792f24): Version 1.0.46
+	- Bump pixl-mail to v1.1.7 for upstream vuln fix in nodemailer.
+	- Bump pixl-request to v2.6.4 for upstream vuln fixes in basic-ftp (sub-dep of proxy-agent).
+- [`bbf7e8d7`](https://github.com/pixlcore/xyops/commit/bbf7e8d7ac6639f8319efb2a7a2588931db1d48a): Initial Setup: HTTP Request Plugin: Add new idle_timeout and connect_timeout params, set all timeouts to number variants.
+- [`d6118f2e`](https://github.com/pixlcore/xyops/commit/d6118f2e6bed6bbc039fea643b090ebb458c7d98): Sample Config: Add satellite.config.graphics_enabled set to false (for future xySat use).
+- [`8ac3ec2e`](https://github.com/pixlcore/xyops/commit/8ac3ec2ec3ec42e2966f61ce95eac42239d2b103): Quiet Modifier: For ephemeral mode, if job finishes with a non-zero code (i.e. error) remove ephemeral flag.
+- [`f5ec5e2a`](https://github.com/pixlcore/xyops/commit/f5ec5e2a535bc3843de235f7a38fa5f1da832787): Feature: Allow default max jobs per server to be set at the group level (individual servers can override).
+- [`a98c557a`](https://github.com/pixlcore/xyops/commit/a98c557a977f919cdf04dd41d00a24f9c51acb2c): Feature: New job server selection algorithms: prefer_first_natural, and prefer_last_natural.
+- [`c0ba6982`](https://github.com/pixlcore/xyops/commit/c0ba6982c7fcd3599bb76b9027ddabbe4cd2dd75): Feature: Optional job priority flag, to jump to the head of the queue.
+- [`b5a28ecd`](https://github.com/pixlcore/xyops/commit/b5a28ecd389cddce607f183bc17bbba5f0bb24ef): Feature: Implement optional max jobs per server (server.maxJobs).
+- [`a3c82d0f`](https://github.com/pixlcore/xyops/commit/a3c82d0f2e777335ea18aeac020c13aaf320d101): Bug Fix: Job Target Expressions: Ensure expression is re-evaluated when monitoring queued jobs.
+- [`5886190c`](https://github.com/pixlcore/xyops/commit/5886190c011768afb32af02bb34e66a6b1a9931d): Server UI: Fix race condition when sitting on server page while server disconnects / reconnects.
+- [`d5d4609e`](https://github.com/pixlcore/xyops/commit/d5d4609e531063bbcfa42c9d14f4aa2a220cd46f): Actions Doc: Added clarification about the "Suspend" action, which can only be used inside of a workflow.
+- [`4ca3e599`](https://github.com/pixlcore/xyops/commit/4ca3e59931163da8e49c1cb68443d5ea707acc22): UI Fix: When clicking on an out-of-date conductor version to upgrade it, prevent the refresh from popping up the upgrade dialog again.
+- [`676ca53c`](https://github.com/pixlcore/xyops/commit/676ca53c7b8e18a8b967926057fd9f3132b28ace): Delete Job UI: When deleting a workflow sub-job, update the parent workflow so it shows a visual indication of the deleted job in the list.  Fixes #243
+- [`c08ce54f`](https://github.com/pixlcore/xyops/commit/c08ce54f1b7f938440ab9573e8488a29159288cf): Log Viewer: Add Postgres and Redis logs to the menu.
+- [`a4eb1deb`](https://github.com/pixlcore/xyops/commit/a4eb1deb8af1602384942d355e6fc4537e2a0768): Hot Keys: Add sanity check for event.key.  Fixes #245.
+- [`e93f14be`](https://github.com/pixlcore/xyops/commit/e93f14be618381a896889688602f7aa4b6ec6647): Installer Script: Change minimum supported Node.js version to v20.
+
+## Version v1.0.45
+
+> April 6, 2026
+
+- [`041c0007`](https://github.com/pixlcore/xyops/commit/041c0007ab7ba6a3f02bd600e6917b60d68f9a64): Version 1.0.45
+	- Bump pixl-server-storage to v4.1.0 for new Postgres storage engine.
+	- Add pg module for Postgres storage engine.
+	- Add ioredis module for Redis storage engine.
+	- Bump lodash (sub-dep of async) to v4.18.1 for another vuln fix.
+- [`715a640d`](https://github.com/pixlcore/xyops/commit/715a640dbfe874709ef5cb15ac58b83f5c9b0c4e): Bug Fix: Custom sub-job labels were not visible on workflow job detail screen.  Fixes #242.
+- [`f946407a`](https://github.com/pixlcore/xyops/commit/f946407a845a5c4c13c045acf9472af5f2ecc215): Sample Config: Add new default Postgres storage engine configuration.
+- [`6f863ba2`](https://github.com/pixlcore/xyops/commit/6f863ba28b8a5914fa530ddb723fd27cfeb51ffa): Docs: Add new storage setup doc, and link it from existing docs.
+- [`46fc0be7`](https://github.com/pixlcore/xyops/commit/46fc0be7afc1fdb1850570636857dd608c044e11): UI Strings: Tweak limit and action table captions to be more clear about category and universal inheritance.
+- [`7f962c8e`](https://github.com/pixlcore/xyops/commit/7f962c8e5e111d61e51d3288fb4b48dd2e33fa99): UI Tweak: Fix "Copy to Clipboard" button in code viewer dialog.
+- [`dd937e6b`](https://github.com/pixlcore/xyops/commit/dd937e6b036526440be92bbc0f96127402db44d3): Bug Fix: Upon job recovery after restart, unset job.remote flag in case job is dead (so it can abort after going stale).  Fixes #240.
+- [`58be32f5`](https://github.com/pixlcore/xyops/commit/58be32f53d7ae29c08a354fe4610654155a293b0): Meta: Add local bin/release.sh script for automating releases.
+
+## Version v1.0.44
+
+> April 3, 2026
+
+- [`bc2a0eae`](https://github.com/pixlcore/xyops/commit/bc2a0eae9a3e1de79b479d664703167d8cb7969a): Version 1.0.44
+- [`ea357ff9`](https://github.com/pixlcore/xyops/commit/ea357ff9b81b27d63f2866fd014d4353416fba99): Meta: Add release.yml to automatically generate release notes and a GH release via GH actions.
+- [`e379951d`](https://github.com/pixlcore/xyops/commit/e379951d4ffffe2864b200896f12d07cd0497164): Servers Doc: Fix tabs that snuck into docker-compose sample.
+- [`e07bea58`](https://github.com/pixlcore/xyops/commit/e07bea581dcf5ccb9d5c78835f6ca5d4ae043ae6): UI Tweak: Job Details: When user content contains markdown, increase its body font size slightly.
+- [`a97589d3`](https://github.com/pixlcore/xyops/commit/a97589d37837fdfaeb3d33a8b02d6801be19889d): Bug Fix: Ensure web hook headers are an array at the API level, and add extra safeguards.  Fixes #238.
+- [`74d57782`](https://github.com/pixlcore/xyops/commit/74d57782f0aa5152b268562e8fe61b47725ee695): Servers Doc: Updated automated docker workers section with new xysat configuration setup.
+- [`3124d5c4`](https://github.com/pixlcore/xyops/commit/3124d5c45fbd45af999d9e6bbea23e33e871c143): Security Overview Doc: Made a few minor corrections and wording adjustments.
+- [`f4ba4f70`](https://github.com/pixlcore/xyops/commit/f4ba4f701ffec0251d7d7ab97f431ee1e73c7345): Multi/Satelite Release List APIs: Add optional `verbose` parameter, to include full response from GitHub.
+- [`018e43bf`](https://github.com/pixlcore/xyops/commit/018e43bff44e6ccc73f7d0494bd5d6806720cd8d): Add SECURITY_OVERVIEW.md document, to complement THREAT_MODEL.md.
+- [`e8cf67b5`](https://github.com/pixlcore/xyops/commit/e8cf67b5b8cf51f098bb65dfcc552e4ccd9d378b): Bulk Deletes: When internal deletion jobs complete, refresh applicable search results pages in case users are waiting.  Fixes #236
+- [`4c0bf024`](https://github.com/pixlcore/xyops/commit/4c0bf024f2bb63fceeeaface8db477eb85e1ee82): Admin Upgrade Conductors API: Default single server pre-delay time to 5 seconds to allow for job to complete before starting upgrade.
+- [`0ff5230c`](https://github.com/pixlcore/xyops/commit/0ff5230cbb9504eba0ad00a1ae82c64379917697): Workflows: Support event/job target expression in the multiplex controller, and do not abort the workflow if no servers match.  Fixes #233
+- [`68972b9e`](https://github.com/pixlcore/xyops/commit/68972b9e0fc6edb28a1bd9e10b5bf9617a8e49f7): Docs: Remove NFS as a recommended storage configuration.
+- [`888d1bf1`](https://github.com/pixlcore/xyops/commit/888d1bf1b69bd509a8eb0bbaf1fc56744b1524ff): System Diag Report: Small tweaks, trim load avg for display, add message for zero servers.
+
+## Version v1.0.43
+
+> March 31, 2026
+
+- [`fba0174d`](https://github.com/pixlcore/xyops/commit/fba0174d5f7161edb9f1ba2e828d823fa21da1b3): Version 1.0.43
+	- Bump pixl-server to v1.0.50 for more detailed crash logs.
+	- Override lodash (sub-dependency of async) to v4.17.23 for vuln fix.
+- [`eb2a6f9e`](https://github.com/pixlcore/xyops/commit/eb2a6f9efc06ad7185c31d9a98eb38e4533689a1): API Doc: Add docs for internal admin_upgrade_masters and admin_upgrade_workers APIs.
+- [`411c36fb`](https://github.com/pixlcore/xyops/commit/411c36fbcc969bc4d46adb5a0aa4d942316e0e02): API Doc: Add new multi section, with internal master_register, get_master_releases, and master_command APIs documented.
+- [`b11ee0ce`](https://github.com/pixlcore/xyops/commit/b11ee0cef98fb029c07779c391f2d6ae5a1a7ba0): API Doc: Clarify some admin API privs and rename satellite section.
+- [`54f1568d`](https://github.com/pixlcore/xyops/commit/54f1568d855798c3f9f31752af084b5bebd4ae28): Hosting Doc: Added clarification on Docker configuration mount, as it needs to be unique per conductor.
+- [`04ec3b47`](https://github.com/pixlcore/xyops/commit/04ec3b4778759e36c6f385a9a5fe85c8e80de1fd): New Feature: Magic Link Form: Allow button text, icon, and custom faux response parameters.
+- [`a9828d25`](https://github.com/pixlcore/xyops/commit/a9828d25fc729a269c77129cd4c112148f16a93b): Docker Satellite Servers: Add default named volume mount for custom config dir (so containers survive upgrades).
+- [`686fe20d`](https://github.com/pixlcore/xyops/commit/686fe20d4bb65e42f84e942f982caa347de78282): New Feature: Visually show conductors and satellite servers that have outdated versions.  Click to popup upgrade dialog.
+- [`fee28222`](https://github.com/pixlcore/xyops/commit/fee2822284b4e35fc409379b7c6a6f584a3eac61): CSS: Adjust scrollbar thumb color to better follow theme.
+- [`8f2b0a36`](https://github.com/pixlcore/xyops/commit/8f2b0a36847c632de7809ed5125caf966a1e572b): Bug Fix: Ensure workflow decision and split nodes always have access to outer workflow object for use in expressions.  Fixes #232.
+- [`45a3c1be`](https://github.com/pixlcore/xyops/commit/45a3c1be4073a4b7f76e24128f75f5608d501dc5): Satellite/Multi Release List APIs: Reduce requirement to any valid user or API key
+- [`ad9bc803`](https://github.com/pixlcore/xyops/commit/ad9bc803bb5e52b5dfc08c4d744ca9375b045bf9): Feature: Send xyops / xysat version information along with each job launch, in `job.versions` property.
+- [`4f5e4d9e`](https://github.com/pixlcore/xyops/commit/4f5e4d9ebd9e561646833eaf2836ac2f3f646271): Behavior Change: For get_ APIs with v1 suffix, return HTTP 404 upon failure.  Fixes #231.
+- [`039bfb03`](https://github.com/pixlcore/xyops/commit/039bfb036cecaf11d6e71bfebd95eade39506c66): README: Remove quick-start docker run command, and instead direct people to the self-hosting guide.
+- [`699c9ddd`](https://github.com/pixlcore/xyops/commit/699c9ddda605c88aa17ca6eac0d2348ab27a3feb): New Feature: Add "Diagnostic Report" button on System page, for generating report content for GitHub issues.
+- [`113abb76`](https://github.com/pixlcore/xyops/commit/113abb76098c1bfaa8b0fd3aacbb2df9c2133817): README and Hosting Docs: Clarify Docker setup instructions, use `XYOPS_masters` environment variable even for single-conductor setups.
+- [`c44a3d0c`](https://github.com/pixlcore/xyops/commit/c44a3d0ca34bb58c42f10136b5fb450b70058ec9): Bug Fix: Auto-detect case where multiple hostnames resolve to same servers in masters.json, and shut down with loud error.
+
+## Version v1.0.42
+
+> March 29, 2026
+
+- [`ffb1e457`](https://github.com/pixlcore/xyops/commit/ffb1e457c99f4fdc96d989d115adb39125e2cfe6): Version 1.0.42
+	- Remove `jimp` dependency, replace with in-house developed `pixl-resize` module.
+- [`df05634e`](https://github.com/pixlcore/xyops/commit/df05634e8e9367504596b16e24ebb64afbeff8c3): Config Editor: Perform basic validation pass on save.  Fixes #224.
+- [`d6dc2080`](https://github.com/pixlcore/xyops/commit/d6dc208005e48a5c1897f24004cc1db096699aa1): Config Doc: Add note about leaving storage transactions enabled.
+- [`db9ba584`](https://github.com/pixlcore/xyops/commit/db9ba584dbbbd855fa529b7a63f678675f84e1bd): Bug Fix: Magic Link: After creation, if user goes back into edit trigger dialog without saving first, magic link key is regenerated.
+- [`fe22a26e`](https://github.com/pixlcore/xyops/commit/fe22a26ee22188456d3a46e37bab03c48a331374): Config Doc: Document the satellite docker image path.
+- [`db4d97b5`](https://github.com/pixlcore/xyops/commit/db4d97b5dcd463f267c87675ecd84bbe4f68e4f7): Bug Fix: Crasher in monitoring subsystem when storage transactions are disabled.  Fixes #220.
+- [`460ed0b3`](https://github.com/pixlcore/xyops/commit/460ed0b3e73a439450f371d869f2fd2863394f3a): Cleanup: Remove unused avatar code in admin path.
+
+## Version v1.0.41
+
+> March 27, 2026
+
+- [`ab845e5e`](https://github.com/pixlcore/xyops/commit/ab845e5ee0978cbad7a0eb7a8e89a71a121830a4): Version 1.0.41
+	- Bump pixl-tools for upstream vuln fix in picomatch.
+	- Bump pixl-mail for upstream vuln fix in nodemailer.
+- [`9613fd1a`](https://github.com/pixlcore/xyops/commit/9613fd1a6b468d0187e387830e6898051f99e2ec): Marketplace UI: Lazy-load thubmnails from GitHub as to not exceed limits.
+- [`c01e5416`](https://github.com/pixlcore/xyops/commit/c01e5416d0cd8adcaae760e48d749916fd6a5f98): Feature: Global "client.hide_sidebar_sections" will force-hide specific sidebar sections for all users, regardless of their prefs.
+- [`269458f6`](https://github.com/pixlcore/xyops/commit/269458f6952c46605b2a307a819f0b9dc400e931): Feature: Marketplace: Allow quick setup / editing of secret vaults for installed plugins.
+- [`b4e3169f`](https://github.com/pixlcore/xyops/commit/b4e3169f62e405394309bc9ddd3e0bf026446667): CSS UI Tweak: Adjust max select menu height slightly, as certain positions can cause it to extend beyond the screen bounds.
+- [`0bff6646`](https://github.com/pixlcore/xyops/commit/0bff664658430da083a24951d74db4406f7c9713): UI Tweak: Sort secret vaults by title.
+- [`ca7b0327`](https://github.com/pixlcore/xyops/commit/ca7b03272ac6b91652c56877a905ce1d3360d142): CSS UI Tweak: Fix background color in plugin/event param select menus on light theme.
+- [`67d4e94a`](https://github.com/pixlcore/xyops/commit/67d4e94a9d3200def3eb422811233e117e3edbb7): README: Add bind mount for xyops config in docker example command.
+- [`69fa7823`](https://github.com/pixlcore/xyops/commit/69fa78235b10fdec136b7f8610bd3cd1ed9d64c8): Hosting Doc: Add missing bind mount for config dir in quick-start docker run command.
+
+## Version v1.0.40
+
+> March 24, 2026
+
+- [`587350bb`](https://github.com/pixlcore/xyops/commit/587350bb71ce9b52f56a6586b200a98d277b73d1): Version 1.0.40
+- [`af38badc`](https://github.com/pixlcore/xyops/commit/af38badcc08a2cac7ca644cf4f113c25da6ecb67): SSO Doc: Fixed example command and added note about the xyOps AWS ALB SSO Plugin.
+- [`be4b79fc`](https://github.com/pixlcore/xyops/commit/be4b79fc66562a2baf3346a94007ccbb9331b735): Feature: Custom SSO Plugin command, to validate and transform request for prep for SSO login.
+- [`9b9bb477`](https://github.com/pixlcore/xyops/commit/9b9bb47702b87abd60bff6b0e4e6433e731205c3): Sample Config: Update stock tls.crt and tls.key files (self-signed).
+- [`e9981893`](https://github.com/pixlcore/xyops/commit/e9981893fdaeba09974edecc9b4ad4736f0bfdb9): API Doc: Add docs on internal satellite install/upgrade/config endpoints.
+- [`34290b77`](https://github.com/pixlcore/xyops/commit/34290b7796420b90d258abcec61a5db043955d56): Hosting Doc: Add section on customizing satellite config managed keys.
+- [`295aa284`](https://github.com/pixlcore/xyops/commit/295aa28428c5738958f2a114fdeff6bf3dd6f9af): Servers Doc: Add details on docker workers, specifically around bind mounting the xysat config file.
+- [`e96dcdb1`](https://github.com/pixlcore/xyops/commit/e96dcdb106aa8ef35af4968bf66ca33ad1a938de): Workflow Behavior Change: Sub-job queuing now considers each workflow job to be its own queue "namespace".  Fixes #218.
+- [`9e94e456`](https://github.com/pixlcore/xyops/commit/9e94e456a1b5fbff133642a3673166424d59be6c): Bug Fix: Crasher in workflow if job is aborted very early, before it goes into an active state.
+- [`d23fe1e2`](https://github.com/pixlcore/xyops/commit/d23fe1e25dd51b40fefb7c06b5a4ab5711949818): Security Hardening: Remove word boundary matching for scrubbing secrets from web hook diagnostic output.
+
+## Version v1.0.39
+
+> March 23, 2026
+
+- [`6a58a69f`](https://github.com/pixlcore/xyops/commit/6a58a69ffe4fa6fbda2b6a26ad98dc885acdd508): Version 1.0.39
+- [`f5cd9536`](https://github.com/pixlcore/xyops/commit/f5cd9536f2926fe625009a33b0830f2b5202c7e9): Server Notifications: Improve notification text for server add/remove activity.
+- [`96c42849`](https://github.com/pixlcore/xyops/commit/96c428493754f890efc0ed68e35c99cd34ad0408): Docs: Add ToS and Privacy Policy.
+- [`0b085a08`](https://github.com/pixlcore/xyops/commit/0b085a08f337665f278e1ce669daa483a5fd7e3c): Security Hardening: Redact secrets from web hook detail output log (best effort).
+- [`45190dab`](https://github.com/pixlcore/xyops/commit/45190dabe44cf75ec181cb8cb0596634db379be2): Bug Fix: UI crash in getWFParamPreviewHTML for omitted optional number param values.  Ref #175.
+- [`25d22eb7`](https://github.com/pixlcore/xyops/commit/25d22eb7d53bc678421bd9802287cf8dc5ed4b16): Add THREAT_MODEL.md file for security audits.
+- [`b7756ccf`](https://github.com/pixlcore/xyops/commit/b7756ccf64b00e66b846690bb2d89d3cb1030146): Typo fix in docs and sample config: outbound_blacklist and outbound_whitelist should be blacklist and whitelist, in the airgap config.
+- [`b68995d8`](https://github.com/pixlcore/xyops/commit/b68995d821e8633fc6e2ff2c91e2ac1745ee664c): Security Hardening: Secrets API: Ensure secret key names don't match any bad strings (i.e. __proto__ and the like).
+- [`0be3cc70`](https://github.com/pixlcore/xyops/commit/0be3cc7094f4878224157b3a96a7295be2142985): Security Hardening: API handler: Disallow any params matching bad key names (i.e. __proto__ and the like).
+- [`4a7ec2f5`](https://github.com/pixlcore/xyops/commit/4a7ec2f54f76929c4707f6efe1dac5f0a2ddf115): Security Hardening: Remove macro substitution support from system hook shell exec command (was undocumented anyway).
+- [`f6db6959`](https://github.com/pixlcore/xyops/commit/f6db695942c690cce9990416994074c0a1911c50): Security Hardening: Lock down more built-in plugin fields to administrator-only (HTTP URL, Docker Run Command, etc.).
+- [`bf41044a`](https://github.com/pixlcore/xyops/commit/bf41044ac8f5fb350a19b5fabae0e7579bbfac75): Security Hardening: Check secret variable key names for illegal strings (i.e. __proto__ and the like).
+- [`eb23ba4c`](https://github.com/pixlcore/xyops/commit/eb23ba4c5e64f9cf7d332c0297bf331e544b829f): Security Hardening: Increase default secret key length to 32 chars in container-start.sh
+- [`08f6ed03`](https://github.com/pixlcore/xyops/commit/08f6ed0345a2197f626761fede30d381221d9bb6): api_get_latest_monitor_data: Allow both GET and POST parameters.  Fixes #214.
+
+## Version v1.0.38
+
+> March 19, 2026
+
+- [`5347452a`](https://github.com/pixlcore/xyops/commit/5347452a4376a98a794209fd38e3a5d1cbb15d0e): Version 1.0.38
+- [`f926446d`](https://github.com/pixlcore/xyops/commit/f926446d56e5c54a6268428fa2eac8f97b35ce8d): Server Monitor Alerts: Use correct server label and stripped hostname in notification text.
+
+## Version v1.0.37
+
+> March 19, 2026
+
+- [`fe32764b`](https://github.com/pixlcore/xyops/commit/fe32764b5462393a0f7d40b5d341ed6486fddf3a): Version 1.0.37
+- [`85bd8d67`](https://github.com/pixlcore/xyops/commit/85bd8d67b7ad71399572407b520f512d72e326c6): Feature: Customize sidebar section visibility in the user settings screen.
+- [`6a62b36a`](https://github.com/pixlcore/xyops/commit/6a62b36a595d79d5d5853586e3fbbf03ec0c973c): Server Data Explorer: Add hover tooltips for all Plugin IDs, for easier identification.  Fixes #211.
+- [`036a5ca4`](https://github.com/pixlcore/xyops/commit/036a5ca44843af72bfb23a86cc4eb5cbe7fd40cf): Welcome Doc: Fix wording to properly describe when the guide auto-disappears.  Fixes #212.
+- [`35d319e2`](https://github.com/pixlcore/xyops/commit/35d319e22dd0dc1921792f907fc3fbefb5f5c5f1): CLI Doc: Remove unused section.
+
+## Version v1.0.36
+
+> March 18, 2026
+
+- [`7fc894c9`](https://github.com/pixlcore/xyops/commit/7fc894c94df181fb5753569c99bb8807e068548d): Version 1.0.36
+- [`b7f9f9e9`](https://github.com/pixlcore/xyops/commit/b7f9f9e91457ac6a7dba86068e4e44c4bd9492bf): Feature: Recover admin access from Docker / containerized systems using a special environment variable.
+- [`233a1f53`](https://github.com/pixlcore/xyops/commit/233a1f53c3e392799f7661ced6bf242e16a4174d): UI Tweak: Set all password input field fonts to monospace.
+
+## Version v1.0.35
+
+> March 18, 2026
+
+- [`9c14b5cb`](https://github.com/pixlcore/xyops/commit/9c14b5cb4fddbbc9a81c45df3d1f7ecea7fb9b45): Version 1.0.35
+- [`d2e009c4`](https://github.com/pixlcore/xyops/commit/d2e009c42baece575df17fba4976034f292b023f): UI Improvement: Add visual group separators for sorted event table, for specific columns (e.g. category, tags, plugin, targets).
+- [`21813d00`](https://github.com/pixlcore/xyops/commit/21813d00dbaef433b6e75715ca34989e1c2443ed): UI Tweak: Improve icons for linked events and workflows, to show arrow pointing right (more clear).
+- [`52077ccc`](https://github.com/pixlcore/xyops/commit/52077ccc6f8bbe1106e5dac899afa246d24669b2): Bug Fix: Export dialog was broken for workflows.  Fixes #208.
+
+## Version v1.0.34
+
+> March 18, 2026
+
+- [`fae52ace`](https://github.com/pixlcore/xyops/commit/fae52acede0b48d8a9527ec75f88eaca77cc48fc): Version 1.0.34
+- [`81227d63`](https://github.com/pixlcore/xyops/commit/81227d63e8c7035ea0f32f058dbb2086147a79ce): UI Tweak: When an event has a "Run Event" action attached and enabled, change the default icon.
+- [`8bdb8f6e`](https://github.com/pixlcore/xyops/commit/8bdb8f6ebd865d6ef2f3610010f21c07c3fdaa0a): UI Tweak: Apply hostname strip regex to conductor ID display, to be consistent with server hostnames.
+- [`ac17c97b`](https://github.com/pixlcore/xyops/commit/ac17c97bed4750d955857b47a4266c7b129d3b2e): UI Tweak: Show different default icons for events / workflows if they are disabled.
+
+## Version v1.0.33
+
+> March 17, 2026
+
+- [`87b4d5e1`](https://github.com/pixlcore/xyops/commit/87b4d5e18b53e0aae4b2b10c31a6ee8e348caf74): Version 1.0.33
+- [`132f0306`](https://github.com/pixlcore/xyops/commit/132f0306272fea0fdab76cf888b803a637b719d7): Server UI: Several visual changes to better denote server groups, and if they were manually or auto-assigned.
+- [`160d3544`](https://github.com/pixlcore/xyops/commit/160d354446d65b97d362d59389c102e5a88e8e45): Server Groups: Correctly handle the case when a group is deleted with servers that had manually assigned the group.
+- [`dded76f7`](https://github.com/pixlcore/xyops/commit/dded76f72c71e9280d12a3a28267fb56b6df4b1b): Unbase Config: Add missing autoGroup column index
+- [`887e100b`](https://github.com/pixlcore/xyops/commit/887e100b1bf208374257b8d0b0c208256e2ebb3d): UI Fix: Show correct "All"/"None" word when group list is empty (alerts / monitors match "All" if none assigned, servers do not).
+
+## Version v1.0.32
+
+> March 17, 2026
+
+- [`75e11a26`](https://github.com/pixlcore/xyops/commit/75e11a26993628aec5c079aa69322e4f4bdd523a): Version 1.0.32
+- [`416931fa`](https://github.com/pixlcore/xyops/commit/416931fae0acb3ef2c2ef8fd4dd30386a70bdfc9): Bug Fix: Crasher if a server group is deleted with active servers that match only said group.
+
+## Version v1.0.31
+
+> March 17, 2026
+
+- [`c95eeb88`](https://github.com/pixlcore/xyops/commit/c95eeb8803f4af7120b179498714a4a8a23aaa3f): Version 1.0.31
+- [`3facd5cd`](https://github.com/pixlcore/xyops/commit/3facd5cd920b1e4a0d0586f4ecdb08c7cbf9dafb): Docker Container Startup: Fix typo which failed to auto-generate the secret key on first launch.  Fixes #202.
+
+## Version v1.0.30
+
+> March 16, 2026
+
+- [`b06d0c17`](https://github.com/pixlcore/xyops/commit/b06d0c1780070dde166f808bf5eb1c4ed3d6d7d8): Version 1.0.30
+- [`506265f4`](https://github.com/pixlcore/xyops/commit/506265f42fc134e7f1022314843d4b6c0d85510c): Fix possible XSS attack on job detail screen when job description contains raw HTML.
+
+## Version v1.0.29
+
+> March 16, 2026
+
+- [`25396801`](https://github.com/pixlcore/xyops/commit/25396801cbd9b2627d7ee7054a975dde4d61feaa): Version 1.0.29
+- [`8e536f28`](https://github.com/pixlcore/xyops/commit/8e536f289719687b98ce2f7ca93a773de2ccf3f7): CSS: Improve contrast of checkboxes when table row is disabled.
+- [`361c99c5`](https://github.com/pixlcore/xyops/commit/361c99c53ce053a146c64897a3967397a7fd5913): Docs: Fix header title disappearing on mobile devices.
+- [`e07e8881`](https://github.com/pixlcore/xyops/commit/e07e888186054aa13f24ef5abcfe96534a2cd827): CSS: Fix documentation margins on smaller phones
+- [`441eb42e`](https://github.com/pixlcore/xyops/commit/441eb42e5e98ccbde588b87009ea286f4d668c7e): Marketplace UI: Improve icon, allow markdown in product listing descriptions, fix mobile responsive issue with header.
+- [`3604b5f0`](https://github.com/pixlcore/xyops/commit/3604b5f013d72e8c00a3e25c329350385ffa1364): Marketplace API: Fix issue with searching on tags that contain spaces or other symbols.
+- [`c5fdbadf`](https://github.com/pixlcore/xyops/commit/c5fdbadf1c4bf9a14421b7a41eb85167dff1a566): Update README with details on paid support tiers.
+- [`f65aad11`](https://github.com/pixlcore/xyops/commit/f65aad1189f4f671eaef43db0b449ac8e6e5395e): Delete old unused sample-data.json file.
+
+## Version v1.0.28
+
+> March 15, 2026
+
+- [`28e7b0dd`](https://github.com/pixlcore/xyops/commit/28e7b0ddc212dfbaea29d9aaa928edcd6d95e659): Version 1.0.28
+- [`5af7e750`](https://github.com/pixlcore/xyops/commit/5af7e750ff60558430b6058bbc317387e0ac721a): CORS: Add OPTIONS preflight request handler.
+- [`57a77058`](https://github.com/pixlcore/xyops/commit/57a77058446734d225180e5acc82bf61032aa0c3): Alerts Doc: Add section on Universal Alert Actions.  Ref #195.
+- [`02100721`](https://github.com/pixlcore/xyops/commit/021007211896e44deb5ec4350b41d05959f3d3d3): API Doc: Remove incorrect behavior for echo API.
+
+## Version v1.0.27
+
+> March 15, 2026
+
+- [`a918c6f1`](https://github.com/pixlcore/xyops/commit/a918c6f18a414c13f186354c576ed8695332c062): Version 1.0.27
+- [`3ae2cb7c`](https://github.com/pixlcore/xyops/commit/3ae2cb7cc83bb3edeb0cbff37706bd85dc17e617): Marketplace: Add "Report" button.
+- [`903617bf`](https://github.com/pixlcore/xyops/commit/903617bff8daa043fabb670fc626f358566cc729): Marketplace Markdown UI: Try to fix relative links to files inside Plugin repos.
+- [`6eb22670`](https://github.com/pixlcore/xyops/commit/6eb22670b99eefa02a8f440b27a822d700e976ef): Markdown UI Tweak: Do not decorate links with icons if they contain inline HTML (i.e. for Marketplace shield icons).
+- [`4de736cb`](https://github.com/pixlcore/xyops/commit/4de736cb1cc5f993c63c0af8c3ac3979b15c2beb): UI Tweak: Channel Notifications: Do not auto-hide toasts (these are generally for high severity issues).
+- [`e06e75af`](https://github.com/pixlcore/xyops/commit/e06e75af69079c72176815fe9451ab291d9c7f6e): Alerts: Fix bug where alert message text was missing from web hook args in some cases (race condition).
+- [`ca2fe095`](https://github.com/pixlcore/xyops/commit/ca2fe095c9ce6c69ecf090c93b88c231da9d7d8e): Bug Fix: Channel notification sent from alerts (configured to send to specific users) crashes the conductor.  Fixes #197.
+- [`b10b988b`](https://github.com/pixlcore/xyops/commit/b10b988b60062f741158bfff127dd27e17960bed): Config Doc: Add User.use_csrf property.
+
+## Version v1.0.26
+
+> March 14, 2026
+
+- [`445949c5`](https://github.com/pixlcore/xyops/commit/445949c58e030a71bfa1d59a87bb1ad498ebab81): Version 1.0.26
+	- Migrate to new bcryptjs module (v3.0.3).  Remove old bcrypt-node.
+	- Bump jQuery to v3.7.1 for vuln fixes.
+	- Bump pixl-chart to v1.0.27 for fix with toolbar buttons disappearing on click.
+	- Bump pixl-server-api to v1.0.8 for more verbose debug logging.
+	- (MAJOR) Bump pixl-server-user to v2.0.1 for new CSRF Token system.
+	- Bump pixl-xyapp to v2.1.24 for CSRF token support in API calls.
+- [`44fb32d7`](https://github.com/pixlcore/xyops/commit/44fb32d79d62de75eed0591340a158416e867007): Security Hardening: Move to new CSRF Token system.
+- [`555aeb89`](https://github.com/pixlcore/xyops/commit/555aeb895f58dcd92d7406469146054853493a86): Colophon Doc: Add bcryptjs and clean-css packages, remove old bcrypt-node.
+- [`01b179b1`](https://github.com/pixlcore/xyops/commit/01b179b1f698b8beeb7986b39cdbe2e442972ed2): Storage CLI: Migrate to bcryptjs.
+- [`b7894081`](https://github.com/pixlcore/xyops/commit/b789408102d15094764e05ca3e65cce001ea091d): GitHub Meta: Add stale issue auto-bot.
+- [`1d650a7a`](https://github.com/pixlcore/xyops/commit/1d650a7a0df75013d3443f0ad3a6273e08e8e1a2): Default Config: Add `exit_on_shutdown` prop to insure process always exits (a stuck socket can hang it).
+- [`0e497930`](https://github.com/pixlcore/xyops/commit/0e49793078eb554f369d344ca9ae559ba89345e9): Doc Update: Remove references to old sqlite3 library, add new better-sqlite3 one.
+- [`f30e307a`](https://github.com/pixlcore/xyops/commit/f30e307a5b018cb233b3a74b6a5edfcc2e0acdfd): Triggers Doc: Add clarification on keyboard trigger and internal key codes.
+- [`79df6c04`](https://github.com/pixlcore/xyops/commit/79df6c041679d81e4671b3eb62bee487a15a5cb3): README: Add additional step of generating a test key for local dev installs.
+- [`fdc0dce5`](https://github.com/pixlcore/xyops/commit/fdc0dce51aead514db3233dbd610b5e3c7dfe830): WebSocket Maintenance: Auto-close sockets that do not authenticate within 30 seconds.
+- [`2f272dff`](https://github.com/pixlcore/xyops/commit/2f272dff54d9df92f36b9eb9e8dfb914b6bd8578): Satellite Reconnect Race Condition: Auto-close stale sockets when a server reconnects and auths.  Fixes #194.
+- [`ef7afe24`](https://github.com/pixlcore/xyops/commit/ef7afe24931eac5fd8c6cf5b24bf2eb01148e231): Alert Action Plugins: Pass in assigned secrets to JSON STDIN (as well as environment vars) to match behavior of Job Action Plugins.
+
+## Version v1.0.25
+
+> March 13, 2026
+
+- [`0df04905`](https://github.com/pixlcore/xyops/commit/0df04905b61da331e6beb55140360330d924320a): Version 1.0.25
+- [`46297904`](https://github.com/pixlcore/xyops/commit/462979044cdbc794e90dd77b31f010a4fbc1c295): Security Hardening: Strongly encourage default stock admin user to change password on first login.
+- [`d9184b44`](https://github.com/pixlcore/xyops/commit/d9184b44b4780ffbcbbb6d202637d19d2fb34228): Storage Utility CLI: Improve admin account recovery code (use config overrides, and apply default user prefs).
+- [`8930b8aa`](https://github.com/pixlcore/xyops/commit/8930b8aa003471baba6680596f871f3ed3ef82f4): Security Hardening: Validate storage commands in admin_import_data API.
+- [`802d16b0`](https://github.com/pixlcore/xyops/commit/802d16b008bb614aedd4418da8f71eb8aa13ba63): Security Hardening: Keep config files locked down with mode 0o600 when not running in debug mode.
+- [`8275f838`](https://github.com/pixlcore/xyops/commit/8275f838c5a942e63de8569e81c7ef11f79bea47): Security Hardening: Generate random secret key on first install.
+- [`05d8ba5e`](https://github.com/pixlcore/xyops/commit/05d8ba5eb034e62e68d5ffc5c3026d2a0ddbc48b): Startup: Perform basic validation of required config props, exit loudly if missing.
+
+## Version v1.0.24
+
+> March 13, 2026
+
+- [`dba0f3b7`](https://github.com/pixlcore/xyops/commit/dba0f3b70fdce35f2a7926e63b5e9f01100e3cb6): Version 1.0.24
+	- Dependency bumps: diff to v5.2.2 and pixl-request to v2.6.2, for sub-dependency vuln patches.
+- [`c2298c94`](https://github.com/pixlcore/xyops/commit/c2298c9432e5fef637befef930aa7fb32b7abf15): Bug Fix: Prevent UI crash if event is created via API and limits / actions / triggers params are omitted.  Fixes #192.
+- [`68233cec`](https://github.com/pixlcore/xyops/commit/68233cecdab39c183091957dd12a3fcb816a0d08): Bug Fix: Race condition with logActivity and shutdown.
+
+## Version v1.0.23
+
+> March 10, 2026
+
+- [`9b4fd9a4`](https://github.com/pixlcore/xyops/commit/9b4fd9a4378dada1073948bc764053c9a4486913): Version 1.0.23
+- [`6a73922c`](https://github.com/pixlcore/xyops/commit/6a73922cecc90e0e897fb7d649a4bae238551e75): Satellite API: Allow API keys containing dashes to be substituted for the token (t) parameter.
+- [`75163e25`](https://github.com/pixlcore/xyops/commit/75163e25da3fe84ff30264e9917ece015295536c): Add FUNDING.yml file for GH sponsor button.
+
+## Version v1.0.22
+
+> March 10, 2026
+
+- [`6b1f9da3`](https://github.com/pixlcore/xyops/commit/6b1f9da3655932b6ac36792ef9db9a4f22282b7f): Version 1.0.22
+- [`246daa4c`](https://github.com/pixlcore/xyops/commit/246daa4cbee9230d67de5c3dbc11b5de8dfab639): Feature: Display version number in brackets alongside 'Latest Stable'.  Fixes #188.
+- [`fd1a0130`](https://github.com/pixlcore/xyops/commit/fd1a01305c628875fa951033940aac633d19c848): Bug Fix: Regression from v1.0.14: Default parameter values are not correctly being applied in run_event and magic APIs.  Fixes #189.
+- [`87d6b0bd`](https://github.com/pixlcore/xyops/commit/87d6b0bdf01e525d393cf535e2022048543f1945): UI: Job Event Display: Use shorter "v" prefix for revision, instead of "rev.".
+
+## Version v1.0.21
+
+> March 9, 2026
+
+- [`41ef84a7`](https://github.com/pixlcore/xyops/commit/41ef84a7b9cd358c423da827c7e9fc038d0ca43a): Version 1.0.21
+- [`9df1183a`](https://github.com/pixlcore/xyops/commit/9df1183a0dcfe89833032b62e3db045584e412f2): Feature: New schedule modifier trigger: "Every Nth": Skip over every Nth job run (for things like bi-weekly events).
+- [`e266594e`](https://github.com/pixlcore/xyops/commit/e266594e0ba4d3ae2aa8eb6ebd52723fec271427): Upcoming Job Prediction: Correctly simulate day limits.
+- [`079b9c72`](https://github.com/pixlcore/xyops/commit/079b9c72b1fd613f1ba12f7b65374cd0c12f2848): Internal: Shorten float for `total_elapsed` inside event state data, to reduce overall JSON size.
+- [`20589aeb`](https://github.com/pixlcore/xyops/commit/20589aeb1cdaccecb32e6cf71014c86edbe89de1): System UI: Show versions of xyOps / xySat in the upgrade dialogs.
+- [`fe176e25`](https://github.com/pixlcore/xyops/commit/fe176e255a7aa453392a74c26ab835c5a5e1cf27): Multi-Server: Automatically detect primary conductor hostname (Host ID) changes, and adjust masters.json file as needed.
+- [`0756051b`](https://github.com/pixlcore/xyops/commit/0756051bc16991bf446d996ebf570031ae21ab67): Jobs: Allow jobs to be aborted if stuck in "finishing" state.
+- [`15be10d2`](https://github.com/pixlcore/xyops/commit/15be10d28b2b9f6494c7f72340aa4037605508c0): Tickets: Add author (full name) to emails, and fix tag icons.
+
+## Version v1.0.20
+
+> March 7, 2026
+
+- [`e031a0d3`](https://github.com/pixlcore/xyops/commit/e031a0d3bbf12048a8720f9ea263c17b56924a02): Version 1.0.20
+- [`e4510e5f`](https://github.com/pixlcore/xyops/commit/e4510e5f043f6b82cd6dcf50d8ac7ff26cd00da4): Number Variant Text Fields: Redesign to use special `null` value when optional fields are blank.
+
+## Version v1.0.19
+
+> March 6, 2026
+
+- [`f9a047b9`](https://github.com/pixlcore/xyops/commit/f9a047b92e2b2c1deb532b2f52e48d5af781350b): Version 1.0.19
+- [`46a5df23`](https://github.com/pixlcore/xyops/commit/46a5df231e19ac275374be38ec72be14f95342d4): Plugins: Disallow Marketplace Plugins from setting their own UID/GID.
+- [`7845974a`](https://github.com/pixlcore/xyops/commit/7845974aba665708efe9d4039a47d71c837f8be9): Feature: Add `default_plugin_credentials` config option, which will set the UID/GID of plugins if not otherwise set.
+- [`461997e0`](https://github.com/pixlcore/xyops/commit/461997e0ef9789a270acf79e4a6388e90e173243): Active Jobs Tables UI: Show "Elapsed Time" column for wider screens.  Affects Dashboard, Server and Group Views.
+- [`1405efaf`](https://github.com/pixlcore/xyops/commit/1405efaf6cc92d6bc9372b97c6310e391ec2d97c): Group Server List UI: Fix responsive table columns (add missing arch and xysat ver).
+- [`edc56ed2`](https://github.com/pixlcore/xyops/commit/edc56ed200a498b0a400e17a5f6508dde1beed4e): Search UI: Fix collapsing buttons on tablet/mobile.
+
+## Version v1.0.18
+
+> March 5, 2026
+
+- [`c59eeeca`](https://github.com/pixlcore/xyops/commit/c59eeecafda0ec1b6f20e5313dd283549dfb0d34): Version 1.0.18
+- [`6b380273`](https://github.com/pixlcore/xyops/commit/6b380273e8b427fee88a2b130ffbf00bfc3c42b0): Fix issue with optional number params / fields with default values, getting reset if set to empty.
+
+## Version v1.0.17
+
+> March 4, 2026
+
+- [`6dc5f112`](https://github.com/pixlcore/xyops/commit/6dc5f112e22a82048a960ad1110c43bb7737457f): Version 1.0.17
+- [`38b5d16c`](https://github.com/pixlcore/xyops/commit/38b5d16c98cb591515b3321c79d91e6543fa3960): Health Check API: Remove ACL requirement (was accidentally added).
+
+## Version v1.0.16
+
+> March 3, 2026
+
+- [`59073098`](https://github.com/pixlcore/xyops/commit/590730985ad05f33c82c62110dc51f11739c2a88): Version 1.0.16
+- [`c63e99a2`](https://github.com/pixlcore/xyops/commit/c63e99a2ab1bcea2f106b899d4055464711b9877): Feature: Show previous event titles and revision numbers in search results and job detail pages.  Fixes #170.  WIP.
+- [`7ee45886`](https://github.com/pixlcore/xyops/commit/7ee45886386d59e6973c308d9f187304e7431e19): Bug Fix: Bulk deleting jobs tried to delete non-existent job logs causing storage log error noise.
+- [`92d6eb8b`](https://github.com/pixlcore/xyops/commit/92d6eb8b144b9264ba59532ee9ca0f786f663ee9): UI Bug Fix: Deleting event caused a race condition with update event.
+- [`d7793fa2`](https://github.com/pixlcore/xyops/commit/d7793fa256c03fbcd1833a0a76b50d2f3b64e209): Feature: Add "Export..." button inside revision dialog, so you can export any historical revision in XYPDF format.  Fixes #173.
+- [`01ca56de`](https://github.com/pixlcore/xyops/commit/01ca56de1b1d5386452f8c7cdccd065c71cfc75b): Feature: Add last job completed date/time as tooltip hover on event status labels.  Fixes #172.
+- [`4aca9db6`](https://github.com/pixlcore/xyops/commit/4aca9db6c36407e195f9736a0600930dcda699f5): Marketplace Plugins: Do not allow direct editing, as it complicates upgrades.  Instead, allow marketplace plugins to be "cloned" for local changes.  Fixes #178.
+- [`8a8606bc`](https://github.com/pixlcore/xyops/commit/8a8606bc51989534209922e0a761ea074767ed75): SSO: Change group role delimiter to simple character (default comma), and allow customization via SSO.group_role_separator.  Fixes #177.
+
+## Version v1.0.15
+
+> March 2, 2026
+
+- [`0c449578`](https://github.com/pixlcore/xyops/commit/0c449578daa03eba668e7bc14c5ff003eab556c8): Version 1.0.15
+	- Bump pixl-request to v2.6.1 for new connectTimeout, and retryDelayMax features.
+	- Bump pixl-xyapp to v2.1.23 for new getKeyLabel and getShortKetLabel functions.
+- [`74a7c42d`](https://github.com/pixlcore/xyops/commit/74a7c42d727c5cb10591e7b3079a80ce5089abb3): Add new internal api_finish_job API, used by xySat (replaces finishing jobs over the websocket, which isn't guaranteed).
+- [`17307b70`](https://github.com/pixlcore/xyops/commit/17307b70e250016f1f050fb7a16a9e8a5c8876d6): WebSocket API: Broadcast server features to satellites.
+- [`ef829bea`](https://github.com/pixlcore/xyops/commit/ef829beaba6fa911ca09c02d7040ceb8e7e7d7b1): Keyboard Trigger UI: Use new getShortKeyLabel in pixl-xyapp.  Also fix capitalization in getKeyLabel.
+- [`f70776dd`](https://github.com/pixlcore/xyops/commit/f70776dd2ec1622eb4ea4923bb7ba90310bf451d): Event UI: Fix highlight color of "Run Now..." which should be green to match the ellipsis (dialog action).
+
+## Version v1.0.14
+
+> February 28, 2026
+
+- [`4830ef2a`](https://github.com/pixlcore/xyops/commit/4830ef2a38438bb5ae0d83f21899a6913236cd08): Version 1.0.14
+- [`a6ff3283`](https://github.com/pixlcore/xyops/commit/a6ff3283ac0a50763f44d755ea7ee0d73183fc3b): Event/Plugin Params: Improve handling of omitted non-required values (especially number fields).
+- [`ec0da56a`](https://github.com/pixlcore/xyops/commit/ec0da56afdc70cec5549072cb11930406365755b): UI Bug Fix: Allow number variant text fields to contain floats.
+- [`93089f24`](https://github.com/pixlcore/xyops/commit/93089f2463ea0d1eaaa4fb5327934c4e054f4497): Bug Fix: (Regression) Rollback button stopped working when we introduced nav blocking while dialogs are open.  Fixes #171.
+- [`0cd3e18b`](https://github.com/pixlcore/xyops/commit/0cd3e18b56e146d032c767572a19f462572401c9): Network Robustness: Allow final job update to come in "late" (after job was completed), in case server dropped offline then came back later.
+- [`b36bf421`](https://github.com/pixlcore/xyops/commit/b36bf4219c5c3834f8c0384c815d7cf42395c75a): Job Tags & Ticket Updates: Properly generate job metadata log rows from APIs (was missing ID and sever props).
+- [`b7293b91`](https://github.com/pixlcore/xyops/commit/b7293b9142cfcc9a1fe8498526b51e1bd8d7750e): Keyboard Trigger UI: Tweak job launch notification text to include event title.
+
+## Version v1.0.13
+
+> February 27, 2026
+
+- [`372e4351`](https://github.com/pixlcore/xyops/commit/372e43514705538e110127c14a3f71132735860c): Version 1.0.13
+- [`90c0dc91`](https://github.com/pixlcore/xyops/commit/90c0dc914435a3d1871b5b9bc5b9f337228559a6): Feature: Marketplace table is now sortable by column, and "Author" is now a drop-down menu filter option.
+- [`189adea7`](https://github.com/pixlcore/xyops/commit/189adea7b913eb57418ced9852c5d00d26e07bae): UI Tweak: Show "n/a" in trigger tags column for trigger modifiers, as they cannot have tags.
+- [`80e11e98`](https://github.com/pixlcore/xyops/commit/80e11e9891826c97649542cb8d16189766b6e1e3): UI: Trigger Type Menu: Split into groups (Scheduling, On-Demand, and Modifiers).
+
+## Version v1.0.12
+
+> February 27, 2026
+
+- [`af6eac15`](https://github.com/pixlcore/xyops/commit/af6eac15d9578c7a4486fe4a0e2a5e4db806eed2): Version 1.0.12
+- [`5cf8f641`](https://github.com/pixlcore/xyops/commit/5cf8f64152293c526129ed5b5b5f692af3b26d78): New Feature: Keyboard Shortcut Trigger for launching events.
+- [`6345f214`](https://github.com/pixlcore/xyops/commit/6345f2145512bfe9702de2720694ebf3146c302a): CSS Tweak: Adjust max menu height slightly.
+- [`3f20cfd2`](https://github.com/pixlcore/xyops/commit/3f20cfd21fea9f23ff142008b64635079f70d23b): CSS Tweak: Extend max single/multi select menu height to 40vh.
+
+## Version v1.0.11
+
+> February 27, 2026
+
+- [`fcbdd811`](https://github.com/pixlcore/xyops/commit/fcbdd811848304d2f1b892866159b6ba7db47f36): Version 1.0.11
+- [`946cb185`](https://github.com/pixlcore/xyops/commit/946cb185bcc47f212be69333087e5031ed533548): Favorite Events: UI Bug Fix: Run/Edit buttons did not work from dashboard.
+- [`7bbc290b`](https://github.com/pixlcore/xyops/commit/7bbc290b70803c4141f7022bbafcecdde964b59c): New Feature: User Event Favorites, which are displayed on the dashboard page.
+- [`223d159e`](https://github.com/pixlcore/xyops/commit/223d159e9f32a7d8c5b4e67264dbf2198b5743c0): Event UI Tweak: Year Selector: Show previous (past) years in menu if event still targets them.
+- [`8fe319dc`](https://github.com/pixlcore/xyops/commit/8fe319dce2eb40080d9e00dacd63b172331b305a): Default Config: Remove default hourly trigger for new events.  Fixes #169.
+- [`eeac891e`](https://github.com/pixlcore/xyops/commit/eeac891e11281e25c6b5d627a8cbf0953e28dc36): Scaling Doc: Add note about satellte's `disable_job_network_io` config prop, for large servers with tens of thousands of network connections.
+- [`f9ee9f65`](https://github.com/pixlcore/xyops/commit/f9ee9f650c501821a09113d81847e01070535fa5): Alert Behavior: Disabled alerts are now completely disabled in every way, and no longer evaulate.
+- [`bcdfa5bd`](https://github.com/pixlcore/xyops/commit/bcdfa5bdc30417baebfa80e8940a11d5e788093f): Prep Job Log: Optimization: Skip fs check for workflows, which produce no log.
+- [`d5762ce7`](https://github.com/pixlcore/xyops/commit/d5762ce7e3e67040001eeddf20b8bf49a68d0f80): Upload File API: Prevent logging of API Key (was debug level 7).
+
+## Version v1.0.10
+
+> February 26, 2026
+
+- [`b00b2da7`](https://github.com/pixlcore/xyops/commit/b00b2da7b6a758006be8ccd2818ffb6460129268): Version 1.0.10
+- [`9be5b9c7`](https://github.com/pixlcore/xyops/commit/9be5b9c70b868e22527d438892c58bf4ed5f2e5f): Actions Doc: Add note about special workflow "continue" condition.  Also "user" (custom) error condition.
+- [`ceb139d8`](https://github.com/pixlcore/xyops/commit/ceb139d86466d223777e173f80bd8aba9acd5f75): Triggers Doc: Add "quiet" modifier mention in manual run trigger.  Plus a few other misc corrections.
+- [`eafaa0c8`](https://github.com/pixlcore/xyops/commit/eafaa0c8e017ebd51ca0c848338b0d9e61a70c56): Feature: Add new "Custom Error" action trigger and search filter, for job errors that aren't warning, critical or abort (i.e. user-generated errors).  Fixes #166.
+- [`01344c36`](https://github.com/pixlcore/xyops/commit/01344c369bef11766300c342e2b8e332c06c49e4): Shell Plugin: Remove legacy "Interpret JSON" checkbox (unused).
+- [`af349d87`](https://github.com/pixlcore/xyops/commit/af349d874f4129e7c985a653a0bc2d9f86d3c7d4): UI Tweak: For job search and action condition, change text "Error" to "Any Error", to make it more clear that errors are ANY non-zero job code value.  Ref #166 and #167.
+- [`e0d67792`](https://github.com/pixlcore/xyops/commit/e0d67792125f6e69a184c94ac7de38472e00de3a): Workflow Bug Fix: Correctly bubble up sub-job output files into parent workflow files.
+- [`b34fbb27`](https://github.com/pixlcore/xyops/commit/b34fbb276d0c6890b24717a1fa03887c705709e5): Job UI: Fix icon for invisible workflows and sub-jobs inside workflows.
+- [`b99f7db0`](https://github.com/pixlcore/xyops/commit/b99f7db0e863414c9c6a2778170f8ea9f09fdbab): Workflow Action Fix: Pass along data/files to wired actions, for things like Run Event receiving input files from previous jobs.
+- [`65883516`](https://github.com/pixlcore/xyops/commit/6588351641a32b5ab67c85696444a62764695e12): Plugins Doc: Add note about deleting files after upload.
+- [`8e788e0f`](https://github.com/pixlcore/xyops/commit/8e788e0f6cccbf4f1810a0bc7db55624ad7bc5b7): Actions Doc: Run Event: Add new target_server and clear_alert props.
+- [`5e1bafbc`](https://github.com/pixlcore/xyops/commit/5e1bafbc90064a3e27df1038e3453f99f6e6f316): User Admin UI: Remove legacy "create random user" feature.
+- [`dbc84696`](https://github.com/pixlcore/xyops/commit/dbc846960e38ec4a98645b2752dd8f085bf5b7ee): UI: Tweak wording for target expression labels and captions.
+- [`af6338c6`](https://github.com/pixlcore/xyops/commit/af6338c671afde67b2643428bf3bb7b2c538a774): New Alert Features: Exclusive alert actions (no inheritance), run event on server that alerted, and clear alert on job completion.
+- [`239494db`](https://github.com/pixlcore/xyops/commit/239494db44ac1262b880ed90f4bfc291eb85d26c): Bug Fix: Server group assignments were not correctly being passed to xySat when autoGroup was set.
+- [`4b481af8`](https://github.com/pixlcore/xyops/commit/4b481af855f83e0734bf325a061c0cfff718d62b): JEXL Utils: Ensure "integer" and "float" helper utilities always return a numner (not NaN).
+- [`061ab583`](https://github.com/pixlcore/xyops/commit/061ab583f5ed33b203014a8d29c0dd9b8ba0e4c3): New Feature: Allow user to specify event field values (user params) with the "Run Event" action (job and alert).
+- [`246e658d`](https://github.com/pixlcore/xyops/commit/246e658d9acdbe6acd0c4bf769310cb5d68b5eb4): UI Bug Fix: Job Details: "Additional Jobs" table was not auto-updating as jobs completed.
+- [`11f1f9f7`](https://github.com/pixlcore/xyops/commit/11f1f9f7a24574bfcfd5be480fb443a948f75cd5): CSS: Fix hover style on summary grid icons (for copy-to-clipobard).   Underline was showing.
+- [`866b8fae`](https://github.com/pixlcore/xyops/commit/866b8fae0ec1d22c2f2de11b3de009d4426e7adc): New Feature: Alert "Exclusive Actions" mode, which only runs actions defined in the alert (i.e. does not inherit from groups or universal).
+- [`16ccf08c`](https://github.com/pixlcore/xyops/commit/16ccf08c3122b43c46fa1566e195b79e4eeb18c2): New Feature: Quiet Trigger Modifier: Optionally run scheduled jobs invisible from the UI, and/or ephemeral so they auto-self-delete upon completion.
+- [`8d14b2fc`](https://github.com/pixlcore/xyops/commit/8d14b2fcb60a23cc31be8a870d73e44f508b5922): UI Fix: Job Action Details Dialog: Properly join markdown lists so the formatting does not break.
+- [`1a51c087`](https://github.com/pixlcore/xyops/commit/1a51c087acafb5340adb48ea268696679b1c7ad6): DB Optimization API: Fix issue where SQLite WAL file was growing too large.
+
+## Version v1.0.9
+
+> February 24, 2026
+
+- [`db9b0d64`](https://github.com/pixlcore/xyops/commit/db9b0d64ecb1a282d568e07e1dbc9abb7c4738ab): Version 1.0.9
+- [`3a47e9a6`](https://github.com/pixlcore/xyops/commit/3a47e9a675fed59d0bfba39dc5086190c45bc55e): New Feature: Server User Data, to store arbitrary data per server, available in all running jobs, and can be used to augment event targeting.  Fixes #160.
+
+## Version v1.0.8
+
+> February 23, 2026
+
+- [`5b88a01d`](https://github.com/pixlcore/xyops/commit/5b88a01de6d6faff4fec2732df78d0a84c3e2953): Version 1.0.8
+	- Bump pixl-server-storage to v4.0.2 for latest AWS SDK, for multiple upstream vuln fixes.
+- [`02042913`](https://github.com/pixlcore/xyops/commit/0204291318f7acd4481d0919f1438aaa925fa3bb): Alert System: Fix issue when servers with active alerts disconnect, then reconnect after the alerts time out, which causes the alerts to get stuck in limbo, and never reappear.
+
+## Version v1.0.7
+
+> February 22, 2026
+
+- [`8ba3f913`](https://github.com/pixlcore/xyops/commit/8ba3f9134565e07f235552e9febf6f93797b3221): Version 1.0.7
+- [`7287b3ed`](https://github.com/pixlcore/xyops/commit/7287b3edec5add2533972f710588aee80894110f): Action / Trigger Plugins: Only parse JSON from last line of output, to ignore noise emitted from plugins.  Be smart about trailing empty lines.
+
+## Version v1.0.6
+
+> February 22, 2026
+
+- [`cb17b950`](https://github.com/pixlcore/xyops/commit/cb17b950ecd3c0979df0c58d36ce60b4ab677c09): Version 1.0.6
+- [`d2c80ba9`](https://github.com/pixlcore/xyops/commit/d2c80ba9ce731b3b75c70d864afc7f879655a14c): Action and Trigger Plugins: Provide secrets via JSON in top-level `secrets` object, to be consistent with Event Plugins.
+
+## Version v1.0.5
+
+> February 22, 2026
+
+- [`28615bf2`](https://github.com/pixlcore/xyops/commit/28615bf272eb6149ea6278850f789a06ad707fec): Version 1.0.5
+- [`51edb926`](https://github.com/pixlcore/xyops/commit/51edb9260f8aac3cfda31dbeb337f94941d6e032): Bug Fix: Crasher when trying to use the "Notify Me" button inside running jobs.  Fixes #156.
+- [`cfc11309`](https://github.com/pixlcore/xyops/commit/cfc113091091018d0ff7839e7fe674ebfc9b8bf6): Web Hooks Doc: Add section for nfty.sh
+
+## Version v1.0.4
+
+> February 21, 2026
+
+- [`930e09e6`](https://github.com/pixlcore/xyops/commit/930e09e6d15c4f256f978a34137e4390ea29e8ec): Version 1.0.4
+- [`15a14001`](https://github.com/pixlcore/xyops/commit/15a140011b69ca9c3606380a94df06eff501a544): Bug Fix: Plugin List: Inline "Edit" and "Delete" links were no longer working after table was upgraded to sortable.  Regression from 147.
+
+## Version v1.0.3
+
+> February 20, 2026
+
+- [`e168b7b3`](https://github.com/pixlcore/xyops/commit/e168b7b388b3fd21576394cf8d49c466dce79725): Version 1.0.3
+- [`d656dbcd`](https://github.com/pixlcore/xyops/commit/d656dbcd93e709fdd1e614699a492dc173f676d7): Admin DB Optimization: Fix crasher on new better-sqlite3 engine.  Thanks to @nickdollimount for finding this!
+
+## Version v1.0.2
+
+> February 20, 2026
+
+- [`ae56df78`](https://github.com/pixlcore/xyops/commit/ae56df784e9330d23e52243de4532ce27eba93ef): Version 1.0.2
+- [`2447d82b`](https://github.com/pixlcore/xyops/commit/2447d82bebc25b37d3668ad07b74b9484efba529): Plugin List UI: Convert to sortable table with clickable column headers and filter text field.  Fixes #147.
+- [`8a23fba3`](https://github.com/pixlcore/xyops/commit/8a23fba3769e320e4ee8ddee19fdde4f6af351ac): Active Jobs: When maximum concurrent jobs is exceeded, log all blocking jobs to metadata, for troubleshooting.
+- [`bc53c62d`](https://github.com/pixlcore/xyops/commit/bc53c62dc665f567bdb655ba2d78b2623802bcc8): Bulk Export: Added new `bulk_export` privilege just for using the `admin_export_data` API, so automated backups don't need full admin privs.
+- [`39a17763`](https://github.com/pixlcore/xyops/commit/39a1776395ab2c82837c41d6d50b2f6b8d049a73): HTML Sanitization: Allow "style" tag on any element (for user HTML content in jobs).  Fixes #150.
+- [`bc63feb8`](https://github.com/pixlcore/xyops/commit/bc63feb82651d9a80b50b4d7ced9b27f53c2c545): Hosting Doc: Fix typo in daily backup shell script.  Fixes #148.
+- [`b9c0a0e8`](https://github.com/pixlcore/xyops/commit/b9c0a0e8e9bf070fd6fec2d7a3ddbe405261c61c): Servers Doc: Added section on automated docker workers.
+
+## Version v1.0.1
+
+> February 17, 2026
+
+- [`bdfeb237`](https://github.com/pixlcore/xyops/commit/bdfeb2375eab452abdc485712b0efb6f06b8c47a): Version 1.0.1
+	- Bump pixl-server-web to v3.0.4 for new URI auth feature.
+- [`7dd58d75`](https://github.com/pixlcore/xyops/commit/7dd58d75b679932882450e969ab8e0d79b171985): Feature: Sortable tables remember the sort column and sort direction in localStorage prefs.
+- [`db3dd37f`](https://github.com/pixlcore/xyops/commit/db3dd37fde8a472a4c41094ce2e51ba132830bb7): Event List: Fix table sorting bug with inline links.  Fixes #144.
+
+## Version v1.0.0
+
+> February 15, 2026
+
+- [`24b2ed92`](https://github.com/pixlcore/xyops/commit/24b2ed920d1c07a4083679af9724d23eef071a41): Version 1.0.0
+	- Major version bump of pixl-server-storage to v4 for new better-sqlite3 engine. Fixes #7.
+- [`95f1241f`](https://github.com/pixlcore/xyops/commit/95f1241f1e45e75f12e7403ac8d7d040b3f8da78): Changelog Script: Add debug mode, and include extra commit details on version commits.
+
+## Version v0.9.69
+
+> February 15, 2026
+
+- [`a6efd223`](https://github.com/pixlcore/xyops/commit/a6efd22393ac09614722bee71805523a1a3298af): Version 0.9.69
+- [`989f622a`](https://github.com/pixlcore/xyops/commit/989f622adee66a1986c30bea10bdadf4c166cbb3): Feature: Make event table sortable by column.  Remove checkboxes for more room.
+- [`09625d77`](https://github.com/pixlcore/xyops/commit/09625d77dd60403fb2890eeeb57e1d4b1c802ed2): Workflow Editor UI: Change icon for "remove selection" so it isn't a trash can.
+- [`79363ce1`](https://github.com/pixlcore/xyops/commit/79363ce1812e2c44b08ccc068a1e9404256ed1dd): Ticket UI: FIx duplicate DOM ID in button
+- [`d845ed69`](https://github.com/pixlcore/xyops/commit/d845ed69c9ac57f74a184ef84c7a52fae7d1f68f): Hosting Doc: Add note about MinIO open-source repo getting archived, and added new section on RustFS.
+- [`daed1e5e`](https://github.com/pixlcore/xyops/commit/daed1e5e7cc26981f536f0ef66f3ee65388fa899): Bug Fix: Secrets UI: Make change without decrypting, save changes, secret key labels disappear (cosmetic only).
+
+## Version v0.9.68
+
+> February 14, 2026
+
+- [`b61f4022`](https://github.com/pixlcore/xyops/commit/b61f4022dd26f37d15a8b188beb3810027c2e716): Version 0.9.68
+- [`b37b2a2c`](https://github.com/pixlcore/xyops/commit/b37b2a2c7380a07fcdc807301ae78e11c93065d3): Data Structures Doc: Add Job "starting" state.
+- [`f5ce25c5`](https://github.com/pixlcore/xyops/commit/f5ce25c5f576245346ef25ec5654a369732b00e4): Job Concurrency: Fix issue where jobs stuck in "starting" state could cause queue limits to be bypassed.
+- [`9696a406`](https://github.com/pixlcore/xyops/commit/9696a406a3c32c0e73e867f23e7ccf9ad0bf0960): API Doc: Add more MIME header examples for importance.
+
+## Version v0.9.67
+
+> February 14, 2026
+
+- [`211dde2f`](https://github.com/pixlcore/xyops/commit/211dde2f7ba8929e3b18ce090310c35d4ad01c0a): Version 0.9.67
+	- Bump pixl-server-web to v3.0.3 for Formidable hack to add support for Powershell POST requests.  Fixes #141.
+	- Relevant commit: https://github.com/jhuckaby/pixl-server-web/commit/134b2ff3db1fb847deb158186228161b12a9b538
+- [`1919563f`](https://github.com/pixlcore/xyops/commit/1919563fe369cbf66dc1337edb77bee85c59a04d): API Doc: Add clarification about sending raw HTML instead of Markdown.  Fixes #140.
+- [`12a23541`](https://github.com/pixlcore/xyops/commit/12a2354139d46de8515244e5fca781b1d3985e8f): Config Doc: Correct default values for ping_freq_sec and ping_timeout_sec
+
+## Version v0.9.66
+
+> February 13, 2026
+
+- [`789baeb0`](https://github.com/pixlcore/xyops/commit/789baeb074d825afb4db64630a808c633a6e4fab): Version 0.9.66
+- [`8de2be2c`](https://github.com/pixlcore/xyops/commit/8de2be2cc4bd6be216e2a0243780818be7efc278): UI: Make it MUCH more obvious which event fields / plugin params are admin-locked, when logged in as a non-admin.  Fixes #137.
+- [`ce088855`](https://github.com/pixlcore/xyops/commit/ce0888552c574ffb1b0c0955a77383c35d102f08): Bug Fix: Non-admins updating workflows cause admin-locked text fields to reset to defaults.  Fixes #136 (again).
+
+## Version v0.9.65
+
+> February 13, 2026
+
+- [`e99dbf89`](https://github.com/pixlcore/xyops/commit/e99dbf8943fb9fd1752a8f90b1902625c1b186f0): Version 0.9.65
+- [`d8df06de`](https://github.com/pixlcore/xyops/commit/d8df06de268c9eeca2cc4e1104a027efb1d69be2): Bug Fix (Regression): Workflows were getting created without a targets array, which was breaking the UI.
+- [`397bb949`](https://github.com/pixlcore/xyops/commit/397bb94994b8ab8695a7bd9cadcd9eb2aebca710): Move sortable table utility functions to base
+
+## Version v0.9.64
+
+> February 12, 2026
+
+- [`030d1db1`](https://github.com/pixlcore/xyops/commit/030d1db18cee717955a1f1ab788dc1b1ef96bcb5): API Doc: send_email: Add note re: max_emails_per_day
+- [`6fac0264`](https://github.com/pixlcore/xyops/commit/6fac02640a80093aa08ad2f89bff394dae772092): CSS: CodeMirror: Lighten comment / quote color on dark theme.
+- [`3ab49370`](https://github.com/pixlcore/xyops/commit/3ab49370951667b3509d7a1d525dc97605898cb6): Version 0.9.64
+- [`00fa562b`](https://github.com/pixlcore/xyops/commit/00fa562b35c7709dbfbbafc009b61cf58235cb3e): Further improvements to UX regarding multi-user concurrent editing and saving for events and workflows.
+
+## Version v0.9.63
+
+> February 12, 2026
+
+- [`c27e2db1`](https://github.com/pixlcore/xyops/commit/c27e2db1670b03a29c05b2a983f1a1dd5a37fe75): Version 0.9.63
+- [`55439231`](https://github.com/pixlcore/xyops/commit/5543923111d85cfd8e3abeea7fe1372169872a6d): Events / Workflows: Improve multi-user concurrent editing UX: Auto-refresh on edit if no conflicts, otherwise show notification.  Server: check revision number on save to prevent clobbering.  Fixes #136.
+- [`017ba36a`](https://github.com/pixlcore/xyops/commit/017ba36aba78baf3fa1f5e67105506ff98c2447a): New API: send_mail: Send custom email with optional attachments on xyOps HTML stationary.  Fixes #135.
+- [`e7b84265`](https://github.com/pixlcore/xyops/commit/e7b84265c25881a3d19facd9ba5c1ba4b22a15f4): Support optional "link", "inline" and "none" email logo formats.  Change default mode to "inline".  Fixes #133.
+
+## Version v0.9.62
+
+> February 10, 2026
+
+- [`ab7fbd64`](https://github.com/pixlcore/xyops/commit/ab7fbd64c936d20cbe929c02f9064a149f036102): Version 0.9.62
+- [`6aa0e25e`](https://github.com/pixlcore/xyops/commit/6aa0e25e86a12d708fc5fce8289a232689251e39): Marketplace: Add xyOps version to XYPDF file format, and include on export and validate on import.  Affects direct imports and Marketplace Plugins.  Fixes #128.
+- [`205d5a0e`](https://github.com/pixlcore/xyops/commit/205d5a0efa56729ab5551dc820ea2d902c14ca00): Hot Keys: Add "Delete" as an alternate key for workflow delete selection, as well as delete job.
+- [`b3693464`](https://github.com/pixlcore/xyops/commit/b369346472479fbce57f35fcec251223af7e1c84): Workflow UI: Change wording of upper delete button for nodes to say "Remove", to differientiate it from the lower "Delete" button that deletes the entire workflow.  Fixes #131.
+- [`cb7cf943`](https://github.com/pixlcore/xyops/commit/cb7cf943031016f4647085577802e45c07ddd575): Improve "select [id]" syntax handling for param menus (better default value fallback).
+- [`f75b5082`](https://github.com/pixlcore/xyops/commit/f75b508231aee16a3153cc796d6743ee4b4c796d): Bug Fix: Prevent macro expansion infinite loop when job params is expanded directly.  Fixes #132.
+- [`fd7d0100`](https://github.com/pixlcore/xyops/commit/fd7d0100c3d995297ecb110d40341bf87caa9344): Server List: Add architecture as sortable column.
+- [`0e69ca99`](https://github.com/pixlcore/xyops/commit/0e69ca996da28c1329f59e18bc1188600c7c237f): Job Action Details UI: Fix spacing issue between summary and mailer debug log sections.
+- [`71ffe2cb`](https://github.com/pixlcore/xyops/commit/71ffe2cb9131b050e8721998d15b37eec353350b): Workflow UI: When adding a new job node, honor the new_event_template config settings (category, plugin, targets)
+
+## Version v0.9.61
+
+> February 7, 2026
+
+- [`cb3a762f`](https://github.com/pixlcore/xyops/commit/cb3a762f91f0c1d77d4d36812c57a8ccd4ea95aa): Version 0.9.61
+- [`308a91b0`](https://github.com/pixlcore/xyops/commit/308a91b01205ead68b02663d3126f525a08ce0bc): Job Detail View Improvements: Configurable max output size, and lock job final output viewer to 80% window height with overflow scroll.  Fixes #125.
+- [`28c1f23c`](https://github.com/pixlcore/xyops/commit/28c1f23c0356c12105d5c9e6f58080cba4a0961d): Bug Fix: Skip Upcoming Job for workflows was failing to create a blackout node on the map.  Fixes #127.
+- [`5ccd3d9d`](https://github.com/pixlcore/xyops/commit/5ccd3d9d9e053bd927dd9d5fecdbac66182b4631): System Upgrade DIalogs: Include links to xyOps / xySat changelogs.  Fixes #124.
+- [`f841e5e1`](https://github.com/pixlcore/xyops/commit/f841e5e12540443c9db6e7912dabe31467834cba): Feature: Show IDs for plugin and event params in tables.  Adjust margins a bit to compensate.  Fixes #123.
+- [`dca1d4f9`](https://github.com/pixlcore/xyops/commit/dca1d4f9ca700bf5eacaa05f9db6b8042625ca99): Events: Typo fix in comment
+- [`14e23261`](https://github.com/pixlcore/xyops/commit/14e232616209cb71edce2e201c24321246d30947): Bug Fix / Feature: Prevent unknown tag from being added to jobs, and log warning in job meta log.  Also, allow tags to be specified by title (exact match only).  Fixes #122.
+- [`c6344f8c`](https://github.com/pixlcore/xyops/commit/c6344f8c6fffba25c6b6b885a41019e66edd684c): CSS: Fix coloring of HR line breaks in markdown documents.
+
+## Version v0.9.60
+
+> February 6, 2026
+
+- [`df026d30`](https://github.com/pixlcore/xyops/commit/df026d304684e54df0c1e4c6ddcd89e230d2e95e): Version 0.9.60
+- [`77f00da4`](https://github.com/pixlcore/xyops/commit/77f00da445067de6ca704830e8e1c2415624feb4): Docs UI: Fix header nav link to scroll to top in a cleaner way.
+- [`d0211a36`](https://github.com/pixlcore/xyops/commit/d0211a3686a3f28d52a37ac1abee466f0d5084ee): Marketplace: Links to README sections should stay in app, not link out.  Fixes #121.
+- [`a91e859e`](https://github.com/pixlcore/xyops/commit/a91e859e5ddb9b8de9e35c71da4410d3e51763ee): CSS: Fix custom nav link color.
+- [`2f44c514`](https://github.com/pixlcore/xyops/commit/2f44c5149c4096f4cdc641567fc6b053306abbf2): Cosmetic Bug Fix: Edit Plugins: Box button floater wasn't appearing by default for plugins with lots of params (pushing the buttons off the bottom of the page).  Fixes #120.
+
+## Version v0.9.59
+
+> February 6, 2026
+
+- [`8143639b`](https://github.com/pixlcore/xyops/commit/8143639be9e5cff96ec62bcbdd9dc73d111f92cf): Version 0.9.59
+- [`6a20b937`](https://github.com/pixlcore/xyops/commit/6a20b937f3c74b0970bce64d3d5f0f74f1b8db7b): Bug Fix: Logout button not accepting clicks at all.  Regression from v0.9.43.  Fixes #117.
+- [`3c68b206`](https://github.com/pixlcore/xyops/commit/3c68b20629dbe29441240d895dc439d4ef6b7811): Config Doc: Typo fix in metadata.
+
+## Version v0.9.58
+
+> February 5, 2026
+
+- [`e7a7ba41`](https://github.com/pixlcore/xyops/commit/e7a7ba4124e533309c3937f20e2e49e614482c0e): Version 0.9.58
+	- Bump pixl-xyapp to v2.1.22 for blocking nav if code editor dialog is up.  Fixes #116
+
+## Version v0.9.57
+
+> February 5, 2026
+
+- [`d0d461ea`](https://github.com/pixlcore/xyops/commit/d0d461ea8837f8a283202973485941a450351bc7): Version 0.9.57
+	- Bump pixl-xyapp to v2.1.21 for CodeEditor nav fix.
+	- Fixes #116
+- [`81caf3d7`](https://github.com/pixlcore/xyops/commit/81caf3d7490c1ce0d05a903b6bcf09099c926cc9): Popup Code Editor Params: Show line numbers by default.
+
+## Version v0.9.56
+
+> February 5, 2026
+
+- [`e272a8e9`](https://github.com/pixlcore/xyops/commit/e272a8e9bbde99ab5927ea3c889ba7a3a546c622): Version 0.9.56
+- [`fa8fda11`](https://github.com/pixlcore/xyops/commit/fa8fda11f0b50e8235acc2f89664d4bef055112b): Plugin Editor: Change inline editor to popup code dialog editor, with line numbers and accidental outside click protection (and accidental ESC key protection too).
+- [`bd281a52`](https://github.com/pixlcore/xyops/commit/bd281a52d9b4dd1470cb25a50b353eccb5361a98): Change default ping freq to 5 sec, and ping timeout to 30 sec, for "troublesome" networks (packet loss, etc.).
+- [`ea1edc7b`](https://github.com/pixlcore/xyops/commit/ea1edc7b49b7c84e4676b956a9dbc5da8f36c783): Triggers Doc: Added note about startup triggers skipping modifiers.
+- [`c945d320`](https://github.com/pixlcore/xyops/commit/c945d3202484cd4ebd6c2fabdb1a295a9c7007f6): Triggers Doc: Add note about startup trigger behavior WRT self-initiated upgrades, restarts, and shutdowns.
+
+## Version v0.9.55
+
+> February 4, 2026
+
+- [`244ccf64`](https://github.com/pixlcore/xyops/commit/244ccf649c0287dbc2f752174a66a0a119b87464): Version 0.9.55
+- [`046aa4b0`](https://github.com/pixlcore/xyops/commit/046aa4b0d5ab8ae4c64c4280cefec0dbe6fd2294): Startup Triggers: If a background upgrade or restart command was issued, skip the startup trigger check.
+- [`6d142252`](https://github.com/pixlcore/xyops/commit/6d1422529469d0d80faf90b47d92ced40296fb21): Multi: Ensure becomeMaster() only ever gets called once per server process lifetime.
+
+## Version v0.9.54
+
+> February 4, 2026
+
+- [`7bc869c5`](https://github.com/pixlcore/xyops/commit/7bc869c54cda6ae4ff4a8de7dba49b2f033b6c65): Version 0.9.54
+- [`f83d5991`](https://github.com/pixlcore/xyops/commit/f83d5991577249cd6d48c5989468f84f18bab7f2): New Event Trigger: "Startup", automatically runs a job on xyOps startup, when certain conditions are met.  Similar to the crontab `@reboot` alias.
+
+## Version v0.9.53
+
+> February 4, 2026
+
+- [`e0d06e1f`](https://github.com/pixlcore/xyops/commit/e0d06e1f394ac95532505338c1d86f4e4686e944): Version 0.9.53
+- [`0522adef`](https://github.com/pixlcore/xyops/commit/0522adef6c28fbb8aebad1d40a8eb39ed32fa3f6): Global Hot Keys: Add default Cmd+K / Ctrl+K for focusing primary search box.
+- [`37675858`](https://github.com/pixlcore/xyops/commit/37675858465a97ea3abd5caf76d998563e4eef4f): UI Bug Fix: User Prefs: Steamer mode was showing raw HTML tags in the button label.
+
+## Version v0.9.52
+
+> February 4, 2026
+
+- [`f80a0e69`](https://github.com/pixlcore/xyops/commit/f80a0e69bd9fa5d24eda0527b6a545db7bf4df64): Version 0.9.52
+- [`adf424a6`](https://github.com/pixlcore/xyops/commit/adf424a60a9fe185a4b63b7ca3be9a56435f5bc9): Dashboard: Set click behaviors on some dash units (cards), for e.g. conductors, servers, alerts, jobs today, jobs failed today.  Fixes #113.
+- [`4f1c4464`](https://github.com/pixlcore/xyops/commit/4f1c4464599d814a2c7d2339c62c94f570330480): New Features: Add optional rate limiting to API Keys, as well as display a "Last Used" date, as well as display the API "Key ID" on the edit screen (not used for auth).
+- [`3965f8ba`](https://github.com/pixlcore/xyops/commit/3965f8ba611606c51d3b85d5321f357ba6f1d8ab): Feature: Job File Search: Also search job description, input / output data, user content (text, markdown, html), and display all results separately.
+- [`c3533838`](https://github.com/pixlcore/xyops/commit/c3533838e13b7a870f1198c6b7410105c64e2bce): Search Jobs UI: Change name of result "Failure" menu item to "Error", to be more consistent with rest of app.
+- [`e3e7f83d`](https://github.com/pixlcore/xyops/commit/e3e7f83dfdc4ab77b8034e027a1a1d89b64b9356): Feature: Allow configuration to set default event category, plugin, and targets.  Fixes #110
+
+## Version v0.9.51
+
+> February 3, 2026
+
+- [`f1b51287`](https://github.com/pixlcore/xyops/commit/f1b512875e7c0e15aed8f5bd1c7419a92e7cd3ac): Version 0.9.51
+- [`e7fed957`](https://github.com/pixlcore/xyops/commit/e7fed957155721c4048d58dad17796fa2987d609): New Feature: Job status tagline displayed on live job details screen and all job progress bars.
+- [`a4a44241`](https://github.com/pixlcore/xyops/commit/a4a442410368a2cd65b6549271cfe75b0e19c8f5): Feature: Allow plugin / event param menus to specify values and labels separately.  Fixes #107.
+- [`63080ab2`](https://github.com/pixlcore/xyops/commit/63080ab27d6551f30a82bb3c52080c8fe446318a): Feature: Remember event filters in the sidebar links for "Events" and "Workflows" pages.  Fixes #105.
+- [`00986d8d`](https://github.com/pixlcore/xyops/commit/00986d8d5207e3b924f9f25a5b3f72c3befff464): Universal Actions / Limits: Add some additional crash protection in case the configuration is invalid.
+
+## Version v0.9.50
+
+> February 1, 2026
+
+- [`b39ded72`](https://github.com/pixlcore/xyops/commit/b39ded7256052ed27cd2d0912a22fdedeba9b992): Version 0.9.50
+- [`7eaaaae9`](https://github.com/pixlcore/xyops/commit/7eaaaae9b1a832397532e4088a6c12609e446b07): UI: Remove default sidebar "expanded" classes in prep for pixl-xyapp 2.1.20, which manages them automatically.
+- [`1c82bf4d`](https://github.com/pixlcore/xyops/commit/1c82bf4d0c06f76f3fa02c7b552ba0de5ab75d79): Bug Fix: Dashboard: "Jobs Failed" counter could be incorrect in certain situations.
+- [`2df18c0e`](https://github.com/pixlcore/xyops/commit/2df18c0eeff32033ab90c08cc32113dad665228b): Bucket API: api_delete_bucket_file: Allow params to be specified on the query string or HTTP form data.
+- [`fb835c12`](https://github.com/pixlcore/xyops/commit/fb835c12b0694083dc6a5902544a77993a82b95e): API Keys: Add "Clone" button.  Fixes #99
+
+## Version v0.9.49
+
+> January 31, 2026
+
+- [`fcee1d62`](https://github.com/pixlcore/xyops/commit/fcee1d6227e96f3781cdea56b54917101ca9948b): Version 0.9.49
+- [`c7e144ac`](https://github.com/pixlcore/xyops/commit/c7e144ac68f74f8d113fe190d4208defe8c95740): API Doc: Add docs for new admin_search_logs, admin_get_config, and admin_update_config APIs.
+- [`74e6465b`](https://github.com/pixlcore/xyops/commit/74e6465b8283743c4c32431f4ad06847c68133f7): Activity Log UI: Tweak action dialog display so that user is not shown as a link (looks off).
+- [`e5179470`](https://github.com/pixlcore/xyops/commit/e5179470836dea8915dccc06a3dfd95bda67e1f8): UI: Copy Markdown to clipboard: Strip HTML so icons etc. are not included in the copied text.
+- [`9f4e97fa`](https://github.com/pixlcore/xyops/commit/9f4e97fa9c6b97f4293d3131bb4fdb245d3a5294): UI Tweak: For defining text fields / text boxes for params, use monospace font for the default values.
+- [`84d73399`](https://github.com/pixlcore/xyops/commit/84d73399efdc2caea921bbe1a8c7d812c5762058): API Doc: Formatting tweaks.
+- [`78f23c3a`](https://github.com/pixlcore/xyops/commit/78f23c3a94a47fa29227c96b5bbdcae1a1c2cb25): API Hardening: Ensure all HTTP file uploads are valid (i.e. have filenames and non-zero size).
+- [`6ac6bac7`](https://github.com/pixlcore/xyops/commit/6ac6bac78f02a4076c43a27e1a1032e91b299db5): API Doc: Add "pretty" parameter to echo API.
+
+## Version v0.9.48
+
+> January 31, 2026
+
+- [`65d1016d`](https://github.com/pixlcore/xyops/commit/65d1016de238618837ac52c6528010760b58f6be): Version 0.9.48
+- [`b7cd1761`](https://github.com/pixlcore/xyops/commit/b7cd1761a81ae73e5cf0ad33e358e9ce2393a6b0): API: upload_bucket_files: Rename bucket param to "id" and support both query string and HTTP POST params.
+- [`de178d6d`](https://github.com/pixlcore/xyops/commit/de178d6d2637649e74c17b67569e08f4ad05a774): API Doc: Typo Fix: Incorrect parameter name in write_bucket_data.  Fixes #98.
+- [`890285da`](https://github.com/pixlcore/xyops/commit/890285daa2882abe0e75b2eba2af0708f510b131): UI Bug Fix: Secret key names revert to previous versions when saving.  Fixes #97.
+
+## Version v0.9.47
+
+> January 31, 2026
+
+- [`d7dae73e`](https://github.com/pixlcore/xyops/commit/d7dae73ecb6550cfc0a40d1116e86f9654bb3350): Version 0.9.47
+- [`c0905b5e`](https://github.com/pixlcore/xyops/commit/c0905b5e9ab7363b45c938798aeb0f396d19ca22): Remove "password" text field variant type, as it gives a false sense of data security (use a secret vault instead).
+- [`110cf58b`](https://github.com/pixlcore/xyops/commit/110cf58b029be8d39cf53d2425835ffb6853e94d): Add Powershell as an official syntax-highlighted language
+
+## Version v0.9.46
+
+> January 30, 2026
+
+- [`8e97839c`](https://github.com/pixlcore/xyops/commit/8e97839c555c78c742d3c09f5a02067fd2a1a761): Version 0.9.46
+- [`3cc61edb`](https://github.com/pixlcore/xyops/commit/3cc61edb89c9377b2191d565ee2d24293e842684): New Feature: Programmatic bucket data access, via new API: write_bucket_data.
+
+## Version v0.9.45
+
+> January 30, 2026
+
+- [`67ae5d2b`](https://github.com/pixlcore/xyops/commit/67ae5d2ba23b514f98cd3f28d92d507bf065fabb): Version 0.9.45
+- [`f64d395c`](https://github.com/pixlcore/xyops/commit/f64d395c37c1fbd01071a50e164c53351d21f468): Log Viewer Bug Fix: Custom Date menu was not working correctly.
+
+## Version v0.9.44
+
+> January 30, 2026
+
+- [`d7083871`](https://github.com/pixlcore/xyops/commit/d7083871094616dc3ffbab50dc6cbc8573147787): Version 0.9.44
+- [`f5b5aada`](https://github.com/pixlcore/xyops/commit/f5b5aadaa4b676b0de342bc43937a8ab36d890ce): New Feature: Log Viewer in the UI!
+- [`adb67957`](https://github.com/pixlcore/xyops/commit/adb679579bdcbfbb1048e094c27ea6d4f319b6dc): Config API: Make sure reserved keys are omitted from the overrides object in admin_get_config.
+- [`2441ae74`](https://github.com/pixlcore/xyops/commit/2441ae74d89b425cb7b306faac12f9f3e90e767a): Search Jobs UI: Cleanup memory on page deactivate
+- [`1cf781bb`](https://github.com/pixlcore/xyops/commit/1cf781bbbd1583366eda99dd64da5e2a5088fd5a): UI Fix: Remove "Any Tag" item from tags menu on job search page (not used for a multi-select menu).
+- [`bf021ec0`](https://github.com/pixlcore/xyops/commit/bf021ec0316ce0cb6e1a51da0d6cc2044a241c5d): UI Bug Fix: Floating buttons on config page weren't showing up until user scrolled.
+
+## Version v0.9.43
+
+> January 29, 2026
+
+- [`93017cde`](https://github.com/pixlcore/xyops/commit/93017cde0db8332194e5ba35a89c63b75c4b2911): Version 0.9.43
+- [`ca8fb604`](https://github.com/pixlcore/xyops/commit/ca8fb604abe382fc5dbe4bfd95d7b81ba2fdde01): New Feature: Configuration Editor in the UI!
+- [`860ea3b1`](https://github.com/pixlcore/xyops/commit/860ea3b17d23dbedc41d21d7025b37e61a8d93db): UI: Improve event / plugin parameter summary display, with correct icons for text variants, and masking password fields.  Fixes #89
+- [`2689af32`](https://github.com/pixlcore/xyops/commit/2689af32d2925c106105f4612ed3350e52e4219f): Add Content-Disposition header for satellite file downloads.
+- [`0a4f4301`](https://github.com/pixlcore/xyops/commit/0a4f4301469341338942452199d7fa954ec61126): Admin Import Data API: Add optional "danger" mode which will skip scheduler disable and job abort.  For future use (i.e. sync with external systems).
+- [`0e6e4cb1`](https://github.com/pixlcore/xyops/commit/0e6e4cb1c1e74bbf99358510b687c2246b197e38): Delete Server: FIx issue with server sticking in cache after deletion, and also properly updating jobs on deleted servers.
+- [`b26601e6`](https://github.com/pixlcore/xyops/commit/b26601e682f88a39eb3ae7be9f1cc3bdd9cf6f6a): Alerts: Write active alerts to recovery data so they survive restarts cleanly.
+- [`d8cd1378`](https://github.com/pixlcore/xyops/commit/d8cd1378f1322dd70b0597be71d0edcf4abe9668): UI Bug FIx: Clicks on header widgets may get missed if they are redrawn during the mousedown.
+- [`ff9837c0`](https://github.com/pixlcore/xyops/commit/ff9837c0c72838cd34e20b412131c326449ad720): Workflow UI: Improve trigger icon titles a bit (for internal / single shot).
+
+## Version v0.9.42
+
+> January 26, 2026
+
+- [`d095f911`](https://github.com/pixlcore/xyops/commit/d095f91191a0b6d0f0eba6f6c37f0bf6df6787d6): Version 0.9.42
+- [`6af4f4f2`](https://github.com/pixlcore/xyops/commit/6af4f4f22de003e3fe9621fe9bd97c490a96bb10): Install / Upgrade Script: Improve behavior with systemd on Linux.  Fixes #86.
+
+## Version v0.9.41
+
+> January 26, 2026
+
+- [`8d697543`](https://github.com/pixlcore/xyops/commit/8d69754363e6cb687ac5f24bf0ed8f65e424fbaf): Version 0.9.41
+- [`74281729`](https://github.com/pixlcore/xyops/commit/74281729e5cc809ddbbacd343c89efdf3aefd016): API Doc: Clarified _tags system tag behavior in search_jobs API.
+- [`dc983810`](https://github.com/pixlcore/xyops/commit/dc98381085a33631e890b34f5b92393c27a50cc9): Job Tag Behavior: Apply "Has Files" tag if job has input OR output files.  See #68.
+- [`99dfe560`](https://github.com/pixlcore/xyops/commit/99dfe56029e47a884e72b58da29f6cf97f3c7a62): UI FIx: Show tooltips on all entity names (was not working in Chrome / Firefox).  Fixes #85.
+- [`27ab6f4c`](https://github.com/pixlcore/xyops/commit/27ab6f4cecb3431dce2260fd4ec799e745f536fc): Install Script: chmod log dir to 775, not 777
+- [`cdb3195f`](https://github.com/pixlcore/xyops/commit/cdb3195f1e33005abbb5d6d95a5240f562b85a3f): Config Doc: Remove excess space.
+- [`68ecea9d`](https://github.com/pixlcore/xyops/commit/68ecea9d8602d5fe57b8599888fcc3f44cc08e6b): Config Doc: Add more details in client.chart_defaults, client.editor_defaults, client.bucket_upload_settings, client.ticket_upload_settings, and client.job_upload_settings.
+
+## Version v0.9.40
+
+> January 25, 2026
+
+- [`b46abb6c`](https://github.com/pixlcore/xyops/commit/b46abb6cfa2cbf03f739b170f96ca7311ba2fd7e): Version 0.9.40
+	- Bump pixl-boot to v2.0.2 for improved systemd service behavior.
+- [`d35f3977`](https://github.com/pixlcore/xyops/commit/d35f3977ce5e57c2c0fb1051daf8e39754540034): Doc Index: Add link to contrib guide.
+- [`f2576b2e`](https://github.com/pixlcore/xyops/commit/f2576b2e6d233319925c701d2fc1f5feebf5f5dc): Satellite Install/Upgrade: Redesign Linux install/upgrade scripts to be first-class systemd citizens.
+- [`53ec3a87`](https://github.com/pixlcore/xyops/commit/53ec3a87753bd9e0a7e422f19c890a4d38974c4e): Bug Fix: For fetching storage bucket actions, handle case where bucket data is a top-level array (merge in as "items" property).
+- [`f3589c26`](https://github.com/pixlcore/xyops/commit/f3589c26d7b7e3f90b585a2b465505f7e6098d54): UI: Fix bucket header icon
+- [`d592cb28`](https://github.com/pixlcore/xyops/commit/d592cb288b147e705722a39a94f7ec34d6af6370): CSS: Adjust repsonsive classes for compact trigger grid, for new tags column
+- [`6542d44f`](https://github.com/pixlcore/xyops/commit/6542d44f921105d19e26ece1af1752e56ddde280): UI: Tweak icon for New Ticket (change to outline version)
+- [`7d8267e9`](https://github.com/pixlcore/xyops/commit/7d8267e942915bec234ca05d992c4a0100be5804): Feature: Add optional tags and user params to all schedule triggers, for passing onto jobs.
+- [`c09c45cd`](https://github.com/pixlcore/xyops/commit/c09c45cd8ff2e9af2e8f1f6d83f4339ba925ba45): Job Details: Pad chart second timeline to match full job start/end range.
+- [`e1204943`](https://github.com/pixlcore/xyops/commit/e1204943e26343eba74bc1edddab3735bc0d985b): Bug Fix: Do not allow category to be deleted if workflow job nodes are assigned.  Also, include these nodes in the counts on the category list page.  Fixes #82.
+- [`c46e0065`](https://github.com/pixlcore/xyops/commit/c46e0065a03bd0f4f0ad94318206d2e3436ea2d5): Bug fix: UI crash when saving a bucket without having used the "bucket menu" feature.
+
+## Version v0.9.39
+
+> January 24, 2026
+
+- [`1acce061`](https://github.com/pixlcore/xyops/commit/1acce0619508d7f79b4ed3d3ebc49fa72fa7ea0a): Version 0.9.39
+- [`269b3392`](https://github.com/pixlcore/xyops/commit/269b33927c38948cfcf6354f93ad7763cc16a7e4): Bug Fix: A job triggering a limit with non-email actions cause a full crash.  Fixes #81
+- [`b32e2601`](https://github.com/pixlcore/xyops/commit/b32e2601c45db9e9c31d768b0387cb45f2e488fe): Plugins Doc: Add section on input files for event plugins.  Also rename a few sections for TOC clarity.
+- [`359fd7db`](https://github.com/pixlcore/xyops/commit/359fd7db78ef37a11df4c9bd04cd25b53aacc7d1): Doc Viewer: Add table wrapper with scroll-x for mobile.
+
+## Version v0.9.38
+
+> January 24, 2026
+
+- [`a651832d`](https://github.com/pixlcore/xyops/commit/a651832dcded8d0a36e5067baa47d9145073c9cf): Version 0.9.38
+- [`111e1a05`](https://github.com/pixlcore/xyops/commit/111e1a0502ed60f5f757a433c320216122c70588): Web Hooks: Improve test API to better handle text inside inline JEXL function macros.
+- [`a63f175d`](https://github.com/pixlcore/xyops/commit/a63f175d4c1c72d8fe943423699ecdd23dc489a5): Web Hooks: Properly display core request errors (e.g. "Socket hang up") in markdown details.
+- [`51a1d9cc`](https://github.com/pixlcore/xyops/commit/51a1d9cccdb84a4f17bf62edc883b8993b0ffb4c): Setup: Add new "pass" checkbox to stock Shell Plugin.
+- [`e9791cde`](https://github.com/pixlcore/xyops/commit/e9791cdea9558a4ad1d5455705518841f9c3bda2): Job Detail Page: On delete job, nav to previous page if one is on the stack.
+- [`082a5921`](https://github.com/pixlcore/xyops/commit/082a5921d4fdfe2d6beb62f40763f6280169c472): Doc Viewer: Add click on nav to scroll to top, and copy-to-clipboard icons on code blocks.
+- [`9e2c2a29`](https://github.com/pixlcore/xyops/commit/9e2c2a29e0274ec898ef26bf90a83719ade1a230): Web Hooks Doc: Improve instructions for setting up Pushover.
+
+## Version v0.9.37
+
+> January 23, 2026
+
+- [`4c5af9cd`](https://github.com/pixlcore/xyops/commit/4c5af9cd9cca191652ce30b4084b3a4b53f31c23): Version 0.9.37
+- [`4885ccba`](https://github.com/pixlcore/xyops/commit/4885ccba5ef25a350633979ca1ac0ec4cacb659f): UI: Disable spellcheck in param text fields.
+- [`d1d8aa10`](https://github.com/pixlcore/xyops/commit/d1d8aa1061821937c6588f24c60e17d5b128882e): CSS: Tweak scroll shadows background color for compact table grids.
+- [`294a97f2`](https://github.com/pixlcore/xyops/commit/294a97f2d4d5a9d91e5cc8319305dc29b75036bf): Event Timing Summaries: Redesign to support date/time locales and 24-hour time.
+- [`ff972853`](https://github.com/pixlcore/xyops/commit/ff972853458621a43ee5bb8cce4deec143f6ee1a): Event View: Cosmetic: Set max-height to trigger/action/limit summaries, and add auto-scroll.
+- [`7bb4415d`](https://github.com/pixlcore/xyops/commit/7bb4415d0336f435a88c39a04c4946d870461e4c): Tweak last day of month summarization format.
+- [`dd108dfc`](https://github.com/pixlcore/xyops/commit/dd108dfc1ce5ea86dc03766d707f601ca3201e45): Cosmetic Fix: Add proper default icon for tags in drop-down menus.
+- [`ad29d24b`](https://github.com/pixlcore/xyops/commit/ad29d24b0975a7bc3ffd38d6a7a668d4178f7d51): Job Details: Allow input files to be deleted if source was a user or a plugin.
+- [`875eb39d`](https://github.com/pixlcore/xyops/commit/875eb39d299da7743da374add82fa971ec452d8e): README: Update docs links to use new official docs website.
+
+## Version v0.9.36
+
+> January 22, 2026
+
+- [`9ca026ce`](https://github.com/pixlcore/xyops/commit/9ca026ceb9c30e4d8b5e84065d252538febca699): Version 0.9.36
+- [`da6aad5c`](https://github.com/pixlcore/xyops/commit/da6aad5c508280f3d0ecea17ac0dd054716b7c5b): Hosting Doc: Added section on external storage, recommending MinIO.
+- [`a57fa501`](https://github.com/pixlcore/xyops/commit/a57fa501df9123d84461637e16acc05ff2b783f9): Default Config: Set correct values in S3 cache (maxItems and maxBytes)
+- [`b1a3926a`](https://github.com/pixlcore/xyops/commit/b1a3926a2fb41560863e8cbb4898adb870856448): Bug fix: Preserve Job.now value when re-running a job.
+- [`3e7b5adc`](https://github.com/pixlcore/xyops/commit/3e7b5adcdcf474aa538159c17742f1c74304daee): Workflows: Pass Job.now timestamp into sub-jobs by way of workflow.now sub-property.
+- [`a3fa5410`](https://github.com/pixlcore/xyops/commit/a3fa541054ee5456275fc72ad75e084d9e313edc): Feature: Add optional "select" parameter to the search_jobs API, to select individual job properties to return.
+- [`2e59b097`](https://github.com/pixlcore/xyops/commit/2e59b09735f34bcd9ba765ce6b8eb62eb5ba6c75): Feature: Add new "Has Files" system tag to the UI and job searches.
+- [`14f61a64`](https://github.com/pixlcore/xyops/commit/14f61a6430a9d97fa534eb08c90c18972e1b090e): Feature: Add special `_files` system tag when a job completes and has output files attached.
+- [`6b07b7e1`](https://github.com/pixlcore/xyops/commit/6b07b7e151d3df15def8243f25124962609664d3): Fix: Deleting files on the job detail screen was not working if the job also had input files displayed.  Fixes #67
+- [`9df2a6e7`](https://github.com/pixlcore/xyops/commit/9df2a6e72aa65420153fa82b5b6cb681d6426fc4): Database Doc: Fix table formatting.
+
+## Version v0.9.35
+
+> January 21, 2026
+
+- [`a2c2bf27`](https://github.com/pixlcore/xyops/commit/a2c2bf27fca7dde87782bdd60851b277eb573c09): Version 0.9.35
+- [`37b17aee`](https://github.com/pixlcore/xyops/commit/37b17aee9877f5d9c9971b984c73357dc3416ca4): Events / Workflows: When switching Plugins, retain the user's previous param selections (temporarily during edits).
+- [`43eea0a4`](https://github.com/pixlcore/xyops/commit/43eea0a49094758384b3517e19daa84372593d40): Keyboard Shortcuts: Add "E" hot key on job detail page, to jump straight into editing event.
+- [`75f72eed`](https://github.com/pixlcore/xyops/commit/75f72eed115d2503a31b4887eee6340438addbb9): Feature: Add "Edit Event" button to job detail page.  Collapse the two tickets buttons into one, with drop-down menu.
+- [`bc1a5808`](https://github.com/pixlcore/xyops/commit/bc1a58089aa60028cf9fef5ce63b6ea2c0f6bfa4): Hosting Doc: Added section on default SQLite daily backups.
+
+## Version v0.9.34
+
+> January 20, 2026
+
+- [`26053347`](https://github.com/pixlcore/xyops/commit/260533479e9179091175c962cd115991a631f8de): Version 0.9.34
+- [`628bd9b8`](https://github.com/pixlcore/xyops/commit/628bd9b83a27a059dd79951fa8251a85c9a63b89): Feature: "Bucket Menu" allows you to define a plugin or event param with dynamic items that load from a storage bucket.
+- [`5490b8e1`](https://github.com/pixlcore/xyops/commit/5490b8e16afd70e2fb64b7b6ab95273f0162b253): Bump pixl-xyapp to v2.0.19 for more robust menu data handling.
+- [`5de61eb5`](https://github.com/pixlcore/xyops/commit/5de61eb5964bda9585285cd23bfe34b656848d90): Feature: Show "Tags" column on Event List page.
+
+## Version v0.9.33
+
+> January 19, 2026
+
+- [`e5d07a57`](https://github.com/pixlcore/xyops/commit/e5d07a579fa06c67201d9c8f09fc8733732d4f6c): Version 0.9.33
+- [`c0edb6e7`](https://github.com/pixlcore/xyops/commit/c0edb6e7d0709d3624c295c4b840a40fd1b12323): Remove: Legacy Job Comments feature (replaced by tickets).
+- [`c6c7f62c`](https://github.com/pixlcore/xyops/commit/c6c7f62c2bf3a0737b7a6cf0e1b5f015a93b7050): Feature: Implement log archive auto-delete via `log_archive_keep` config property.
+- [`5b53e425`](https://github.com/pixlcore/xyops/commit/5b53e4254ef815cf6a52ca55f9b21fd716e1395a): Config Doc: Add `client.company` property description.
+
+## Version v0.9.32
+
+> January 19, 2026
+
+- [`440913b8`](https://github.com/pixlcore/xyops/commit/440913b833a0e890148bde5fd9fe1fd3aa784654): Version 0.9.32
+- [`55106058`](https://github.com/pixlcore/xyops/commit/5510605836ff2ac283d0b1b46d3b5f788152ef9e): Event List: Remove "Clone" link, as it was taking up too much room.
+- [`b5ca35e4`](https://github.com/pixlcore/xyops/commit/b5ca35e44b0eec9d99475eb0d05ea3fe11916ee3): CSS: Add styles for job media slideshow, and also disabled button.link buttons
+- [`a0e1ce58`](https://github.com/pixlcore/xyops/commit/a0e1ce5845ecc84a14387a21ec4cc935563f0b0d): Feature: Media slideshow when job outputs images, video or audio files.
+- [`d9f8723b`](https://github.com/pixlcore/xyops/commit/d9f8723b75f96b14c8e2b337d4e84f1b4d3c9a99): HTTP Range: Fixed another issue with computing the byte range
+- [`30526233`](https://github.com/pixlcore/xyops/commit/30526233233398971dd6ed409a7f48306f101ec2): Crasher: Fix issue with HTTP Range headers and streaming media hosting.
+- [`18be0f61`](https://github.com/pixlcore/xyops/commit/18be0f61ff77c05d62364426293da3cc253c4e50): Cosmetic Fix: Ensure CodeMirror deselects the current text selection on blur.
+- [`82e61d4b`](https://github.com/pixlcore/xyops/commit/82e61d4bea6855d9e8acee2f0bbe83ac90471ce9): Job Completion: if job failed with no output, set description as output (better UX).
+- [`0224608d`](https://github.com/pixlcore/xyops/commit/0224608dd702eb765dfafb022ca21d335894a7d1): Event List UI: Fix sorting order issue with some categeories.
+
+## Version v0.9.31
+
+> January 16, 2026
+
+- [`085918f0`](https://github.com/pixlcore/xyops/commit/085918f0a014d5f7957983ccbe5682913010d6c1): Version 0.9.31
+- [`f977427c`](https://github.com/pixlcore/xyops/commit/f977427c54f1258569dc55e1566053fad70c9bdb): Workflow UI: Fix display issue with trigger plugins (title not showing).
+- [`1b3df7cb`](https://github.com/pixlcore/xyops/commit/1b3df7cb236a7430cb693e76882112ad761f83cd): Workflow UI: Set a fixed max height for event/job nodes and enable auto-scroll inside them.
+
+## Version v0.9.30
+
+> January 16, 2026
+
+- [`29008d5d`](https://github.com/pixlcore/xyops/commit/29008d5d457a23d993a985a901531a165b28f2fc): Version 0.9.30
+- [`89b74e66`](https://github.com/pixlcore/xyops/commit/89b74e660862545bc8d346457d8fc3bfb438fe35): Fix: Workflow nodes were not properly rendering JSON and Toolset params in the UI.
+- [`2bcf02b9`](https://github.com/pixlcore/xyops/commit/2bcf02b96658db04aedd138b0685a6d035696b29): Event/Job UI: Tweak height of workflow map preview.
+- [`76eea070`](https://github.com/pixlcore/xyops/commit/76eea0708c6aa18bcb5f77cdf6d68c1b2209240f): Workflow Doc: Clarified behavior of workflow user field params passing to sub-jobs.
+- [`2e429bab`](https://github.com/pixlcore/xyops/commit/2e429bab8c45265d06861ffb825d418c3eac3e9a): Marketplace UI: General cleanup, remove console.log, add confetti.
+- [`25d236d2`](https://github.com/pixlcore/xyops/commit/25d236d277a02d7a1663fccf537e700a05b04ef4): Event List: Change "History" action link to go to job history search, not revision history.
+
+## Version v0.9.29
+
+> January 15, 2026
+
+- [`0a45c929`](https://github.com/pixlcore/xyops/commit/0a45c92961b0aa73c998058efab13b0c97c38b5f): Version 0.9.29
+- [`506ea86c`](https://github.com/pixlcore/xyops/commit/506ea86c529f2f32cdfbaa4e028f0ec8e6fa7e60): API Docs: Add docs for new bulk_search_export API
+- [`7aa85df3`](https://github.com/pixlcore/xyops/commit/7aa85df3076e28d92a326789f0bc89d11c66afee): Docs: Change array formatting to not use any HTML metacharacters.
+- [`f0161415`](https://github.com/pixlcore/xyops/commit/f0161415a751d5c79586e75683a5fa11943e0aff): New Feature: Bulk export job, ticket, alert and snapshot search results, in CSV / TSV / NDJSON format, with optional gzip wrapper.
+- [`a60bf0c4`](https://github.com/pixlcore/xyops/commit/a60bf0c4488069d742cacb4d51315e4f0f3b31e6): Admin: Remove comment about unused API (it is now used).
+- [`16e2bb3a`](https://github.com/pixlcore/xyops/commit/16e2bb3a150d12b4ce64838960314dc47e00559d): CSS: Tweak padding above first checkbox container in form row
+- [`e4817c0c`](https://github.com/pixlcore/xyops/commit/e4817c0cbb101a7337c144fda70e5473e0a56e46): Event List UI: Replace "Delete" with "History" in action column.
+
+## Version v0.9.28
+
+> January 15, 2026
+
+- [`58edcc91`](https://github.com/pixlcore/xyops/commit/58edcc91ee4bc66d387ce3511699b001c3485c17): Version 0.9.28
+- [`dfe967cf`](https://github.com/pixlcore/xyops/commit/dfe967cf26e3f8c66e97381644c4a3ba2d54b2cd): Scalability: Add deboucing for several API in the UI, to better handle large job / queue throughput.
+- [`56558c17`](https://github.com/pixlcore/xyops/commit/56558c175ecbe10c931fac32bb5b347941cebb5d): Event List UI: Add more options in the actions column. Fixes #53.
+- [`363f5b7b`](https://github.com/pixlcore/xyops/commit/363f5b7b68f12129d257cdf6848382be2b2aaa0e): User Settings: Add option to show milliseconds in dates/times.  Fixes #52.
+- [`6754d723`](https://github.com/pixlcore/xyops/commit/6754d723087c4cb9bd2942f3516ad87eb88a4131): API Doc: Added query examples to main search APIs.
+- [`4fdad845`](https://github.com/pixlcore/xyops/commit/4fdad84560629592236067ab876685dbcd70ba3d): Docs: Complete Activity.action in data.md and link syshooks to it.
+- [`3aeb7d03`](https://github.com/pixlcore/xyops/commit/3aeb7d031529c6eaa0b1110e0296e86245125ac2): API Doc: Remove sentence.
+
+## Version v0.9.27
+
+> January 14, 2026
+
+- [`773673c7`](https://github.com/pixlcore/xyops/commit/773673c7ad239687190d57b4e8691f4d4893af0d): Version 0.9.27
+- [`2e517882`](https://github.com/pixlcore/xyops/commit/2e517882cb53d1793bbf10f3fcea4b124a822762): Job Completion: Check for free queue slots on each job complete, to speed up queue item throughput.
+- [`dab255ca`](https://github.com/pixlcore/xyops/commit/dab255ca9a5ce37ddbb149ba3972eea3ae516827): Alerts: Include server info in alert_new and alert_cleared activity log entries.
+- [`e872466f`](https://github.com/pixlcore/xyops/commit/e872466fc48300bfeac161c3011c78bc2dbbaac9): UI: activity_search_map: Add "master_primary" activity ID to "peers" search group.
+- [`a77fe3e4`](https://github.com/pixlcore/xyops/commit/a77fe3e40f31df1ac5181691b82bbce710db5f5c): Activity UI: Fix issue where alert invocations were not searchable by "Alerts" menu item, and also show copyable ID in dialogs.
+- [`bbacd45d`](https://github.com/pixlcore/xyops/commit/bbacd45d16d23228d8cac89f4a10dd208ee5d963): CSS: Adjust font size of non-styled code in code_viewer
+- [`ee4e2346`](https://github.com/pixlcore/xyops/commit/ee4e234697170d50ec38a13ae15495eacbb91e4c): Comm UI: Only show "reconnecting" progress dialog if a dialog (or code editor) isn't already being displayed.
+- [`af23237b`](https://github.com/pixlcore/xyops/commit/af23237bec2bb296c5f1717389e3c486111a2d18): api_get_servers API: Drop admin requirement, as this is a read-only API.  Fixes #46.
+
+## Version v0.9.26
+
+> January 14, 2026
+
+- [`3f6f452e`](https://github.com/pixlcore/xyops/commit/3f6f452ee32dbef74528e01bfce45d3b62a90c62): Version 0.9.26
+- [`46343258`](https://github.com/pixlcore/xyops/commit/46343258b237f66518d0b650dd07e8173250b68c): Multi: Include hostID in notice/critical messages for backup server startup.
+- [`b1203c52`](https://github.com/pixlcore/xyops/commit/b1203c5208d9c0c95de4ad4dbce1a3eb9ee7a7ee): Satellite Upgrade Script: Unset "__daemon" variable (used by pixl-server)
+- [`839df824`](https://github.com/pixlcore/xyops/commit/839df824e7bc7765b1abf35b35a95b6a4af08c76): Multi: When spawning shell for background commands, remove "__daemon" var (used by pixl-server).
+- [`bae34ac1`](https://github.com/pixlcore/xyops/commit/bae34ac1b2437fe7ace7162db5adfa3dcaa19232): Satellite Upgrade Script: Unset "__daemon" env var so pixl-server properly forks (for non-docker installs)
+- [`c5082663`](https://github.com/pixlcore/xyops/commit/c5082663877e3ef2c7ec5628dfd4e86f4dada31f): Install Script: Improve output, and remove old unused code.
+- [`60fb1d02`](https://github.com/pixlcore/xyops/commit/60fb1d02693550d34d18878aaf2ea446dabb106f): Comm/Multi: Add sanity checks on websocket data format, in case remote side is still on an older version.
+
+## Version v0.9.25
+
+> January 14, 2026
+
+- [`f70bc7cc`](https://github.com/pixlcore/xyops/commit/f70bc7cc96c3c06838f39d13881be919c241f00c): Version 0.9.25
+- [`e431b11c`](https://github.com/pixlcore/xyops/commit/e431b11cb233bc3972cfe662544f413e3b2721bc): Satellite Upgrade Script: Improve logging output.
+
+## Version v0.9.24
+
+> January 14, 2026
+
+- [`ad751b57`](https://github.com/pixlcore/xyops/commit/ad751b5707f752d67d1ba84b1bd7b4c09bce0972): Version 0.9.24
+- [`09c5da22`](https://github.com/pixlcore/xyops/commit/09c5da221fed4eef3fad011c9a655d567d35ece7): UI: Fix color of critical notification banner.
+- [`7bb23465`](https://github.com/pixlcore/xyops/commit/7bb23465cff1db2a738e98e6efaf46a9ebdf89d2): Crasher Fix: Sending incorrect websocket data for notice/critical.
+- [`9c99743e`](https://github.com/pixlcore/xyops/commit/9c99743e7ef207b7b4d03fb5bb9c6af99d85dff5): System Hooks Doc: Added note regarding shell_exec running on the primary conductor, and debugging tips.
+
+## Version v0.9.23
+
+> January 14, 2026
+
+- [`23eebde5`](https://github.com/pixlcore/xyops/commit/23eebde535e93b3a070052a402d996e5bfa1e2c9): Scaling Doc: Add sections for handling critical errors, and monitoring alerts.
+- [`1196139e`](https://github.com/pixlcore/xyops/commit/1196139ea5cd1e993034843bb757a8dad19e534a): System Hooks Doc: Change word.
+- [`f20a75b7`](https://github.com/pixlcore/xyops/commit/f20a75b74ac5bc7d0b9603d9b89b3cee7a352d76): System Hooks Doc: Add note about creating overdue tickets.
+- [`ac3e093b`](https://github.com/pixlcore/xyops/commit/ac3e093baf367b36d9a1316efdd806a57ce3eac5): Added note regarding passing query string or POST parameters to the magic API
+- [`7f035a66`](https://github.com/pixlcore/xyops/commit/7f035a66dfbce36ea42da82ea8484d65954c2019): Version 0.9.23
+- [`99cf11d2`](https://github.com/pixlcore/xyops/commit/99cf11d24223372fb8083e495d188e5d8abb449c): Install Script: Disable current version check, in case user wants to reinstall the same version.
+- [`684254ef`](https://github.com/pixlcore/xyops/commit/684254efea870978b2ac3b1710537edccd81586b): API Doc: Added note in run_event about overriding event properties, and specifying tags.
+- [`028604c1`](https://github.com/pixlcore/xyops/commit/028604c103c22aff49627547b5dbccc947cb136a): Wrote: System Hooks doc.
+- [`5d0504f1`](https://github.com/pixlcore/xyops/commit/5d0504f1e3f903864bfa2642b83b7c7a84b0b595): System Web Hooks: Remove legacy configuration properties.
+- [`0e5efaaf`](https://github.com/pixlcore/xyops/commit/0e5efaaf0c6553626db1b20b40616783e0291d73): Multi-Server System: Improvements to background upgrades and remote command notifications.
+- [`d0af5b96`](https://github.com/pixlcore/xyops/commit/d0af5b96f92c37e5b2bfa772b432a57baa6827e8): Mailer: New "activity.txt" email template for system hook activity email reports.
+- [`b58f2e20`](https://github.com/pixlcore/xyops/commit/b58f2e20b2ca1ecaf972e5ae955912116727cdda): Mailer: Look in both conf/emails/ and sample_conf/emails/ for templates, as new ones may be introduced.
+- [`67e1c144`](https://github.com/pixlcore/xyops/commit/67e1c1445eb7b6c9774354371a75aa804798ec1c): WebSocket Comm: Add support for notice, error, warning and critical activity log entries from remote servers.
+- [`6e948095`](https://github.com/pixlcore/xyops/commit/6e948095eaed334927c25fb75b73a07fe86ec326): System Hook: Major improvements to shell exec, add "email" and "ticket" system hook actions.
+- [`9ee9be20`](https://github.com/pixlcore/xyops/commit/9ee9be202e1e20f3766d6f0d82ea506603552e39): UI Config: Add "critical" activity type, and fix icon for warnings.
+- [`c2a1cdbe`](https://github.com/pixlcore/xyops/commit/c2a1cdbefcfe29d997be724f81f4e8f52071bd40): Activity UI: Add display and filtering support for general notices, warnings, errors, and criticals.
+- [`3a1035f8`](https://github.com/pixlcore/xyops/commit/3a1035f8c235ba625ad4281b167eef7bb7025d0a): Dynamic copyright string with configurable company name.
+
+## Version v0.9.22
+
+> January 12, 2026
+
+- [`832f698a`](https://github.com/pixlcore/xyops/commit/832f698ac58ef3aef73258311a33c7328847d85c): Version 0.9.22
+- [`ffeffa99`](https://github.com/pixlcore/xyops/commit/ffeffa99cea41cc18700220b8d41a9dd2d253877): Self-Upgrade System: Change log filename to "background.log" for background upgrade commands (WIP).
+- [`66044bfc`](https://github.com/pixlcore/xyops/commit/66044bfcbe7c8f29402da8a72110a67da0ba053f): UI: Page Descriptions: Prevent flickering on some pages when server sends data updates.
+- [`f0d4ee04`](https://github.com/pixlcore/xyops/commit/f0d4ee04960f067cbbe19c78f270699297ed9ae0): Satellite Upgrade: Tweak debug log levels slightly, for more info on standard level 5.
+- [`a0311375`](https://github.com/pixlcore/xyops/commit/a0311375b36c482ffbf26e3a121ad89a7f4918c1): Self Upgrades: Add retries with exponential backoff for upstream GitHub requests, as they randomly fail sometimes.
+- [`862c6741`](https://github.com/pixlcore/xyops/commit/862c67418bf0afb5c0114f0a56b338dd516bff1d): System Upgrade Dialogs: Save release and stagger selections in user prefs.
+
+## Version v0.9.21
+
+> January 12, 2026
+
+- [`55131169`](https://github.com/pixlcore/xyops/commit/55131169a947306e7d4ae8b38ae261b0fd99b836): Version 0.9.21
+- [`3dd571d9`](https://github.com/pixlcore/xyops/commit/3dd571d9437b58cd2d2b61b58a776ee2786c0256): Marketplace: Show plugin installed status (up-to-date, outdated, not installed) on the marketplace listing page.  Fixes #40.
+- [`60d0e0af`](https://github.com/pixlcore/xyops/commit/60d0e0af11678b6d74b455bee643039f59018abf): Fix: Satellite and Conductor upgrades fail if any version other than "latest" is selected.
+- [`2d564d3d`](https://github.com/pixlcore/xyops/commit/2d564d3d3ed56f85a28d15a9143fb3eeee272335): README: Change main heading text.
+
+## Version v0.9.20
+
+> January 11, 2026
+
+- [`29822dc0`](https://github.com/pixlcore/xyops/commit/29822dc0b2d67be908759441569dd252036f1426): Version 0.9.20
+- [`f8d153b5`](https://github.com/pixlcore/xyops/commit/f8d153b57200acecdd7ee9c69a4398709dc55599): Fix: Flickering dialog issue when waiting for conductor server election.
+- [`84160de2`](https://github.com/pixlcore/xyops/commit/84160de2135081052026ecee71edb6c940ceab72): Conductor Page: Add "Remove" link to remove dead / ghost conductor servers.
+- [`437f2090`](https://github.com/pixlcore/xyops/commit/437f2090949583292fe3b3443487114657b2cc28): Marketplace Improvements: Allow filtering by plugin type, and also display plugin type in the search results, and on landing pages.
+- [`63b45f60`](https://github.com/pixlcore/xyops/commit/63b45f606dda1798b8d3f0d8e6e71320ca8213e6): Marketplace Doc: Added "plugin_type" metadata property.
+- [`5bf7ab89`](https://github.com/pixlcore/xyops/commit/5bf7ab89a8ff25e6cddd6c0e753a31f6b41af4e0): UI: Improve styling of links in workflow controller description blocks.
+- [`21e4e6d8`](https://github.com/pixlcore/xyops/commit/21e4e6d8f7540ec929116769cd9ec9494f81e80c): UI: Added links to docs in workflow controller descriptions.
+- [`ba2f6054`](https://github.com/pixlcore/xyops/commit/ba2f6054b5cdcf703dd0efc7b9f2a84b7b6a6333): Data Structures Doc: Indicate that IDs must be lowercase alphanumeric.
+- [`41312f0f`](https://github.com/pixlcore/xyops/commit/41312f0f49fb92c458bec0d7a9927332b11cb8cc): Plugins Doc: Added note re: use of secrets in the HTTP Request Plugin.
+
+## Version v0.9.19
+
+> January 10, 2026
+
+- [`0613740a`](https://github.com/pixlcore/xyops/commit/0613740aa3e4419d7211bdcfea95c7a018d7bb95): Version 0.9.19
+- [`74c3cd08`](https://github.com/pixlcore/xyops/commit/74c3cd08161c31712e3e64149f1a1ff0fcb39cd3): create_plugin API: Ensure plugin has an "enabled" property.
+- [`43baa589`](https://github.com/pixlcore/xyops/commit/43baa5895b4bc88ddc7a2b962c08b12f76f1e01f): API Change: Ensure all object IDs are lower-case alphanumeric + underscore only.
+- [`b544050d`](https://github.com/pixlcore/xyops/commit/b544050dbbec1104b4720f952937acce6bda87fa): Marketplace Doc: Typo fix: Missing "enabled" property in sample exported plugin.
+- [`b3fd4371`](https://github.com/pixlcore/xyops/commit/b3fd437131c8d95d4b8b6febfb29bc47494b1094): Fix: Export PATH variable in control.sh and container-start.sh, so it properly propages out.
+
+## Version v0.9.18
+
+> January 10, 2026
+
+- [`b13d9fb2`](https://github.com/pixlcore/xyops/commit/b13d9fb29f152e1d269af38b3bb5d5f64a642b1c): Version 0.9.18
+- [`9f51b256`](https://github.com/pixlcore/xyops/commit/9f51b256aaf80d9f5523b46e77e20668b9ac4b4a): Fix: Move uv/uvx binaries to a standard PATH location
+
+## Version v0.9.17
+
+> January 10, 2026
+
+- [`4cca9969`](https://github.com/pixlcore/xyops/commit/4cca996995a75e811e41054cb7d4c960cae891d4): Version 0.9.17
+- [`fb1973cb`](https://github.com/pixlcore/xyops/commit/fb1973cb45738df1166f3d73e8df89493e05a07d): Plugin API: Two new APIs: test_monitor_plugin, and test_scheduler_plugin.
+- [`3d6b2f69`](https://github.com/pixlcore/xyops/commit/3d6b2f69cd7c29d058898e3de5cd09a292acddef): Run Event API Validation fixes...
+- [`0cfe00f9`](https://github.com/pixlcore/xyops/commit/0cfe00f9000d212f192a6e97ae829580c98eddea): Server Connect: Initialize server.info.features if not passed in by remote server.
+- [`44796069`](https://github.com/pixlcore/xyops/commit/4479606971f715ad81eef8acf44e572977030948): Scheduler: Support for testing scheduler (trigger) plugins, and tweak env vars...
+- [`0177dc40`](https://github.com/pixlcore/xyops/commit/0177dc40d98b2d42ce92011188f6c6f34ece3f33): Socket Comm: Improve debug logging, support for new monitor plugin test
+- [`64705207`](https://github.com/pixlcore/xyops/commit/6470520711512be6fa9d72dc662f14a737909021): Action Plugins: Changes to env vars and output formatting...
+- [`74c25452`](https://github.com/pixlcore/xyops/commit/74c2545283e4c9df24d9dd2978e7e3bab9efaaeb): Sanitize HTML Config: Allow "class" attrib on pre and code tags
+- [`853baddb`](https://github.com/pixlcore/xyops/commit/853baddb477ec4acf1784a5c238c8393fcc8a49b): Plugins: Big Change: New "Test" button, to test all 4 plugin types!
+- [`ae3637d9`](https://github.com/pixlcore/xyops/commit/ae3637d94f8da3f49566fe6819c36de19a6ed671): Revision Dialogs: Fix icon spacing.
+- [`d79cd6f9`](https://github.com/pixlcore/xyops/commit/d79cd6f97622827d380c34fd44a7bcc9dc7927c9): Job Detail: Add action popup, and a markdown style fix...
+- [`f7726670`](https://github.com/pixlcore/xyops/commit/f77266706b7ac5a20538d9594c08622d0d6398d1): Event Revision Dialog: Fix icon spacing.
+- [`aee19f03`](https://github.com/pixlcore/xyops/commit/aee19f037880ade94966d8da268e81f535dd5dbb): Fix getNiceAPIKey, and changes to viewMarkdownAuto...
+- [`3e1653c5`](https://github.com/pixlcore/xyops/commit/3e1653c57ce75e90ae51f857f8c964f146afe5d9): Allow CodeEditor to show progress dialogs on top of standard dialogs.
+- [`b01e5b8f`](https://github.com/pixlcore/xyops/commit/b01e5b8f14232fc75445284bb3476ed22ac76157): style.css: Add new styles for using ex_tree for testing monitor plugins.
+
+## Version v0.9.16
+
+> January 8, 2026
+
+- [`742c66c5`](https://github.com/pixlcore/xyops/commit/742c66c575671c8530b6ba2af5776761fc9077e1): Version 0.9.16
+- [`cd003411`](https://github.com/pixlcore/xyops/commit/cd00341174b7a5a48c79bddfd14bbbde0ff7c74d): Fix: Properly handle case when satellite reboots while jobs are running.
+- [`f3e72b2a`](https://github.com/pixlcore/xyops/commit/f3e72b2a8209f48c80fcd8282eb834f65d751593): Fix: Socket ping death logic was not happening due to a typo
+
+## Version v0.9.15
+
+> January 8, 2026
+
+- [`d4802698`](https://github.com/pixlcore/xyops/commit/d4802698297637eba6b3e14a270484b1a09f3a57): Version 0.9.15
+- [`266b7295`](https://github.com/pixlcore/xyops/commit/266b7295bab868df24c8efdf9b36580bd7ef0e06): Fix: Crasher race condition when workflow is aborted on start due to event being disbled at the same time.  Fixes #34.
+- [`d6d2f49b`](https://github.com/pixlcore/xyops/commit/d6d2f49b757af4e266af9b080b3ab4bc429cae22): Test Event: Allow user to disable ALL actions and limits, even inherited ones -- for test jobs only.
+- [`6f1c4aa6`](https://github.com/pixlcore/xyops/commit/6f1c4aa6616218da953ff18080d8351d0f44ebfe): Marketplace: Tweak button style depending on installation status.
+
+## Version v0.9.14
+
+> January 7, 2026
+
+- [`f7317db0`](https://github.com/pixlcore/xyops/commit/f7317db0c34f9da9f6b8bf419e38126022e28f37): Version 0.9.14
+- [`16ebe454`](https://github.com/pixlcore/xyops/commit/16ebe454df9b1772b72d0b7a569986dfe53b5430): Predict Upcoming Jobs: Support Trigger Plugins as modifiers
+- [`4eed0802`](https://github.com/pixlcore/xyops/commit/4eed0802f5343f1eeeb5627f2fca7640f33753d7): Marketplace: Add colors to status item
+- [`2dd310cc`](https://github.com/pixlcore/xyops/commit/2dd310cc679849864e1e0ae9c0ca34d66f2d3745): Fix: Group Process search feature crashing on user input
+- [`124648df`](https://github.com/pixlcore/xyops/commit/124648df4ba031e94fabbd7fbd5db40e16a70bac): Config: Drop default satellite.config.debug_level to 5
+- [`95c3b04e`](https://github.com/pixlcore/xyops/commit/95c3b04e17965e0b6297e24b200bb3502c7c6daf): Changelog: Tweak styling of git hash links
+- [`53c6897b`](https://github.com/pixlcore/xyops/commit/53c6897b94d9684dceb9e3936dafbd9b8e3a1dab): Changelog Generator: Add more smarts
+
+## Version v0.9.13
+
+> January 7, 2026
+
+- [`df79e544`](https://github.com/pixlcore/xyops/commit/df79e544e4e8c94dc7b567f5dc8ca8e743d351ec): Version 0.9.13
+- [`54ed78ec`](https://github.com/pixlcore/xyops/commit/54ed78ec1e1b53f9b8bc31c99e9de575992623e5): Job Detail Page: Only show "Run Again" button if job has an event, and event still exists.
+- [`b1238b4a`](https://github.com/pixlcore/xyops/commit/b1238b4a1ed01ef59a523460a5d15cc73fabc808): Fix: Crasher bug when "Delete Event" action is used.
+- [`7054659c`](https://github.com/pixlcore/xyops/commit/7054659c5d0efead647b6320b75f893922f8b6d6): System: Tweak color of test email success dialog title.
+- [`6b66b77b`](https://github.com/pixlcore/xyops/commit/6b66b77b489ef0610448a48df7cff80bda7956a8): Cosmetic: Fix plugin dependency markdown list when multiple types are present.
+- [`2db9ccf2`](https://github.com/pixlcore/xyops/commit/2db9ccf2fae1d31cb568c2e04bbe7c4b9edd3969): Feature: Send test email from system page.
+- [`f27382d3`](https://github.com/pixlcore/xyops/commit/f27382d3e65585c171de2e558242b5aefc7241b1): Self-Hosting Guide: Added a bind mount for the conf directory in the sample docker compose.
+- [`b7780755`](https://github.com/pixlcore/xyops/commit/b7780755d8735c93c135259db4a78a193ef0383c): Tickets: Drop email send debug level to 5
+- [`873f9186`](https://github.com/pixlcore/xyops/commit/873f9186969fdae83da1249b520bdf8ec3b28fa6): Fix: Descending date sort not working due a typo
+- [`8c7092f1`](https://github.com/pixlcore/xyops/commit/8c7092f11d6da6cf91fea425447efd48232eb7ca): Config Doc: Add Fastmail SMTP setup example
+
+## Version v0.9.12
+
+> January 7, 2026
+
+- [`90c50441`](https://github.com/pixlcore/xyops/commit/90c504418c7431b43ee8f9230246e353b6492610): Version 0.9.12
+- [`23ad69ea`](https://github.com/pixlcore/xyops/commit/23ad69ea89312c3a4b07b852931fb5da0faeb64d): Marketplace: Try to "fix" inline image URLs in product READMEs, if they are relative links.
+- [`ff812086`](https://github.com/pixlcore/xyops/commit/ff812086e36bcb968a33453aa22852b974da05fa): Marketplace: Show "Visit Repo..." button on product details page.
+
+## Version v0.9.11
+
+> January 6, 2026
+
+- [`c70ccb60`](https://github.com/pixlcore/xyops/commit/c70ccb60986edda674e9e5fc0e96185db3a49a1d): Version 0.9.11
+- [`2d6b1e60`](https://github.com/pixlcore/xyops/commit/2d6b1e60428d38508d8018ec0862c3cb095f1355): Add user content to job success/fail emails.
+- [`27d5f37a`](https://github.com/pixlcore/xyops/commit/27d5f37a0e0f3ad423d80e36a177d128de5a29c5): Suppress upgrade finish notifications, as the operations run in the background
+- [`acd75a96`](https://github.com/pixlcore/xyops/commit/acd75a9637d9e4d9309175b6c18508f2237ea1e0): multiSetup: If current hostID is not found in master list, add it back in (and log a loud warning)
+
+## Version v0.9.10
+
+> January 6, 2026
+
+- [`1ed33019`](https://github.com/pixlcore/xyops/commit/1ed330198af002f90f3c09554ab17522b4f16ab4): Trigger Plugin: Include STDOUT in level 9 debug log entry
+- [`fa9ec911`](https://github.com/pixlcore/xyops/commit/fa9ec911caa7d5b90cb420ddbf730eddf51bffd0): Version 0.9.10
+	- Bump pixl-request to v2.5.0 for retry delay feature
+- [`e21a2aa0`](https://github.com/pixlcore/xyops/commit/e21a2aa04a2212477e733de2fee0d2f14cf18b8c): Improve UX for updating or upgrading plugins.
+- [`bdbbd927`](https://github.com/pixlcore/xyops/commit/bdbbd9272744e77fe79826ff410b37b0545126f0): Fix bug where "negative" Cronicle list pages were not imported.
+- [`fdf4a689`](https://github.com/pixlcore/xyops/commit/fdf4a689036866f9b894fc77abfdd2faaf5ee073): Marketplace: Use exponential backoff for proxy request retries.
+- [`8a5b7187`](https://github.com/pixlcore/xyops/commit/8a5b718780f7dc708f542b0a235ffc34b226fa98): Marketplace: Add retries to origin API proxy requests
+
+## Version v0.9.9
+
+> January 5, 2026
+
+- [`d8ab7cba`](https://github.com/pixlcore/xyops/commit/d8ab7cba2ccbd4aa5dcbffbfa818cdd5d4cfa71d): Version 0.9.9
+- [`6a7cedf2`](https://github.com/pixlcore/xyops/commit/6a7cedf29172aaec6b7f31d90b3676e57ec4b271): Improved user notification for saving / deleting plugins.
+- [`7e3cb287`](https://github.com/pixlcore/xyops/commit/7e3cb28794b9f28bf43b58860b39c489b02b8286): Added a note on using job data in web hook macros
+- [`9b32d067`](https://github.com/pixlcore/xyops/commit/9b32d067b605fa24ea889279032e775462d11042): Wording
+- [`6a4e4ee9`](https://github.com/pixlcore/xyops/commit/6a4e4ee97a32e1de9dcb428caf1d04666fab8da3): Added note regarding using an actual hostname that resolves on your network
+- [`7e7141db`](https://github.com/pixlcore/xyops/commit/7e7141db99ec1d3002afa89ae53c7f1a0e4e73d7): Fix cosmetic issue where server group list is rendered incorrectly (rogue "true" is displayed instead of the comma separator).
+- [`575aabd0`](https://github.com/pixlcore/xyops/commit/575aabd08530370006205d065c76c540a8457900): Fix issue where quick-added tag isn't added to the menu right away.
+- [`501cefa0`](https://github.com/pixlcore/xyops/commit/501cefa0bce63a24e86ce0a63f1293ebba65e6f0): Fix issue with cloning events, where plugin resets back to shell.  Fixes #22
+- [`91913653`](https://github.com/pixlcore/xyops/commit/91913653fc6cd9cc27ab4cbcca047a1cd6215ba6): When jobs change, sync all data to master peers right away (don't wait for next tick).
+- [`22316a23`](https://github.com/pixlcore/xyops/commit/22316a2305d452e48ee08aaa10bfa3422e2b2b8f): Add blurb on starting xyops automatically on server reboot
+- [`323a0aa4`](https://github.com/pixlcore/xyops/commit/323a0aa40b7d4dfcc1e246370ea22383e9ef4904): Fix issue with load avg display when zero, and page desc disappearing when info refreshes
+- [`b50e99f2`](https://github.com/pixlcore/xyops/commit/b50e99f26bcfe23eb5e4cbf1b5585b6221c8942f): Add python3-setuptools to apt-get install (for sqlite3 install)
+- [`3374f073`](https://github.com/pixlcore/xyops/commit/3374f073a68b02572b873da4a57119c9b7e25d25): Added note regarding compiler tools for manual install
+
+## Version v0.9.8
+
+> January 4, 2026
+
+- [`3ea5db82`](https://github.com/pixlcore/xyops/commit/3ea5db82e0d14c69270484808694ab686888e562): Version 0.9.8
+- [`a157333a`](https://github.com/pixlcore/xyops/commit/a157333ad306599e663cb5afa47b9ebc0f2f6648): Add docker-compose YAML for quick-start
+- [`446e30ac`](https://github.com/pixlcore/xyops/commit/446e30ac9384faccae7f41bfea4990cf4ce7863e): Setting config prop `satellite.config.host` will now override the satellite bootstrap install one-liner command.
+- [`3fed6b81`](https://github.com/pixlcore/xyops/commit/3fed6b8117da0902c97498cf0be09d820771cb73): Fix: Crasher when getJobHookData is called with a completed job (i.e. via ticket template fill)
+- [`3ba8578b`](https://github.com/pixlcore/xyops/commit/3ba8578bcb8b35237bf5999bf127e77395ea5061): Bump pixl-tools to v2.0.1
+- [`dd835cd8`](https://github.com/pixlcore/xyops/commit/dd835cd85c37a5b4b6d060e967ad98c1cbb3ca51): Implement Plugin Marketplace!
+- [`ee2db7a2`](https://github.com/pixlcore/xyops/commit/ee2db7a28fe9ad71dbc7709c9a0357d6636709fb): Fix: Combine jobDetails with job data in getJobHookData, so actions can have access to job output data.
+- [`686415af`](https://github.com/pixlcore/xyops/commit/686415af1ab8dee90e7f6e108e80a8406b9da6ad): Move validateOptionalParams out to api.js, so other APIs can use it
+
+## Version v0.9.7
+
+> January 2, 2026
+
+- [`340ff1b5`](https://github.com/pixlcore/xyops/commit/340ff1b51fa44d0e4cdceeacd49327074bc6a818): Version 0.9.7
+- [`74ee1ec6`](https://github.com/pixlcore/xyops/commit/74ee1ec6af7118a1a59694df547e631a7be290b1): Rewrote Docker setup instructions for handling config files
+- [`1afc5f1a`](https://github.com/pixlcore/xyops/commit/1afc5f1afd9aeeef56faf159b61d775ec46b3260): Automatically copy over sample config on launch, if needed (i.e. for bind mounted config dir)
+- [`21a93784`](https://github.com/pixlcore/xyops/commit/21a93784c14db1ca56dd9ded8d7a2c78a3ae1389): Change default secret key
+
+## Version v0.9.6
+
+> January 1, 2026
+
+- [`9b290a68`](https://github.com/pixlcore/xyops/commit/9b290a681d6d9b346c521b827624bb0229c82d60): Version 0.9.6
+- [`82db8c1e`](https://github.com/pixlcore/xyops/commit/82db8c1e0bef67ec1ed92709db8d84a48e3bb18d): Bump pixl-xyapp to v2.1.18 for some mobile fixes.
+- [`a9840a8f`](https://github.com/pixlcore/xyops/commit/a9840a8fbd374958fac2f06afa452eeaf8468759): Configuration: Add preliminary marketplace config (WIP)
+- [`536aa2d7`](https://github.com/pixlcore/xyops/commit/536aa2d7310bd611ca608c0833a6b2556d0470ec): Fix reset buttons and A/V sliders on mobile.
+- [`7dd5ae59`](https://github.com/pixlcore/xyops/commit/7dd5ae594f4d89d68f06f763e0052adeed0a4bfb): Fix edit buttons on mobile across multiple pages.
+- [`f168e785`](https://github.com/pixlcore/xyops/commit/f168e785c1d4621b032fca173eeaadb9d75c2e03): Fix A/V adjustment sliders on mobile
+- [`4a6fa1d4`](https://github.com/pixlcore/xyops/commit/4a6fa1d4c1335821136403e06c270a8d2dd6921f): Event Editor: Tweak trigger table for mobile
+- [`a8d6adb5`](https://github.com/pixlcore/xyops/commit/a8d6adb5fb7eb913198b0139859b397e6fdc36ee): Event Editor: Tweak buttons for mobile
+- [`16e27cf0`](https://github.com/pixlcore/xyops/commit/16e27cf0eac10f59db4a2fdaf05e4c1aa10c4887): Hide box button floater on mobile
+- [`f5a55e90`](https://github.com/pixlcore/xyops/commit/f5a55e9002df985b46b06ad4cd1b038a33d8d89b): Fix compact table buttons and empty rows on mobile
+- [`e49f5df4`](https://github.com/pixlcore/xyops/commit/e49f5df4cf9258e5f01de01228c7e074b510350c): My Settings: Escape key will reset AV adjustments
+- [`17fb7302`](https://github.com/pixlcore/xyops/commit/17fb73026f029a34fab0a16dd5f068ed02629b27): Doc index: Tweak wording a bit.
+- [`5c835cd1`](https://github.com/pixlcore/xyops/commit/5c835cd1ab11293ab42825e026438ab147f77a26): Correct location of unit test logs.
+- [`86aa8169`](https://github.com/pixlcore/xyops/commit/86aa8169cd7818da0e13d7c7d3f6fd2e1d548635): Tweak wording for hljs in colophon.
+- [`ec557639`](https://github.com/pixlcore/xyops/commit/ec5576394c3e33efd7b8d15fed13ebab393eb439): Fix a couple of typos in the hosting guide.
+- [`a297361e`](https://github.com/pixlcore/xyops/commit/a297361e5ccf1a73164219ac5adcadea91671299): Reworded the "coming soon" professional service offerings.
+- [`e9106b0e`](https://github.com/pixlcore/xyops/commit/e9106b0e59cc645e38068bdc196e5fe5d78c239f): Added "coming soon" labels on the upcoming cloud and enterprise offerings.
+
+## Version v0.9.5
+
+> December 31, 2025
+
+- [`3388e85c`](https://github.com/pixlcore/xyops/commit/3388e85c453db3ffbeced5b1acc4ff203ca39c3f): Version 0.9.5
+- [`2ca51624`](https://github.com/pixlcore/xyops/commit/2ca516247f8887d00045124a55ddb29e4b7bc54a): Fix issue where files could arrive without being uploaded.
+- [`c23a0758`](https://github.com/pixlcore/xyops/commit/c23a0758af1e63ed37fdc6d9c44d37173382cf58): Reconfigure local satellite to connect to hostID, not "localhost" (breaks xyRun)
+
+## Version v0.9.4
+
+> December 31, 2025
+
+- [`85a9875d`](https://github.com/pixlcore/xyops/commit/85a9875d6e3f0734495ecbd20bf0fee3a0ffb9bc): Version 0.9.4
+- [`19d0458a`](https://github.com/pixlcore/xyops/commit/19d0458af157feab250e207187dd65fba0542d0d): Fix: Toolset fields need to support new JSON type, and number variant
+- [`22e0b7ec`](https://github.com/pixlcore/xyops/commit/22e0b7ec07da59b5e5ca7abe37d6b873ef7dccb1): Run as root inside the container, so we can access /var/run/docker.sock
+- [`08060b78`](https://github.com/pixlcore/xyops/commit/08060b786f8b2570fec286987ae8d2587d00e1e7): Fix issue where conductor self-upgrade sleeps for full stagger amount even if no other servers were upgraded.
+
+## Version v0.9.3
+
+> December 30, 2025
+
+- [`d341dee3`](https://github.com/pixlcore/xyops/commit/d341dee3c36f3f87453c88bbb47f64292bc1d641): Version 0.9.3
+- [`349d71ea`](https://github.com/pixlcore/xyops/commit/349d71ea1d9ba5901c2e1036fd4011818949bf8f): Added docs on new JSON parameter type, and clarification on number parameter variant parsing behavior.
+- [`715f3c78`](https://github.com/pixlcore/xyops/commit/715f3c786a3a60d980bdf5a017460ea0ad5c0c2f): Added changelog, with auto generator script.
+
+## Version v0.9.2
+
+> December 30, 2025
+
+- [`029a96ae`](https://github.com/pixlcore/xyops/commit/029a96aebd721fe565b1b5c8f2b661564c9017f3): Version 0.9.2
+- [`0ed4aaba`](https://github.com/pixlcore/xyops/commit/0ed4aaba9159ba3ee8c0fb55172650f164defc6d): Cleanup internal job report, so markdown list doesn't break
+- [`aa9caa8c`](https://github.com/pixlcore/xyops/commit/aa9caa8cb6c001d20990f34388ab3c0a25a1cb3a): Tweak directory permissions, for self upgrades to work properly.
+
+## Version v0.9.1
+
+> December 30, 2025
+
+- [`d1c00fc5`](https://github.com/pixlcore/xyops/commit/d1c00fc5558b7f1e3cb2885f2a17cf9f21a5af14): Version 0.9.1
+	- Add auto-changelog dev dep
+- [`094f785b`](https://github.com/pixlcore/xyops/commit/094f785bca2b04b6916d7e269ee5bcb7abced2d2): Add JSON param type, and also parse number variants as numbers.
+- [`6cfd035f`](https://github.com/pixlcore/xyops/commit/6cfd035f16283f120b0ec0be725377d9afdef4b5): Fix typo in macro expansion example
+- [`381f8bb4`](https://github.com/pixlcore/xyops/commit/381f8bb4632bd2c109785bfb192a69078cf9d0fb): Add debug logging to api_get_master_releases
+- [`23af35b4`](https://github.com/pixlcore/xyops/commit/23af35b4cf9a91afeb0e505c6b9168333c8afcf4): Tweak column names
+- [`ed9e1b20`](https://github.com/pixlcore/xyops/commit/ed9e1b20bee7a284247355b630ed8232b1a2c22a): Add icons to table
+- [`9db61dc6`](https://github.com/pixlcore/xyops/commit/9db61dc61a2b3a4d202000efbedc3d425d427733): Add default search presets to stock admin account
+- [`7864a844`](https://github.com/pixlcore/xyops/commit/7864a844919b7f62891ce3786506d98524f9ba8e): Conductors page: Only call addPageDescription on onActivate, not every call to render_masters
+
+## Version v0.9.0
+
+> December 29, 2025
+
+- Initial beta release!

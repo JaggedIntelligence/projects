@@ -1,0 +1,8 @@
+[1789483241.891][2026-09-15 07:40:41][subbas-macbook-air.local][99289][User][error][user][Failed to load session: Error: Failed to fetch key: sessions/16aaf557ef0a8e9042276b9cdf664df98c9c454850c95cfe479b1e713af64e5b: Not found][]
+[1789483276.898][2026-09-15 07:41:16][subbas-macbook-air.local][99289][User][error][user][Failed to load session: Error: Failed to fetch key: sessions/16aaf557ef0a8e9042276b9cdf664df98c9c454850c95cfe479b1e713af64e5b: Not found][]
+[1789483276.9][2026-09-15 07:41:16][subbas-macbook-air.local][99289][User][error][session][Session has expired or is invalid.][]
+[1789483299.595][2026-09-15 07:41:39][subbas-macbook-air.local][99289][User][error][user][Your password is incorrect.][]
+[1789483800.044][2026-09-15 07:50:00][subbas-macbook-air.local][99289][xyOps][error][snapshot][Failed to take snapshot: No server selected for job.][{"job":"jmu2sg924w2n4thh"}]
+[1789484333.921][2026-09-15 07:58:53][subbas-macbook-air.local][99289][xyOps][error][db][Failed to get server summaries: Error: Failed to fetch key: unbase/index/servers/os_platform/summary: Not found (no servers added yet?)][{"keys":["unbase/index/servers/os_platform/summary","unbase/index/servers/os_distro/summary","unbase/index/servers/os_release/summary","unbase/index/servers/os_arch/summary","unbase/index/servers/cpu_virt/summary","unbase/index/servers/cpu_brand/summary","unbase/index/servers/cpu_cores/summary"]}]
+[1789484400.048][2026-09-15 08:00:00][subbas-macbook-air.local][99289][xyOps][error][snapshot][Failed to take snapshot: No server selected for job.][{"job":"jmu2st413zfcua55"}]
+[1789484561.664][2026-09-15 08:02:41][subbas-macbook-air.local][4306][Storage][error][rollback][Aborting transaction: 3][{"path":"timeline/smu2svkrvihxgeos/hourly","actions":0}]

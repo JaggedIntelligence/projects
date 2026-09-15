@@ -1,0 +1,2023 @@
+{
+	"privilege_list": [
+		{ "id": "admin", "title": "Administrator", "icon": "account-wrench" },
+		
+		{ "id": "create_alerts", "title": "Create Alerts", "icon": "bell-outline" },
+		{ "id": "edit_alerts", "title": "Edit Alerts", "icon": "bell-outline" },
+		{ "id": "delete_alerts", "title": "Delete Alerts", "icon": "bell-outline" },
+		
+		{ "id": "create_buckets", "title": "Create Buckets", "icon": "pail-outline" },
+		{ "id": "edit_buckets", "title": "Edit Buckets", "icon": "pail-outline" },
+		{ "id": "delete_buckets", "title": "Delete Buckets", "icon": "pail-outline" },
+		
+		{ "id": "create_categories", "title": "Create Categories", "icon": "folder-open-outline" },
+		{ "id": "edit_categories", "title": "Edit Categories", "icon": "folder-open-outline" },
+		{ "id": "delete_categories", "title": "Delete Categories", "icon": "folder-open-outline" },
+		
+		{ "id": "create_channels", "title": "Create Channels", "icon": "bullhorn-outline" },
+		{ "id": "edit_channels", "title": "Edit Channels", "icon": "bullhorn-outline" },
+		{ "id": "delete_channels", "title": "Delete Channels", "icon": "bullhorn-outline" },
+		
+		{ "id": "create_events", "title": "Create Events", "icon": "calendar-clock" },
+		{ "id": "edit_events", "title": "Edit Events", "icon": "calendar-clock" },
+		{ "id": "delete_events", "title": "Delete Events", "icon": "calendar-clock" },
+		
+		{ "id": "create_groups", "title": "Create Groups", "icon": "server-network" },
+		{ "id": "edit_groups", "title": "Edit Groups", "icon": "server-network" },
+		{ "id": "delete_groups", "title": "Delete Groups", "icon": "server-network" },
+		
+		{ "id": "run_jobs", "title": "Run Jobs", "icon": "timer-outline" },
+		{ "id": "update_jobs", "title": "Update Jobs", "icon": "timer-outline" },
+		{ "id": "abort_jobs", "title": "Abort Jobs", "icon": "timer-outline" },
+		{ "id": "delete_jobs", "title": "Delete Jobs", "icon": "timer-outline" },
+		{ "id": "tag_jobs", "title": "Job Tags", "icon": "timer-outline" },
+		
+		{ "id": "create_monitors", "title": "Create Monitors", "icon": "chart-areaspline" },
+		{ "id": "edit_monitors", "title": "Edit Monitors", "icon": "chart-areaspline" },
+		{ "id": "delete_monitors", "title": "Delete Monitors", "icon": "chart-areaspline" },
+		
+		{ "id": "create_plugins", "title": "Create Plugins", "icon": "power-plug-outline" },
+		{ "id": "edit_plugins", "title": "Edit Plugins", "icon": "power-plug-outline" },
+		{ "id": "delete_plugins", "title": "Delete Plugins", "icon": "power-plug-outline" },
+		
+		{ "id": "create_roles", "title": "Create Roles", "icon": "account-group" },
+		{ "id": "edit_roles", "title": "Edit Roles", "icon": "account-group" },
+		{ "id": "delete_roles", "title": "Delete Roles", "icon": "account-group" },
+		
+		{ "id": "create_tags", "title": "Create Tags", "icon": "tag-outline" },
+		{ "id": "edit_tags", "title": "Edit Tags", "icon": "tag-outline" },
+		{ "id": "delete_tags", "title": "Delete Tags", "icon": "tag-outline" },
+		
+		{ "id": "create_tickets", "title": "Create Tickets", "icon": "text-box-outline" },
+		{ "id": "edit_tickets", "title": "Edit Tickets", "icon": "text-box-outline" },
+		{ "id": "delete_tickets", "title": "Delete Tickets", "icon": "text-box-outline" },
+		
+		{ "id": "create_web_hooks", "title": "Create Web Hooks", "icon": "webhook" },
+		{ "id": "edit_web_hooks", "title": "Edit Web Hooks", "icon": "webhook" },
+		{ "id": "delete_web_hooks", "title": "Delete Web Hooks", "icon": "webhook" },
+		
+		{ "id": "create_snapshots", "title": "Create Snapshots", "icon": "monitor-screenshot" },
+		{ "id": "delete_snapshots", "title": "Delete Snapshots", "icon": "monitor-screenshot" },
+		
+		{ "id": "add_servers", "title": "Add Servers", "icon": "server-plus-outline" },
+		{ "id": "update_servers", "title": "Update Servers", "icon": "server-network-outline" },
+		{ "id": "send_emails", "title": "Send Emails", "icon": "email-fast-outline" },
+		{ "id": "bulk_export", "title": "Bulk Export", "icon": "database-export-outline" }
+	],
+	
+	"globalMemoryLists": ["api_keys", "groups", "plugins", "categories", "events", "channels", "web_hooks", "buckets", "secrets", "monitors", "alerts", "tags", "roles"],
+	
+	"list_list": [
+		{ "id": "alerts", "title": "Alerts", "icon": "bell-outline" },
+		{ "id": "api_keys", "title": "API Keys", "icon": "key-chain" },
+		{ "id": "buckets", "title": "Buckets", "icon": "pail-outline" },
+		{ "id": "categories", "title": "Categories", "icon": "folder-open-outline" },
+		{ "id": "channels", "title": "Channels", "icon": "bullhorn-outline" },
+		{ "id": "events", "title": "Events", "icon": "calendar-clock" },
+		{ "id": "groups", "title": "Groups", "icon": "server-network" },
+		{ "id": "monitors", "title": "Monitors", "icon": "chart-areaspline" },
+		{ "id": "plugins", "title": "Plugins", "icon": "power-plug-outline" },
+		{ "id": "secrets", "title": "Secrets", "icon": "shield-lock-outline" },
+		{ "id": "tags", "title": "Tags", "icon": "tag-outline" },
+		{ "id": "users", "title": "Users", "icon": "account" },
+		{ "id": "roles", "title": "Roles", "icon": "account-group" },
+		{ "id": "web_hooks", "title": "Web Hooks", "icon": "webhook" }
+	],
+	
+	"database_list": [
+		{ "id": "alerts", "title": "Alerts", "icon": "bell-outline" },
+		{ "id": "jobs", "title": "Jobs", "icon": "timer-outline" },
+		{ "id": "servers", "title": "Servers", "icon": "router-network" },
+		{ "id": "snapshots", "title": "Snapshots", "icon": "monitor-screenshot" },
+		{ "id": "activity", "title": "Activity", "icon": "history" },
+		{ "id": "tickets", "title": "Tickets", "icon": "text-box-outline" }
+	],
+	
+	"extra_list": [
+		{ "id": "job_files", "title": "Job Files", "icon": "file-image-outline" },
+		{ "id": "job_logs", "title": "Job Logs", "icon": "file-document-outline" },
+		{ "id": "bucket_files", "title": "Bucket Files", "icon": "pail-outline" },
+		{ "id": "ticket_files", "title": "Ticket Files", "icon": "text-box-outline" },
+		{ "id": "monitor_data", "title": "Monitor History", "icon": "chart-timeline-variant" },
+		{ "id": "stat_data", "title": "Stat History", "icon": "chart-scatter-plot" },
+		{ "id": "user_avatars", "title": "User Avatars", "icon": "account-circle" }
+	],
+	
+	"activity_descriptions": {
+		"alert_create": "Alert definition created: [description] ([alert.id])",
+		"alert_update": "Alert definition updated: [description] ([alert.id])",
+		"alert_delete": "Alert definition deleted: [description] ([alert.id])",
+		"alert_update_tickets": "Alert invocation tickets updated: #[description]",
+		"alert_delete_invocation": "Alert invocation deleted: #[description]",
+		
+		"apikey_create": "API Key created: [description]",
+		"apikey_update": "API Key updated: [description]",
+		"apikey_delete": "API Key deleted: [description]",
+		
+		"category_create": "Category created: [description] ([category.id])",
+		"category_update": "Category updated: [description] ([category.id])",
+		"category_delete": "Category deleted: [description] ([category.id])",
+		"category_multi_update": "Multiple categories updated ([updated]).",
+		
+		"channel_create": "Channel created: [description] ([channel.id])",
+		"channel_update": "Channel updated: [description] ([channel.id])",
+		"channel_delete": "Channel deleted: [description] ([channel.id])",
+		
+		"event_create": "Event created: [description] ([event.id])",
+		"event_update": "Event updated: [description] ([event.id])",
+		"event_delete": "Event deleted: [description] ([event.id])",
+		
+		"job_update": "Job updated: #[description]",
+		"job_update_tags": "Job tags updated: #[description]",
+		"job_update_tickets": "Job tickets updated: #[description]",
+		"job_update_comments": "Job comments updated: #[description]",
+		"job_abort": "Job aborted: #[description]: [reason]",
+		"job_delete": "Job deleted: #[description]",
+		"job_delete_file": "Job file deleted: #[description]: [path]",
+		"job_resume": "Job has been resumed: #[description]",
+		"queue_flush": "Flushed job queue for event: #[description]",
+		
+		"group_create": "Server group created: [description] ([group.id])",
+		"group_update": "Server group updated: [description] ([group.id])",
+		"group_delete": "Server group deleted: [description] ([group.id])",
+		"group_multi_update": "Multiple server groups updated ([updated]).",
+		"group_watch": "A watch for [duration] was set on the group: [group.title] ([group.id])",
+		
+		"monitor_create": "Monitor created: [description] ([monitor.id])",
+		"monitor_update": "Monitor updated: [description] ([monitor.id])",
+		"monitor_delete": "Monitor deleted: [description] ([monitor.id])",
+		"monitor_multi_update": "Multiple monitors updated ([updated]).",
+		
+		"plugin_create": "Plugin created: [description] ([plugin.id])",
+		"plugin_update": "Plugin updated: [description] ([plugin.id])",
+		"plugin_delete": "Plugin deleted: [description] ([plugin.id])",
+		
+		"tag_create": "Tag created: [description] ([tag.id])",
+		"tag_update": "Tag updated: [description] ([tag.id])",
+		"tag_delete": "Tag deleted: [description] ([tag.id])",
+		
+		"web_hook_create": "Web Hook created: [description] ([web_hook.id])",
+		"web_hook_update": "Web Hook updated: [description] ([web_hook.id])",
+		"web_hook_delete": "Web Hook deleted: [description] ([web_hook.id])",
+		
+		"bucket_create": "Bucket created: [description] ([bucket.id])",
+		"bucket_update": "Bucket updated: [description] ([bucket.id])",
+		"bucket_delete": "Bucket deleted: [description] ([bucket.id])",
+		
+		"secret_create": "Secret created: [description] ([secret.id])",
+		"secret_update": "Secret updated: [description] ([secret.id])",
+		"secret_delete": "Secret deleted: [description] ([secret.id])",
+		"secret_access": "Secret was accessed: [description] ([secret.id])",
+		
+		"ticket_create": "Ticket #[ticket.num] created: [ticket.subject] ([ticket.id])",
+		"ticket_update": "Ticket #[ticket.num] updated: [ticket.subject] ([ticket.id])",
+		"ticket_delete": "Ticket #[ticket.num] deleted: [ticket.subject] ([ticket.id])",
+		"ticket_add_change": "Ticket comment added: #[ticket.num]: [ticket.subject] ([ticket.id])",
+		"ticket_update_change": "Ticket comment updated: #[ticket.num]: [ticket.subject] ([ticket.id])",
+		
+		"user_create": "User created: [user.full_name] ([user.username])",
+		"user_update": "User updated: [user.full_name] ([user.username])",
+		"user_delete": "User deleted: [user.full_name] ([user.username])",
+		"user_login": "User logged in: [user.full_name] ([user.username])",
+		"user_password": "User password was changed: [user.full_name] ([user.username])",
+		
+		"role_create": "Role created: [description] ([role.id])",
+		"role_update": "Role updated: [description] ([role.id])",
+		"role_delete": "Role deleted: [description] ([role.id])",
+		
+		"server_add": "Server connected to the network: [nice_server]",
+		"server_remove": "Server disconnected from the network: [nice_server]",
+		"server_delete": "Server deleted: [hostname]",
+		"server_update": "Server information was updated: [hostname]",
+		"server_watch": "A watch for [duration] was set on the server: [hostname]",
+		
+		"master_primary": "Conductor server is now primary: [host]",
+		"peer_add": "Conductor server added to the network: [host]",
+		"peer_disconnect": "Conductor serfer disconnected from the network: [host]",
+		"peer_command": "Control command [commands] sent to conductor server: [host]",
+		
+		"state_update": "Internal state updated: [description]",
+		"internal_job": "Internal job completed: [job.title]",
+		"config_update": "System configuration updated."
+	},
+	
+	"activity_search_map": {
+		"alerts": "^(alert_.+)$",
+		"api_keys": "^(apikey_.+)$",
+		"categories": "^(category_.+)$",
+		"channels": "^(channel_.+)$",
+		"events": "^(event_.+)$",
+		"jobs": "^(job_.+|queue_.+)$",
+		"groups": "^(group_.+)$",
+		"monitors": "^(monitor_.+)$",
+		"plugins": "^(plugin_.+)$",
+		"tags": "^(tag_.+)$",
+		"web_hooks": "^(web_hook_.+)$",
+		"buckets": "^(bucket_.+)$",
+		"secrets": "^(secret_.+)$",
+		"tickets": "^(ticket_.+)$",
+		"users": "^(user_.+)$",
+		"roles": "^(role_.+)$",
+		"servers": "^(server_.+)$",
+		"peers": "^(peer_.+|master_primary)$",
+		"system": "^(state_update|internal_job|config_update)$"
+	},
+	
+	"activity_types": {
+		"^apikey": { "icon": "key-variant", "label": "API Key" },	
+		
+		"^user_create": { "icon": "account-plus", "label": "User" },
+		"^user_update": { "icon": "account-edit", "label": "User" },
+		"^user_login": { "icon": "account-key", "label": "User" },
+		"^user_password": { "icon": "account-key", "label": "User" },
+		"^user": { "icon": "account", "label": "User" },
+		"^role": { "icon": "account-group", "label": "Role" },
+		
+		"^error": { "icon": "alert-decagram", "label": "Error" },
+		"^warning": { "icon": "alert-rhombus", "label": "Warning" },
+		"^notice": { "icon": "information-outline", "label": "Notice" },
+		"^critical": { "icon": "fire-alert", "label": "Critical" },
+		"^group": { "icon": "server-network", "label": "Group" },
+		"^server": { "icon": "router-network", "label": "Server" },
+		"^master": { "icon": "database", "label": "Conductor" },
+		"^peer": { "icon": "database", "label": "Conductor" },
+		"^monitor": { "icon": "chart-line", "label": "Monitor" },
+		
+		"^alert_new": { "icon": "progress-alert", "label": "Alert" },
+		"^alert_cleared": { "icon": "alert-circle-outline", "label": "Alert" },
+		"^alert": { "icon": "bell-outline", "label": "Alert" },
+		
+		"^tag": { "icon": "tag-outline", "label": "Tag" },
+		"^category": { "icon": "folder-open-outline", "label": "Category" },
+		"^event": { "icon": "file-clock-outline", "label": "Event" },
+		"^workflow": { "icon": "clipboard-flow-outline", "label": "Workflow" },
+		"^channel": { "icon": "bullhorn-outline", "label": "Channel" },
+		"^web_hook": { "icon": "webhook", "label": "Web Hook" },
+		"^bucket": { "icon": "pail-outline", "label": "Bucket" },
+		"^secret": { "icon": "shield-lock-outline", "label": "Secret" },
+		"^ticket": { "icon": "text-box-outline", "label": "Ticket" },
+		"^plugin": { "icon": "power-plug-outline", "label": "Plugin" },
+		"^job": { "icon": "timer-outline", "label": "Job" },
+		"^queue": { "icon": "tray-full", "label": "Queue" },
+		
+		"^state": { "icon": "database-outline", "label": "State" },
+		"^internal": { "icon": "desktop-classic", "label": "System" },
+		"^config": { "icon": "cog", "label": "Config" }
+	},
+	
+	"data_types": {
+		"alert": { "name": "alert", "list": "alerts", "icon": "bell-outline", "page": "AlertSetup" },
+		"api_key": { "name": "API key", "list": "api_keys", "icon": "key-variant", "page": "APIKeys" },
+		"category": { "name": "category", "list": "categories", "icon": "folder-open-outline", "page": "Categories" },
+		"channel": { "name": "channel", "list": "channels", "icon": "bullhorn-outline", "page": "Channels" },
+		"event": { "name": "event", "list": "events", "icon": "file-clock-outline", "page": "Events" },
+		"group": { "name": "group", "list": "groups", "icon": "server-network", "page": "Groups" },
+		"monitor": { "name": "monitor", "list": "monitors", "icon": "chart-line", "page": "Monitors" },
+		"plugin": { "name": "plugin", "list": "plugins", "icon": "power-plug-outline", "page": "Plugins" },
+		"tag": { "name": "tag", "list": "tags", "icon": "tag-outline", "page": "Tags" },
+		"web_hook": { "name": "web hook", "list": "web_hooks", "icon": "webhook", "page": "WebHooks" },
+		"bucket": { "name": "bucket", "list": "buckets", "icon": "pail-outline", "page": "Buckets" },
+		"secret": { "name": "secret", "list": "secrets", "icon": "shield-lock-outline", "page": "Secrets" },
+		"user": { "name": "user", "list": "users", "icon": "account", "page": "Users" },
+		"role": { "name": "role", "list": "roles", "icon": "account-group", "page": "Roles" }
+	},
+	
+	"plugin_type_descriptions": {
+		"event": "**Event Plugins** contain the code that runs your actual jobs.  They run on the target server for the event, and are expected to consume JSON on STDIN and output JSON on STDOUT, to communicate with xyOps regarding the job, and to denote the completion and status.  For more information see [Event Plugins](#Docs/plugins/event-plugins).",
+		"monitor": "**Monitor Plugins** run the specified code every minute on every targeted server to graph custom data.  For example, you can use this to monitor your own application status, and produce output that feeds multiple graphs.  For more information see [Monitor Plugins](#Docs/plugins/monitor-plugins).",
+		"action": "**Action Plugins** can run custom code in response to job conditions such as completion, success, error, and other cases.  The action code runs on the current conductor server, and is designed to call your own notification system.  For more information see [Action Plugins](#Docs/plugins/action-plugins).",
+		"scheduler": "**Trigger Plugins** allow you to define your own event scheduling systems.  Every minute, your plugin code will execute and be passed a JSON document containing all the events currently assigned, plus the date/time in the event's timezone, and you can decide which events run at which times.  For more information see [Trigger Plugins](#Docs/plugins/trigger-plugins)."
+	},
+	
+	"error_type_descriptions": {
+		"master": "Unfortunately, you have landed on a non-primary conductor server.  Meaning, this server is part of a cluster of conductor servers, but it is not the current primary server.  The current primary server is \"[masterHost]\", but you may not be able to access it directly.  Multi-conductor setups typically have a load balancer in front, so you don't ever have to address any conductor server directly.  However, since you are here reading this, something has clearly gone wrong.  Please contact your system administrator for help."
+	},
+	
+	"workflow_controller_descriptions": {
+		"multiplex": "The **Multiplex** controller allows you to run an event job multiple times in series or parallel, across multiple servers.  Specifically, it will launch one job for each configured target server in the event.  Make sure your event targets multiple servers, otherwise this will only launch a single job.  [Learn More](#Docs/workflows/multiplex-controller)",
+		"wait": "The **Wait** controller waits for a specific amount of time before passing control to all the connected nodes.  [Learn More](#Docs/workflows/wait-controller)",
+		"repeat": "The **Repeat** controller will run a job multiple times in series or in parallel, based on the configured limits on the event.  You can specify the exact number of iterations below.  This is useful for running the same job a set number of times.  [Learn More](#Docs/workflows/repeat-controller)",
+		"split": "The **Split** controller will run a job multiple times in series or in parallel, but it will split the input data into multiple chunks, and run each chunk in its own job.  This is useful for processing large datasets in parallel, such as splitting a large file into smaller parts.  Use the expression field to specify the input data to split, which should point to an array.  [Learn More](#Docs/workflows/split-controller)",
+		"join": "The **Join** controller will wait for multiple input jobs to complete, and then pass control to the next node, combining the results of the jobs.  This is useful for aggregating data from multiple sources, such as combining the results of multiple API calls into a single response.  [Learn More](#Docs/workflows/join-controller)",
+		"decision": "The **Decision** controller will evalulate a custom expression, and only pass control to the next node if the expression evaluates to true.  This is useful for conditional logic, such as only running a job if a certain condition is met.  [Learn More](#Docs/workflows/decision-controller)"
+	},
+	
+	"dom": {
+		"d_nt_subject": {
+			"label": "Subject:",
+			"caption": "Enter a subject line for the ticket (i.e. title, summary, etc.)."
+		},
+		"d_nt_type": {
+			"label": "Type:",
+			"caption": "Select a type for the new ticket."
+		},
+		"fe_nt_type": {
+			"title": "Select type for ticket",
+			"placeholder": "Select type for ticket..."
+		},
+		"d_nt_assignees": {
+			"label": "Assignees:",
+			"caption": "Select the user(s) responsible for executing the ticket."
+		},
+		"fe_nt_assignees": {
+			"title": "Select assignees for ticket",
+			"placeholder": "Select assignees..."
+		},
+		"d_nt_tags": {
+			"label": "Tags:",
+			"caption": "Optionally select tags to apply to the ticket."
+		},
+		"fe_nt_tags": {
+			"title": "Select tags to apply",
+			"placeholder": "Select tags to apply..."
+		},
+		"d_nt_due_preset": {
+			"label": "Due Date:",
+			"caption": "Optionally select the ticket due date (reminders are sent out after this)."
+		},
+		"fe_nt_due_preset": {
+			"title": "Select Due Date"
+		},
+		
+		"d_ete_scope": {
+			"label": "Test Scope:",
+			"caption": "Choose whether to test the selected node by itself, or the entire workflow from starting from the selected node."
+		},
+		"fe_ete_scope": {
+			"title": "Select Test Scope",
+			"options": [
+				{ "id": "single", "title": "Single selected node by itself", "icon": "timer-play-outline" },
+				{ "id": "entire", "title": "Entire workflow starting at selection", "icon": "clipboard-play-outline" }
+			]
+		},
+		"d_ete_actions": {
+			"label": "Actions:",
+			"caption": "Enable all actions for the test run (includes both workflow and individual node actions)"
+		},
+		"fe_ete_actions": {
+			"label": "Enable All Actions"
+		},
+		"d_ete_limits": {
+			"label": "Limits:",
+			"caption": "Enable all resource limits for the test run (includes both workflow and individual node limits)."
+		},
+		"fe_ete_limits": {
+			"label": "Enable All Limits"
+		},
+		"d_ete_input": {
+			"label": "Data Input:",
+			"caption": "Optionally customize the JSON input data for the first job.  This is used to simulate data being passed in from a previous job."
+		},
+		"d_ete_files": {
+			"label": "File Input:",
+			"caption": "Optionally upload and attach files to the job as inputs."
+		},
+		"d_ete_params": {
+			"label": "Workflow Parameters:",
+			"caption": "Enter values for all the event-defined parameters here."
+		},
+		
+		"d_ex_job": {
+			"label": "Select Previous Job:",
+			"caption": "Select a completed job to explore its data."
+		},
+		"fe_ex_job": {
+			"title": "Select Previous Job"
+		},
+		"d_ex_tree_viewer": {
+			"label": "Data Explorer:",
+			"caption": "Click on the desired key to insert the full path into the field below."
+		},
+		"d_ex_exp": {
+			"label": "Data Path:",
+			"caption": "Once clicked, your selected data path will appear here."
+		},
+		
+		"d_ex_code_viewer": {
+			"label": "Job Data Viewer:",
+			"caption": "View the output data and/or files produced by the selected job."
+		},
+		
+		"d_ex_server": {
+			"label": "Select Server:",
+			"caption": "Select a server to load its data."
+		},
+		
+		"d_re_tags": {
+			"label": "Tags:",
+			"caption": "Optionally override the tags for running the event."
+		},
+		"fe_re_tags": {
+			"title": "Select tags for event",
+			"placeholder": "(Use event defaults)"
+		}
+	},
+	
+	"pages": {
+		
+		"Events": {
+			
+		},
+		
+		"Workflows": {
+			"d_wf_id": {
+				"label": "Workflow ID:",
+				"caption": "This is a unique ID for the workflow, used by the API.  It cannot be changed."
+			},
+			"d_wf_title": {
+				"label": "Workflow Title:",
+				"caption": "Enter the title of the workflow, for display purposes."
+			},
+			"d_wf_enabled": {
+				"label": "Status:",
+				"caption": "Only enabled workflows can execute, including scheduled and manual runs."
+			},
+			"fe_wf_enabled": {
+				"label": "Workflow Enabled"
+			},
+			"d_wf_icon": {
+				"label": "Custom Icon:",
+				"caption": "Optionally choose a custom icon for the workflow."
+			},
+			"fe_wf_icon": {
+				"title": "Select icon for workflow",
+				"placeholder": "Select icon for workflow..."
+			},
+			"d_wf_cat": {
+				"label": "Category:",
+				"caption": "Select a category for the workflow (this may apply a Max Jobs Limit, etc.)"
+			},
+			"fe_wf_cat": {
+				"title": "Select category for workflow",
+				"placeholder": "Select category for workflow..."
+			},
+			"d_wf_tags": {
+				"label": "Tags:",
+				"caption": "Optionally select one or more tags for the workflow.  Jobs can also add their own tags at run time."
+			},
+			"fe_wf_tags": {
+				"title": "Select tags for workflow",
+				"placeholder": "Select tags for workflow..."
+			},
+			"d_wf_user_fields": {
+				"label": "User Parameters:",
+				"caption": "Optionally define custom parameters to be collected when a user runs your workflow manually."
+			},
+			"d_wf_res_limits": {
+				"label": "Workflow Limits:",
+				"caption": "Optionally select resource limits to assign to the workflow.  These apply only to the workflow itself (not sub-jobs within), and they are added to any limits set at the category and/or universal level."
+			},
+			"d_wf_job_actions": {
+				"label": "Workflow Actions:",
+				"caption": "Optionally select custom actions to perform for each workflow.  These apply only to the workflow itself (not sub-jobs within), and they are added to any actions set at the category and/or universal level."
+			},
+			"d_wf_notes": {
+				"label": "Notes:",
+				"caption": "Optionally enter notes for the event, which will be included in all email notifications."
+			},
+			
+			"d_wfde_title": {
+				"label": "Title:",
+				"caption": "Optionally customize the title for the node (defaults to the Event name)."
+			},
+			"d_wfde_event": {
+				"label": "Event:",
+				"caption": "Select the event to use for the workflow node."
+			},
+			"fe_wfde_event": {
+				"title": "Select Event"
+			},
+			"d_wfde_targets": {
+				"label": "Targets:",
+				"caption": "Optionally override the targets for running the event."
+			},
+			"fe_wfde_targets": {
+				"title": "Select targets for event",
+				"placeholder": "(Use event defaults)"
+			},
+			"d_wfde_expression": {
+				"label": "Target Expression:",
+				"caption": "Optionally override the expression to target servers based on their data, e.g. `userData.foo == \"bar\"`.  [Learn More](#Docs/events/target-expressions)."
+			},
+			"d_wfde_algo": {
+				"label": "Algorithm:",
+				"caption": "Optionally override the target selection algorithm for the event."
+			},
+			"fe_wfde_algo": {
+				"title": "Select algorithm for targets"
+			},
+			"d_wfde_tags": {
+				"label": "Tags:",
+				"caption": "Optionally override the tags for running the event."
+			},
+			"fe_wfde_tags": {
+				"title": "Select tags for event",
+				"placeholder": "(Use event defaults)"
+			},
+			"d_wfde_user_params": {
+				"label": "User Parameters:",
+				"caption": "Enter values for all the event-defined parameters here."
+			},
+			"d_wfde_replay": {
+				"label": "Replay Previous Job:",
+				"caption": "Optionally select a previous job to replay for this node."
+			},
+			"fe_wfde_replay": {
+				"title": "Select Previous Job"
+			},
+			
+			"d_wfdj_plugin": {
+				"label": "Plugin:",
+				"caption": "Select the desired Plugin for the node.  Plugin parameters will appear below."
+			},
+			"fe_wfdj_plugin": {
+				"title": "Select Plugin for node",
+				"placeholder": "Select Plugin for node..."
+			},
+			"d_wfdj_title": {
+				"label": "Title:",
+				"caption": "Optionally customize the title for the node (defaults to the Plugin name)."
+			},
+			"d_wfdj_cat": {
+				"label": "Category:",
+				"caption": "Select a category for the plugin job (category limits and actions will apply)."
+			},
+			"fe_wfdj_cat": {
+				"title": "Select category for job",
+				"placeholder": "Select category for job..."
+			},
+			"d_wfdj_targets": {
+				"label": "Targets:",
+				"caption": "Select groups and/or servers to run the plugin job."
+			},
+			"fe_wfdj_targets": {
+				"title": "Select targets for jobs",
+				"placeholder": "Select targets for jobs..."
+			},
+			"d_wfdj_expression": {
+				"label": "Target Expression:",
+				"caption": "Optionally enter an expression to target servers based on their data, e.g. `userData.foo == \"bar\"`.  [Learn More](#Docs/events/target-expressions)."
+			},
+			"d_wfdj_algo": {
+				"label": "Algorithm:",
+				"caption": "Select the desired algorithm for choosing a server from the target list."
+			},
+			"fe_wfdj_algo": {
+				"title": "Select algorithm for targets",
+				"placeholder": "Select algorithm for targets..."
+			},
+			"d_wfdj_tags": {
+				"label": "Tags:",
+				"caption": "Optionally select tags to apply to all plugin jobs."
+			},
+			"fe_wfdj_tags": {
+				"title": "Select tags for jobs",
+				"placeholder": "Select tags for jobs..."
+			},
+			"d_wfdj_user_params": {
+				"label": "Plugin Parameters:",
+				"caption": "Enter values for all the Plugin-defined parameters here."
+			},
+			"d_wfdj_replay": {
+				"label": "Replay Previous Job:",
+				"caption": "Optionally select a previous job to replay for this node."
+			},
+			"fe_wfdj_replay": {
+				"title": "Select Previous Job"
+			},
+			
+			"d_wfd_type": {
+				"label": "Controller Type:",
+				"caption": "Select the desired type for the controller."
+			},
+			"fe_wfd_type": {
+				"title": "Select Controller Type"
+			},
+			"d_wfd_desc": {
+				"label": "Description"
+			},
+			"d_wfd_stagger": {
+				"label": "Stagger Delay:",
+				"caption": "Optionally enter a duration to stagger the start of each multiplexed job."
+			},
+			"d_wfd_wait": {
+				"label": "Wait Delay:",
+				"caption": "Enter a duration to wait before control passes to the connected nodes."
+			},
+			"d_wfd_repeat": {
+				"label": "Repeat Iterations:",
+				"caption": "Enter the number of iterations to repeat before continuing on."
+			},
+			"d_wfd_split": {
+				"label": "Split Expression:",
+				"caption": "Specify the path to the array for splitting, using [XYEXP](#Docs/xyexp), e.g. `data.myItems`.  Use the special `files` keyword to split the input files."
+			},
+			"d_wfd_split_filter": {
+				"label": "Item Filter:",
+				"caption": "Optionally enter an expression to filter items, e.g. `item.random > 0.5`.  If false, the item will be excluded from the set.  [Learn More](#Docs/workflows/split-item-filter)"
+			},
+			"d_wfd_split_chunk": {
+				"label": "Batch Size:",
+				"caption": "Optionally batch multiple items per job by increasing this value.  The default is `1`, meaning each job receives exactly one item.  [Learn More](#Docs/workflows/split-batch-size)"
+			},
+			"d_wfd_if": {
+				"label": "Expression:",
+				"caption": "Enter the expression to evaluate using [XYEXP](#Docs/xyexp), e.g. `data.random > 0.5`.  If true, control will pass onto the next node."
+			},
+			"d_wfd_if_abort": {
+				"label": "Behavior:",
+				"caption": "Optionally abort the entire workflow if the expression evaluates to false."
+			},
+			"fe_wfd_if_abort": {
+				"label": "Abort on False"
+			},
+			"d_wfd_title": {
+				"label": "Custom Title:",
+				"caption": "Optionally enter a custom title for the node."
+			},
+			"d_wfd_icon": {
+				"label": "Custom Icon:",
+				"caption": "Optionally choose a custom icon for the node."
+			},
+			"fe_wfd_icon": {
+				"title": "Select icon for node"
+			},
+			"d_wfd_continue": {
+				"label": "Continue Percentage:",
+				"caption": "Enter the percentage of jobs that must complete successfully before continuing on to the next node."
+			},
+			
+			"d_wfd_body": {
+				"label": "Note Content:",
+				"caption": "Enter the note body text using [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) syntax."
+			},
+			"d_wfd_color": {
+				"label": "Highlight Color:",
+				"caption": "Optionally select a highlight color for the note."
+			},
+			"fe_wfd_color": {
+				"title": "Select Highlight Color"
+			},
+			"d_wfd_wide": {
+				"label": "Size:",
+				"caption": "Optionally give the note extra horizontal space."
+			},
+			"fe_wfd_wide": {
+				"label": "Double-Wide"
+			},
+			"d_wfd_show": {
+				"label": "Visibility:",
+				"caption": "Optionally show the note during workflow job runs."
+			},
+			"fe_wfd_show": {
+				"label": "Show During Job Runs"
+			}
+		},
+		
+		"System": {
+			"d_sys_sat_targets": {
+				"label": "Upgrade Targets:",
+				"caption": "Select which groups and/or servers you want to upgrade."
+			},
+			"fe_sys_sat_targets": {
+				"title": "Select targets for upgrade",
+				"placeholder": "Select targets for upgrade..."
+			},
+			"d_sys_sat_release": {
+				"label": "Satellite Version:",
+				"caption": "Select the desired xyOps Satellite version to be installed."
+			},
+			"fe_sys_sat_release": {
+				"title": "Select Satellite Version"
+			},
+			"d_sys_sat_stagger": {
+				"label": "Stagger Installs:",
+				"caption": "Optionally stagger the installs by a custom interval."
+			},
+			
+			"d_sys_multi_targets": {
+				"label": "Upgrade Conductors:",
+				"caption": "Select which conductor servers you want to upgrade."
+			},
+			"fe_sys_multi_targets": {
+				"title": "Select conductors for upgrade",
+				"placeholder": "Select conductors for upgrade..."
+			},
+			"d_sys_multi_release": {
+				"label": "xyOps Version:",
+				"caption": "Select the desired xyOps version to be installed."
+			},
+			"fe_sys_multi_release": {
+				"title": "Select xyOps Version"
+			},
+			"d_sys_multi_stagger": {
+				"label": "Stagger Installs:",
+				"caption": "Optionally stagger the installs by a custom interval."
+			}
+		},
+		
+		"Tickets": {
+			"d_nt_subject": {
+				"label": "Subject:",
+				"caption": "Enter a subject line for the ticket (i.e. title, summary, etc.)."
+			},
+			"d_nt_body": {
+				"label": "Body:",
+				"caption": "Enter the ticket body text using [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) syntax."
+			},
+			"d_nt_type": {
+				"label": "Type:",
+				"caption": "Select a type for the new ticket."
+			},
+			"fe_nt_type": {
+				"title": "Select type for ticket",
+				"placeholder": "Select type for ticket..."
+			},
+			"d_nt_status": {
+				"label": "Status:",
+				"caption": "Select a status for the new ticket."
+			},
+			"fe_nt_status": {
+				"title": "Select status for ticket",
+				"placeholder": "Select status for ticket..."
+			},
+			"d_nt_category": {
+				"label": "Category:",
+				"caption": "Optionally assign the ticket to a category."
+			},
+			"fe_nt_category": {
+				"title": "Select category for ticket"
+			},
+			"d_nt_server": {
+				"label": "Server:",
+				"caption": "Optionally assign the ticket to a server."
+			},
+			"fe_nt_server": {
+				"title": "Select server for ticket"
+			},
+			"d_nt_assignees": {
+				"label": "Assignees:",
+				"caption": "Select the user(s) responsible for executing the ticket."
+			},
+			"fe_nt_assignees": {
+				"title": "Select assignees for ticket",
+				"placeholder": "Select assignees..."
+			},
+			"d_nt_cc": {
+				"label": "Cc:",
+				"caption": "Optionally select users to receive updates for the ticket."
+			},
+			"fe_nt_cc": {
+				"title": "Select users to carbon copy",
+				"placeholder": "Select users to carbon copy..."
+			},
+			"d_nt_notify": {
+				"label": "Notify:",
+				"caption": "Optionally add custom e-mail addresses to receive updates for the ticket."
+			},
+			"fe_nt_notify": {
+				"title": "Add new recipient",
+				"placeholder": "Click to add recipient...",
+				"description": "Enter any email address to receive ticket updates.",
+				"confirm": "Add Recipient"
+			},
+			"d_nt_due": {
+				"label": "Due Date:",
+				"caption": "Optionally select the ticket due date (reminders are sent out after this)."
+			},
+			"d_nt_tags": {
+				"label": "Tags:",
+				"caption": "Optionally select tags to apply to the ticket."
+			},
+			"fe_nt_tags": {
+				"title": "Select tags to apply",
+				"placeholder": "Select tags to apply..."
+			},
+			
+			"d_td_event": {
+				"label": "Event:",
+				"caption": "Select the event for the ticket."
+			},
+			"fe_td_event": {
+				"title": "Select Event"
+			},
+			"d_td_targets": {
+				"label": "Targets:",
+				"caption": "Optionally override the targets for running the event."
+			},
+			"fe_td_targets": {
+				"title": "Select targets for the event",
+				"placeholder": "(Use event defaults)"
+			},
+			"d_td_algo": {
+				"label": "Algorithm:",
+				"caption": "Optionally override the target selection algorithm for the event."
+			},
+			"d_td_tags": {
+				"label": "Tags:",
+				"caption": "Optionally override the tags for running the event."
+			},
+			"fe_td_tags": {
+				"title": "Select tags for the event",
+				"placeholder": "(Use event defaults)"
+			},
+			"fe_td_algo": {
+				"title": "Select algorithm for targets"
+			},
+			"d_td_user_params": {
+				"label": "User Parameters:",
+				"caption": "Enter values for all the event-defined parameters here."
+			}
+		}
+		
+	},
+	
+	"errors": {
+		"api_error": "API Error: [err.description]",
+		"fe_ete_input": "Invalid JSON: [err.message]",
+		"fe_wfd_split": "Please enter a path to the array data you want to split on.",
+		"fe_wfd_if": "Please enter an expression to evaluate.",
+		"fe_ex_job": "(No jobs found)",
+		"ex_tree_none": "No previous jobs were found.",
+		"ex_tree_no_data": "The selected job produced no output data or files.",
+		"new_wf_no_cats": "You must define at least one category to add workflows.",
+		"new_wf_no_plugins": "You must define at least one plugin to add workflows.",
+		"new_wf_no_groups": "You must define at least one server group to add workflows.",
+		"wfde_no_events": "Please create at least one event before adding a workflow event node.",
+		"wfde_event_not_found": "Event ID \"[node.data.event]\" could not be found.",
+		"wfde_event_self": "Cannot use the current workflow as an event node.",
+		"wfdj_no_cats": "You must define at least one category to add workflow plugin nodes.",
+		"wfdj_no_plugins": "You must create at least one Plugin to add workflow plugin nodes.",
+		"wfdj_plugin_not_found": "Plugin ID \"[node.data.plugin]\" could not be found.",
+		"fe_wfdj_targets": "You must select at least one target for the plugin job.",
+		"fe_wf_title": "Please enter a title for the workflow.",
+		"wf_test_no_limit": "Limit nodes cannot be tested directly.  Please select the attached event or plugin node instead.",
+		"sde_no_servers": "No active or recent servers found.  Please add a server to your cluster and try again.",
+		
+		"ticket_no_events": "No events found.",
+		"ticket_event_not_found": "Event ID \"[event.id]\" could not be found."
+	},
+	
+	"titles": {
+		"new_workflow": "New Workflow",
+		"edit_workflow": "Editing Workflow \"[event.title]\"",
+		"edit_workflow_details": "Edit Workflow Details",
+		"test_workflow": "Test Workflow",
+		"workflow_editor": "Workflow Editor",
+		"wf_fullscreen": "ESC to Exit Fullscreen",
+		
+		"wfde_new": "New Event Node",
+		"wfde_edit": "Editing Event Node",
+		
+		"wfdj_new": "New Job Node",
+		"wfdj_edit": "Editing Job Node",
+		
+		"wfda_new": "New Action Node",
+		"wfda_edit": "Editing Action Node",
+		
+		"wfdl_new": "New Limiter Node",
+		"wfdl_edit": "Editing Limiter Node",
+		
+		"wfdc_new": "New Controller",
+		"wfdc_edit": "Editing Controller",
+		
+		"wfdn_new": "New Note",
+		"wfdn_edit": "Editing Note",
+		
+		"wfd_exp_builder": "Expression Builder",
+		"wfd_data_importer": "Job Data Importer",
+		
+		"server_data_explorer": "Server Data Explorer",
+		
+		"ticket_event_new": "New Ticket Event",
+		"ticket_event_edit": "Editing Ticket Event"
+	},
+	
+	"buttons": {
+		"accept": "Accept",
+		"cancel": "Cancel",
+		"close": "Close",
+		"delete": "Delete...",
+		"clone": "Clone...",
+		"export": "Export...",
+		"history": "History...",
+		"save_changes": "Save Changes",
+		"retry": "Retry",
+		
+		"import": "Import...",
+		"import_confirm": "Import",
+		
+		"wf_new_save": "Save Workflow",
+		"wfd_run_test": "Run Test",
+		"wfd_edit_json": "Edit Raw Data...",
+		"wfd_data_importer": "Import From Job...",
+		"wfd_add_node": "Add Node",
+		"wfd_add_action": "Add Action",
+		"wfd_add_limit": "Add Limiter",
+		"wfd_add_controller": "Add Controller",
+		"wfd_add_note": "Add Note",
+		"wfd_edit_note_content": "Edit Note Content...",
+		
+		"wf_edit_sel_node": "Edit...",
+		"wf_test_sel_node": "Test...",
+		"wf_dupe_sel": "Duplicate",
+		"wf_detach_sel": "Detach",
+		"wf_delete_sel": "Remove",
+		"wf_add_node": "Add Node..."
+	},
+	
+	"tooltips": {
+		"copy_id": "Copy ID to Clipboard",
+		"quick_add_cat": "Quick Add Category...",
+		"wfd_exp_builder": "Open Expression Builder...",
+		"server_data_explorer": "Open Server Data Explorer...",
+		
+		"wf_edit_sel_node": "Edit selected node",
+		"wf_test_sel_node": "Test selected node",
+		"wf_dupe_sel": "Duplicate selection",
+		"wf_detach_sel": "Detach selection",
+		"wf_delete_sel": "Remove selection",
+		"wf_undo": "Undo",
+		"wf_redo": "Redo",
+		"wf_fullscreen": "Toggle fullscreen",
+		"wf_zoom_auto": "Zoom to fit",
+		"wf_zoom_out": "Zoom out",
+		"wf_zoom_in": "Zoom in",
+		"wf_tool_draw": "Selection Tool",
+		"wf_tool_move": "Move Tool"
+	},
+	
+	"intros": {
+		"wfd_exp_builder": "This allows you to explore output data from recently completed jobs, and pick out a specific JSON key path to use for your controller expression.",
+		"wfd_data_importer": "Select a previously completed job to import the data and/or files from it.  This is so you can use it as simulated input for your test run.",
+		"wfd_test_selection": "Use this form to test the workflow in its current state.  This runs an ad-hoc test job with your edits, and any custom settings below.  The test will launch in a new browser tab in order to preserve your current context.",
+		"server_data_explorer": "This allows you to explore monitoring data from your servers, and pick out a specific JSON key path to use for your expression.",
+		"job_create_ticket": "Use this form to create a new ticket, which will reference the current job.",
+		"job_add_to_ticket": "Attach the current job to an existing ticket.",
+		"alert_create_ticket": "Use this form to create a new ticket, which will reference the current alert.",
+		"alert_add_to_ticket": "Attach the current alert to an existing ticket."
+	},
+	
+	"nav": {
+		"event_list": { "icon": "calendar-multiple", "loc": "#Events?sub=list", "title": "Events" },
+		"workflow_list": { "icon": "clipboard-flow-outline", "loc": "#Events?plugin=_workflow", "title": "Workflows" },
+		"new_workflow": { "icon": "clipboard-edit-outline", "title": "New Workflow" },
+		"edit_workflow": { "icon": "clipboard-edit-outline", "title": "Edit Workflow" },
+		
+		"ticket_search": { "icon": "text-box-multiple-outline", "loc": "#Tickets", "title": "Tickets" },
+		"new_ticket": { "icon": "text-box-plus-outline", "title": "New Ticket" },
+		"edit_ticket": { "icon": "text-box-edit-outline", "title": "Edit Ticket" }
+	},
+	
+	"progress": {
+		"wf_new_save": "Creating Workflow...",
+		"wf_edit_save": "Saving Workflow..."
+	},
+	
+	"messages": {
+		"job_aborted": "The job abort request was sent successfully.",
+		"rollback_draft": "Revision [event.revision] has been loaded as a draft edit.  Click 'Save Changes' to complete the rollback.  Note that a new revision number will be assigned.",
+		"draft_restored": "Your previous unsaved edits were restored.  Click the 'Cancel' button to discard them.",
+		"wf_new_save": "The new workflow was created successfully.",
+		"wf_edit_save": "The workflow was saved successfully.",
+		"wf_note_empty": "Edit this node to customize the note content.",
+		"secret_decrypted": "The secret vault was successfully decrypted for editing."
+	},
+	
+	"menu_bits": {
+		"generic_none": "(None)",
+		"generic_loading": "Loading...",
+		"wf_targets_groups": "Groups:",
+		"wf_targets_servers": "Servers:",
+		"wf_algo_default": "(Use event default)",
+		"wf_algo_least": "Least Monitor Value:",
+		"wf_add_new_node": "Add New Node",
+		"wf_select_condition": "Select Condition",
+		"wf_condition_on_custom_tag": "On Custom Tag:"
+	},
+	
+	"links": {
+		"back_to_events": "&laquo; Back to Event List",
+		"back_to_workflow": "&laquo; Back to Workflow"
+	},
+	
+	"labels": {
+		"code_editor": "Code editor. Press escape to move to next element.",
+		"wf_note": "Custom user note."
+	},
+	
+	"hot_keys": {
+		"Global": {
+			"clickSearchNavPrev": { "keys": ["ArrowLeft"], "title": "Previous Search Page" },
+			"clickSearchNavNext": { "keys": ["ArrowRight"], "title": "Next Search Page" },
+			"clickNewButton": { "keys": ["KeyN"], "title": "Create New" },
+			"clickSaveButton": { "keys": ["Meta+KeyS", "Control+KeyS"], "title": "Save Changes" },
+			"clickCloseButton": { "keys": ["Escape"], "title": "Close Editor" },
+			"scrollToPageBox": { "keys": ["Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0"], "title": "Scroll to Section" },
+			"focusSearchField": { "keys": ["Slash", "Meta+KeyK", "Control+KeyK"], "title": "Focus Search Field" }
+		},
+		"Events": {
+			"do_edit_from_view": { "sub": "view", "keys": ["KeyE"], "title": "Edit Event or Workflow" },
+			"do_run_current_event": { "sub": "view", "keys": ["KeyR"], "title": "Run Current Event" },
+			"do_test_event": { "sub": "view", "keys": ["KeyT"], "title": "Test Current Event" }
+		},
+		"Workflows": {
+			"cancelSolder": { "keys": ["Escape"], "title": "Cancel Solder" },
+			"selectAll": { "keys": ["Meta+KeyA", "Control+KeyA"], "title": "Select All" },
+			"deselectAll": { "keys": ["Meta+KeyD", "Control+KeyD"], "title": "Select None" },
+			"doDeleteSelection": { "keys": ["Backspace", "Delete"], "title": "Remove Selection" },
+			"doDetachSelection": { "keys": [], "title": "Detach Selection" },
+			"doDuplicateSelection": { "keys": [], "title": "Duplicate Selection" },
+			"doUndo": { "keys": ["Meta+KeyZ", "Control+KeyZ"], "title": "Undo", "repeatable": true },
+			"doRedo": { "keys": ["Meta+KeyY", "Control+KeyY"], "title": "Redo", "repeatable": true },
+			"wfZoomIn": { "keys": ["Equal"], "title": "Zoom In" },
+			"wfZoomOut": { "keys": ["Minus"], "title": "Zoom Out" },
+			"doEditSelection": { "keys": ["KeyE"], "title": "Edit Selection" },
+			"doTestSelection": { "keys": ["KeyT"], "title": "Test Selection" },
+			"nudgeSelectionLeft": { "keys": ["ArrowLeft"], "title": "Nudge Selection Left", "repeatable": true },
+			"nudgeSelectionRight": { "keys": ["ArrowRight"], "title": "Nudge Selection Right", "repeatable": true },
+			"nudgeSelectionUp": { "keys": ["ArrowUp"], "title": "Nudge Selection Up", "repeatable": true },
+			"nudgeSelectionDown": { "keys": ["ArrowDown"], "title": "Nudge Selection Down", "repeatable": true },
+			"doAddNode": { "keys": ["KeyN"], "title": "Add New Node" },
+			"selectDrawTool": { "keys": ["KeyV"], "title": "Select Draw Tool" },
+			"selectMoveTool": { "keys": ["KeyH"], "title": "Select Move Tool" },
+			"quickSelectMoveTool": { "keys": ["Space"], "title": "Quick-select Move Tool" },
+			"toggleFullscreen": { "keys": ["KeyF"], "title": "Toggle Fullscreen Editor" }
+		},
+		"Job": {
+			"do_confirm_run_again": { "keys": ["KeyR"], "title": "Run Job Again" },
+			"do_edit_event": { "keys": ["KeyE"], "title": "Edit Event" },
+			"doAddToTicket": { "keys": ["KeyA"], "title": "Add Job to Ticket" },
+			"doCreateTicket": { "keys": ["KeyC"], "title": "Create Job Ticket" },
+			"do_view_job_data": { "keys": ["KeyV"], "title": "View Job JSON" },
+			"do_download_job_data": { "keys": ["KeyD"], "title": "Download Job JSON" },
+			"do_delete_job": { "keys": ["Backspace", "Delete"], "title": "Delete Job" },
+			"prevSlide": { "keys": ["ArrowLeft"], "title": "Previous Media Slide" },
+			"nextSlide": { "keys": ["ArrowRight"], "title": "Next Media Slide" }
+		},
+		"Servers": {
+			"showEditServerDialog": { "sub": "view", "keys": ["KeyE"], "title": "Edit Server" },
+			"chooseHistoricalView": { "sub": "view", "keys": ["KeyH"], "title": "Historical View" },
+			"createSnapshot": { "sub": "view", "keys": ["Meta+KeyS", "Control+KeyS"], "title": "Take Snapshot" },
+			"openWatchDialog": { "sub": "view", "keys": ["KeyW"], "title": "Add Server Watch" },
+			"showAddServerDialog": { "sub": "list", "keys": ["KeyA"], "title": "Add New Server" }
+		},
+		"ServerHist": {
+			"histNavPrev": { "keys": ["ArrowLeft"], "title": "Previous Time Slice" },
+			"histNavNext": { "keys": ["ArrowRight"], "title": "Next Time Slice" }
+		},
+		"Groups": {
+			"goEditGroup": { "sub": "view", "keys": ["KeyE"], "title": "Edit Group" },
+			"chooseHistoricalView": { "sub": "view", "keys": ["KeyH"], "title": "Historical View" },
+			"createSnapshot": { "sub": "view", "keys": ["Meta+KeyS", "Control+KeyS"], "title": "Take Snapshot" },
+			"openWatchDialog": { "sub": "view", "keys": ["KeyW"], "title": "Add Group Watch" },
+			"addServerToGroup": { "sub": "view", "keys": ["KeyA"], "title": "Add Server to Group" }
+		},
+		"GroupHist": {
+			"histNavPrev": { "keys": ["ArrowLeft"], "title": "Previous Time Slice" },
+			"histNavNext": { "keys": ["ArrowRight"], "title": "Next Time Slice" }
+		}
+	},
+	
+	"job_source_types": [
+		{ "id": "scheduler", "title": "Scheduler", "icon": "update" },
+		{ "id": "user", "title": "User", "icon": "account" },
+		{ "id": "key", "title": "API Key", "icon": "key" },
+		{ "id": "action", "title": "Action", "icon": "gesture-tap" },
+		{ "id": "alert", "title": "Alert", "icon": "bell-outline" },
+		{ "id": "workflow", "title": "Workflow", "icon": "clipboard-flow-outline" },
+		{ "id": "magic", "title": "Magic Link", "icon": "link-variant" },
+		{ "id": "startup", "title": "Startup", "icon": "desktop-classic" }
+	],
+	
+	"snapshot_source_menu": [
+		{ "id": "alert", "title": "Alert", "icon": "bell-outline" },
+		{ "id": "user", "title": "User", "icon": "account" },
+		{ "id": "watch", "title": "Watch", "icon": "bullseye-arrow" },
+		{ "id": "job", "title": "Job", "icon": "timer-outline" }
+	],
+	
+	"control_type_labels": {
+		"text": "Text Field",
+		"textarea": "Text Box",
+		"code": "Code Editor",
+		"json": "JSON Editor",
+		"checkbox": "Checkbox",
+		"select": "Menu",
+		"bucket": "Bucket Menu",
+		"system": "System Menu",
+		"hidden": "Hidden",
+		"toolset": "Toolset",
+		"group": "Group"
+	},
+	
+	"control_type_icons": {
+		"text": "form-textbox",
+		"textarea": "form-textarea",
+		"code": "code-brackets",
+		"json": "code-json",
+		"checkbox": "checkbox-marked-outline",
+		"select": "form-dropdown",
+		"bucket": "pail-outline",
+		"system": "list-box-outline",
+		"hidden": "eye-off-outline",
+		"toolset": "tools",
+		"group": "folder-text-outline"
+	},
+	
+	"text_field_variants": [
+		{ "id": "color", "title": "Color", "icon": "palette" },
+		{ "id": "date", "title": "Date", "icon": "calendar-today" },
+		{ "id": "datetime-local", "title": "Date / Time", "icon": "calendar-clock" },
+		{ "id": "email", "title": "Email Address", "icon": "email-edit-outline" },
+		{ "id": "number", "title": "Number", "icon": "counter" },
+		{ "id": "password", "title": "Password", "icon": "form-textbox-lock" },
+		{ "id": "text", "title": "Plain Text", "icon": "form-textbox" },
+		{ "id": "time", "title": "Time", "icon": "clock-edit-outline" },
+		{ "id": "tel", "title": "Phone Number", "icon": "phone-dial" },
+		{ "id": "url", "title": "URL", "icon": "link-variant" }
+	],
+	
+	"marked_config": {
+		"gfm": true,
+		"tables": true,
+		"breaks": false,
+		"pedantic": false,
+		"sanitize": false,
+		"smartLists": true,
+		"smartypants": false,
+		"silent": true,
+		"headerIds": false,
+		"mangle": false
+	},
+	
+	"sanitize_html_config": {
+		"allowedTags": [ 
+			"address", "article", "aside", "footer", "header", "h1", "h2", "h3", "h4",
+			"h5", "h6", "hgroup", "main", "nav", "section", "blockquote", "dd", "div",
+			"dl", "dt", "figcaption", "figure", "hr", "li", "main", "ol", "p", "pre",
+			"ul", "a", "abbr", "b", "bdi", "bdo", "br", "cite", "code", "data", "dfn",
+			"em", "i", "kbd", "mark", "q", "rb", "rp", "rt", "rtc", "ruby", "s", "samp",
+			"small", "span", "strong", "sub", "sup", "time", "u", "var", "wbr", "caption",
+			"col", "colgroup", "table", "tbody", "td", "tfoot", "th", "thead", "tr" 
+		],
+		"allowedAttributes": {
+			"*": [ "style" ],
+			"a": [ "href", "target" ],
+			"div": [ "class" ],
+			"pre": [ "class" ],
+			"code": [ "class" ]
+		}
+	},
+	
+	"date_range_menu_items": [
+		["", "All Dates"],
+		["now", "This Hour"],
+		["lasthour", "Last Hour"],
+		["today", "Today"],
+		["yesterday", "Yesterday"],
+		["month", "This Month"],
+		["lastmonth", "Last Month"],
+		["year", "This Year"],
+		["lastyear", "Last Year"],
+		["older", "Older"]
+	],
+	
+	"chart_defaults": {
+		"emptyMessage": ""
+	},
+	
+	"chart_flatten_menu": [
+		{ "id": "", "title": "Multi-Layer" },
+		{ "id": "total", "title": "Total" },
+		{ "id": "average", "title": "Average" },
+		{ "id": "minimum", "title": "Minimum" },
+		{ "id": "maximum", "title": "Maximum" }
+	],
+	
+	"cpu_mem_merge_menu": [
+		{ "id": "total", "title": "Total", "icon": "sigma" },
+		{ "id": "average", "title": "Average", "icon": "chart-bell-curve" }
+	],
+	
+	"event_trigger_type_menu": [
+		{ "id": "custom", "title": "Custom", "icon": "order-bool-descending", "group": "Scheduling" },
+		{ "id": "yearly", "title": "Yearly", "icon": "earth" },
+		{ "id": "monthly", "title": "Monthly", "icon": "calendar-month-outline" },
+		{ "id": "weekly", "title": "Weekly", "icon": "calendar-week-outline" },
+		{ "id": "daily", "title": "Daily", "icon": "calendar-today-outline" },
+		{ "id": "hourly", "title": "Hourly", "icon": "clock-outline" },
+		{ "id": "crontab", "title": "Crontab", "icon": "file-clock-outline" },
+		{ "id": "interval", "title": "Interval", "icon": "timer-sand" },
+		{ "id": "single", "title": "Single Shot", "icon": "alarm-check" },
+		{ "id": "manual", "title": "Manual Run", "icon": "run-fast", "group": "On-Demand" },
+		{ "id": "magic", "title": "Magic Link", "icon": "link-variant" },
+		{ "id": "keyboard", "title": "Keyboard", "icon": "keyboard-outline" },
+		{ "id": "startup", "title": "Startup", "icon": "desktop-classic" },
+		{ "id": "catchup", "title": "Catch-Up", "icon": "calendar-refresh-outline", "group": "Modifiers" },
+		{ "id": "nth", "title": "Every Nth", "icon": "transit-skip" },
+		{ "id": "range", "title": "Range", "icon": "calendar-range-outline" },
+		{ "id": "blackout", "title": "Blackout", "icon": "circle" },
+		{ "id": "delay", "title": "Delay", "icon": "chat-sleep-outline" },
+		{ "id": "precision", "title": "Precision", "icon": "progress-clock" },
+		{ "id": "quiet", "title": "Quiet", "icon": "volume-mute" },
+		{ "id": "plugin", "title": "Plugin", "icon": "power-plug" }
+	],
+	
+	"event_target_algo_menu": [
+		{ "id": "random", "title": "Random", "icon": "dice-5-outline" },
+		{ "id": "round_robin", "title": "Round Robin", "icon": "radius-outline" },
+		{ "id": "prefer_first_natural", "title": "Prefer First (Natural)", "icon": "transfer-left" },
+		{ "id": "prefer_last_natural", "title": "Prefer Last (Natural)", "icon": "transfer-right" },
+		{ "id": "prefer_first", "title": "Prefer First (Alphabetical)", "icon": "sort-ascending" },
+		{ "id": "prefer_last", "title": "Prefer Last (Alphabetical)", "icon": "sort-descending" },
+		{ "id": "least_cpu", "title": "Least CPU Usage", "icon": "chip" },
+		{ "id": "least_mem", "title": "Least Memory Usage", "icon": "memory" },
+		{ "id": "fewest_jobs", "title": "Fewest Active Jobs", "icon": "run-fast" }
+	],
+	
+	"action_condition_menu": [ 
+		{ "id": "start", "title": "On Start", "icon": "play-circle-outline" },
+		{ "id": "complete", "title": "On Complete", "icon": "stop-circle-outline" },
+		{ "id": "continue", "title": "On Continue", "icon": "step-forward-2" },
+		{ "id": "success", "title": "On Success", "icon": "check-circle-outline", "group": "On Result:" },
+		{ "id": "error", "title": "On Any Error", "icon": "alert-decagram-outline" },
+		{ "id": "user", "title": "On Custom Error", "icon": "account-alert" },
+		{ "id": "warning", "title": "On Warning", "icon": "alert-outline" },
+		{ "id": "critical", "title": "On Critical", "icon": "fire-alert" },
+		{ "id": "abort", "title": "On Abort", "icon": "cancel" }
+	],
+	
+	"alert_action_condition_menu": [
+		{ "id": "alert_new", "title": "Alert Fired", "icon": "fire-alert" },
+		{ "id": "alert_cleared", "title": "Alert Cleared", "icon": "check-circle-outline" }
+	],
+	
+	"action_type_menu": [
+		{ "id": "label", "title": "Apply Label", "icon": "label-outline" },
+		{ "id": "tag", "title": "Apply Tags", "icon": "tag-plus-outline" },
+		{ "id": "ticket", "title": "Create Ticket", "icon": "text-box-plus-outline" },
+		{ "id": "delete", "title": "Delete Event", "icon": "trash-can-outline" },
+		{ "id": "disable", "title": "Disable Event", "icon": "cancel" },
+		{ "id": "fetch", "title": "Fetch Bucket", "icon": "export" },
+		{ "id": "channel", "title": "Notify Channel", "icon": "bullhorn-outline" },
+		{ "id": "plugin", "title": "Plugin", "icon": "power-plug" },
+		{ "id": "run_event", "title": "Run Event", "icon": "calendar-clock" },
+		{ "id": "email", "title": "Send Email", "icon": "email-arrow-right-outline" },
+		{ "id": "store", "title": "Store Bucket", "icon": "import" },
+		{ "id": "suspend", "title": "Suspend Job", "icon": "motion-pause-outline" },
+		{ "id": "snapshot", "title": "Take Snapshot", "icon": "monitor-screenshot" },
+		{ "id": "web_hook", "title": "Web Hook", "icon": "webhook" }
+	],
+	
+	"limit_type_menu": [
+		{ "id": "job", "title": "Max Jobs Limit", "icon": "traffic-light-outline" },
+		{ "id": "cpu", "title": "Max CPU % Limit", "icon": "chip" },
+		{ "id": "day", "title": "Max Daily Limit", "icon": "calendar-cursor-outline" },
+		{ "id": "file", "title": "Max File Limit", "icon": "file-multiple-outline" },
+		{ "id": "mem", "title": "Max Memory Limit", "icon": "memory" },
+		{ "id": "log", "title": "Max Output Limit", "icon": "file-remove-outline" },
+		{ "id": "queue", "title": "Max Queue Limit", "icon": "tray-full" },
+		{ "id": "retry", "title": "Max Retry Limit", "icon": "redo-variant" },
+		{ "id": "time", "title": "Max Time Limit", "icon": "timer-remove-outline" },
+		{ "id": "tag", "title": "Max Tag Limit", "icon": "tag-multiple-outline" }
+	],
+	
+	"workflow_node_types": [
+		{ "id": "event", "title": "Event", "icon": "calendar-clock" },
+		{ "id": "job", "title": "Job", "icon": "timer-outline" },
+		{ "id": "limit", "title": "Limiter", "icon": "gauge" },
+		{ "id": "trigger", "title": "Trigger", "icon": "rocket-launch-outline" },
+		{ "id": "action", "title": "Action", "icon": "gesture-tap" },
+		{ "id": "controller", "title": "Controller", "icon": "gamepad-variant-outline" },
+		{ "id": "note", "title": "Note", "icon": "note-outline" }
+	],
+	
+	"workflow_new_node_menu": [
+		{ "id": "event", "title": "New Event...", "icon": "calendar-clock" },
+		{ "id": "job", "title": "New Job...", "icon": "timer-outline" },
+		{ "id": "limit", "title": "New Limiter...", "icon": "gauge" },
+		{ "id": "trigger", "title": "New Trigger...", "icon": "rocket-launch-outline" },
+		{ "id": "action", "title": "New Action...", "icon": "gesture-tap" },
+		{ "id": "controller", "title": "New Controller...", "icon": "gamepad-variant-outline" },
+		{ "id": "note", "title": "New Note...", "icon": "note-outline" }
+	],
+	
+	"workflow_controller_type_menu": [
+		{ "id": "decision", "title": "Decision", "icon": "boom-gate-up" },
+		{ "id": "join", "title": "Join", "icon": "arrow-collapse-vertical" },
+		{ "id": "multiplex", "title": "Multiplex", "icon": "multicast" },
+		{ "id": "repeat", "title": "Repeat", "icon": "rotate-360" },
+		{ "id": "split", "title": "Split", "icon": "call-split" },
+		{ "id": "wait", "title": "Wait", "icon": "watch" }
+	],
+	
+	"category_colors": [
+		{
+			"id": "plain",
+			"title": "Plain",
+			"class": "clr_plain"
+		},
+		{
+			"id": "red",
+			"title": "Red",
+			"class": "clr_red"
+		},
+		{
+			"id": "fire",
+			"title": "Fire",
+			"class": "clr_fire"
+		},
+		{
+			"id": "orange",
+			"title": "Orange",
+			"class": "clr_orange"
+		},
+		{
+			"id": "tangerine",
+			"title": "Tangerine",
+			"class": "clr_tangerine"
+		},
+		{
+			"id": "amber",
+			"title": "Amber",
+			"class": "clr_amber"
+		},
+		{
+			"id": "gold",
+			"title": "Gold",
+			"class": "clr_gold"
+		},
+		{
+			"id": "yellow",
+			"title": "Yellow",
+			"class": "clr_yellow"
+		},
+		{
+			"id": "lemon",
+			"title": "Lemon",
+			"class": "clr_lemon"
+		},
+		{
+			"id": "lime",
+			"title": "Lime",
+			"class": "clr_lime"
+		},
+		{
+			"id": "grass",
+			"title": "Grass",
+			"class": "clr_grass"
+		},
+		{
+			"id": "green",
+			"title": "Green",
+			"class": "clr_green"
+		},
+		{
+			"id": "mint",
+			"title": "Mint",
+			"class": "clr_mint"
+		},
+		{
+			"id": "emerald",
+			"title": "Emerald",
+			"class": "clr_emerald"
+		},
+		{
+			"id": "aqua",
+			"title": "Aqua",
+			"class": "clr_aqua"
+		},
+		{
+			"id": "teal",
+			"title": "Teal",
+			"class": "clr_teal"
+		},
+		{
+			"id": "turquoise",
+			"title": "Turquoise",
+			"class": "clr_turquoise"
+		},
+		{
+			"id": "cyan",
+			"title": "Cyan",
+			"class": "clr_cyan"
+		},
+		{
+			"id": "ice",
+			"title": "Ice",
+			"class": "clr_ice"
+		},
+		{
+			"id": "skyblue",
+			"title": "Sky",
+			"class": "clr_skyblue"
+		},
+		{
+			"id": "azure",
+			"title": "Azure",
+			"class": "clr_azure"
+		},
+		{
+			"id": "blue",
+			"title": "Blue",
+			"class": "clr_blue"
+		},
+		{
+			"id": "sapphire",
+			"title": "Sapphire",
+			"class": "clr_sapphire"
+		},
+		{
+			"id": "indigo",
+			"title": "Indigo",
+			"class": "clr_indigo"
+		},
+		{
+			"id": "lavender",
+			"title": "Lavender",
+			"class": "clr_lavender"
+		},
+		{
+			"id": "violet",
+			"title": "Violet",
+			"class": "clr_violet"
+		},
+		{
+			"id": "orchid",
+			"title": "Orchid",
+			"class": "clr_orchid"
+		},
+		{
+			"id": "purple",
+			"title": "Purple",
+			"class": "clr_purple"
+		},
+		{
+			"id": "magenta",
+			"title": "Magenta",
+			"class": "clr_magenta"
+		},
+		{
+			"id": "fuchsia",
+			"title": "Fuchsia",
+			"class": "clr_fuchsia"
+		},
+		{
+			"id": "hotpink",
+			"title": "Hot Pink",
+			"class": "clr_hotpink"
+		},
+		{
+			"id": "pink",
+			"title": "Pink",
+			"class": "clr_pink"
+		},
+		{
+			"id": "blush",
+			"title": "Blush",
+			"class": "clr_blush"
+		},
+		{
+			"id": "rose",
+			"title": "Rose",
+			"class": "clr_rose"
+		}
+	],
+	
+	"ticket_types": [
+		{ "id": "issue", "title": "Issue", "icon": "bug-outline" },
+		{ "id": "feature", "title": "Feature", "icon": "lightbulb-outline" },
+		{ "id": "release", "title": "Release", "icon": "package-variant" },
+		{ "id": "change", "title": "Change", "icon": "swap-horizontal-circle-outline" },
+		{ "id": "maintenance", "title": "Maintenance", "icon": "wrench-outline" },
+		{ "id": "question", "title": "Question", "icon": "help-circle-outline" },
+		{ "id": "other", "title": "Other", "icon": "shape-outline" }
+	],
+	
+	"ticket_statuses": [
+		{ "id": "draft", "title": "Draft", "color": "gray", "icon": "dots-horizontal" },
+		{ "id": "open", "title": "Open", "color": "green", "icon": "label-variant-outline" },
+		{ "id": "closed", "title": "Closed", "color": "red", "icon": "label-variant" }
+	],
+	
+	"ticket_changes": {
+		"subject": "changed subject to: [disp]",
+		"body": "changed body text.",
+		"status": "changed status to: [disp]",
+		"type": "changed type to: [disp]",
+		"category": "changed category to: [disp]",
+		"server": "changed server to: [disp]",
+		"assignees": "changed assignees to: [disp]",
+		"due": "changed due date to: [disp]",
+		"cc": "changed Cc list to: [disp]",
+		"notify": "changed notify list to: [disp]",
+		"tags": "changed tags to: [disp]",
+		"created": "created ticket.",
+		"delete": "deleted comment."
+	},
+	
+	"new_ticket_dues": [
+		{ "id": "", "title": "(None)" },
+		{ "id": "1d", "title": "+1 Day" },
+		{ "id": "2d", "title": "+2 Days" },
+		{ "id": "3d", "title": "+3 Days" },
+		{ "id": "4d", "title": "+4 Days" },
+		{ "id": "5d", "title": "+5 Days" },
+		{ "id": "6d", "title": "+6 Days" },
+		{ "id": "7d", "title": "+1 Week" },
+		{ "id": "14d", "title": "+2 Weeks" },
+		{ "id": "21d", "title": "+3 Weeks" },
+		{ "id": "30d", "title": "+1 Month" },
+		{ "id": "60d", "title": "+2 Months" },
+		{ "id": "90d", "title": "+3 Months" },
+		{ "id": "120d", "title": "+4 Months" },
+		{ "id": "150d", "title": "+5 Months" },
+		{ "id": "180d", "title": "+6 Months" },
+		{ "id": "365d", "title": "+1 Year" }
+	],
+	
+	"new_hook_templates": [
+		{
+			"id": "",
+			"title": "Blank",
+			"icon": "note-outline",
+			"notes": "Create a web hook manually from scratch.",
+			"fields": []
+		},
+		{
+			"id": "pushover",
+			"title": "Pushover",
+			"icon": "cellphone-sound",
+			"enabled": true,
+			"url": "https://api.pushover.net/1/messages.json",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/x-www-form-urlencoded" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "token={{ encode(secrets.PUSHOVER_API_TOKEN) }}&user={{ encode(secrets.PUSHOVER_USER_KEY) }}&message={{ encode(text) }}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks using the Pushover mobile notification service.  Learn more at [Pushover.net](https://pushover.net).",
+			"fields": [
+				{
+					"id": "PUSHOVER_USER_KEY",
+					"title": "Pushover User Key",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your Pushover User Key, which is alphanumeric and 30 characters in length."
+				},
+				{
+					"id": "PUSHOVER_API_TOKEN",
+					"title": "Pushover API Token",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your Pushover App API Token, which is alphanumeric and 30 characters in length."
+				}
+			]
+		},
+		{
+			"id": "slack",
+			"title": "Slack",
+			"icon": "slack",
+			"enabled": true,
+			"url": "{{ secrets.SLACK_WEBHOOK_URL }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"text\": {{ stringify(text) }}\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks to a Slack channel using an Incoming Webhook URL.  Learn more at [Slack Incoming Webhooks](https://api.slack.com/messaging/webhooks).",
+			"fields": [
+				{
+					"id": "SLACK_WEBHOOK_URL",
+					"title": "Slack Web Hook URL",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the full Slack Incoming Webhook URL copied from Slack."
+				}
+			]
+		},
+		{
+			"id": "discord",
+			"title": "Discord",
+			"icon": "message-badge-outline",
+			"enabled": true,
+			"url": "{{ secrets.DISCORD_WEBHOOK_URL }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"content\": {{ stringify(text) }}\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks to a Discord channel using a Discord Incoming Webhook URL.  Learn more at [Discord Webhooks](https://docs.discord.com/developers/resources/webhook).",
+			"fields": [
+				{
+					"id": "DISCORD_WEBHOOK_URL",
+					"title": "Discord Web Hook URL",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the full Discord webhook URL copied from Discord."
+				}
+			]
+		},
+		{
+			"id": "ntfy",
+			"title": "ntfy",
+			"icon": "bell-ring-outline",
+			"enabled": true,
+			"url": "https://ntfy.sh/{{ encode(secrets.NTFY_TOPIC) }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "text/plain; charset=utf-8" },
+				{ "name": "Title", "value": "xyOps" },
+				{ "name": "Priority", "value": "high" },
+				{ "name": "Tags", "value": "warning" },
+				{ "name": "Authorization", "value": "Bearer {{ secrets.NTFY_TOKEN }}" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{{ text }}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks as push notifications through ntfy.  If your topic allows anonymous publishes, remove the Authorization header.  For self-hosted ntfy, replace `https://ntfy.sh` with your own server URL.  Learn more at [ntfy.sh](https://docs.ntfy.sh/publish/).",
+			"fields": [
+				{
+					"id": "NTFY_TOPIC",
+					"title": "ntfy Topic",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your private ntfy topic name.  Treat this like a password if anonymous publishing is enabled."
+				},
+				{
+					"id": "NTFY_TOKEN",
+					"title": "ntfy Token",
+					"type": "text",
+					"value": "",
+					"required": false,
+					"caption": "Optional: Enter an ntfy access token for protected topics.  Remove the Authorization header if you do not use one."
+				}
+			]
+		},
+		{
+			"id": "echobell",
+			"title": "EchoBell",
+			"icon": "cellphone-message",
+			"enabled": true,
+			"url": "https://hook.echobell.one/t/{{ encode(secrets.ECHOBELL_CHANNEL_TOKEN) }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"source\": \"xyOps\",\n\t\"message\": {{ stringify(text) }}\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks to EchoBell for mobile push notifications and call alerts.  Learn more at [EchoBell Webhooks](https://echobell.one/docs/webhook).",
+			"fields": [
+				{
+					"id": "ECHOBELL_CHANNEL_TOKEN",
+					"title": "EchoBell Channel Token",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the EchoBell channel token from your webhook URL, after `https://hook.echobell.one/t/`."
+				}
+			]
+		},
+		{
+			"id": "google_chat",
+			"title": "Google Chat",
+			"icon": "google",
+			"enabled": true,
+			"url": "https://chat.googleapis.com/v1/spaces/{{ encode(secrets.GOOGLE_CHAT_SPACE_ID) }}/messages?key={{ encode(secrets.GOOGLE_CHAT_KEY) }}&token={{ encode(secrets.GOOGLE_CHAT_TOKEN) }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json; charset=UTF-8" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"text\": {{ stringify(text) }}\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks to a Google Chat space using an incoming webhook.  Learn more at [Google Chat Incoming Webhooks](https://developers.google.com/workspace/chat/quickstart/webhooks).",
+			"fields": [
+				{
+					"id": "GOOGLE_CHAT_SPACE_ID",
+					"title": "Google Chat Space ID",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the Google Chat space ID from your webhook URL, after `/v1/spaces/` and before `/messages`."
+				},
+				{
+					"id": "GOOGLE_CHAT_KEY",
+					"title": "Google Chat Key",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the key query parameter from your Google Chat webhook URL."
+				},
+				{
+					"id": "GOOGLE_CHAT_TOKEN",
+					"title": "Google Chat Token",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the token query parameter from your Google Chat webhook URL."
+				}
+			]
+		},
+		{
+			"id": "telegram",
+			"title": "Telegram",
+			"icon": "send",
+			"enabled": true,
+			"url": "https://api.telegram.org/bot{{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/x-www-form-urlencoded" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "chat_id={{ encode(secrets.TELEGRAM_CHAT_ID) }}&text={{ encode(text) }}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks as Telegram bot messages using sendMessage.  Learn more at [Telegram Bot API](https://core.telegram.org/bots/api#sendmessage).",
+			"fields": [
+				{
+					"id": "TELEGRAM_BOT_TOKEN",
+					"title": "Telegram Bot Token",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your Telegram bot token from BotFather."
+				},
+				{
+					"id": "TELEGRAM_CHAT_ID",
+					"title": "Telegram Chat ID",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the destination chat ID, group ID, or channel username."
+				}
+			]
+		},
+		{
+			"id": "mattermost",
+			"title": "Mattermost",
+			"icon": "chat-processing-outline",
+			"enabled": true,
+			"url": "https://{{ secrets.MATTERMOST_HOST }}/hooks/{{ encode(secrets.MATTERMOST_WEBHOOK_KEY) }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"text\": {{ stringify(text) }}\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks to a Mattermost channel using an incoming webhook.  Learn more at [Mattermost Incoming Webhooks](https://docs.mattermost.com/integrations-guide/incoming-webhooks.html).",
+			"fields": [
+				{
+					"id": "MATTERMOST_HOST",
+					"title": "Mattermost Host",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your Mattermost hostname, without the `https://` prefix."
+				},
+				{
+					"id": "MATTERMOST_WEBHOOK_KEY",
+					"title": "Mattermost Web Hook Key",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the generated key from the Mattermost incoming webhook URL, after `/hooks/`."
+				}
+			]
+		},
+		{
+			"id": "gotify",
+			"title": "Gotify",
+			"icon": "message-alert-outline",
+			"enabled": true,
+			"url": "https://{{ secrets.GOTIFY_HOST }}/message?token={{ encode(secrets.GOTIFY_APP_TOKEN) }}",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"title\": \"xyOps\",\n\t\"message\": {{ stringify(text) }},\n\t\"priority\": 5\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Send web hooks as self-hosted push notifications through Gotify.  Learn more at [Gotify](https://gotify.net/docs/).",
+			"fields": [
+				{
+					"id": "GOTIFY_HOST",
+					"title": "Gotify Host",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your Gotify hostname, without the `https://` prefix."
+				},
+				{
+					"id": "GOTIFY_APP_TOKEN",
+					"title": "Gotify App Token",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter the Gotify application token allowed to create messages."
+				}
+			]
+		},
+		{
+			"id": "pagerduty",
+			"title": "PagerDuty",
+			"icon": "alert-octagon-outline",
+			"enabled": true,
+			"url": "https://events.pagerduty.com/v2/enqueue",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"routing_key\": \"{{ secrets.PAGERDUTY_ROUTING_KEY }}\",\n\t\"event_action\": \"trigger\",\n\t\"payload\": {\n\t\t\"summary\": {{ stringify(text) }},\n\t\t\"source\": \"xyOps\",\n\t\t\"severity\": \"error\"\n\t}\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Trigger PagerDuty incidents using Events API v2.  This is best for actionable on-call alerts, not routine notifications.  Learn more at [PagerDuty Services and Integrations](https://support.pagerduty.com/main/docs/services-and-integrations).",
+			"fields": [
+				{
+					"id": "PAGERDUTY_ROUTING_KEY",
+					"title": "PagerDuty Routing Key",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter your PagerDuty Events API v2 integration key, also called the routing key."
+				}
+			]
+		},
+		{
+			"id": "opsgenie",
+			"title": "Opsgenie",
+			"icon": "alert-decagram-outline",
+			"enabled": true,
+			"url": "https://api.opsgenie.com/v2/alerts",
+			"method": "POST",
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "Authorization", "value": "GenieKey {{ secrets.OPSGENIE_API_KEY }}" },
+				{ "name": "User-Agent", "value": "xyOps/WebHook" }
+			],
+			"body": "{\n\t\"message\": \"xyOps Alert\",\n\t\"description\": {{ stringify(text) }},\n\t\"source\": \"xyOps\",\n\t\"priority\": \"P3\"\n}",
+			"timeout": 30,
+			"retries": 3,
+			"follow": false,
+			"ssl_cert_bypass": false,
+			"max_per_day": 0,
+			"notes": "Create Opsgenie alerts using the Alert API.  If you use the EU instance, replace the host with `https://api.eu.opsgenie.com`.  Learn more at [Opsgenie Alert API](https://docs.opsgenie.com/docs/alert-api).",
+			"fields": [
+				{
+					"id": "OPSGENIE_API_KEY",
+					"title": "Opsgenie API Key",
+					"type": "text",
+					"value": "",
+					"required": true,
+					"caption": "Enter an Opsgenie API integration key that is allowed to create alerts."
+				}
+			]
+		}
+	],
+
+	"db_export_columns": {
+		"jobs": [
+			{ "id": "id", "title": "Job ID" },
+			{ "id": "event", "title": "Event ID" },
+			{ "id": "category", "title": "Category ID" },
+			{ "id": "plugin", "title": "Plugin ID" },
+			{ "id": "server", "title": "Server ID" },
+			{ "id": "source", "title": "Source" },
+			{ "id": "code", "title": "Code" },
+			{ "id": "description", "title": "Description" },
+			{ "id": "started", "title": "Started" },
+			{ "id": "completed", "title": "Completed" },
+			{ "id": "elapsed", "title": "Elapsed" },
+			{ "id": "log_file_size", "title": "Output Size" },
+			{ "id": "tags", "title": "Tags" }
+		],
+		"tickets": [
+			{ "id": "id", "title": "Ticket ID" },
+			{ "id": "num", "title": "Ticket Number" },
+			{ "id": "type", "title": "Type" },
+			{ "id": "status", "title": "Status" },
+			{ "id": "subject", "title": "Subject" },
+			{ "id": "assignees", "title": "Assignees" },
+			{ "id": "category", "title": "Category ID" },
+			{ "id": "server", "title": "Server ID" },
+			{ "id": "created", "title": "Created" },
+			{ "id": "modified", "title": "Modified" },
+			{ "id": "due", "title": "Due Date" },
+			{ "id": "tags", "title": "Tags" }
+		],
+		"alerts": [
+			{ "id": "id", "title": "Alert Invocation ID" },
+			{ "id": "alert", "title": "Alert Definition ID" },
+			{ "id": "exp", "title": "Expression" },
+			{ "id": "message", "title": "Message" },
+			{ "id": "server", "title": "Server ID" },
+			{ "id": "groups", "title": "Group IDs" },
+			{ "id": "date", "title": "Created" },
+			{ "id": "modified", "title": "Modified" },
+			{ "id": "jobs", "title": "Job IDs" },
+			{ "id": "tickets", "title": "Ticket IDs" }
+		],
+		"snapshots": [
+			{ "id": "id", "title": "Snapshot ID" },
+			{ "id": "type", "title": "Type" },
+			{ "id": "server", "title": "Server ID" },
+			{ "id": "groups", "title": "Group IDs" },
+			{ "id": "source", "title": "Source" },
+			{ "id": "date", "title": "Created" },
+			{ "id": "jobs", "title": "Job IDs" },
+			{ "id": "alerts", "title": "Alert IDs" }
+		]
+	},
+	
+	"log_files": [ "Action", "API", "Comm", "Debug", "Error", "Filesystem", "Hybrid", "Job", "Maint", "Monitor", "Multi", "Postgres", "Redis", "S3", "Scheduler", "Secret", "SQLite", "Storage", "Ticket", "Transaction", "Unbase", "User", "WebServer", "xyOps" ],
+	
+	"log_column_titles": {
+		"hires_epoch": "Timestamp",
+		"date": "Server Time",
+		"hostname": "Hostname",
+		"pid": "PID",
+		"component": "Component",
+		"category": "Category",
+		"code": "Code",
+		"msg": "Message",
+		"data": "Data"
+	},
+	
+	"sidebar_sections": [
+		{ "id": "main", "title": "Main", "icon": "home" },
+		{ "id": "job_searches", "title": "Job Searches", "icon": "account-search-outline" },
+		{ "id": "ticket_searches", "title": "Ticket Searches", "icon": "text-box-search-outline" },
+		{ "id": "shortcuts", "title": "Shortcuts", "icon": "hand-pointing-right" },
+		{ "id": "scheduler", "title": "Scheduler", "icon": "calendar-multiple" },
+		{ "id": "monitoring", "title": "Monitoring", "icon": "camera-outline" },
+		{ "id": "settings", "title": "Settings", "icon": "cogs" },
+		{ "id": "admin", "title": "Admin", "icon": "lock" },
+		{ "id": "help", "title": "Help", "icon": "help-network-outline" }
+	],
+	
+	"satellite_install_menu": [
+		{ "id": "standard", "title": "Linux", "icon": "penguin" },
+		{ "id": "macos", "title": "macOS", "icon": "apple" },
+		{ "id": "windows", "title": "Windows", "icon": "microsoft-windows" },
+		{ "id": "docker", "title": "Docker", "icon": "docker" }
+	],
+	
+	"satellite_install_commands": {
+		"standard": "curl -s \"[base_url]/api/app/satellite/install?t=[token]\" | sudo sh",
+		"macos": "curl -s \"[base_url]/api/app/satellite/install?t=[token]&os=macos\" | sudo sh",
+		"windows": "powershell -Command \"IEX (Invoke-WebRequest -UseBasicParsing -Uri '[base_url]/api/app/satellite/install?t=[token]&os=windows').Content\"",
+		"docker": "docker run --detach --init --restart unless-stopped -v xysat-conf-[unique]:/etc/xysat -v /var/run/docker.sock:/var/run/docker.sock -e XYSAT_config_file=\"/etc/xysat/config.json\" -e XYOPS_setup=\"[base_url]/api/app/satellite/config?t=[token]\" --name \"xyops-worker-[unique]\" --hostname \"docker-[unique]\" [image]:[version]"
+	}
+}
