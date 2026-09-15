@@ -22,7 +22,15 @@ XyOps : https://xyops.io/
   - only issue Files are owned by ROOT user.
   - see SR solution in point 5. below
 
-**1/ Install Steps**
+### How to Run XyOps
+**SR Note** we already have Xyops repo commited to our Gitrepo , it is at  /projects/xyops 
+ - so we can do "node bin/build.js dev" to run the Server .. 
+
+### 1/ XyOps Install Steps
+
+- We do not need all these steps and Run directly.., we have it in the rep /projects/xyops 
+- we also have "satellite" installed 
+- just documented below for future use and understanding ..
 
 0. here is **Gemini answers saveed link**: https://share.gemini.google/UNy43IZJHWNg
 1. there are two optinos Docker and Node.js based
