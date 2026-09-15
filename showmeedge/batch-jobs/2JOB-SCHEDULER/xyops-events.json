@@ -1,0 +1,93 @@
+{
+	"type": "xypdf",
+	"description": "xyOps Portable Data Object",
+	"version": "1.0",
+	"xyops": "1.0.97",
+	"items": [
+		{
+			"type": "event",
+			"data": {
+				"id": "emu2t3vr62wcc00v",
+				"title": "bloom2",
+				"enabled": true,
+				"targets": [
+					"main"
+				],
+				"params": {
+					"script": "#!/bin/bash\n\nsudo -u sreddy /Users/sreddy/projects/showmeedge/batch-jobs/market-news-analysis-on-youtube/bloomberg-youtube/run.sh",
+					"annotate": false
+				},
+				"fields": [],
+				"triggers": [
+					{
+						"enabled": true,
+						"type": "schedule",
+						"weekdays": [
+							1,
+							2,
+							3,
+							4,
+							5
+						],
+						"hours": [
+							8,
+							9,
+							10,
+							11,
+							12,
+							13,
+							14,
+							15,
+							16
+						],
+						"minutes": [
+							0,
+							10,
+							20,
+							30,
+							40,
+							50
+						],
+						"tags": [],
+						"params": {}
+					}
+				],
+				"limits": [
+					{
+						"type": "job",
+						"enabled": true,
+						"amount": 1
+					},
+					{
+						"type": "queue",
+						"enabled": true,
+						"amount": 0
+					},
+					{
+						"type": "retry",
+						"enabled": true,
+						"amount": 0,
+						"duration": 0
+					}
+				],
+				"actions": [],
+				"notes": "",
+				"category": "general",
+				"plugin": "shellplug",
+				"icon": "",
+				"tags": [],
+				"expression": "",
+				"algo": "random"
+			}
+		},
+		{
+			"type": "group",
+			"data": {
+				"id": "main",
+				"title": "Main Group",
+				"hostname_match": ".+",
+				"alert_actions": []
+			}
+		}
+	]
+}
