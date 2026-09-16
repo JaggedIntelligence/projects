@@ -9,10 +9,13 @@
 - that is the KEY difference ONE need to NOTE here ...
 
 
-## Prerequisites & Installation
+## 1/ Prerequisites & Installation
+
+this Gemini AI chat helped in making this test program share url is: 
+https://share.gemini.google/wmMkmZPqRgeB
 
 STEP 1: Install "Redis Server" (required by BullMQ for queue management)
--- On macOS via Homebrew
+-- On macOS via Homebrew  // SR followed this since we are on MAC which is Darwin OS not Linux ..
 brew install redis
 brew services start redis  // Radis service with Queue Starts in the Background process
 
@@ -25,13 +28,13 @@ be in main folder like /billmq and install
 npm init -y
 npm install bullmq ioredis    // BullMQ and Radis package installs
 
-### project files and main JS file holding BullMQ setup and Tasks/Jobs ...
+### 2/ project files and main JS file holding BullMQ setup and Tasks/Jobs ...
 mkdir job1 && cd job1
 create script.py //  code file in which test FILES are crated
 create runner.sh
 create job1.js // main JS file 
 
-## How to run
+## 3/ How to run
 chmod +x *
 
 node job1.js  // this will run program , you can check test FILES created in /job1/outout Folder 
