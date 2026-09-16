@@ -38,3 +38,33 @@ create job1.js // main JS file
 chmod +x *
 
 node job1.js  // this will run program , you can check test FILES created in /job1/outout Folder 
+
+
+# 4. Introducing  Express Server and BullBoard to BullMQ
+
+### Node Express Server and BullBoard
+-- express server:
+
+-- BullBoard : UI for the MANAGEMENT of BullMQ  Jobs , Queues and Messages ( Add, Delete, Monitor etc..)
+
+### multiple CRON JOBS setup as different JOBS all in one Express Server setup program ..
+
+Gemini AI suggested project Folder structure for Multiple jobs ..
+```
+cron-runner/
+├── index.js
+├── package.json
+└── jobs/
+    ├── job1/
+    │   ├── runner.sh
+    │   └── script.py
+    ├── job2/
+    │   ├── runner.sh
+    │   └── script.py
+    ├── job3/
+    │   ├── runner.sh
+    │   └── script.py
+    └── job4/
+        ├── runner.sh
+        └── script.py
+```
