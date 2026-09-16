@@ -12,32 +12,7 @@ const QUEUE_NAME = 'scheduled-shell-tasks';
 // ----- 1. Initialize Queue
 const taskQueue = new Queue(QUEUE_NAME, { connection });
 
-// ----------- funtion setupCronJob ------------------------------------------------
-async function setupCronJob22() {
-
-// Fetch existing scheduled repeatable jobs in BullMQ
-  const existingSchedulers = await taskQueue.getJobSchedulers();
-
-//  Clear old schedulers by key
-  for (const scheduler of existingSchedulers) {
-    await taskQueue.removeJobScheduler(scheduler.key);
-  }
-
-  // Schedule job: every 10 mins, 4am - 4:50pm, Mon-Fri
-  await taskQueue.add(
-    'run-shell-script',
-    {},
-    {
-      repeat: {
-        pattern: '*/1 4-23 * * 1-5',   // cron pattern repeat every /1 minute  4 am to 16  Mon-Fri that is 1-5
-      },
-    }
-  );
-
-  console.log('Cron job scheduled in BullMQ (Mon-Fri, 04:00-16:50 every 10m).');
-} // --- end of setupCronJob()
-
-// --------------- 2. Setup Job Scheduler
+// --------------- 2. Setup Job Scheduler ----------------------
 async function setupCronJob() {
   // upsertJobScheduler automatically creates or updates the cron job safely
   await taskQueue.upsertJobScheduler(
@@ -54,7 +29,7 @@ async function setupCronJob() {
   console.log('Cron job scheduler registered in BullMQ (Every 1 minute).');
 }
 
-// ---------- 2. Initialize Worker ---------------------------
+// ---------- 3. Initialize Worker ---------------------------
 const worker = new Worker(
   QUEUE_NAME,
   async (job) => {
@@ -79,7 +54,7 @@ const worker = new Worker(
   { connection }
 );
 
-// ----  worker callbacks for 'completed' and 'failed' 
+// ----  4. worker callbacks for 'completed' and 'failed' 
 worker.on('completed', (job) => {
   console.log(`Job ${job.id} completed successfully :-) .`);
 });
@@ -89,5 +64,5 @@ worker.on('failed', (job, err) => {
 });
 
 
-// ---------- 3. Run setup  ---------------------------
+// ---------- 5. Run Job Scheduler  ---------------------------
 setupCronJob();
