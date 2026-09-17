@@ -1,0 +1,20 @@
+
+---
+import ZerotoAILayout from '../layouts/ZerotoAILayout.astro';
+---
+<ZerotoAILayout title="Intro Presentation">
+	<section id="the-harness-where-engineering-lives" class="slide level2 smaller">
+    <h2>The Harness — Where Engineering Lives</h2>
+    <p>Around every agent is a small, unglamorous loop (Python, Node, Go, Bash — doesn’t matter) that does the real work:</p>
+    <ul>
+    <li class="fragment">Calls the model with the full message history + tool schemas</li>
+    <li class="fragment">Parses which tool was requested</li>
+    <li class="fragment">Executes it with proper permissions + timeouts</li>
+    <li class="fragment">Feeds the result back into the next call</li>
+    <li class="fragment">Enforces limits: budget, steps, approvals, allowlists</li>
+    </ul>
+    <div class="fragment">
+    <p>The model is the star. The <strong>harness</strong> is where all the engineering lives — retries, auth, audit trails, cost caps. <strong>Class 4 is mostly about the harness growing up</strong> to coordinate many models instead of one.</p>
+    </div>
+</section>
+</ZerotoAILayout>

@@ -1,0 +1,21 @@
+---
+import ZerotoAILayout from '../layouts/ZerotoAILayout.astro';
+---
+<ZerotoAILayout title="Project Pitch">
+
+<section id="anatomy-of-an-agent-the-loop" class="slide level2">
+	<h2>Anatomy of an Agent — The Loop</h2>
+	<p><strong>An agent is a loop: a model observes state, picks a tool, the harness runs it, the result feeds back — until the task is done.</strong></p>
+	<div class="columns">
+	<div class="column" style="width:65%;">
+	<p><img data-src="https://haas-ai-classes.vercel.app/diagrams/c4-recurring-loop.png" style="width:100.0%"></p>
+	</div><div class="column" style="width:35%;">
+	<p><img data-src="https://haas-ai-classes.vercel.app/diagrams/anakin-padme-ai-agent.png" style="width:100.0%"></p>
+	</div></div>
+	<div class="fragment">
+	<p>Every real agent framework — Claude Code, LangGraph, OpenAI Agents SDK, a hand-rolled Python <code>while</code> loop — wraps the <strong>same four parts</strong> into that loop. The only thing that changes is <strong>how much of the harness you write yourself.</strong></p>
+	</div>
+</section>
+
+</ZerotoAILayout>
+

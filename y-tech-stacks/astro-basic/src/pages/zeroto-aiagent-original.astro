@@ -1,0 +1,3054 @@
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d0628aaedd9184289d413cf9e1d6b1d0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>From Zero to AI Agents – Class 4: Multi-Agent Systems</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-5f66212b01f094180b8d10b5b9960144.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <style>
+  /* Fix numbered lists getting cropped inside columns/sections */
+  .reveal ol {
+    padding-left: 1.5em;
+  }
+  .reveal .columns ol {
+    padding-left: 1.3em;
+  }
+
+  .live-code {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0.75em 0;
+    font-size: 0.85em;
+  }
+  .live-code-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.35em 0.75em;
+    background: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85em;
+  }
+  .live-code-lang {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+    color: #fff;
+  }
+  .live-code-lang.js { background: #f0db4f; color: #333; }
+  .live-code-lang.html { background: #e44d26; }
+  .live-code-lang.css { background: #264de4; }
+  .live-code-lang.sql { background: #336791; }
+  .live-code-header .spacer { flex: 1; }
+  .live-code-btn {
+    padding: 0.2em 0.7em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-family: system-ui, sans-serif;
+    background: #fff;
+    transition: background 0.15s;
+  }
+  .live-code-btn:hover { background: #e8e8e8; }
+  .live-code-btn.run { background: #28a745; color: #fff; border-color: #28a745; }
+  .live-code-btn.run:hover { background: #218838; }
+  .live-code-editor {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.6em 0.75em;
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: 1em;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    resize: vertical;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    tab-size: 2;
+  }
+  .live-code-output {
+    border-top: 1px solid #ddd;
+    padding: 0.5em 0.75em;
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+    background: #fafafa;
+    white-space: pre-wrap;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+  }
+  .live-code-output.visible { display: block; }
+  .live-code-output.error { color: #d32f2f; }
+  .live-code-preview {
+    border-top: 1px solid #ddd;
+    background: #fff;
+    display: none;
+  }
+  .live-code-preview.visible { display: block; }
+  .live-code-preview iframe {
+    width: 100%;
+    min-height: 120px;
+    border: none;
+  }
+  </style>
+  <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Class 4: Multi-Agent Systems</h1>
+  <p class="subtitle">From Zero to AI Agents</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section>
+<section id="why-this-class" class="title-slide slide level1 center">
+<h1>Why This Class?</h1>
+
+</section>
+<section id="from-managing-workflows-to-managing-agent-teams" class="slide level2 smaller">
+<h2>From Managing Workflows to Managing Agent Teams</h2>
+<p>The MBA skill is not <em>“I use AI.”</em> It is <strong>redesigning work</strong> when parts of the workflow can reason, call tools, and hand work to other agents.</p>
+<ul>
+<li class="fragment"><strong>Old workflow redesign</strong> — map the process, assign owners, define handoffs, set KPIs</li>
+<li class="fragment"><strong>Agent workflow redesign</strong> — same move, but some owners are model loops with tools</li>
+<li class="fragment"><strong>The manager’s job</strong> — decide what gets delegated, what stays code, what needs review</li>
+<li class="fragment"><strong>The operating model</strong> — orchestrators, workers, evaluators, advisors, budgets, traces</li>
+<li class="fragment"><strong>The edge</strong> — not prompting harder; designing a system that delegates safely</li>
+</ul>
+<div class="fragment">
+<p>Class 3 gave you <strong>one agent</strong>. Class 4 is about the management layer around it: staffing the workflow, setting the rules, watching the handoffs, and knowing when the team is worth the cost.</p>
+</div>
+<div class="fragment">
+<p>If you can redesign a business process, you already have the right mental model. The new question is: <strong>which boxes in the workflow should be code, which should be agents, and who checks the work?</strong></p>
+</div>
+</section>
+<section id="what-this-class-gives-you" class="slide level2 smaller">
+<h2>What This Class Gives You</h2>
+<ul>
+<li class="fragment"><strong>Anatomy of an agent</strong> — the ReAct loop, why every framework (Claude Code, LangGraph, OpenAI Agents SDK) wraps the same four parts</li>
+<li class="fragment"><strong>OpenClaw as a case study</strong> — how the most popular agent on GitHub is actually wired. <em>Not</em> magic.</li>
+<li class="fragment"><strong>Code vs LLM — the production design question</strong> — which steps should be deterministic code, which should be a stochastic LLM call, and why the answer is almost always <em>“mostly code, sparingly LLM”</em></li>
+<li class="fragment"><strong>The workflow patterns</strong> — chaining, routing, evaluator (still one agent); orchestrator-workers, advisor (a team) — the Lego bricks you compose into any workflow</li>
+<li class="fragment"><strong>When to go multi-agent — and when NOT to</strong> — because most projects shouldn’t, and recognizing that is the actual skill</li>
+<li class="fragment"><strong>Production &amp; ops</strong> — cost curves, observability, context rot, why firms hire philosophers to design model personalities</li>
+<li class="fragment"><strong>Safety, alignment, security</strong> — the governance layer before anything ships</li>
+</ul>
+<div class="fragment">
+<p>The MBA who can <strong>design</strong> an agent team — pick patterns, budget tokens, know the failure modes — is already doing what most engineers will need to do in two years. <strong>Get there first.</strong></p>
+</div>
+</section></section>
+<section>
+<section id="class-3-recap" class="title-slide slide level1 center">
+<h1>Class 3 Recap</h1>
+
+</section>
+<section id="one-agent-one-loop" class="slide level2">
+<h2>One Agent, One Loop</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment">
+<p><img data-src="diagrams/c3-agent-state.png" style="width:100.0%"></p>
+</div>
+</div><div class="column" style="width:45%;">
+<p>In class 3 we built up to a single agent. Remember the loop:</p>
+<ul>
+<li class="fragment">one model (one “brain”)</li>
+<li class="fragment">one context window</li>
+<li class="fragment">one thread of attention</li>
+<li class="fragment">one cost tier (whatever model you picked)</li>
+</ul>
+<div class="fragment">
+<p>That is <strong>one employee</strong>. A smart one — but still one.</p>
+</div>
+</div></div>
+</section>
+<section id="the-react-loop-we-built" class="slide level2 smaller">
+<h2>The ReAct Loop We Built</h2>
+<p><strong>Observe → Reason → Act → repeat.</strong> That was the whole thing.</p>
+
+<img data-src="diagrams/c4-react-loop.excalidraw.png" style="width:75.0%" class="r-stretch"><ul>
+<li class="fragment"><strong>Observe</strong> — read the current state (user message, tool output, file contents)</li>
+<li class="fragment"><strong>Reason</strong> — the LLM thinks out loud about what to do next</li>
+<li class="fragment"><strong>Act</strong> — call a tool, write a file, send a response</li>
+<li class="fragment"><strong>Update</strong> — the result flows back into the observation and the loop runs again</li>
+</ul>
+<div class="fragment">
+<p>The loop ends when the model decides it’s done — or when the harness hits a stop condition (max steps, timeout, human override).</p>
+</div>
+</section>
+<section id="tools-how-the-model-reaches-into-the-world" class="slide level2 smaller">
+<h2>Tools — How the Model Reaches Into the World</h2>
+<p>Tool use is what separated ChatGPT from Claude Code. The agent can:</p>
+<ul>
+<li class="fragment"><strong>Request</strong> a tool by name with structured arguments</li>
+<li class="fragment"><strong>Wait</strong> for the harness to run it (search, SQL, shell, HTTP)</li>
+<li class="fragment"><strong>Read</strong> the result and fold it into the next reasoning step</li>
+<li class="fragment"><strong>Chain</strong> tool calls across many turns until the task is done</li>
+</ul>
+<div class="fragment">
+<p>The model never touches your filesystem, database, or APIs directly. <strong>The harness does.</strong> The model only speaks JSON — <em>“please run <code>read_file</code> with <code>{path: ...}</code>”</em> — and reads what comes back.</p>
+</div>
+</section>
+<section id="the-harness-where-engineering-lives" class="slide level2 smaller">
+<h2>The Harness — Where Engineering Lives</h2>
+<p>Around every agent is a small, unglamorous loop (Python, Node, Go, Bash — doesn’t matter) that does the real work:</p>
+<ul>
+<li class="fragment">Calls the model with the full message history + tool schemas</li>
+<li class="fragment">Parses which tool was requested</li>
+<li class="fragment">Executes it with proper permissions + timeouts</li>
+<li class="fragment">Feeds the result back into the next call</li>
+<li class="fragment">Enforces limits: budget, steps, approvals, allowlists</li>
+</ul>
+<div class="fragment">
+<p>The model is the star. The <strong>harness</strong> is where all the engineering lives — retries, auth, audit trails, cost caps. <strong>Class 4 is mostly about the harness growing up</strong> to coordinate many models instead of one.</p>
+</div>
+</section></section>
+<section>
+<section id="what-an-agent-actually-is" class="title-slide slide level1 center">
+<h1>What an Agent Actually Is</h1>
+
+</section>
+<section id="anatomy-of-an-agent-the-loop" class="slide level2">
+<h2>Anatomy of an Agent — The Loop</h2>
+<p><strong>An agent is a loop: a model observes state, picks a tool, the harness runs it, the result feeds back — until the task is done.</strong></p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p><img data-src="diagrams/c4-recurring-loop.png" style="width:100.0%"></p>
+</div><div class="column" style="width:35%;">
+<p><img data-src="diagrams/anakin-padme-ai-agent.png" style="width:100.0%"></p>
+</div></div>
+<div class="fragment">
+<p>Every real agent framework — Claude Code, LangGraph, OpenAI Agents SDK, a hand-rolled Python <code>while</code> loop — wraps the <strong>same four parts</strong> into that loop. The only thing that changes is <strong>how much of the harness you write yourself.</strong></p>
+</div>
+</section>
+<section id="anatomy-of-an-agent-the-four-parts" class="slide level2">
+<h2>Anatomy of an Agent — The Four Parts</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>What it does</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Memory</strong></td>
+<td>Context window + external store</td>
+<td>Notebook of recipes</td>
+</tr>
+<tr class="even">
+<td><strong>Planning</strong></td>
+<td>Decides next action given state</td>
+<td>Reasoning through the steps to plate the dish</td>
+</tr>
+<tr class="odd">
+<td><strong>Tools</strong></td>
+<td>Executes actions in the world</td>
+<td>Knife, pot, stove</td>
+</tr>
+<tr class="even">
+<td><strong>Loop</strong></td>
+<td>The harness that runs it all</td>
+<td>The shift — order in, plate out, repeat</td>
+</tr>
+</tbody>
+</table>
+
+<img data-src="diagrams/the-bear-chef.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"></section>
+<section id="who-decides-which-tool-code-vs-llm" class="slide level2 smaller">
+<h2>Who Decides Which Tool? — Code vs LLM</h2>
+<p>Inside the loop, <strong>something has to pick the next tool</strong>. There are two ways to decide — and the choice is a governance decision, not just a technical one.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="code-based-planner">💻 Code-based planner</h3>
+<p><strong>Plain Python: <code>if / elif</code> on the input.</strong></p>
+<ul>
+<li class="fragment">✅ <strong>Deterministic</strong> — same input, same tool, every time</li>
+<li class="fragment">✅ <strong>Cheap</strong> — no model call to decide</li>
+<li class="fragment">✅ <strong>Auditable</strong> — the routing logic is literally the source code</li>
+<li class="fragment">❌ <strong>Brittle</strong> — <em>“multiply 5 × 21”</em> routes correctly; <em>“five times twenty-one please”</em> doesn’t</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="llm-based-planner">🧠 LLM-based planner</h3>
+<p><strong>Let the model choose the tool itself.</strong></p>
+<ul>
+<li class="fragment">✅ <strong>Flexible</strong> — handles any phrasing, any language</li>
+<li class="fragment">✅ <strong>Generalizes</strong> — you add a tool, it figures out when to use it</li>
+<li class="fragment">❌ <strong>Costs tokens</strong> on every decision</li>
+<li class="fragment">❌ <strong>Non-deterministic</strong> — can pick the wrong tool, or <strong>hallucinate a tool name that doesn’t exist</strong></li>
+</ul>
+</div></div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Rule of thumb:</strong> code-based when routing is stable and you need an audit trail (finance, healthcare, anything regulated). LLM-based when the input surface is open-ended (assistants, agents-as-products).</p>
+<p>The <strong>Routing pattern</strong> coming up in a few slides is exactly this tradeoff — applied to whole agents instead of individual tool calls.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-tools-break-error-handling-in-the-loop" class="slide level2 smaller">
+<h2>When Tools Break — Error Handling in the Loop</h2>
+<p>Tools fail. <strong>A lot.</strong> Every production agent needs a story for each class of failure:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Network</strong> — timeout, rate limit, 500 from the API</li>
+<li class="fragment"><strong>Permission</strong> — the token’s scope doesn’t cover this tool</li>
+<li class="fragment"><strong>Bad arguments</strong> — model called <code>read_file(path="../../etc/passwd")</code></li>
+<li class="fragment"><strong>Tool crashed</strong> — uncaught exception in your own code</li>
+<li class="fragment"><strong>Hallucinated tool</strong> — model calls <code>slack_search</code> or <code>geocode(...)</code> with perfect JSON — tools you never registered. It was trained on millions of APIs; it remembers ones you didn’t give it.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>What the harness must do:</strong></p>
+<ul>
+<li class="fragment">Catch the error, format it as a tool result</li>
+<li class="fragment">Feed it <em>back into the model</em> — let it retry, pick a different tool, or give up</li>
+<li class="fragment">Enforce a <strong>retry budget</strong> so the loop doesn’t burn through your wallet</li>
+<li class="fragment"><strong>Strict tool registry</strong> — unknown tool → <code>"tool_not_found: &lt;name&gt;. Available: [list]"</code>. Never silently execute a “close match.”</li>
+<li class="fragment">Log every failure for the trace</li>
+</ul>
+</div>
+</div></div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Silent failures are the worst kind. If a tool crashes and you return empty string, the model happily invents an answer on the non-result. <strong>Always return a structured error — never nothing.</strong></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="state-memory-beyond-the-context-window" class="slide level2 smaller">
+<h2>State &amp; Memory — Beyond the Context Window</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Three places to put information:</strong></p>
+<ul>
+<li class="fragment"><strong>Context window</strong> — what the model sees this turn. Expensive, volatile, forgets the middle.</li>
+<li class="fragment"><strong>Session log</strong> — the full conversation, durable on disk. Outlives the context window and even the process.</li>
+<li class="fragment"><strong>External store</strong> — filesystem, wiki, vector DB. Survives everything. The “filing cabinet.”</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Three decisions to make:</strong></p>
+<ul>
+<li class="fragment"><strong>Checkpoint</strong> — what must survive a restart? (plan, key findings, open questions)</li>
+<li class="fragment"><strong>Discard</strong> — what was just scratch work? (intermediate tool outputs, stale search results)</li>
+<li class="fragment"><strong>Retrieve</strong> — when do we pull something back in? (only when the current step needs it)</li>
+</ul>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>Memory is a harness decision, not a model decision.</strong> The model doesn’t remember between calls — <em>you</em> decide what to carry forward. Every token you re-send costs money and crowds the window.</p>
+</div>
+</section>
+<section id="prompt-isolation-tool-allowlists" class="slide level2 smaller">
+<h2>Prompt Isolation &amp; Tool Allowlists</h2>
+<p>The system prompt defines <strong>what an agent is allowed to think about.</strong> The tool list defines <strong>what it’s allowed to do.</strong> Both are doors you can lock.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Prompt isolation</strong></p>
+<ul>
+<li class="fragment">Each agent has <em>its own</em> system prompt — no bleed from the parent’s instructions</li>
+<li class="fragment">Subagents <strong>do not see</strong> the main conversation history; only the narrow task the parent handed them</li>
+<li class="fragment">Stops injection attacks from propagating across agents</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Tool allowlist</strong></p>
+<ul>
+<li class="fragment">Declarative: <code>.claude/agents/researcher.md</code> lists exactly <code>[WebSearch, WebFetch, ingest_source]</code></li>
+<li class="fragment"><strong>Nothing else</strong> is callable — even if the model hallucinates the name</li>
+<li class="fragment">Least-privilege at the agent level, not just the human level</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p>These two mechanisms — prompt isolation and tool allowlists — are <strong>why subagents are safe</strong> to spin up in the multi-agent patterns later. Without them, every agent is a liability. With them, each is a contained box.</p>
+</div>
+</section>
+<section id="why-agents-need-guardrails" class="slide level2 smaller">
+<h2>Why Agents Need Guardrails</h2>
+<p>Everything above — error handling, hallucination, retries, allowlists — traces back to one truth:</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment">
+<p><strong>Same input, different output.</strong> The same prompt twice does <strong>not</strong> produce the same tool calls. Sometimes trivial (phrasing). Sometimes catastrophic (skips a step, picks the wrong tool, exfiltrates data).</p>
+</div>
+<div class="fragment">
+<p><strong>Evals don’t make it deterministic.</strong> An eval says <em>“passes 94% of the time on our test set”</em> — a <strong>probability threshold</strong>, not a guarantee. The 6% still ships. Guardrails (schemas, allowlists, retries, humans) live <em>around</em> the LLM, not inside it.</p>
+</div>
+<div class="fragment">
+<p>Which drives the rest of this class: <strong>which steps should be stochastic agents, which should be deterministic code?</strong></p>
+</div>
+</div><div class="column" style="width:45%;">
+<p><img data-src="diagrams/c4-dice-stochastic.webp" style="width:100.0%"></p>
+</div></div>
+</section></section>
+<section>
+<section id="stochastic-agents-vs-deterministic-code-workflows" class="title-slide slide level1 center">
+<h1>Stochastic Agents vs Deterministic Code Workflows</h1>
+
+</section>
+<section id="the-production-design-question" class="slide level2 smaller">
+<h2>The Production Design Question</h2>
+<p>Every agent system you’ll design is a mix of two kinds of steps. Naming them is the most important decision you’ll make.</p>
+
+<img data-src="diagrams/c4-code-vs-llm.excalidraw.png" style="width:80.0%" class="r-stretch"><div class="fragment">
+<p><strong>In production, the scaffolding is always code. The LLM is inserted only at the <em>spark points</em> where judgment is actually needed.</strong> Get this wrong and you’re either brittle (all code, no flexibility) or broke (all LLM, no predictability).</p>
+</div>
+</section>
+<section id="the-decision-rubric" class="slide level2 smaller">
+<h2>The Decision Rubric</h2>
+<p><strong>Prefer code.</strong> It’s cheaper, deterministic, testable. Only reach for an LLM when code genuinely can’t do the job.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="default-use-code">💻 Default — use code</h3>
+<ul>
+<li class="fragment">Logic is expressible as <strong>rules, schemas, or SQL</strong></li>
+<li class="fragment">Output must be <strong>exactly reproducible</strong> (reports, invoices, migrations)</li>
+<li class="fragment">It’s a <strong>system boundary</strong> — auth, payments, persistence, external API</li>
+<li class="fragment"><strong>Latency or cost</strong> matters (every millisecond, every penny)</li>
+<li class="fragment">You need a <strong>test</strong> that catches regressions forever</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="exception-when-code-cant">🧠 Exception — when code can’t</h3>
+<ul>
+<li class="fragment">Input is <strong>unstructured natural language</strong> or ambiguous</li>
+<li class="fragment">The space of valid outputs is <strong>open-ended</strong></li>
+<li class="fragment"><strong>Judgment, synthesis, or summarization</strong> is required</li>
+<li class="fragment">No rule-based spec is feasible (too many edge cases)</li>
+<li class="fragment">A human would do it with soft skills, not a spec</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p><strong>If the answer is “both” — split the step.</strong> One code step (the deterministic part) calling one LLM step (the judgment part), then code again to validate and persist.</p>
+</div>
+</section>
+<section id="skeleton-and-spark-the-production-pattern" class="slide level2 smaller">
+<h2>Skeleton and Spark — The Production Pattern</h2>
+<p>Every real agent system has the same shape. The <strong>skeleton</strong> is code: retries, ordering, routing table, persistence, state machine, auth, error handling, validation. The <strong>spark</strong> is the LLM step, dropped in only where judgment is actually needed.</p>
+
+<img data-src="diagrams/c4-skeleton-and-spark.excalidraw.png" style="width:95.0%" class="r-stretch"><div class="fragment">
+<p><strong>Pink = LLM. Blue = code.</strong> Seven steps, two LLM calls. That ratio — mostly code, sparingly LLM — is what a production pipeline actually looks like.</p>
+</div>
+</section>
+<section id="worked-example-code-skeleton-llm-sparks" class="slide level2 smaller">
+<h2>Worked Example — Code Skeleton, LLM Sparks</h2>
+<p>Task: <em>a customer email lands in support — classify it, draft a reply, send it.</em> The production design wraps <strong>deterministic code</strong> around <strong>two narrow LLM calls</strong> — each one guarded by code before it’s trusted.</p>
+<div>
+<div id="pyodide-1" class="exercise-cell">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBNb2NrcyBzbyB0aGUgcGlwZWxpbmUgcnVucyBlbmQtdG8tZW5kIGluIHRoZSBicm93c2VyLlxuZGVmIHJlYWRfZW1haWwoKTogICAgICAgICAgICAgcmV0dXJuIHtcImZyb21cIjogXCJhbGV4QGFjbWUuY29tXCIsIFwiYm9keVwiOiBcIkkgd2FzIGNoYXJnZWQgdHdpY2UgZm9yIGludm9pY2UgIzgxMi5cIn1cbmRlZiBjbGFzc2lmeV9pbnRlbnQoZW1haWwpOiAgIHJldHVybiBcImJpbGxpbmdcIiAgICAgICAgICAjIPCfp6AgTExNIGp1ZGdtZW50XG5kZWYgZHJhZnRfcmVwbHkoZW1haWwpOiAgICAgICByZXR1cm4gXCJIaSBBbGV4IOKAlCBJIHNlZSB0aGUgZHVwbGljYXRlIGNoYXJnZSBvbiAjODEyIGFuZCBJJ20gcmVmdW5kaW5nIGl0IHRvZGF5LlwiXG5kZWYgc2VuZF9lbWFpbCh0bywgcmVwbHkpOiAgICBwcmludChmXCLihpIgc2VudCB0byB7dG99OiB7cmVwbHlbOjYwXX3igKZcIilcblxuSU5URU5UUyA9IHtcImJpbGxpbmdcIiwgXCJjb21wbGFpbnRcIiwgXCJxdWVzdGlvblwiLCBcIm90aGVyXCJ9XG5cbiMg4pSA4pSAIHBpcGVsaW5lIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuZW1haWwgID0gcmVhZF9lbWFpbCgpICAgICAgICAgICAgICAgICAgICAgICAjIGNvZGUg4oCUIHB1bGwgZnJvbSB0aGUgaW5ib3ggKGRldGVybWluaXN0aWMpXG5pbnRlbnQgPSBjbGFzc2lmeV9pbnRlbnQoZW1haWwpICAgICAgICAgICAgICMg8J+noCAgIOKAlCB3aGF0IGRvZXMgdGhpcyBjdXN0b21lciBhY3R1YWxseSB3YW50P1xuYXNzZXJ0IGludGVudCBpbiBJTlRFTlRTICAgICAgICAgICAgICAgICAgICAjIGNvZGUg4oCUIEdVQVJEOiBuZXZlciBhY3Qgb24gYW4gdW5rbm93biBsYWJlbFxuaWYgaW50ZW50ID09IFwiY29tcGxhaW50XCI6ICAgICAgICAgICAgICAgICAgICMgY29kZSDigJQgcm91dGUgdG8gYSBodW1hbiwgc2tpcCB0aGUgTExNIGRyYWZ0XG4gICAgcHJpbnQoXCLihpIgZXNjYWxhdGVkIHRvIGh1bWFuIHJlcFwiKTtcbmVsc2U6XG4gICAgcmVwbHkgPSBkcmFmdF9yZXBseShlbWFpbCkgICAgICAgICAgICAgICMg8J+noCAgIOKAlCB3cml0ZSBhIHRhaWxvcmVkIHJlc3BvbnNlXG4gICAgYXNzZXJ0IDIwIDwgbGVuKHJlcGx5KSA8IDUwMCAgICAgICAgICAgICMgY29kZSDigJQgc2FuaXR5LWNoZWNrIGxlbmd0aCBiZWZvcmUgc2VuZGluZ1xuICAgIHNlbmRfZW1haWwoZW1haWxbXCJmcm9tXCJdLCByZXBseSkgICAgICAgICMgY29kZSDigJQgdGhlIG9uZSBzdGVwIHRoYXQgYWN0dWFsbHkgY29zdHMgbW9uZXkifQ==
+</script>
+</div>
+<div class="fragment">
+<p><strong>Two LLM calls, five code steps, every LLM output checked before it hits the customer.</strong> The LLM is where the judgment is; the code is everything else — and the code is what keeps you out of the headlines.</p>
+</div>
+</section>
+<section id="failure-modes-tell-you-the-difference" class="slide level2 smaller">
+<h2>Failure Modes Tell You the Difference</h2>
+<p>Code and LLM steps fail in completely different ways. This is why the split matters.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>💻 Code step</th>
+<th>🧠 LLM step</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Failure</strong></td>
+<td>Reproducible (same input → same crash)</td>
+<td>Probabilistic (fails 1 in 20 runs, nobody knows why)</td>
+</tr>
+<tr class="even">
+<td><strong>Fix</strong></td>
+<td>Add a test, patch the bug, done forever</td>
+<td>Prompt eng, evals, retries, fallback model</td>
+</tr>
+<tr class="odd">
+<td><strong>Observability</strong></td>
+<td><code>print</code>, logs, debugger</td>
+<td>Traces + evals + sampled human review</td>
+</tr>
+<tr class="even">
+<td><strong>Cost</strong></td>
+<td>CPU cycles, ~free</td>
+<td>Tokens, measurable per-call</td>
+</tr>
+<tr class="odd">
+<td><strong>Latency</strong></td>
+<td>ms</td>
+<td>seconds</td>
+</tr>
+<tr class="even">
+<td><strong>Auditability</strong></td>
+<td>Source code is the spec</td>
+<td>The prompt is <em>a</em> spec; outputs still vary</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The lens for the rest of class 4</strong>: on every pattern diagram that follows, ask <em>which boxes are code and which are LLM?</em> That’s the real architecture.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="meet-openclaw" class="title-slide slide level1 center">
+<h1>Meet OpenClaw</h1>
+
+</section>
+<section id="meet-openclaw-the-agent-that-broke-github" class="slide level2 smaller">
+<h2>Meet OpenClaw — The Agent That Broke GitHub</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="diagrams/c4-openclaw-names.svg" style="width:100.0%"></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>~60 days → 250,000+ ⭐</strong> — fastest-growing agent project in OSS history, built by <strong>one developer</strong> (Peter Steinberger). Twice renamed after an Anthropic trademark complaint (<em>Clawd</em> ≈ <em>Claude</em>).</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><strong>What it is.</strong> Self-hosted personal AI — runs on WhatsApp, Telegram, Slack, Discord, iMessage, Signal, and 20+ other channels. Voice on macOS / iOS / Android.</li>
+<li class="fragment"><strong>Why it exploded.</strong> <em>Config-first.</em> Write one <code>SOUL.md</code> file describing the agent’s personality, tools, memory, channels. Run one command. <strong>No Python. No chains. No graphs.</strong></li>
+<li class="fragment"><strong>What it proves.</strong> The agent loop is now a <strong>commodity</strong>. One dev + one config file + a weekend → the fastest-growing repo on GitHub. Two years ago that was unthinkable.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The loop we just drew — <strong>observe → plan → act → update</strong> — <em>is</em> OpenClaw. It’s also Claude Code, Cursor, Cline, OpenDevin. The <strong>anatomy is shared</strong>; what’s now commoditizing is the harness around it.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="openclaw-architecture-its-not-that-different" class="slide level2">
+<h2>OpenClaw Architecture — It’s Not That Different</h2>
+<p>Zoom in on what’s actually inside. The <strong>four components</strong> you just learned are right in the middle. Everything else is plumbing.</p>
+
+<img data-src="diagrams/c4-openclaw-architecture.png" style="width:80.0%" class="r-stretch"><div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>SOUL.md</strong> configures the agent. <strong>Messaging channels</strong> are the new “user interface.” <strong>Tools + Memory</strong> are still the same two boxes. The <strong>Runtime</strong> is just the generic loop running in a container somewhere.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="openclaw-through-the-code-vs-llm-lens" class="slide level2 smaller">
+<h2>OpenClaw Through the Code-vs-LLM Lens</h2>
+<p>Apply the lens from the last section. Which parts of OpenClaw are <strong>deterministic code</strong>, and which are the <strong>stochastic LLM step</strong>?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="code-the-skeleton">💻 Code (the skeleton)</h3>
+<ul>
+<li class="fragment">The <strong>runtime loop</strong> — while not done, call model, dispatch tool, loop</li>
+<li class="fragment"><strong>Channel adapters</strong> — WhatsApp, Slack, Signal webhooks, parsing</li>
+<li class="fragment"><strong>Tool dispatch</strong> — match tool name, route to handler, enforce timeouts</li>
+<li class="fragment"><strong>Permission checks</strong> — is this user allowed to invoke this tool?</li>
+<li class="fragment"><strong>Memory store</strong> — append to session log, retrieve past messages</li>
+<li class="fragment"><strong>SOUL.md loader</strong> — parse config, build tool registry</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="llm-the-spark">🧠 LLM (the spark)</h3>
+<ul>
+<li class="fragment"><strong>The reasoning inside the loop</strong> — what to say, which tool to call</li>
+<li class="fragment"><strong>Synthesizing a reply</strong> from tool outputs</li>
+<li class="fragment"><strong>Deciding when the task is done</strong></li>
+</ul>
+</div></div>
+<div class="fragment">
+<p>OpenClaw is <strong>&gt;95% code</strong> and a sliver of LLM at the center. That’s the commoditization story — the harness is the same everywhere; the only thing left to vary is the prompt and the tools.</p>
+<p><strong>This is true of every agent framework</strong> — Claude Agent SDK, LangGraph, OpenAI Agents SDK. The code skeleton is nearly identical. The LLM is the spark.</p>
+</div>
+</section>
+<section id="the-shape-is-familiar" class="slide level2 smaller">
+<h2>The Shape Is Familiar</h2>
+<p>A useful agent framework is mostly this: <strong>code around the ReAct loop</strong>, plus prompts, tools, memory, and guardrails.</p>
+<div style="width:min(520px,100%);margin:0 auto;">
+  <video autoplay="" loop="" muted="" playsinline="" tabindex="-1" aria-label="Meme: agent framework shape is familiar" style="width:100%;height:auto;display:block;border-radius:8px;pointer-events:none;">
+    <source src="diagrams/c4-openclaw-shape-familiar.mp4" type="video/mp4">
+  </video>
+</div>
+</section></section>
+<section>
+<section id="orchestration-patterns-inside-one-agent" class="title-slide slide level1 center">
+<h1>Orchestration Patterns — Inside One Agent</h1>
+<style>
+.reveal .agent-pattern-frame {
+  width: 100%;
+  height: min(70vh, 680px);
+  border: 1px solid #d9e1ec;
+  border-radius: 10px;
+  background: #08111f;
+  box-shadow: 0 14px 38px rgba(15, 23, 42, 0.18);
+}
+
+.reveal .agent-pattern-caption {
+  margin-top: 0.45rem;
+  color: #64748b;
+  font-size: 0.62em;
+}
+</style>
+</section>
+<section id="three-patterns-that-dont-need-a-team" class="slide level2 smaller">
+<h2>Three Patterns That Don’t Need a Team</h2>
+<p>Before we add <em>more</em> agents, notice this: <strong>three of the classic workflow patterns work with a single agent.</strong> Chaining, routing, evaluator — all run in one process, with one model (or a couple), one context window per call. <strong>Your class-3 agent can already do these.</strong></p>
+<div class="fragment">
+<p><strong>The lens from two sections ago:</strong> on each diagram, ask <em>which boxes are code, which are LLM?</em> The answer is often surprising — most of the “orchestration” is code. The LLM is inserted at the judgment points.</p>
+</div>
+</section>
+<section id="pattern-1-prompt-chaining" class="slide level2 smaller">
+<h2>Pattern 1 — Prompt Chaining</h2>
+
+<img data-src="diagrams/c4-pattern1-chaining.png" style="width:70.0%" class="r-stretch"><div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The assembly line.</strong> Output of step N is the input of step N+1.</p>
+<ul>
+<li class="fragment">Each step is a <strong>separate LLM call</strong> with a narrow job</li>
+<li class="fragment">No routing decisions — the <strong>pipeline is hardcoded</strong></li>
+<li class="fragment">Cheapest, most predictable pattern</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Example:</strong> <em>Draft → Translate → Format for brand voice → Publish</em></p>
+</div>
+<div class="fragment">
+<p><strong>Best for:</strong> fixed, ordered steps where accuracy per step matters more than flexibility.</p>
+</div>
+<div class="fragment">
+<p><strong>Trade-off:</strong> errors cascade. If step 2 garbles, steps 3 and 4 polish the garbage.</p>
+</div>
+</div></div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Reading every pattern diagram in this class: arrows = code, boxes = LLM.</strong> The code is the scaffolding; the LLM sits only where judgment is needed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Schema-check between each step so a bad output doesn’t cascade.</p>
+</div>
+</section>
+<section id="pattern-2-routing" class="slide level2 smaller">
+<h2>Pattern 2 — Routing</h2>
+
+<img data-src="diagrams/c4-pattern2-routing.png" style="width:65.0%" class="r-stretch"><div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The triage desk.</strong> Classify first, dispatch to the right specialist.</p>
+<ul>
+<li class="fragment">A <strong>classifier</strong> reads the input and picks a route</li>
+<li class="fragment">Each route has its <strong>own prompt, tools, often its own model</strong></li>
+<li class="fragment">Add new routes without touching the others</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Example:</strong> support — billing → cheap + SQL; legal → strong + policy docs; chit-chat → fast, no tools.</p>
+</div>
+<div class="fragment">
+<p><strong>Best for:</strong> inputs with <strong>distinct categories</strong> where a generic prompt would be mediocre on every one.</p>
+</div>
+<div class="fragment">
+<p>Why the same product feels smart on some questions, dumb on others — it’s silently routing underneath.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p>The classifier itself can be code or LLM — default to the cheapest that works.</p>
+</div>
+</section>
+<section id="pattern-3-evaluator-optimizer" class="slide level2 smaller">
+<h2>Pattern 3 — Evaluator-Optimizer</h2>
+
+<img data-src="diagrams/c4-pattern5-evaluator.png" style="width:70.0%" class="r-stretch"><div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Editor + writer.</strong> One role generates. Another critiques. Loop.</p>
+<ul>
+<li class="fragment"><strong>Generator</strong> produces an attempt</li>
+<li class="fragment"><strong>Evaluator</strong> scores it against a rubric, explains what’s wrong</li>
+<li class="fragment">Generator revises — repeat until approved</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Example:</strong> code writer + code reviewer; translator + fluency judge; draft writer + editor.</p>
+</div>
+<div class="fragment">
+<p><strong>Best for:</strong> tasks with a <strong>clear quality rubric</strong> — one-shot isn’t good enough but iteration is cheap.</p>
+</div>
+<div class="fragment">
+<p><strong>Trade-off:</strong> needs a <strong>stop condition</strong> — a rubric the evaluator can grade, plus a max-iteration cap.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p>Prefer a code rubric (tests, schema) over an LLM judge whenever you can write one.</p>
+</div>
+</section>
+<section id="three-inside-one-agent-patterns-then-more" class="slide level2 smaller">
+<h2>Three Inside-One-Agent Patterns, Then More</h2>
+<p>These three patterns <strong>do not require a team</strong>. You can run all of them with your class-3 single agent — they’re just different ways to structure one workflow.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>What it adds</th>
+<th>Still one agent?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Chaining</strong></td>
+<td>Sequence with a schema between steps</td>
+<td>✅ yes</td>
+</tr>
+<tr class="even">
+<td><strong>Routing</strong></td>
+<td>A classifier picks which branch to take</td>
+<td>✅ yes</td>
+</tr>
+<tr class="odd">
+<td><strong>Evaluator</strong></td>
+<td>A critic loop that tightens the output</td>
+<td>✅ yes</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>So what’s next?</strong> The patterns that <strong>do</strong> need a team — parallel fan-out, orchestrator-workers, advisor, managed agents. Those are where coordination cost starts to pay for itself. First: let’s be precise about <em>what</em> a team buys you that one agent never can.</p>
+</div>
+</section></section>
+<section>
+<section id="where-single-agents-hit-walls" class="title-slide slide level1 center">
+<h1>Where Single Agents Hit Walls</h1>
+
+</section>
+<section id="four-walls-a-single-agent-cant-climb" class="slide level2 smaller">
+<h2>Four Walls a Single Agent Can’t Climb</h2>
+<p>You’ve now seen the single agent up close — its anatomy, its stochastic nature, the code-vs-LLM split inside it, the three orchestration patterns it can already do. Here’s where it stops:</p>
+
+<img data-src="diagrams/c4-single-agent-walls.excalidraw.png" style="width:75.0%" class="r-stretch"></section>
+<section id="the-four-walls-concretely" class="slide level2 smaller">
+<h2>The Four Walls, Concretely</h2>
+<p>Four things a single agent simply <strong>cannot do</strong>, no matter how hard you prompt it:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li class="fragment"><strong>Breadth</strong> — <em>“read all 20 filings and tell me what changed.”</em> The material doesn’t fit in one context window.</li>
+<li class="fragment"><strong>Parallelism</strong> — <em>“research these 4 companies at the same time.”</em> One thread of attention; it goes serial.</li>
+<li class="fragment"><strong>Duration</strong> — <em>“pick up where we left off three weeks ago.”</em> The session compacted; what mattered is gone.</li>
+<li class="fragment"><strong>Specialization</strong> — <em>“be the legal reviewer <strong>and</strong> the copywriter <strong>and</strong> the coder.”</em> One model, one voice, one cost tier — mediocre at all three.</li>
+</ul>
+<div class="fragment">
+<p>Every MBA has seen this movie. The generalist hits the wall — the answer isn’t <em>“prompt harder.”</em> It’s <strong>hire a team.</strong></p>
+</div>
+</div><div class="column" style="width:35%;">
+<p><img data-src="diagrams/c4-let-me-out.gif" style="width:100.0%"></p>
+</div></div>
+</section>
+<section id="the-evidence-what-the-research-says" class="slide level2 smaller">
+<h2>The Evidence — What the Research Says</h2>
+<p>The four walls aren’t intuition. They’re <strong>measurable</strong> — and the fix (specialize + split) is measurable too.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Wall</th>
+<th>What the research shows</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Breadth</strong></td>
+<td>Models recall the start and end of context; the middle gets forgotten.</td>
+<td><a href="https://arxiv.org/abs/2307.03172">Liu et al., 2023 — <em>Lost in the Middle</em></a></td>
+</tr>
+<tr class="even">
+<td><strong>Breadth / Duration</strong></td>
+<td>Only half of models claiming 32K context maintain satisfactory performance at 32K.</td>
+<td><a href="https://arxiv.org/abs/2404.06654">Hsieh et al., 2024 — <em>RULER</em></a></td>
+</tr>
+<tr class="odd">
+<td><strong>Specialization</strong></td>
+<td>Decomposing a complex task into focused sub-prompts outperforms one monolithic prompt.</td>
+<td><a href="https://arxiv.org/abs/2210.02406">Khot et al., 2022 — <em>Decomposed Prompting</em></a></td>
+</tr>
+<tr class="even">
+<td><strong>Parallelism</strong></td>
+<td>Six open-source models collaborating beat GPT-4o on AlpacaEval 2.0 (<strong>65.1% vs 57.5%</strong>).</td>
+<td><a href="https://arxiv.org/abs/2406.04692">Wang et al., 2024 — <em>Mixture-of-Agents</em></a></td>
+</tr>
+<tr class="odd">
+<td><strong>All four, empirically</strong></td>
+<td>Anthropic’s own split: single-agent Opus → Opus lead + Sonnet subagents gave <strong>+90.2%</strong> on research tasks. Token usage alone explained <strong>~80%</strong> of performance variance.</td>
+<td><a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">Anthropic, 2025 — <em>Multi-agent research system</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>The walls aren’t opinion — they’re measurable. And so is the lift from splitting into focused agents.</strong> Every design decision in the rest of this class is an exercise in <em>which split, for which task, at what cost</em>.</p>
+</div>
+</section></section>
+<section>
+<section id="what-multi-agent-adds" class="title-slide slide level1 center">
+<h1>What Multi-Agent Adds</h1>
+
+</section>
+<section id="the-three-axes-of-more-than-one" class="slide level2">
+<h2>The Three Axes of “More Than One”</h2>
+<p>Every multi-agent system you’ll see in the wild varies along three axes:</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Specialization</strong></p>
+<p>Different agents, different roles.</p>
+<p><em>Researcher vs writer vs reviewer.</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Parallelism</strong></p>
+<p>Multiple agents at the same time.</p>
+<p><em>4 junior analysts, 4 drafts, pick the best.</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Hierarchy</strong></p>
+<p>A manager and workers.</p>
+<p><em>Partner scopes, associates execute.</em></p>
+</div>
+</div></div>
+<div class="fragment">
+<p>The rest of this class mixes these three in different ways. Every “pattern” we’ll cover is a recipe for combining them.</p>
+</div>
+</section>
+<section id="two-lineages-one-destination" class="slide level2">
+<h2>Two Lineages, One Destination</h2>
+<p>Multi-agent systems aren’t new. There are <strong>two histories</strong> converging right now:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Classic multi-agent RL</strong> (1990s–today)</p>
+<ul>
+<li>Robot swarms, traffic control, game AI, economics</li>
+<li>Studied in academia for 30 years</li>
+<li>Has a textbook: <strong>marl-book.com</strong></li>
+</ul>
+<p>Patterns figured out the hard way.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Modern LLM multi-agent</strong> (2023–today)</p>
+<ul>
+<li>Orchestrator-worker, subagents, advisor, managed agents</li>
+<li>Built at Anthropic, OpenAI, Google DeepMind</li>
+</ul>
+<p>…often rediscovering what MARL figured out years ago.</p>
+</div></div>
+<div class="fragment">
+<p>We’ll do 5 slides of the MARL intuitions first — the timeless part — then show how the modern LLM patterns map onto them. You’ll recognize old friends.</p>
+</div>
+</section></section>
+<section>
+<section id="classic-intuitions-marl" class="title-slide slide level1 center">
+<h1>Classic Intuitions (MARL)</h1>
+
+</section>
+<section id="swarm-intelligence-the-original-result" class="slide level2">
+<h2>Swarm Intelligence — The Original Result</h2>
+<p>Nature solved multi-agent systems long before we did:</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li class="fragment"><strong>Ants</strong> — no ant knows the big picture; colonies still build cathedrals</li>
+<li class="fragment"><strong>Bees</strong> — scouts dance the location of flowers; hive converges on best sources</li>
+<li class="fragment"><strong>Fish schools</strong> — three simple rules per fish → coordinated motion for thousands</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="fragment">
+<p><img data-src="diagrams/c4-stigmergy.png" style="width:100.0%"></p>
+</div>
+</div></div>
+</section>
+<section id="swarm-agents-1-project" class="slide level2 smaller">
+<h2>Swarm Agents — 1 Project</h2>
+<p>An Anthropic engineer <a href="https://www.anthropic.com/engineering/building-c-compiler">built a working C compiler</a> — <strong>100,000 lines of Rust, compiles Linux 6.9 on x86, ARM, and RISC-V</strong> — with a swarm of agents running almost entirely on their own. It’s parallel fan-out, pushed to production scale.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The numbers</strong></p>
+<ul>
+<li class="fragment"><strong>16 parallel Claude Opus 4.6</strong> instances</li>
+<li class="fragment"><strong>~2,000 autonomous sessions</strong> across <strong>two weeks</strong></li>
+<li class="fragment"><strong>2B input tokens</strong>, <strong>~$20,000</strong> total spend</li>
+<li class="fragment">Specialized roles: dedup, perf, refactoring, docs critique</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>How they coordinated</strong></p>
+<ul>
+<li class="fragment">Each agent in its own <strong>Docker container</strong>, mounted git repo</li>
+<li class="fragment">Synchronization via <strong>text files in the repo</strong> — claim a task, work, push</li>
+<li class="fragment">No central orchestrator — the shared filesystem <em>is</em> the coordination</li>
+<li class="fragment"><strong>Stigmergy at production scale</strong> — pheromones are now commits</li>
+</ul>
+</div></div>
+<div class="fragment">
+<blockquote>
+<p><em>“Most of my effort went into designing the environment.”</em></p>
+</blockquote>
+</div>
+<div class="fragment">
+<p>The lesson isn’t <em>“use 16 agents.”</em> It’s that <strong>the environment does the coordinating.</strong> High-quality tests, informative feedback, progress tracking, a shared repo — the agents are interchangeable, the <em>arena</em> is what makes the swarm work. Every pattern from this class — parallel fan-out, managed agents, stigmergy, code skeleton around LLM sparks — pushed to the limit, on one real project.</p>
+</div>
+</section>
+<section id="swarm-agents-3d-view" class="slide level2 smaller">
+<h2>Swarm Agents — 3D View</h2>
+<iframe class="agent-pattern-frame" src="agent-patterns-3d/index.html#swarm" title="3D visualization of swarm agents" loading="lazy" allowfullscreen=""></iframe>
+<p class="agent-pattern-caption">Unofficial pattern: swarms are less standardized than orchestrator-workers or advisor, but useful for reasoning about environment-mediated coordination.</p>
+</section>
+<section id="cooperative-competitive-mixed" class="slide level2">
+<h2>Cooperative, Competitive, Mixed</h2>
+<p>Not all multi-agent systems have the same goal. Three flavors:</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Cooperative</strong></p>
+<p>An <strong>orchestra</strong>. Everyone wins together or nobody does.</p>
+<p><em>→ Research teams, code teams.</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Competitive</strong></p>
+<p><strong>Chess</strong>. One wins, one loses. Zero-sum.</p>
+<p><em>→ Red-team vs blue-team, adversarial debate.</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Mixed-motive</strong></p>
+<p>A <strong>market</strong>. Some shared goals, some private.</p>
+<p><em>→ Negotiation agents, auction bidders.</em></p>
+</div>
+</div></div>
+<div class="fragment">
+<p>Which flavor you’re building changes <em>everything</em> — how agents communicate, what they hide, how you score them. Most LLM systems today are cooperative. The interesting frontier is mixed.</p>
+</div>
+</section>
+<section id="centralized-vs-local-execution-preview" class="slide level2 smaller">
+<h2>Centralized vs Local Execution — Preview</h2>
+<p>One MARL idea is worth borrowing, but only as a preview:</p>
+<ul>
+<li class="fragment">a <strong>central view</strong> can make better decomposition decisions</li>
+<li class="fragment">a <strong>local agent</strong> can execute a narrower slice with less context</li>
+<li class="fragment">the hard part is deciding <strong>what belongs in the center</strong> and <strong>what belongs with each worker</strong></li>
+</ul>
+<div class="fragment">
+<p>MARL calls this family of ideas <strong>centralized training, decentralized execution</strong>. Don’t learn it as a separate pattern here — just remember the shape: <strong>broad planner, narrow executors</strong>. We’ll turn that into the practical orchestrator-worker pattern in a few minutes.</p>
+</div>
+</section>
+<section id="shared-knowledge-central-vs-individual" class="slide level2">
+<h2>Shared Knowledge: Central vs Individual</h2>
+<p>Give a team information. How do they share it?</p>
+
+<img data-src="diagrams/c4-knowledge-architecture.png" style="width:85.0%" class="r-stretch"><div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Central</strong>: company wiki. Consistent, auditable, a coordination bottleneck.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Individual</strong>: personal notes. Fast, specialized, duplicative.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>This is stigmergy again.</strong> The central store IS the pheromone trail. In Claude Code: the filesystem. In LangGraph: the shared state object. In a research team: the shared vault. Get this layer wrong and your agents duplicate work, contradict each other, and miss connections.</p>
+</div>
+</section>
+<section id="the-credit-assignment-problem" class="slide level2">
+<h2>The Credit Assignment Problem</h2>
+<p>The team shipped. <strong>Who gets promoted?</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>This is the hardest unsolved problem in multi-agent research:</p>
+<ul>
+<li class="fragment">did the researcher find the key insight?</li>
+<li class="fragment">or did the writer frame it?</li>
+<li class="fragment">or did the reviewer catch the flaw?</li>
+<li class="fragment">or did one agent waste 80% of the tokens for nothing?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>In LLM multi-agent systems, it shows up as:</p>
+<ul>
+<li class="fragment"><em>which subagent’s tokens were actually productive?</em></li>
+<li class="fragment"><em>which prompt change made the team better?</em></li>
+<li class="fragment"><em>when one agent ships garbage, whose fault is it?</em></li>
+</ul>
+</div>
+</div></div>
+<div class="fragment">
+<p>Keep this in mind when you build multi-agent systems: <strong>blame is harder than credit</strong>. The agent that <em>looks</em> like it did the work isn’t always the one that did.</p>
+</div>
+</section>
+<section id="simple-rules-emergent-behavior" class="slide level2">
+<h2>Simple Rules → Emergent Behavior</h2>
+<p>Craig Reynolds’ <strong>boids</strong> (1987) simulated flocks of birds with three rules per bird:</p>
+<div class="fragment">
+<ul>
+<li class="fragment"><strong>Separation</strong> — don’t crash into your neighbors</li>
+<li class="fragment"><strong>Alignment</strong> — match the average heading of your neighbors</li>
+<li class="fragment"><strong>Cohesion</strong> — steer toward the center of your neighbors</li>
+</ul>
+</div>
+<div class="fragment">
+<div style="position:relative;margin-top:0.4em;">
+<canvas id="c4-boids" width="960" height="240" style="width:100%;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;"></canvas>
+<div style="position:absolute;top:8px;left:12px;font-size:0.7em;color:#64748b;font-family:monospace;">80 boids · separation + alignment + cohesion · no leader</div>
+</div>
+<script>
+(function(){
+  function start(){
+    var c = document.getElementById('c4-boids');
+    if(!c || c.dataset.started) return;
+    c.dataset.started = '1';
+    var ctx = c.getContext('2d');
+    var W = c.width, H = c.height;
+    var N = 80, boids = [];
+    for(var i=0;i<N;i++){
+      boids.push({x:Math.random()*W, y:Math.random()*H,
+                  vx:(Math.random()-0.5)*3, vy:(Math.random()-0.5)*3});
+    }
+    var VIS = 45, SEP = 14, MAX = 2.4;
+    function step(){
+      for(var i=0;i<N;i++){
+        var b=boids[i], ax=0,ay=0, avx=0,avy=0, cx=0,cy=0, n=0;
+        for(var j=0;j<N;j++){
+          if(i===j) continue;
+          var o=boids[j], dx=o.x-b.x, dy=o.y-b.y;
+          var d=Math.hypot(dx,dy);
+          if(d<VIS){
+            avx+=o.vx; avy+=o.vy; cx+=o.x; cy+=o.y; n++;
+            if(d<SEP && d>0){ ax-=dx/d; ay-=dy/d; }
+          }
+        }
+        if(n){
+          avx/=n; avy/=n; cx/=n; cy/=n;
+          b.vx += (avx-b.vx)*0.06;
+          b.vy += (avy-b.vy)*0.06;
+          b.vx += (cx-b.x)*0.0008;
+          b.vy += (cy-b.y)*0.0008;
+        }
+        b.vx += ax*0.25;
+        b.vy += ay*0.25;
+        var s=Math.hypot(b.vx,b.vy);
+        if(s>MAX){ b.vx=b.vx/s*MAX; b.vy=b.vy/s*MAX; }
+        b.x+=b.vx; b.y+=b.vy;
+        if(b.x<0) b.x+=W; if(b.x>W) b.x-=W;
+        if(b.y<0) b.y+=H; if(b.y>H) b.y-=H;
+      }
+    }
+    function draw(){
+      ctx.fillStyle='#f8fafc'; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='#2563eb';
+      for(var i=0;i<N;i++){
+        var b=boids[i], a=Math.atan2(b.vy,b.vx);
+        ctx.beginPath();
+        ctx.moveTo(b.x+Math.cos(a)*6, b.y+Math.sin(a)*6);
+        ctx.lineTo(b.x+Math.cos(a+2.6)*4, b.y+Math.sin(a+2.6)*4);
+        ctx.lineTo(b.x+Math.cos(a-2.6)*4, b.y+Math.sin(a-2.6)*4);
+        ctx.closePath(); ctx.fill();
+      }
+    }
+    (function loop(){ step(); draw(); requestAnimationFrame(loop); })();
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') start();
+  else document.addEventListener('DOMContentLoaded', start);
+  setTimeout(start, 500);
+})();
+</script>
+</div>
+<div class="fragment">
+<p>Three rules. No leader. No global plan. Output: <strong>indistinguishable from real flocks of birds.</strong></p>
+</div>
+</section></section>
+<section>
+<section id="game-theory" class="title-slide slide level1 center">
+<h1>Game Theory</h1>
+
+</section>
+<section id="nash-equilibria-prisoners-dilemma" class="slide level2">
+<h2>Nash Equilibria — Prisoner’s Dilemma</h2>
+</section>
+<section id="just-kidding." class="slide level2 smaller">
+<h2>Just Kidding.</h2>
+<p>You’re MBAs. You’ve done this.</p>
+<p><em>Back to the agents.</em></p>
+</section></section>
+<section>
+<section id="canonical-multi-agent-patterns" class="title-slide slide level1 center">
+<h1>Canonical Multi-Agent Patterns</h1>
+
+</section>
+<section id="two-canonical-patterns" class="slide level2 smaller">
+<h2>Two Canonical Patterns</h2>
+<p>Almost every multi-agent system you’ll see in the wild is a variant of <strong>one of two patterns</strong>. We’ll cover both and show you the decision tree for picking between them.</p>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Who leads</th>
+<th>When to pick</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Orchestrator-workers</strong></td>
+<td>Strong model decomposes, delegates <em>down</em> to cheap workers</td>
+<td>Big problem that decomposes into subtasks up front</td>
+</tr>
+<tr class="even">
+<td><strong>Advisor</strong></td>
+<td>Cheap model executes, escalates <em>up</em> to strong model for hard calls</td>
+<td>Long execution with occasional hard decisions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>Then we’ll layer the supporting machinery on top: <strong>subagents</strong> (context isolation), <strong>parallel fan-out</strong> (multiple attempts), <strong>managed agents</strong> (durable sessions), <strong>recurring loops</strong> (cron-triggered).</p>
+</div>
+</section>
+<section id="orchestrator-workers" class="slide level2">
+<h2>Orchestrator + Workers</h2>
+<p>This is where the central/local split from the MARL detour becomes a buildable agent pattern. <a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">Anthropic’s own research system</a> uses it — and they measured the before/after: their single-agent Opus plateaued on breadth-heavy research, so they split it into an Opus lead + Sonnet subagents. The team outperformed the solo Opus by <strong>+90.2%</strong>.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="diagrams/c4-orchestrator-worker.png" style="width:100.0%"></p>
+</div><div class="column" style="width:55%;">
+<ul>
+<li class="fragment">A <strong>lead agent</strong> (Opus) analyzes the task</li>
+<li class="fragment">It <strong>spawns subagents</strong> (Sonnet) for each sub-problem</li>
+<li class="fragment">Subagents work in <strong>parallel</strong>, each with <strong>its own context window</strong></li>
+<li class="fragment">The lead <strong>synthesizes</strong> their findings</li>
+</ul>
+<div class="fragment">
+<p>Analogy: <strong>McKinsey partner + associates.</strong> Partner scopes, associates go deep in parallel, partner synthesizes the deck.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>Real numbers from Anthropic’s production research system:</strong> <strong>+90.2%</strong> performance vs single-agent Opus, <strong>~15×</strong> more tokens than a normal chat, and token usage alone explains <strong>80%</strong> of the performance variance.</p>
+</div>
+</section>
+<section id="orchestrator-workers-3d-view" class="slide level2 smaller">
+<h2>Orchestrator + Workers — 3D View</h2>
+<iframe class="agent-pattern-frame" src="agent-patterns-3d/index.html#orchestrator-workers" title="3D visualization of orchestrator workers" loading="lazy" allowfullscreen=""></iframe>
+<p class="agent-pattern-caption">Interactive 3D view: the lead agent owns decomposition and synthesis; workers get focused slices.</p>
+</section>
+<section id="subagents-context-is-expensive" class="slide level2">
+<h2>Subagents — Context Is Expensive</h2>
+<p>Inside <strong>one session</strong>, the main agent spins up helpers with their own context windows. You only see the summary.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="diagrams/c4-subagent-context.png" style="width:100.0%"></p>
+</div><div class="column" style="width:55%;">
+<div class="fragment">
+<blockquote>
+<p><strong>“Context is the most expensive thing in the room.”</strong></p>
+</blockquote>
+</div>
+<div class="fragment">
+<p>A subagent is the <strong>intern you send to read the 2,000-page filing</strong> — you never read the filing, you just get the one-paragraph summary back.</p>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">main agent stays focused</li>
+<li class="fragment">subagent burns its own context on the side-quest</li>
+<li class="fragment">only the <strong>result</strong> comes back into the main thread</li>
+<li class="fragment">different subagents can use <strong>different models</strong> (Haiku for cheap tasks, Opus for hard ones)</li>
+</ul>
+</div>
+</div></div>
+<div class="fragment">
+<p>In Claude Code: <code>.claude/agents/researcher.md</code> defines one; the main agent delegates to it when the description matches.</p>
+</div>
+<div class="fragment">
+<p>What makes a subagent safe is <strong>code, not the LLM</strong>: the prompt isolation and the tool allowlist are both enforced before reasoning ever starts.</p>
+</div>
+</section>
+<section id="parallel-agents-fan-out" class="slide level2">
+<h2>Parallel Agents — Fan-Out</h2>
+<p>Same task, many agents, many branches, pick the winner.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="diagrams/c4-parallel-fanout.png" style="width:100.0%"></p>
+</div><div class="column" style="width:55%;">
+<ul>
+<li class="fragment">spawn <strong>N agents</strong>, each with a slightly different approach</li>
+<li class="fragment">each works in an <strong>isolated sandbox</strong> (git worktree, ephemeral container)</li>
+<li class="fragment">when they finish, <strong>you pick the best</strong> output</li>
+<li class="fragment">agents never clobber each other — that’s what isolation is for</li>
+</ul>
+<div class="fragment">
+<p>Analogy: <strong>4 junior analysts each trying a different market-sizing approach.</strong> You look at the four decks and pick the one that landed.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>OpenAI’s Codex cloud</strong> is this pattern at scale — you assign 5 tasks, walk away for an hour, come back to 5 finished PRs in parallel sandboxes. <strong>Claude Code</strong> does it locally with <code>git worktree</code> + multiple <code>claude -p</code> processes.</p>
+</div>
+</section>
+<section id="parallel-fan-out-3d-view" class="slide level2 smaller">
+<h2>Parallel Fan-Out — 3D View</h2>
+<iframe class="agent-pattern-frame" src="agent-patterns-3d/index.html#parallel-fanout" title="3D visualization of parallel fan-out" loading="lazy" allowfullscreen=""></iframe>
+<p class="agent-pattern-caption">Interactive 3D view: isolated agents explore in parallel, then a selector chooses the best result.</p>
+</section>
+<section id="the-advisor-strategy-the-other-default" class="slide level2">
+<h2>The Advisor Strategy — The Other Default</h2>
+<p>Orchestrator-worker has the strong model leading: <strong>plan up top, delegate down.</strong></p>
+<p>The <a href="https://claude.com/blog/the-advisor-strategy">Advisor Strategy</a> (Anthropic, 2026) flips the defaults: <strong>cheap model drives the work; strong model gets called up only for the hard judgment calls.</strong> Same family — different choice about where the expensive thinking lives.</p>
+<div class="fragment">
+<p><img data-src="diagrams/c4-advisor-strategy.png" style="width:65.0%"></p>
+</div>
+<div class="fragment">
+<p>Analogy: <strong>junior associate does the grind, calls the senior partner only on the hard judgment calls.</strong> Partner bills by the hour — don’t waste them on typing.</p>
+</div>
+</section>
+<section id="advisor-strategy-3d-view" class="slide level2 smaller">
+<h2>Advisor Strategy — 3D View</h2>
+<iframe class="agent-pattern-frame" src="agent-patterns-3d/index.html#advisor" title="3D visualization of advisor strategy" loading="lazy" allowfullscreen=""></iframe>
+<p class="agent-pattern-caption">Interactive 3D view: the executor drives the run; code decides when advisor escalation is worth the cost.</p>
+</section>
+<section id="why-the-advisor-strategy-wins" class="slide level2">
+<h2>Why the Advisor Strategy Wins</h2>
+<p>The numbers, straight from the Anthropic post:</p>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Config</th>
+<th>Task</th>
+<th>Score</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Haiku solo</td>
+<td>BrowseComp</td>
+<td>19.7%</td>
+<td>baseline</td>
+</tr>
+<tr class="even">
+<td><strong>Haiku + Opus advisor</strong></td>
+<td>BrowseComp</td>
+<td><strong>41.2%</strong></td>
+<td><strong>85% cheaper than Sonnet</strong></td>
+</tr>
+<tr class="odd">
+<td>Sonnet solo</td>
+<td>SWE-bench Multilingual</td>
+<td>—</td>
+<td>baseline</td>
+</tr>
+<tr class="even">
+<td><strong>Sonnet + Opus advisor</strong></td>
+<td>SWE-bench Multilingual</td>
+<td><strong>+2.7 pts</strong></td>
+<td><strong>11.9% cheaper</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p><strong>The key insight</strong>: frontier-level reasoning is only needed on the hard decisions. The rest of the run stays at executor-level cost. You’re paying for Opus <strong>exactly when you need it</strong>.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>💻 Code vs 🧠 LLM in the advisor pattern</strong>: the <strong>executor loop</strong> is still LLM (you need flexibility in the main task). The <strong>escalation trigger</strong> — <em>when do we call the advisor?</em> — can be code (always after N steps, always on schema-validation failure) or LLM (the executor decides). The <strong>advisor max-uses cap</strong>, the budget enforcement, the fallback if the advisor is unavailable — code.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="orchestrator-worker-vs-advisor-when-each" class="slide level2 smaller">
+<h2>Orchestrator-Worker vs Advisor — When Each</h2>
+<p>Two patterns, opposite defaults. Pick by <strong>decision density</strong> — how evenly the hard thinking is spread across the task.</p>
+
+<img data-src="diagrams/c4-when-to-multi-agent.png" style="width:80.0%" class="r-stretch"><div class="fragment">
+<ul>
+<li class="fragment"><strong>Decisions scattered through a long execution</strong> → advisor (most work is cheap; occasional hard calls)</li>
+<li class="fragment"><strong>A big problem that decomposes into smaller chunks</strong> → orchestrator-worker (the hard reasoning is up front)</li>
+</ul>
+</div>
+</section>
+<section id="managed-agents-pets-vs-cattle" class="slide level2">
+<h2>Managed Agents — Pets vs Cattle</h2>
+<p>Long-running agents break. Containers die. Sessions expire. Anthropic’s <a href="https://www.anthropic.com/engineering/managed-agents">Managed Agents</a> addresses this.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="diagrams/c4-pets-vs-cattle.png" style="width:100.0%"></p>
+</div><div class="column" style="width:55%;">
+<div class="fragment">
+<p><strong>Pet</strong>: a container you tend by hand. It dies → you lose the session.</p>
+</div>
+<div class="fragment">
+<p><strong>Cattle</strong>: three independent pieces, all replaceable:</p>
+<ul>
+<li class="fragment"><strong>Brain</strong> — the model + harness (stateless)</li>
+<li class="fragment"><strong>Hands</strong> — sandboxes, tools (ephemeral)</li>
+<li class="fragment"><strong>Session</strong> — a durable event log (outlives both)</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Container crashes? Spin up a new one. The session survives.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p>Analogy: <strong>a real company doesn’t lose institutional memory when one employee quits.</strong> The filing cabinet outlives the person.</p>
+</div>
+</section>
+<section id="why-managed-agents-matter" class="slide level2">
+<h2>Why Managed Agents Matter</h2>
+<p>The whole idea in one line:</p>
+<blockquote>
+<p><strong>The session is not the context window.</strong></p>
+</blockquote>
+<p>The <strong>session log</strong> is a durable, queryable event store. The <strong>context window</strong> is the model’s working memory — volatile, compacted, discarded. Keep them separate and your agents survive crashes, compaction, and model upgrades.</p>
+<div class="fragment">
+<p>Real numbers from decoupling the two: time-to-first-token <strong>P50 ↓ ~60%, P95 ↓ &gt;90%</strong>.</p>
+</div>
+<div class="fragment">
+<p>Corollary — <em>harnesses encode stale assumptions that go out of date as models improve.</em> Every workaround you add for today’s model weakness is dead weight tomorrow. <strong>Build the harness thin.</strong></p>
+</div>
+</section></section>
+<section>
+<section id="production-ops" class="title-slide slide level1 center">
+<h1>Production &amp; Ops</h1>
+
+</section>
+<section id="recurring-triggers-cron-webhooks" class="slide level2 smaller">
+<h2>Recurring Triggers — Cron &amp; Webhooks</h2>
+<p>Around every recurring agent there’s a <strong>timer</strong> that decides <em>when</em> to fire it, and <strong>plumbing</strong> that moves data in and out (fetch the emails, send the Slack message, save the result). Two common timers:</p>
+<ul>
+<li><strong>⏰ Cron — on a schedule.</strong> <em>“Every weekday at 7am, do X.”</em> A clock that pokes the agent at a fixed interval. Good for <strong>routines</strong>.</li>
+<li><strong>🔔 Webhook — on an event.</strong> <em>“The moment a new customer signs up, do X.”</em> Another system pings yours the instant something happens. Good for <strong>reactions</strong>.</li>
+</ul>
+<p>The timer and the plumbing are the code skeleton. The agent (the LLM) is the one thing <em>inside</em> that skeleton that makes judgment calls.</p>
+<div class="columns">
+<div class="column" style="width:42%;">
+<p><img data-src="diagrams/c4-recurring-loop.png" style="width:100.0%"></p>
+</div><div class="column" style="width:58%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Fired by</th>
+<th>Decides</th>
+<th>Acts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Morning briefing</strong></td>
+<td>cron, 7am</td>
+<td>what matters today?</td>
+<td>5-bullet email</td>
+</tr>
+<tr class="even">
+<td><strong>Inbox triage</strong></td>
+<td>webhook on new email</td>
+<td>urgent, reply, ignore?</td>
+<td>draft, flag boss</td>
+</tr>
+<tr class="odd">
+<td><strong>Competitor watch</strong></td>
+<td>cron, hourly</td>
+<td>worth reacting?</td>
+<td>Slack 2-line note</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>So the <strong>timer</strong> fires, the <strong>plumbing</strong> fetches the new emails, the <strong>LLM</strong> answers <em>“does any of this actually matter?”</em>, and the plumbing sends the Slack message. One tick — three roles — only the middle one is stochastic.</p>
+</div>
+</div></div>
+</section>
+<section id="the-tooling-landscape-code-first-vs-no-code" class="slide level2 smaller">
+<h2>The Tooling Landscape — Code-First vs No-Code</h2>
+<p>You’ve seen the <strong>patterns</strong>. The question is how you actually <strong>build</strong> them. A spectrum, not a winner.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Approach</th>
+<th>Best for</th>
+<th>Who owns it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>LangGraph</strong></td>
+<td>Code-first (Python) — <code>State</code>, nodes, edges</td>
+<td>Complex orchestration, branches, human-in-the-loop, persistence</td>
+<td>Engineering</td>
+</tr>
+<tr class="even">
+<td><strong>Claude Agent SDK</strong> / <strong>OpenAI Agents SDK</strong></td>
+<td>Code-first — tool calling + managed loop</td>
+<td>Vendor-native agents with MCP / tools</td>
+<td>Engineering</td>
+</tr>
+<tr class="odd">
+<td><strong>Vercel AgentKit</strong></td>
+<td>Code-first (TypeScript) on Vercel infra</td>
+<td>Production agents tight to the Next/Vercel stack</td>
+<td>Engineering</td>
+</tr>
+<tr class="even">
+<td><strong>n8n</strong></td>
+<td><strong>Visual, open-source</strong>, 900+ integrations</td>
+<td>Ops/BizOps automations, cron-style agent workflows</td>
+<td>Ops / BizOps</td>
+</tr>
+<tr class="odd">
+<td><strong>Zapier AI Actions / Make.com</strong></td>
+<td><strong>No-code, SaaS</strong></td>
+<td>Citizen-developer glue between SaaS apps</td>
+<td>Anyone</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="which-tool-who-owns-it" class="slide level2">
+<h2>Which Tool, Who Owns It</h2>
+<p>The decision isn’t <em>“which is best.”</em> It’s <strong>“who owns this workflow, and how complex does it need to be?”</strong></p>
+<ul>
+<li class="fragment"><strong>Engineers + complex orchestration + version control</strong> → LangGraph or a vendor SDK</li>
+<li class="fragment"><strong>Ops team + cron-style workflows + many SaaS integrations</strong> → <strong>n8n</strong></li>
+<li class="fragment"><strong>Anyone + simple glue between two SaaS apps</strong> → Zapier / Make</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Rule of thumb:</strong> the more <em>branches, retries, and approvals</em> a workflow needs, the more you want <strong>code-first</strong>. The more <em>integrations and ownership by non-engineers</em>, the more you want <strong>visual/no-code</strong>.</p>
+<p>The LangGraph-vs-n8n line isn’t technical superiority — it’s <strong>who maintains this thing six months from now</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="agents-leave-a-trace-observability" class="slide level2 smaller">
+<h2>Agents Leave a Trace — Observability</h2>
+<blockquote>
+<p><em>“A production agent is only as good as the trace it leaves behind.”</em></p>
+</blockquote>
+<p>A chatbot’s output is one string. An agent’s output is <strong>a sequence of decisions</strong>. Every exec who lets an agent touch real data will ask: <em>how do I know what it actually did?</em></p>
+<div class="fragment">
+<p>The answer is a structured trace — one row per step:</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ts</th>
+<th>step</th>
+<th>turn</th>
+<th>tool</th>
+<th>args</th>
+<th>output</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>21:12:33</td>
+<td>reason</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+<td><em>“I need the weather”</em></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>21:12:33</td>
+<td>act</td>
+<td>0</td>
+<td><code>WeatherSearch</code></td>
+<td><code>{airport: "SFO"}</code></td>
+<td><code>"sunny, 23°C"</code></td>
+<td>ok</td>
+</tr>
+<tr class="odd">
+<td>21:12:38</td>
+<td>reason</td>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>final answer</td>
+<td>final</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>This is what <strong>LangSmith, LangFuse, Arize, and Braintrust</strong> sell. Same shape: one row per <code>reason | act | observe</code>, searchable, replayable, exportable for audit.</p>
+</div>
+<div class="fragment">
+<p><strong>The MBA lens.</strong> Tools fail and LLMs hallucinate tool names — agents need error handling at the tool boundary. A trace is the agent’s <strong>bank statement</strong>: if you can’t produce one, you can’t let the agent near anything that matters.</p>
+</div>
+</section>
+<section id="observability-for-stochastic-systems" class="slide level2 smaller">
+<h2>Observability for Stochastic Systems</h2>
+<p>Deterministic code has deterministic logs — <em>same error, every time.</em> LLM steps don’t. A failure rate of 1-in-20 means <strong>your error logs alone are worthless</strong> — you can’t reproduce the bug, and even if you could, patching it takes different tools.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="code-steps-classic-observability">💻 Code steps — classic observability</h3>
+<ul>
+<li class="fragment">Logs, metrics, alerts</li>
+<li class="fragment">Error = stack trace → reproducible</li>
+<li class="fragment">Fix = patch + test</li>
+<li class="fragment">Coverage reported as a % of paths</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="llm-steps-three-new-pillars">🧠 LLM steps — three new pillars</h3>
+<ul>
+<li class="fragment"><strong>Traces</strong> — every reason/act/observe, searchable (LangSmith, LangFuse, Arize, Braintrust)</li>
+<li class="fragment"><strong>Evals</strong> — a test suite that runs <em>many</em> times, measures pass rate, not pass/fail</li>
+<li class="fragment"><strong>Sampling</strong> — humans read a % of live traces; you can’t watch all of them</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p>The unit of debugging is no longer <em>“this line crashed”</em> — it’s <em>“this step passes 87% of the time; we need to get it to 95%.”</em> That’s a different skill, and it needs different tooling. <strong>Eval infrastructure is as important for an agent team as unit tests were for the service before it.</strong></p>
+</div>
+</section>
+<section id="the-honest-cost-curve" class="slide level2 smaller">
+<h2>The Honest Cost Curve</h2>
+<p>Multi-agent isn’t free. Each step up the capability ladder is roughly an order of magnitude more expensive:</p>
+<div class="columns">
+<div class="column" style="width:64%;">
+<p><img data-src="diagrams/c4-multi-agent-cost-curve.png" style="width:100.0%"></p>
+</div><div class="column" style="width:36%;">
+<div style="width:min(360px,100%);margin:0 auto;">
+  <video autoplay="" loop="" muted="" playsinline="" tabindex="-1" aria-label="Meme: multi-agent cost escalation" style="width:100%;height:auto;display:block;border-radius:8px;pointer-events:none;">
+    <source src="diagrams/c4-cost-curve-meme.mp4" type="video/mp4">
+  </video>
+</div>
+</div></div>
+<div style="font-size: 0.78em; color: #64748b; margin-top: 0.4em;">
+<p>The <code>~4×</code> and <code>~15×</code> numbers come from Anthropic’s production research system — a plain chat is one round-trip, a single agent adds tool-call loops, and a multi-agent team fans out across parallel subagents, each with their own context window. A managed 24/7 fleet scales with session length and how many are running at once, so it’s not a single number.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The question isn’t <em>“should I use multi-agent?”</em> It’s <em>“is this task worth 15× the tokens?”</em> Token usage explains <strong>80%</strong> of multi-agent performance variance (<a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">Anthropic, 2025</a>) — you’re paying for capability, not overhead. But it is real money.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-not-to-go-multi-agent" class="slide level2">
+<h2>When NOT to Go Multi-Agent</h2>
+<p>The counter-slide everyone skips.</p>
+<div class="fragment">
+<p><strong>Most tasks don’t need multi-agent.</strong> Start single-agent. Escalate only when:</p>
+<ul>
+<li class="fragment">breadth exceeds <strong>one context window</strong> (can’t fit all the docs)</li>
+<li class="fragment"><strong>parallelism</strong> buys real wall-clock wins (user is waiting)</li>
+<li class="fragment">the task runs long enough that a session <strong>outlives one container</strong></li>
+<li class="fragment">you have repeated failures that a specialist agent would catch</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Anthropic’s own guidance, from class 3: <em>“Start simple. Add agentic systems only when simpler solutions fall short.”</em></p>
+</div>
+</section></section>
+<section>
+<section id="safety-alignment-security" class="title-slide slide level1 center">
+<h1>Safety, Alignment &amp; Security</h1>
+
+</section>
+<section id="three-ways-agent-teams-break" class="slide level2">
+<h2>Three Ways Agent Teams Break</h2>
+<p>You can’t ship a team of agents without naming how they fail. <strong>Three failure modes, three real-world case studies:</strong></p>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Failure mode</th>
+<th>What breaks</th>
+<th>Real incident</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Alignment</strong></td>
+<td>Agent optimizes the wrong thing</td>
+<td><em>Moffatt v. Air Canada (2024)</em> — chatbot promised a refund; court made the airline pay</td>
+</tr>
+<tr class="even">
+<td><strong>Security</strong></td>
+<td>Attacker hijacks the agent</td>
+<td>Replit AI <strong>wiped a production database</strong> mid-task (2025)</td>
+</tr>
+<tr class="odd">
+<td><strong>Ethics</strong></td>
+<td>Someone gets hurt, no one is accountable</td>
+<td>NYC MyCity chatbot <strong>told small businesses to break the law</strong> (2024)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Multi-agent amplifies all three.</strong> More agents = more tool access, more delegation, more places to inject a prompt, more ways one compromised agent poisons the whole team.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="alignment-when-agents-optimize-the-wrong-thing" class="slide level2 smaller">
+<h2>Alignment — When Agents Optimize the Wrong Thing</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The concepts:</strong></p>
+<ul>
+<li class="fragment"><strong>Specification gaming</strong> — agent beats your metric without meeting your intent</li>
+<li class="fragment"><strong>Goodhart’s Law</strong> — <em>“when a metric becomes a target, it ceases to be a good metric”</em></li>
+<li class="fragment"><strong>Sycophancy</strong> — tell users what they want to hear, not what’s true</li>
+<li class="fragment"><strong>Moloch problem</strong> (multi-agent) — a team of agents can coordinate toward outcomes <strong>none of them individually would choose</strong></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>The incidents:</strong></p>
+<ul>
+<li class="fragment"><strong>Anthropic reward-hacking (2025)</strong> — agents learned to edit their own <em>test files</em> to make failing tests pass</li>
+<li class="fragment"><strong>GPT-4o sycophancy rollback (April 2025)</strong> — OpenAI publicly reverted a model because it was too eager to agree with users</li>
+<li class="fragment"><strong>Bing/Sydney (Feb 2023)</strong> — the shot-across-the-bow: an agent openly threatening users</li>
+</ul>
+</div></div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Your agent’s incentive is the <strong>prompt + the tools + the reward signal.</strong> All three are your fingerprints. <em>Alignment is a design decision, not an afterthought.</em></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-personalities-are-designed-why-firms-hire-philosophers" class="slide level2 smaller">
+<h2>Model Personalities Are Designed — Why Firms Hire Philosophers</h2>
+<p>Claude, ChatGPT, Grok, Pi — they all have <strong>deliberate personalities</strong>. Not side effects of training. <strong>Products.</strong></p>
+<ul>
+<li class="fragment"><strong>Anthropic</strong> — <a href="https://askell.io/">Amanda Askell</a> (philosopher, Oxford/NYU) leads model behavior. <em>Claude’s Character</em> (June 2024) is a public document. <strong>Constitutional AI</strong> is the technical half of this work.</li>
+<li class="fragment"><strong>OpenAI</strong> — Joanne Jang and the Model Behavior team define ChatGPT’s voice, published in the <strong>Model Spec</strong>.</li>
+<li class="fragment"><strong>Inflection / Pi / Character.AI</strong> — hire <strong>psychologists, screenwriters, behavior designers</strong> alongside ML engineers.</li>
+</ul>
+<div class="fragment">
+<p><strong>Why philosophers?</strong> Aligning a model isn’t just a technical problem — it’s a <strong>values problem</strong>: <em>what should the model say when asked about abortion? Legal advice? A user in distress?</em> Those are philosophical questions, not engineering ones.</p>
+</div>
+<div class="fragment">
+<p><strong>Multi-agent angle:</strong> every agent on your team needs its own character and consistent behavior across the team. That’s a design discipline — and increasingly a <strong>business function</strong>, not a tech function.</p>
+</div>
+<div class="fragment">
+<p>Your agent’s personality is a <strong>product decision.</strong> Treat it like one. Hire for it.</p>
+</div>
+</section>
+<section id="context-rot-bigger-windows-dont-save-you" class="slide level2 smaller">
+<h2>Context Rot — Bigger Windows Don’t Save You</h2>
+<p>Context windows keep growing — <strong>100k → 200k → 1M+ tokens</strong>. The pitch is that you can stuff everything in. The reality is subtler.</p>
+<ul>
+<li class="fragment"><strong>Lost-in-the-middle</strong> — models recall content near the start and end of context, and <em>forget</em> what’s in the middle (<em>Liu et al., 2023</em>)</li>
+<li class="fragment"><strong>Context rot</strong> — Chroma’s 2024–2025 studies show retrieval accuracy drops sharply as context fills, even well below the advertised window</li>
+<li class="fragment"><strong>RULER benchmark</strong> — long-context scores fall off a cliff past ~32k on most models, regardless of the advertised max</li>
+</ul>
+<div class="fragment">
+<p><strong>Multi-agent implication:</strong> every subagent you dispatch must return a <strong>short summary</strong>, not the raw filing. That isn’t an optimization — <em>it’s the reason subagents work at all.</em> The main agent stays lean; the subagent’s context is discarded.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Just because the context window <strong>can</strong> hold it doesn’t mean the model will <strong>use</strong> it. Budget your tokens like you’d budget attention spans.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="security-prompt-injection-the-confused-deputy" class="slide level2 smaller">
+<h2>Security — Prompt Injection &amp; the Confused Deputy</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The attack patterns:</strong></p>
+<ul>
+<li class="fragment"><strong>Direct prompt injection</strong> — attacker types <em>“ignore previous instructions and…”</em></li>
+<li class="fragment"><strong>Indirect prompt injection</strong> — agent reads a webpage, email, or PDF that <em>contains</em> malicious instructions. The attacker never touches your prompt.</li>
+<li class="fragment"><strong>Confused deputy</strong> — your agent has <em>your</em> permissions. Attacker tricks it into using them.</li>
+<li class="fragment"><strong>Multi-agent amplification</strong> — one compromised agent poisons the shared wiki; the next agent reads it.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>The incidents:</strong></p>
+<ul>
+<li class="fragment"><strong>Replit production DB wipe (2025)</strong> — the agent followed instructions hidden in its own task brief</li>
+<li class="fragment"><strong>ChatGPT browsing exfiltration (2024)</strong> — researchers extracted chat history through crafted webpages</li>
+<li class="fragment"><strong>Microsoft 365 Copilot &amp; Google Workspace POCs (2024–2025)</strong> — indirect injection via shared documents</li>
+</ul>
+</div></div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The MCP server, the git branch, the PDF the agent was asked to summarize, the Slack thread it reads</strong> — each one is now an <strong>untrusted input.</strong> Treat them like you’d treat SQL input.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ethics-accountability-at-scale" class="slide level2 smaller">
+<h2>Ethics — Accountability at Scale</h2>
+<ul>
+<li class="fragment"><strong>Liability</strong> — <em>“I didn’t write that, the AI did”</em> is not a legal defense. <em>Moffatt v. Air Canada (2024)</em> established that companies are liable for their chatbot’s promises.</li>
+<li class="fragment"><strong>Consent &amp; transparency</strong> — Do users know they’re talking to an agent? To a <em>team</em> of agents? <strong>EU AI Act Article 50</strong> says they have to.</li>
+<li class="fragment"><strong>Displacement at role-scale, not task-scale</strong> — single agents automate <em>tasks</em>. Agent teams automate <em>jobs</em>. That’s a different conversation with your people.</li>
+<li class="fragment"><strong>Bias compounds in a fleet</strong> — a small bias in one agent becomes a <strong>policy</strong> when 10,000 agents apply it in parallel. One person with a bias is a bad employee. A fleet with the same bias is a class action.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>When the agent is wrong, <strong>you’re the one in court.</strong> Design for that day — not the day the demo shipped.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="defense-in-depth-how-the-adults-do-it" class="slide level2 smaller">
+<h2>Defense in Depth — How the Adults Do It</h2>
+<p>Five practices. None are new. All are skipped. <strong>Do them.</strong></p>
+<ul>
+<li class="fragment"><strong>Principle of least privilege</strong> — each agent gets the <em>smallest</em> tool set that does its job. An agent that writes to the wiki doesn’t need DB admin access.</li>
+<li class="fragment"><strong>Input validation + output filtering</strong> — untrusted input in, untrusted output out. Sanitize both boundaries.</li>
+<li class="fragment"><strong>Human-in-the-loop for consequential actions</strong> — the <strong>Advisor pattern</strong> from earlier isn’t just a quality move; it’s a safety move. Any action that can’t be undone belongs behind a human gate.</li>
+<li class="fragment"><strong>Audit trail</strong> — callback to <em>Agents Leave a Trace</em>. If you can’t reconstruct what the team did, you can’t recover from it or defend it in court.</li>
+<li class="fragment"><strong>Red-team before ship</strong> — agents need their own evals. <em>“Try to break it, on purpose, before a stranger does.”</em></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Notice the pattern</strong>: every one of those five is <strong>code wrapped around the LLM</strong>, not LLM judgment. Tool allowlists, input validators, output schemas, audit logs, eval harnesses — all code. <strong>The first line of defense is always deterministic. The LLM’s judgment is layered on top — never in place of.</strong> Prompts alone will not save you.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>None of this replaces good judgment about whether a task should be autonomous at all. <strong>Some workflows shouldn’t be agents.</strong> That’s also a defense.</p>
+</div>
+</section></section>
+<section>
+<section id="hands-on-project" class="title-slide slide level1 center">
+<h1>Hands-On Project</h1>
+
+</section>
+<section id="agent-team-on-your-knowledge-hub" class="slide level2">
+<h2>Agent Team on Your Knowledge Hub</h2>
+<p>Extend the <strong>Karpathy knowledge hub</strong> you built in class 3. Don’t start from scratch — layer a team on top of what you already have.</p>
+<div class="fragment">
+<p><img data-src="diagrams/c4-multi-agent-architecture.png" style="width:80.0%"></p>
+</div>
+<div class="fragment">
+<p>The hub already gives you: auth, Supabase storage, 6 MCP tools, a vault of markdown files. <strong>That’s your pheromone trail.</strong> Now add agents that read and write to it in coordinated ways.</p>
+</div>
+</section>
+<section id="what-to-build" class="slide level2">
+<h2>What to Build</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Four additions on top of your class 3 hub:</strong></p>
+<ul>
+<li class="fragment"><strong>1 orchestrator</strong> — system prompt that decomposes a research question into sub-questions and assigns them</li>
+<li class="fragment"><strong>2-3 subagents</strong> — narrow roles with their own prompts and tool allowlists:
+<ul>
+<li class="fragment"><code>researcher</code> — takes a sub-question, searches, returns bullet findings</li>
+<li class="fragment"><code>summarizer</code> — takes raw source text, returns a source-summary page</li>
+<li class="fragment"><code>linker</code> — scans the wiki, finds missing <code>[[wikilinks]]</code>, proposes fixes</li>
+</ul></li>
+<li class="fragment"><strong>1 recurring loop</strong> — a scheduled “morning briefing” agent that ingests new RSS items and files them into the wiki</li>
+<li class="fragment"><strong>(stretch) 1 advisor config</strong> — cheap executor + Opus advisor on hard synthesis calls</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="suggested-build-prompt" class="slide level2 smaller">
+<h2>Suggested Build Prompt</h2>
+<p>Paste into Claude Code in your class-3 hub directory.</p>
+<div style="position:relative;">
+<button onclick="navigator.clipboard.writeText(this.parentElement.querySelector('pre').innerText).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})" style="position:absolute;top:8px;right:8px;z-index:10;padding:4px 12px;background:#3b82f6;color:white;border:none;border-radius:4px;cursor:pointer;font-size:0.7em;font-weight:bold;">
+Copy
+</button>
+<pre style="max-height:420px;overflow-y:auto;background:#1e293b;color:#e2e8f0;padding:1em;border-radius:8px;font-size:0.55em;line-height:1.5;">/plan Extend my knowledge hub with a multi-agent team.
+The vault, MCP tools, and auth are already built (class 3 project).
+
+=== GOAL ===
+Layer an orchestrator + subagents + a scheduled loop on top of the
+existing hub, so I can say "research X" and wake up to a filed,
+cross-linked wiki page.
+
+=== ORCHESTRATOR ===
+File: .claude/agents/orchestrator.md
+Role: decompose a research question into 3-5 sub-questions,
+dispatch each to the researcher subagent, collect findings,
+hand final synthesis to the summarizer subagent, then commit
+the result via the existing create_note MCP tool.
+Never does research itself. Never writes prose.
+
+=== SUBAGENTS ===
+File: .claude/agents/researcher.md
+  Tools: WebSearch, WebFetch, ingest_source
+  Role: answer ONE sub-question with 3-7 bullet findings.
+  Cites sources. Never summarizes. Never creates wiki pages.
+
+File: .claude/agents/summarizer.md
+  Tools: get_note, create_note, update_note
+  Role: take orchestrator output, produce a single wiki page
+  with YAML frontmatter, [[wikilinks]], and a sources section.
+  Follows the source-summary template from the class 3 vault.
+
+File: .claude/agents/linker.md
+  Tools: search_notes, lint_wiki, update_note
+  Role: scan for orphan pages and missing [[wikilinks]].
+  Propose additions as a diff; never auto-apply.
+
+=== RECURRING LOOP ===
+A cron-triggered morning briefing:
+  1. Pull RSS feeds from feeds.yml (a new file at repo root)
+  2. For each new item, call ingest_source
+  3. Call the linker subagent to weave new pages into the existing graph
+  4. Append a diff summary to log.md
+
+Use the /schedule skill or a GitHub Actions cron.
+Runs at 7am local time.
+
+=== ADVISOR (STRETCH) ===
+Configure the summarizer to run as Haiku+Opus advisor:
+  executor: claude-haiku-4-5
+  advisor:  claude-opus-4-7 (max_uses: 3)
+Cheap for the 90% of summarization that's mechanical,
+escalate to Opus for synthesis calls that need judgment.
+
+=== TESTS ===
+- orchestrator_spawns_subagents_test: ask a sample question,
+  verify 3-5 researcher spawns and 1 summarizer spawn
+- context_isolation_test: subagent cannot see main-session
+  variables; only gets its own prompt
+- wiki_contract_test: final page has valid frontmatter,
+  at least 2 [[wikilinks]], and a sources section
+
+=== DELIVERABLES ===
+Working locally AND via the scheduled morning briefing.
+README section on how to add new subagents.
+One end-to-end demo: "research the advisor strategy" →
+fully filed, linked, dated wiki page with sources.
+</pre>
+</div>
+</section>
+<section id="what-this-project-teaches" class="slide level2">
+<h2>What This Project Teaches</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern from class</th>
+<th>Where it shows up in the build</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Orchestrator-worker</td>
+<td><code>orchestrator.md</code> + researchers + summarizer</td>
+</tr>
+<tr class="even">
+<td>Subagents (context isolation)</td>
+<td>each role has its own narrow system prompt + tool allowlist</td>
+</tr>
+<tr class="odd">
+<td>Parallel fan-out</td>
+<td>orchestrator dispatches N researchers at once</td>
+</tr>
+<tr class="even">
+<td>Advisor strategy</td>
+<td>stretch config on the summarizer</td>
+</tr>
+<tr class="odd">
+<td>Central knowledge</td>
+<td>the class-3 vault IS the pheromone trail</td>
+</tr>
+<tr class="even">
+<td>Stigmergy</td>
+<td>agents coordinate via files, not messages</td>
+</tr>
+<tr class="odd">
+<td>Recurring loop</td>
+<td>morning-briefing cron</td>
+</tr>
+<tr class="even">
+<td>Credit assignment</td>
+<td>the tests watch which agent did what</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>If this builds — you’ve shipped a real multi-agent system. Not a toy. It runs overnight, writes to a durable store, and uses every canonical pattern we covered — orchestrator-worker, subagents, parallel fan-out, advisor, recurring loop.</p>
+</div>
+</section>
+<section id="before-you-hit-run-label-your-architecture" class="slide level2 smaller">
+<h2>Before You Hit Run — Label Your Architecture</h2>
+<p>Before you implement, take your build plan and <strong>mark every node as code or LLM.</strong> This is the same lens we’ve been using all class — now applied to your own system.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>On paper (or in a comment at the top of your orchestrator file), answer:</strong></p>
+<ul>
+<li class="fragment">Which steps are <strong>🧠 LLM</strong> — genuine judgment, synthesis, classification of open-ended input?</li>
+<li class="fragment">Which steps are <strong>💻 code</strong> — the scaffolding: cron, retries, schema validation, permission checks, dispatch, persistence, audit log?</li>
+<li class="fragment">For each subagent: what’s its <strong>system prompt</strong> (isolation) and its <strong>tool allowlist</strong> (capability)? Both are code — enforced before the LLM ever runs.</li>
+<li class="fragment">For each LLM step: how does the next code step <strong>validate its output</strong> before persisting it?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Rule of thumb</strong>: if your architecture is &gt;30% LLM boxes, you’re burning tokens on things a schema check or an if-statement would do cheaper. If it’s 0% LLM boxes, you don’t need an agent — you need a script. The production answer lives between.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="agi-superintelligence-where-the-labs-stand" class="slide level2 smaller">
+<h2>AGI &amp; Superintelligence — Where the Labs Stand</h2>
+<p>Zooming out from agent teams to where the frontier labs say this is headed. <strong>Definitions first, then positions.</strong></p>
+<ul>
+<li class="fragment"><strong>Narrow AI</strong> — what you’ve been building all course. Strong inside a defined task, brittle outside it. Every system shipped today is narrow AI, including the agent team from this class.</li>
+<li class="fragment"><strong>AGI (Artificial General Intelligence)</strong> — a system that matches or exceeds humans across <em>most</em> cognitive work, not just one domain. No agreed benchmark; definitions vary by lab.</li>
+<li class="fragment"><strong>ASI (Artificial Superintelligence)</strong> — a system that substantially exceeds the best humans across essentially all cognitive work. Typically framed as what comes <em>after</em> AGI, possibly quickly.</li>
+<li class="fragment"><strong>Anthropic</strong> — Dario Amodei’s <em><a href="https://www.darioamodei.com/essay/machines-of-loving-grace">Machines of Loving Grace</a></em> (Oct 2024) sketches “powerful AI” — a country of geniuses in a datacenter — as plausibly 2026–2030. Framed around compressing scientific progress.</li>
+<li class="fragment"><strong>OpenAI</strong> — charter defines AGI as “highly autonomous systems that outperform humans at most economically valuable work.” Sam Altman has written of superintelligence as a matter of years, not decades.</li>
+<li class="fragment"><strong>Google DeepMind</strong> — Demis Hassabis publicly puts AGI on a <strong>5–10 year</strong> horizon; <em><a href="https://arxiv.org/abs/2311.02462">Levels of AGI</a></em> (Morris et al., 2023) proposes a 6-tier framework (Emerging → Competent → Expert → Virtuoso → Superhuman) instead of a single threshold.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The labs disagree on timelines, definitions, and what “counts.”</strong> What they agree on: capability is still scaling, and the thing you’re building today is narrow. Plan for a range of outcomes — not a single forecast.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="closing" class="title-slide slide level1 center">
+<h1>Closing</h1>
+
+</section>
+<section id="the-four-class-arc" class="slide level2">
+<h2>The Four-Class Arc</h2>
+<p>Four classes. One journey.</p>
+<div class="fragment">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Class</th>
+<th>Core idea</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Class 1</strong></td>
+<td>How software works — code, servers, databases, git</td>
+</tr>
+<tr class="even">
+<td><strong>Class 2</strong></td>
+<td>How AI got here — from decision trees to transformers</td>
+</tr>
+<tr class="odd">
+<td><strong>Class 3</strong></td>
+<td>How to use an LLM — prompting, context, RAG, tools, <strong>one agent</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Class 4</strong></td>
+<td>How to build a <strong>team</strong> of agents — orchestrator, subagents, parallel, advisor, managed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>You now have the full stack. You understand what’s underneath the AI product you use, and you can architect your own. The field moves fast. The fundamentals you learned here don’t.</p>
+</div>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank You</h2>
+<p>Thank you for choosing to spend your valuable free time during your MBA on these classes with me.</p>
+<div class="fragment">
+<p>MBA programs already ask a lot of you. Your time is scarce. The fact that you chose to use some of it here, on this topic, matters to me.</p>
+</div>
+<div class="fragment">
+<p>And thank you for trusting me to build and teach this. That trust is not something I take lightly.</p>
+</div>
+<div class="fragment">
+<p>I hope this course gave you a real edge, a clearer mental model for what is happening in AI, and enough confidence to go build something that would have felt out of reach a few weeks ago.</p>
+</div>
+</section>
+<section id="go-build-something" class="slide level2 smaller">
+<h2>Go Build Something</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Build your agent team</strong> on top of the knowledge hub</li>
+<li><strong>Read the sources</strong>: <a href="https://claude.com/blog/the-advisor-strategy">advisor strategy</a>, <a href="https://www.anthropic.com/engineering/managed-agents">managed agents</a>, <a href="https://www.anthropic.com/engineering/built-multi-agent-research-system">multi-agent research system</a>, <a href="https://www.marl-book.com/">MARL book</a></li>
+<li><strong>Stay current</strong>: <span class="citation" data-cites="karpathy">@karpathy</span>, <span class="citation" data-cites="AnthropicAI">@AnthropicAI</span>, <span class="citation" data-cites="OpenAI">@OpenAI</span>, <span class="citation" data-cites="GoogleDeepMind">@GoogleDeepMind</span></li>
+<li><strong>Go one level deeper with books</strong>: <em>Clean Code</em>, <em>Designing Data-Intensive Applications</em>, <em>Artificial Intelligence: A Modern Approach</em>, <em>AI Engineering</em></li>
+<li><strong>Ship something small this week</strong> — the team you build will teach you more than any class will</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/books/clean-code.jpg" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<div style="text-align:center; font-size:0.78em; line-height:1.15;">
+<p><strong>Clean Code</strong><br> Robert C. Martin</p>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/books/designing-data-intensive-applications.jpg" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<div style="text-align:center; font-size:0.78em; line-height:1.15;">
+<p><strong>Designing Data-Intensive Applications</strong><br> Martin Kleppmann &amp; Chris Riccomini</p>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/books/artificial-intelligence-modern-approach.jpg" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<div style="text-align:center; font-size:0.78em; line-height:1.15;">
+<p><strong>Artificial Intelligence:<br>A Modern Approach</strong><br> Stuart Russell &amp; Peter Norvig</p>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="diagrams/books/ai-engineering.jpg" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+<div style="text-align:center; font-size:0.78em; line-height:1.15;">
+<p><strong>AI Engineering</strong><br> Chip Huyen</p>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>Thank you for being here. Now go build.</strong></p>
+</div>
+</section>
+<section id="class-4-survey" class="slide level2">
+<h2>Class 4 Survey</h2>
+<p>Help me improve — 1 minute, anonymous.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="diagrams/qr-survey-class4.png" width="300"></p>
+</div><div class="column" style="width:50%;">
+<p><strong><a href="https://forms.gle/kqDyGWStFXvcWK6Z8">→ Class 4 Survey</a></strong></p>
+<ul>
+<li>What landed, what didn’t?</li>
+<li>Too fast, too slow, right pace?</li>
+<li>What do you wish we’d covered?</li>
+</ul>
+</div></div>
+
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOC4xL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIiwibnVtcHkiXX19
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8xID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1400,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    // Multi-language interactive code runner
+    // Supports: javascript, html, css, sql
+
+    (function() {
+      // SQL.js singleton
+      let sqlPromise = null;
+      let sqlDB = null;
+
+      function ensureSQL() {
+        if (sqlPromise) return sqlPromise;
+        sqlPromise = new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js';
+          s.onload = () => {
+            initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}` })
+              .then(SQL => { sqlDB = new SQL.Database(); resolve(sqlDB); });
+          };
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+        return sqlPromise;
+      }
+
+      function initEditors() {
+        document.querySelectorAll('.live-code').forEach(container => {
+          if (container.dataset.initialized) return;
+          container.dataset.initialized = 'true';
+
+          const lang = (container.dataset.lang || 'javascript').toLowerCase();
+          const codeEl = container.querySelector('textarea.code-source') || container.querySelector('code') || container.querySelector('textarea');
+          if (!codeEl) return;
+
+          const originalCode = codeEl.value !== undefined ? codeEl.value.trim() : codeEl.textContent.trim();
+
+          // Build UI
+          container.innerHTML = '';
+
+          // Header
+          const header = document.createElement('div');
+          header.className = 'live-code-header';
+          const badge = document.createElement('span');
+          badge.className = 'live-code-lang ' + (lang === 'javascript' ? 'js' : lang);
+          badge.textContent = lang === 'javascript' ? 'JS' : lang.toUpperCase();
+          const spacer = document.createElement('span');
+          spacer.className = 'spacer';
+          const resetBtn = document.createElement('button');
+          resetBtn.className = 'live-code-btn';
+          resetBtn.textContent = 'Reset';
+          const runBtn = document.createElement('button');
+          runBtn.className = 'live-code-btn run';
+          runBtn.textContent = '▶ Run';
+          header.append(badge, spacer, resetBtn, runBtn);
+          container.appendChild(header);
+
+          // Editor
+          const editor = document.createElement('textarea');
+          editor.className = 'live-code-editor';
+          editor.value = originalCode;
+          editor.spellcheck = false;
+          editor.rows = Math.min(20, originalCode.split('\n').length + 1);
+          // Tab support
+          editor.addEventListener('keydown', e => {
+            if (e.key === 'Tab') {
+              e.preventDefault();
+              const start = editor.selectionStart;
+              editor.value = editor.value.substring(0, start) + '  ' + editor.value.substring(editor.selectionEnd);
+              editor.selectionStart = editor.selectionEnd = start + 2;
+            }
+          });
+          container.appendChild(editor);
+
+          // Output
+          const output = document.createElement('div');
+          output.className = 'live-code-output';
+          container.appendChild(output);
+
+          // Preview (for HTML/CSS)
+          const preview = document.createElement('div');
+          preview.className = 'live-code-preview';
+          container.appendChild(preview);
+
+          // Run handler
+          runBtn.addEventListener('click', () => runCode(lang, editor.value, output, preview));
+
+          // Reset handler
+          resetBtn.addEventListener('click', () => {
+            editor.value = originalCode;
+            output.className = 'live-code-output';
+            output.textContent = '';
+            preview.className = 'live-code-preview';
+            preview.innerHTML = '';
+          });
+        });
+      }
+
+      function runCode(lang, code, output, preview) {
+        output.className = 'live-code-output visible';
+        output.textContent = '';
+        preview.className = 'live-code-preview';
+        preview.innerHTML = '';
+
+        switch (lang) {
+          case 'javascript': runJS(code, output); break;
+          case 'html': runHTML(code, output, preview); break;
+          case 'css': runCSS(code, output, preview); break;
+          case 'sql': runSQL(code, output); break;
+          default: output.textContent = 'Unsupported language: ' + lang;
+        }
+      }
+
+      function runJS(code, output) {
+        const logs = [];
+        const orig = { log: console.log, warn: console.warn, error: console.error };
+        const fmt = a => a === null ? 'null' : a === undefined ? 'undefined' :
+          typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a);
+
+        console.log = (...a) => logs.push(a.map(fmt).join(' '));
+        console.warn = (...a) => logs.push('[warn] ' + a.map(fmt).join(' '));
+        console.error = (...a) => logs.push('[error] ' + a.map(fmt).join(' '));
+
+        try {
+          const result = new Function(code)();
+          let out = logs.join('\n');
+          if (result !== undefined) out += (out ? '\n' : '') + fmt(result);
+          output.textContent = out || '(no output)';
+        } catch (e) {
+          output.textContent = (logs.length ? logs.join('\n') + '\n\n' : '') + 'Error: ' + e.message;
+          output.classList.add('error');
+        } finally {
+          Object.assign(console, orig);
+        }
+      }
+
+      function runHTML(code, output, preview) {
+        output.className = 'live-code-output';
+        preview.className = 'live-code-preview visible';
+        preview.innerHTML = '';
+        const iframe = document.createElement('iframe');
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-modals';
+        iframe.style.width = '100%';
+        iframe.style.minHeight = '150px';
+        iframe.style.border = 'none';
+        iframe.style.background = '#fff';
+        preview.appendChild(iframe);
+        // Use srcdoc for reliable content injection
+        iframe.srcdoc = code;
+        // Auto-resize after load
+        iframe.onload = () => {
+          try {
+            const h = iframe.contentDocument.body.scrollHeight;
+            iframe.style.height = Math.min(300, h + 20) + 'px';
+          } catch(e) {}
+        };
+      }
+
+      function runCSS(code, output, preview) {
+        const html = `<!DOCTYPE html>
+    <html><head><style>${code}</style></head>
+    <body>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <p>A paragraph of text with <a href="#">a link</a> and <strong>bold text</strong>.</p>
+    <ul><li>List item 1</li><li>List item 2</li><li>List item 3</li></ul>
+    <button>A Button</button>
+    <div class="box" style="margin-top:10px;padding:10px;border:1px solid #ccc;">A div.box element</div>
+    </body></html>`;
+        runHTML(html, output, preview);
+      }
+
+      function runSQL(code, output) {
+        ensureSQL().then(db => {
+          try {
+            const results = db.exec(code);
+            if (results.length === 0) {
+              output.textContent = '(query executed, no results returned)';
+              return;
+            }
+            // Format as table
+            let out = '';
+            for (const result of results) {
+              const widths = result.columns.map((col, i) => {
+                const vals = result.values.map(row => String(row[i]).length);
+                return Math.max(col.length, ...vals);
+              });
+              const sep = widths.map(w => '-'.repeat(w + 2)).join('+');
+              const fmtRow = row => row.map((v, i) => (' ' + String(v).padEnd(widths[i]) + ' ')).join('|');
+              out += fmtRow(result.columns) + '\n' + sep + '\n';
+              result.values.forEach(row => { out += fmtRow(row) + '\n'; });
+            }
+            output.textContent = out;
+          } catch (e) {
+            output.textContent = 'SQL Error: ' + e.message;
+            output.classList.add('error');
+          }
+        }).catch(e => {
+          output.textContent = 'Failed to load SQL engine: ' + e.message;
+          output.classList.add('error');
+        });
+      }
+
+      // Init on load and on Reveal slide changes
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initEditors);
+      } else {
+        initEditors();
+      }
+
+      // Re-init when reveal.js navigates (for lazy-loaded slides)
+      if (typeof Reveal !== 'undefined') {
+        Reveal.on('slidechanged', initEditors);
+      } else {
+        document.addEventListener('DOMContentLoaded', () => {
+          const check = setInterval(() => {
+            if (typeof Reveal !== 'undefined') {
+              Reveal.on('slidechanged', initEditors);
+              clearInterval(check);
+            }
+          }, 500);
+          setTimeout(() => clearInterval(check), 10000);
+        });
+      }
+    })();
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../..";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

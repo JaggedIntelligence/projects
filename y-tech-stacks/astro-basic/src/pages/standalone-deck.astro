@@ -1,0 +1,91 @@
+---
+// src/pages/standalone-deck.astro
+// We leave the frontmatter empty since we aren't pulling in Astro layouts or components.
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Fully Self-Contained Reveal.js Slide Deck</title>
+
+    <!-- Core Reveal.js CSS (via CDN to keep it entirely self-contained) -->
+    <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-Z86p9ALn9XwB08N8wzZscN3spP890K87e07H8T+oT88E91H1NlY+yI79vX/OInL4m3b60W6wS1R8r04W0X==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Theme CSS (Choose from black, white, league, beige, sky, night, serif, simple, solarized, blood, moon) -->
+    <link rel="stylesheet" href="https://cloudflare.com" id="theme" />
+
+    <!-- Optional: Theme for code syntax highlighting if your slides use code blocks -->
+    <link rel="stylesheet" href="https://cloudflare.com" />
+
+    <style is:inline>
+      /* overrides or custom inline styles go here if you want to bypass Astro's scoping */
+      .custom-highlight {
+        color: #00ffcc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+        <!-- Slide 1 -->
+        <section>
+          <h1>Standalone Slide Deck</h1>
+          <p>Built completely inside an Astro project, but 100% self-contained.</p>
+        </section>
+
+        <!-- Slide 2 -->
+        <section>
+          <h2>Why this works</h2>
+          <ul>
+            <li>No Astro layout interference</li>
+            <li>No shared CSS bleeding into the presentation</li>
+            <li>CDN links pull dependencies instantly</li>
+          </ul>
+        </section>
+
+        <!-- Slide 3 (Nested Vertical Slides) -->
+        <section>
+          <section>
+            <h2>Vertical Slide Top</h2>
+            <p>Press Down Arrow to see the next fragment.</p>
+          </section>
+          <section>
+            <h2>Vertical Slide Bottom</h2>
+            <p>Press Up Arrow to go back.</p>
+          </section>
+        </section>
+
+        <!-- Slide 4 (Code Example) -->
+        <section>
+          <h2>Code Syntax Highlighting</h2>
+          <pre><code class="hljs javascript" data-line-numbers="1|3-4">const astro = "awesome";
+          
+</code></pre>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Core Reveal.js JavaScript Engine -->
+    <script is:inline src="https://cloudflare.com"></script>
+    
+    <!-- Optional Plugins (Markdown, Highlight, Notes) -->
+    <script is:inline src="https://cloudflare.com"></script>
+    <script is:inline src="https://cloudflare.com"></script>
+
+    <!-- Initialize Reveal.js -->
+    <script is:inline>
+      // The is:inline directive stops Astro from bundling, moving, or optimizing this script block
+      Reveal.initialize({
+        hash: true, // Gives unique URLs to each slide
+        respondToHashChanges: true,
+        history: true,
+        plugins: [ RevealHighlight, RevealNotes ] // Active plugins
+      });
+    </script>
+  </body>
+</html>
