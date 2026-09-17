@@ -1,0 +1,41 @@
+---
+// src/layouts/PresentationLayout.astro
+const { title = "Presentation" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<slot />
+			</div>
+		</div>
+
+		<script>
+			import 'reveal.js/reveal.css';
+			import 'reveal.js/theme/black.css';
+			import Reveal from 'reveal.js';
+
+			// Ensure initialization runs every single time the DOM content changes or loads
+			function initReveal() {
+				const deck = new Reveal();
+				deck.initialize({ 
+					hash: true,
+					// Forces state to reset on initialization
+					embedded: false 
+				});
+			}
+
+			// Run on boot
+			initReveal();
+		</script>
+	</body>
+</html>
+
+
+

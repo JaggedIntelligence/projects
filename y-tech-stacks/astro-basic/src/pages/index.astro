@@ -1,29 +1,14 @@
 ---
-// src/pages/index.astro
+import PresentationLayout from '../layouts/PresentationLayout.astro';
 ---
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Astro Reveal Presentation</title>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section><h1>Slide 1</h1></section>
-				<section><h1>Slide 2</h1></section>
-			</div>
-		</div>
+<PresentationLayout title="Intro Presentation">
+	<section>
+		<h1>Welcome Page</h1>
+		<p>This is my primary deck.</p>
+	</section>
+	<section>
+		<h2>Go to Deck 2</h2>
+		<p><a href="/project-pitch">Click here</a> to view the pitch deck.</p>
+	</section>
+</PresentationLayout>
 
-		<script>
-			// REMOVED "/dist" from the import paths
-			import 'reveal.js/reveal.css';
-			import 'reveal.js/theme/black.css';
-			import Reveal from 'reveal.js';
-
-			const deck = new Reveal();
-			deck.initialize({ hash: true });
-		</script>
-	</body>
-</html>
