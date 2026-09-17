@@ -87,6 +87,47 @@ Here is another comment.
 -->
 
 ---
+transition: fade-out
+---
+
+# Tools and the Team INDIA
+
+getting to KNOW and using "MODERN Tools Chain" is a KEY differentitor for any TEAM, be it Tech or Otherwise. As it makes the Team perform at Optimum velocity like 2x to 3x of Baseline speed.
+
+- 📝 **Slidev** - Clarity of Tools and Concepts for the TEAM
+- 🎨 **BullMQ** - dual JoB SCHEDULER and Job/Message Queue
+- 🧑‍💻 **px0** - super fast read only IDE at 30MB 1/50 of VSCode
+- ...
+- 🤹 **Interactive** - embed Vue components to enhance your expressions
+- 🎥 **Recording** - built-in recording and camera view
+- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
+- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
+<br>
+<br>
+
+Read more about [Why Slidev?](https://sli.dev/guide/why)
+
+<!--
+You can have `style` tag in markdown to override the style for the current page.
+Learn more: https://sli.dev/features/slide-scope-style
+-->
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+<!--
+Here is another comment.
+-->
+---
 transition: slide-up
 level: 2
 ---
