@@ -9,7 +9,7 @@ export default function Counter({
 	count: number;
 }) {
 	const [count, setCount] = useState(initialCount);
-	const add = () => setCount((i) => i + 1);
+	const add = () => setCount((i) => i + 2);
 	const subtract = () => setCount((i) => i - 1);
 
 	return (
@@ -17,7 +17,7 @@ export default function Counter({
 			<div className="counter">
 				<button onClick={subtract}>-</button>
 				<pre>{count}</pre>
-				<button onClick={add}>+</button>
+				<button onClick={add}>add +2</button>
 			</div>
 			<div className="counter-message">{children}</div>
 		</>
