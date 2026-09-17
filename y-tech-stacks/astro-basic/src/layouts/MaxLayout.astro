@@ -1,0 +1,90 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Presentation" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.css" />
+    <style is:global>
+      /* Reset slide spacing & maximize container */
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .reveal {
+        font-size: 12px; /* Global minimum font base */
+      }
+
+      .reveal .slides {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .reveal .slides > section,
+      .reveal .slides > section > section {
+        padding: 0 !important;
+        top: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+
+      /* Density utility styles */
+      .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+        margin: 0 0 0.2rem 0;
+        font-size: 1.2rem;
+        text-transform: none;
+      }
+
+      .reveal p, .reveal li {
+        font-size: 0.85rem;
+        line-height: 1.1;
+        margin: 0 0 0.2rem 0;
+      }
+
+      .reveal ul, .reveal ol {
+        margin: 0;
+        padding-left: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <slot />
+      </div>
+    </div>
+
+    <script>
+      import Reveal from 'reveal.js';
+	  import 'reveal.js/theme/white.css';
+
+      Reveal.initialize({
+        width: "100%",
+        height: "100%",
+        margin: 0,
+        minScale: 1,
+        maxScale: 1,
+        center: false,
+        disableLayout: false,
+        transition: 'slide'
+      });
+    </script>
+  </body>
+</html>
+
+
+
