@@ -1,0 +1,374 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/ibm-plex-sans";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.147 0.004 49.25);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.147 0.004 49.25);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.147 0.004 49.25);
+    --primary: oklch(0.52 0.105 223.128);
+    --primary-foreground: oklch(0.984 0.019 200.873);
+    --secondary: oklch(0.967 0.001 286.375);
+    --secondary-foreground: oklch(0.21 0.006 285.885);
+    --muted: oklch(0.97 0.001 106.424);
+    --muted-foreground: oklch(0.553 0.013 58.071);
+    --accent: oklch(0.97 0.001 106.424);
+    --accent-foreground: oklch(0.216 0.006 56.043);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.923 0.003 48.717);
+    --input: oklch(0.923 0.003 48.717);
+    --ring: oklch(0.709 0.01 56.259);
+    --chart-1: oklch(0.871 0.15 154.449);
+    --chart-2: oklch(0.723 0.219 149.579);
+    --chart-3: oklch(0.627 0.194 149.214);
+    --chart-4: oklch(0.527 0.154 150.069);
+    --chart-5: oklch(0.448 0.119 151.328);
+    --radius: 0.45rem;
+    --sidebar: oklch(0.985 0.001 106.423);
+    --sidebar-foreground: oklch(0.147 0.004 49.25);
+    --sidebar-primary: oklch(0.609 0.126 221.723);
+    --sidebar-primary-foreground: oklch(0.984 0.019 200.873);
+    --sidebar-accent: oklch(0.97 0.001 106.424);
+    --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
+    --sidebar-border: oklch(0.923 0.003 48.717);
+    --sidebar-ring: oklch(0.709 0.01 56.259);
+}
+
+.dark {
+    --background: oklch(0.147 0.004 49.25);
+    --foreground: oklch(0.985 0.001 106.423);
+    --card: oklch(0.216 0.006 56.043);
+    --card-foreground: oklch(0.985 0.001 106.423);
+    --popover: oklch(0.216 0.006 56.043);
+    --popover-foreground: oklch(0.985 0.001 106.423);
+    --primary: oklch(0.45 0.085 224.283);
+    --primary-foreground: oklch(0.984 0.019 200.873);
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.268 0.007 34.298);
+    --muted-foreground: oklch(0.709 0.01 56.259);
+    --accent: oklch(0.268 0.007 34.298);
+    --accent-foreground: oklch(0.985 0.001 106.423);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.553 0.013 58.071);
+    --chart-1: oklch(0.871 0.15 154.449);
+    --chart-2: oklch(0.723 0.219 149.579);
+    --chart-3: oklch(0.627 0.194 149.214);
+    --chart-4: oklch(0.527 0.154 150.069);
+    --chart-5: oklch(0.448 0.119 151.328);
+    --sidebar: oklch(0.216 0.006 56.043);
+    --sidebar-foreground: oklch(0.985 0.001 106.423);
+    --sidebar-primary: oklch(0.715 0.143 215.221);
+    --sidebar-primary-foreground: oklch(0.302 0.056 229.695);
+    --sidebar-accent: oklch(0.268 0.007 34.298);
+    --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.553 0.013 58.071);
+}
+
+@theme inline {
+    --font-sans: 'IBM Plex Sans Variable', sans-serif;
+    --font-heading: 'JetBrains Mono Variable', monospace;
+    --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+
+  html[lang="ar"] {
+    --font-sans: "Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", "Tahoma", sans-serif;
+    --font-heading: "Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", "Tahoma", sans-serif;
+  }
+}
+
+/* Disable page-level overscroll and rubber-band scrolling so the UI feels more desktop-native. */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* Scope the desktop scroll shell to the generated root container only. */
+[data-ui-scroll-container] {
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+}
+
+/* Vite mounts into #root, so it needs to inherit the full-height desktop shell. */
+#root {
+  height: 100%;
+}
+
+@layer base {
+  /* Desktop UIs often feel cleaner with accidental text selection disabled by default. */
+  body {
+    @apply select-none;
+  }
+
+  /* Keep editing and code surfaces selectable so inputs and diagnostics still work normally. */
+  input,
+  textarea,
+  [contenteditable="true"],
+  pre,
+  code {
+    @apply select-text;
+  }
+}
+
+@layer utilities {
+  /* Opt back into selection for any generated UI surface that should behave like regular text. */
+  .ui-selectable {
+    @apply select-text;
+  }
+
+  /* Fade + lift entry. Used on page mount and result cards. */
+  .anim-enter {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 320ms var(--ease-out-strong),
+      transform 320ms var(--ease-out-strong);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  /* Stagger children. Apply on parent; children animate with incremental delay. */
+  .anim-stagger > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 300ms var(--ease-out-strong),
+      transform 300ms var(--ease-out-strong);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  .anim-stagger > *:nth-child(1) { transition-delay: 0ms; }
+  .anim-stagger > *:nth-child(2) { transition-delay: 50ms; }
+  .anim-stagger > *:nth-child(3) { transition-delay: 100ms; }
+  .anim-stagger > *:nth-child(4) { transition-delay: 150ms; }
+  .anim-stagger > *:nth-child(5) { transition-delay: 200ms; }
+
+  /* Shimmer pulse for active live-progress cards. */
+  .anim-pulse-border {
+    animation: pulse-border 1.6s var(--ease-in-out-strong) infinite;
+  }
+  @keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--color-primary) 30%, transparent); }
+    50%      { box-shadow: 0 0 0 4px color-mix(in oklch, var(--color-primary) 0%, transparent); }
+  }
+
+  /* JuicyButton breathing halo — slow conic-gradient scale+opacity pulse. */
+  .juicy-halo {
+    opacity: 0.55;
+    animation: juicy-halo 2.8s var(--ease-in-out-strong) infinite,
+               juicy-halo-spin 6s linear infinite;
+  }
+  @keyframes juicy-halo {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50%      { opacity: 0.75; transform: scale(1.04); }
+  }
+  @keyframes juicy-halo-spin {
+    from { filter: hue-rotate(0deg); }
+    to   { filter: hue-rotate(360deg); }
+  }
+
+  /* Winner row shimmer — subtle amber sweep across the fastest resolver. */
+  .winner-row {
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklch, var(--color-chart-4) 14%, transparent) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: winner-shimmer 3.5s var(--ease-in-out-strong) infinite;
+  }
+  @keyframes winner-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Trophy pop-in used on the winner row. */
+  .trophy-pop {
+    animation: trophy-pop 600ms var(--ease-out-strong) both;
+  }
+  @keyframes trophy-pop {
+    0%   { transform: scale(0) rotate(-25deg); opacity: 0; }
+    60%  { transform: scale(1.3) rotate(8deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+}
+
+/* Pushable 3D button — palette driven by CSS vars set on the element. */
+.btn3d {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--face), white 14%) 0%,
+      var(--face) 50%,
+      color-mix(in oklab, var(--face), black 12%) 100%
+    );
+  border-color: var(--border);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+  transform-style: preserve-3d;
+  transform: translateY(0);
+  transition:
+    transform 150ms cubic-bezier(0, 0, 0.58, 1),
+    background 150ms cubic-bezier(0, 0, 0.58, 1),
+    box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+.btn3d-sheen-wrap {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.btn3d-sheen-wrap::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 22%;
+  height: 200%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 100%
+  );
+  transform: translateX(-200%) rotate(18deg);
+  animation: btn3d-sheen 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes btn3d-sheen {
+  0%,
+  30% {
+    transform: translateX(-200%) rotate(18deg);
+  }
+  70%,
+  100% {
+    transform: translateX(700%) rotate(18deg);
+  }
+}
+.btn3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--base);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--border), 0 0.625em 0 0 var(--lift);
+  transform: translate3d(0, 0.75em, -1em);
+  transition:
+    transform 150ms cubic-bezier(0, 0, 0.58, 1),
+    box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+.btn3d:hover:not(:disabled) {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--face-hover), white 18%) 0%,
+    var(--face-hover) 50%,
+    color-mix(in oklab, var(--face-hover), black 10%) 100%
+  );
+  transform: translateY(0.25em);
+}
+.btn3d:hover:not(:disabled)::before {
+  box-shadow: 0 0 0 2px var(--border), 0 0.5em 0 0 var(--lift);
+  transform: translate3d(0, 0.5em, -1em);
+}
+.btn3d:active:not(:disabled) {
+  transform: translateY(0.75em);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.btn3d:active:not(:disabled)::before {
+  box-shadow: 0 0 0 2px var(--border), 0 0 var(--lift);
+  transform: translate3d(0, 0, -1em);
+}
+
+/* Accessibility: honor reduced motion. Keep opacity, drop movement. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+  }
+  .anim-enter,
+  .anim-stagger > * {
+    transform: none !important;
+  }
+}
