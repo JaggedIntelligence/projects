@@ -1,3 +1,6 @@
+---
+import PageShell from '../components/PageShell.astro';
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,6 +56,7 @@
   </style>
 </head>
 <body>
+<PageShell>
   <header>
     <div class="shell">
       <nav><a class="logo" href="#top">Ez<span>shopper</span></a><div><a href="#experience">Experience</a><a href="#models">Models</a><a href="#launch">Launch</a><a href="#verdict">SR Verdict</a></div></nav>
@@ -113,5 +117,6 @@
     <section><p class="section-label">Further reading</p><h2>Sources behind the brief.</h2><div class="sources"><div class="source"><a href="https://doi.org/10.1016/j.jcps.2014.08.002">Choice overload meta-analysis</a><span class="muted">How complexity, uncertainty, and decision goals affect choice.</span></div><div class="source"><a href="https://affiliates.walmart.com/page/faqs">Walmart affiliate FAQ</a><span class="muted">Example of merchant product feeds and referral economics.</span></div><div class="source"><a href="https://www.tax.ny.gov/pubs_and_bulls/publications/sales/marketplace.htm">New York marketplace rules</a><span class="muted">Marketplace collection, registration, and seller documentation.</span></div><div class="source"><a href="https://www.cdtfa.ca.gov/formspubs/pub103/">California resale guidance</a><span class="muted">Resale certificates and purchases held for resale.</span></div><div class="source"><a href="https://docs.stripe.com/connect/separate-charges-and-transfers">Stripe Connect</a><span class="muted">Separate charges and transfers for connected merchants.</span></div><div class="source"><a href="https://www.pcisecuritystandards.org/faqs/1574/">PCI card-data guidance</a><span class="muted">Card verification codes cannot be retained after authorization.</span></div><div class="source"><a href="https://dfpi.ca.gov/rules-enforcement/laws-and-regulations/opinion-letters-by-law-subject/agent-of-payee/">California agent-of-payee guidance</a><span class="muted">A state example of payment-processing exemptions.</span></div><div class="source"><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking">FTC endorsement guidance</a><span class="muted">Clear disclosure for affiliate and sponsored recommendations.</span></div></div></section>
   </main>
   <footer><div class="shell">Ezshopper concept brief · For product exploration, not legal or tax advice. Confirm the final structure with U.S. payments counsel and a sales-tax adviser.</div></footer>
+</PageShell>
 </body>
 </html>

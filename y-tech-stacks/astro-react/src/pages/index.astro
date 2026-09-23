@@ -1,4 +1,5 @@
 ---
+import PageShell from '../components/PageShell.astro';
 // Component Imports
 import Counter from '../components/Counter';
 
@@ -23,16 +24,18 @@ const someProps = {
 				font-family: system-ui;
 				margin: 0;
 			}
-			body {
+			main {
 				padding: 2rem;
 			}
 		</style>
 	</head>
 	<body>
+<PageShell>
 		<main>
 			<Counter {...someProps} client:visible>
 				<h1>Hello, React!</h1>
 			</Counter>
 		</main>
-	</body>
+	</PageShell>
+</body>
 </html>

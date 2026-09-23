@@ -1,0 +1,120 @@
+---
+const labels: Record<string, string> = {
+  '/': 'Home',
+  '/ezshopper': 'Ezshopper',
+  '/smb-market-bizassessment': 'SMB Market & Business Assessment',
+};
+// Discover static content pages without importing or executing them.
+const pages = Object.keys(import.meta.glob('../pages/**/*.{astro,md,mdx,html}'))
+  .map((file) => file.replace('../pages/', '').replace(/\.(astro|md|mdx|html)$/, ''))
+  .filter((path) => !path.includes('[') && !['404', '500'].includes(path))
+  .map((path) => {
+    const route = '/' + path.replace(/(^|\/)index$/, '');
+    const href = route.replace(/\/$/, '') || '/';
+    const label = labels[href] ?? path.replace(/(^|\/)index$/, '').split('/').filter(Boolean)
+      .map((part) => part.replace(/[-_]/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())).join(' / ');
+    return { href, label };
+  })
+  .sort((a, b) => a.href === '/' ? -1 : b.href === '/' ? 1 : a.label.localeCompare(b.label));
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const title = pages.find((page) => page.href === currentPath)?.label ?? 'Pages';
+---
+<script is:inline>
+  try {
+    document.documentElement.dataset.sidebarHidden = String(localStorage.getItem('sidebar-hidden') === 'true');
+  } catch { /* Navigation still works when storage is unavailable. */ }
+</script>
+<div class="workspace">
+  <aside id="page-menu" class="sidebar" aria-label="Pages">
+    <div class="menu-heading">Pages</div>
+    <nav aria-label="Page navigation">
+      {pages.map(({ href, label }) => (
+        <a href={href} aria-current={currentPath === href ? 'page' : undefined}>{label}</a>
+      ))}
+    </nav>
+  </aside>
+  <button class="backdrop" tabindex="-1" aria-label="Close page menu" hidden></button>
+  <div class="right-pane">
+    <div class="toolbar">
+      <button id="menu-toggle" type="button" aria-controls="page-menu" aria-expanded="true" aria-label="Hide page menu" title="Hide page menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2" /><path d="M9 4v16M5.5 8h1M5.5 12h1" />
+        </svg>
+      </button>
+      <span>{title}</span>
+    </div>
+    <div id="page-content" class="page-content"><slot /></div>
+  </div>
+</div>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle')!;
+  const menu = document.querySelector<HTMLElement>('#page-menu')!;
+  const content = document.querySelector<HTMLElement>('#page-content')!;
+  const backdrop = document.querySelector<HTMLButtonElement>('.backdrop')!;
+  const mobile = window.matchMedia('(max-width: 760px)');
+  let mobileOpen = false;
+  const desktopHidden = () => document.documentElement.dataset.sidebarHidden === 'true';
+  function syncMenu() {
+    const open = mobile.matches ? mobileOpen : !desktopHidden();
+    document.documentElement.dataset.mobileMenuOpen = String(mobile.matches && open);
+    menu.inert = !open;
+    content.inert = mobile.matches && open;
+    backdrop.hidden = !mobile.matches || !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Hide page menu' : 'Show page menu');
+    toggle.title = open ? 'Hide page menu' : 'Show page menu';
+  }
+  toggle.addEventListener('click', () => {
+    if (mobile.matches) mobileOpen = !mobileOpen;
+    else {
+      const hidden = String(!desktopHidden());
+      document.documentElement.dataset.sidebarHidden = hidden;
+      try { localStorage.setItem('sidebar-hidden', hidden); } catch { /* Optional persistence. */ }
+    }
+    syncMenu();
+  });
+  function closeMobileMenu() {
+    mobileOpen = false;
+    syncMenu();
+    toggle.focus();
+  }
+  backdrop.addEventListener('click', closeMobileMenu);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobile.matches && mobileOpen) closeMobileMenu();
+  });
+  mobile.addEventListener('change', () => { mobileOpen = false; syncMenu(); });
+  syncMenu();
+</script>
+<style>
+  .workspace { min-height: 100vh; }
+  .sidebar, .toolbar, .backdrop { box-sizing: border-box; font: 14px/1.5 system-ui, sans-serif; }
+  .sidebar { position: fixed; inset: 0 auto 0 0; width: 250px; z-index: 30; overflow-y: auto; padding: 24px 14px; background: #f6f6f4; border-right: 1px solid #e3e3df; color: #343530; }
+  .menu-heading { padding: 0 12px 20px; font-weight: 650; font-size: 15px; }
+  nav { display: grid; gap: 5px; }
+  nav a { display: block; padding: 11px 12px; border-radius: 7px; color: #62635d; text-decoration: none; overflow-wrap: anywhere; }
+  nav a:hover { background: #ebebe7; color: #242520; }
+  nav a[aria-current="page"] { background: #e7e7e1; color: #242520; font-weight: 600; }
+  .right-pane { margin-left: 250px; min-width: 0; }
+  .toolbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 10px 20px; border-bottom: 1px solid #e3e3df; background: #fdfdfb; color: #45463f; }
+  #menu-toggle { display: inline-grid; flex-shrink: 0; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid #deded7; border-radius: 7px; background: transparent; color: #55564f; cursor: pointer; }
+  #menu-toggle:hover { background: #edede8; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #626b57; outline-offset: 3px; }
+  .page-content { display: flow-root; min-width: 0; }
+  :global(html) { scroll-padding-top: 80px; }
+  :global(html[data-sidebar-hidden="true"]) .sidebar { display: none; }
+  :global(html[data-sidebar-hidden="true"]) .right-pane { margin-left: 0; }
+  .backdrop { display: none; }
+  @media (max-width: 760px) {
+    .sidebar, :global(html[data-sidebar-hidden="true"]) .sidebar { display: none; top: 60px; width: min(280px, 85vw); }
+    .right-pane { margin-left: 0; }
+    .toolbar { height: 60px; padding: 10px 12px; }
+    .toolbar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    :global(html[data-mobile-menu-open="true"]) .sidebar { display: block; }
+    .backdrop:not([hidden]) { display: block; position: fixed; inset: 60px 0 0; z-index: 20; width: 100%; border: 0; border-radius: 0; background: #20221c55; }
+    :global(html[data-mobile-menu-open="true"]) { overflow: hidden; }
+  }
+  @media print {
+    .sidebar, .toolbar, .backdrop { display: none !important; }
+    .right-pane { margin-left: 0; }
+  }
+</style>
