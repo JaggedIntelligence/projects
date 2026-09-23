@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ezshopper concept brief: consumer behavior, marketplace models, payments, tax, and a practical launch path.">
+  <title>Ezshopper — Shopping, simplified</title>
+  <style>
+    :root { --ink:#17211d; --muted:#5c6c65; --paper:#f6f8f4; --card:#fff; --line:#dce5df; --green:#1d7555; --mint:#dff2e9; --gold:#e5a83a; --shadow:0 18px 55px rgba(22,53,40,.09); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color:var(--green); text-underline-offset:3px; }
+    .shell { max-width:1120px; margin:auto; padding:0 28px; }
+    header { padding:25px 0 80px; background:linear-gradient(135deg,#e7f6ed 0%,#f6f8f4 62%); border-bottom:1px solid var(--line); }
+    nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .logo { color:var(--ink); font-weight:800; letter-spacing:-.04em; font-size:1.2rem; text-decoration:none; }
+    .logo span { color:var(--green); }
+    nav a { color:var(--muted); font-size:.9rem; text-decoration:none; margin-left:22px; }
+    .eyebrow { margin:72px 0 14px; color:var(--green); font-size:.76rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { max-width:800px; margin:0; font-size:clamp(2.8rem,7vw,5.8rem); line-height:.98; letter-spacing:-.075em; }
+    .lede { max-width:690px; margin:26px 0 0; color:var(--muted); font-size:1.18rem; }
+    .hero-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:end; }
+    .signal { margin-top:34px; padding:22px; border:1px solid #c8dfd2; border-radius:18px; background:rgba(255,255,255,.68); box-shadow:var(--shadow); }
+    .signal strong { display:block; color:var(--green); font-size:1.9rem; line-height:1; margin-bottom:7px; }
+    main { padding:72px 0; }
+    section { margin-bottom:76px; }
+    .section-label { color:var(--green); font-size:.75rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    h2 { margin:8px 0 18px; font-size:clamp(1.9rem,4vw,3rem); line-height:1.08; letter-spacing:-.055em; }
+    h3 { margin:0 0 8px; font-size:1.15rem; letter-spacing:-.02em; }
+    p { margin:0 0 15px; }
+    .muted { color:var(--muted); }
+    .intro { max-width:730px; color:var(--muted); font-size:1.05rem; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:28px; }
+    .card { padding:24px; background:var(--card); border:1px solid var(--line); border-radius:18px; box-shadow:0 8px 28px rgba(22,53,40,.04); }
+    .number { display:inline-grid; place-items:center; width:32px; height:32px; margin-bottom:18px; border-radius:50%; color:var(--green); background:var(--mint); font-weight:800; }
+    .callout { margin-top:28px; padding:25px 28px; background:var(--ink); color:#f4faf6; border-radius:20px; }
+    .callout p { color:#d5e5dc; }
+    .quote { margin:18px 0 0; padding:18px 20px; border-left:3px solid var(--gold); background:#fffaf0; color:#53411f; font-size:1.05rem; }
+    table { width:100%; border-collapse:collapse; margin-top:24px; overflow:hidden; background:var(--card); border:1px solid var(--line); border-radius:16px; font-size:.94rem; }
+    th, td { padding:16px 18px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+    th { color:var(--muted); background:#f0f5f1; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    .flow { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:25px; }
+    .step { position:relative; padding:18px 14px; border:1px solid var(--line); border-radius:14px; background:#fff; font-size:.9rem; }
+    .step:not(:last-child)::after { content:'→'; position:absolute; right:-16px; top:33px; color:var(--gold); font-weight:800; z-index:2; }
+    .step b { display:block; color:var(--green); margin-bottom:6px; }
+    .sources { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:24px; }
+    .source { padding:17px 19px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .source a { display:block; font-weight:700; }
+    footer { padding:34px 0 55px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
+    @media (max-width:780px) { .hero-grid,.cards,.sources { grid-template-columns:1fr; } .flow { grid-template-columns:1fr; } .step:not(:last-child)::after { content:'↓'; right:50%; top:auto; bottom:-21px; } nav a { display:none; } header { padding-bottom:58px; } main { padding-top:52px; } table { display:block; overflow-x:auto; white-space:normal; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <nav><a class="logo" href="#top">Ez<span>shopper</span></a><div><a href="#experience">Experience</a><a href="#models">Models</a><a href="#launch">Launch</a></div></nav>
+      <div id="top" class="hero-grid">
+        <div><p class="eyebrow">Concept brief · September 2026</p><h1>Shopping, simplified.</h1><p class="lede">Ezshopper helps people describe what they need, compare the few options that fit, and complete a multi-store purchase from one trusted account.</p></div>
+        <div class="signal"><strong>One decision.</strong><span class="muted">The opportunity is bigger than search: give shoppers confidence that they chose well, then make the purchase easy.</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="experience"><p class="section-label">01 · The consumer problem</p><h2>Turn an open-ended search into a guided decision.</h2><p class="intro">“Jogging sweatpants” returns products from many stores with different brands, discounts, fabrics, fit, shipping, and returns. A larger grid can preserve the same mental burden. Ezshopper should ask only the questions that improve the decision.</p>
+      <div class="quote">“I want jogging sweatpants under $60, for outdoor running, with zippered pockets.”</div>
+      <div class="cards"><article class="card"><span class="number">1</span><h3>Best match</h3><p class="muted">Meets the shopper’s budget, use case, fabric, and feature requirements.</p></article><article class="card"><span class="number">2</span><h3>Lowest delivered price</h3><p class="muted">Shows the real total after shipping, eligible discounts, and tax estimates.</p></article><article class="card"><span class="number">3</span><h3>Best alternative</h3><p class="muted">Explains the one trade-off that makes a slightly different product worthwhile.</p></article></div>
+      <div class="callout"><h3>Design principle</h3><p>Compare total delivered cost, available size, material, delivery estimate, return cost, and the difference between identical products and merely similar ones. Never imply durability or fit from an image alone.</p></div>
+    </section>
+
+    <section><p class="section-label">02 · Merchant relationships</p><h2>Product data is available—but permission matters.</h2><p class="intro">Ezshopper can work with affiliate programs, licensed product feeds, and direct merchant APIs. A data feed can authorize catalog display without authorizing Ezshopper to complete checkout on the merchant’s behalf.</p>
+      <table><thead><tr><th>Permission</th><th>What it covers</th><th>What to negotiate</th></tr></thead><tbody><tr><td><strong>Catalog permission</strong></td><td>Images, descriptions, prices, variants, and availability.</td><td>Trademark use, caching, refresh frequency, attribution, and termination.</td></tr><tr><td><strong>Transaction permission</strong></td><td>Orders, payment, cancellations, returns, and customer support.</td><td>Order acceptance, promotions, data sharing, commissions, disputes, and service levels.</td></tr></tbody></table>
+      <p class="muted" style="margin-top:18px">Authorized feeds or APIs are a better foundation than a business built around scraping retail pages. Some stores will welcome qualified incremental customers; others will resist losing the direct relationship. The pitch should be measurable: new buyers and an acquisition cost the merchant can justify.</p>
+    </section>
+
+    <section id="models"><p class="section-label">03 · One account, multiple stores</p><h2>One account, one basket, several underlying orders.</h2><p class="intro">“One account,” “one checkout,” and “one card charge” are separate promises. Ezshopper can coordinate five store orders while still showing five packages, five fulfillment timelines, and five return policies.</p>
+      <table><thead><tr><th>Model</th><th>Who sells to the shopper?</th><th>Checkout</th><th>Trade-off</th></tr></thead><tbody><tr><td><strong>Affiliate comparison</strong></td><td>Each store</td><td>Shopper checks out at each store</td><td>Fastest launch; leaves the checkout friction intact.</td></tr><tr><td><strong>Contracted marketplace</strong></td><td>Participating stores</td><td>Ezshopper coordinates checkout and payment</td><td>Best customer experience; requires merchant integrations.</td></tr><tr><td><strong>Buying agent</strong></td><td>Usually the merchant, with Ezshopper acting under contract</td><td>Ezshopper places an authorized purchase</td><td>Requires careful merchant and payments classification.</td></tr><tr><td><strong>Reseller / dropshipper</strong></td><td>Ezshopper</td><td>Customer buys directly from Ezshopper</td><td>More control and responsibility, including inventory and returns exposure.</td></tr></tbody></table>
+      <div class="flow"><div class="step"><b>1 · Save</b>Address and payment method once.</div><div class="step"><b>2 · Verify</b>Refresh price, stock, delivery, and tax.</div><div class="step"><b>3 · Approve</b>Customer confirms the basket and trade-offs.</div><div class="step"><b>4 · Allocate</b>Payment provider routes funds to merchants.</div><div class="step"><b>5 · Fulfill</b>Stores ship; Ezshopper owns the order dashboard.</div></div>
+    </section>
+
+    <section><p class="section-label">04 · Payments, tax, and compliance</p><h2>Tax follows the underlying transaction—not the number of bank transfers.</h2><p class="intro">A marketplace may collect one customer payment and remit tax on facilitated sales. A reseller buys for resale, then makes the retail sale. The exact result depends on state, product, delivery address, discounts, shipping, and the legal contracts.</p>
+      <table><thead><tr><th>Structure</th><th>Typical treatment</th></tr></thead><tbody><tr><td><strong>Marketplace</strong></td><td>Ezshopper may be the marketplace facilitator responsible for collecting and remitting sales tax. Participating sellers need documentation showing who collected.</td></tr><tr><td><strong>Reseller</strong></td><td>Ezshopper may purchase inventory for resale with the required documentation, then charge the customer tax on its retail sale.</td></tr><tr><td><strong>Ordinary retailer checkout</strong></td><td>If Ezshopper buys from a normal shopping site without a resale arrangement, that site may charge tax; a later customer sale can create a difficult tax and documentation problem.</td></tr></tbody></table>
+      <div class="callout"><h3>Payments are a separate legal question</h3><p>Receiving a customer’s money and forwarding it to unrelated stores can raise money-transmission issues. A provider such as Stripe Connect can support marketplace payment flows, but participating merchants need connected accounts and the structure still needs state-by-state review. Use payment tokens; PCI DSS prohibits storing card verification codes after authorization.</p></div>
+      <p class="muted" style="margin-top:20px">State rules vary. For example, New York exempts qualifying clothing priced below $110 from state sales tax, while local treatment can differ. A national “one tax rate” assumption will fail.</p>
+    </section>
+
+    <section id="launch"><p class="section-label">05 · Practical launch path</p><h2>Start narrow enough to make the promise dependable.</h2><p class="intro">Begin with one category and a small set of willing merchants. Test whether a guided comparison and unified checkout create enough value to cover payment processing, support, fraud, returns, promotions, and customer acquisition.</p>
+      <div class="cards"><article class="card"><h3>Measure decisions</h3><p class="muted">Time to a confident choice, completion rate, recommendation trust, and repeat use.</p></article><article class="card"><h3>Measure operations</h3><p class="muted">Out-of-stock handling, price changes, split refunds, returns, and customer support contacts.</p></article><article class="card"><h3>Measure economics</h3><p class="muted">Contribution after merchant commission, processing, acquisition, support, fraud, and returns.</p></article></div>
+      <p class="quote">A $200 basket at a hypothetical 10% commission produces $20 before those costs. The product is promising only if the completed basket remains profitable.</p>
+    </section>
+
+    <section><p class="section-label">Further reading</p><h2>Sources behind the brief.</h2><div class="sources"><div class="source"><a href="https://doi.org/10.1016/j.jcps.2014.08.002">Choice overload meta-analysis</a><span class="muted">How complexity, uncertainty, and decision goals affect choice.</span></div><div class="source"><a href="https://affiliates.walmart.com/page/faqs">Walmart affiliate FAQ</a><span class="muted">Example of merchant product feeds and referral economics.</span></div><div class="source"><a href="https://www.tax.ny.gov/pubs_and_bulls/publications/sales/marketplace.htm">New York marketplace rules</a><span class="muted">Marketplace collection, registration, and seller documentation.</span></div><div class="source"><a href="https://www.cdtfa.ca.gov/formspubs/pub103/">California resale guidance</a><span class="muted">Resale certificates and purchases held for resale.</span></div><div class="source"><a href="https://docs.stripe.com/connect/separate-charges-and-transfers">Stripe Connect</a><span class="muted">Separate charges and transfers for connected merchants.</span></div><div class="source"><a href="https://www.pcisecuritystandards.org/faqs/1574/">PCI card-data guidance</a><span class="muted">Card verification codes cannot be retained after authorization.</span></div><div class="source"><a href="https://dfpi.ca.gov/rules-enforcement/laws-and-regulations/opinion-letters-by-law-subject/agent-of-payee/">California agent-of-payee guidance</a><span class="muted">A state example of payment-processing exemptions.</span></div><div class="source"><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking">FTC endorsement guidance</a><span class="muted">Clear disclosure for affiliate and sponsored recommendations.</span></div></div></section>
+  </main>
+  <footer><div class="shell">Ezshopper concept brief · For product exploration, not legal or tax advice. Confirm the final structure with U.S. payments counsel and a sales-tax adviser.</div></footer>
+</body>
+</html>
