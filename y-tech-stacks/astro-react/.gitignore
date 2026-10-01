@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local PGlite data; set TODO_DB_DIR to a persistent volume in production.
+data/
