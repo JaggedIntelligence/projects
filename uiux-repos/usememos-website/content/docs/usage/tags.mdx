@@ -1,0 +1,70 @@
+---
+title: Tags
+description: Organize memos with hashtags and filter them with searchable metadata.
+---
+
+Tags are created directly from memo content. Write `#tagname` in ordinary Markdown text and Memos extracts it automatically. The same grammar is used by rendering, editing, filtering, statistics, and the API.
+
+## Tag basics
+
+```markdown
+Working on the #backend API today.
+This relates to #project-alpha and #development.
+
+Meeting with #team tomorrow to discuss #roadmap.
+```
+
+Tags can contain multilingual letters, combining marks, digits, underscores, emoji, `-`, `+`, and `&`. Numeric-only tags such as `#2026` are valid. Word-internal apostrophes work in tags such as `#O’Brien` and `#team's`.
+
+Use `/` between non-empty segments for hierarchy: `#project/backend` also contributes the ancestor tag `project`. A slash cannot start or end a tag or separate empty segments. Tag values are case-sensitive; `#Work` and `#work` remain distinct.
+
+Tags are recognized in ordinary text, including headings and list items. Code, links, images, URLs, and other opaque Markdown contexts do not create tags. Escape a literal hash with a backslash, such as `\#not-a-tag`. Spaces and unsupported punctuation end a tag: `#release.notes` produces `release`, while `#C++` and `#R&D` remain complete tag values.
+
+### Existing memos after upgrading
+
+0.31 does not automatically rebuild stored tag indexes. Rendering and editing use the new grammar immediately, while filters, counts, and statistics adopt it as each memo is saved again. If an older memo displays a tag but does not yet appear in its filter, save that memo again.
+
+## Personal tag appearance
+
+Open your user settings to assign a background color or content-blur rule to a tag. These rules are personal: each user controls how matching tags and memo content appear in their own account.
+
+Rules accept exact tag names or anchored regular-expression patterns. For example, `project/.*` applies to every tag under that prefix. Memos validates a pattern before saving it.
+
+When upgrading to 0.30, existing instance-level tag metadata is copied to current users during migration. Later changes are stored per user.
+
+## Good tag habits
+
+- pick a consistent case style
+- avoid near-duplicate tags for the same concept
+- use hyphens for multi-word tags
+- prefer a small, predictable vocabulary over endless one-off tags
+
+## Filters
+
+Memos also supports richer filtering beyond plain text search. Views can combine tags with memo properties.
+
+Examples:
+
+```txt
+tag in ["work"]
+tag in ["work"] && visibility == "PRIVATE"
+has_incomplete_tasks
+has_link
+tags.exists(t, t.startsWith("project"))
+```
+
+## When tags help most
+
+- ongoing projects
+- meeting notes
+- recurring areas of work
+- public knowledge you want to group consistently
+
+## Related guides
+
+- use [Views](/docs/usage/views) to save filters you run often
+- combine tags with [search](/docs/usage/search-archive) when browsing older memos
+- align tag naming with how your team expects to browse content
+- let recurring subjects become Collections with the [digital Bullet Journal guide](/docs/guides/bullet-journal)
+- build a complete GTD practice with the [GTD guide](/docs/guides/getting-things-done)
+- use topic tags as entry points with the [Zettelkasten guide](/docs/guides/zettelkasten), while Relations carry specific connections

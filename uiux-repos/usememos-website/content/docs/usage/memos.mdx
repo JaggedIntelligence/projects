@@ -1,0 +1,131 @@
+---
+title: Memos
+description: Create, edit, link, organize, and manage the core content unit in Memos.
+---
+
+A memo is one thought, written down: short, untitled, and saved to your timeline in the order it happened. A good memo practice keeps writing quick while still making memos readable and searchable later.
+
+## Core actions
+
+- create a memo from the global composer on any authenticated route
+- edit content inline
+- link related memos with Relations
+- pin important memos
+- set visibility before sharing
+- archive memos that are no longer active
+
+## Navigation and creation
+
+The resizable sidebar contains [Calendar](#calendar), [Map](#map), Views, tags, Quick Find, and navigation for the current route. Open the global composer from the sidebar to write without returning to Home.
+
+Selecting a Space scopes browsing and memo creation to that Space. Check placement and visibility before saving; assigning a memo does not change its audience. Existing memos remain Unassigned after upgrading. See [Spaces](/docs/usage/spaces) for scope and membership rules.
+
+Authors can edit their own memos; editing an assigned memo also requires active membership in its Space. Active instance administrators can read and manage individual memos without authorship or Space membership. Space admin roles do not grant editing rights to another author's content.
+
+## What the editor supports
+
+- Markdown formatting
+- decorated source editing that keeps Markdown syntax directly editable
+- a formatting toolbar and keyboard shortcuts
+- focus mode for a quieter writing surface
+- list indentation with `Tab` and `Shift+Tab`
+- inline tags such as `#project-x`
+- code blocks and checklists
+- file attachments
+- memo visibility controls
+- tag suggestions when you type `#`
+- auto-saved drafts cached locally so content is not lost on page reload
+
+In 26.10, new drafts offer optional tag, checklist, and visibility suggestions based on your current filters or selected View. Apply a suggestion to add it to the draft; it disappears once fulfilled. Choose the Space and visibility together in the audience menu, then save the memo.
+
+## Browsing your memos
+
+In 26.10, Timeline, Calendar, Map, and Attachments retain the selected creator and [Space](/docs/usage/spaces) when you switch between them. Combine that scope with a [View](/docs/usage/views) or tag filters to narrow readable memos. Select the main **Memos** context to browse across Spaces. Archived memos are available separately under [Archived](/docs/usage/search-archive#archive).
+
+Calendar and Map also support signed-out visitors when public access is enabled; visitors only see memos they can read. Photos and author avatars help distinguish entries when browsing several creators.
+
+### Feed
+
+Choose one, two, three, or automatic columns in your display preferences.
+Compact mode and link previews are configurable there too, and the choices are
+saved for your account. Link previews discover metadata from oEmbed, Open Graph, Twitter Cards, JSON-LD, and ordinary HTML when the linked site supplies it. Sites without usable metadata may still appear as plain links. The single-column layout shows full memo content by
+default; multi-column and compact layouts favor faster scanning.
+
+Single-creator feeds show pinned memos with a corner marker; mixed-author feeds stay chronological. When you return from a memo detail
+page, Memos restores your previous feed position so you can continue where you
+left off.
+
+### Calendar
+
+Open **Calendar** from the sidebar to revisit a day's notes or review a month. Use the previous and next month controls, or select the month heading to choose another month and year. **Today** returns to the current month.
+
+Select a day to read its memos in a panel on desktop or below the grid on mobile. Days show counts and previews when available. The calendar uses your local time zone and the selected creation or update time setting, with creation time as the default.
+
+To fill in an entry for a particular date, open that day and choose **New memo on this day**. The composer starts with that date as the creation and update time and uses the current Space. Check the date, placement, and visibility before saving. Later edits can move a memo to a different day when browsing by update time; use creation time to review a journal by its entry dates.
+
+Calendar groups notes by their timestamps; it does not assign due dates to checklist items. If a day looks empty, check the active filters and time setting.
+
+### Map
+
+Open **Map** from the sidebar to browse memos with saved locations. Select a marker to read the notes at that location, or choose **Show all results** to fit the matching locations into view. With a single location selected, **Write here** starts a memo with that location and the current Space filled in.
+
+To add a location to a memo:
+
+1. Create or edit the memo and choose **Add location** from the editor's add menu.
+2. Select a point on the map or enter latitude and longitude. Allowing browser location access can help set your current position; you can also choose manually.
+3. Enter a location label, choose **Confirm**, and save the memo.
+
+Writing a place name or attaching a photo with location metadata does not by itself place the memo on Map. Anyone who can read the memo can see its saved location, so check visibility before sharing.
+
+If no markers appear, check for saved locations and active filters; use **Clear filters** when offered. A newly saved memo may fall outside the current filters. If the map background fails to load, use **Retry**; your memo results remain available.
+
+## Memo detail
+
+Opening a memo shows its full content and discussion alongside a property rail
+for metadata and actions such as visibility, tags, relations, attachments,
+reactions, and sharing. On smaller screens, the same controls remain available
+in a responsive layout.
+
+## Memo properties
+
+Memos automatically computes properties from memo content. These can be used in filter expressions:
+
+| Property field | Meaning |
+| --- | --- |
+| `has_link` | Contains one or more Markdown links |
+| `has_code` | Contains code blocks or inline code |
+| `has_task_list` | Contains at least one task list item |
+| `has_incomplete_tasks` | Contains unchecked `- [ ]` task items |
+| `has_location` | Has location data attached |
+
+## Linking memos with Relations
+
+Choose **Link memo** from the editor's add menu, search active memos you own, and select one. After you save, the current memo displays the outgoing connection under **Referencing**; the selected memo displays the incoming connection under **Referenced by**.
+
+Relations are separate from Markdown links. Pasting a memo URL into the content creates a normal link but does not create a Relation or an incoming reference. Use Relations to connect memos to each other, and use Markdown links when the URL itself should be part of the memo.
+
+A Relation does not grant access to either memo. Each side keeps its own visibility, and readers only see connections to memos they can already access.
+
+## Useful memo metadata
+
+- placement: Unassigned or exactly one [Space](/docs/usage/spaces)
+- visibility: `PRIVATE`, `PROTECTED`, `PUBLIC`, or `SPACE`
+- tags extracted from inline hashtags
+- attachments such as screenshots and documents
+- checklist items for lightweight task tracking
+- creation and update times — the timeline and Calendar order and group memos by one of them (creation time by default); when editing a memo, select the timestamp at the top of the editor to change either time
+
+## Good habits
+
+- keep each memo focused on one topic or update
+- use headings when a memo gets long
+- add tags while writing, not later
+- archive stale memos instead of leaving everything active forever
+- pin only the memos that truly deserve persistent attention
+
+## Related guides
+
+- [Use Memos as a Digital Bullet Journal](/docs/guides/bullet-journal) for rapid logging and reflection.
+- [Use Memos for GTD](/docs/guides/getting-things-done) for action management.
+- [Build a Zettelkasten in Memos](/docs/guides/zettelkasten) to develop ideas from evidence.
+- [Export & Import](/docs/usage/export-import) to download your memos and attachments or move them to another instance.

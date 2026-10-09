@@ -1,0 +1,92 @@
+---
+title: Attachments
+description: Add files to memos, browse them in the attachment library, and clean up unused files.
+---
+
+Attachments let you keep files close to the notes they belong to. This is useful for screenshots, design references, PDFs, exported data, and other supporting material.
+
+## Typical attachment flow
+
+- drag a file into the editor
+- use the upload control in the toolbar
+- paste screenshots directly from the clipboard when supported
+
+The app uploads files in smaller chunks automatically. No separate setting is needed; the instance's file-size limits still apply.
+
+## Inline images and drafts
+
+Images can be inserted at the cursor through upload, paste, drag and drop, or selection from existing attachments. They become Markdown images in the memo body. Other files remain attachments you can open from the memo.
+
+Failed inline uploads can be retried. Returning to an unfinished draft restores its inline upload state so you can continue composing. Confirm uploads have completed before publishing, and keep the local draft until the memo is saved.
+
+Removing an image from the Markdown body does not by itself prove the file is unused: attachment binding and inline references are separate. Use the attachment library's unused status when cleaning up.
+
+## Optional media metadata
+
+Enable **Save media metadata** in your preferences to preserve normalized details from future uploads. This is off by default. Depending on the file, details can include dimensions, camera information, capture time, location, and video duration. Inspect available details in the attachment viewer.
+
+The preference applies to future uploads; it does not backfill existing files. Location and capture details can reveal where and when media was recorded, so inspect them before sharing. Disabling metadata extraction is not a promise that embedded metadata has been stripped from the original file.
+
+## Common attachment types
+
+- images and screenshots
+- PDFs and documents
+- audio or video files when your storage policy allows them
+- exported artifacts such as logs or data files
+
+## Transcribing audio
+
+If an admin has configured an AI provider with transcription (Admin → Instance Settings → AI), audio attachments can be transcribed into text.
+
+- transcription is off until a provider is configured, so the option only appears on instances that have AI enabled
+- in 26.10, open the memo editor and transcribe an existing audio attachment; the transcript is inserted into the draft for you to review and save, preserving the existing text and original audio
+- providers are bring-your-own-key (OpenAI or Gemini), so transcription uses the instance's own AI account
+
+This is useful for voice notes and recorded snippets you want to search later as plain text.
+
+## The attachment library
+
+In 26.10, the Attachments page includes files from memos you can read and identifies their uploaders. Its results follow the selected creator and Space, preserving that scope when you switch from Timeline, Calendar, or Map. File management remains subject to your permissions.
+
+- files are grouped into **Media**, **Audio**, and **Documents** tabs, each with a live count
+- media is shown as a grid grouped by month; images, videos, and motion photos open in a full-screen lightbox
+- audio files play inline, with playback-speed choices including 0.5× and 0.75×; documents are listed as rows you can open in a new tab
+- every attachment links back to the memo it belongs to, or is flagged when it isn't linked to any memo
+- long lists load in pages with a **Load more** button
+
+In image previews, pinch to zoom and drag to pan a zoomed image. At fit zoom, swipe to move between gallery images.
+
+There is no upload control here — attachments are added from the memo editor. The library is for browsing, previewing, and cleanup.
+
+## Cleaning up unused attachments
+
+An attachment is **unused** when it is not bound to any memo, such as an upload you never attached to a saved memo. Deleting a memo removes its owned attachment resources; removing only an inline image reference does not necessarily remove the attachment binding.
+
+When you have unused attachments, the library shows an expandable **Unused** panel listing them. From there you can **Delete all unused** in one action (with a confirmation step) to reclaim storage.
+
+Deleting unused attachments is permanent, so review the list before confirming. Attachments that are still linked to a memo are never touched.
+
+## Storage implications
+
+Open **Settings → My Account** and look under **Statistics → Attachment storage** to see your account's attachment storage usage. Review unused uploads in the attachment library when you want to reclaim space.
+
+Attachments depend on the storage backend chosen for the instance:
+
+- database storage keeps everything together
+- local filesystem storage keeps files on the host or volume
+- S3-compatible storage separates files from the app host
+
+Admins can configure multiple named storage backends. Changing the backend for new uploads does not move existing files. A [personal memo export](/docs/usage/export-import) includes the managed files attached to your exported memos, regardless of their storage backend.
+
+## Access to managed files
+
+Managed files follow the memo's access rules. Memos serves S3-backed attachments through its authenticated file route, including range requests for media playback. A shared memo supplies authorized attachment URLs; preserve their share tokens when copying or rendering thumbnails.
+
+API clients must bind a managed image to the memo before or during the mutation that references it in Markdown. Do not use a presigned S3 object URL from `externalLink`; managed S3 attachments no longer expose one there. See [API Access](/docs/integrations/api-access#031-client-migration).
+
+## Operational guidance
+
+- match your backup plan to your attachment storage backend
+- use sensible upload limits
+- review public memo visibility carefully when attachments are involved
+- remember that media-heavy instances need stronger storage planning than text-only instances

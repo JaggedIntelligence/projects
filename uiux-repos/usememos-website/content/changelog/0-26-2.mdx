@@ -1,0 +1,31 @@
+---
+title: Release v0.26.2
+date: "2026-02-23"
+---
+
+> This is a patch release focused on stability, security, and usability improvements.
+
+## Notable Changes
+
+- feat: add ampersand support in tags for compound tag functionality
+- feat: replace EditableTimestamp with a timestamp popover component
+- feat: extend calendar year picker navigation back to 1970
+- feat: improve PAT PostgreSQL handling with better error management
+
+## Bug Fixes
+
+- fix: spurious logout on page reload with expired access token
+- fix: cross-tab session loss via localStorage persistence improvements
+- fix: calendar navigation and month label language support
+- fix: memo visibility defaults not correctly applied
+- fix: query invalidation for comment reactions and deletions
+- fix: SSRF vulnerability in webhook dispatcher
+- fix: explore page privacy filtering for tags
+- fix: task list item scoping to memo containers
+- fix: attachment and memo deletion resilience when local files are missing
+- fix: memo batch attachment truncation
+- fix: MemoEditor layout and styling corrections
+- fix: redirect logic for expired sessions
+- fix: eliminate redundant fetch operations when opening inline memo editor
+
+**Full Changelog**: https://github.com/usememos/memos/compare/v0.26.1...v0.26.2

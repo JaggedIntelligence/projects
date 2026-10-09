@@ -1,0 +1,34 @@
+---
+title: Build From Source
+description: Produce your own Memos build and run it as a deployment.
+---
+
+Build from source when you deploy a fork, a custom patch, or a build pinned to an exact revision. If you want to work on the Memos codebase itself, start with the [Development](/docs/development) section instead — this page only covers turning a source build into a deployment.
+
+## Produce a release build
+
+Follow [Setup](/docs/development/setup) for the toolchain, then [Building](/docs/development/building) for the build commands. A release build embeds the frontend assets into a single binary, so the result deploys exactly like a downloaded release.
+
+For deployments, always build from a tagged or pinned revision rather than `main`:
+
+```bash
+git clone https://github.com/usememos/memos.git
+cd memos
+git checkout v0.31.0  # pin the version you intend to run
+```
+
+## Run the result as a deployment
+
+The self-built binary behaves like the official release binary. Memos listens on `http://localhost:8081` by default.
+
+Follow the [Binary](/docs/deploy/binary) guide for the production concerns:
+
+- process supervision (systemd or similar)
+- data directory ownership and permissions
+- reverse proxy and HTTPS
+
+## Before production use
+
+- set explicit environment variables for instance URL and database
+- run a smoke test against the new binary before switching traffic
+- keep a backup before deploying a new build — see [Backup & Restore](/docs/operations/backup-restore)

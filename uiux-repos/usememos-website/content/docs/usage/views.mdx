@@ -1,0 +1,192 @@
+---
+title: Views
+description: Name and reuse memo filters to see the memos that currently match.
+---
+
+A View is a named, reusable set of memo filter conditions. Opening a View shows the memos that currently match those conditions. A View does not store copies of memos or specify a display layout such as a list or cards.
+
+Use Views for filters you revisit, such as work items, incomplete tasks, or recent public posts.
+
+## Upgrading existing filters
+
+Views replace the legacy `Shortcut` resource in 0.31. Stored filters migrate automatically. Update bookmarks to `/views` and integrations to `UserService` (`MemoView` resources) and the MCP tool `user_list_memo_views`. REST paths use `/api/users/*/views/*` in 26.10 and `/api/v1/users/*/views/*` in 0.31.
+
+In 26.10, the built-in Tasks View is removed. Create a View with `has_task_list && has_incomplete_tasks` to keep browsing unfinished tasks.
+
+## Create a View
+
+Views are created and managed on the **Views** page at `/views`, which you open from the sidebar.
+
+1. open the Views page and choose **Create**
+2. give the View a clear title and optionally choose a custom icon or emoji with the icon picker
+3. enter a [filter expression](#filter-expression-syntax)
+4. choose **Validate** to dry-run the expression — this checks the filter without saving, so you catch typos before committing
+5. choose **Save**
+
+Title and filter are both required, and an invalid expression is rejected on save.
+
+Views appear in the sidebar. Select one to apply its filter to your memo list; the selection also syncs to the URL, so you can bookmark it. To keep a search you tried in [Quick Find](/docs/usage/search-archive#quick-find-and-browsing-scope), copy its expression into a new View.
+
+## Edit and delete Views
+
+The Views page lists every View with its title and filter. Each row has a menu to:
+
+- **Edit** — load the View back into the form to change its title, icon, or filter
+- **Delete** — remove a View you no longer use, after a confirmation step
+
+## Filter expression syntax
+
+Views use CEL (Common Expression Language) filter expressions. A View filter must evaluate to `true` for memos you want included.
+
+### Supported fields
+
+| Field | Type | Example |
+| --- | --- | --- |
+| `content` | string | `content.contains("meeting")` |
+| `creator` | string | `creator == "users/1"` |
+| `creator_id` | integer | `creator_id == 42` |
+| `created_ts` | timestamp | `created_ts >= now - duration("24h")` |
+| `updated_ts` | timestamp | `updated_ts >= timestamp("2026-01-01T00:00:00Z")` |
+| `visibility` | string | `visibility == "PUBLIC"` |
+| `pinned` | boolean | `pinned` |
+| `tags` | string list | `"project/backend" in tags` |
+| `tag` | tag-tree alias | `tag in ["work"]` |
+| `has_task_list` | boolean | `has_task_list` |
+| `has_link` | boolean | `has_link` |
+| `has_code` | boolean | `has_code` |
+| `has_incomplete_tasks` | boolean | `has_incomplete_tasks` |
+| `has_location` | boolean | `has_location` |
+| `space` | resource name or null | `space == "spaces/team-notes"` |
+
+### Operators and functions
+
+- comparisons: `==`, `!=`, `<`, `<=`, `>`, `>=`
+- logic: `&&`, `||`, `!`, and parentheses `()`
+- membership: `tag in ["work", "team"]`, `"project/backend" in tags`, `visibility in ["PUBLIC", "PROTECTED"]`
+- string functions: `contains()`, `startsWith()`, `endsWith()`, and `matches()`
+- collection functions: `exists()`, `all()`, `exists_one()`, and `size()`
+- set functions: `sets.contains()`, `sets.intersects()`, and `sets.equivalent()`
+- time values: `now`, `duration("24h")`, and `timestamp(...)`
+
+Boolean fields can be used directly without `== true`:
+
+```
+pinned && has_incomplete_tasks
+```
+
+### Tag matching
+
+Use `tag in [...]` when you want to match one or more tag trees:
+
+```txt
+tag in ["work"]
+tag in ["project", "team"]
+```
+
+`tag in ["project"]` also matches nested tags such as `project/backend`.
+
+Use `tags.exists()` for more specific tag patterns:
+
+```txt
+tags.exists(t, t.startsWith("archive"))
+tags.exists(t, t.endsWith("/bug"))
+tags.exists(t, t.contains("todo"))
+```
+
+Other collection predicates and set operations are also available:
+
+```txt
+tags.all(t, t.startsWith("work/"))
+tags.exists_one(t, t.startsWith("project/"))
+sets.intersects(tags, ["work", "urgent"])
+sets.equivalent(tags, ["inbox"])
+size(tags) == 0
+```
+
+`tags.all()` matches only non-empty tag sets. Use `size(tags) == 0` when you specifically want untagged memos.
+
+### String matching
+
+Content matching is case-insensitive for `contains()`, `startsWith()`, and `endsWith()`:
+
+```txt
+content.contains("meeting")
+content.startsWith("TODO")
+content.endsWith("done")
+```
+
+Use `matches()` for regular expressions:
+
+```txt
+content.matches("v[0-9]+")
+```
+
+Regular expressions are validated before a View is saved. Keep patterns portable: SQLite, PostgreSQL, and MySQL use different regular-expression engines.
+
+### Time-based filters
+
+`created_ts` and `updated_ts` are CEL timestamps. `now` is a timestamp variable, not a function. Use durations for relative windows and `timestamp()` for fixed instants or Unix epoch seconds:
+
+```txt
+created_ts >= now - duration("1h")
+created_ts >= now - duration("168h")
+updated_ts >= timestamp("2026-01-01T00:00:00Z")
+created_ts >= timestamp(1767225600)
+```
+
+Timestamp accessors support calendar filters:
+
+```txt
+created_ts.getFullYear() == 2026
+created_ts.getMonth() == 0
+created_ts.getDayOfWeek() == 0
+created_ts.getMonth() == now.getMonth() && created_ts.getDate() == now.getDate()
+```
+
+Months are zero-based (`0` is January), and days of the week are zero-based (`0` is Sunday). Accessors are evaluated in UTC for SQLite and PostgreSQL; MySQL reads timestamp columns in the database session time zone.
+
+## Example Views
+
+| Name | Filter |
+| --- | --- |
+| Work TODOs | `tag in ["work"] && has_incomplete_tasks` |
+| Public posts | `visibility == "PUBLIC"` |
+| Posts with links | `has_link` |
+| Recent notes | `created_ts >= now - duration("168h")` |
+| Team updates | `tag in ["team"] && visibility == "PROTECTED"` |
+| Unfinished tasks | `has_task_list && has_incomplete_tasks` |
+| Pinned references | `pinned && (has_link || has_code)` |
+| Active projects | `tags.exists(t, t.startsWith("project")) && !tags.exists(t, t.startsWith("archive"))` |
+| Untagged | `size(tags) == 0` |
+| With location | `has_location` |
+| Unassigned | `space == null` |
+| Members-only notes | `visibility == "SPACE"` |
+| One Space | `space == "spaces/team-notes"` |
+| Release notes | `content.matches("v[0-9]+\\.[0-9]+")` |
+
+## Good View patterns
+
+- incomplete tasks for one project
+- pinned or high-signal memos
+- public notes you review before sharing
+- recent memos from a time window
+- resource collections with links or attachments
+
+## Management tips
+
+- keep names short and obvious
+- delete stale Views you no longer use
+- update filters when your tag vocabulary changes
+- prefer a few durable Views over dozens of narrow one-off views
+
+## Limits to remember
+
+Views are personal filters, not shared Space settings. They apply within the current browsing scope and never grant access to additional memos. If a Space filter conflicts with the selected Space, it can return no results. Switch to the main Memos context when you want to filter across available Spaces. Use the actual stable Space ID in a `spaces/...` filter; `team-notes` above is an example custom ID.
+
+Memos supports a deliberate subset of CEL that can be translated consistently to SQLite, MySQL, and PostgreSQL. Use the **Validate** action before saving; it reports unsupported fields, type mismatches, invalid regular expressions, and operations that cannot be translated.
+
+## Related guides
+
+- [Use Memos as a Digital Bullet Journal](/docs/guides/bullet-journal) with recent-log and unfinished-task filters.
+- [Use Memos for GTD](/docs/guides/getting-things-done) with action, waiting, project, and review filters.
+- [Build a Zettelkasten in Memos](/docs/guides/zettelkasten) with active-question and recent-memo filters.

@@ -1,0 +1,93 @@
+---
+title: Writing Markdown
+description: Write rich memos with Markdown, checklists, code blocks, and embedded structure.
+---
+
+Memos stores memo content as plain text and renders it with Markdown. That keeps
+content portable while still supporting rich formatting such as checklists,
+tables, code blocks, links, and footnotes.
+
+The editor keeps the Markdown source editable while decorating recognized
+syntax. Use the formatting toolbar or keyboard shortcuts for common formatting,
+and press `Tab` or `Shift+Tab` to indent or outdent list items.
+
+## Core syntax
+
+````markdown
+# Heading 1
+## Heading 2
+
+**bold**
+_italic_
+~~strikethrough~~
+
+- [ ] open task
+- [x] completed task
+
+```go
+fmt.Println("hello from memos")
+```
+````
+
+## Common patterns
+
+- headings for longer notes
+- task lists for planning
+- fenced code blocks for snippets
+- blockquotes for references
+- tables when structure matters
+- tags like `#project-x` inline in the memo body
+
+## Inline images
+
+Place the cursor where the image belongs, then upload, paste, drop an image, or choose an existing attachment. The editor inserts its Markdown image reference into the text. You can mix prose and images in the order you need.
+
+Retry a failed inline upload from the draft before publishing. See [Attachments](/docs/usage/attachments) for draft restoration, file access, and optional media metadata.
+
+## Math and currency
+
+Ordinary currency amounts should remain text. Use supported explicit math delimiters for formulas; 0.31 no longer treats ordinary currency as inline math.
+
+## Code blocks
+
+Use fenced code blocks with a language identifier when useful:
+
+````markdown
+```ts
+const visible = memo.visibility === "PUBLIC";
+```
+````
+
+## Checklists
+
+Task lists are especially useful in Memos because they turn ordinary notes into lightweight work queues:
+
+```markdown
+- [ ] Draft release notes
+- [ ] Review production config
+- [x] Create backup
+```
+
+## Footnotes
+
+Add a footnote reference in the text and define it elsewhere in the memo:
+
+```markdown
+This statement needs context.[^context]
+
+[^context]: Supporting details can live at the end of the memo.
+```
+
+## Writing tips
+
+- keep one memo focused on one topic or update
+- use headings in longer memos so they remain readable
+- prefer plain Markdown over screenshots of text
+- use tags consistently so search and Views stay useful
+- choose visibility carefully before sharing externally
+- use code fences and blockquotes to make technical notes easier to scan later
+
+## Related guides
+
+- [Use Memos as a Digital Bullet Journal](/docs/guides/bullet-journal) to rapid-log tasks, events, and notes with ordinary prose and Markdown checkboxes.
+- [Build a Zettelkasten in Memos](/docs/guides/zettelkasten) to develop focused Markdown memos into connected ideas.

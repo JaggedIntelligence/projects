@@ -1,0 +1,34 @@
+---
+title: Instance Settings
+description: Configure instance-wide options.
+---
+
+Instance settings control authentication, storage, and memo policies. Admins can update these settings in the app or via the Instance Settings API.
+
+Common areas include:
+
+- Instance access policy: public or private access, stored independently of the canonical instance URL.
+- General access controls: user registration, password auth, username and nickname changes, week start day, and custom instance profile.
+- Storage settings: named database, local filesystem, or S3-compatible configurations with stable IDs, a default for new uploads, file path templates, and upload limits.
+- Memo-related settings: content length limits, double-click editing, and allowed reaction values.
+- Notification settings: SMTP email delivery, sender details, reply-to address, and the email test endpoint.
+- AI settings: instance-level OpenAI or Gemini providers and speech-to-text transcription defaults.
+
+Tag colors and content-blur rules are user settings in Memos 0.30 and later, not instance settings. See [Tags](/docs/usage/tags).
+
+## Access policy
+
+In 0.31, the `ACCESS` setting determines whether anonymous visitors may read public content. `MEMOS_INSTANCE_URL` supplies the canonical external address and no longer changes an existing access policy. Use [deployment-managed access configuration](/docs/configuration/deployment-configuration#access-policy) when infrastructure should own this setting.
+
+Active instance admins manage these policies and can read and manage individual memos, including other authors' private and Space-only memos. They do not automatically become Space members, and collection listings still filter by audience. See [Users & Roles](/docs/admin/users-roles).
+
+## Sensitive settings
+
+Storage, notification, and AI settings can contain credentials. API responses do not return stored S3 secrets, SMTP passwords, or AI provider API keys in plaintext. When updating those settings, submit a new secret only when you intend to replace it.
+
+## Related API
+
+- [Get Instance Setting](/docs/api/latest/instanceservice/GetInstanceSetting)
+- [Batch Get Instance Settings](/docs/api/latest/instanceservice/BatchGetInstanceSettings)
+- [Update Instance Setting](/docs/api/latest/instanceservice/UpdateInstanceSetting)
+- [Test Instance Email Setting](/docs/api/latest/instanceservice/TestInstanceEmailSetting)

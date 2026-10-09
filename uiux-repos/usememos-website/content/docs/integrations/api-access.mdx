@@ -1,0 +1,86 @@
+---
+title: API Access
+description: Authenticate against the Memos API with personal access tokens.
+---
+
+Every Memos feature is available over the API. To call it programmatically, create a personal access token and send it as a Bearer credential.
+
+## Create a personal access token
+
+Create and revoke tokens from your **user settings** in the app. Tokens use the `memos_pat_` prefix, and the plain token value is shown only once at creation — store it somewhere safe.
+
+New tokens default to no expiration; you can choose an expiration when creating one. The settings page shows whether each token has ever been used, its last-used time, and its expiration status. Use a separate token for each application so you can revoke one integration without disrupting another.
+
+Tokens are scoped to your user: API calls made with a token can do what your user can do.
+
+## Call the API
+
+Pass the token in the `Authorization` header. Memos 26.10 and the Latest API on `main` use `/api`:
+
+```bash
+curl -H "Authorization: Bearer memos_pat_..." \
+  https://memos.example.com/api/memos
+```
+
+Memos 0.30 and 0.31 use `/api/v1` instead. Select the [API reference for your instance version](/docs/api) before using an endpoint in an integration.
+
+When moving a client from 0.31 to 26.10, follow the [migration checklist](#2610-client-migration). The Latest API reference tracks `main` and may include later changes.
+
+For browser-based integrations, bearer-token requests may be sent cross-origin. Cookie authentication remains same-origin; do not build third-party API clients around a user's browser session cookie.
+
+## 26.10 client migration
+
+These breaking changes apply to **26.10-rc.1**. Use the [tagged API changelog](https://github.com/usememos/memos/blob/26.10-rc.1/proto/api/CHANGELOG.md) and [OpenAPI specification](https://github.com/usememos/memos/blob/26.10-rc.1/proto/gen/openapi.yaml) for the exact release contract.
+
+### Paths and encoding
+
+- REST routes change from `/api/v1/...` to `/api/...`; server-sent events use `/api/sse`.
+- The proto package changes from `memos.api.v1` to `memos.api`. Connect and gRPC procedures use `/memos.api.<Service>/<Method>`.
+- Resource types use `memos.api/<Type>` and `google.rpc.ErrorInfo.domain` becomes `memos.api`.
+- In this release, old REST and procedure paths return `410 Gone` with an `UNIMPLEMENTED` error. They are removed in the next release.
+- Protobuf field numbers change. Regenerate clients that use binary protobuf encoding; JSON clients must update the renamed fields below. Proto field names are shown in `snake_case`; gateway JSON uses their `camelCase` equivalents.
+
+### Renamed methods, fields, and types
+
+| Area | Required client change |
+| --- | --- |
+| Memo child operations | `ListMemoAttachments`, `ListMemoRelations`, `ListMemoComments`, `CreateMemoComment`, `ListMemoReactions`, and `UpsertMemoReaction` take `parent` instead of `name`. `ListMemoCommentsResponse.memos` becomes `comments`. |
+| Memo resources | `MemoRelation.Memo` becomes `MemoRelation.MemoRef`; the `MemoShare` singular/plural becomes `memoShare`/`memoShares`. |
+| User statistics | `ListAllUserStats` becomes `ListUserStats`, with required `parent` (`users/-` for all users or `users/{user}` for one user). The all-user REST path becomes `GET /api/users/-/stats`; response `stats` becomes `user_stats`, and `UserStats.tag_count` becomes `tag_counts`. |
+| Batch users | `BatchGetUsersRequest.usernames` becomes `names`, accepting `users/{user}` resource names instead of bare usernames. |
+| Personal access tokens | `created_at`, `expires_at`, and `last_used_at` become `create_time`, `expire_time`, and `last_use_time`. |
+| Linked identities | `LinkedIdentity.idp_name` and `extern_uid` become `identity_provider` and `external_uid`; `CreateLinkedIdentityRequest.idp_name` becomes `identity_provider`. |
+| Views and notifications | Resource singulars become `memoView` and `userNotification`; `UserNotification.SpaceInvitationPayload.State` becomes `InvitationState`. |
+| Imports | `MemoImportPlan`, `MemoImportReport`, and `MemoImportIssue` become `ImportMemosPlan`, `ImportMemosReport`, and `ImportMemosIssue`. Plan fields `memos`/`attachments` become `memo_count`/`attachment_count`; issue field `memo` becomes `memo_uid`. |
+| Settings | `UpdateUserSettingRequest.setting` and `ListUserSettingsResponse.settings` become `user_setting` and `user_settings`. `UpdateInstanceSettingRequest.setting` and `BatchGetInstanceSettingsResponse.settings` become `instance_setting` and `instance_settings`. |
+| Authentication | `SignInResponse.access_token_expires_at` and `RefreshTokenResponse.expires_at` become `access_token_expire_time`. `SignInRequest.SSOCredentials` becomes `SsoCredentials`, with `identity_provider` replacing `idp_name`. |
+
+## 0.31 client migration
+
+Review these changes before pointing an existing integration at 0.31:
+
+| Area | Required client change |
+| --- | --- |
+| Views | Replace `ShortcutService` with the `MemoView` operations in `UserService`, shortcut resources with view resources, and `/api/v1/users/*/shortcuts/*` with `/api/v1/users/*/views/*`. Stored filters migrate automatically. |
+| Authorization | Run mutations as the memo author. Assigned memo edits also require Space membership. Active instance administrators can read and manage individual memos without authorship or Space membership; Space admin roles do not override authorship. Users manage their own reactions. |
+| Comments | Send visibility and placement intentionally. `CreateMemoComment` defaults omitted visibility to `PRIVATE`; `SetMemoRelations` rejects `COMMENT`. Parent deletion does not delete comment memos. |
+| Reactions | Stop reading `Reaction.content_id` (`contentId` in JSON). Identify the memo from the request or the reaction resource name. |
+| Inline images | Bind managed attachments to the memo before or during the same mutation that references them in Markdown. An uploaded but unbound attachment is not enough. |
+| S3 files | Use the authenticated Memos file route. Managed S3 attachments no longer expose presigned object URLs through `external_link` (`externalLink` in JSON). Preserve share authorization on shared attachment and thumbnail URLs. |
+| JSON responses | Allow absent unset protobuf message fields. Scalar defaults and empty lists are still emitted; do not depend on every message field appearing as `null`. |
+| Usernames | Use the exact username case for lookup and authentication. See [Users & Roles](/docs/admin/users-roles#usernames). |
+
+### Spaces in API clients
+
+A memo's `space` is a resource name such as `spaces/team-notes`, or absent when Unassigned. `visibility: "SPACE"` requires placement in a Space. Filters support `space == null`, `space == "spaces/team-notes"`, and `has_location`.
+
+When moving a `SPACE` memo, include both `space` and `visibility` in the update mask and explicitly confirm `SPACE` visibility for the destination. When withdrawing it to Unassigned, select a non-Space visibility in the same update. Share links cannot be created for `SPACE` memos; revoke existing links before changing a memo to that audience.
+
+The [Latest API reference](/docs/api/latest) tracks `main`, which may include changes after the latest stable release. The [0.31 reference](/docs/api/0-31) is generated from v0.31.0, and the [0.30 reference](/docs/api/0-30) covers the previous release series. For the exact 0.31.0 schema, use the [tagged OpenAPI specification](https://github.com/usememos/memos/blob/v0.31.0/proto/gen/openapi.yaml).
+
+## Where to go next
+
+- [API Reference](/docs/api) — every service and method, REST and gRPC
+- [Webhooks](/docs/integrations/webhooks) — push events instead of polling
+- [MCP Server](/docs/integrations/mcp) — connect AI assistants using the same tokens
+- [Security](/docs/configuration/security) — the full token security model

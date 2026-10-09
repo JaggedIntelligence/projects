@@ -1,0 +1,90 @@
+---
+title: Spaces
+description: Collaborate in Spaces while keeping each memo's author, placement, and visibility independent.
+---
+
+Spaces bring members and memos together inside one Memos instance. Each memo still belongs to its author. A Space provides a shared place to contribute and browse; it does not grant shared editing rights.
+
+## Create or join a Space
+
+1. Open the Space switcher in the sidebar and choose **Create Space**.
+2. Enter a name and an optional description. Memos generates a stable ID, or you can supply a custom ID during creation.
+3. Open **Settings → Spaces** to manage the Space. Its creator becomes the first Space admin.
+4. In the members section, invite an existing user and choose the **User** or **Admin** role.
+5. The invited user opens **Inbox** and chooses **Accept** or **Decline** on the invitation. Invitations are also available in **Settings → Spaces**. After accepting, choose **Open space** or select it from the sidebar switcher.
+
+An invitation grants no access until accepted. It is an invitation to an existing account on the instance, not an email invitation or an account registration link.
+
+A Space's ID stays stable when its name changes. Newly generated IDs use UUIDv4. Custom IDs contain 1–36 ASCII letters or digits, with hyphens allowed inside the ID. Spaces can have the same display name, so use their IDs to distinguish them in integrations.
+
+Space admins can change the name, description, and icon from **Settings → Spaces**. Use the icon picker to choose an icon or emoji so the Space is easier to recognize in the sidebar and invitations.
+
+## Placement and visibility
+
+A memo is either **Unassigned** or assigned to exactly one Space. Unassigned means it has no Space; it is not a default Space or a visibility level. Upgrading to 0.31 leaves existing memos Unassigned.
+
+Choose placement and visibility separately:
+
+| Visibility | Who can read the memo through normal memo access |
+| --- | --- |
+| `PRIVATE` | Its author |
+| `PROTECTED` | Signed-in users on the instance |
+| `PUBLIC` | Signed-in users, plus anonymous visitors when public instance access is enabled |
+| `SPACE` | Active members of its assigned Space |
+
+Active instance administrators can also read and manage individual private and Space-only memos without Space membership. Collection listings still filter by audience.
+
+`SPACE` requires a Space assignment. Assigning a `PRIVATE` memo does not make it visible to the other members. Assigning a `PROTECTED` or `PUBLIC` memo does not restrict it to members. A non-member who can read such a memo does not gain access to the Space feed, membership list, or settings.
+
+Choose the Space when composing a memo, or change placement on a memo you authored. You must be a member of the destination Space. Moving a memo preserves its identity and relations. For a `SPACE` memo, confirm the destination audience when moving it; choose a different visibility when returning it to Unassigned.
+
+### Move an existing memo
+
+In 26.10, Space placement is part of the editor's audience menu:
+
+1. Open a top-level memo you can edit and choose **Edit**.
+2. Open the audience menu and choose a destination Space or **Unassigned**.
+3. Review visibility in the same menu. Moving a members-only memo changes which members can read it; Unassigned memos cannot use `SPACE` visibility.
+4. Save the memo to apply content, Space, and visibility changes together.
+
+This replaces the separate **Move to Space** action available in 0.31.
+
+Existing reactions stay with the memo. Comments and linked memos keep their own placement and access rules; moving one memo does not move a whole discussion.
+
+`SPACE` memos cannot have share links. Revoke active share links before changing a memo to `SPACE`. See [Sharing](/docs/usage/sharing).
+
+## Browse in context
+
+Select a Space from the sidebar switcher to scope browsing, new memo creation, statistics, filters, and attachments to that Space. Choose the main **Memos** context to browse across the memos available to you. In 26.10, switching between Timeline, [Calendar](/docs/usage/memos#calendar), [Map](/docs/usage/memos#map), and Attachments preserves both the creator and Space selection; Calendar and Map can show readable memos from several creators.
+
+Opening a memo and returning to its collection preserves the Space and filters, so you can continue browsing where you left off.
+
+Archived, Inbox, user profiles, and Settings remain global. Selecting a Space does not restrict these pages to that Space. The [global composer](/docs/usage/memos) remains available on authenticated routes; check its placement and visibility before saving.
+
+[Views](/docs/usage/views) and tags still organize and filter memos within the current browsing scope. A Space feed only shows assigned memos that you can read, and excludes comment memos from the main timeline.
+
+## Roles and authorship
+
+| Role | Responsibilities |
+| --- | --- |
+| Space User | Browse readable Space memos and contribute their own memos, comments, and reactions |
+| Space Admin | The same participation rights, plus Space metadata, invitations, member roles, member removal, and Space deletion |
+
+Apart from active instance administrators, only a memo's author can edit its content or visibility and manage its attachments, references, and share links. For an assigned memo, these actions also require active membership. Reactions belong to the user who added them. Commenting or reacting to an assigned memo requires both read access and membership in its Space.
+
+Active instance admins can read and manage individual memos without authorship or Space membership, but are not automatically Space members. Space admins govern the Space, but also cannot edit another author's memo. A Space must retain at least one active admin: promote another member before the last admin leaves, is removed, or is archived.
+
+## Leave or delete a Space
+
+Leaving a Space or removing a member keeps their memos in place. A former member loses members-only read access. As an author, they retain authority to delete their own memos or withdraw or move them; they cannot otherwise edit memos left in the former Space. Moving to another Space requires membership there.
+
+**Deleting a Space permanently deletes every memo directly assigned to it**, including assigned comments and the resources those memos own. It does not follow relations into another Space or into Unassigned memos. There is no Space archive or restore action; a backup is the recovery path.
+
+Accounts with active Space memberships cannot be deleted, even through an API request with `force`. Resolve memberships first. Removing membership and deleting the Space have different effects on contributed memos, so choose the action that matches your intent.
+
+## Related pages
+
+- [Users & Roles](/docs/admin/users-roles)
+- [Reactions & Comments](/docs/usage/reactions-comments)
+- [Export & Import](/docs/usage/export-import) — how Space placement is handled when moving your memos between instances
+- [Upgrading to 0.31](/docs/operations/upgrade#upgrading-to-031)

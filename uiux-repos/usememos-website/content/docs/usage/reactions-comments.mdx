@@ -1,0 +1,50 @@
+---
+title: Reactions & Comments
+description: React to memos, hold discussions in comment threads, and mention other users.
+---
+
+Beyond writing your own notes, Memos supports lightweight collaboration on memos: emoji reactions, threaded comments, and user mentions. Participation requires sign-in and read access. For a memo assigned to a Space, commenting and reacting also require active membership in that Space.
+
+## Reactions
+
+React to a memo with an emoji from the reaction selector in the memo header.
+
+- reactions are available on readable, non-archived memos when you have permission to participate
+- each reaction belongs to the user who added it; administrators cannot remove someone else's reaction merely because of their role
+- click an emoji to add your reaction; click it again to remove it
+- the set of allowed reactions is configured by admins in **Settings → Memo**
+
+Reactions are a fast way to acknowledge a memo without writing a comment.
+
+## Comments
+
+Open a memo's detail page to read and add comments.
+
+- commenting requires sign-in, read access, and membership when the context memo is assigned to a Space
+- comments support the full Markdown editor, just like memos
+- each comment is an independent, author-owned memo connected to its context memo, so it can be reacted to and linked directly
+- each comment has its own placement and visibility; a relation does not grant access to either memo
+- in 26.10, deleting the context memo also deletes its comments and nested replies
+- the memo's author is notified in their [inbox](/docs/usage/inbox) when a new comment is posted
+
+Comments live on the memo's detail page rather than in the main timeline, which keeps feeds focused on top-level notes.
+
+### Comment visibility and API behavior
+
+A discussion only includes comments the reader can independently access. Check the comment's placement and audience before posting; they are not inherited by the API. `CreateMemoComment` defaults omitted visibility to `PRIVATE`.
+
+Use `CreateMemoComment` to create a comment and its context relation together. `SetMemoRelations` rejects `COMMENT` relations. In 26.10, removing a parent memo deletes the comment subtree; in 0.31, parent deletion only removed its incident relations. An eligible comment can also be shared independently through the API; its share exposes only that comment.
+
+## Mentions
+
+Reference another user inside a memo or comment with `@`, for example `@alice`. Mentions use exact-case usernames: `@Alice` does not refer to `alice`. New usernames contain 1–36 ASCII letters or digits, with hyphens only inside the name. Mentions respect Markdown context, so code, links, and escaped text do not create ordinary mentions. Legacy names outside the supported grammar, including email-like names, underscores, or non-ASCII spellings, cannot be authored as new mentions.
+
+Mentioned users with access to the memo receive a notification in their [inbox](/docs/usage/inbox) linking back to the memo, which makes mentions useful for looping someone into a note or comment thread.
+
+## Good habits
+
+- use reactions for quick acknowledgement and comments for anything that needs a reply
+- keep comment threads on-topic with the parent memo
+- mention people sparingly so notifications stay meaningful
+- anonymous viewers can read reactions and comments on normal public memo pages when public mode is enabled
+- a share-token page includes the selected memo and its reactions, but not the surrounding comment thread or relation graph

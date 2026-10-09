@@ -1,0 +1,36 @@
+---
+title: FAQ
+description: Common questions about running and using Memos.
+---
+
+## What is Memos?
+
+Memos is an open-source timeline for your thoughts. Write a memo in seconds, tag it, attach files, and move on. Every memo is private by default; share one with the people you choose, or with anyone who has the link, when you want to. Your notes are yours: you keep them where you decide, nobody else reads them, and you can take them with you at any time.
+
+## Is Memos open source?
+
+Yes. Memos is released under the MIT License.
+
+## Where is my data stored?
+
+Data is stored in your own database. Attachments can live in the database, on the local filesystem, or in S3-compatible storage.
+
+## Does Memos have an API?
+
+Yes. Memos provides REST and gRPC APIs. See the [API reference](/docs/api).
+
+## Is there a demo?
+
+Yes. You can try the live demo at https://demo.usememos.com.
+
+## What is the easiest way to run it?
+
+For most users, Docker with a mounted data directory is the simplest starting point. See [Getting Started](/docs/getting-started).
+
+## Should I use SQLite or MySQL/PostgreSQL?
+
+SQLite is a strong default for a single-instance deployment. Use MySQL or PostgreSQL when you want an external managed database or more operational flexibility.
+
+## Can I disable public memos?
+
+Yes. Select private access in instance settings to require sign-in for ordinary memo pages and disable anonymous public discovery. In 0.31, access policy is independent of `MEMOS_INSTANCE_URL`. You can also disable `PUBLIC` memo visibility in instance settings. Explicit share links still grant access to their selected memo until revoked or expired. See [Sharing](/docs/usage/sharing).

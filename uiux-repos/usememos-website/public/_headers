@@ -1,0 +1,33 @@
+# https://developers.cloudflare.com/workers/static-assets/headers/
+# https://opennext.js.org/cloudflare/caching#static-assets-caching
+# Keep in sync with SECURITY_HEADERS in next.config.mjs, which covers pages.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Content-Security-Policy: base-uri 'none'; object-src 'none'; frame-ancestors 'none'
+
+/_next/static/*
+  Cache-Control: public,max-age=31536000,immutable
+
+/logo*
+  Cache-Control: public,max-age=604800,stale-while-revalidate=86400
+
+/favicon.ico
+  Cache-Control: public,max-age=604800,stale-while-revalidate=86400
+
+/apple-touch-icon*.png
+  Cache-Control: public,max-age=31536000,immutable
+
+# CORS for OG images: keep in sync with CORS_HEADERS in next.config.mjs,
+# which covers the generated /og/home/image.png and /og/:path* routes.
+/og/home/image.png
+  Cache-Control: public,max-age=86400,stale-while-revalidate=604800
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+
+/content/*
+  Cache-Control: public,max-age=604800,stale-while-revalidate=604800

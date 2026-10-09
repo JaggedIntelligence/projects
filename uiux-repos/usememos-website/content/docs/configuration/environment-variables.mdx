@@ -1,0 +1,102 @@
+---
+title: Environment Variables
+description: Reference for the most important `MEMOS_*` runtime settings.
+---
+
+Memos maps runtime flags to environment variables with the `MEMOS_` prefix. In production, environment variables are usually the cleanest way to keep deployment config explicit and repeatable.
+
+## Reference
+
+All flags and their corresponding environment variables:
+
+| Flag | Environment variable | Default | Purpose |
+| --- | --- | --- | --- |
+| `--port` | `MEMOS_PORT` | `8081` | HTTP listen port |
+| `--addr` | `MEMOS_ADDR` | `` | Bind address (empty = all interfaces) |
+| `--unix-sock` | `MEMOS_UNIX_SOCK` | `` | Unix socket path |
+| `--data` | `MEMOS_DATA` | auto | Data directory |
+| `--driver` | `MEMOS_DRIVER` | `sqlite` | Database backend (`sqlite`, `mysql`, `postgres`) |
+| `--dsn` | `MEMOS_DSN` | auto | Database connection string |
+| `--instance-url` | `MEMOS_INSTANCE_URL` | `` | Canonical external URL; independent of access policy |
+| `--demo` | `MEMOS_DEMO` | `false` | Demo mode |
+| `--webhook-private-network-allowlist` | `MEMOS_WEBHOOK_PRIVATE_NETWORK_ALLOWLIST` | empty | Allowed private destinations: exact hostnames, IP addresses, or CIDRs |
+| `--allow-private-webhooks` | `MEMOS_ALLOW_PRIVATE_WEBHOOKS` | `false` | Deprecated blanket exception for private webhook destinations |
+| `--log-level` | `MEMOS_LOG_LEVEL` | `info` | Log verbosity (`debug`, `info`, `warn`, `error`) |
+
+### Data directory defaults
+
+`MEMOS_DATA` resolves automatically when not set:
+
+- **Windows**: `%ProgramData%\memos`
+- **Docker**: `/var/opt/memos` (when writable)
+- **Linux / macOS**: current directory (`.`)
+
+### DSN defaults
+
+When `MEMOS_DRIVER=sqlite` and `MEMOS_DSN` is empty, the database file defaults to `{MEMOS_DATA}/memos_prod.db`. For MySQL and PostgreSQL, `MEMOS_DSN` is required.
+
+### Public and private mode
+
+In Memos 0.31, access is controlled by the `ACCESS` instance setting, through `accessSetting.accessMode`:
+
+- `INSTANCE_ACCESS_MODE_PRIVATE`: anonymous visitors are sent to sign-in; anonymous API access is limited to endpoints such as setup, authentication, registration when allowed, and explicit shared memos.
+- `INSTANCE_ACCESS_MODE_PUBLIC`: eligible public memos, profiles, and Explore can be read anonymously.
+
+Configure access in instance settings or with a [deployment-managed JSON file](/docs/configuration/deployment-configuration#access-policy). It is not a runtime flag or environment variable.
+
+`MEMOS_INSTANCE_URL` supplies the canonical external address, including for a private instance behind a proxy. It must be an absolute HTTP(S) URL without credentials, a query, or a fragment, such as `https://memos.example.com`.
+
+When the access setting is first initialized, Memos preserves the earlier behavior: a configured URL initializes public access; an empty URL initializes private access. Once the setting exists, changing the URL never changes the access policy. See [Upgrading to 0.31](/docs/operations/upgrade#upgrading-to-031).
+
+## Priority order
+
+1. Command-line flags (highest)
+2. Environment variables
+3. Default values (lowest)
+
+An explicit flag always wins over the environment variable for the same setting.
+
+## Practical guidance
+
+- select private or public access explicitly in the `ACCESS` instance setting
+- set `MEMOS_INSTANCE_URL` to the canonical external URL when the app sits behind a proxy
+- prefer explicit `MEMOS_DRIVER` and `MEMOS_DSN` when you are not using SQLite defaults
+- allow only required private webhook destinations with `MEMOS_WEBHOOK_PRIVATE_NETWORK_ALLOWLIST`; leave the deprecated blanket option disabled
+- keep secrets such as database credentials outside committed compose files
+- treat these values as part of deployment config and back them up accordingly
+
+## Common patterns
+
+SQLite with explicit data directory:
+
+```bash
+export MEMOS_DRIVER=sqlite
+export MEMOS_DATA=/var/opt/memos
+./memos
+```
+
+External PostgreSQL:
+
+```bash
+export MEMOS_DRIVER=postgres
+export MEMOS_DSN="postgres://user:password@db:5432/memos?sslmode=disable"
+export MEMOS_INSTANCE_URL=https://memos.example.com
+./memos
+```
+
+Unix socket with Nginx (useful for local reverse proxy):
+
+```bash
+export MEMOS_UNIX_SOCK=/var/run/memos.sock
+export MEMOS_DATA=/var/lib/memos
+export MEMOS_INSTANCE_URL=https://memos.example.com
+./memos
+```
+
+Nginx upstream for the socket:
+
+```nginx
+upstream memos {
+    server unix:/var/run/memos.sock;
+}
+```

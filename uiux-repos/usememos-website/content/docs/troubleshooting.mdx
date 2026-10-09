@@ -1,0 +1,60 @@
+---
+title: Troubleshooting
+description: Common startup, storage, database, and proxy problems and how to fix them.
+---
+
+Work through the section that matches your symptom. Most problems trace back to ports, file permissions, database connection strings, or proxy headers.
+
+## Port already in use
+
+Change the port with `--port` or `MEMOS_PORT` and restart the server.
+
+## Cannot write to the data directory
+
+Ensure the data directory exists and is writable by the Memos process. You can set it with `--data` or `MEMOS_DATA`.
+
+## Database connection errors
+
+Verify the driver and DSN:
+
+- `MEMOS_DRIVER` should be `sqlite`, `mysql`, or `postgres`.
+- `MEMOS_DSN` should use the correct DSN format for your database.
+
+## Reverse proxy issues
+
+If you run behind a reverse proxy, make sure:
+
+- `MEMOS_INSTANCE_URL` matches the public URL
+- the proxy forwards standard headers (`Host`, `X-Forwarded-*`)
+
+## Docker starts but the app does not respond
+
+Check:
+
+- `docker logs memos`
+- whether the host port is already occupied
+- whether the mounted data directory is writable
+
+## Attachments are missing after migration
+
+Confirm which storage backend the instance uses. If attachments are stored outside the database, they must be migrated and backed up separately.
+
+## Access changed unexpectedly after an upgrade
+
+In 0.31, inspect the effective `ACCESS` setting and any `memos-instance-setting-access.json` deployment override. Changing `MEMOS_INSTANCE_URL` does not change an existing access policy. Upgrade all replicas before changing the policy, and restart replicas when changing file-backed settings.
+
+## Sign-in fails after upgrading to 0.31
+
+Check the exact stored username, including capitalization. Username lookup and password sign-in are case-sensitive.
+
+## A displayed tag is missing from filters
+
+Existing tag indexes are not rebuilt automatically for 0.31's grammar. Save the affected memo again so filters and statistics adopt the parsed tags.
+
+## An integration returns permission or file errors
+
+Check author identity and Space membership. Active instance administrators can read and manage individual memos without authorship or Space membership; Space admin roles do not grant that authority. For managed inline images, bind the attachment before or during the memo update, and use Memos file routes with the appropriate authentication or share token. See [API migration notes](/docs/integrations/api-access#031-client-migration).
+
+## Still stuck?
+
+Check the [FAQ](/docs/faq) or search [GitHub issues](https://github.com/usememos/memos/issues).

@@ -1,0 +1,5 @@
+{
+  "title": "Deploy",
+  "description": "Install and run Memos",
+  "pages": ["docker", "docker-compose", "binary", "kubernetes", "development", "reverse-proxy"]
+}

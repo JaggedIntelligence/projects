@@ -1,0 +1,74 @@
+---
+title: Webhooks
+description: Receive events when memos are created, updated, deleted, or commented on.
+---
+
+Memos can send webhooks when memos change. Webhooks are configured per user in the Settings page and can be edited or deleted later.
+
+## Events
+
+Webhooks are dispatched on:
+
+- Memo created
+- Memo updated
+- Memo deleted
+- Memo comment created
+
+## Payload
+
+Memos sends a JSON payload containing `activityType`, `creator`, and the affected `memo`. Comment-created payloads include the parent relation so receivers can identify the conversation.
+
+Refer to the [API reference](/docs/api) for the current webhook-related endpoints.
+
+## Signing and verification
+
+New webhooks receive a Standard Webhooks-compatible signing secret in the form `whsec_<base64>`. Copy it when the webhook is created and store it as a secret in the receiving service. You can reveal an existing secret later from the edit dialog; older unsigned webhooks can generate one there.
+
+Signed deliveries include:
+
+| Header | Value |
+| --- | --- |
+| `webhook-id` | Unique message ID beginning with `msg_` |
+| `webhook-timestamp` | Unix timestamp in seconds |
+| `webhook-signature` | `v1,<base64 HMAC>` |
+
+Verify the signature before parsing or acting on the payload:
+
+1. Read the raw request body bytes.
+2. Remove the `whsec_` prefix and Base64-decode the remaining secret.
+3. Build the signed content as `<webhook-id>.<webhook-timestamp>.<raw-body>`.
+4. Compute HMAC-SHA256 with the decoded secret and Base64-encode the result.
+5. Compare `v1,<result>` with `webhook-signature` using a constant-time comparison.
+6. Reject timestamps outside a small tolerance window and deduplicate `webhook-id` values to reduce replay risk.
+
+Do not reserialize parsed JSON before verification; even an equivalent JSON representation produces a different signature.
+
+## Delivery response
+
+The receiver must return a `2xx` response with a JSON body whose `code` is `0`, for example:
+
+```json
+{ "code": 0 }
+```
+
+Non-`2xx` responses, invalid JSON, or a nonzero `code` are treated as delivery failures.
+
+## Network safety
+
+Webhook URLs must use `http` or `https` and must resolve successfully when they are created or updated.
+
+By default, Memos rejects webhook targets that resolve to reserved or private IP ranges, including loopback, RFC 1918 private networks, link-local addresses, and IPv6 local ranges. This protects the instance from server-side request forgery.
+
+In 0.31, allow only the private destinations your integration needs with `--webhook-private-network-allowlist` or `MEMOS_WEBHOOK_PRIVATE_NETWORK_ALLOWLIST`. Entries are exact hostnames, IP addresses, or CIDRs; hostnames are not wildcard patterns.
+
+```bash
+./memos --webhook-private-network-allowlist=hooks.internal.example,10.0.0.8,10.20.0.0/24
+```
+
+The equivalent environment variable is a comma-separated list:
+
+```bash
+export MEMOS_WEBHOOK_PRIVATE_NETWORK_ALLOWLIST="hooks.internal.example,10.0.0.8,10.20.0.0/24"
+```
+
+The default empty list keeps private-network protection enabled. The older `--allow-private-webhooks` / `MEMOS_ALLOW_PRIVATE_WEBHOOKS=true` option remains compatible but is deprecated because it allows every private destination. Replace it with the narrowest entries your receivers require.

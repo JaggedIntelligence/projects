@@ -1,0 +1,60 @@
+---
+title: Kubernetes
+description: Deploy Memos on Kubernetes with persistent storage and a reverse proxy.
+---
+
+Use Kubernetes only if you already operate a cluster and want Memos to fit into your existing deployment model. For a single instance, Docker Compose is usually simpler.
+
+## Core resources
+
+A typical deployment includes:
+
+- a `Deployment` for the Memos container
+- a `Service` for cluster networking
+- an `Ingress` or gateway for public access
+- a `PersistentVolumeClaim` for data
+- a `Secret` for sensitive values such as DSNs
+
+## SQLite vs external databases
+
+SQLite works for a single replica and is the easiest option, but it ties you to one writable pod and one persistent volume. If you need stronger operational flexibility, use MySQL or PostgreSQL and keep only local assets in persistent storage.
+
+## Recommended shape
+
+- one Memos replica when using SQLite
+- a persistent volume mounted at `/var/opt/memos`
+- `MEMOS_INSTANCE_URL` set to the canonical external URL, with private or public access selected separately through the [ACCESS setting](/docs/configuration/deployment-configuration#access-policy)
+- TLS termination at the ingress layer
+- standard forwarded headers preserved
+
+## Avoid the `MEMOS_PORT` collision
+
+If your `Service` is named `memos`, Kubernetes injects link-style environment variables into pods in the same namespace — including `MEMOS_PORT=tcp://10.x.x.x:5230`. Memos reads `MEMOS_PORT` as its listen port, fails to parse the injected value, and falls back to port `0`, so the server starts on a random port and logs `Server running on port 0`.
+
+Prevent this in the pod spec — either disable service links, set the port explicitly, or both:
+
+```yaml
+spec:
+  enableServiceLinks: false
+  containers:
+    - name: memos
+      image: neosmemo/memos:stable
+      env:
+        - name: MEMOS_PORT
+          value: "5230"
+```
+
+An explicit container `env` entry always overrides the injected variable. Renaming the `Service` to something that does not expand to a `MEMOS_*` prefix also works.
+
+## Practical guidance
+
+- prefer external MySQL or PostgreSQL before attempting multi-replica patterns
+- back up both the database and local asset storage if assets are not stored in the database
+- start with conservative resource requests and tune based on real usage
+- keep public access behind HTTPS
+
+## When Kubernetes is worth it
+
+- Memos must fit into an existing platform standard
+- you already rely on ingress, secrets, and persistent volume workflows
+- you want deployment automation aligned with the rest of your cluster workloads

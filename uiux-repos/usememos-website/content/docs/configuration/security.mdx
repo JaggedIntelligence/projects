@@ -1,0 +1,62 @@
+---
+title: Security
+description: Practical guidance for hardening a Memos deployment.
+---
+
+Memos is self-hosted by design. You control the infrastructure, storage, and access policies.
+
+## Token security model
+
+Three token types handle authentication:
+
+| Token type | Lifetime | Storage | Notes |
+| --- | --- | --- | --- |
+| Access token (JWT) | 15 minutes | Client memory | Stateless; no DB query needed to verify |
+| Refresh token (JWT) | 30 days | HTTP-only cookie | Stored in DB, revocable; `SameSite=Lax`, `Secure=true` in production |
+| Personal access token | User-selected; no expiration by default | SHA-256 hash in DB | Prefix `memos_pat_`; plain token shown only once at creation |
+
+The JWT secret is auto-generated as a UUID on first run and stored in the database. In demo mode, the fixed secret `usememos` is used — never deploy demo mode as production.
+
+## Core recommendations
+
+- select private access in the `ACCESS` instance setting when anonymous public access is not intended
+- set `MEMOS_INSTANCE_URL` to the canonical URL used by your reverse proxy; changing this URL does not change access policy
+- disable user registration if your instance is private
+- disable public memo visibility if you do not want any public content
+- use HTTPS in front of the instance
+- review who can create personal access tokens and who can publish public memos
+
+## Session and auth hygiene
+
+- protect the host admin account carefully
+- prefer SSO for team deployments when available
+- rotate credentials and tokens that are exposed or no longer needed
+- use a separate PAT for each integration and review its last-used timestamp
+- add an expiration when an integration does not need a permanent credential
+- never enable demo mode on a production instance (it uses a hardcoded JWT secret)
+
+## Reverse proxy requirements
+
+Your proxy should:
+
+- terminate TLS
+- preserve `Host` and `X-Forwarded-*` headers
+- expose the same public URL configured in `MEMOS_INSTANCE_URL`
+
+## Attachment and sharing considerations
+
+Security is not only about login. Public memos may expose:
+
+- memo body content
+- attached files
+- links and references embedded in the memo
+
+Treat visibility and attachment review as part of your security model.
+
+## Backup and recovery
+
+Security is also about recoverability. Keep regular backups of:
+
+- the database
+- attachment storage when it is not stored in the database
+- deployment configuration needed to recreate the instance

@@ -1,0 +1,78 @@
+---
+title: Storage
+description: Configure attachment storage in the database, local filesystem, or S3-compatible object storage.
+---
+
+Memos supports three storage backends for attachments:
+
+- database storage
+- local filesystem storage
+- S3-compatible object storage
+
+Storage is usually configured at the instance level rather than purely through startup flags.
+
+## Named storage configurations
+
+In 0.31, storage settings contain named configurations with stable IDs. Choose a default for new uploads. Existing attachments retain their storage ID, so switching the default does not move old files or change where Memos reads them.
+
+Keep configurations that existing attachments still reference, including their credentials and backing objects. A new default is not a storage migration. Legacy settings migrate automatically on upgrade.
+
+API and deployment-file clients should use `storages` and `defaultStorageId`. The older `storageType` and top-level `s3Config` fields remain compatibility fields. See the [deployment configuration example](/docs/configuration/deployment-configuration#storage).
+
+## Database storage
+
+Database-backed attachments are the default.
+
+Pros:
+
+- simplest backup story
+- no extra object store or directory layout to manage
+- good default for smaller deployments
+
+Tradeoffs:
+
+- larger database size
+- heavier database backups
+- less attractive for media-heavy instances
+
+## Local filesystem storage
+
+Use local storage when:
+
+- you want attachments outside the database
+- you control the host or persistent volume
+- you do not need cloud object storage
+
+This is common for Docker or Kubernetes setups with a persistent volume.
+
+## S3-compatible storage
+
+Use S3-compatible storage when:
+
+- you already operate object storage
+- you want asset storage independent from the app host
+- you expect many uploads or larger files
+- you want storage behavior that is easier to scale operationally
+
+For an S3-compatible endpoint that uses a self-signed certificate, enable
+`insecureSkipTlsVerify` in the storage configuration. This disables TLS
+certificate verification for that connection, so use it only for an endpoint
+you control and trust. Prefer installing a trusted certificate whenever
+possible.
+
+### Authenticated delivery
+
+Memos proxies managed S3 files through its file routes and checks authorization there. Range requests support seeking and partial media reads. Managed S3 attachments no longer return presigned object URLs in `externalLink`; clients should use the Memos file route and preserve any share authorization supplied for a shared memo.
+
+Back up all referenced storage configurations alongside the database and file objects. Changing the default storage only affects new uploads.
+
+## Operational reminders
+
+- set an upload limit appropriate for your environment
+- if you use local storage, back up the asset directory
+- if you use S3 storage, verify credentials, bucket policy, and public/private access expectations
+- remember that visibility rules still matter when files are attached to public memos
+
+## File path templates
+
+For local filesystem storage, path templates are useful for organization. Timestamp-based naming is a common pattern because it avoids collisions and keeps uploaded files roughly ordered.

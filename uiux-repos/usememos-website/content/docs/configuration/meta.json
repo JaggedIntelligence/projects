@@ -1,0 +1,5 @@
+{
+  "title": "Configuration",
+  "description": "Configure your Memos instance for optimal performance",
+  "pages": ["environment-variables", "deployment-configuration", "database", "storage", "authentication", "security"]
+}

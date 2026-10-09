@@ -1,0 +1,317 @@
+import { readFileSync } from "node:fs";
+
+import { createMDX } from "fumadocs-mdx/next";
+
+const withMDX = createMDX();
+
+// API reference manifest, kept in sync with src/features/docs/lib/api-docs.ts.
+// Only non-archived versions are published; archived slugs route to the upgrade
+// guide while their committed OpenAPI snapshots remain available to maintainers.
+const API_DOCS_VERSION_MANIFEST = JSON.parse(
+  readFileSync(new URL("./src/features/docs/lib/api-docs-versions.json", import.meta.url), "utf8"),
+);
+const API_DOCS_VERSIONS = API_DOCS_VERSION_MANIFEST.filter((version) => !version.archived);
+const API_DOCS_RETIRED_VERSIONS = API_DOCS_VERSION_MANIFEST.filter((version) => version.archived);
+const API_DOCS_VERSION_PATTERN = API_DOCS_VERSIONS.map((version) => version.slug).join("|");
+const API_DOCS_LATEST_VERSION = API_DOCS_VERSIONS.find((version) => version.isLatest)?.slug ?? "latest";
+const API_DOCS_LEGACY_REDIRECTS = API_DOCS_VERSIONS.flatMap((version) =>
+  (version.legacySlugs ?? []).flatMap((legacySlug) => [
+    {
+      source: `/docs/api/${legacySlug}`,
+      destination: `/docs/api/${version.slug}`,
+      permanent: true,
+    },
+    {
+      source: `/docs/api/${legacySlug}/:rest*`,
+      destination: `/docs/api/${version.slug}/:rest*`,
+      permanent: true,
+    },
+  ]),
+);
+const API_DOCS_RETIRED_VERSION_PATTERN = API_DOCS_RETIRED_VERSIONS.flatMap((version) => [
+  version.slug,
+  ...(version.legacySlugs ?? []),
+]).join("|");
+const API_DOCS_RETIRED_REDIRECTS =
+  API_DOCS_RETIRED_VERSION_PATTERN.length === 0
+    ? []
+    : [
+        {
+          source: `/docs/api/:version(${API_DOCS_RETIRED_VERSION_PATTERN})`,
+          destination: "/docs/operations/upgrade",
+          permanent: true,
+        },
+        {
+          source: `/docs/api/:version(${API_DOCS_RETIRED_VERSION_PATTERN})/:rest*`,
+          destination: "/docs/operations/upgrade",
+          permanent: true,
+        },
+      ];
+
+// Applied only to the statically generated OG image routes below. Keep the
+// matching Cloudflare asset headers in public/_headers in sync.
+const CORS_HEADERS = [
+  {
+    key: "Access-Control-Allow-Origin",
+    value: "*",
+  },
+  {
+    key: "Access-Control-Allow-Methods",
+    value: "GET, HEAD, OPTIONS",
+  },
+];
+
+// Keep in sync with public/_headers, which covers static assets.
+const SECURITY_HEADERS = [
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
+  {
+    key: "X-Frame-Options",
+    value: "DENY",
+  },
+  {
+    key: "Referrer-Policy",
+    value: "strict-origin-when-cross-origin",
+  },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  },
+  {
+    // Apex only: add `includeSubDomains; preload` once every usememos.com
+    // subdomain is confirmed HTTPS-only. The Cloudflare zone HSTS setting
+    // overrides this header when enabled — verify the live value after deploy.
+    key: "Strict-Transport-Security",
+    value: "max-age=31536000",
+  },
+  {
+    // Blocks cross-origin openers (XS-Leaks) while still allowing popups the
+    // site opens itself (Clerk OAuth). Do not tighten to `same-origin` without
+    // verifying no integration relies on window.opener.
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin-allow-popups",
+  },
+  {
+    // Enforced directives that cannot break the app: no <base> is used, no
+    // plugins are embedded, and frame-ancestors mirrors X-Frame-Options.
+    // script-src is deliberately absent: pages are static and edge-cached, so
+    // per-response nonces are impossible and Next.js' inline hydration
+    // scripts rule out a hash allowlist. See the report-only policy below.
+    key: "Content-Security-Policy",
+    value: "base-uri 'none'; object-src 'none'; frame-ancestors 'none'",
+  },
+  {
+    // Discovery policy (never enforced): surfaces every script origin and
+    // form target the site actually uses in the DevTools Issues panel, so a
+    // future enforced script-src is built from data rather than guesses.
+    // 'unsafe-inline' is needed for Next.js hydration and next-themes; the
+    // Clerk origin is the dev instance plus the conventional production FAPI
+    // subdomain — confirm the production origin before promoting this.
+    // No report-to/report-uri on purpose: a collector endpoint would be a
+    // new Worker route absorbing extension noise (see Cloudflare CPU notes).
+    key: "Content-Security-Policy-Report-Only",
+    value: "script-src 'self' 'unsafe-inline' https://*.clerk.accounts.dev https://clerk.usememos.com; form-action 'self'",
+  },
+];
+
+// Edge-cache the static public pages so Cloudflare's CDN can serve repeat hits
+// to the same URL without invoking the Worker (zero CPU/request). Content is
+// immutable until redeploy (pages are `revalidate = false`). Workers Caching
+// keys entries by Worker version, so a deploy replaces the cache namespace;
+// the long s-maxage avoids needless hourly Worker invocations between deploys.
+// No stale-while-revalidate: the version-keyed cache is discarded on every
+// deploy (far more often than yearly), so the post-s-maxage stale window is
+// never reached. Scoped here to marketing/docs routes. OpenNext's cache
+// interceptor also emits a long s-maxage for other prerendered routes such as
+// /api/search and the static client-auth shells.
+const PUBLIC_CACHE_HEADERS = [
+  {
+    key: "Cache-Control",
+    value: "public, s-maxage=31536000",
+  },
+];
+const PUBLIC_CACHEABLE_PATHS = [
+  "/",
+  "/docs/:path*",
+  "/blog/:path*",
+  "/changelog/:path*",
+  "/features/:path*",
+  "/use-cases/:path*",
+  "/compare/:path*",
+  "/pricing",
+  "/brand",
+  "/privacy",
+  "/sponsors",
+];
+
+/** @type {import('next').NextConfig} */
+const config = {
+  poweredByHeader: false,
+  reactStrictMode: true,
+  experimental: {
+    // Next 16.3 enables prefetch inlining by default, but OpenNext answers
+    // segment/tree prefetches with the build-time RSC payload, whose
+    // InliningHintsStale bit makes the client expire and re-request the route
+    // forever (infinite `?_rsc=` requests on every page). Keep inlining off so
+    // builds never emit the stale bit and OpenNext serves per-segment data.
+    // Re-evaluate when @opennextjs/cloudflare (>1.20.4) supports inlining.
+    prefetchInlining: false,
+  },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year cache for optimized images
+    remotePatterns: [], // Prevent external image loading
+    unoptimized: true, // Disable built-in image optimization
+    qualities: [75, 85], // Support both default (75) and higher quality (85)
+  },
+  async redirects() {
+    return [
+      {
+        // Bare /docs/api normalizes to the "latest" version. Doing it here (routing
+        // layer) instead of via redirect() inside the docs page avoids loading the
+        // heavy fumadocs-openapi route module just to emit the 307 — that in-page
+        // redirect was ~408ms CPU/hit (~2M CPU-ms/7d on Workers). Other version-less
+        // /docs/api/* URLs are normalized by the version-aware redirect below —
+        // `dynamicParams = false` on the docs route 404s unknown slugs before any
+        // page code can run.
+        source: "/docs/api",
+        destination: `/docs/api/${API_DOCS_LATEST_VERSION}`,
+        permanent: false,
+      },
+      {
+        source: "/docs/troubleshooting/common-issues",
+        destination: "/docs/troubleshooting",
+        permanent: true,
+      },
+      {
+        source: "/docs/admin/tokens",
+        destination: "/docs/integrations/api-access",
+        permanent: true,
+      },
+      // End-to-end practices now live in their own Guides section. Preserve
+      // the original Usage URLs for bookmarks, inbound links, and search equity.
+      {
+        source: "/docs/usage/bullet-journal",
+        destination: "/docs/guides/bullet-journal",
+        permanent: true,
+      },
+      {
+        source: "/docs/usage/getting-things-done",
+        destination: "/docs/guides/getting-things-done",
+        permanent: true,
+      },
+      {
+        source: "/docs/usage/zettelkasten",
+        destination: "/docs/guides/zettelkasten",
+        permanent: true,
+      },
+      // Dead docs URLs (no matching content file) that still draw crawler/inbound
+      // traffic. An unmatched /docs/[...slug] loads the full fumadocs+MDX+shiki
+      // route module only to call notFound() — ~450-510ms CPU/hit, and the
+      // read-only incremental cache can never persist it, so every hit re-pays.
+      // Redirecting at the routing layer costs ~0 CPU and recovers link equity.
+      {
+        source: "/docs/installation/docker",
+        destination: "/docs/deploy/docker",
+        permanent: true,
+      },
+      {
+        source: "/docs/getting-started/content-syntax",
+        destination: "/docs/usage/writing-markdown",
+        permanent: true,
+      },
+      {
+        source: "/docs/integrations/rss",
+        destination: "/docs/operations/upgrade#removed-features",
+        permanent: true,
+      },
+      {
+        source: "/docs/security/access-tokens",
+        destination: "/docs/integrations/api-access",
+        permanent: true,
+      },
+      // Legacy Web Clipper deep link (/dashboard?setup=memos[&source=...]) now
+      // lands on the canonical connections settings page. Routing layer for the
+      // same reason as /docs/api above: the redirect never loads the dashboard
+      // route module, and the page stays free of legacy searchParams handling.
+      // The source-carrying rule must come first; its explicit destination query
+      // also drops the consumed setup param.
+      {
+        source: "/dashboard",
+        has: [
+          { type: "query", key: "setup", value: "memos" },
+          { type: "query", key: "source", value: "(?<source>.+)" },
+        ],
+        destination: "/settings/connections?source=:source",
+        permanent: true,
+      },
+      {
+        source: "/dashboard",
+        has: [{ type: "query", key: "setup", value: "memos" }],
+        destination: "/settings/connections",
+        permanent: true,
+      },
+      // Retired API reference URLs should never be interpreted as version-less
+      // latest URLs: endpoint shapes may have changed. Send both minor-series
+      // and historical patch-specific slugs to the upgrade guidance instead.
+      ...API_DOCS_RETIRED_REDIRECTS,
+      // Historical API docs originally exposed the exact source patch in their
+      // URLs even though each reference covers the full minor release series.
+      ...API_DOCS_LEGACY_REDIRECTS,
+      // API service-index paths (e.g. /docs/api/latest/memoservice) have no
+      // index.mdx — only per-operation leaves are pages — so a direct hit is an
+      // expensive on-demand 404 (~300-440ms CPU, uncached). Send the service
+      // level to its version overview. The :version guard restricts this to real
+      // versions so it does not mis-fire on version-less operation URLs like
+      // /docs/api/memoservice/ListMemos (handled by the redirect below).
+      {
+        source: `/docs/api/:version(${API_DOCS_VERSION_PATTERN})/:service`,
+        destination: "/docs/api/:version",
+        permanent: false,
+      },
+      // Version-less API URLs — the first segment after /api is not a known
+      // version, e.g. /docs/api/memoservice/ListMemos — normalize to the latest
+      // version at the routing boundary. This replaces the in-page
+      // normalizeApiDocsSlug() redirect, which `dynamicParams = false` makes
+      // unreachable (unknown slugs 404 before the page runs). `permanent: false`
+      // because "latest" is a moving target.
+      {
+        source: `/docs/api/:segment((?!(?:${API_DOCS_VERSION_PATTERN})(?:/|$))[^/]+)/:rest*`,
+        destination: `/docs/api/${API_DOCS_LATEST_VERSION}/:segment/:rest*`,
+        permanent: false,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/og/:path*",
+        headers: CORS_HEADERS,
+      },
+      {
+        source: "/:path*",
+        headers: SECURITY_HEADERS,
+      },
+      {
+        // Guardrail: Workers Caching heuristically stores any 200 without an
+        // explicit Cache-Control (2h), and a request Cookie (Clerk's `__session`)
+        // does NOT trigger a cache bypass — so an authenticated API handler that
+        // forgets `no-store` would be cached and cross-served to other users.
+        // Force no-store on all /api/* except the public static /api/search index.
+        // Handlers should still set their own no-store; this is defense-in-depth.
+        source: "/api/:path((?!search$).*)",
+        headers: [{ key: "Cache-Control", value: "private, no-store" }],
+      },
+      ...PUBLIC_CACHEABLE_PATHS.map((source) => ({
+        source,
+        headers: PUBLIC_CACHE_HEADERS,
+      })),
+    ];
+  },
+};
+
+export default withMDX(config);
