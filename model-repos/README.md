@@ -29,6 +29,15 @@ https://github.com/trycompai/comp/tree/main/packages/db/prisma/schema
 
 ### Drata vs Vanta vs. Comp AI : which should you choose?
 
+https://www.vanta.com/company/about
+- Vanta raised a $150 million Series D funding round in July 2025, bringing its total external funding to $504 million and raising its valuation to $4.15 billion
+- YC startup .. shows professionalism , see Drata/about page .. bunch of Jokers Photos when flipped ..
+- $300 MM ARR in 2026 JUL?
+
+https://drata.com/about
+Series C (December 2022): Raised $200 million, .. Salesforce Ventures, and others, doubling its valuation to $2 billion
+- $100 MM ARR in 2025 
+
 - Both Drata and Vanta are enterprise compliance platforms with similar pricing ($20-80K/year). Here's how they compare - and why Comp AI might be a better fit.
 https://www.trycomp.ai/drata-vs-vanta
 
