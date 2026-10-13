@@ -50,6 +50,52 @@ https://github.com/trycompai/comp/tree/main/packages/integration-platform
 A checklist doesn't stop a misconfigured laptop at 2am. Our open-source device agent runs 24/7 on every employee machine - checking disk encryption, firewall status, screen lock, password length, and antivirus. Failures are flagged instantly, not discovered during the next audit cycle.
 https://github.com/trycompai/comp/tree/main/packages/device-agent 
 
+### Integrations : Extensible platform for building compliance check integrations
+
+SR note:  NestJS is the backend platform ...
+
+https://www.trycomp.ai/docs/integrations
+
+```
+Integrations
+├── Manifests (define integrations)
+│   ├── Auth config (OAuth, API key, custom)
+│   ├── Checks (compliance validations)
+│   └── Variables (user configuration)
+├── Runtime (execute checks)
+│   ├── Check context (API, logging, reporting)
+│   └── Check runner (orchestration)
+├── API (NestJS backend)
+│   ├── Connections (manage user connections)
+│   ├── OAuth (handle OAuth flow)
+│   ├── Checks (run checks)
+│   └── Variables (manage user settings)
+└── Trigger Tasks (background execution)
+    ├── run-connection-checks (auto-run after connect)
+    ├── run-task-integration-checks (daily scheduled)
+    └── sync-employees-schedule (daily employee sync)
+
+```
+
+
+### Built-in Integrations
+​
+```
+Cloud Providers
+AWS - Security Hub findings
+Azure - Microsoft Defender for Cloud
+GCP - Security Command Center
+​
+Identity & Access
+Google Workspace - User compliance, 2FA checks
+Rippling - Employee sync
+​
+Developer Tools
+GitHub - Code security, branch protection, Dependabot
+Vercel - Deployment monitoring
+Linear - Team privacy, SSO checks
+```
+
 -- =========================================== ----------------------------------
 
 
