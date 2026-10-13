@@ -53,8 +53,35 @@ https://github.com/trycompai/comp/tree/main/packages/device-agent
 -- =========================================== ----------------------------------
 
 
-2. CRM : CRM designed for AI agents. Agentic-first CRM
+# 2. CRM : CRM designed for AI agents. Agentic-first CRM
    SR Note: CRM is from above "Comp AI" company , so it is world class OSS
 
+### What is this CRM: 
+Most CRMs are a database with a form in front of it. The AI ones bolt a chat box onto the side of that form. Both leave the actual work — finding out what is true, and writing it down — to a human who has better things to do.
+
+- **This is built the other way round. The agent is not a feature of the CRM; the CRM is where the agent keeps its notes.** It runs on its own deployment, on its own schedule, against its own work queue. It decides what to look at next, books its own follow-ups, spends a research budget, and stops when the budget runs out. Nothing about it is request-response: close the browser and it keeps goin
+
+### repo Tech 
 Prisma DB Schema
-https://github.com/trycompai/crm/blob/release/packages/db/prisma/schema.prisma
+https://github.com/trycompai/crm/blob/release/packages/db/prisma/schema.prisma 
+
+
+```
+The stack
+A Turborepo monorepo on Bun, deployed on Vercel.
+
+Agent	eve — durable sessions, tools, skills, schedules, sandboxes
+Model	Vercel AI Gateway — no provider SDK, and OIDC on Vercel means no key to manage
+
+Sandbox	Vercel Sandbox in production, Docker or microsandbox locally
+
+Front end	Next.js App Router · shadcn/ui · nuqs for URL state
+
+API	NestJS   with nestjs-trpc — HTTP, auth, tRPC, mailbox sync
+
+Data	Prisma · Postgres (Neon) · optional Redis (Upstash)
+Auth	Better Auth — Google, Microsoft, or your own IdP; one allow-list
+
+Files	Vercel Blob — mirrors profile pictures so they survive the source going away
+Tooling	Biome · TypeScript everywhere
+```
