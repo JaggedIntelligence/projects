@@ -1,5 +1,27 @@
 # Vibe Trading
 
+### HOW SR got this repo
+
+1. SR got this with "Path B: local install" STEPS as mentioned IN  https://github.com/HKUDS/Vibe-Trading
+2. so far got 'git clone' and commited to SR repo
+3. TODO: need to other setps shown below to RUN and see
+
+```
+Path B: Local install
+git clone https://github.com/HKUDS/Vibe-Trading.git
+cd Vibe-Trading
+python -m venv .venv
+
+# Activate
+source .venv/bin/activate          # Linux / macOS
+# .venv\Scripts\activate.bat       # Windows CMD
+# .venv\Scripts\Activate.ps1       # Windows PowerShell
+
+pip install -e .
+cp agent/.env.example agent/.env   # Edit — set your LLM provider API key
+vibe-trading   
+
+```
 
 ### What is it
 
