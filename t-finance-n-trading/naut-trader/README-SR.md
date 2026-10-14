@@ -1,12 +1,27 @@
-# NautilusTrader tutorial project
+# Nautilus Trader
 
-From this folder, install dependencies and run the high-level backtest:
+### How I got the installation of the Nautilus trader python package
+ - many manual attempts from github repo instrucitons failed'
+ - finally asked  Codex to create a sample pyproject.toml for Natilus trader 
+ - few errors
+ - asked to fix , it did
 
-```bash
-uv sync
-uv run naut-backtest
+### how to run
+
+uv sync 
+
+uv run python -m naut_trader.main
+
+uv run  naut_trader
+
+### see the scirpts in .toml file 
+
+this how you create scripts in .toml file for EACH major program ( your own project module ) so you run as
+uv run  naut_trader
+
 ```
+[project.scripts]
+naut-trader = "naut_trader.main:main"
+naut-backtest = "naut_trader.backtests.high_level:main"
 
-The backtest follows the [NautilusTrader high-level backtest tutorial](https://nautilustrader.io/docs/latest/getting_started/backtest_high_level/). By default it downloads the tutorial's AUD/USD sample ticks, writes a Parquet catalog to `catalog/high_level_tutorial/`, and runs the built-in EMA cross strategy. The generated catalog is ignored by Git and replaced on each run.
-
-To use local HISTDATA CSV files instead, set `NAUTILUS_DATA_DIR` to the directory containing the `HISTDATA` folder before running the command. The tutorial's small `naut-trader` command still runs the original import check.
+```
