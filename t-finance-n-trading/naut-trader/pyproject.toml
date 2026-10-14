@@ -4,13 +4,12 @@ version = "0.1.0"
 requires-python = ">=3.12,<3.15"
 dependencies = [
     "nautilus_trader>=2.0.0rc1,<3",
+    "pandas>=2.2,<4",
 ]
-
-[tool.uv]
-prerelease = "allow"
 
 [project.scripts]
 naut-trader = "naut_trader.main:main"
+naut-backtest = "naut_trader.backtests.high_level:main"
 
 [build-system]
 requires = ["setuptools>=68"]
