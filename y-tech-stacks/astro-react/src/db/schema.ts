@@ -11,8 +11,8 @@ export const todos = pgTable('todos', {
 // to hold Gemini prompt responses in a table so serach UI can be built to query and view Later as KNOWLEDGE BASE , so to avoid repeat Prompting
 export const knowledgebase = pgTable('knowledgebase', {
   id: serial('id').primaryKey(),
-  catleve1: text('catleve1').notNull(), // category Level 1
-  catleve2: text('catleve2'),
+  catlevel1: text('catlevel1').notNull(), // category Level 1
+  catlevel2: text('catlevel2'),
   url1: text('url1').notNull(),  // holds  Gemini Prompt response Shared URL 
   url2: text('url2'),
   note1: text('note1'),   // user notes
