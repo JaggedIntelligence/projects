@@ -43,3 +43,9 @@ run only one Node server process against a given PGlite directory.
 
 After changing `src/db/schema.ts`, run `npm run db:generate` and commit the
 new migration files.
+
+To apply pending migrations to the local PGlite database immediately, stop the
+app and run `npm run db:migrate` from this directory. It uses `TODO_DB_DIR` when
+set, or `data/todo-pglite` by default. The app also applies pending migrations
+on its first API request. `drizzle-kit migrate` expects a separate PostgreSQL
+connection and is not the migration command for this PGlite setup.

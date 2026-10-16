@@ -11,6 +11,7 @@
     "check": "astro check",
     "start": "node ./dist/server/entry.mjs",
     "db:generate": "drizzle-kit generate",
+    "db:migrate": "node scripts/migrate.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

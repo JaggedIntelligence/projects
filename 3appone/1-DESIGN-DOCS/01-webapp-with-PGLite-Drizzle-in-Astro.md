@@ -83,6 +83,11 @@ The first API request initializes a single database promise in the Node process,
 4. Build and deploy the app with the updated `drizzle/` directory.
 5. On the first API request, the server applies pending migrations before serving queries.
 
+To apply them before starting the app, run `npm run db:migrate` while the app is
+stopped. This uses the same PGlite directory as the app (`TODO_DB_DIR`, or
+`data/todo-pglite` by default). `drizzle-kit migrate` requires a PostgreSQL
+connection and does not target this embedded PGlite database.
+
 Do not edit an existing migration after it has been applied to a persistent database. Add a new migration for later changes.
 
 ## Build and run
