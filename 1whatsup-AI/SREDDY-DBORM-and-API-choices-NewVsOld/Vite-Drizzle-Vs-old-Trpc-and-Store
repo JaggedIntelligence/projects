@@ -1,0 +1,20 @@
+# Review of SREDDY Database ORM and API choices :  New vs. OLD ; how they changed over time
+
+
+## OLD way DB ORM and API design
+### the old way
+- Sreddy used to be big fan of TRpc and Zustand State Store in "Database API design layer"
+- I guess the main reason for the above was 'type safety' when desiging 'front-end' ReactJS UI screens code
+### what it costed
+ - complex flow of TRPC server to client and mental overhead remembering and designing those flows
+ - combined that complexity with 'NextJS'  client/server components designation in ReactJS pages is additional complexity/headache cognitive load
+ - I guess 'Zustand store' may be independent layer , but still one more layer ..
+ - and ReactQuery is another layer ...
+
+## NEW way DB ORM and API design
+### the new way
+ - simple Drizzle schema.js table addition and let it create neeed DB API code
+ - having Vite instead of NextJS removed so many other heaches .
+### What it helped
+ - simple design, easy to grok the concept in the head
+ - know what is going on at any time ...
