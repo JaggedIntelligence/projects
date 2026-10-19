@@ -1,7 +1,7 @@
 # Review of SREDDY Database ORM and API choices :  New vs. OLD ; how they changed over time
 
 
-## OLD way DB ORM and API design
+## 1/ OLD way DB ORM and API design
 ### the old way
 - Sreddy used to be big fan of TRpc and Zustand State Store in "Database API design layer"
 - I guess the main reason for the above was 'type safety' when desiging 'front-end' ReactJS UI screens code
@@ -11,7 +11,17 @@
  - I guess 'Zustand store' may be independent layer , but still one more layer ..
  - and ReactQuery is another layer ...
 
-## NEW way DB ORM and API design
+ ### example project code ..
+  - it is too old for SR hard to rember ... we will dig later ..
+
+## 2.1/ NEW way DB ORM and API design
+
+ ### Code snippets files
+ - it used Drizzle and it is Signin app /secondbrain ..
+ - /projects/s-worked-projects/secondbrain/server/db/schema.ts
+ - /s-worked-projects/secondbrain/server/db/index.ts
+
+## 2.2/ NEW way DB ORM and API design in ASTRO ...
 ### the new way
  - simple Drizzle schema.js table addition and let it create neeed DB API code
  - having Vite instead of NextJS removed so many other heaches .
