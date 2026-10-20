@@ -4,6 +4,10 @@
 - when adding standalone statinc .html file ( with embedded CSS) add/wrap <PageShell> as first tag inside <body> tag
 - this keep the LEFT site/app Menu on that page
 - archify.astro is a different page, it is a FULL ReactJS page not a single stand alone .html page
+- 
+### Claude Sonnet 5.5 (medium) Prompt for '15 Building Blocks of AI agents"
+- Claude Sonnet Prompt:
+- can you take the following INPUT ( Tweet text pasted)  and suggest the couple of popular github repos that provide each of these building blocks 
 
 ### Orinal README.md file
 
