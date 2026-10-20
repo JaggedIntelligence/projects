@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [".astro/types.d.ts", "src/db/**/*.ts", "src/lib/images/**/*.ts", "src/pages/api/images/**/*.ts", "src/components/images/**/*.tsx"],
+  "exclude": ["dist", "src/pages/archify.astro"]
+}

@@ -1,0 +1,17 @@
+---
+import PageShell from '../components/PageShell.astro';
+import ImagesApp from '../components/images/ImagesApp';
+import '../components/images/ImagesApp.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Upload and organize your images." />
+    <title>Images</title>
+  </head>
+  <body>
+    <PageShell><ImagesApp client:load /></PageShell>
+  </body>
+</html>

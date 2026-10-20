@@ -1,6 +1,6 @@
 # Images CRUD design
 
-**Status:** Agreed design, ready for implementation · **Source:** [03-Image-CRUD-PRD.md](./03-Image-CRUD-PRD.md)
+**Status:** Implemented · **Source:** [03-Image-CRUD-PRD.md](./03-Image-CRUD-PRD.md)
 
 ## Goal and scope
 
@@ -60,7 +60,7 @@ All routes run on the Node server and return JSON errors with appropriate HTTP s
 | --- | --- | --- |
 | `GET` | `/api/images?cursor=...&limit=...&q=...` | List the current user's `ready` metadata, newest first; default limit 30, maximum 100. |
 | `POST` | `/api/images` | Upload one multipart `file` per request, with optional `fileName` and `desc`; return `201` and metadata. The page sends multiple requests for a multi-file selection. |
-| `GET` | `/api/images/:id/content` | Stream image bytes from R2 with stored content type and safe caching headers. |
+| `GET` | `/api/images/:id/content` | Return image bytes from R2 with stored content type and safe caching headers. |
 | `PATCH` | `/api/images/:id` | Update `fileName` and/or `desc`; return updated metadata. Scope by the server-resolved user. |
 | `DELETE` | `/api/images/:id` | Delete image and metadata; return `204` on success. Scope by the server-resolved user. |
 
@@ -72,7 +72,7 @@ The list response provides an app-relative `contentUrl` for each item. It never 
 
 **Rename:** Validate a nonempty display name and length limit. Update only metadata and `updatedAt`. Keep `originalName` and `r2Key` unchanged.
 
-**Delete:** Mark the row `deleting`, delete its R2 object, then delete the row. Exclude `deleting` rows from normal listing. If either final step fails, retry can resume from the `deleting` row; R2 deletion is treated as idempotent. A small reconciliation command or startup task should retry stranded deletions and report unresolved objects. This prevents a failed database delete from resurfacing a broken visible item.
+**Delete:** Mark the row `deleting`, delete its R2 object, then delete the row. Exclude `deleting` rows from normal listing. If either final step fails, retry can resume from the `deleting` row; R2 deletion is treated as idempotent. Each list request retries up to ten stranded deletions and logs failures. This prevents a failed database delete from resurfacing a broken visible item.
 
 ## Configuration and deployment
 
@@ -91,13 +91,13 @@ The current app has no authentication. `user1` is a placeholder for data partiti
 - `src/pages/images.astro`: page and `PageShell` integration.
 - `src/components/images/ImagesApp.tsx` and CSS: upload queue, grid/list, preview, edit, and deletion UI.
 - `src/pages/api/images/index.ts`, `[id].ts`, and `[id]/content.ts`: metadata and file routes.
-- `src/lib/r2/server.ts`: server-only R2 client and object helpers.
+- `src/lib/images/server.ts`: server-only R2 client, validation, and object helpers.
 - `src/db/schema.ts` plus a new `drizzle/` migration: metadata table.
 - `.env.example` and deployment notes: configuration contract without values.
 
-## Verification plan
+## Verification
 
-Check the app and migration with `npm run check` and `npm run build`. With a test R2 bucket, verify valid multi-file upload, list/preview after reload and server restart, rename without changing `r2Key`, delete of bytes and row, and independent success/failure within one selection. Exercise invalid type, oversized file, malformed IDs, missing object, and R2/database failures. Verify that API responses and built client assets contain no credentials.
+`npm run build` and the focused `npm run check:images` TypeScript check pass. A live R2 smoke test returned 201 for upload, 200 for list, rename, and image content, and 204 for deletion of a temporary image. Validation checks returned 400 for a missing user header, invalid page size, and malformed ID; 404 for an absent image; and 415 for an invalid image file. The full `npm run check` process exhausted the Node heap while scanning this project's large existing Astro page; the focused check covers the new TypeScript files. Browser interaction checks remain useful follow-up verification.
 
 ## Decisions recorded
 
