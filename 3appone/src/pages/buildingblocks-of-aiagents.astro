@@ -1,0 +1,333 @@
+---
+import PageShell from '../components/PageShell.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15 Agent Engineering Builds, with Repos</title>
+<style>
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --ink:#16231f; --muted:#5b6b66; --rule:#d5dcd9;
+  --accent:#0b6b57; --accent-soft:#e1f0ec; --code-bg:#e8edeb;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101716; --surface:#172220; --ink:#e6eeeb; --muted:#93a59f; --rule:#2a3a36;
+    --accent:#5fd1b6; --accent-soft:#183530; --code-bg:#22312d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101716; --surface:#172220; --ink:#e6eeeb; --muted:#93a59f; --rule:#2a3a36;
+  --accent:#5fd1b6; --accent-soft:#183530; --code-bg:#22312d;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:1rem}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:17px/1.6 "Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  -webkit-text-size-adjust:100%}
+.wrap{max-width:780px;margin:0 auto;padding:3rem 1.25rem 4rem}
+header{margin-bottom:2.5rem;padding-bottom:1.75rem;border-bottom:2px solid var(--ink)}
+h1{font:700 clamp(2rem,5vw,3rem)/1.1 Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+  letter-spacing:-.02em;margin:0 0 .9rem}
+.lede{color:var(--muted);margin:0;max-width:60ch}
+.note{margin:1.25rem 0 0;padding:.8rem 1rem;background:var(--accent-soft);border-left:3px solid var(--accent);
+  border-radius:0 6px 6px 0;font-size:.95rem;max-width:62ch}
+ol.items{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:3.4rem 1fr;gap:0 1rem;padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+.item:last-child{border-bottom:0}
+.num{font:700 2rem/1 Georgia,"Iowan Old Style",Palatino,serif;color:var(--accent);text-align:right;padding-top:.15rem}
+h2{font:700 1.3rem/1.3 Georgia,"Iowan Old Style",Palatino,serif;margin:0 0 .7rem}
+.field{margin:0 0 .6rem}
+.field b{display:block;font-size:.85rem;color:var(--muted);font-weight:600;margin-bottom:.1rem}
+.field p{margin:0;max-width:62ch}
+.aside{margin:0 0 .8rem;color:var(--muted);font-size:.95rem;max-width:62ch}
+ul.repos{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+ul.repos li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:.6rem .85rem}
+ul.repos a{font:600 .92rem/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent);
+  text-decoration:none;overflow-wrap:anywhere}
+ul.repos a:hover{text-decoration:underline}
+ul.repos span{display:block;color:var(--muted);font-size:.93rem;margin-top:.1rem}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+footer{margin-top:2rem;color:var(--muted);font-size:.9rem}
+@media (max-width:560px){
+  body{font-size:16px}
+  .item{grid-template-columns:1fr}
+  .num{text-align:left;font-size:1.5rem;margin-bottom:.25rem}
+}
+@media print{body{background:#fff;color:#000}.item{break-inside:avoid}}
+
+.wrap{max-width:1120px}
+.cols-head{display:grid;grid-template-columns:3.4rem 1fr 1fr;gap:0 2rem;padding:0 0 .6rem;border-bottom:2px solid var(--ink);
+  font-size:.85rem;font-weight:600;color:var(--muted)}
+.cols-head div:first-child{visibility:hidden}
+.item{grid-template-columns:3.4rem minmax(0,1fr) minmax(0,1fr);gap:0 2rem}
+.left h2{margin-bottom:.8rem}
+.right{padding-left:2rem;border-left:1px solid var(--rule)}
+.right .aside{margin-top:0}
+@media (max-width:820px){
+  .cols-head{display:none}
+  .item{grid-template-columns:3.4rem minmax(0,1fr);gap:0 1rem}
+  .item .left,.item .right{grid-column:2}
+  .right{padding-left:0;border-left:0;margin-top:1rem}
+}
+@media (max-width:560px){
+  .cols-head{display:none}
+  .item{grid-template-columns:1fr}
+  .item .left,.item .right{grid-column:1}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>15 Agent Engineering Builds, with Repos</h1>
+<p class="lede">Production-grade projects for engineers building enterprise AI agent systems. The left column says what to build and why it matters. The right column lists GitHub repos that cover it.</p>
+<p class="note">The agent ecosystem moves fast, so check that each repo is still actively maintained before committing to it. Items 11, 14 and 15 have no dedicated repo, and item 7 has to be composed from several.</p>
+</header>
+<main>
+<div class="cols-head"><div></div><div>What to build and why</div><div>Open-source repos to start from</div></div>
+<ol class="items">
+<li class="item"><div class="num">1</div>
+<div class="left">
+<h2>Durable State Machine Workflow</h2>
+<div class="field"><b>Build</b><p>A Temporal or LangGraph DAG with checkpoints, exponential retries and crash recovery for a 4-hour data migration task.</p></div>
+<div class="field"><b>Why</b><p><code>while True</code> chat loops die on server restarts. Real-world workflows require deterministic state management.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/temporalio/temporal">temporalio/temporal</a> and <a href="https://github.com/temporalio/sdk-python">temporalio/sdk-python</a><span>The standard for durable execution, with retries, signals and crash recovery.</span></li>
+<li><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a><span>Graph-based agents with checkpointers for persistence.</span></li>
+<li><a href="https://github.com/dbos-inc/dbos-transact-py">dbos-inc/dbos-transact-py</a><span>Lighter-weight durable execution.</span></li>
+<li><a href="https://github.com/restatedev/restate">restatedev/restate</a><span>Lighter-weight durable execution.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">2</div>
+<div class="left">
+<h2>Raw MCP Server &amp; Client</h2>
+<div class="field"><b>Build</b><p>A JSON-RPC Model Context Protocol server exposing a local Postgres DB with scoped read/write permissions, written without a wrapper SDK.</p></div>
+<div class="field"><b>Why</b><p>Agents need standardized, secure hands. Bespoke API wrappers do not scale across an enterprise.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol">modelcontextprotocol/modelcontextprotocol</a><span>The spec itself, which is what you need to build without an SDK.</span></li>
+<li><a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a><span>Reference servers, including database ones, to study.</span></li>
+<li><a href="https://github.com/modelcontextprotocol/python-sdk">modelcontextprotocol/python-sdk</a><span>Read the SDK for reference.</span></li>
+<li><a href="https://github.com/modelcontextprotocol/inspector">modelcontextprotocol/inspector</a><span>Use the Inspector to test your raw implementation.</span></li>
+<li><a href="https://github.com/crystaldba/postgres-mcp">crystaldba/postgres-mcp</a><span>A Postgres MCP server with access modes.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">3</div>
+<div class="left">
+<h2>Computer-Use GUI Agent</h2>
+<div class="field"><b>Build</b><p>A vision-based agent using Playwright and DOM parsing that logs into a legacy web portal, navigates menus via screenshots and downloads a CSV.</p></div>
+<div class="field"><b>Why</b><p>80% of enterprise software has no API. GUI agents unlock the legacy world text-based agents cannot touch.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/microsoft/playwright">microsoft/playwright</a><span>The browser automation base.</span></li>
+<li><a href="https://github.com/browser-use/browser-use">browser-use/browser-use</a><span>LLM-driven browser agent.</span></li>
+<li><a href="https://github.com/browserbase/stagehand">browserbase/stagehand</a><span>LLM-driven browser agent.</span></li>
+<li><a href="https://github.com/Skyvern-AI/skyvern">Skyvern-AI/skyvern</a><span>Vision plus DOM for workflow automation.</span></li>
+<li><a href="https://github.com/microsoft/OmniParser">microsoft/OmniParser</a><span>Screenshot-to-UI-element parsing.</span></li>
+<li><a href="https://github.com/anthropics/anthropic-quickstarts">anthropics/anthropic-quickstarts</a><span>Includes the computer-use demo.</span></li>
+<li><a href="https://github.com/trycua/cua">trycua/cua</a><span>Desktop-level computer use.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">4</div>
+<div class="left">
+<h2>3-Tier Memory &amp; Eviction Engine</h2>
+<div class="field"><b>Build</b><p>A memory system with working scratchpads, episodic session compression and semantic vector search with automated TTL eviction.</p></div>
+<div class="field"><b>Why</b><p>Infinite context causes OOM errors and hallucinations. Memory must be actively managed, scored and pruned.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/letta-ai/letta">letta-ai/letta</a><span>Formerly MemGPT. Tiered memory, the closest match to your spec.</span></li>
+<li><a href="https://github.com/mem0ai/mem0">mem0ai/mem0</a><span>A memory layer with extraction and updates.</span></li>
+<li><a href="https://github.com/getzep/graphiti">getzep/graphiti</a><span>Temporal knowledge graph memory.</span></li>
+<li><a href="https://github.com/langchain-ai/langmem">langchain-ai/langmem</a><span>Memory framework for LangGraph agents.</span></li>
+<li><a href="https://github.com/topoteretes/cognee">topoteretes/cognee</a><span>Memory framework built on graphs and vectors.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">5</div>
+<div class="left">
+<h2>Multi-Agent Swarm with Typed A2A</h2>
+<div class="field"><b>Build</b><p>A 3-agent swarm (Researcher, Coder, Reviewer) that passes strictly typed Pydantic state objects, never raw text.</p></div>
+<div class="field"><b>Why</b><p>Single agents fail on complex tasks. Swarms divide and conquer but raw text handoffs cause context drift.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/pydantic/pydantic-ai">pydantic/pydantic-ai</a><span>Typed agents and structured outputs, the best fit for the Pydantic requirement.</span></li>
+<li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a><span>Handoffs between agents.</span></li>
+<li><a href="https://github.com/langchain-ai/langgraph-swarm-py">langchain-ai/langgraph-swarm-py</a><span>Swarm-style multi-agent framework.</span></li>
+<li><a href="https://github.com/crewAIInc/crewAI">crewAIInc/crewAI</a><span>Multi-agent framework.</span></li>
+<li><a href="https://github.com/microsoft/autogen">microsoft/autogen</a><span>Multi-agent framework.</span></li>
+<li><a href="https://github.com/a2aproject/A2A">a2aproject/A2A</a><span>The Agent2Agent protocol spec.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">6</div>
+<div class="left">
+<h2>Sandboxed Code Executor</h2>
+<div class="field"><b>Build</b><p>A code-interpreter agent that writes and executes Python in an isolated E2B or gVisor microVM with zero internet egress.</p></div>
+<div class="field"><b>Why</b><p>Letting an LLM run <code>os.system()</code> on your host machine is a catastrophic security risk.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/e2b-dev/E2B">e2b-dev/E2B</a><span>Managed Firecracker sandboxes.</span></li>
+<li><a href="https://github.com/e2b-dev/code-interpreter">e2b-dev/code-interpreter</a><span>Code interpreter built on E2B.</span></li>
+<li><a href="https://github.com/google/gvisor">google/gvisor</a><span>Isolation primitive for self-hosting.</span></li>
+<li><a href="https://github.com/firecracker-microvm/firecracker">firecracker-microvm/firecracker</a><span>Isolation primitive for self-hosting.</span></li>
+<li><a href="https://github.com/huggingface/smolagents">huggingface/smolagents</a><span>Pluggable executors, including sandboxed ones.</span></li>
+<li><a href="https://github.com/daytonaio/daytona">daytonaio/daytona</a><span>Sandbox infrastructure for AI-generated code.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">7</div>
+<div class="left">
+<h2>Inter-Agent Sanitization Proxy</h2>
+<div class="field"><b>Build</b><p>Middleware that intercepts messages between agents, stripping malicious instructions to prevent cross-agent prompt injection.</p></div>
+<div class="field"><b>Why</b><p>Multi-agent systems create internal attack surfaces. Agent A can be tricked into hijacking Agent B’s tools.</p></div>
+</div>
+<div class="right">
+<p class="aside">Nothing packages this exact “between agents” proxy, so expect to compose it from these.</p>
+<ul class="repos">
+<li><a href="https://github.com/protectai/llm-guard">protectai/llm-guard</a><span>Input and output scanners.</span></li>
+<li><a href="https://github.com/meta-llama/PurpleLlama">meta-llama/PurpleLlama</a><span>LlamaFirewall and Prompt Guard.</span></li>
+<li><a href="https://github.com/NVIDIA/NeMo-Guardrails">NVIDIA/NeMo-Guardrails</a><span>Programmable guardrails you can wrap around message passing.</span></li>
+<li><a href="https://github.com/guardrails-ai/guardrails">guardrails-ai/guardrails</a><span>Programmable guardrails you can wrap around message passing.</span></li>
+<li><a href="https://github.com/invariantlabs-ai/invariant">invariantlabs-ai/invariant</a><span>Security analysis for agent traces and tool flows.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">8</div>
+<div class="left">
+<h2>Async HITL Approval Gate</h2>
+<div class="field"><b>Build</b><p>A workflow that drafts a $10k invoice, serializes its state and waits 3 days for a human to click “Approve” in Slack before resuming.</p></div>
+<div class="field"><b>Why</b><p>High-stakes automation requires human accountability. Agents must know how to pause, wait, and resume cleanly.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a><span><code>interrupt()</code> plus checkpointing pauses and resumes at any point.</span></li>
+<li><a href="https://github.com/temporalio/sdk-python">temporalio/sdk-python</a><span>Signals and durable timers handle the 3-day wait well.</span></li>
+<li><a href="https://github.com/humanlayer/humanlayer">humanlayer/humanlayer</a><span>Approval flows via Slack and email.</span></li>
+<li><a href="https://github.com/slackapi/bolt-python">slackapi/bolt-python</a><span>For the Slack button handling.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">9</div>
+<div class="left">
+<h2>Self-Healing Coder Loop</h2>
+<div class="field"><b>Build</b><p>An agent that reads its own stack traces, parses the compiler error, rewrites the failing code, and retries up to 3 times.</p></div>
+<div class="field"><b>Why</b><p>Agents that fail on the first try are useless. Agents that debug themselves are digital employees.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/SWE-agent/SWE-agent">SWE-agent/SWE-agent</a><span>Full agent with error-feedback loops.</span></li>
+<li><a href="https://github.com/All-Hands-AI/OpenHands">All-Hands-AI/OpenHands</a><span>Full agent with error-feedback loops.</span></li>
+<li><a href="https://github.com/Aider-AI/aider">Aider-AI/aider</a><span>Lint and test feedback loops.</span></li>
+<li><a href="https://github.com/567-labs/instructor">567-labs/instructor</a><span>Validation-driven retries for structured outputs.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">10</div>
+<div class="left">
+<h2>Trajectory CI/CD Gate</h2>
+<div class="field"><b>Build</b><p>A GitHub Action that replays 100 agent trajectories and blocks the PR if the tool-call sequence deviates from the golden DAG.</p></div>
+<div class="field"><b>Why</b><p>Grading the final text output hides the fact that the agent hallucinated an API call to get there.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/langchain-ai/agentevals">langchain-ai/agentevals</a><span>Trajectory matching against reference tool-call sequences.</span></li>
+<li><a href="https://github.com/promptfoo/promptfoo">promptfoo/promptfoo</a><span>Has a GitHub Action for CI gating.</span></li>
+<li><a href="https://github.com/UKGovernmentBEIS/inspect_ai">UKGovernmentBEIS/inspect_ai</a><span>Evaluation framework.</span></li>
+<li><a href="https://github.com/confident-ai/deepeval">confident-ai/deepeval</a><span>Evaluation framework.</span></li>
+<li><a href="https://github.com/langfuse/langfuse">langfuse/langfuse</a><span>Trace capture for building your golden set.</span></li>
+<li><a href="https://github.com/Arize-ai/phoenix">Arize-ai/phoenix</a><span>Trace capture for building your golden set.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">11</div>
+<div class="left">
+<h2>API-to-Browser Fallback Router</h2>
+<div class="field"><b>Build</b><p>A routing layer where if the primary REST API 404s or times out, the agent seamlessly spawns a headless browser to finish the job.</p></div>
+<div class="field"><b>Why</b><p>The real world is messy. Agents must adapt to broken environments without crashing the workflow.</p></div>
+</div>
+<div class="right">
+<p class="aside">No dedicated repo exists, so compose it from these.</p>
+<ul class="repos">
+<li><a href="https://github.com/BerriAI/litellm">BerriAI/litellm</a><span>Routing and fallbacks at the model layer.</span></li>
+<li><a href="https://github.com/Portkey-AI/gateway">Portkey-AI/gateway</a><span>Routing and fallbacks at the model layer.</span></li>
+<li><a href="https://github.com/browser-use/browser-use">browser-use/browser-use</a><span>The fallback executor.</span></li>
+<li><a href="https://github.com/jd/tenacity">jd/tenacity</a><span>Retry and fallback logic for the API tier.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">12</div>
+<div class="left">
+<h2>Agentic Circuit Breaker</h2>
+<div class="field"><b>Build</b><p>A middleware tracking loop depth and tool-call recursion that instantly halts the agent if it enters an infinite spiral.</p></div>
+<div class="field"><b>Why</b><p>A runaway agent loop is an outage with an invoice. It will burn $500 in API credits before you notice.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a><span>Has a built-in recursion limit.</span></li>
+<li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a><span>Has <code>max_turns</code>.</span></li>
+<li><a href="https://github.com/danielfm/pybreaker">danielfm/pybreaker</a><span>Classic circuit breaker pattern.</span></li>
+<li><a href="https://github.com/resilience4j/resilience4j">resilience4j/resilience4j</a><span>Classic circuit breaker pattern.</span></li>
+<li><a href="https://github.com/AgentOps-AI/agentops">AgentOps-AI/agentops</a><span>Monitoring and cost tracking.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">13</div>
+<div class="left">
+<h2>Dynamic Context Budget Orchestrator</h2>
+<div class="field"><b>Build</b><p>A pre-flight assembler that strictly allocates tokens across system prompts, retrieved docs and tool schemas per request.</p></div>
+<div class="field"><b>Why</b><p>Context overflow is the #1 silent killer of production agents.</p></div>
+</div>
+<div class="right">
+
+<ul class="repos">
+<li><a href="https://github.com/openai/tiktoken">openai/tiktoken</a><span>Token counting.</span></li>
+<li><a href="https://github.com/microsoft/LLMLingua">microsoft/LLMLingua</a><span>Prompt compression.</span></li>
+<li><a href="https://github.com/run-llama/llama_index">run-llama/llama_index</a><span>Node postprocessors and context assembly.</span></li>
+<li><a href="https://github.com/stanfordnlp/dspy">stanfordnlp/dspy</a><span>Programmatic prompt and context assembly.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">14</div>
+<div class="left">
+<h2>Shadow Trajectory Comparator</h2>
+<div class="field"><b>Build</b><p>A silent 5% traffic mirror that runs a new agent topology in the background, diffing tool-call paths and costs without affecting users.</p></div>
+<div class="field"><b>Why</b><p>You cannot A/B test non-determinism safely in production without shadow mode.</p></div>
+</div>
+<div class="right">
+<p class="aside">No dedicated repo exists. Compose it from these.</p>
+<ul class="repos">
+<li><a href="https://github.com/buger/goreplay">buger/goreplay</a><span>Traffic mirroring (Envoy or Istio also work).</span></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-python">open-telemetry/opentelemetry-python</a><span>Trace capture, paired with Langfuse or Phoenix.</span></li>
+<li><a href="https://github.com/langchain-ai/agentevals">langchain-ai/agentevals</a><span>Diffing tool-call paths.</span></li>
+</ul>
+</div></li>
+<li class="item"><div class="num">15</div>
+<div class="left">
+<h2>Public Architecture Teardown</h2>
+<div class="field"><b>Build</b><p>3 published deep-dives detailing your swarm topology, state-machine design, inter-agent security and cost-per-task analysis.</p></div>
+<div class="field"><b>Why</b><p>Top AI labs hire Agent Engineers based on their system design judgment not their ability to import LangChain.</p></div>
+</div>
+<div class="right">
+<p class="aside">This is writing rather than code. These are good references for style and depth, along with Anthropic’s engineering posts on building effective agents and their multi-agent research system.</p>
+<ul class="repos">
+<li><a href="https://github.com/humanlayer/12-factor-agents">humanlayer/12-factor-agents</a><span>A well-regarded example of a design-judgment write-up.</span></li>
+</ul>
+</div></li>
+</ol>
+</main>
+<footer>Repo list reflects what I knew at the time of writing. Verify activity before adopting.</footer>
+</div>
+</body>
+</html>
