@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15 Agent Engineering Builds</title>
+<style>
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --ink:#16231f; --muted:#5b6b66; --rule:#d5dcd9;
+  --accent:#0b6b57; --accent-soft:#e1f0ec; --code-bg:#e8edeb;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101716; --surface:#172220; --ink:#e6eeeb; --muted:#93a59f; --rule:#2a3a36;
+    --accent:#5fd1b6; --accent-soft:#183530; --code-bg:#22312d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101716; --surface:#172220; --ink:#e6eeeb; --muted:#93a59f; --rule:#2a3a36;
+  --accent:#5fd1b6; --accent-soft:#183530; --code-bg:#22312d;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:1rem}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:17px/1.6 "Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  -webkit-text-size-adjust:100%}
+.wrap{max-width:780px;margin:0 auto;padding:3rem 1.25rem 4rem}
+header{margin-bottom:2.5rem;padding-bottom:1.75rem;border-bottom:2px solid var(--ink)}
+h1{font:700 clamp(2rem,5vw,3rem)/1.1 Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+  letter-spacing:-.02em;margin:0 0 .9rem}
+.lede{color:var(--muted);margin:0;max-width:60ch}
+.note{margin:1.25rem 0 0;padding:.8rem 1rem;background:var(--accent-soft);border-left:3px solid var(--accent);
+  border-radius:0 6px 6px 0;font-size:.95rem;max-width:62ch}
+ol.items{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:3.4rem 1fr;gap:0 1rem;padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+.item:last-child{border-bottom:0}
+.num{font:700 2rem/1 Georgia,"Iowan Old Style",Palatino,serif;color:var(--accent);text-align:right;padding-top:.15rem}
+h2{font:700 1.3rem/1.3 Georgia,"Iowan Old Style",Palatino,serif;margin:0 0 .7rem}
+.field{margin:0 0 .6rem}
+.field b{display:block;font-size:.85rem;color:var(--muted);font-weight:600;margin-bottom:.1rem}
+.field p{margin:0;max-width:62ch}
+.aside{margin:0 0 .8rem;color:var(--muted);font-size:.95rem;max-width:62ch}
+ul.repos{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+ul.repos li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:.6rem .85rem}
+ul.repos a{font:600 .92rem/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent);
+  text-decoration:none;overflow-wrap:anywhere}
+ul.repos a:hover{text-decoration:underline}
+ul.repos span{display:block;color:var(--muted);font-size:.93rem;margin-top:.1rem}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+footer{margin-top:2rem;color:var(--muted);font-size:.9rem}
+@media (max-width:560px){
+  body{font-size:16px}
+  .item{grid-template-columns:1fr}
+  .num{text-align:left;font-size:1.5rem;margin-bottom:.25rem}
+}
+@media print{body{background:#fff;color:#000}.item{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>15 Agent Engineering Builds</h1>
+<p class="lede">A portfolio checklist of production-grade projects for engineers building enterprise AI agent systems. Each entry says what to build and why it matters.</p>
+
+</header>
+<main>
+<ol class="items">
+<li class="item"><div class="num">1</div><div>
+<h2>Durable State Machine Workflow</h2>
+<div class="field"><b>Build</b><p>A Temporal or LangGraph DAG with checkpoints, exponential retries and crash recovery for a 4-hour data migration task.</p></div>
+<div class="field"><b>Why</b><p><code>while True</code> chat loops die on server restarts. Real-world workflows require deterministic state management.</p></div>
+</div></li>
+<li class="item"><div class="num">2</div><div>
+<h2>Raw MCP Server &amp; Client</h2>
+<div class="field"><b>Build</b><p>A JSON-RPC Model Context Protocol server exposing a local Postgres DB with scoped read/write permissions, written without a wrapper SDK.</p></div>
+<div class="field"><b>Why</b><p>Agents need standardized, secure hands. Bespoke API wrappers do not scale across an enterprise.</p></div>
+</div></li>
+<li class="item"><div class="num">3</div><div>
+<h2>Computer-Use GUI Agent</h2>
+<div class="field"><b>Build</b><p>A vision-based agent using Playwright and DOM parsing that logs into a legacy web portal, navigates menus via screenshots and downloads a CSV.</p></div>
+<div class="field"><b>Why</b><p>80% of enterprise software has no API. GUI agents unlock the legacy world text-based agents cannot touch.</p></div>
+</div></li>
+<li class="item"><div class="num">4</div><div>
+<h2>3-Tier Memory &amp; Eviction Engine</h2>
+<div class="field"><b>Build</b><p>A memory system with working scratchpads, episodic session compression and semantic vector search with automated TTL eviction.</p></div>
+<div class="field"><b>Why</b><p>Infinite context causes OOM errors and hallucinations. Memory must be actively managed, scored and pruned.</p></div>
+</div></li>
+<li class="item"><div class="num">5</div><div>
+<h2>Multi-Agent Swarm with Typed A2A</h2>
+<div class="field"><b>Build</b><p>A 3-agent swarm (Researcher, Coder, Reviewer) that passes strictly typed Pydantic state objects, never raw text.</p></div>
+<div class="field"><b>Why</b><p>Single agents fail on complex tasks. Swarms divide and conquer but raw text handoffs cause context drift.</p></div>
+</div></li>
+<li class="item"><div class="num">6</div><div>
+<h2>Sandboxed Code Executor</h2>
+<div class="field"><b>Build</b><p>A code-interpreter agent that writes and executes Python in an isolated E2B or gVisor microVM with zero internet egress.</p></div>
+<div class="field"><b>Why</b><p>Letting an LLM run <code>os.system()</code> on your host machine is a catastrophic security risk.</p></div>
+</div></li>
+<li class="item"><div class="num">7</div><div>
+<h2>Inter-Agent Sanitization Proxy</h2>
+<div class="field"><b>Build</b><p>Middleware that intercepts messages between agents, stripping malicious instructions to prevent cross-agent prompt injection.</p></div>
+<div class="field"><b>Why</b><p>Multi-agent systems create internal attack surfaces. Agent A can be tricked into hijacking Agent B’s tools.</p></div>
+</div></li>
+<li class="item"><div class="num">8</div><div>
+<h2>Async HITL Approval Gate</h2>
+<div class="field"><b>Build</b><p>A workflow that drafts a $10k invoice, serializes its state and waits 3 days for a human to click “Approve” in Slack before resuming.</p></div>
+<div class="field"><b>Why</b><p>High-stakes automation requires human accountability. Agents must know how to pause, wait, and resume cleanly.</p></div>
+</div></li>
+<li class="item"><div class="num">9</div><div>
+<h2>Self-Healing Coder Loop</h2>
+<div class="field"><b>Build</b><p>An agent that reads its own stack traces, parses the compiler error, rewrites the failing code, and retries up to 3 times.</p></div>
+<div class="field"><b>Why</b><p>Agents that fail on the first try are useless. Agents that debug themselves are digital employees.</p></div>
+</div></li>
+<li class="item"><div class="num">10</div><div>
+<h2>Trajectory CI/CD Gate</h2>
+<div class="field"><b>Build</b><p>A GitHub Action that replays 100 agent trajectories and blocks the PR if the tool-call sequence deviates from the golden DAG.</p></div>
+<div class="field"><b>Why</b><p>Grading the final text output hides the fact that the agent hallucinated an API call to get there.</p></div>
+</div></li>
+<li class="item"><div class="num">11</div><div>
+<h2>API-to-Browser Fallback Router</h2>
+<div class="field"><b>Build</b><p>A routing layer where if the primary REST API 404s or times out, the agent seamlessly spawns a headless browser to finish the job.</p></div>
+<div class="field"><b>Why</b><p>The real world is messy. Agents must adapt to broken environments without crashing the workflow.</p></div>
+</div></li>
+<li class="item"><div class="num">12</div><div>
+<h2>Agentic Circuit Breaker</h2>
+<div class="field"><b>Build</b><p>A middleware tracking loop depth and tool-call recursion that instantly halts the agent if it enters an infinite spiral.</p></div>
+<div class="field"><b>Why</b><p>A runaway agent loop is an outage with an invoice. It will burn $500 in API credits before you notice.</p></div>
+</div></li>
+<li class="item"><div class="num">13</div><div>
+<h2>Dynamic Context Budget Orchestrator</h2>
+<div class="field"><b>Build</b><p>A pre-flight assembler that strictly allocates tokens across system prompts, retrieved docs and tool schemas per request.</p></div>
+<div class="field"><b>Why</b><p>Context overflow is the #1 silent killer of production agents.</p></div>
+</div></li>
+<li class="item"><div class="num">14</div><div>
+<h2>Shadow Trajectory Comparator</h2>
+<div class="field"><b>Build</b><p>A silent 5% traffic mirror that runs a new agent topology in the background, diffing tool-call paths and costs without affecting users.</p></div>
+<div class="field"><b>Why</b><p>You cannot A/B test non-determinism safely in production without shadow mode.</p></div>
+</div></li>
+<li class="item"><div class="num">15</div><div>
+<h2>Public Architecture Teardown</h2>
+<div class="field"><b>Build</b><p>3 published deep-dives detailing your swarm topology, state-machine design, inter-agent security and cost-per-task analysis.</p></div>
+<div class="field"><b>Why</b><p>Top AI labs hire Agent Engineers based on their system design judgment not their ability to import LangChain.</p></div>
+</div></li>
+</ol>
+</main>
+<footer>Companion page: open-source repos for each build.</footer>
+</div>
+</body>
+</html>
