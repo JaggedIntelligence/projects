@@ -1,5 +1,12 @@
 # Astro + React Example
 
+### SR Notes
+- when adding standalone statinc .html file ( with embedded CSS) add/wrap <PageShell> as first tag inside <body> tag
+- this keep the LEFT site/app Menu on that page
+- archify.astro is a different page, it is a FULL ReactJS page not a single stand alone .html page
+
+### Orinal README.md file
+
 ```sh
 npm create astro@latest -- --template framework-react
 ```
