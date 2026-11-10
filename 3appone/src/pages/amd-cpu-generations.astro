@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD EPYC Server Processor Lineup (5th - 8th Gen)</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --amd-orange: #ff6000;
+            --accent-blue: #58a6ff;
+            --table-header-bg: #21262d;
+            --row-hover: #1f242c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h1 span {
+            color: var(--amd-orange);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: var(--row-hover);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: #21262d;
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-gen {
+            color: var(--amd-orange);
+            border-color: rgba(255, 96, 0, 0.3);
+            background-color: rgba(255, 96, 0, 0.1);
+        }
+
+        .codename {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .highlight {
+            color: var(--accent-blue);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+
+        li strong {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            td, th {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><span>AMD EPYC</span> Server Processor Roadmap</h1>
+    <div class="subtitle">Consolidated high-performance enterprise lineup (5th Generation to 2030 Roadmap)</div>
+    
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Generation / Series</th>
+                    <th>Codename</th>
+                    <th>Launch / Expected</th>
+                    <th>Architecture (Node)</th>
+                    <th>Core Counts</th>
+                    <th>Technical Highlights</th>
+                    <th>Hyperscale Adopters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge badge-gen">8th Gen (EPYC)</span></td>
+                    <td><span class="codename">Ravenna</span></td>
+                    <td>2030</td>
+                    <td>Zen 8</td>
+                    <td><span class="text-muted">TBD</span></td>
+                    <td>Formally anchored on the long-term roadmap for next-decade cloud infrastructure platforms.</td>
+                    <td><span class="text-muted">Early architectural evaluation</span></td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-gen">7th Gen (EPYC)</span></td>
+                    <td><span class="codename">Florence</span></td>
+                    <td>2028</td>
+                    <td>Zen 7</td>
+                    <td><span class="text-muted">TBD</span></td>
+                    <td>Introduces specialized hardware AI extensions; anchors the <em>Ferrara</em> AI host nodes and <em>Faenza</em> Agentic Sandboxes.</td>
+                    <td>Targeted for next-gen AI training partners (<span class="highlight">Anthropic, Meta</span>).</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-gen">6th Gen Platform</span></td>
+                    <td><span class="codename">Verano / Venice LP</span></td>
+                    <td>2027</td>
+                    <td>Zen 6 (TSMC 2nm)</td>
+                    <td><span class="text-muted">TBD</span></td>
+                    <td>Specialized AI host processor utilizing high-bandwidth LPDDR memory directly on-package to maximize data-ingestion pipeline speeds.</td>
+                    <td><span class="highlight">Meta</span> (early co-development focus for LLM ingestion structures).</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-gen">6th Gen 3D V-Cache</span></td>
+                    <td><span class="codename">Venice-X</span></td>
+                    <td>H2 2027</td>
+                    <td>Zen 3D (TSMC 2nm)</td>
+                    <td>Up to 96 cores</td>
+                    <td>Combines native Zen 6 architecture advancements with 1,152 MB of stacked L3 cache optimized heavily for Technical Computing and EDA workloads.</td>
+                    <td><span class="highlight">Google</span> (Google Cloud HPC instances), Major EDA vendors.</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-gen">6th Gen (EPYC 9006)</span></td>
+                    <td><span class="codename">Venice</span></td>
+                    <td>Nov 10, 2026</td>
+                    <td>Zen 6 / 6c (TSMC 2nm)</td>
+                    <td>Up to 256 cores</td>
+                    <td><strong>Generally available today.</strong> Delivers a 27% IPC increase over Zen 5. Debuts the SP7 socket interface along with 16-channel MRDIMM support.</td>
+                    <td><span class="highlight">Google, Meta, Anthropic</span> (Rapidly deploying for agentic AI cluster orchestration pipelines).</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-gen">5th Gen (EPYC 9005)</span></td>
+                    <td><span class="codename">Turin</span></td>
+                    <td>Oct 10, 2024</td>
+                    <td>Zen 5 / 5c (TSMC 3nm/4nm)</td>
+                    <td>8 to 192 cores</td>
+                    <td>Delivered up to 2.3x scale on integer performance. Established the SP5 socket and introduced DDR5 support scaling up to 6400 MT/s.</td>
+                    <td><span class="highlight">Google</span> (Compute Engine N4/C4 instances), <span class="highlight">Meta</span> (Open Compute infrastructure update blocks).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
