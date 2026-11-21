@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-hkbrpulz><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HUMANS.md specification, version 0.3</title><meta name="description" content="The HUMANS.md specification, version 0.3: the three blocks (reading, deciding, interrupting), closed values, visibility, locations, precedence, groups and privacy rules."><meta name="author" content="Tristan Bessoussa"><link rel="author" href="https://bessoussa.com/"><link rel="canonical" href="https://humansmd.dev/spec"><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt"><meta name="theme-color" content="#c9cbcc"><meta property="og:type" content="website"><meta property="og:site_name" content="HUMANS.md"><meta property="og:title" content="HUMANS.md specification, version 0.3"><meta name="twitter:title" content="HUMANS.md specification, version 0.3"><meta name="twitter:description" content="The HUMANS.md specification, version 0.3: the three blocks (reading, deciding, interrupting), closed values, visibility, locations, precedence, groups and privacy rules."><meta property="og:description" content="The HUMANS.md specification, version 0.3: the three blocks (reading, deciding, interrupting), closed values, visibility, locations, precedence, groups and privacy rules."><meta property="og:url" content="https://humansmd.dev/spec"><meta property="og:image" content="https://humansmd.dev/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="AGENTS.md is for your codebase. HUMANS.md is for you."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@sf_tristanb"><meta name="twitter:image" content="https://humansmd.dev/og.png"><link rel="alternate" type="text/markdown" href="/spec.md"><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"HUMANS.md, version 0.3 (draft)","description":"The HUMANS.md specification, version 0.3: the three blocks (reading, deciding, interrupting), closed values, visibility, locations, precedence, groups and privacy rules.","url":"https://humansmd.dev/spec","dateModified":"2026-10-18","license":"https://creativecommons.org/licenses/by/4.0/","author":{"@type":"Person","name":"Tristan Bessoussa","url":"https://bessoussa.com/","sameAs":["https://x.com/sf_tristanb","https://www.linkedin.com/in/tbessoussa/","https://github.com/tristanbes"],"worksFor":{"@type":"Organization","name":"cmdAI","url":"https://cmdai.fr"}},"publisher":{"@type":"Organization","name":"cmdAI","url":"https://cmdai.fr"}}</script><!-- Cloudflare Web Analytics: no cookies, no visitor profile. Auto-injection does not reach Worker-served pages. --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;58ccf903b48e41d198a029a16e95e902&quot;}"></script><link rel="stylesheet" href="/_astro/Logo.Bz5G-7nH.css"><style>.head[data-astro-cid-73dgtvns]{padding-top:clamp(24px,4vh,64px);padding-bottom:48px}h1[data-astro-cid-73dgtvns]{max-width:20ch}h1[data-astro-cid-73dgtvns] .pre[data-astro-cid-73dgtvns]{font-size:var(--t-l);letter-spacing:-.015em;color:var(--ink-soft);margin-bottom:.25em;font-weight:500;line-height:1.1;display:block}h1[data-astro-cid-73dgtvns] .main[data-astro-cid-73dgtvns]{display:block}.head-body[data-astro-cid-73dgtvns]{grid-template-columns:minmax(0, var(--rail)) minmax(0, 1fr);column-gap:40px;margin-top:40px;display:grid}.pitch[data-astro-cid-73dgtvns]{font-size:var(--t-m);line-height:1.45}.staged[data-astro-cid-73dgtvns] .pitch[data-astro-cid-73dgtvns]{padding-bottom:40px}.pitch[data-astro-cid-73dgtvns] p{max-width:40ch;margin:0 0 14px}.head-body[data-astro-cid-73dgtvns]:not(.staged) .pitch[data-astro-cid-73dgtvns]{grid-column:1/-1}.head-body[data-astro-cid-73dgtvns]:not(.staged) .pitch[data-astro-cid-73dgtvns] p{max-width:62ch}.stage[data-astro-cid-73dgtvns]{margin-right:calc(var(--bleed) * -1);background:var(--signal);clip-path:polygon(0 0,300px 0,344px 44px,100% 44px,100% 100%,0 100%);padding:76px var(--bleed) 56px 40px;position:relative}.stage-tab[data-astro-cid-73dgtvns]{margin:0;font-size:14px;font-weight:600;position:absolute;top:12px;left:22px}.stage-in[data-astro-cid-73dgtvns]{max-width:760px}@media (width<=1000px){.head-body[data-astro-cid-73dgtvns]{grid-template-columns:minmax(0,1fr);margin-top:28px}.stage[data-astro-cid-73dgtvns]{margin-left:calc(var(--margin) * -1);padding-left:var(--margin);clip-path:polygon(0 0,260px 0,304px 44px,100% 44px,100% 100%,0 100%)}.stage-tab[data-astro-cid-73dgtvns]{align-items:center;max-width:236px;height:44px;line-height:1.2;display:flex;top:0}}@media (width<=720px){.stage[data-astro-cid-73dgtvns]{padding:64px 16px 40px}.stage-tab[data-astro-cid-73dgtvns]{left:16px}}
+.band[data-astro-cid-ypwl2rp7]{margin-top:var(--section);background:var(--signal);grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:32px 56px;padding-top:72px;padding-bottom:64px;display:grid}h2[data-astro-cid-ypwl2rp7]{font-size:var(--t-xl);letter-spacing:-.035em;line-height:.92}.band-side[data-astro-cid-ypwl2rp7]{max-width:46ch;font-size:var(--t-m);line-height:1.45}.band-side[data-astro-cid-ypwl2rp7] p[data-astro-cid-ypwl2rp7]{margin:0}.band-actions[data-astro-cid-ypwl2rp7]{flex-wrap:wrap;align-items:center;gap:14px 22px;font-size:16px;display:flex;margin-top:24px!important}.band-link[data-astro-cid-ypwl2rp7]{font-weight:600}@media (width<=1000px){.band[data-astro-cid-ypwl2rp7]{grid-template-columns:minmax(0,1fr);align-items:start}}@media (width<=720px){.band[data-astro-cid-ypwl2rp7]{padding-top:56px;padding-bottom:48px}h2[data-astro-cid-ypwl2rp7]{font-size:15vw}}.skip[data-astro-cid-hkbrpulz]{position:absolute;left:-9999px}.skip[data-astro-cid-hkbrpulz]:focus{background:var(--ink);color:var(--white);z-index:10;padding:8px 12px;top:12px;left:12px}.site-header[data-astro-cid-hkbrpulz]{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px;padding-top:26px;padding-bottom:26px;display:flex}.brand[data-astro-cid-hkbrpulz]{font-family:var(--font-head);letter-spacing:-.01em;align-items:center;gap:10px;font-size:22px;font-weight:700;text-decoration:none;display:inline-flex}.site-header[data-astro-cid-hkbrpulz] nav[data-astro-cid-hkbrpulz]{flex-wrap:wrap;gap:6px 22px;font-size:15px;font-weight:600;display:flex}.site-header[data-astro-cid-hkbrpulz] nav[data-astro-cid-hkbrpulz] a[data-astro-cid-hkbrpulz]{padding:8px 0;text-decoration:none}.site-header[data-astro-cid-hkbrpulz] nav[data-astro-cid-hkbrpulz] .gh[data-astro-cid-hkbrpulz]{align-items:center;gap:6px;display:inline-flex}.site-header[data-astro-cid-hkbrpulz] nav[data-astro-cid-hkbrpulz] a[data-astro-cid-hkbrpulz][aria-current=page]{box-shadow:inset 0 -3px var(--signal)}.site-footer[data-astro-cid-hkbrpulz]{border-top:var(--border);color:var(--ink-soft);flex-wrap:wrap;justify-content:space-between;gap:24px;padding-top:22px;padding-bottom:40px;font-size:14.5px;display:flex}.site-footer[data-astro-cid-hkbrpulz] p[data-astro-cid-hkbrpulz]{max-width:620px;margin:0 0 6px}.site-footer[data-astro-cid-hkbrpulz] nav[data-astro-cid-hkbrpulz]{flex-wrap:wrap;align-content:flex-start;gap:6px 18px;display:flex}
+.facts[data-astro-cid-xmgmjudl]{gap:10px;margin:0;display:grid}.facts[data-astro-cid-xmgmjudl] div[data-astro-cid-xmgmjudl]{grid-template-columns:9.5em minmax(0,1fr);gap:12px;display:grid}.facts[data-astro-cid-xmgmjudl] dt[data-astro-cid-xmgmjudl]{color:var(--muted)}.facts[data-astro-cid-xmgmjudl] dd[data-astro-cid-xmgmjudl]{margin:0}.rev[data-astro-cid-xmgmjudl]{overflow-wrap:anywhere}.body[data-astro-cid-xmgmjudl]{padding-top:0}.toc[data-astro-cid-xmgmjudl]{padding-top:8px;font-size:15px;position:sticky;top:16px}.toc-h[data-astro-cid-xmgmjudl]{margin:0 0 10px;font-weight:700}.toc[data-astro-cid-xmgmjudl] ol[data-astro-cid-xmgmjudl]{max-width:30ch;margin:0;padding:0;list-style:none}.toc[data-astro-cid-xmgmjudl] a[data-astro-cid-xmgmjudl]{color:var(--ink-soft);align-items:baseline;gap:10px;padding:4px 0;text-decoration:none;display:flex}.toc[data-astro-cid-xmgmjudl] a[data-astro-cid-xmgmjudl]:before{content:"";background:var(--stone-1);flex:none;width:10px;height:10px;transition:background-color .2s;transform:translateY(-1px)}.toc[data-astro-cid-xmgmjudl] a[data-astro-cid-xmgmjudl]:hover{color:var(--ink);text-decoration:underline}.toc[data-astro-cid-xmgmjudl] a[data-astro-cid-xmgmjudl][aria-current]{color:var(--ink);font-weight:700}.toc[data-astro-cid-xmgmjudl] a[data-astro-cid-xmgmjudl][aria-current]:before{background:var(--signal)}.spec-text[data-astro-cid-xmgmjudl]>h1:first-child{display:none}.spec-text[data-astro-cid-xmgmjudl]>h2:first-of-type{margin-top:56px}@media (width<=1000px){.toc[data-astro-cid-xmgmjudl]{background:var(--paper);padding:16px;position:static}}
+</style></head><body data-astro-cid-hkbrpulz><a class="skip" href="#main" data-astro-cid-hkbrpulz>Skip to content</a><header class="wrap site-header" data-astro-cid-hkbrpulz><a class="brand" href="/" aria-label="HUMANS.md home" data-astro-cid-hkbrpulz><svg width="30" height="30" viewBox="0 0 120 120" aria-hidden="true"><g fill="currentColor"><rect x="14" y="14" width="8" height="92"></rect><rect x="30" y="14" width="8" height="92"></rect><rect x="46" y="14" width="8" height="92"></rect><rect x="14" y="50" width="72" height="20"></rect><rect x="78" y="14" width="28" height="92"></rect></g></svg><span data-astro-cid-hkbrpulz>HUMANS.md</span></a><nav aria-label="Main" data-astro-cid-hkbrpulz><a href="/what-is-humans-md" data-astro-cid-hkbrpulz>Without code</a><a href="/spec" aria-current="page" data-astro-cid-hkbrpulz>Spec</a><a href="/agents-md-vs-humans-md" data-astro-cid-hkbrpulz>vs AGENTS.md</a><a href="/implementations" data-astro-cid-hkbrpulz>Implementations</a><a href="/faq" data-astro-cid-hkbrpulz>FAQ</a><a href="/resources" data-astro-cid-hkbrpulz>Downloads</a><a class="gh" href="https://github.com/cmdai-hq/HUMANS.md" aria-label="HUMANS.md on GitHub" data-astro-cid-hkbrpulz><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" data-astro-cid-hkbrpulz><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-astro-cid-hkbrpulz></path></svg><span data-astro-cid-hkbrpulz>GitHub</span></a></nav></header><main id="main" data-astro-cid-hkbrpulz><section class="head wrap" data-astro-cid-73dgtvns><h1 data-astro-cid-73dgtvns><span class="pre" data-astro-cid-73dgtvns>The specification</span><span class="main" data-astro-cid-73dgtvns>HUMANS.md, version 0.3 (draft)</span></h1><div class="head-body staged" data-astro-cid-73dgtvns><div class="pitch" data-astro-cid-73dgtvns><p data-astro-cid-xmgmjudl>What a profile holds, who may read it, and what an integration must do with it, in 12 sections.</p><p data-astro-cid-xmgmjudl>The text below is the pinned source, unedited.</p></div><div class="stage" data-astro-cid-73dgtvns><p class="stage-tab" data-astro-cid-73dgtvns>This draft, as published here</p><div class="stage-in" data-astro-cid-73dgtvns><div data-ui class="panel" data-astro-cid-xmgmjudl><p class="panel-h" data-astro-cid-xmgmjudl>Draft status<code data-astro-cid-xmgmjudl>spec/CONTRACT.json</code></p><dl class="panel-b facts" data-astro-cid-xmgmjudl><div data-astro-cid-xmgmjudl><dt data-astro-cid-xmgmjudl>Version</dt><dd data-astro-cid-xmgmjudl>0.3, draft; not a stable release</dd></div><div data-astro-cid-xmgmjudl><dt data-astro-cid-xmgmjudl>Contract revision</dt><dd data-astro-cid-xmgmjudl><code data-astro-cid-xmgmjudl>0.3-draft.2026-10-18.1</code></dd></div><div data-astro-cid-xmgmjudl><dt data-astro-cid-xmgmjudl>Source revision</dt><dd data-astro-cid-xmgmjudl><code class="rev" data-astro-cid-xmgmjudl>3d22da8566c1</code> in <a href="https://github.com/cmdai-hq/HUMANS.md" data-astro-cid-xmgmjudl>cmdai-hq/HUMANS.md</a></dd></div><div data-astro-cid-xmgmjudl><dt data-astro-cid-xmgmjudl>Licences</dt><dd data-astro-cid-xmgmjudl>Spec, schemas and examples CC BY 4.0; reference tools Apache-2.0</dd></div><div data-astro-cid-xmgmjudl><dt data-astro-cid-xmgmjudl>Plain text</dt><dd data-astro-cid-xmgmjudl><a href="/spec.md" data-astro-cid-xmgmjudl>/spec.md</a> · <a href="/vocabulary" data-astro-cid-xmgmjudl>vocabulary</a> · <a href="/standard/0.3/examples/HUMANS.md" data-astro-cid-xmgmjudl>example profile</a></dd></div></dl><p class="panel-f" data-astro-cid-xmgmjudl><a href="/resources" data-astro-cid-xmgmjudl>Schemas, fixtures and reference tools, with SHA-256 hashes</a></p></div></div></div></div></section><div class="wrap page body" data-astro-cid-xmgmjudl><nav class="rail toc" aria-label="On this page" data-astro-cid-xmgmjudl><p class="toc-h" data-astro-cid-xmgmjudl>On this page</p><ol data-astro-cid-xmgmjudl><li data-astro-cid-xmgmjudl><a href="#1-recognition-and-conformance" data-toc="1-recognition-and-conformance" data-astro-cid-xmgmjudl>1. Recognition and conformance</a></li><li data-astro-cid-xmgmjudl><a href="#2-principles" data-toc="2-principles" data-astro-cid-xmgmjudl>2. Principles</a></li><li data-astro-cid-xmgmjudl><a href="#3-files" data-toc="3-files" data-astro-cid-xmgmjudl>3. Files</a></li><li data-astro-cid-xmgmjudl><a href="#4-authority-and-message-scope" data-toc="4-authority-and-message-scope" data-astro-cid-xmgmjudl>4. Authority and message scope</a></li><li data-astro-cid-xmgmjudl><a href="#5-locations-and-adapters" data-toc="5-locations-and-adapters" data-astro-cid-xmgmjudl>5. Locations and adapters</a></li><li data-astro-cid-xmgmjudl><a href="#6-deterministic-projection" data-toc="6-deterministic-projection" data-astro-cid-xmgmjudl>6. Deterministic projection</a></li><li data-astro-cid-xmgmjudl><a href="#7-resolving-a-person" data-toc="7-resolving-a-person" data-astro-cid-xmgmjudl>7. Resolving a person</a></li><li data-astro-cid-xmgmjudl><a href="#8-absence-and-diagnostics" data-toc="8-absence-and-diagnostics" data-astro-cid-xmgmjudl>8. Absence and diagnostics</a></li><li data-astro-cid-xmgmjudl><a href="#9-experimental-groups" data-toc="9-experimental-groups" data-astro-cid-xmgmjudl>9. Experimental groups</a></li><li data-astro-cid-xmgmjudl><a href="#10-compiling-free-text" data-toc="10-compiling-free-text" data-astro-cid-xmgmjudl>10. Compiling free text</a></li><li data-astro-cid-xmgmjudl><a href="#11-versions-and-changes" data-toc="11-versions-and-changes" data-astro-cid-xmgmjudl>11. Versions and changes</a></li><li data-astro-cid-xmgmjudl><a href="#12-privacy-and-security-limits" data-toc="12-privacy-and-security-limits" data-astro-cid-xmgmjudl>12. Privacy and security limits</a></li></ol></nav><article class="main prose spec-text" data-astro-cid-xmgmjudl><h1 id="humansmd-version-03-draft">HUMANS.md, version 0.3 (draft)</h1>
+<p>A portable file of preferences you approve: how agents write to you, ask for decisions, and interrupt you. It can also hold personal information you choose to share. An integration is required; the file name alone does not make an agent load it.</p>
+<ul>
+<li>Status: unpublished draft; contract revision <strong>0.3-draft.2026-10-18.1</strong>; not a stable release.</li>
+<li>Canonical source: <a href="https://github.com/cmdai-hq/HUMANS.md">cmdai-hq/HUMANS.md</a>. Mirrors pin a source commit and package checksums; the version string alone cannot identify a draft revision.</li>
+<li>Normative package: this document, <a href="/standard/0.3/VOCABULARY.md">vocabulary</a>, <a href="/standard/0.3/schema/humans.schema.json">profile schema</a>, <a href="/standard/0.3/schema/humans-projection.schema.json">projection schema</a>, <a href="/standard/0.3/schema/humans-group.schema.json">group schema</a>, <a href="/standard/0.3/schema/terms.json">terms</a>, <a href="/standard/0.3/schema/instructions.json">instruction sentences</a>, and <a href="/standard/0.3/tests/README.md">vectors</a>.</li>
+<li>Governance and version policy: <a href="/standard/0.3/CONTRIBUTING.md">CONTRIBUTING.md</a>. Changes and rule successors: <a href="/standard/0.3/CHANGELOG.md">CHANGELOG.md</a>, <a href="/standard/0.3/CONFORMANCE.md">CONFORMANCE.md</a>.</li>
+<li>Licenses remain <a href="/standard/0.3/LICENSE">CC BY 4.0</a> for the specification, schemas, vocabulary and examples, and <a href="/standard/0.3/tools/LICENSE">Apache-2.0</a> for reference tools. No cmdAI product is required.</li>
+</ul>
+<p>The key words MUST, MUST NOT, SHOULD, SHOULD NOT and MAY express normative requirements only when capitalized, as in RFC 2119 and RFC 8174. Prose defines behavior beyond JSON Schema; passing a schema alone is not full conformance. If package artifacts disagree, treat this as a specification defect and report it before claiming conformance.</p>
+<p><strong>Owner</strong> means the person described. A <strong>compiler</strong> proposes a profile for their approval. A <strong>consumer</strong> parses, checks visibility and projects a profile. An <strong>adapter</strong> puts that projection in the agent’s supported context surface. A <strong>directory</strong> binds an authenticated organizational identity to a profile; a profile’s own claims do not provide that binding. <strong>Recipient</strong> means the person to whom the agent’s current message is addressed.</p>
+<h2 id="1-recognition-and-conformance">1. Recognition and conformance</h2>
+<p>A profile opens with YAML frontmatter whose <code>humans</code> value is the string <code>"0.3"</code>, or <code>"0.2"</code> for a profile written under the previous draft (§ 11). A file called <code>HUMANS.md</code> may instead be a human-facing index, contributor list or guide. A consumer MUST treat a file without recognized frontmatter as absent, never import its raw text as a fallback.</p>
+<p><strong>Not to be confused with.</strong> Other files share the name or the idea. None of them declares a <code>humans</code> version, so a consumer treats each one as absent.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 1. Recognition and conformance"><table>
+<thead>
+<tr>
+<th>You found…</th>
+<th>What it is</th>
+<th>How a profile differs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A <code>HUMANS.md</code> listing the people behind a project, in the spirit of <a href="https://humanstxt.org">humans.txt</a></td>
+<td>A contributor list</td>
+<td>A profile describes one person, for agents</td>
+</tr>
+<tr>
+<td>A <code>HUMANS.md</code> guiding people who work with an AI assistant, such as <a href="https://github.com/attogram/agents">attogram/agents</a></td>
+<td>Guidance for humans about agents</td>
+<td>The opposite direction</td>
+</tr>
+<tr>
+<td>An output-style skill such as <a href="https://github.com/ayghri/i-have-adhd">i-have-adhd</a></td>
+<td>Formatting rules for your own agent, changed by editing the skill</td>
+<td>Closed fields you approve, covering decisions and interruptions too, readable by other people’s agents</td>
+</tr>
+<tr>
+<td>A working-hours guard such as <a href="https://github.com/thellmwhisperer/human.md">thellmwhisperer/human.md</a> (<code>framework: human-md</code>)</td>
+<td>Allowed hours, breaks and session limits; your own agent stops working outside them</td>
+<td>A profile shapes how agents ask for your attention; <code>quiet_hours</code> holds interruptions and never stops work</td>
+</tr>
+<tr>
+<td>Collaboration rules for one repository, such as <a href="https://github.com/hehamalainen/Humans.md">hehamalainen/Humans.md</a></td>
+<td>Approvals, risk gates and a verification plan for agents working on that code</td>
+<td>Repository rules belong in AGENTS.md; a profile follows the person across repositories</td>
+</tr>
+<tr>
+<td>A file kept from agents, such as <a href="https://github.com/Arcadi4/HUMANS.md">Arcadi4/HUMANS.md</a></td>
+<td>Notes that agents are denied access to</td>
+<td>A profile is written for agents to read</td>
+</tr>
+</tbody>
+</table></div>
+<p>Conformance is declared by role and capability:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 1. Recognition and conformance"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Required behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File / strict writer</td>
+<td>All file, YAML and profile-schema rules, all 25 preference fields, approved changes and visibility; no unknown keys or values</td>
+</tr>
+<tr>
+<td>Core consumer</td>
+<td>Bounded parsing and permissive reading of the supported versions (§ 11), visibility, all three preference blocks, languages, avoid, voluntary notes, staleness, deterministic projection, absence behavior and hierarchy</td>
+</tr>
+<tr>
+<td>Context extension</td>
+<td>Adds declared role, knowledge and decisions to the projection with context staleness</td>
+</tr>
+<tr>
+<td>Identity / directory extension</td>
+<td>Authenticated resolution and sharing policy; never emits directory prose as model instructions</td>
+</tr>
+<tr>
+<td>Experimental group extension</td>
+<td>Deterministic merge and group schema, no active states, no notes or identities, visibility checks per member</td>
+</tr>
+<tr>
+<td>Full consumer</td>
+<td>Core plus context, identity and experimental group conformance; does not imply a deployed organization service</td>
+</tr>
+<tr>
+<td>Adapter / compiler</td>
+<td>Separately tested obligations in §§ 5–6 / § 10; a parser test is not an adapter or compiler test</td>
+</tr>
+</tbody>
+</table></div>
+<p>A core consumer MAY omit the entire <code>context</code> extension when it declares that limitation. It MUST still check recognized context fields for validity. Stored identity and state fields remain valid file data; neither has to be activated to implement personal preferences. Unsupported extensions MUST NOT be passed through as raw text. State activation is outside every conformance level in this draft.</p>
+<h2 id="2-principles">2. Principles</h2>
+<ol>
+<li><strong>Share what you choose. No diagnosis is required or inferred.</strong> The owner may state ADHD, another diagnosis, or other personal information in <code>notes</code>. Health vocabulary is not an injection signal.</li>
+<li><strong>Declared and approved.</strong> A compiler proposes, the owner approves. Consumers do not infer traits, diagnoses or unstated preferences from the profile or other data.</li>
+<li><strong>Scoped data.</strong> Closed fields improve interoperability. Plain text and JSON encoding do not prove prompt-injection safety. Notes are data under the same authority boundary as preferences.</li>
+<li><strong>Describe the actual data flow.</strong> The source is not shared with recipients. If compiled with a hosted assistant, that provider processes it. Approved notes can reach authorized consumers and their model providers.</li>
+<li><strong>Fewer asks, never more rights.</strong> The harness, session and repository keep control of tasks, tools and permissions.</li>
+</ol>
+<h2 id="3-files">3. Files</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 3. Files"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Content</th>
+<th>Normal access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~/.humans/HUMANS.md</code></td>
+<td>Approved canonical YAML frontmatter, no body</td>
+<td>Consumers read it and adapters serve the projection, never the original bytes</td>
+</tr>
+<tr>
+<td><code>~/.humans/source.md</code></td>
+<td>Owner’s free text, any language</td>
+<td>Compiler only on an explicit compilation request; may be processed by its hosted provider</td>
+</tr>
+<tr>
+<td><code>humans/&lt;id&gt;.md</code> or <code>~/.humans/people/&lt;id&gt;.md</code></td>
+<td>Canonical profile, optional human-facing body</td>
+<td>Consumers enforce visibility before serving a projection</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="31-bytes-delimiters-and-yaml">3.1 Bytes, delimiters and YAML</h3>
+<p>Readers and writers MUST apply these checks to original bytes before parsing:</p>
+<ul>
+<li>UTF-8 decoding is fatal: reject malformed, truncated, overlong or surrogate encodings and code points above U+10FFFF. Do not replace bad bytes with U+FFFD. An intentionally encoded U+FFFD is an ordinary scalar value.</li>
+<li>Accept zero or one initial UTF-8 BOM (<code>EF BB BF</code>); remove it for delimiter recognition. A second BOM or U+FEFF elsewhere in the file is invalid.</li>
+<li>The opening line is exactly <code>---</code> followed by LF or CRLF. The next line exactly <code>---</code> closes the frontmatter, followed by LF, CRLF or end of file. Leading spaces, trailing spaces, bare CR and other line endings are invalid delimiters. Mixed LF/CRLF is allowed; a bare CR anywhere in the file is invalid.</li>
+<li>Frontmatter size is <strong>at most 20 KiB = 20,480 bytes</strong>: start immediately after the opening line’s LF and stop immediately before the first hyphen of the closing delimiter. All internal line endings, including the last one before the closing delimiter, count, and so do YAML comments such as the compiled header (§ 10). Delimiter lines and the initial BOM do not count.</li>
+<li>Body size is <strong>at most 4 KiB = 4,096 bytes</strong>: all bytes after the closing delimiter line’s line ending (zero if it ends at EOF). A <code>HUMANS.md</code> has zero body bytes, including whitespace. Other <code>.md</code> profile files may have a human-facing body within the bound. Consumers MUST NOT serve any body.</li>
+<li>Bound the complete read before parsing: at most <strong>24,589 bytes</strong> (20,480 + 4,096 + two 5-byte CRLF delimiter lines + a 3-byte BOM). A bounded read may request one extra byte only to detect overflow. Check the component limits too. Count raw bytes before CRLF normalization, decoding normalization or YAML processing.</li>
+</ul>
+<p>The frontmatter is exactly one YAML 1.2 core-schema document with a mapping root. Validators and consumers MUST reject anchors, aliases, explicit tags, directives, document-end markers, duplicate mapping keys (including equivalent decoded spellings), non-string mapping keys and non-JSON values. Every mapping is processed as data, never as object prototypes or executable constructors. The first exact closing delimiter always terminates frontmatter; later text is body, never a second profile. A document marker encountered as YAML syntax within the extracted frontmatter is invalid. Reject unpaired surrogates in decoded YAML strings and keys, including escapes in unknown fields, before filtering.</p>
+<h3 id="32-identity-and-common-fields">3.2 Identity and common fields</h3>
+<p>All fields are optional except these four: <code>humans</code>, <code>id</code>, <code>name</code>, <code>updated</code>. Absence and an empty optional list both mean no preference. An empty list emits no vote or artificial value; empty projected arrays and blocks are omitted except mandatory <code>withheld</code> / <code>conflicts</code> arrays. The special conservative rule for group <code>knows_well</code> is in § 9.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 3.2 Identity and common fields"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>humans</code></td>
+<td>Required string <code>"0.3"</code>; quoting is necessary to avoid a YAML number. Readers also accept <code>"0.2"</code> (§ 11)</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Required slug <code>[a-z0-9-]{2,64}</code>, unique in its directory; equals the basename without <code>.md</code> except for a file named exactly <code>HUMANS.md</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Required plain text (§ 3.8), 1–80 Unicode scalar values; resolution/UI only, never projected</td>
+</tr>
+<tr>
+<td><code>aliases</code></td>
+<td>Up to 5 distinct plain-text strings, 1–40 scalar values each; resolution/UI only</td>
+</tr>
+<tr>
+<td><code>identities</code></td>
+<td>Closed map of email, Slack, GitHub, GitLab, Entra and Google claims, as constrained by the schema; never proof of identity or projected</td>
+</tr>
+<tr>
+<td><code>languages</code></td>
+<td>Up to 10 distinct ISO 639-1 codes from the schema, in the order the owner prefers to read; messages to the owner use the first, even when the owner writes in another. Task content such as documents, code or site copy keeps the language its task or repository sets</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td>Required calendar-date string <code>YYYY-MM-DD</code>, last owner approval</td>
+</tr>
+<tr>
+<td><code>visibility</code></td>
+<td><code>private</code>, <code>org</code>, <code>anyone_with_file</code> (§ 6.1); omission retains the earlier draft’s <code>org</code> meaning</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dates use the proleptic Gregorian calendar for four-digit years <strong>0000–9999</strong>, including year zero; a leap year is divisible by 4 except centuries not divisible by 400. Date values MUST be strings and real dates. Quoting dates is recommended, not a validity condition when YAML core already produces a string. No host-language year-0–99 substitution is allowed. Staleness uses whole UTC calendar days and an explicit <code>today</code> date; future dates are valid and not stale.</p>
+<p>The filename rule applies in every directory and every input path. A CLI MAY offer an explicitly named draft mode that skips only filename matching and reports that it did so. Canonical <code>validate</code>, sharing and rendering do not inherit such an exemption from a directory name. A draft can also use the filename <code>HUMANS.md</code>.</p>
+<p>New-profile compilers SHOULD propose explicit <code>visibility: private</code>. They MUST preserve an existing profile’s effective visibility, including omitted <code>org</code>, unless the owner explicitly approves a scope change. Omission is not a migration to private and must not be introduced into an existing private profile.</p>
+<h3 id="33-reading-what-i-read">3.3 <code>reading</code>: what I read</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 3.3 reading: what I read"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lead_with</code></td>
+<td><code>tldr</code>, <code>decision_needed</code>, <code>context</code>, <code>question</code>, <code>next_action</code></td>
+<td>What the first line holds. <code>next_action</code>: the next thing the recipient should do</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><code>minimal</code> (≤ 5 lines), <code>short</code> (≤ 1 screen), <code>standard</code>, <code>thorough</code></td>
+<td>Target length</td>
+</tr>
+<tr>
+<td><code>max_words</code></td>
+<td>integer 20–2000</td>
+<td>Cap on the entire message, including any appendix; overrides <code>length</code> (§ 4)</td>
+</tr>
+<tr>
+<td><code>structure</code></td>
+<td><code>bullets</code>, <code>prose</code>, <code>mixed</code>, <code>numbered</code></td>
+<td>Body layout. <code>numbered</code>: steps and questions carry numbers, so the recipient can answer by number</td>
+</tr>
+<tr>
+<td><code>visual</code></td>
+<td>ordered list from <code>table</code>, <code>diagram</code>, <code>chart</code>, <code>example</code>, <code>text</code></td>
+<td>Preferred forms, most wanted first. A list starting with <code>table</code> or <code>diagram</code> means “visual first”.</td>
+</tr>
+<tr>
+<td><code>technical_depth</code></td>
+<td><code>non_technical</code>, <code>balanced</code>, <code>expert</code></td>
+<td>Level of detail</td>
+</tr>
+<tr>
+<td><code>jargon</code></td>
+<td><code>avoid</code>, <code>define</code>, <code>ok</code></td>
+<td>Acronyms and trade terms</td>
+</tr>
+<tr>
+<td><code>tone</code></td>
+<td><code>direct</code>, <code>neutral</code>, <code>warm</code></td>
+<td>Register</td>
+</tr>
+<tr>
+<td><code>evidence</code></td>
+<td><code>numbers_and_sources</code>, <code>key_numbers</code>, <code>light</code></td>
+<td>How much proof to show</td>
+</tr>
+<tr>
+<td><code>uncertainty</code></td>
+<td><code>flag_explicitly</code>, <code>inline</code></td>
+<td><code>flag_explicitly</code>: say what was checked and what was assumed</td>
+</tr>
+<tr>
+<td><code>close_with</code></td>
+<td><code>next_action</code>, <code>one_question</code>, <code>nothing</code></td>
+<td>What the last line holds: one small, concrete action the recipient can take right away; the single most useful open question; or nothing after the content (no closing offer, question or next step)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>close_with</code> never invents an action or a question: with nothing to put there, the message ends with its content. A closing question counts toward <code>asks_per_message</code>, and a closing action follows <code>out_of_scope_steps</code>.</p>
+<p><code>minimal</code>, <code>short</code> and <code>max_words</code> compress a message; they never hide what changes its result. Within the bound, a compressed message puts first any failure, skipped or unverified step, risk to data or security, change beyond the request, or decision the recipient must make, and, if it left items out, says how many. The list is closed and conditional: a message with none of these items says nothing about them, and a message that left nothing out says nothing about omissions. The bound still holds: when those items alone exceed it, the most severe come first and the count covers the rest. The count is content, not an offer: it fits <code>close_with: nothing</code> and is not a question under <code>asks_per_message</code>.</p>
+<h3 id="34-deciding-what-i-decide">3.4 <code>deciding</code>: what I decide</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 3.4 deciding: what I decide"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reversible</code></td>
+<td><code>decide_and_report</code>, <code>ask</code></td>
+<td>For a choice the agent is already allowed to make and that can be undone: make it and report, or ask first</td>
+</tr>
+<tr>
+<td><code>batch_questions</code></td>
+<td><code>end_of_task</code>, <code>as_they_come</code></td>
+<td>When open questions reach the owner</td>
+</tr>
+<tr>
+<td><code>default_answer</code></td>
+<td><code>always</code>, <code>when_obvious</code></td>
+<td>Whether each question carries the agent’s proposed answer</td>
+</tr>
+<tr>
+<td><code>asks_per_message</code></td>
+<td><code>one</code>, <code>few</code>, <code>any</code></td>
+<td>Requests per message</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><code>recommendation_first</code>, <code>options_then_recommendation</code>, <code>options_only</code></td>
+<td>How a choice is laid out</td>
+</tr>
+<tr>
+<td><code>question_style</code></td>
+<td><code>open</code>, <code>multiple_choice</code>, <code>yes_confirms_recommendation</code></td>
+<td>How each question is phrased, and so how much effort an answer takes: open, answered in the recipient’s own words; short labelled options, answered with a label; or phrased so that a plain “yes” accepts the agent’s recommendation (“I’ll set <code>private</code>, OK?”)</td>
+</tr>
+<tr>
+<td><code>challenge</code></td>
+<td><code>welcome_early</code>, <code>after_draft</code>, <code>on_request</code></td>
+<td>When to raise a disagreement</td>
+</tr>
+<tr>
+<td><code>out_of_scope_steps</code></td>
+<td><code>omit_unless_blocking</code>, <code>list</code></td>
+<td>Whether to list follow-ups outside the task (merge, publish, deploy) in the closing lines; never whether to do them</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>asks_per_message</code> says how many questions a message holds, <code>default_answer</code> whether each carries a recommendation, <code>format</code> in which order options and recommendation appear, and <code>question_style</code> what shape the question itself takes. <code>format: options_only</code> takes precedence over <code>default_answer</code>: no recommendation is given. Without a recommendation (none is clear, <code>default_answer: when_obvious</code> and the choice is not obvious, or <code>format: options_only</code>), <code>yes_confirms_recommendation</code> falls back to <code>multiple_choice</code>. A question with no options to offer, such as a request for a missing fact, is asked <code>open</code> whatever the style.</p>
+<h3 id="35-interrupting-when-to-interrupt-me">3.5 <code>interrupting</code>: when to interrupt me</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 3.5 interrupting: when to interrupt me"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interrupt_for</code></td>
+<td><code>blocking_only</code>, <code>blocking_or_risky</code>, <code>anything</code></td>
+<td>What justifies stopping to ask</td>
+</tr>
+<tr>
+<td><code>group_by</code></td>
+<td><code>project</code>, <code>none</code></td>
+<td>How several pending messages are grouped</td>
+</tr>
+<tr>
+<td><code>when_focused</code></td>
+<td><code>summary_later</code>, <code>urgent_only</code>, <code>as_usual</code></td>
+<td>Reserved focus preference; stored but inactive in this draft</td>
+</tr>
+<tr>
+<td><code>channel_hint</code></td>
+<td><code>async_written</code>, <code>sync_call</code>, <code>either</code></td>
+<td>Preferred channel for complex topics</td>
+</tr>
+<tr>
+<td><code>progress_updates</code></td>
+<td><code>every_message</code>, <code>phase_changes</code>, <code>end_only</code></td>
+<td>How a long task reports where it stands: in every message (“step 3 of 5”), only when a phase starts or ends, or once at the end</td>
+</tr>
+<tr>
+<td><code>quiet_hours</code></td>
+<td>mapping: <code>time_zone</code>, <code>from</code>, <code>to</code>, optional <code>all_day</code></td>
+<td>When no agent interrupts the owner (below)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>progress_updates</code> shapes the progress an agent reports in the conversation where the task runs. It never justifies a new message or notification elsewhere; <code>interrupt_for</code> alone decides that.</p>
+<p><code>quiet_hours</code> holds closed values only:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">interrupting</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  quiet_hours</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    time_zone</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Europe/Paris</span></span>
+<span class="line"><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"19:00"</span></span>
+<span class="line"><span style="color:#85E89D">    to</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"08:00"</span></span>
+<span class="line"><span style="color:#85E89D">    all_day</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">saturday</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">sunday</span><span style="color:#E1E4E8">]</span></span></code></pre>
+<ul>
+<li><code>time_zone</code> (required) is a name from the pinned list in the profile schema: the names in <code>zone.tab</code> of IANA tz database release 2026e, plus <code>UTC</code> (<a href="/standard/0.3/VOCABULARY.md">VOCABULARY.md</a>). Quiet hours are evaluated in this zone only; nobody guesses another.</li>
+<li><code>from</code> and <code>to</code> (required) are <code>HH:MM</code> strings on a 24-hour clock, on the hour or half hour. They define a daily range that includes <code>from</code> and excludes <code>to</code>; when <code>from</code> is later than <code>to</code>, the range crosses midnight. Equal values are invalid.</li>
+<li><code>all_day</code> lists weekdays, <code>monday</code> to <code>sunday</code>, that are quiet from midnight to midnight. Like every optional list (§ 3.2), <code>all_day: []</code> is valid and means no whole quiet day; the projection omits it.</li>
+</ul>
+<p>An instant is quiet when, converted to local time in <code>time_zone</code>, its weekday is in <code>all_day</code> or its time falls in the daily range. During quiet hours an agent does not interrupt the owner, whatever <code>interrupt_for</code> allows: it holds what it would raise until the quiet time ends, or, when it cannot hold it, says so to the person it works for instead of interrupting. An agent that cannot tell the current local time in that zone says so rather than guessing. Quiet hours change nothing else. An agent still replies in a conversation the owner is having with it, keeps working on its task, and follows an explicit instruction from its own user (§ 4). The field holds interruptions, never work: it does not stop, delay or schedule a task.</p>
+<p>The field states times, never a reason. Consumers MUST NOT infer or ask for a reason, and MUST NOT use quiet hours to assess availability, working time or performance (§ 12). A time zone indicates an approximate location; it is shared under the profile’s visibility like any other field. Stored variants cannot change <code>quiet_hours</code>, and groups omit it (§ 9).</p>
+<h3 id="36-context-and-avoid">3.6 Context and avoid</h3>
+<p><code>context</code> is an extension containing owner-declared context, not inferred expertise:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 3.6 Context and avoid"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>role</code></td>
+<td>One role from <a href="/standard/0.3/VOCABULARY.md">VOCABULARY.md</a></td>
+</tr>
+<tr>
+<td><code>knows_well</code>, <code>knows_little</code></td>
+<td>Up to 15 distinct topics each from the vocabulary</td>
+</tr>
+<tr>
+<td><code>decides</code></td>
+<td>Up to 10 distinct decision categories; descriptive responsibility, not tool authorization</td>
+</tr>
+<tr>
+<td><code>context_updated</code></td>
+<td>Calendar-date string; defaults to <code>updated</code> for staleness calculations</td>
+</tr>
+</tbody>
+</table></div>
+<p>A compiler may propose context from a résumé only when the owner supplies or authorizes that source, with provenance and inferred mappings visible at approval. Consumers do not infer context. <code>context.stale</code> in the projection is true after <strong>more than 183 days</strong>; raw <code>context_updated</code> is not projected. A profile is stale after <strong>more than 365 days</strong>. Stale data is flagged, not silently refreshed.</p>
+<p><code>avoid</code> is a distinct-item list from: <code>walls_of_text</code>, <code>filler_intro</code>, <code>filler_outro</code>, <code>hedging</code>, <code>emoji</code>, <code>rhetorical_questions</code>, <code>multiple_asks</code>, <code>unexplained_acronyms</code>, <code>passive_voice</code>, <code>exclamation</code>, <code>long_preamble</code>, <code>nested_bullets</code>, <code>sarcasm</code>, <code>recap</code>, <code>idioms</code>. <code>recap</code> is a closing restatement of what the message or the work already showed. <code>idioms</code> are figures of speech and stock phrases such as “get the ball rolling”.</p>
+<h3 id="37-stored-variants-no-activation">3.7 Stored variants, no activation</h3>
+<p><code>states</code> may store <code>incident</code>, <code>low_bandwidth</code>, <code>focus</code>, <code>mobile</code>, each a partial mapping of the 24 preference fields other than <code>quiet_hours</code>, using their unique bare names. These variants and <code>interrupting.when_focused</code> are <strong>inactive</strong> in this draft. Consumers MUST NOT apply, infer or project them. Public individual, group and CLI entry points MUST reject a caller-supplied <code>state</code> or <code>activeStates</code> argument, even if empty or paired with <code>owner: true</code>; silently ignoring it is not sufficient. There is no channel-state exception.</p>
+<p>A future activation extension needs a separate versioned contract: authenticated owner/channel authority, attested provenance, start time, default expiry of 2 hours, maximum 12 hours, withdrawal on expiry, order <code>incident</code> then <code>low_bandwidth</code> then <code>focus</code> then <code>mobile</code>, and no activation history. These are requirements for future work, not active features or promises that the prototype already meets. Neither a boolean supplied by an agent nor an id claim is authentication.</p>
+<h3 id="38-plain-text">3.8 Plain text</h3>
+<p><code>name</code>, <code>aliases</code> and <code>notes</code> are one-line plain text. Character limits count Unicode scalar values, not UTF-16 code units or UTF-8 bytes. Validators MUST reject:</p>
+<ul>
+<li>Unicode general categories Cc, Cf, Cs, Co, Cn, Zl and Zp; any Zs space except U+0020. Category checks use Unicode 17.0. A runtime with other Unicode tables must supply equivalent checks to claim full conformance.</li>
+<li>Any of <code>` * _ # &lt; &gt; [ ] { } | ~ \</code> (Markdown/HTML syntax).</li>
+<li>Any ASCII <code>scheme://</code>; case-insensitive <code>http:</code>, <code>https:</code>, <code>mailto:</code>, <code>javascript:</code>, <code>vbscript:</code>, <code>data:</code>, <code>file:</code>, <code>ftp:</code>, <code>tel:</code>, <code>sms:</code>, <code>ssh:</code>, <code>blob:</code>, <code>ws:</code>, <code>wss:</code> at the beginning or after a non-ASCII-alphanumeric character; a similarly bounded <code>www.</code> address; or an email-like <code>nonspace@nonspace.nonspace</code> string. The exact schema patterns are normative.</li>
+</ul>
+<p><code>notes</code> contains 1–280 scalar values of owner-approved preferences or personal information. For example, <code>I have ADHD.</code> is valid. These technical restrictions do not classify subject matter or establish safety against instructions expressed in ordinary words.</p>
+<h3 id="39-owner-choice">3.9 Owner choice</h3>
+<p>Validators, compilers and consumers MUST NOT blacklist medical words or reject or withhold a note merely because it mentions health, disability or a diagnosis, in any language. They MUST NOT infer, require or silently add a diagnosis. A compiler MUST preserve a personal statement the owner asks to retain, subject to the same technical limits as any note; if it cannot fit, the preview explains the loss and requests an ordinary edit or choice. It does not silently substitute a sanitized preference. There is no special medical approval flow.</p>
+<p>A key such as <code>diagnosis</code> remains unknown to this closed schema, exactly like <code>favorite_color</code>: writers reject it and known-version readers ignore it. This is not a special forbidden-key taxonomy; the owner’s statement belongs in <code>notes</code>.</p>
+<h3 id="310-strict-writing-and-permissive-reading">3.10 Strict writing and permissive reading</h3>
+<p>A writer/validator MUST reject unknown keys and unsupported values, and writes <code>humans: "0.3"</code>. A reader MUST first enforce byte/YAML/scalar constraints, then check the version, reconstruct recognized fields and apply these rules:</p>
+<ul>
+<li>A missing, malformed or unsupported <code>humans</code> version yields absence (§ 8). No attempt to interpret a future version as 0.3.</li>
+<li>For a supported version, unknown keys and their entire subtrees are ignored at every recognized object level. They are never included in model context or diagnostics.</li>
+<li>Unknown optional enum values and unknown items in vocabulary/enum lists are omitted; known items keep their order. A recognized object that loses a required member this way is omitted with it: an unknown <code>quiet_hours.time_zone</code> omits <code>quiet_hours</code>. Validity checks (type, length, cardinality, uniqueness, dates, text syntax, ranges) still apply to the supplied recognized fields before unknown enum values are removed. A wrong container or scalar type, invalid date, out-of-range number, unsafe recognized text, missing/invalid required field or filename mismatch makes the profile absent. <code>null</code> is not absence.</li>
+<li><strong>Visibility exception:</strong> an explicitly invalid or unknown visibility makes the entire profile absent. It must never fall back to <code>org</code>. Unknown keys cannot define a new sharing rule. In a <code>"0.3"</code> profile, <code>public</code> is such an unknown value. In a <code>"0.2"</code> profile, a reader reads <code>public</code> as <code>anyone_with_file</code>, the same meaning under its 0.3 name; no other value is mapped.</li>
+<li>Empty resulting optional arrays/objects are omitted. Known state variants are validated but stay inactive. A note withheld under § 6.2 remains a valid file value.</li>
+</ul>
+<p><code>validate</code> reports success/exit 0 when there are no validity errors; a sharing warning alone cannot change that to failure. A stricter readiness command must have a distinct name and document its additional criteria. No mode prints untrusted diagnostics into agent context.</p>
+
+
+<h2 id="10-compiling-free-text">10. Compiling free text</h2>
+<ol>
+<li>Read <code>~/.humans/source.md</code> only when the owner requests compilation. Announce the actual compiler/provider: source processed by a hosted model leaves the device for that provider, even when the command runs locally. Do not claim an entirely local path without implementing and testing one.</li>
+<li>Accept source headings <code>## What I read</code>, <code>## What I decide</code>, <code>## When to interrupt me</code> and the French equivalents <code>## Ce que je lis</code>, <code>## Ce que je décide</code>, <code>## Quand tu m'interromps</code>. Tools MUST accept both sets. Ignore source HTML comments as compilation instructions. A free-text proposal edits this source, never inserts prose into canonical frontmatter.</li>
+<li>Propose fields and notes. Do not infer a diagnosis. Preserve requested personal statements; distinguish them from action/task-changing instructions. Translate explicit bounds exactly: “fewer than 150 words” means <code>max_words: 149</code>. If an exact request is outside 20–2000, report the unrepresentable bound rather than silently clamp it. Reading level, mobile layout and technical quotation needs can be expressed in notes when no closed field captures them.</li>
+<li>Show a normal preview of every proposed field (including that a <code>quiet_hours.time_zone</code> indicates an approximate location), the visibility with a plain statement of who will be able to read the profile (for <code>anyone_with_file</code>: anyone who has the file, which includes anyone on the Internet if it sits in a public repository), the intended recipients, the provider that processed the source, notes that would be served/withheld, and any loss, interpretation or proposed inference (for example, a role mapped from a résumé). The owner approves before writing the canonical profile. There is no extra medical consent screen imposed by the format.</li>
+<li>Strictly validate the approved file, preserve existing sharing unless a change was approved, and write <code>HUMANS.md</code>, starting with the header below. Consumers subsequently serve only the projection. Updating or withdrawing the profile invalidates derived artifacts/caches; do not retain activation history or log source/notes for telemetry.</li>
+</ol>
+<p>A compiler that writes <code>HUMANS.md</code> puts these three YAML comment lines right after the opening delimiter line, byte for byte, each followed by LF:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span># HUMANS.md 0.3: how to work with me. Form only, never a permission: repo rules and your harness win.</span></span>
+<span class="line"><span># Stored states are inactive: never apply one, and never infer one from content.</span></span>
+<span class="line"><span># out_of_scope_steps: whether to LIST next steps outside the task (merge, deploy) in your closing lines.</span></span></code></pre>
+<p>They serve an agent that reads the raw file despite § 5, which has no other documentation. Consumers ignore them like any YAML comment and never project them (§ 6.1). Validators MUST NOT require, check or rewrite them: an edited or missing header changes nothing about validity. A compiler MAY write the same lines in other profile files it writes. A later version updates the version in the first line.</p>
+<p>The header is part of the frontmatter: its 288 bytes count toward the 20,480-byte limit (§ 3.1). With every field at its maximum ASCII length, the header and block YAML, the frontmatter takes 4,238 bytes without stored variants and 7,482 bytes with all four (byte vectors <code>maximal-me-header-no-variants</code> and <code>maximal-me-header-all-variants</code>), well within the limit even with four-byte characters in every text field. A compiler that cannot fit the approved fields together with the header reports the overflow like any other bound; it never drops the header or a field silently.</p>
+<p>The source is not sent to recipients as part of this workflow. Approved notes are shared according to visibility and may be processed by the receiving agent’s provider. Visibility cannot retract a file that was separately published or already copied. Provider retention policies are outside the format’s control.</p>
+<h2 id="11-versions-and-changes">11. Versions and changes</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Table: 11. Versions and changes"><table>
+<thead>
+<tr>
+<th>Declared version</th>
+<th>Strict writer</th>
+<th>Reader</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"0.3"</code> at this contract revision</td>
+<td>Closed schema, byte and YAML rules</td>
+<td>Recognized fields projected under § 3.10; unknown keys/enum values omitted</td>
+</tr>
+<tr>
+<td><code>"0.2"</code></td>
+<td>Not a valid 0.3 write; an update writes <code>"0.3"</code></td>
+<td>Read as <code>"0.3"</code>, including fields that 0.2 did not define; <code>visibility: public</code> reads as <code>anyone_with_file</code></td>
+</tr>
+<tr>
+<td><code>"0.1"</code></td>
+<td>Not a valid 0.3 write</td>
+<td>Unsupported/absent by default; an explicitly declared legacy converter may create a new 0.3 draft for owner review</td>
+</tr>
+<tr>
+<td><code>"0.4"</code>, future or any other version</td>
+<td>Unsupported</td>
+<td>Absent with bounded local diagnostic; no guessed forward compatibility</td>
+</tr>
+<tr>
+<td>Missing or wrong type</td>
+<td>Invalid</td>
+<td>Absent</td>
+</tr>
+</tbody>
+</table></div>
+<p>Version 0.3 adds fields and values to 0.2 and renames one value: <code>visibility: public</code> becomes <code>anyone_with_file</code>, with the same meaning. Nothing else is removed or renamed, and no 0.2 value changes meaning. A reader therefore reads a <code>"0.2"</code> profile with the 0.3 rules and that one mapping. A writer that updates a 0.2 profile writes <code>"0.3"</code> and, if present, renames <code>public</code>; no other change is needed. Draft revisions may still change semantics before a stable release: draft consumers pin a source commit and content checksums, record their supported revision and detect mirror drift automatically.</p>
+<p>After a stable release, changes to fields, enum vocabularies, meaning, projection or acceptance rules require a new declared format version and migration/compatibility vectors; editorial corrections retain the format version with a new source revision. Published version artifacts are immutable. <a href="/standard/0.3/CONTRIBUTING.md">CONTRIBUTING.md</a> defines proposals, maintainer decisions, changelogs and release gates. No implementation can claim support for arbitrary future versions.</p>
+<h2 id="12-privacy-and-security-limits">12. Privacy and security limits</h2>
+<p>The profile is untrusted data read by software that may have tools. Bounded decoding, strict writes, permissive reconstruction, scoped notes and static serialization reduce exposure; they do not prove that a model will obey the authority boundary. Real adapter tests must cover note, comment, body, unknown key, directory and error channels, plus repository/task conflicts and permissions.</p>
+<p>Owner approval and trusted audience checks are implementation duties. CODEOWNERS, <code>owner: true</code>, <code>identities</code> and filenames do not independently prove ownership. Voluntary disclosure in a profile does not consent to telemetry, evaluation or collection by another product. Assessing, ranking, assigning work or monitoring people is outside this specification’s purpose; this statement does not add restrictions to the applied licenses.</p>
+<p>Group fusion is experimental with no anonymity, presence or orchestration guarantee. The public normative package does not include a hosted organization service or proprietary product code. Native integrations need their own evidence; this draft does not establish productivity gains, automatic adoption, universal injection resistance or legal compliance.</p>
+</article></div><section class="band wrap" aria-labelledby="band-title" data-astro-cid-ypwl2rp7><h2 id="band-title" data-astro-cid-ypwl2rp7>Write yours.</h2><div class="band-side" data-astro-cid-ypwl2rp7><p data-astro-cid-ypwl2rp7>Three steps, about ten minutes, nothing to install until you check the result.</p><p class="band-actions" data-astro-cid-ypwl2rp7><a class="btn btn-primary" href="/#start" data-astro-cid-ypwl2rp7>Start with your own words</a><a class="band-link" href="/standard/0.3/examples/HUMANS.md" data-astro-cid-ypwl2rp7>Read the example profile</a></p></div></section></main><footer class="wrap site-footer" data-astro-cid-hkbrpulz><div data-astro-cid-hkbrpulz><p data-astro-cid-hkbrpulz><strong data-astro-cid-hkbrpulz>HUMANS.md</strong> is an open format. Spec under CC BY 4.0; reference tools, plugins and command line under Apache-2.0. It never requires a cmdAI product.</p><p data-astro-cid-hkbrpulz>Made by <a href="https://cmdai.fr" data-astro-cid-hkbrpulz>cmdAI</a>. <a href="https://humanload.dev" data-astro-cid-hkbrpulz>Humanload</a> <a href="/implementations#humanload" data-astro-cid-hkbrpulz>integration is planned</a>. The organization MCP server remains a private prototype.</p></div><nav aria-label="Footer" data-astro-cid-hkbrpulz><a href="/what-is-humans-md" data-astro-cid-hkbrpulz>What is HUMANS.md, without code</a><a href="/spec" data-astro-cid-hkbrpulz>Spec</a><a href="/agents-md-vs-humans-md" data-astro-cid-hkbrpulz>AGENTS.md vs HUMANS.md</a><a href="/implementations" data-astro-cid-hkbrpulz>Implementations</a><a href="/faq" data-astro-cid-hkbrpulz>FAQ</a><a href="/resources" data-astro-cid-hkbrpulz>Downloads</a><a href="/llms.txt" data-astro-cid-hkbrpulz>llms.txt</a><a href="https://github.com/cmdai-hq/HUMANS.md" data-astro-cid-hkbrpulz>GitHub</a><a href="/third-party-notices.txt" data-astro-cid-hkbrpulz>Third-party notices</a></nav></footer><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"58ccf903b48e41d198a029a16e95e902","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body></html><script type="module">var e=new Map([...document.querySelectorAll(`[data-toc]`)].map(e=>[e.dataset.toc,e])),t=[...document.querySelectorAll(`.spec-text h2[id]`)].filter(t=>e.has(t.id));if(t.length){let n=!1,r=()=>{n=!1;let r=t.filter(e=>e.getBoundingClientRect().top<innerHeight*.3).pop();e.forEach((e,t)=>{t===r?.id?e.setAttribute(`aria-current`,`location`):e.removeAttribute(`aria-current`)})},i=()=>{n||(n=!0,requestAnimationFrame(r))};addEventListener(`scroll`,i,{passive:!0}),addEventListener(`resize`,i),r()}</script>
