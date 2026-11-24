@@ -1,0 +1,387 @@
+<h1 align="center">PanWatch — Self-hosted AI stock monitoring</h1>
+
+<p align="center">
+  <a href="README.md">English</a> | <a href="README.zh-CN.md">简体中文</a> | <a href="README.ja.md">日本語</a>
+</p>
+
+<p align="center">
+  Monitor A-shares, Hong Kong, and U.S. stocks, manage your portfolios, and research ideas with <a href="https://github.com/TauricResearch/TradingAgents">TradingAgents</a>. Self-host PanWatch with your preferred OpenAI-compatible provider or local models through Ollama.
+</p>
+
+<p align="center">
+  <a href="#-feature-overview">Feature overview</a> · <a href="#core-features">Core features</a> · <a href="#quick-start">Quick start</a> · <a href="#reference">Reference</a> · <a href="#support-the-project">Support</a> · <a href="#contributing">Contributing</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/TNT-Likely/PanWatch/stargazers"><img src="https://img.shields.io/github/stars/TNT-Likely/PanWatch?style=flat&amp;logo=github&amp;color=yellow" alt="GitHub stars" /></a>
+  <a href="https://hub.docker.com/r/sunxiao0721/panwatch"><img src="https://img.shields.io/docker/pulls/sunxiao0721/panwatch?logo=docker&amp;label=docker%20pulls&amp;color=2496ED" alt="Docker Pulls" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a>
+  <a href="https://github.com/TNT-Likely/PanWatch/commits/main"><img src="https://img.shields.io/github/last-commit/TNT-Likely/PanWatch" alt="Last commit" /></a>
+  <a href="https://github.com/TNT-Likely/PanWatch"><img src="https://img.shields.io/badge/PWA-installable-5A0FC8?logo=pwa&amp;logoColor=white" alt="PWA" /></a>
+</p>
+
+<p align="center">
+  <a href="https://www.star-history.com/tnt-likely/panwatch">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=TNT-Likely/PanWatch&type=trending&theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=TNT-Likely/PanWatch&type=trending" />
+      <img alt="GitHub Trending Repository of the Day" src="https://api.star-history.com/badge?repo=TNT-Likely/PanWatch&type=trending" />
+    </picture>
+  </a>
+</p>
+
+![PanWatch TradingAgents deep-analysis demo](docs/screenshots/tradingagents-demo.gif)
+
+> 🧠 **Start from a portfolio holding → let a nine-agent TradingAgents research team analyze it → follow the bull/bear debate and risk review → receive a PM decision memo and the complete reasoning trail in your messaging app within 3–5 minutes.**
+
+<details open>
+<summary>❤️ Sponsors</summary>
+
+<a href="https://modelflare.dev/sign-up?utm_source=github&utm_campaign=panwatch"><img src="./docs/sponsors/modelflare_banner_en.png" alt="Modelflare" width="720"></a>
+
+Thanks to **Modelflare** for sponsoring this project! Full-capability, stable models without dilution, for low-cost access to global SOTA models. The site is operated by the US LLC entity Havenbyte LLC, supporting mainstream models such as GPT, Claude, Gemini, and Grok along with common compatibility protocols, plus 40+ image and video models, and compliant business cooperation with mainland China. The designated OpenAI group comes with a **65% / 75% / 85% daily cache-hit-rate guarantee**; a single top-up of **US$20 unlocks GPT at 0.015x**, and **US$50 unlocks Claude at 0.03x**. [**Sign up via the dedicated link**](https://modelflare.dev/sign-up?utm_source=github&utm_campaign=panwatch)
+
+<table>
+  <tr>
+    <td><a href="https://88api.ai/sign-up?aff=W38W"><img src="./docs/sponsors/88api-logo.png" alt="88API" width="120"></a></td>
+    <td><a href="https://88api.ai/sign-up?aff=W38W"><b>88API Token Aggregation Platform</b></a><br><br>🧠 Access language and coding models including GPT, Claude, Gemini, Grok, DeepSeek, Kimi, and GLM;<br>🎨 Image models: GPT-Image, Gemini, Grok, and more;<br>🎬 Video models: Seedance, Veo, MiniMax H3, Kling, Grok, and more;<br>🎙️ Speech capabilities: Whisper, TTS, and more. From copywriting and image generation and editing to video generation and voiceovers.<br>🎁 New users receive trial credits upon registration to test model capabilities. Live customer support is available on the site!<br>👉 Operated by a registered Hong Kong company · Stable availability · Fully operational, full-capability service · No reduced model intelligence · Invoices available<br><br><a href="https://88api.ai/sign-up?aff=W38W"><b>Register now →</b></a></td>
+  </tr>
+</table>
+
+</details>
+
+## 📸 Feature Overview
+
+The screenshots below use the English interface; Simplified Chinese is available throughout the same product surfaces.
+
+| Portfolio · Multi-account overview | Opportunities · AI-scored ideas |
+|:---:|:---:|
+| ![Portfolio management](./docs/screenshots/portfolio.png) | ![AI-scored opportunities](./docs/screenshots/opportunities.png) |
+| **Paper trading · Equity curve and performance** | **Deep stock analysis** |
+| ![Paper trading](./docs/screenshots/papertrading.png) | ![Stock details](./docs/screenshots/stock-detail.png) |
+| **Technical confluence · MACD/RSI/KDJ at a glance** | **Price alerts · Combined conditions** |
+| ![Technical indicators](./docs/screenshots/technicals.png) | ![Price alerts](./docs/screenshots/alerts.png) |
+
+<details>
+<summary>Mobile screenshots</summary>
+
+<img src="./docs/screenshots/mobile.png" width="300" /> <img src="./docs/screenshots/mobile-detail.png" width="300" />
+
+> 📱 PanWatch is an installable PWA and can be added to your mobile home screen like a native app.
+
+</details>
+
+> 💡 If PanWatch is useful to you, please consider giving the project a ⭐ **Star**. It is the best way to support the project and help more people discover it.
+
+## Core Features
+
+| Capability | What you can do |
+|---|---|
+| **Portfolio** | Manage multiple brokerage accounts, track holdings and P&L, and set trading styles. |
+| **AI research** | Follow technical, sentiment, news, and fundamentals analysis through debate, risk review, and a portfolio-manager decision. |
+| **Scheduled agents** | Run pre-market, intraday, and closing workflows on eligible exchange trading days using your configured schedules. |
+| **Price alerts** | Combine conditions with AND/OR logic and configure cooldowns, daily limits, expiration, and notification channels. |
+| **Opportunities** | Review ranked candidates with entry levels, targets, and risk context. |
+| **Paper trading** | Simulate signal-based entries and exits, then track equity and performance. |
+| **Notifications** | Deliver reports and alerts through Telegram, WeCom, DingTalk, Feishu, Bark, or webhooks. |
+| **Mobile** | Install the PWA on your home screen and use the same workspace on your phone. |
+
+Stock and listed ETF search, watchlists, holdings, price alerts, quotes and candlesticks share the same workflow across mainland China, Hong Kong and US markets. Search by code or name (for example, `510300`, `159915`, `02800` or `SPY`). The asset type is saved with each instrument; select **ETF** for funds whose provider name does not identify them as ETFs.
+
+ETF deep analysis uses fund-specific context and does not substitute company financial statements. Fund holdings, NAV, fees and tracking error are not yet supplied as structured data. Paper trading continues to use its existing market rules and cost model; ETF-specific T+0 exceptions and fee schedules are not modeled.
+
+## Quick Start
+
+```bash
+docker run -d \
+  --name panwatch \
+  --restart unless-stopped \
+  -e TZ=Asia/Shanghai \
+  -p 8000:8000 \
+  -v panwatch_data:/app/data \
+  sunxiao0721/panwatch:latest
+```
+
+Open `http://localhost:8000` and create your login credentials.
+
+Set `TZ` explicitly for background schedules and notification quiet hours, for example
+`-e TZ=UTC` or `-e TZ=America/New_York`. The image defaults to `Asia/Shanghai` and does
+not detect the host timezone. Interface timestamps and alert expiry inputs use the
+browser timezone. [Timezone policy](docs/timezones.md)
+
+<details>
+<summary>Initial setup</summary>
+
+1. Open the web interface and create your login credentials.
+2. The main tour opens on first sign-in and follows stocks, quotes, AI setup and a first analysis. Required steps cannot be skipped; you can pause and resume. Reopen it from the **Guide center**, which also offers opportunities, paper trading, assistant, daily tasks and data sources, each with saved progress and replay. Click highlighted controls directly. The main tour verifies saved actions or successful checks; exploration routes record instructions you acknowledge.
+3. In the main tour, configure a service in **Settings → AI Services**, set the default model, and test the connection before explicitly generating your first analysis. This action uses your model quota; its result stays on the page.
+4. Optionally create a price alert and test a notification channel. You can defer or resume the guide; progress survives browser changes and service restarts. A changed model or channel configuration needs a new successful test.
+5. Enable scheduled agents or explore TradingAgents after the basics work. These are configured separately from the first analysis.
+
+</details>
+
+<details>
+<summary>Docker Compose</summary>
+
+```yaml
+services:
+  panwatch:
+    image: sunxiao0721/panwatch:latest
+    container_name: panwatch
+    environment:
+      TZ: "Asia/Shanghai"
+    ports:
+      - "8000:8000"
+    volumes:
+      - panwatch_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  panwatch_data:
+```
+
+```bash
+docker compose up -d
+```
+
+Change `environment.TZ` to your IANA timezone and run `docker compose up -d` to recreate
+the container. Review existing cron and quiet-hour wall times before changing it;
+the same `09:00` schedule will run at a different instant. Keep the data volume.
+
+</details>
+
+<details>
+<summary>First startup and browser installation</summary>
+
+The image includes Playwright's system dependencies. Chromium's headless shell for screenshots is downloaded on first startup into the mounted volume (default `/app/data/playwright`), which requires network access and can take a few minutes.
+
+If you do not need browser features such as screenshots, set `PLAYWRIGHT_SKIP_BROWSER_INSTALL=1` to skip this installation.
+
+</details>
+
+## Upgrade PanWatch for the mobile app
+
+The native app connects to your PanWatch server over HTTPS. Upgrade to [PanWatch 0.24.0](https://github.com/TNT-Likely/PanWatch/releases/tag/0.24.0) for the mobile notification inbox, account-level portfolio details and conversations grounded in your server’s data. [0.23.0](https://github.com/TNT-Likely/PanWatch/releases/tag/0.23.0) supports briefings, holdings metrics, price alerts and screening. Basic mobile connections are supported from [0.21.0](https://github.com/TNT-Likely/PanWatch/releases/tag/0.21.0).
+
+1. Back up your existing data mount and keep it mounted at `/app/data`.
+2. For Docker Compose, set the existing service image to `sunxiao0721/panwatch:0.24.0`, then run `docker compose pull panwatch` and `docker compose up -d panwatch`. For `docker run`, pull that image and recreate the container with your existing environment, ports, and data mount.
+3. Sign in on the web and confirm your holdings are present. In the app, recheck the same HTTPS address and sign in with your existing server credentials, or open **Settings → Connect a phone** on the web to create and approve a new QR connection. Reconnect and grant the requested permissions to use newly available features.
+
+To enable mobile conversations, set `MOBILE_ASSISTANT_MODEL_ID` to the numeric ID of a configured model on your server and restart PanWatch.
+
+### Android closed testing
+
+The closed test covers all regions Google Play offers for this track. Sign in to Google Play with the Google account on the tester list, [join the Android closed test](https://play.google.com/apps/testing/com.tntlikely.panwatch), and install PanWatch from Google Play.
+
+On your upgraded server, open **Settings → Connect a phone**. Scan the new QR code with PanWatch, approve the connection on the web, and check that your holdings match.
+
+[Report a mobile beta issue](https://github.com/TNT-Likely/PanWatch/issues/new?template=mobile_beta_feedback.yml) with the platform, app and server versions, steps, and any error message. Remove QR codes, server addresses, credentials, and real holdings before posting.
+
+## Reference
+
+<details>
+<summary>Scheduled agents and deep analysis</summary>
+
+| Agent | Purpose |
+|---|---|
+| **Pre-market outlook** | Combine overnight moves, news, and technical structure into a plan. |
+| **Intraday monitor** | Watch unusual moves and technical signals during open sessions. |
+| **Daily report** | Review the session and prepare the next trading day's plan. |
+
+Schedules are configurable. Automatic runs filter exchange holidays before collection and analysis; intraday workflows also require an open trading session.
+
+Select the brain icon beside a holding to start TradingAgents deep analysis. Four analyst roles feed a bull/bear debate, risk review, and portfolio-manager decision, with the reasoning trail available in the app and through configured notification channels. Runtime and cost depend on the selected models and configuration.
+
+[Deep-analysis flowchart](docs/tradingagents-flow.en.md) · [Backend architecture](src/ARCHITECTURE.en.md)
+
+</details>
+
+<details>
+<summary>Market calendars and scheduling</summary>
+
+- Select the market status strip to compare all three exchanges across the next 14 dates. Opening/session times use your browser timezone; trade dates and status use each exchange's local date.
+- A non-trading day shows closed; a completed trading day shows market closed. Beijing Saturday morning may still be New York Friday after close.
+- Published 2026 closures and half-days are bundled locally. Startup warms only the previous 30 and next 90 days, without downloading full history. Unpublished weekdays show a pending calendar and block automatic execution; the bundled annual data must be updated for the next year.
+- Agent Cron/interval settings remain unchanged; execution and schedule previews share calendar filters. Price alerts in “all day” mode still require a trading day.
+- Paper fills require an open session for that stock's market. Paper notifications follow each exchange's local clock, including half-days and U.S. daylight-saving changes.
+- Mainland China paper positions follow T+1 using the Shanghai purchase date: automatic and manual sells are blocked on the purchase date and allowed from the next trading day, without waiting 24 hours. Prices and unrealized P&L continue updating while locked; stop-loss, take-profit and other exit conditions are checked again when selling becomes available, using the then-current quote.
+- Paper cash settlement is separate from sell eligibility: A shares settle T+1 and allow sale proceeds to fund new purchases immediately; HK (T+2) and US (T+1) use a cash account that only buys with settled, unreserved funds. The page shows cash balance, buying power, settled available cash and outstanding sale proceeds. Purchases reserve cash immediately; settlement changes availability without crediting cash or P&L again.
+- Settlement dates use each market's local calendar. HK half-days are non-settlement days; US Columbus Day and Veterans Day also defer settlement even when stocks trade. The simulation releases funds at the start of the due date, rather than modeling intraday clearing batches, withdrawal cutoffs, margin, FX or broker-specific facilities. Existing balances are treated as settled opening funds; historical trades are not retroactively locked. Unknown future calendars keep new outstanding proceeds pending until calendar data is updated.
+- Rule references: [HKEX settlement and half-days](https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/ce_SEHK_CT_075_2025.pdf), [SEC T+1](https://www.sec.gov/exams/educationhelpguidesfaqs/t1-faq), [DTC 2026 holidays](https://www.dtcc.com/-/media/Files/pdf/2025/10/15/23034-25.pdf).
+
+</details>
+
+<details>
+<summary><b>Professional technical analysis</b></summary>
+
+- **Trend indicators:** moving-average alignment, MACD crosses, and Bollinger Band breakouts.
+- **Momentum indicators:** RSI overbought/oversold conditions and KDJ saturation or divergence.
+- **Price and volume:** volume-ratio anomalies, low-volume pullbacks, and high-volume breakouts.
+- **Pattern recognition:** hammer, engulfing, doji, and other candlestick patterns.
+- **Support and resistance:** automatic calculation of multiple support and resistance levels.
+
+</details>
+
+<details>
+<summary><b>Price alerts</b></summary>
+
+- Combine price, percentage change, turnover, volume ratio, and other conditions with AND/OR logic.
+- Limit rules to market hours or keep them active all day on trading days; configure cooldowns, daily trigger limits, and repeat behavior.
+- Set an expiration date and `HH:mm` time in the rule dialog, or leave it empty so the rule never expires.
+- Choose notification channels per rule, or use the system default when none is selected.
+
+</details>
+
+<details>
+<summary>Environment variables</summary>
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `AUTH_USERNAME` | Preconfigured login username | Set on first visit |
+| `AUTH_PASSWORD` | Preconfigured login password | Set on first visit |
+| `JWT_SECRET` | Secret used to sign JWTs | Generated automatically |
+| `DATA_DIR` | Data storage directory | `./data` |
+| `TZ` | Deployment timezone for Agent schedules and notification quiet hours; interface display/input use the browser timezone | `Asia/Shanghai` |
+| `PLAYWRIGHT_SKIP_BROWSER_INSTALL` | Skip the initial Chromium installation when browser features are not required | Not set |
+| `LOG_LEVEL` | Console log level. `INFO` prints business events and errors; use `DEBUG` for scheduler heartbeats, collection steps, and other diagnostics. The UI log panel always retains the complete log. | `INFO` |
+| `HTTP_PROXY` / `HTTPS_PROXY` / `http_proxy` | Outbound HTTP proxy. Configure it through an external environment variable, `http_proxy=http://host:port` in `.env`, or **Settings → Global HTTP Proxy**. Priority: external environment variables > UI > `.env`. `NO_PROXY` includes `localhost,127.0.0.1` by default. | Not set |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OpenTelemetry OTLP endpoint, such as `http://jaeger:4318`. Export remains completely disabled when this is empty. The optional dependencies in `requirements-otel.txt` are also required. | Not set (disabled) |
+
+</details>
+
+<details>
+<summary>Local development</summary>
+
+**Requirements:** Python 3.11+ / Node.js 24.14.0 / pnpm 9.15.9
+
+```bash
+# One-command development setup (recommended)
+make dev-api          # Backend with automatic venv/dependencies on :8000
+make dev-web          # Frontend with automatic pnpm install on :5183
+
+# Or start each service manually
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+python server.py                              # Backend on :8000
+
+cd frontend && pnpm install && pnpm dev       # Frontend on :5183
+```
+
+The frontend development server runs at `http://localhost:5183` and proxies `/api` to `127.0.0.1:8000`.
+
+
+[Frontend UI conventions and checks](frontend/UI_GUIDELINES.md)
+
+</details>
+
+<details>
+<summary><b>Technology stack</b></summary>
+
+**Backend:** FastAPI / SQLAlchemy / APScheduler / OpenAI SDK
+
+**Frontend:** React 18 / TypeScript / Tailwind CSS / shadcn/ui
+
+</details>
+
+<details>
+<summary><b>OpenTelemetry export (optional and disabled by default)</b></summary>
+
+PanWatch includes a built-in observability stack with structured logs, end-to-end `trace_id` correlation, the `agent_runs` table, and node-level TradingAgents progress and cost reporting. It works without any external service.
+
+You can optionally add standard [OpenTelemetry](https://opentelemetry.io/) export and send traces to Jaeger, Tempo, Langfuse, or another compatible APM. PanWatch maps three types of spans:
+
+- **One agent run** → a root span correlated with the `trace_id` from `agent_runs`.
+- **One LLM call** → a `gen_ai` child span following the [OpenTelemetry GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/), including `gen_ai.system`, `gen_ai.request.model`, input/output token usage, and `gen_ai.operation.name`.
+- **One TradingAgents node** → a child span that reuses the node-level progress callback.
+
+Export is a complete no-op when the optional dependencies are not installed and no endpoint is configured.
+
+Enable it in three steps:
+
+```bash
+# 1. Install the optional dependencies
+pip install -r requirements-otel.txt
+
+# 2. Configure your collector or APM endpoint
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
+export OTEL_SERVICE_NAME=panwatch   # Optional; defaults to panwatch
+
+# 3. Start PanWatch normally. The startup log will confirm that OTel export is enabled.
+python server.py
+```
+
+Run a local Jaeger instance to verify the integration:
+
+```bash
+docker run -d --name jaeger -p 16686:16686 -p 4318:4318 \
+  jaegertracing/all-in-one:latest
+# Trigger an agent, open http://localhost:16686, and select service=panwatch.
+```
+
+Langfuse and Tempo work the same way: point `OTEL_EXPORTER_OTLP_ENDPOINT` to their OTLP endpoint.
+
+</details>
+
+<details>
+<summary><b>Publishing Docker images</b></summary>
+
+The repository includes a GitHub Actions release workflow:
+
+- Pushing a tag such as `0.2.3` automatically builds and publishes:
+  - `sunxiao0721/panwatch:0.2.3`
+  - `sunxiao0721/panwatch:latest`
+- The workflow can also be started manually with `workflow_dispatch` and an explicit version.
+
+Configure these repository secrets before publishing:
+
+- `DOCKERHUB_USERNAME`
+- `DOCKERHUB_TOKEN`
+
+</details>
+
+## Support the Project
+
+### Sponsorship
+
+For sponsorship or partnership inquiries, contact [sunxiaoyes@outlook.com](mailto:sunxiaoyes@outlook.com?subject=PanWatch%20sponsorship).
+
+### Donations
+
+PanWatch is free and open source. If it saves you time or improves your workflow, you can support continued development:
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-0070BA?logo=paypal&logoColor=white&style=for-the-badge)](https://paypal.me/sunxiaoyes)
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/sunxiao)
+
+<details>
+<summary>Alipay / WeChat Pay</summary>
+
+| Alipay | WeChat Pay |
+|:---:|:---:|
+| <img src="./docs/donate/alipay.png" width="160" alt="Alipay QR code" /> | <img src="./docs/donate/wechat.png" width="160" alt="WeChat Pay QR code" /> |
+
+</details>
+
+<details>
+<summary>USDT</summary>
+
+**Binance Pay** — scan with the Binance app:
+
+<img src="./docs/donate/binance.png" width="220" alt="Binance Pay QR code" />
+
+**On-chain USDT (TRC20)** — scan with any TRON wallet:
+
+Address: `TKBV69B2AoU67p3vDhnJUbMJtZ1DxuUF5C`
+
+<img src="./docs/donate/trc20.png" width="220" alt="USDT TRC20 address QR code" />
+
+</details>
+
+## Contributing
+
+Issues and pull requests are welcome. See the [contribution guide](CONTRIBUTING.md) for setup, validation, internationalization, custom agents, and market-data sources.
+
+Community chat (Telegram): [t.me/panwatch](https://t.me/panwatch)
+
+## License
+
+[MIT](LICENSE)

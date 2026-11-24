@@ -1,0 +1,3 @@
+# Runtime dependencies plus the test runner for local development and CI.
+-r requirements-runtime.txt
+pytest>=7.0.0

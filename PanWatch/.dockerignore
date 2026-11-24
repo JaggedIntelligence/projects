@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.pytest_cache/
+venv/
+.venv/
+**/*.egg-info/
+packages/*/build/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Data
+data/
+*.db
+*.sqlite
+
+# Build
+frontend/dist/
+static/
+
+# Docs
+.claude/
+.docs/
+docs/
+*.md
+!README.md
+!packages/*/README.md
+
+# Misc
+.env
+.env.*
+*.log
